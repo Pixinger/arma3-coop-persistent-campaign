@@ -1,0 +1,8 @@
+#include "dialogAdmin\classes.hpp"
+#include "dialogBuilding\classes.hpp"
+#include "dialogContent\classes.hpp"
+#include "dialogFoldedBuilding\classes.hpp"
+#include "dialogHQ\classes.hpp"
+#include "dialogHQ\dialogStore\classes.hpp"
+#include "dialogService\classes.hpp"
+#include "dialogBarracks\classes.hpp"

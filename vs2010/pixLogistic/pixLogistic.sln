@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixLogistic", "pixLogistic\pixLogistic.vcxproj", "{542F7C65-09B0-4F9C-9EF4-5F1B05143117}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixLogisticTest", "pixLogisticTest\pixLogisticTest.vcxproj", "{CE3D699B-7410-42EE-92E9-29B67D286B25}"
+	ProjectSection(ProjectDependencies) = postProject
+		{542F7C65-09B0-4F9C-9EF4-5F1B05143117} = {542F7C65-09B0-4F9C-9EF4-5F1B05143117}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{542F7C65-09B0-4F9C-9EF4-5F1B05143117}.Debug|Win32.ActiveCfg = Debug|Win32
+		{542F7C65-09B0-4F9C-9EF4-5F1B05143117}.Debug|Win32.Build.0 = Debug|Win32
+		{542F7C65-09B0-4F9C-9EF4-5F1B05143117}.Release|Win32.ActiveCfg = Release|Win32
+		{542F7C65-09B0-4F9C-9EF4-5F1B05143117}.Release|Win32.Build.0 = Release|Win32
+		{CE3D699B-7410-42EE-92E9-29B67D286B25}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE3D699B-7410-42EE-92E9-29B67D286B25}.Debug|Win32.Build.0 = Debug|Win32
+		{CE3D699B-7410-42EE-92E9-29B67D286B25}.Release|Win32.ActiveCfg = Release|Win32
+		{CE3D699B-7410-42EE-92E9-29B67D286B25}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
