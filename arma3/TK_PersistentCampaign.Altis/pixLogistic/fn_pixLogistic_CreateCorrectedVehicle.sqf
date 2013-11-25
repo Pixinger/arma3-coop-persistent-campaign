@@ -8,7 +8,7 @@ _position = _this select 1;
 private["_object"];
 _object = _classname createVehicle _position;
 waitUntil {!isNil "_object"};
-Sleep 0.2;
+/*Sleep 0.2;*/
 
 /* Fahrzeuge bei denen der Frachtraum geleert wird */
 private["_vehicleClearCargoTypes"];
