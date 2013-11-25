@@ -63,8 +63,8 @@ if(_launcher != "") then {[_launcher,true,false,false,false] spawn VAS_fnc_handl
 if(_handgun != "") then {[_handgun,true,false,false,false] spawn VAS_fnc_handleItem;};
 
 {_handle = [_x,true,false,false,false] spawn VAS_fnc_handleItem; waitUntil {scriptDone _handle};} foreach _items;
-{[_x,true,false,false,true] call VAS_fnc_handleItem;} foreach (_uitems);
-{[_x,true,false,false,true] call VAS_fnc_handleItem;} foreach (_vitems);
+{[_x,true,false,false,true,true] call VAS_fnc_handleItem;} foreach (_uitems);
+{[_x,true,false,false,true,false,true] call VAS_fnc_handleItem;} foreach (_vitems);
 {[_x,true,true,false,false] call VAS_fnc_handleItem;} foreach (_bitems);
 {[_x,true,false,true,false] call VAS_fnc_handleItem;} foreach (_primitems);
 {[_x,true,false,true,false] call VAS_fnc_handleItem;} foreach (_secitems);

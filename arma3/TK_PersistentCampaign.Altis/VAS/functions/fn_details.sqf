@@ -7,7 +7,7 @@
 	@file_description: Displays details about the weapon mainly magazines.
 */
 disableSerialization;
-if((uiNamespace getvariable "VAS_UI_FILTER") != "guns") exitWith {call VAS_fnc_closeDetails;}; //Filter not on guns? exit
+if((uiNamespace getvariable "VAS_UI_FILTER") != "guns" && !(uiNamespace getVariable "VAS_UI_QuickMag")) exitWith {call VAS_fnc_closeDetails;}; //Filter not on guns? exit
 private["_control","_data","_control","_magazines","_details"];
 _control = _this select 0;
 if(isNil {_control}) exitWith {call VAS_fnc_closeDetails;};

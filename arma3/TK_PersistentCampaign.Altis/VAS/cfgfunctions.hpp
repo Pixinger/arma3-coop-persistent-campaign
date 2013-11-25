@@ -29,9 +29,16 @@ class VAS
 		class quickMag {};
 		class quickItem {};
 		class qRemoveItem {};
-		class mainInit {description = "Main initilization of VAS, called on mission start."; preInit = 1;};
+		class mainInit {description = "Main initialization of VAS, called on mission start."; preInit = 1;};
 		class KRON_StrLeft {};
 		class KRON_StrToArray {};
 		class accPrompt {};
+		class quickAddDrag {};
+		class updateLoad {};
+		class transferMenu {};
+		class transferAction {};
+		class transferNetwork {};
+		class transferSaveMenu {};
+		class transferSaveGear {};
 	};
 };

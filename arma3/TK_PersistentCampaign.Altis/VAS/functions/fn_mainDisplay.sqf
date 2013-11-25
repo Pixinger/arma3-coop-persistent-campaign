@@ -1,9 +1,9 @@
 #include "macro.sqf"
 /*
-	@version: 1.2
+	@version: 2.1
 	@file_name: fn_mainDisplay.sqf
 	@file_author: TAW_Tonic
-	@file_edit: 5/31/2013
+	@file_edit: 11/6/2013
 	@file_description: When called, sort the call and display our targeted information.
 */
 private["_request","_filter","_control","_info"];
@@ -22,7 +22,10 @@ if(_filter && !isNil {(uiNamespace getVariable "VAS_UI_FILTER_VAR")}) exitWith
 {
 	[(uiNamespace getVariable "VAS_UI_FILTER_VAR")] spawn VAS_fnc_filterMenu;
 };
-uiNamespace setVariable["VAS_UI_FILTER_VAR",nil];
+uiNamespace setVariable ["VAS_UI_FILTER_VAR",nil];
+uiNamespace setVariable ["VAS_UI_QuickMag",false];
+
+[] call VAS_fnc_updateLoad;
 
 switch (_request) do
 {

@@ -11,12 +11,14 @@ class VAS_RscControlsGroup {
 	idc = -1;
 	x = 0;
 	y = 0;
-	w = 1;
-	h = 1;
+	w = safeZoneW;
+	h = safeZoneH;
 	shadow = 0;
 	style = 16;
 	
-	class VScrollbar {
+	class VScrollbar 
+	{
+		color[] = {1, 1, 1, 0.6};
 		width = 0.021;
 		autoScrollSpeed = -1;
 		autoScrollDelay = 5;
@@ -24,7 +26,9 @@ class VAS_RscControlsGroup {
 		shadow = 0;
 	};
 	
-	class HScrollbar {
+	class HScrollbar 
+	{
+		color[] = {1, 1, 1, 0.6};
 		height = 0.028;
 		shadow = 0;
 	};
@@ -131,7 +135,12 @@ class VAS_RscTitle : VAS_RscText {
 
 class VAS_RscPicture {
 	shadow = 0;
-	colorText[] = {1, 1, 1, 1};
+	type = 0;
+	style = 48;
+	sizeEx = 0.023;
+	font = "PuristaMedium";
+	colorBackground[] = {};
+	colorText[] = {};
 	x = 0;
 	y = 0;
 	w = 0.2;
@@ -421,15 +430,18 @@ class VAS_RscCheckbox {
 	checked_strings[] = {CHECKED};
 };
 
-class VAS_RscProgress {
+class VAS_RscProgress 
+{
+	type = 8;
+	style = 0;
 	x = 0.344;
 	y = 0.619;
 	w = 0.313726;
 	h = 0.0261438;
 	shadow = 2;
 	texture = "\A3\ui_f\data\GUI\RscCommon\RscProgress\progressbar_ca.paa";
-	colorFrame[] = {0, 0, 0, 0};
-	colorBar[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+	colorFrame[] = {0,0,0,0};
+	colorBar[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])","(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"};
 };
 
 class VAS_RscListBox {

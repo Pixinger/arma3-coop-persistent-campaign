@@ -10,4 +10,5 @@ _data = (_this select 0) lbData (_this select 1);
 [_data,true,false,false,false] call VAS_fnc_handleItem;
 uiNamespace setVariable["VAS_UI_FILTER","mags"];
 uiNamespace setVariable ["VAS_UI_FILTER_VAR",nil];
+uiNamespace setVariable ["VAS_UI_QuickMag",true];
 [] spawn VAS_fnc_playerDisplay;

@@ -28,6 +28,14 @@
 #define VAS_prompt_true 2552
 #define VAS_prompt_false 2553
 
+//Define VAS Transfer Menu IDC's
+#define VAS_transfer_MainMenu 2560
+#define VAS_transfer_unitsMenu 2600
+#define VAS_transfer_UnitsList 2601
+#define VAS_transfer_SaveMainMenu 2700
+#define VAS_transfer_save_list 2711
+#define VAS_transfer_save_text 2712
+
 //Control Macros
 #define VAS_getControl(disp,ctrl) ((findDisplay ##disp) displayCtrl ##ctrl)
 #define VAS_getSelData(ctrl) (lbData[##ctrl,(lbCurSel ##ctrl)])

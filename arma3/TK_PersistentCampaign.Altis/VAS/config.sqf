@@ -6,7 +6,8 @@ vas_preload = true;
 vas_disableLoadSave = false;
 //Amount of save/load slots
 vas_customslots = 9; //9 is actually 10 slots, starts from 0 to whatever you set, so always remember when setting a number to minus by 1, i.e 12 will be 11.
-
+//Disable 'VAS hasn't finished loading' Check !!! ONLY RECOMMENDED FOR THOSE THAT USE ACRE AND OTHER LARGE ADDONS !!!
+vas_disableSafetyCheck = false;
 /*
 	NOTES ON EDITING!
 	YOU MUST PUT VALID CLASS NAMES IN THE VARIABLES IN AN ARRAY FORMAT, NOT DOING SO WILL RESULT IN BREAKING THE SYSTEM!
@@ -18,7 +19,26 @@ vas_customslots = 9; //9 is actually 10 slots, starts from 0 to whatever you set
 	vas_magazines = ["30Rnd_65x39_case_mag","20Rnd_762x45_Mag","30Rnd_65x39_caseless_green"];
 	vas_items = ["ItemMap","ItemGPS","NVGoggles"];
 	vas_backpacks = ["B_Bergen_sgg_Exp","B_AssaultPack_rgr_Medic"];
-	vas_goggles = [""];											
+	vas_goggles = [""];				
+
+												Example for side specific (TvT)
+	switch(playerSide) do
+	{
+		//Blufor
+		case west:
+		{
+			vas_weapons = ["srifle_EBR_F","arifle_MX_GL_F"];
+			vas_items = ["muzzle_snds_H","muzzle_snds_B","muzzle_snds_L","muzzle_snds_H_MG"]; //Removes suppressors from VAS
+			vas_goggles = ["G_Diving"]; //Remove diving goggles from VAS
+		};
+		//Opfor
+		case west:
+		{
+			vas_weapons = ["srifle_EBR_F","arifle_MX_GL_F"];
+			vas_items = ["muzzle_snds_H","muzzle_snds_B","muzzle_snds_L","muzzle_snds_H_MG"]; //Removes suppressors from VAS
+			vas_goggles = ["G_Diving"]; //Remove diving goggles from VAS
+		};
+	};
 */
 
 //If the arrays below are empty (as they are now) all weapons, magazines, items, backpacks and goggles will be available
@@ -43,6 +63,25 @@ vas_glasses = [];
 	vas_r_weapons = ["srifle_EBR_F","arifle_MX_GL_F"];
 	vas_r_items = ["muzzle_snds_H","muzzle_snds_B","muzzle_snds_L","muzzle_snds_H_MG"]; //Removes suppressors from VAS
 	vas_r_goggles = ["G_Diving"]; //Remove diving goggles from VAS
+	
+												Example for side specific (TvT)
+	switch(playerSide) do
+	{
+		//Blufor
+		case west:
+		{
+			vas_r_weapons = ["srifle_EBR_F","arifle_MX_GL_F"];
+			vas_r_items = ["muzzle_snds_H","muzzle_snds_B","muzzle_snds_L","muzzle_snds_H_MG"]; //Removes suppressors from VAS
+			vas_r_goggles = ["G_Diving"]; //Remove diving goggles from VAS
+		};
+		//Opfor
+		case west:
+		{
+			vas_r_weapons = ["srifle_EBR_F","arifle_MX_GL_F"];
+			vas_r_items = ["muzzle_snds_H","muzzle_snds_B","muzzle_snds_L","muzzle_snds_H_MG"]; //Removes suppressors from VAS
+			vas_r_goggles = ["G_Diving"]; //Remove diving goggles from VAS
+		};
+	};
 */
 
 //Below are variables you can use to restrict certain items from being used.

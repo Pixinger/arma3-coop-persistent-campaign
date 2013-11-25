@@ -21,6 +21,7 @@ switch(_all) do
 			case "mags": {player removeMagazines _data};
 			case "items": {player removeItems _data};
 		};
+		[] call VAS_fnc_updateLoad;
 	};
 	
 	case false:

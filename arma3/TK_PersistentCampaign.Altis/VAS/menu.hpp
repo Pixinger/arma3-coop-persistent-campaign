@@ -52,6 +52,81 @@ class VAS_Diag {
 			x = 0.60; y = 0.27;
 			w = 0.275; h = 0.04;
 		};
+		
+		class VAS_ContainerBG : VAS_RscText
+		{
+			colorBackground[] = {0,0,0,0.7};
+			idc = 2950;
+			x = 0.905
+			y = 0.2 + (11 / 250);
+			w = 0.09;
+			h = 0.235 - (22 / 250);
+		};
+		
+		class VAS_VestBG : VAS_ContainerBG
+		{
+			idc = 2951;
+			y = 0.35 + (11 / 250);
+		};
+		
+		class VAS_BackpackBG : VAS_ContainerBG
+		{
+			idc = 2952;
+			y = 0.5 + (11 / 250);
+		};
+		
+		class VAS_UniformPicSlot : VAS_RscPicture
+		{
+			idc = 2960;
+			text = "";
+			onLBDrop = "(_this + 1) call VAS_fnc_quickAddDrag";
+			x = 0.905;
+			y = 0.25;
+			w = "3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			h = "3 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+		};
+		
+		class VAS_VestPicSlot : VAS_UniformPicSlot
+		{
+			idc = 2961;
+			text = "";
+			onLBDrop = "(_this + 2) call VAS_fnc_quickAddDrag";
+			y = 0.395;
+		};
+		
+		class VAS_BackpackPicSlot : VAS_UniformPicSlot
+		{
+			idc = 2962;
+			text = "";
+			onLBDrop = "(_this + 3) call VAS_fnc_quickAddDrag";
+			y = 0.55;
+		};
+		
+		class VAS_loadBarP : VAS_RscProgress
+		{
+			idc = 2970;
+			texture = "";
+			textureExt = "";
+			colorBar[] = {0.9,0.9,0.9,0.9};
+			colorExtBar[] = {1,1,1,1};
+			colorFrame[] = {1,1,1,1};
+			x = 0.9075;
+			y = 0.371;
+			w = 0.086;
+			h = 0.015;
+		};
+		
+		class VAS_VestLoad : VAS_loadBarP
+		{
+			idc = 2971;
+			y = 0.52;
+		};
+		
+		class VAS_BackpackLoad : VAS_loadBarP
+		{
+			idc = 2972;
+			y = 0.67;
+		};
 	};
 	
 	class controls {
@@ -95,6 +170,7 @@ class VAS_Diag {
 			idc = 2501;
 			text = "";
 			sizeEx = 0.032;
+			canDrag = 1;
 			onLBSelChanged = "_this spawn VAS_fnc_details";
 			onLBDblClick = "_this spawn VAS_fnc_quickItem;";
 			
@@ -108,6 +184,7 @@ class VAS_Diag {
 			text = "";
 			sizeEx = 0.032;
 			onLBDblClick = "_this spawn VAS_fnc_qRemoveItem;";
+			onLBDrop = "(_this + 1) call VAS_fnc_quickAddDrag";
 			//onLBSelChanged = "[2502] execVM 'gear\selection.sqf'";
 			
 			x = 0.60; y = 0.31;
@@ -380,10 +457,21 @@ class VAS_Load_Diag {
 		class LoadOnRespawnMenu : VAS_RscButtonMenu {
 			idc = -1;
 			text = "$STR_VAS_Load_LOR";
-			onButtonClick = "[] call VAS_fnc_onRespawn;";
+			onButtonClick = "if(vas_onRespawn) then {[] call VAS_fnc_onRespawn;} else {hint ""Disabled""};";
 			x = 0.10 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.8 - (1 / 25);
 			w = (9 / 40);
+			h = (1 / 25);
+		};
+		
+		class TransBtn : VAS_RscButtonMenu
+		{
+			idc = -1;
+			text = "$STR_VAS_Load_TransferBtn";
+			onButtonClick = "[] call VAS_fnc_transferMenu";
+			x = 0.33 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+			y = 0.8 - (1 / 25);
+			w = (6.25 / 40);
 			h = (1 / 25);
 		};
 		
@@ -411,7 +499,158 @@ class VAS_Load_Diag {
 		};
 	};
 };
+
+class VAS_TransferMenu
+{
+	idd = 2560;
+	name = "Virtual_Ammobox_sys_transfermenu";
+	movingEnabled = false;
+	enableSimulation = true;
 	
+	class Controls
+	{
+		class MainMenu : VAS_RscControlsGroup
+		{
+			idc = 2600;
+			
+			class Controls
+			{
+				class VAS_RscTitleBackground : VAS_RscText
+				{
+					idc = -1;
+					colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+					x = 0.25;
+					y = 0.2;
+					w = 0.5;
+					h = (1 / 25);
+				};
+				
+				class MainBackground : VAS_RscText
+				{
+					colorBackground[] = {0,0,0,0.7};
+					idc = -1;
+					x = 0.25;
+					y = 0.2 + (11 / 250);
+					w = 0.5;
+					h = 0.6 - (22 / 250);
+				};
+				
+				class Title : VAS_RscTitle
+				{
+					idc = -1;
+					text = "$STR_VAS_Transfer_MainMenu";
+					x = 0.25;
+					y = 0.2;
+					w = 0.5;
+					h = (1 / 25);
+				};
+				
+				class UnitsList : VAS_RscListBox 
+				{
+					idc = 2601;
+					text = "";
+					sizeEx = 0.045;
+					canDrag = 1;
+					x = 0.26; y = 0.26;
+					w = 0.47; h = 0.45;
+				};
+				
+				class TransBtn : VAS_RscButtonMenu
+				{
+					idc = -1;
+					text = "$STR_VAS_Load_TransferBtn";
+					onButtonClick = "[] call VAS_fnc_transferAction";
+					x = 0.26 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+					y = 0.8 - (1 / 25);
+					w = (6.25 / 40);
+					h = (1 / 25);
+				};
+			};
+		};
+		
+		class TransferSaveMenu : VAS_RscControlsGroup
+		{
+			idc = 2700;
+			
+			class Controls
+			{
+				class VAS_RscTitleBackground:VAS_RscText 
+				{
+					colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+					idc = -1;
+					x = 0.1;
+					y = 0.2;
+					w = 0.6;
+					h = (1 / 25);
+				};
+				
+				class MainBackground:VAS_RscText {
+					colorBackground[] = {0, 0, 0, 0.7};
+					idc = -1;
+					x = 0.1;
+					y = 0.2 + (11 / 250);
+					w = 0.6;
+					h = 0.6 - (22 / 250);
+				};
+			
+				class Title : VAS_RscTitle {
+					colorBackground[] = {0, 0, 0, 0};
+					idc = -1;
+					text = "$STR_VAS_Save_Title";
+					x = 0.1;
+					y = 0.2;
+					w = 0.6;
+					h = (1 / 25);
+				};
+				
+				class SaveLoadoutList : VAS_RscListBox 
+				{
+					idc = 2711;
+					text = "";
+					sizeEx = 0.035;
+					
+					x = 0.12; y = 0.26;
+					w = 0.230; h = 0.360;
+				};
+				
+				class SaveFetchList : VAS_RscListBox 
+				{
+					idc = 2513;
+					colorBackground[] = {0,0,0,0};
+					text = "";
+					sizeEx = 0.030;
+					
+					x = 0.35; y = 0.26;
+					w = 0.330; h = 0.360;
+				};
+				
+				class SaveLoadEdit : VAS_RscEdit
+				{
+					idc = 2712;
+					text = "$STR_VAS_Save_CLN";
+					
+					x = -0.05 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+					y = 0.73 - (1 / 25);
+					w = (13 / 40);
+					h = (1 / 25);
+				};
+				
+				class GearSaveMenu : VAS_RscButtonMenu 
+				{
+					idc = -1;
+					text = "$STR_VAS_Save_btnSave";
+					colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
+					onButtonClick = "[] call VAS_fnc_transferSaveGear";
+					x = 0.35 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+					y = 0.73 - (1 / 25);
+					w = (6.25 / 40);
+					h = (1 / 25);
+				};
+			};
+		};
+	};
+};
+
 class VAS_Save_Diag {
 	idd = 2510;
 	name= "Virtual_Ammobox_Sys Save";
@@ -439,9 +678,8 @@ class VAS_Save_Diag {
 		};
 	};
 	
-	class controls {
-
-		
+	class controls 
+	{
 		class Title : VAS_RscTitle {
 			colorBackground[] = {0, 0, 0, 0};
 			idc = -1;
