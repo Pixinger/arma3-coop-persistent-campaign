@@ -150,9 +150,9 @@ if (!isServer || !isDedicated) then
 		"Box_NATO_Wps_F",
 		"Box_NATO_Support_F",
 		"Box_NATO_AmmoVeh_F",
-		"Box_NATO_WpsLaunch_F",
-		"ACRE_RadioBox"
+		"Box_NATO_WpsLaunch_F"
 		];
+		
 	/* Benötigter Ladeplatz */
 	pixlogisticMovableObjectsSize = [
 		2, /*"B_HMG_01_F",*/
@@ -189,9 +189,15 @@ if (!isServer || !isDedicated) then
 		20, /*"Box_NATO_Wps_F",*/
 		20, /*"Box_NATO_Support_F",*/
 		100, /*"Box_NATO_AmmoVeh_F",*/
-		20, /*"Box_NATO_WpsLaunch_F"*/
-		20  /*"ACRE_RadioBox" */
+		20 /*"Box_NATO_WpsLaunch_F"*/
 		];
+		
+	if (pixRadioType == "ACRE") then 
+	{ 	
+		pixlogisticMovableObjects = pixlogisticMovableObjects + ["ACRE_RadioBox"];
+		pixlogisticMovableObjectsSize = pixlogisticMovableObjectsSize + [20];
+	};
+		
 		
 	/* Container-Gebäude die zu einem Container verpackt werden können */
 	pixlogisticBuildings = [		
@@ -465,10 +471,15 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Ammo_F" >> "displayName"), 500, 0, "Box_NATO_Ammo_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Wps_F" >> "displayName"), 500, 0, "Box_NATO_Wps_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Support_F" >> "displayName"), 500, 0, "Box_NATO_Support_F", "", []],
-		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_WpsLaunch_F" >> "displayName"), 500, 0, "Box_NATO_WpsLaunch_F", "", []],
 		["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]		
 	];
+	
+	if (pixRadioType == "ACRE") then 
+	{ 	
+		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]];
+	};
+		
 	
 	/*---------------------------------------------------*/
 	/* Definiert, welche Container gekauft werden können */

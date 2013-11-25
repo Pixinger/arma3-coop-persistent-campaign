@@ -8,7 +8,6 @@ class Mission
 		"a3_characters_f_beta",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_gamma",
-		"acre_sys_antenna",
 		"A3_Structures_F_Mil_Helipads"
 	};
 	addOnsAuto[]=
@@ -17,7 +16,6 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
 		"a3_characters_f_gamma",
-		"acre_sys_antenna",
 		"A3_Structures_F_Mil_Helipads",
 		"a3_map_altis"
 	};
@@ -561,29 +559,28 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=27;
+		items=26;
 		class Item0
 		{
-			position[]={25250.557,83.612579,21797.826};
-			azimut=-72.648422;
-			id=34;
-			side="EMPTY";
-			vehicle="ACRE_OE_303";
-			skill=0.60000002;
-			description="Helicopterpilot";
-		};
-		class Item1
-		{
 			position[]={26816.521,20.876318,24677.279};
-			id=35;
+			id=34;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
 			skill=0.60000002;
 			init="this setVariable [""pixLogisticStoreType"", 0, false];";
 		};
-		class Item2
+		class Item1
 		{
 			position[]={27567.65,4.1944141,24577.34};
+			id=35;
+			side="EMPTY";
+			vehicle="Land_JumpTarget_F";
+			skill=0.60000002;
+			init="this setVariable [""pixLogisticStoreType"", 1, false];";
+		};
+		class Item2
+		{
+			position[]={27958.088,1.975503,23703.131};
 			id=36;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -592,7 +589,7 @@ class Mission
 		};
 		class Item3
 		{
-			position[]={27958.088,1.975503,23703.131};
+			position[]={22788.254,3.0241613,13789.505};
 			id=37;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -601,7 +598,7 @@ class Mission
 		};
 		class Item4
 		{
-			position[]={22788.254,3.0241613,13789.505};
+			position[]={21866.732,2.1598144,10936.246};
 			id=38;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -610,7 +607,7 @@ class Mission
 		};
 		class Item5
 		{
-			position[]={21866.732,2.1598144,10936.246};
+			position[]={22209.945,2.1945825,8489.8877};
 			id=39;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -619,7 +616,7 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={22209.945,2.1945825,8489.8877};
+			position[]={21819.414,3.4843714,6005.8472};
 			id=40;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -628,7 +625,7 @@ class Mission
 		};
 		class Item7
 		{
-			position[]={21819.414,3.4843714,6005.8472};
+			position[]={16651.436,2.3001661,12361.735};
 			id=41;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -637,7 +634,7 @@ class Mission
 		};
 		class Item8
 		{
-			position[]={16651.436,2.3001661,12361.735};
+			position[]={15379.492,4.3658743,15849.76};
 			id=42;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -646,7 +643,7 @@ class Mission
 		};
 		class Item9
 		{
-			position[]={15379.492,4.3658743,15849.76};
+			position[]={12729.18,1.3987451,14238.453};
 			id=43;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -655,7 +652,7 @@ class Mission
 		};
 		class Item10
 		{
-			position[]={12729.18,1.3987451,14238.453};
+			position[]={14261.014,2.143872,13068.997};
 			id=44;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -664,7 +661,7 @@ class Mission
 		};
 		class Item11
 		{
-			position[]={14261.014,2.143872,13068.997};
+			position[]={12489.957,3.8221543,12747.853};
 			id=45;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -673,7 +670,7 @@ class Mission
 		};
 		class Item12
 		{
-			position[]={12489.957,3.8221543,12747.853};
+			position[]={9253.5898,3.7072587,10888.636};
 			id=46;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -682,7 +679,7 @@ class Mission
 		};
 		class Item13
 		{
-			position[]={9253.5898,3.7072587,10888.636};
+			position[]={3651.876,1.8427447,10877.178};
 			id=47;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -691,7 +688,7 @@ class Mission
 		};
 		class Item14
 		{
-			position[]={3651.876,1.8427447,10877.178};
+			position[]={2982.9219,2.0025017,12590.65};
 			id=48;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -700,7 +697,7 @@ class Mission
 		};
 		class Item15
 		{
-			position[]={2982.9219,2.0025017,12590.65};
+			position[]={3336.571,2,12959.146};
 			id=49;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -709,7 +706,7 @@ class Mission
 		};
 		class Item16
 		{
-			position[]={3336.571,2,12959.146};
+			position[]={3438.9297,0.73746634,13324.062};
 			id=50;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -718,7 +715,7 @@ class Mission
 		};
 		class Item17
 		{
-			position[]={3438.9297,0.73746634,13324.062};
+			position[]={3297.9604,4.9878416,14115.85};
 			id=51;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -727,7 +724,7 @@ class Mission
 		};
 		class Item18
 		{
-			position[]={3297.9604,4.9878416,14115.85};
+			position[]={16722.135,3.3707056,20550.404};
 			id=52;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -736,7 +733,7 @@ class Mission
 		};
 		class Item19
 		{
-			position[]={16722.135,3.3707056,20550.404};
+			position[]={17539.586,2.8866038,18937.705};
 			id=53;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -745,7 +742,7 @@ class Mission
 		};
 		class Item20
 		{
-			position[]={17539.586,2.8866038,18937.705};
+			position[]={17847.088,1.9415991,18178.008};
 			id=54;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -754,7 +751,7 @@ class Mission
 		};
 		class Item21
 		{
-			position[]={17847.088,1.9415991,18178.008};
+			position[]={20627.236,4.6403074,19417.775};
 			id=55;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -763,7 +760,7 @@ class Mission
 		};
 		class Item22
 		{
-			position[]={20627.236,4.6403074,19417.775};
+			position[]={21091.541,3.9652827,19904.352};
 			id=56;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -772,7 +769,7 @@ class Mission
 		};
 		class Item23
 		{
-			position[]={21091.541,3.9652827,19904.352};
+			position[]={23366.646,3.9948168,24187.381};
 			id=57;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
@@ -781,26 +778,17 @@ class Mission
 		};
 		class Item24
 		{
-			position[]={23366.646,3.9948168,24187.381};
-			id=58;
-			side="EMPTY";
-			vehicle="Land_JumpTarget_F";
-			skill=0.60000002;
-			init="this setVariable [""pixLogisticStoreType"", 1, false];";
-		};
-		class Item25
-		{
 			position[]={20788.301,28.033508,7262.1504};
-			id=59;
+			id=58;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
 			skill=0.60000002;
 			init="this setVariable [""pixLogisticStoreType"", 0, false];";
 		};
-		class Item26
+		class Item25
 		{
 			position[]={23226.541,3.1900001,18395.928};
-			id=60;
+			id=59;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
 			skill=0.60000002;

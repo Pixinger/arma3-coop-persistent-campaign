@@ -1,4 +1,13 @@
 closeDialog 0;
 
-player addItem "ACRE_PRC148";
-player sidechat "ACRE PRC 148 VHF hinzugefügt.";
+
+if (pixRadioType == "ACRE") then 
+{ 
+	player addItem "ACRE_PRC148";
+	player sidechat "ACRE_PRC148 hinzugefügt.";
+};
+if (pixRadioType == "TFR") then 
+{ 
+	player addBackpack "tf_rt1523g";
+	player sidechat "RT-1523G (ASIP) hinzugefügt.";
+};

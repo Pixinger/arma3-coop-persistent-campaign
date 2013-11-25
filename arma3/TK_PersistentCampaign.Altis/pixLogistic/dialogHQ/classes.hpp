@@ -115,7 +115,7 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 60.3 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "ACRE Funkgerät";
+		text = "ACRE/TFR Funkgerät";
 		action = "execVM 'pixLogistic\dialogHQ\onButtonACREClicked.sqf';";
 	};	
 	

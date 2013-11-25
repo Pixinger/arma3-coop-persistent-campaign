@@ -11,6 +11,7 @@ pixDebug = true;
 /* Parameter auswerten */
 if (paramsArray select 0 == 0) then { pixDebug = false; } else { pixDebug = false; };
 if (paramsArray select 1 == 0) then { pixPatrolSkriptType = "UPS"; } else { pixPatrolSkriptType = "USPS"; };
+if (paramsArray select 2 == 0) then { pixRadioType = "TFR"; } else { pixRadioType = "ACRE"; };
 if (isServer && !isDedicated) then { pixDebug = true; };
 
 /* FAR-revive initialisieren */
@@ -63,11 +64,19 @@ if (pixDebug) then { player globalChat "init: credits";};
 [] spawn compile preprocessFileLineNumbers "credits\init.sqf";
 
 /* ACRE lossscale abschalten */	
-if (pixDebug) then { player globalChat "init: ACRE";};
-[0] call acre_api_fnc_setLossModelScale; /* Disable loss scale simulation */
+if (pixRadioType == "ACRE") then
+{
+	if (pixDebug) then { player globalChat "init: ACRE";};
+	[0] call acre_api_fnc_setLossModelScale; /* Disable loss scale simulation */
+};
+if (pixRadioType == "TFR") then
+{
+	tf_no_auto_long_range_radio = true;
+};
 
 if (pixDebug) then { player globalChat "init.sqf is done";};
 player globalChat format["Your UID: %1", getPlayerUID player];
+player globalChat format["Radio: %1", pixRadioType];
 
 /* Camera deaktivieren */
 if (!isServer) then

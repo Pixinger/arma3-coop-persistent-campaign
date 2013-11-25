@@ -64,6 +64,13 @@ class Params
 	    texts[] = {"Urban Patrol Skript (by Kronzky)", "Ultra Simple Patrol Skript (by JW Custom)"};
 	    default = 0;
 	};
+	class Radio /* paramsArray[2]*/
+	{		
+	    title = "Radios";
+	    values[] = {0, 1};
+	    texts[] = {"Task-Force-Radio", "ACRE"};
+	    default = 0;
+	};
 };
 
 class Header

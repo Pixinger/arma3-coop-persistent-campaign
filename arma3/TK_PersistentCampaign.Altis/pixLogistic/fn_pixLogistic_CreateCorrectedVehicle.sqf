@@ -75,9 +75,9 @@ if (_classname == "ACRE_RadioBox") then
 	removeuniform _object;  
 	removevest _object;  
 	removebackpack _object; 
-	_object	addItemCargo["ACRE_PRC148",50];
-	_object addItemCargo ["ACRE_PRC119",25];	
-	_object addItemCargo ["ACRE_PRC117F",25];	
+	_object	addItemCargoGlobal["ACRE_PRC148",50];
+	_object addItemCargoGlobal ["ACRE_PRC119",25];	
+	_object addBackpackCargoGlobal ["ACRE_PRC117F",25];	
 };
 
 _object
