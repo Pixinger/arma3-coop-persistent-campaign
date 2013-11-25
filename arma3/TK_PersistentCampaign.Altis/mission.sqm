@@ -22,7 +22,7 @@ class Mission
 	randomSeed=14739900;
 	class Intel
 	{
-		briefingName="[TK]Perstistent Campaign V1.15";
+		briefingName="[TK]Perstistent Campaign V1.16";
 		overviewText="www.teamkommando.de";
 		startWeather=0.29999998;
 		startWind=0.099999994;
@@ -93,7 +93,7 @@ class Mission
 					special="NONE";
 					id=2;
 					side="WEST";
-					vehicle="B_soldier_exp_F";
+					vehicle="B_Soldier_TL_F";
 					player="PLAYER COMMANDER";
 					leader=1;
 					rank="COLONEL";
