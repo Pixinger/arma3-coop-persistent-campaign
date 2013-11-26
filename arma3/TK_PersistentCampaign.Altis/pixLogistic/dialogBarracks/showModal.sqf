@@ -8,16 +8,21 @@ createDialog "PIXLOGISTIC_DIALOG_BARRACK";
 
 private["_compositions"];
 _compositions = [ 	
-	["Soldat", ["G_Shades_Black","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
-	["Sniper", ["G_Shades_Black","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
+	["Gruppenführer", ["G_Combat","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
+	["Soldat 1", ["G_Sport_Red","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
+	["Soldat 2", ["G_Sport_Greenblack","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
+	["Soldat 3", ["G_Sport_BlackWhite","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
+	["Sniper 1", ["G_Sport_Red","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
+	["Sniper 2", ["G_Sport_Greenblack","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
+	["Sniper 3", ["G_Sport_BlackWhite","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
 	["Helipilot", ["G_Shades_Black","H_PilotHelmetHeli_B","U_B_HeliPilotCoveralls","",""]],
 	["Pilot", ["G_Shades_Black","H_PilotHelmetFighter_B","U_B_PilotCoveralls","",""]],
-	["Spielleiter", ["G_Shades_Black","H_MilCap_blue","U_C_Novak","V_TacVest_blk","keep"]],
+	["Spielleiter", ["G_Tactical_Clear","H_Cap_headphones","U_Competitor","V_Rangemaster_belt",""]],
 	["Taucher", ["G_Diving","","U_B_Wetsuit","V_RebreatherB","keep"]]
 ];
 
 /*-----------------------------------------------------------------		*/
-/* Listbox f�llen*/
+/* Listbox füllen*/
 {
 	lbAdd [PIXLOGISTIC_IDC_DIALOG_BARRACK_List, (_x select 0)];
 } foreach _compositions;
