@@ -175,11 +175,11 @@ if (isServer) then
 	/*--------------------------------------------------------*/
 	if (pixZones_ActiveIndex != -1) then
 	{
-		pvehPixZones_MissionStatus set [_missionInfoIndex, 1]; /* erfolgreich */	
+		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
 	}
 	else
 	{	
-		pvehPixZones_MissionStatus set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
+		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
 	};
 	publicVariable "pvehPixZones_MissionStatus";
 	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
@@ -187,14 +187,7 @@ if (isServer) then
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
-	if (pixDebug) then
-	{
-		sleep 60;
-	}
-	else
-	{
-		sleep 10;
-	};
+	sleep 60;
 
 	/*------------------------*/
 	/* Alle Einheiten löschen */

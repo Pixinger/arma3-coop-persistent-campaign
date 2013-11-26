@@ -38,10 +38,8 @@ _markerName setMarkerTypeLocal "mil_destroy";
 /*------------------------------------*/
 /* Warten bis die Mission zu Ende ist */
 /*------------------------------------*/
-player sidechat "tower: waiting for mission status";
 waitUntil { str(pvehPixZones_MissionStatus) != "[]" };
-player sidechat "tower: mission status received";
-while { (pixZones_ActiveIndex != -1) && ((pvehPixZones_MissionStatus select _missionInfoIndex) == 0) } do
+while { (pixZones_ActiveIndex != -1) && (((pvehPixZones_MissionStatus select 1) select _missionInfoIndex) == 0) } do
 {
 	 Sleep 2;
 };
@@ -49,7 +47,7 @@ while { (pixZones_ActiveIndex != -1) && ((pvehPixZones_MissionStatus select _mis
 /*-------------------*/
 /* Mission auswerten */
 /*-------------------*/
-if ((pvehPixZones_MissionStatus select _missionInfoIndex) == 1) then
+if (((pvehPixZones_MissionStatus select 1) select _missionInfoIndex) == 1) then
 {
 	/* erfolgreich */
 	_currentTask setTaskState "Succeeded";

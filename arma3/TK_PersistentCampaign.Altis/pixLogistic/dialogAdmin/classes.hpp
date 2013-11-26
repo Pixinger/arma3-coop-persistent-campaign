@@ -125,8 +125,8 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button10;
 		y = 72.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Destroy item";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonDestroyItemClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button11 : RscButtonAdminMenu
 	{

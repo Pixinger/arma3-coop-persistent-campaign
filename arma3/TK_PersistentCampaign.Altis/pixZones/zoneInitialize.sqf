@@ -6,10 +6,17 @@
 /* ------------------------------------------------------------------------------------------------------------------------------*/
 if (isServer) then
 {
+	/* (_this select 0) = _zoneIndex */
 	private["_zoneIndex"];
-	_zoneIndex = _this select 0;
+	_zoneIndex = _this select 0; /* (_this select 0) == pvehPixZones_OnRequestActivation */
 	if ((_zoneIndex > -1) && (_zoneIndex < pixZones_ZoneCount)) then
 	{
+		/*------------------------------------------------------------------------------------*/
+		/* Merken um welche Art von Angriff es sich handelt, bevor wir den ZonenStatus ändern */
+		/*------------------------------------------------------------------------------------*/
+		private["_reverseAttack"];
+		if (pvehPixZones_ZoneStatus select _zoneIndex == 2) then { _reverseAttack = true; } else { _reverseAttack = false; };
+		
 		/*--------------------------------*/
 		/* Den Zonen Status aktualisieren */
 		/*--------------------------------*/
@@ -20,9 +27,13 @@ if (isServer) then
 		/*----------------------------*/
 		/* Missionen berechnen lassen */
 		/*----------------------------*/
-		pvehPixZones_MissionInfos = call compile preprocessFileLineNumbers format["pixZones\Zone%1\run.sqf", _zoneIndex];
+		/* Der Aufruf der run.sqf gibt uns ein fertig berechnetes "pvehPixZones_MissionInfos"-Objekt zurück. Darin ist enthalten, welche Zone 
+		angegriffen werden muss, welche Missionen (env,opt, rev) wo gestartet werden sollen. Dadurch das wir jedes Verzeichnis einzeln ansteuern
+		können, kann jede Zone die nicht den Standard-Preset1 verwenden will, die "pvehPixZones_MissionInfos" nach eigenen Vorgaben erstellen. */
+		pvehPixZones_MissionInfos = [_reverseAttack] call compile preprocessFileLineNumbers format["pixZones\Zone%1\fn_GetMissionInfoArray.sqf", _zoneIndex];
 		publicVariable "pvehPixZones_MissionInfos";
-		/* Der PublicVariablen-EventHandler startet die "zoneRun.sqf". Da er das aber nur auf den Clients macht, müssen wir noch nachhelfen */
+		/* Der PublicVariablen-EventHandler startet bei den CLienten die "zoneRun.sqf". 
+		Auf dem Server müssen wir das aber noch manuell machen  */
 		call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionInfos.sqf"; 
 	}
 	else
@@ -30,3 +41,4 @@ if (isServer) then
 		player sidechat format["ERROR: Unable to start Zone %1. Invalid zone index: %1", _zoneIndex];
 	};
 };
+

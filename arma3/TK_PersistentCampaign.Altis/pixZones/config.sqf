@@ -6,8 +6,8 @@ if (isServer) then
 
 pixZones_ZoneCount = 45;
 
-/* _zoneIndex can be engaged by BLUEFOR when one of the Zones [zone1Index,zone2Index,..] is GREEN. */
-pixZones_ZoneEngagementConditions = [ 
+/* _zoneIndex can be engaged by BLUEFOR when one of the Zones [zone1Index,zone2Index,..] is OPFOR. */
+pixZones_ZoneConnectionsBlueFor = [ 
 	[],/*0*/
 	[0],
 	[0,1,3,4,5],
@@ -55,12 +55,14 @@ pixZones_ZoneEngagementConditions = [
 	[0,43]
 ]; 
 
-/* _zoneIndex can be engaged by OPFOR when one of the Zones [zone1Index,zone2Index,..] is RED.*/
-pixZones_ZoneOpForEngagementConditions = [
+
+
+/* _zoneIndex can be engaged by OPFOR when one of the Zones [zone1Index,zone2Index,..] is BLUEFOR.*/
+pixZones_ZoneConnectionsOpFor = [
 	[],/*0*/
-	[2,3],
-	[1,3,4,5],
-	[1,2,4],
+	[],
+	[3,4,5],
+	[2,4],
 	[2,3,5,6],
 	[2,4,6,7],/*5*/
 	[4,5,7,9],
@@ -103,3 +105,4 @@ pixZones_ZoneOpForEngagementConditions = [
 	[39,42],
 	[43]
 ]; 
+

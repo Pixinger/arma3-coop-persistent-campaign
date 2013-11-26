@@ -3,5 +3,5 @@
 /* [Foldername, Exercisename/description]
 /*-------------------------------------------------------*/
 missionsEnv_Missions = [
-	["Patrol","My little Patrol"]	/* 0 */
+	"patrol"	/* 0 */
 	];

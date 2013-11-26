@@ -17,17 +17,35 @@ else
 		_missionsEnv = pvehPixZones_MissionInfos select 1;
 		private["_missionsOpt"];
 		_missionsOpt = pvehPixZones_MissionInfos select 2;
+		private["_missionsRev"];
+		_missionsRev = pvehPixZones_MissionInfos select 3;
 
-		/*----------------------*/
+		/*----------------------------*/
 		/* Missions-Status erstellen  */
-		/*----------------------*/
+		/*----------------------------*/
 		if (isServer) then
 		{
-			pvehPixZones_MissionStatus = [];
+			private["_missionEnvStatus"];
+			_missionEnvStatus = [];
+			private["_missionOptStatus"];
+			_missionOptStatus = [];
+			private["_missionRevStatus"];
+			_missionRevStatus = [];
+			
+			for "_i" from 0 to (count (pvehPixZones_MissionInfos select 1) - 1) do
+			{
+				_missionEnvStatus = _missionEnvStatus + [1]; /* Env sind immer gleich erledigt, laufen aber weiter */
+			};
 			for "_i" from 0 to (count (pvehPixZones_MissionInfos select 2) - 1) do
 			{
-				pvehPixZones_MissionStatus = pvehPixZones_MissionStatus + [0];
+				_missionOptStatus = _missionOptStatus + [0];
 			};
+			for "_i" from 0 to (count (pvehPixZones_MissionInfos select 3) - 1) do
+			{
+				_missionRevStatus = _missionRevStatus + [0];
+			};
+			
+			pvehPixZones_MissionStatus = [_missionEnvStatus, _missionOptStatus, _missionRevStatus];
 			/*--------------------------------*/
 			/* An alle Clienten weiterreichen */
 			/*--------------------------------*/
@@ -51,6 +69,15 @@ else
 		{
 			/* [zoneIndex, _missionInfoIndex] */
 			[pixZones_ActiveIndex, _i] call compile preprocessFileLineNumbers "missionsOpt\run.sqf";
+		};
+		
+		/*----------------------*/
+		/* Rev-Missions starten */
+		/*----------------------*/
+		for "_i" from 0 to ((count _missionsRev) - 1) do
+		{
+			/* [zoneIndex, _missionInfoIndex] */
+			[pixZones_ActiveIndex, _i] call compile preprocessFileLineNumbers "missionsRev\run.sqf";
 		};
 		
 
@@ -96,6 +123,6 @@ else
 	}
 	else
 	{
-		/* Die "pvehPixZones_MissionInfos" Variable wurde aktualisiert. Wir müssen aber eigentlich nichts machen */
+		/* Die "pvehPixZones_MissionInfos" Variable wurde aktualisiert. Wir müssen aber eigentlich nichts machen. Diesen Fall sollte es eigentlich nicht geben. */
 	};
 };

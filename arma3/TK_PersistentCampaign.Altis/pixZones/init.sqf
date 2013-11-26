@@ -2,17 +2,16 @@
 /* Configuration laden und überprüfen */
 /* ---------------------------------- */
 call compile preprocessFileLineNumbers "pixZones\config.sqf";
-if (count pixZones_ZoneEngagementConditions != pixZones_ZoneCount) then { player sidechat "ERROR: (count pixZones_ZoneEngagementConditions != pixZones_ZoneCount)";};
-if (count pixZones_ZoneOpForEngagementConditions != pixZones_ZoneCount) then { player sidechat "ERROR: (count pixZones_ZoneOpForEngagementConditions != pixZones_ZoneCount)";};
+if (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount) then { player sidechat "ERROR: (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount)";};
+if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player sidechat "ERROR: (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount)";};
 
 /* -------------------------------- */
 /* Spezielle Funktionen kompilieren */
 /* -------------------------------- */
 fn_pixZones_GetZoneIndex = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetZoneIndex.sqf";
 fn_pixZones_IsZoneForbidden = compile preprocessFileLineNumbers "pixZones\fn_pixZones_IsZoneForbidden.sqf";
-fn_pixZones_CanEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanEngageZone.sqf";
-fn_pixZones_CanOpforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanOpforEngageZone.sqf";
-fn_pixZones_FindMissionMarker = compile preprocessFileLineNumbers "pixZones\fn_pixZones_FindMissionMarker.sqf";
+fn_pixZones_CanBlueforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanBlueforEngageZone.sqf";
+fn_pixZones_GetConnectedHostileZones = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetConnectedHostileZones.sqf";
 fn_pixZones_GetMinDistance = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetMinDistance.sqf";
 fn_pixZones_AllMissionsFinished = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsFinished.sqf";
 fn_pixZones_AllMissionsSuccessfull = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsSuccessfull.sqf";
@@ -28,6 +27,9 @@ fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_p
 pixZones_ActiveIndex = -1;
 pixZones_MarkerNames = []; 		/* ["Zone0", "Zone1", "Zone2", ..] */
 pixZones_ZoneCoordinates = []; 	/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
+pixZones_ReverseAttackTime = paramsArray select 3;
+if (pixDebug) then { player sidechat format["pixZones_ReverseAttackTime: %1", pixZones_ReverseAttackTime];};
+
 if (isNil "pvehPixZones_OnRequestActivation") then { pvehPixZones_OnRequestActivation = -1;};
 if (isNil "pvehPixZones_MissionInfos") then { pvehPixZones_MissionInfos = [];};
 if (isNil "pvehPixZones_MissionStatus") then { pvehPixZones_MissionStatus = [];};

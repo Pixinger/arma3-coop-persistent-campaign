@@ -71,6 +71,13 @@ class Params
 	    texts[] = {"Task-Force-Radio", "ACRE"};
 	    default = 0;
 	};
+	class ReverseAttack /* paramsArray[3]*/
+	{		
+	    title = "Gegenangriff nach";
+	    values[] = {5, 10, 15, 20, 30};
+	    texts[] = {"5 min.", "10 min.", "15 min.", "20 min.", "30 min."};
+	    default = 15;
+	};
 };
 
 class Header

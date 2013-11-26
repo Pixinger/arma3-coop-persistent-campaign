@@ -50,7 +50,7 @@ class PIXLOGISTIC_DIALOG_HQ
 	class PIXLOGISTIC_DIALOG_HQ_TitleAdmin : RscTitle
 	{
 		idc = -1;
-		text = "Administratoren";
+		text = "Teamleiter";
 		x = 50.1 * GRID_W + GRID_ABS_X; 
 		y = 0.3 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;

@@ -22,7 +22,7 @@ class Mission
 	randomSeed=14739900;
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign V1.17";
+		briefingName="[TK]Persistent Campaign V1.18";
 		overviewText="www.teamkommando.de";
 		startWeather=0.29999998;
 		startWind=0.099999994;
@@ -562,7 +562,7 @@ class Mission
 		items=26;
 		class Item0
 		{
-			position[]={26816.521,20.876318,24677.279};
+			position[]={26816.734,20.882652,24677.379};
 			id=34;
 			side="EMPTY";
 			vehicle="Land_JumpTarget_F";
