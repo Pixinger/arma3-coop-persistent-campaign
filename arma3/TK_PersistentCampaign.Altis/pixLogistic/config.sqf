@@ -472,12 +472,12 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Wps_F" >> "displayName"), 500, 0, "Box_NATO_Wps_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Support_F" >> "displayName"), 500, 0, "Box_NATO_Support_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_WpsLaunch_F" >> "displayName"), 500, 0, "Box_NATO_WpsLaunch_F", "", []],
-		["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]		
+		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]		
 	];
 	
 	if (pixRadioType == "ACRE") then 
 	{ 	
-		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]];
+		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]];
 	};
 		
 	

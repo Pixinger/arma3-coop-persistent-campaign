@@ -22,7 +22,7 @@ class Mission
 	randomSeed=14739900;
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign V1.19";
+		briefingName="[TK]Persistent Campaign V1.20";
 		overviewText="www.teamkommando.de";
 		startWeather=0.29999998;
 		startWind=0.099999994;
@@ -99,6 +99,7 @@ class Mission
 					rank="COLONEL";
 					skill=0.60000002;
 					text="Unit1";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Teamleader";
 				};
 				class Item1
@@ -113,6 +114,7 @@ class Mission
 					rank="MAJOR";
 					skill=0.60000002;
 					text="Unit2";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Medic";
 				};
 				class Item2
@@ -127,6 +129,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.60000002;
 					text="Unit3";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Medic";
 				};
 				class Item3
@@ -141,6 +144,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.60000002;
 					text="Unit4";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Medic";
 				};
 				class Item4
@@ -155,6 +159,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="Unit5";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Medic";
 				};
 				class Item5
@@ -169,6 +174,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="Unit6";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Engineer";
 				};
 				class Item6
@@ -182,6 +188,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit7";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Engineer";
 				};
 				class Item7
@@ -195,6 +202,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit8";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Support Engineer";
 				};
 			};
@@ -218,6 +226,7 @@ class Mission
 					rank="COLONEL";
 					skill=0.60000002;
 					text="Unit9";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Squadleader";
 				};
 				class Item1
@@ -232,6 +241,7 @@ class Mission
 					rank="MAJOR";
 					skill=0.60000002;
 					text="Unit10";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Medic";
 				};
 				class Item2
@@ -246,6 +256,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.60000002;
 					text="Unit11";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Medic";
 				};
 				class Item3
@@ -260,6 +271,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.60000002;
 					text="Unit12";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Engineer";
 				};
 				class Item4
@@ -274,11 +286,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="Unit13";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 				class Item5
 				{
-					position[]={26738.146,20.615044,24636.707};
+					position[]={26738.148,20.615046,24636.707};
 					azimut=-141.85699;
 					special="NONE";
 					id=15;
@@ -288,6 +301,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="Unit14";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 				class Item6
@@ -301,6 +315,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit15";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 				class Item7
@@ -314,6 +329,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit16";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 			};
@@ -337,6 +353,7 @@ class Mission
 					rank="COLONEL";
 					skill=0.60000002;
 					text="Unit17";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Squadleader";
 				};
 				class Item1
@@ -351,6 +368,7 @@ class Mission
 					rank="MAJOR";
 					skill=0.60000002;
 					text="Unit18";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Medic";
 				};
 				class Item2
@@ -365,6 +383,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.60000002;
 					text="Unit19";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Medic";
 				};
 				class Item3
@@ -379,6 +398,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.60000002;
 					text="Unit20";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Engineer";
 				};
 				class Item4
@@ -393,6 +413,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="Unit21";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 				class Item5
@@ -407,6 +428,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="Unit22";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 				class Item6
@@ -420,6 +442,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit23";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 				class Item7
@@ -433,6 +456,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit24";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Soldier";
 				};
 			};
@@ -456,6 +480,7 @@ class Mission
 					rank="COLONEL";
 					skill=0.60000002;
 					text="Unit25";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Pilot";
 				};
 				class Item1
@@ -470,6 +495,7 @@ class Mission
 					rank="MAJOR";
 					skill=0.60000002;
 					text="Unit26";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Pilot";
 				};
 				class Item2
@@ -484,6 +510,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.60000002;
 					text="Unit27";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Pilot";
 				};
 				class Item3
@@ -498,6 +525,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.60000002;
 					text="Unit28";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Helicopterpilot";
 				};
 				class Item4
@@ -512,6 +540,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="Unit29";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Helicopterpilot";
 				};
 				class Item5
@@ -526,6 +555,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="Unit30";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Helicopterpilot";
 				};
 				class Item6
@@ -539,6 +569,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit31";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Helicopterpilot";
 				};
 				class Item7
@@ -552,6 +583,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="Unit32";
+					init="this addPrimaryWeaponItem ""optic_Arco"";";
 					description="Helicopterpilot";
 				};
 			};
