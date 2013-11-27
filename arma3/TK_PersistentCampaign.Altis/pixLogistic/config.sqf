@@ -77,7 +77,36 @@ if (!isServer || !isDedicated) then
 		"B_Boat_Armed_01_minigun_F",
 		"B_SDV_01_F",
 		"C_Van_01_box_F",
-		"C_Van_01_transport_F"
+		"C_Van_01_transport_F",
+		/* OPFOR */
+		"O_MRAP_02_F",
+		"O_MRAP_02_gmg_F",
+		"O_MRAP_02_hmg_F",
+		"O_Quadbike_01_F",
+		"O_Truck_02_transport_F",
+		"O_Truck_02_covered_F",
+		"O_APC_Wheeled_02_rcws_F",
+		"O_APC_Tracked_02_AA_F",
+		"O_APC_Tracked_02_cannon_F",
+		"O_MBT_02_cannon_F",
+		"O_MBT_02_arty_F",
+		"O_Lifeboat",
+		"O_Boat_Armed_01_hmg_F",
+		"O_Boat_Transport_01_F",
+		"O_SDV_01_F",
+		"O_Truck_02_Ammo_F",
+		"O_Truck_02_box_F",
+		"O_Truck_02_medical_F",
+		"O_Truck_02_fuel_F",
+		"O_UAV_01_F",
+		"O_UGV_01_F",
+		"O_UGV_01_rcws_F",
+		"O_UAV_02_F",
+		"O_UAV_02_CAS_F",
+		"O_Heli_Light_02_unarmed_F",
+		"O_Heli_Light_02_F",
+		"O_Heli_Attack_02_black_F",
+		"O_Heli_Attack_02_F"		
 	];
 	/* Laderaumgösse */
 	pixlogisticTransportVehiclesSize = [
@@ -110,7 +139,33 @@ if (!isServer || !isDedicated) then
 		10, /*B_Boat_Armed_01_minigun_F",*/
 		10, /*B_SDV_01_F",*/
 		10, /*C_Van_01_box_F",*/
-		10  /*C_Van_01_transport_F"*/
+		10, /*C_Van_01_transport_F"*/
+		/* OPFOR */
+		40, /*"O_MRAP_02_F",*/
+		40, /*"O_MRAP_02_gmg_F",*/
+		40, /*"O_MRAP_02_hmg_F",*/
+		10, /*"O_Quadbike_01_F",*/
+		100, /*"O_Truck_02_transport_F",*/
+		500, /*"O_Truck_02_covered_F",*/
+		100, /*"O_APC_Wheeled_02_rcws_F",*/
+		100, /*"O_APC_Tracked_02_AA_F",*/
+		100, /*"O_APC_Tracked_02_cannon_F",*/
+		100, /*"O_MBT_02_cannon_F",*/
+		100, /*"O_MBT_02_arty_F",*/
+		10, /*"O_Lifeboat",*/
+		10, /*"O_Boat_Armed_01_hmg_F",*/
+		10, /*"O_Boat_Transport_01_F",*/
+		10, /*"O_SDV_01_F",*/
+		50, /*"O_Truck_02_Ammo_F",*/
+		50, /*"O_Truck_02_box_F",*/
+		50, /*"O_Truck_02_medical_F",*/
+		50, /*"O_Truck_02_fuel_F",*/
+		15, /*"O_UGV_01_F",*/
+		15, /*"O_UGV_01_rcws_F",*/
+		10, /*"O_Heli_Light_02_unarmed_F",*/
+		10, /*"O_Heli_Light_02_F",*/
+		10, /*"O_Heli_Attack_02_black_F",*/
+		10  /*"O_Heli_Attack_02_F"*/
 	];
 
 		
@@ -150,7 +205,17 @@ if (!isServer || !isDedicated) then
 		"Box_NATO_Wps_F",
 		"Box_NATO_Support_F",
 		"Box_NATO_AmmoVeh_F",
-		"Box_NATO_WpsLaunch_F"
+		"Box_NATO_WpsLaunch_F",
+		/* OPFOR */
+		"Box_East_WpsLaunch_F",
+		"Box_East_Support_F",
+		"O_supplyCrate_F",
+		"Box_East_AmmoVeh_F",
+		"Box_East_Grenades_F",
+		"Box_East_WpsSpecial_F",
+		"Box_East_AmmoOrd_F",
+		"Box_East_Ammo_F",
+		"Box_East_Wps_F"		
 		];
 		
 	/* Benötigter Ladeplatz */
@@ -189,7 +254,17 @@ if (!isServer || !isDedicated) then
 		20, /*"Box_NATO_Wps_F",*/
 		20, /*"Box_NATO_Support_F",*/
 		100, /*"Box_NATO_AmmoVeh_F",*/
-		20 /*"Box_NATO_WpsLaunch_F"*/
+		20, /*"Box_NATO_WpsLaunch_F"*/
+		/* OPFOR */
+		20, /*"Box_East_WpsLaunch_F",*/
+		20, /*"Box_East_Support_F",*/
+		100, /*"O_supplyCrate_F",*/
+		100, /*"Box_East_AmmoVeh_F",*/
+		20, /*"Box_East_Grenades_F",*/
+		20, /*"Box_East_WpsSpecial_F",*/
+		20, /*"Box_East_AmmoOrd_F",*/
+		20, /*"Box_East_Ammo_F",*/
+		20  /*"Box_East_Wps_F"*/
 		];
 		
 	if (pixRadioType == "ACRE") then 
@@ -272,10 +347,39 @@ if (!isServer || !isDedicated) then
 		"B_Boat_Transport_01_F",
 		"B_Lifeboat",
 		"B_Boat_Armed_01_minigun_F",
-		"B_SDV_01_F"		
+		"B_SDV_01_F",
+		/* OPFOR */
+		"O_MRAP_02_F",
+		"O_MRAP_02_gmg_F",
+		"O_MRAP_02_hmg_F",
+		"O_Quadbike_01_F",
+		"O_Truck_02_transport_F",
+		"O_Truck_02_covered_F",
+		"O_APC_Wheeled_02_rcws_F",
+		"O_APC_Tracked_02_AA_F",
+		"O_APC_Tracked_02_cannon_F",
+		"O_MBT_02_cannon_F",
+		"O_MBT_02_arty_F",
+		"O_Lifeboat",
+		"O_Boat_Armed_01_hmg_F",
+		"O_Boat_Transport_01_F",
+		"O_SDV_01_F",
+		"O_Truck_02_Ammo_F",
+		"O_Truck_02_box_F",
+		"O_Truck_02_medical_F",
+		"O_Truck_02_fuel_F",
+		"O_UAV_01_F",
+		"O_UGV_01_F",
+		"O_UGV_01_rcws_F",
+		"O_UAV_02_F",
+		"O_UAV_02_CAS_F",
+		"O_Heli_Light_02_unarmed_F",
+		"O_Heli_Light_02_F",
+		"O_Heli_Attack_02_black_F",
+		"O_Heli_Attack_02_F"
 	];
 	
-	
+
 	
 	/*--------------------------------------------------*/
 	/* Alle Hubschrauber definieren, die Liften können  */
@@ -345,7 +449,36 @@ if (!isServer || !isDedicated) then
 		"B_Boat_Transport_01_F",
 		"B_Lifeboat",
 		"B_Boat_Armed_01_minigun_F",
-		"B_SDV_01_F"		
+		"B_SDV_01_F",
+		/* OPFOR */
+		"O_MRAP_02_F",
+		"O_MRAP_02_gmg_F",
+		"O_MRAP_02_hmg_F",
+		"O_Quadbike_01_F",
+		"O_Truck_02_transport_F",
+		"O_Truck_02_covered_F",
+		"O_APC_Wheeled_02_rcws_F",
+		"O_APC_Tracked_02_AA_F",
+		"O_APC_Tracked_02_cannon_F",
+		"O_MBT_02_cannon_F",
+		"O_MBT_02_arty_F",
+		"O_Lifeboat",
+		"O_Boat_Armed_01_hmg_F",
+		"O_Boat_Transport_01_F",
+		"O_SDV_01_F",
+		"O_Truck_02_Ammo_F",
+		"O_Truck_02_box_F",
+		"O_Truck_02_medical_F",
+		"O_Truck_02_fuel_F",
+		"O_UAV_01_F",
+		"O_UGV_01_F",
+		"O_UGV_01_rcws_F",
+		"O_UAV_02_F",
+		"O_UAV_02_CAS_F",
+		"O_Heli_Light_02_unarmed_F",
+		"O_Heli_Light_02_F",
+		"O_Heli_Attack_02_black_F",
+		"O_Heli_Attack_02_F"		
 		];
 	/* Die Gewichte der Liftbaren Objekte */
 	pixLogisticLiftObjectWeights = [
@@ -396,7 +529,36 @@ if (!isServer || !isDedicated) then
 		2000, /*"B_Boat_Transport_01_F",*/
 		2000, /*"B_Lifeboat",*/
 		2000, /*"B_Boat_Armed_01_minigun_F",*/
-		2000 /*"B_SDV_01_F"		*/
+		2000, /*"B_SDV_01_F"*/
+		/* OPFOR */
+		2000, /*"O_MRAP_02_F",*/
+		2000, /*"O_MRAP_02_gmg_F",*/
+		2000, /*"O_MRAP_02_hmg_F",*/
+		100,  /*"O_Quadbike_01_F",*/
+		2000, /*"O_Truck_02_transport_F",*/
+		2000, /*"O_Truck_02_covered_F",*/
+		2000, /*"O_APC_Wheeled_02_rcws_F",*/
+		2000, /*"O_APC_Tracked_02_AA_F",*/
+		2000, /*"O_APC_Tracked_02_cannon_F",*/
+		2000, /*"O_MBT_02_cannon_F",*/
+		2000, /*"O_MBT_02_arty_F",*/
+		2000, /*"O_Lifeboat",*/
+		2000, /*"O_Boat_Armed_01_hmg_F",*/
+		2000, /*"O_Boat_Transport_01_F",*/
+		2000, /*"O_SDV_01_F",*/
+		2000, /*"O_Truck_02_Ammo_F",*/
+		2000, /*"O_Truck_02_box_F",*/
+		2000, /*"O_Truck_02_medical_F",*/
+		2000, /*"O_Truck_02_fuel_F",*/
+		100,  /*"O_UAV_01_F",*/
+		2000, /*"O_UGV_01_F",*/
+		2000, /*"O_UGV_01_rcws_F",*/
+		2000, /*"O_UAV_02_F",*/
+		2000, /*"O_UAV_02_CAS_F",*/
+		2000, /*"O_Heli_Light_02_unarmed_F",*/
+		2000, /*"O_Heli_Light_02_F",*/
+		2000, /*"O_Heli_Attack_02_black_F",*/
+		2000  /*"O_Heli_Attack_02_F"*/
 	];
 
 	/*-----------------------------------------*/
@@ -472,12 +634,12 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Wps_F" >> "displayName"), 500, 0, "Box_NATO_Wps_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_Support_F" >> "displayName"), 500, 0, "Box_NATO_Support_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_WpsLaunch_F" >> "displayName"), 500, 0, "Box_NATO_WpsLaunch_F", "", []],
-		["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]		
+		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]		
 	];
 	
 	if (pixRadioType == "ACRE") then 
 	{ 	
-		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]];
+		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]];
 	};
 		
 	

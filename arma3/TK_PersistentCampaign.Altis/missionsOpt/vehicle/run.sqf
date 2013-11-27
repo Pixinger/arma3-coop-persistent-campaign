@@ -33,8 +33,8 @@ if (isServer) then
 	_vehicle setdir (random 360);
 	_normal = surfaceNormal (position _vehicle);
 	_vehicle setVectorUp _normal;
-	_units = _units + [_vehicle];
-
+	createVehicleCrew _vehicle;
+	_units = _units + (crew _vehicle);
 
 	private["_spawnGroup"];
 	private["_randomPos"];
@@ -82,6 +82,17 @@ if (isServer) then
 	publicVariable "pvehPixZones_MissionStatus";
 	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
 
+	/*-------------------------------------------------------*/
+	/* Bewegungsunfähige Fahrzeuge in die Logistic aufnehmen */
+	/*-------------------------------------------------------*/
+	if (!canMove _vehicle) then 
+	{
+		private["_script"];
+		_script = [_vehicle] execVM "pixLogistic\serverInsertItem.sqf";
+		waitUntil { scriptDone _script;};
+		_vehicle = nil;
+	};
+
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
@@ -90,5 +101,7 @@ if (isServer) then
 	/*------------------------*/
 	/* Alle Einheiten löschen */
 	/*------------------------*/
+	if (!(isNil "_vehicle")) then {deletevehicle _vehicle;};
 	{deletevehicle _x} foreach _units;
+	
 };

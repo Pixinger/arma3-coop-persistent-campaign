@@ -80,4 +80,36 @@ if (_classname == "ACRE_RadioBox") then
 	_object addBackpackCargoGlobal ["ACRE_PRC117F",25];	
 };
 
+if (_classname == "Box_NATO_AmmoVeh_F") then
+{ 
+	_object	addItemCargoGlobal["optic_Arco",10];
+	_object	addItemCargoGlobal["optic_Hamr",10];
+	_object	addItemCargoGlobal["optic_MRCO",10];	 	
+	_object addItemCargoGlobal["optic_Holosight",25];	 	
+	_object addItemCargoGlobal["optic_SOS",3];	
+	_object addItemCargoGlobal["optic_TWS",3];	
+	_object addItemCargoGlobal["optic_TWS_MG",3];	
+};
+
+if (_classname == "Box_NATO_Wps_F") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+	_object	addItemCargoGlobal["ItemGPS",8];
+	_object	addItemCargoGlobal["Rangefinder",8];
+	_object addItemCargoGlobal["optic_Holosight",8];
+	_object addItemCargoGlobal["optic_TWS",1];	
+	_object addItemCargoGlobal["optic_TWS_MG",1];	
+	_object	addWeaponCargoGlobal["arifle_MX_GL_Hamr_pointer_F",3];
+	_object	addWeaponCargoGlobal["arifle_MXM_SOS_pointer_F",3];
+	_object	addWeaponCargoGlobal["LMG_Zafir_pointer_F",2];
+	_object	addWeaponCargoGlobal["srifle_EBR_ARCO_pointer_F",2];
+	_object	addWeaponCargoGlobal["srifle_GM6_SOS_F",1];
+	_object	addWeaponCargoGlobal["srifle_LRR_SOS_F",1];
+};
+
+
 _object

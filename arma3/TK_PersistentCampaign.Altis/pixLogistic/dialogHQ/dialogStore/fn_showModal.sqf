@@ -51,40 +51,58 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 			private["_content"];
 			_content = _ware select 5;
 			
-			/* Nur berechtigte Personen dürfen anfragen */
-			if ((getPlayerUID player in pvPixLogisticAdminUIDs) || (getPlayerUID player in pvPixLogisticTeamLeaderUIDs) || (isServer && !isDedicated)) then
+			private["_zoneIndex"];
+			_zoneIndex = (getPos _spawnObject) call fn_pixZones_GetZoneIndex;
+			if (_zoneIndex >= 0) then
 			{
-				private["_pos"];
-				if (pixLogisticDialogHqStore_AdminSpawn) then 
-				{
-					_pos = player modelToWorld [0,8,0]; 
-				} 
-				else 
-				{ 
-					_pos = getPos _spawnObject;
-					pvPixLogisticMoney = pvPixLogisticMoney - _money;
-					publicVariable "pvPixLogisticMoney"; /* An alle weiterleiten */
-				};				
-				
-				private["_object"];
-				_object = [_classname, _pos] call fn_pixLogistic_CreateCorrectedVehicle;/*	_object = _classname createVehicle (getPos _spawnObject);*/
-				if (str(_content) != "[]") then { _object setVariable ["pixLogisticContent", _content, true];};
-				_object setDir (getDir _spawnObject);
+				if ((pvehPixZones_ZoneStatus select _zoneIndex) >= 2) then 
+				{				
+					/* Nur berechtigte Personen dürfen anfragen */
+					if ((getPlayerUID player in pvPixLogisticAdminUIDs) || (getPlayerUID player in pvPixLogisticTeamLeaderUIDs) || (isServer && !isDedicated)) then
+					{
+						private["_pos"];
+						if (pixLogisticDialogHqStore_AdminSpawn) then 
+						{
+							_pos = player modelToWorld [0,8,0]; 
+						} 
+						else 
+						{ 
+							_pos = getPos _spawnObject;
+							pvPixLogisticMoney = pvPixLogisticMoney - _money;
+							publicVariable "pvPixLogisticMoney"; /* An alle weiterleiten */
+						};				
+						
+						private["_object"];
+						_object = [_classname, _pos] call fn_pixLogistic_CreateCorrectedVehicle;/*	_object = _classname createVehicle (getPos _spawnObject);*/
+						if (str(_content) != "[]") then { _object setVariable ["pixLogisticContent", _content, true];};
+						_object setDir (getDir _spawnObject);
 
-				if (isServer && !isDedicated) then
-				{
-					player sidechat "simulate server";
-					[_object] execVM "pixLogistic\serverInsertItem.sqf"
+						if (isServer && !isDedicated) then
+						{
+							player sidechat "simulate server";
+							[_object] execVM "pixLogistic\serverInsertItem.sqf"
+						}
+						else
+						{
+							pvehPixlogisticInsertItem = _object;
+							publicVariable "pvehPixlogisticInsertItem";
+						};
+						
+						player sidechat "Die Waren wurden erfolgreich geliefert.";
+					}
+					else
+					{
+						player sidechat "Sie sind nicht berechtigt Materialanfragen zu stellen.";
+					};
 				}
 				else
 				{
-					pvehPixlogisticInsertItem = _object;
-					publicVariable "pvehPixlogisticInsertItem";
+					player sidechat "Die Ladestelle liegt nicht in Ihrer Zone!";
 				};
 			}
 			else
 			{
-				player sidechat "Sie sind nicht berechtigt Materialanfragen zu stellen.";
+				player sidechat "ERROR: Invalid ZoneIndex";
 			};
 		}
 		else

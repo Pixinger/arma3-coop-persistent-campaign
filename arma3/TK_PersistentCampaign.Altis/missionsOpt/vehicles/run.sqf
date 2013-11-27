@@ -34,7 +34,8 @@ if (isServer) then
 	_vehicle1 setdir random 360;
 	_normal = surfaceNormal (position _vehicle1);
 	_vehicle1 setVectorUp _normal;
-	_units = _units + [_vehicle1];
+	createVehicleCrew _vehicle1;
+	_units = _units + (crew _vehicle1);
 
 	private["_vehicle2"];
 	_vehicle2 = _vehicleClassname createVehicle [_missionPosition select 0, (_missionPosition select 1) + ((random 100) - 50), 0]; 
@@ -43,7 +44,8 @@ if (isServer) then
 	_vehicle2 setdir random 360;
 	_normal = surfaceNormal (position _vehicle2);
 	_vehicle2 setVectorUp _normal;
-	_units = _units + [_vehicle2];
+	createVehicleCrew _vehicle2;
+	_units = _units + (crew _vehicle2);
 
 	private["_vehicle3"];
 	_vehicle3 = _vehicleClassname createVehicle [(_missionPosition select 0) + ((random 100) - 50), _missionPosition select 1, 0]; 
@@ -52,7 +54,8 @@ if (isServer) then
 	_vehicle3 setdir random 360;
 	_normal = surfaceNormal (position _vehicle3);
 	_vehicle3 setVectorUp _normal;
-	_units = _units + [_vehicle3];
+	createVehicleCrew _vehicle3;
+	_units = _units + (crew _vehicle3);
 	
 
 	private["_spawnGroup"];
@@ -105,6 +108,31 @@ if (isServer) then
 	publicVariable "pvehPixZones_MissionStatus";
 	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
 
+	/*-------------------------------------------------------*/
+	/* Bewegungsunfähige Fahrzeuge in die Logistic aufnehmen */
+	/*-------------------------------------------------------*/
+	if (!canMove _vehicle1) then 
+	{
+		private["_script"];
+		_script = [_vehicle1] execVM "pixLogistic\serverInsertItem.sqf";
+		waitUntil { scriptDone _script;};
+		_vehicle1 = nil;
+	};
+	if (!canMove _vehicle2) then 
+	{
+		private["_script"];
+		_script = [_vehicle2] execVM "pixLogistic\serverInsertItem.sqf";
+		waitUntil { scriptDone _script;};
+		_vehicle2 = nil;
+	};
+	if (!canMove _vehicle3) then 
+	{
+		private["_script"];
+		_script = [_vehicle3] execVM "pixLogistic\serverInsertItem.sqf";
+		waitUntil { scriptDone _script;};
+		_vehicle3 = nil;
+	};
+
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
@@ -113,5 +141,8 @@ if (isServer) then
 	/*------------------------*/
 	/* Alle Einheiten löschen */
 	/*------------------------*/
+	if (!(isNil "_vehicle1")) then {deletevehicle _vehicle1;};
+	if (!(isNil "_vehicle2")) then {deletevehicle _vehicle2;};
+	if (!(isNil "_vehicle3")) then {deletevehicle _vehicle3;};
 	{deletevehicle _x} foreach _units;
 };
