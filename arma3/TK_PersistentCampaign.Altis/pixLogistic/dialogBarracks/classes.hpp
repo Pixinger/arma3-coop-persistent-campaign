@@ -18,7 +18,8 @@ class PIXLOGISTIC_DIALOG_BARRACK
 		PIXLOGISTIC_DIALOG_BARRACK_List,
 		
 		PIXLOGISTIC_DIALOG_BARRACK_ButtonOK,
-		PIXLOGISTIC_DIALOG_BARRACK_ButtonCancel
+		PIXLOGISTIC_DIALOG_BARRACK_ButtonCancel,
+		PIXLOGISTIC_DIALOG_BARRACK_ButtonFold
 	};
 	
 	class PIXLOGISTIC_DIALOG_BARRACK_Background: IGUIBack
@@ -68,22 +69,32 @@ class PIXLOGISTIC_DIALOG_BARRACK
 	class PIXLOGISTIC_DIALOG_BARRACK_ButtonOK : RscButtonMenuOK
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_BARRACK_ButtonOK;
-		x = 5 * GRID_W + GRID_ABS_X; 
+		x = 1 * GRID_W + GRID_ABS_X; 
 		y = 8 * GRID_H + GRID_ABS_Y; 
-		w = 4 * GRID_W;
-		h = 1 * GRID_H;
-		text = "Wechseln";
+		w = 3.9 * GRID_W;
+		h = 0.9 * GRID_H;
+		text = "OK";
 		action = "execVM 'pixLogistic\dialogBarracks\onButtonOKClicked.sqf';";
 	};
 	
 	class PIXLOGISTIC_DIALOG_BARRACK_ButtonCancel : RscButtonMenuCancel
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_BARRACK_ButtonCancel;
-		x = 1 * GRID_W + GRID_ABS_X; 
+		x = 5 * GRID_W + GRID_ABS_X; 
 		y = 8 * GRID_H + GRID_ABS_Y; 
 		w = 4 * GRID_W;
-		h = 1 * GRID_H;
+		h = 0.9 * GRID_H;
 		text = "Abbrechen";
 		action = "execVM 'pixLogistic\dialogBarracks\onButtonCancelClicked.sqf';";
+	};
+	class PIXLOGISTIC_DIALOG_BARRACK_ButtonFold : RscButtonMenu
+	{
+		idc = PIXLOGISTIC_IDC_DIALOG_BARRACK_ButtonFold;
+		x = 1 * GRID_W + GRID_ABS_X; 
+		y = 9 * GRID_H + GRID_ABS_Y; 
+		w = 8 * GRID_W;
+		h = 1 * GRID_H;
+		text = "Abbauen";
+		action = "execVM 'pixLogistic\dialogBarracks\onButtonFoldClicked.sqf';";
 	};
 };

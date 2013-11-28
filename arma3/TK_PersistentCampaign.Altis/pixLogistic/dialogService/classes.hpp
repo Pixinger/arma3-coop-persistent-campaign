@@ -18,7 +18,8 @@ class PIXLOGISTIC_DIALOG_SERVICE
 		PIXLOGISTIC_DIALOG_SERVICE_List,
 		
 		PIXLOGISTIC_DIALOG_SERVICE_ButtonOK,
-		PIXLOGISTIC_DIALOG_SERVICE_ButtonCancel
+		PIXLOGISTIC_DIALOG_SERVICE_ButtonCancel,
+		PIXLOGISTIC_DIALOG_SERVICE_ButtonFold
 	};
 	
 	class PIXLOGISTIC_DIALOG_SERVICE_Background: IGUIBack
@@ -65,25 +66,36 @@ class PIXLOGISTIC_DIALOG_SERVICE
 	};
 	
 
-	class PIXLOGISTIC_DIALOG_SERVICE_ButtonOK : RscButtonMenuOK
+	class PIXLOGISTIC_DIALOG_SERVICE_ButtonOK : RscButtonMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_SERVICE_ButtonOK;
-		x = 5 * GRID_W + GRID_ABS_X; 
+		x = 1 * GRID_W + GRID_ABS_X; 
 		y = 8 * GRID_H + GRID_ABS_Y; 
-		w = 4 * GRID_W;
-		h = 1 * GRID_H;
+		w = 3.9 * GRID_W;
+		h = 0.9 * GRID_H;
 		text = "Recyclen";
 		action = "execVM 'pixLogistic\dialogService\onButtonOKClicked.sqf';";
 	};
 	
-	class PIXLOGISTIC_DIALOG_SERVICE_ButtonCancel : RscButtonMenuCancel
+	class PIXLOGISTIC_DIALOG_SERVICE_ButtonCancel : RscButtonMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_SERVICE_ButtonCancel;
-		x = 1 * GRID_W + GRID_ABS_X; 
+		x = 5 * GRID_W + GRID_ABS_X; 
 		y = 8 * GRID_H + GRID_ABS_Y; 
 		w = 4 * GRID_W;
-		h = 1 * GRID_H;
+		h = 0.9 * GRID_H;
 		text = "Abbrechen";
 		action = "execVM 'pixLogistic\dialogService\onButtonCancelClicked.sqf';";
+	};
+
+	class PIXLOGISTIC_DIALOG_SERVICE_ButtonFold : RscButtonMenu
+	{
+		idc = PIXLOGISTIC_IDC_DIALOG_SERVICE_ButtonFold;
+		x = 1 * GRID_W + GRID_ABS_X; 
+		y = 9 * GRID_H + GRID_ABS_Y; 
+		w = 8 * GRID_W;
+		h = 0.9 * GRID_H;
+		text = "Abbauen";
+		action = "execVM 'pixLogistic\dialogService\onButtonFoldClicked.sqf';";
 	};
 };

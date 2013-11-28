@@ -8,7 +8,8 @@ class Mission
 		"a3_characters_f_beta",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_gamma",
-		"A3_Structures_F_Mil_Helipads"
+		"A3_Structures_F_Mil_Helipads",
+		"A3_Structures_F_Mil_Cargo"
 	};
 	addOnsAuto[]=
 	{
@@ -17,20 +18,22 @@ class Mission
 		"a3_characters_f_beta",
 		"a3_characters_f_gamma",
 		"A3_Structures_F_Mil_Helipads",
+		"A3_Structures_F_Mil_Cargo",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign V1.21.1";
+		briefingName="[TK]Persistent Campaign V1.22";
 		overviewText="www.teamkommando.de";
-		startWeather=0.29999998;
-		startWind=0.099999994;
-		startWaves=0.099999994;
-		forecastWeather=0.29999998;
-		forecastWind=0.099999994;
-		forecastWaves=0.099999994;
-		forecastLightnings=0.099999994;
+		timeOfChanges=28800;
+		startWeather=0;
+		startWind=0;
+		forecastWeather=0;
+		forecastWind=0;
+		forecastWaves=0;
+		wavesForced=1;
+		windForced=1;
 		year=2035;
 		month=6;
 		day=24;
@@ -591,7 +594,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=26;
+		items=27;
 		class Item0
 		{
 			position[]={26816.734,20.882652,24677.379};
@@ -825,6 +828,16 @@ class Mission
 			vehicle="Land_JumpTarget_F";
 			skill=0.60000002;
 			init="this setVariable [""pixLogisticStoreType"", 0, false];";
+		};
+		class Item26
+		{
+			position[]={26703.443,19.55551,24649.328};
+			azimut=221.35699;
+			id=60;
+			side="EMPTY";
+			vehicle="Land_Cargo_HQ_V1_F";
+			skill=0.60000002;
+			init="this allowDamage false; this setvariable [""pixLogisticNoFold"", true];";
 		};
 	};
 	class Markers
