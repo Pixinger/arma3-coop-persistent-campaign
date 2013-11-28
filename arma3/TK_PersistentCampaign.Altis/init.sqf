@@ -8,11 +8,27 @@ enableSaving [false, false];
 
 
 pixDebug = true;
+/*-----------------------------------------------*/
 /* Parameter auswerten */
-if (paramsArray select 0 == 0) then { pixDebug = false; } else { pixDebug = false; };
+if (paramsArray select 0 == 0) then { pixDebug = false; } else { pixDebug = false; }; if (isServer && !isDedicated) then { pixDebug = true; };
 if (paramsArray select 1 == 0) then { pixPatrolSkriptType = "UPS"; } else { pixPatrolSkriptType = "USPS"; };
 if (paramsArray select 2 == 0) then { pixRadioType = "TFR"; } else { pixRadioType = "ACRE"; };
-if (isServer && !isDedicated) then { pixDebug = true; };
+/* Parameter (3): ReverseAttack */
+pixParamReverseAttack = (paramsArray select 3);
+diag_log format["pixParamReverseAttack: %1", pixParamReverseAttack];
+/* Parameter (4): Date */
+/*if (paramsArray select 4 == 0) then {} else { };/*Date*/
+/* Parameter (5): Daytime */
+/*if (paramsArray select 5 == 0) then {} else { };/*Daytime*/
+/* Parameter (6): Weather */
+/*if (paramsArray select 6 == 0) then {} else { };/*Weather*/
+/* Parameter (7): Mission Factor */
+private["_missionFactorValues"];
+_missionFactorValues = [0.5,1,1.5,2];
+pixParamMissionFactor = _missionFactorValues select (paramsArray select 7);
+diag_log format["pixParamMissionFactor: %1", pixParamMissionFactor];
+
+/*-----------------------------------------------*/
 
 /* FAR-revive initialisieren */
 if (pixDebug) then { player globalChat "init: FAR_revive";};
