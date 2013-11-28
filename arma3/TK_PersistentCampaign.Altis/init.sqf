@@ -10,6 +10,7 @@ enableSaving [false, false];
 pixDebug = true;
 /*-----------------------------------------------*/
 /* Parameter auswerten */
+private["_paramValues"];
 if (paramsArray select 0 == 0) then { pixDebug = false; } else { pixDebug = false; }; if (isServer && !isDedicated) then { pixDebug = true; };
 if (paramsArray select 1 == 0) then { pixPatrolSkriptType = "UPS"; } else { pixPatrolSkriptType = "USPS"; };
 if (paramsArray select 2 == 0) then { pixRadioType = "TFR"; } else { pixRadioType = "ACRE"; };
@@ -17,15 +18,18 @@ if (paramsArray select 2 == 0) then { pixRadioType = "TFR"; } else { pixRadioTyp
 pixParamReverseAttack = (paramsArray select 3);
 diag_log format["pixParamReverseAttack: %1", pixParamReverseAttack];
 /* Parameter (4): Date */
-/*if (paramsArray select 4 == 0) then {} else { };/*Date*/
+_paramValues = [[(floor(random(12))) + 1, (floor(random(28))) + 1], [7,1],[3,1],[10,1],[1,1]]; /* {"Zufall", "Sommer", "Frühling", "Herbst", "Winter"}; */
+pixParamDate = _paramValues select (paramsArray select 4);
+diag_log format["pixParamDate: %1", pixParamDate];
 /* Parameter (5): Daytime */
-/*if (paramsArray select 5 == 0) then {} else { };/*Daytime*/
+if ((paramsArray select 5) == 0) then { pixParamTime = (floor(random(23))) + 1; } else { pixParamTime = (paramsArray select 5) - 1; };
+diag_log format["pixParamTime: %1", pixParamTime];
 /* Parameter (6): Weather */
-/*if (paramsArray select 6 == 0) then {} else { };/*Weather*/
+pixParamWeather = (paramsArray select 6); 
+diag_log format["pixParamWeather: %1", pixParamWeather];
 /* Parameter (7): Mission Factor */
-private["_missionFactorValues"];
-_missionFactorValues = [0.5,1,1.5,2];
-pixParamMissionFactor = _missionFactorValues select (paramsArray select 7);
+_paramValues = [0.5,1,1.5,2];
+pixParamMissionFactor = _paramValues select (paramsArray select 7);
 diag_log format["pixParamMissionFactor: %1", pixParamMissionFactor];
 
 /*-----------------------------------------------*/
@@ -74,6 +78,10 @@ if (pixDebug) then { player globalChat "init: missionsOpt";};
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
 if (pixDebug) then { player globalChat "init: missionsRev";};
 call compile preprocessFileLineNumbers "missionsRev\init.sqf";
+if (pixDebug) then { player globalChat "init: pixDate";};
+call compile preprocessFileLineNumbers "pixDate\init.sqf";
+if (pixDebug) then { player globalChat "init: pixWeather";};
+call compile preprocessFileLineNumbers "pixWeather\init.sqf";
 if (pixDebug) then { player globalChat "init: pixGps";};
 [] spawn compile preprocessFileLineNumbers "pixGps\init.sqf";
 if (pixDebug) then { player globalChat "init: credits";};
