@@ -5,7 +5,7 @@
 if (isServer) then
 {
 	/* debug */
-	if (isServer && !isDedicated) then { pixParamDate = [6,1]; pixParamTime = 17; };
+	if (isServer && !isDedicated) then { pixParamDate = [2,1]; pixParamTime = 12; };
 	
 	/* Datum setzen */
 	setDate [2013, pixParamDate select 0, pixParamDate select 1, pixParamTime, 0];

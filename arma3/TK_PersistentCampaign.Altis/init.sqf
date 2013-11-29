@@ -33,6 +33,7 @@ pixParamMissionFactor = _paramValues select (paramsArray select 7);
 diag_log format["pixParamMissionFactor: %1", pixParamMissionFactor];
 
 /*-----------------------------------------------*/
+cutText ["please wait...", "BLACK FADED",1];
 
 /* FAR-revive initialisieren */
 if (pixDebug) then { player globalChat "init: FAR_revive";};
@@ -49,42 +50,19 @@ call compile preprocessFileLineNumbers "pixLogistic\init.sqf";
 /* Warten bis das Briefing beendet wurde */
 Sleep .1;
 
-/* Camera aktivieren */
-private["_camera"];
-if (!isServer) then
-{
-	titleCut ["please wait...","BLACK IN",1];
-	_camera = "camera" camcreate [0,0,0];
-	_camera cameraeffect ["internal", "back"];
-	_camera camPrepareTarget [118000.52,19152.64,-40253.30];
-	_camera camPreparePos [26643.26,24618.66,27.71];
-	_camera camPrepareFOV 0.700;
-	_camera camCommitPrepared 0;
-};
-	
-if (pixDebug) then { player globalChat "Briefing finished";};
-if (pixDebug) then { player globalChat "init: Multiplayer parameter";};
-if (pixDebug) then { player globalChat format["- parameter pixDebug: %1", pixDebug]; };
-if (pixDebug) then { player globalChat format["- parameter pixPatrolSkriptType: %1", pixPatrolSkriptType];};
-
 /* Warten bis das Briefing beendet wurde */
-if (pixDebug) then { player globalChat "BIS_nocoreconversations=true";};
 player setvariable ["BIS_nocoreconversations",true];
 
 /* Module initialisieren */
-if (pixDebug) then { player globalChat "init: missionsEnv";};
 call compile preprocessFileLineNumbers "missionsEnv\init.sqf";
-if (pixDebug) then { player globalChat "init: missionsOpt";};
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
-if (pixDebug) then { player globalChat "init: missionsRev";};
 call compile preprocessFileLineNumbers "missionsRev\init.sqf";
-if (pixDebug) then { player globalChat "init: pixDate";};
-call compile preprocessFileLineNumbers "pixDate\init.sqf";
-if (pixDebug) then { player globalChat "init: pixWeather";};
-call compile preprocessFileLineNumbers "pixWeather\init.sqf";
-if (pixDebug) then { player globalChat "init: pixGps";};
+if (isServer && isDedicated) then
+{
+	call compile preprocessFileLineNumbers "pixDate\init.sqf";
+	call compile preprocessFileLineNumbers "pixWeather\init.sqf";
+};
 [] spawn compile preprocessFileLineNumbers "pixGps\init.sqf";
-if (pixDebug) then { player globalChat "init: credits";};
 [] spawn compile preprocessFileLineNumbers "credits\init.sqf";
 
 /* ACRE lossscale abschalten */	
@@ -95,22 +73,17 @@ if (pixRadioType == "ACRE") then
 };
 if (pixRadioType == "TFR") then
 {
+	if (pixDebug) then { player globalChat "init: TFR";};
 	tf_no_auto_long_range_radio = true;
 	[] spawn {
-		waituntil {sleep 0.5; player call haveSwRadio}; 
-		[call activeSwRadio, "101.1" ] call setSwFrequency;/*/
+		waituntil {sleep 0.5; player call haveSwRadio};
+		[call activeSwRadio, "101.1" ] call setSwFrequency;
 	};
 };
 
-if (pixDebug) then { player globalChat "init.sqf is done";};
 player globalChat format["Your UID: %1", getPlayerUID player];
-player globalChat format["Radio: %1", pixRadioType];
 
 /* Camera deaktivieren */
-if (!isServer) then
-{
-	waitUntil {!(isNil "pvPixLogisticServerInitialized")};
-	waitUntil { pvPixLogisticServerInitialized };
-	player cameraEffect ["terminate","back"];
-	camDestroy _camera;
-};
+waitUntil {!(isNil "pvPixLogisticServerInitialized")};
+waitUntil { pvPixLogisticServerInitialized };
+cutText ["", "BLACK IN",1];
