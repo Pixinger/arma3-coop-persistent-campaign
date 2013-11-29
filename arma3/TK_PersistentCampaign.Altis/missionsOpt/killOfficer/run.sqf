@@ -35,53 +35,31 @@ if (isServer) then
 {
 	private["_units"];
 	_units = [];
-	
+	 	
+	private["_unitTypes"];
+	_unitTypes = ["O_officer_F","O_Soldier_AT_F","O_Soldier_AA_F","O_medic_F","O_recon_F","O_recon_F"];	
+	private["_groupOfficer"];
+	_groupOfficer = [_missionPosition, east, _unitTypes] call BIS_fnc_spawnGroup;		
+	private["_tmp"];
+	_tmp = [_groupOfficer, _missionPosition, random (missionsOpt_DefaultMarkerRadius/2)] call fn_missionsOpt_Patrol;
+	[_groupOfficer] call fn_missionsOpt_SetSkill;
+	_units = _units + (units _groupOfficer);	
 	private["_officer"];
-	_officer = "O_officer_F" createVehicle _missionPosition;
-	Sleep .2;
-	_officer setdir random 360;
-	_units = _units + [_officer];
+	_officer = _units select 0;
 
-	private["_guard1"];
-	_guard1 = "O_recon_F" createVehicle _missionPosition;
-	Sleep .2;
-	_guard1 setdir random 360;
-	_units = _units + [_guard1];
-
-	private["_guard2"];
-	_guard2 = "O_recon_F" createVehicle _missionPosition;
-	Sleep .2;
-	_guard2 setdir random 360;
-	_units = _units + [_guard2];
-
-	[_guard1,_guard2] join _officer;
-	removeallweapons _officer;
-	
-	private["_spawnGroup"];
-	private["_randomPos"];
 	private["_random"];
-	_random = floor (random 3) + 1;
+	_random = floor (random 4) + 1;
 	for "_i" from 0 to _random do 
 	{
+		private["_randomPos"];
 		_randomPos = [[[_missionPosition, random 700 + 500]],["water","out"]] call BIS_fnc_randomPos;
 		private["_spawnGroup"];
 		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		nul = [_spawnGroup, _missionPosition, random 600 + 300] call fn_missionsOpt_Patrol;
+		_tmp = [_spawnGroup, _missionPosition, random missionsOpt_DefaultMarkerRadius] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
 	};
 
-	_random = floor (random 2) + 1;
-	for "_i" from 0 to _random do 	
-	{
-		_randomPos = [[[_missionPosition, random 150]],["water","out"]] call BIS_fnc_randomPos;
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
-	};
-	
-	if (_officer distance [0,0,0] < 1000) then { _officer setDamage 1;};
 	
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
