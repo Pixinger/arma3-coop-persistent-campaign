@@ -96,12 +96,12 @@ if (isServer) then
 	/*-----------------------------------------------*/
 	/* Die Mission-OPT Informationen zusammenstellen */
 	/*-----------------------------------------------*/
-	private["_missionsOpt"]; /* [[missionOptCfgIndex, missionPosition, missionDirection],[..]] */
+	private["_missionsOpt"]; /* [[missionOptCfgIndex, missionPosition, missionDirection, markerPosition, markerRadius],[..]] */
 	_missionsOpt = [];
 	_index = 0;
 	{
 		/* Nur wenn eine gültige Position gefunden wurde,zum Missionsarray hinzufügen.*/
-		if (str(_missionOptLocations select _index) != "[[0,0,0],0]") then
+		if (str(_missionOptLocations select _index) != "[[0,0,0],0,[0,0,0],0]") then
 		{
 			_missionsOpt set [count _missionsOpt, [_x, (_missionOptLocations select _index) select 0, (_missionOptLocations select _index) select 1]];		
 		}
