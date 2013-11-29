@@ -5,7 +5,7 @@ _radius = _this select 1;
 
 private["_result"];
 _result = [[0,0,0],0];
-if ((str(_position) != "[0,0,0]") && (_radius <= 0)) then
+if ((str(_position) != "[0,0,0]") && (_radius > 0)) then
 {
 	private["_markerX"];
 	_markerX = _position select 0;

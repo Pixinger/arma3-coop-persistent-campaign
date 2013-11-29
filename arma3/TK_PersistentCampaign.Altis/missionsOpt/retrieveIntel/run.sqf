@@ -25,7 +25,7 @@ if (!isServer || !isDedicated) then
 	private["_taskTitle"];
 	_taskTitle = "Geheime Dokumente vernichten";
 	private["_taskDescription"];
-	_taskDescription = "Einer unserer Hubschrauber wurde abgeschossen und vom Feind gesichert. Leider befanden sich geheime Dokumente im Hubschrauber. Diese müssen von uns umgehend vernichtet werden. Beginnen Sie mit der Suche an der Absturztstelle.";
+	_taskDescription = "Einer unserer Hubschrauber wurde abgeschossen und vom Feind gesichert. Leider befanden sich geheime Dokumente im Hubschrauber. Diese mÃ¼ssen von uns umgehend vernichtet werden. Beginnen Sie mit der Suche an der Absturztstelle.";
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	

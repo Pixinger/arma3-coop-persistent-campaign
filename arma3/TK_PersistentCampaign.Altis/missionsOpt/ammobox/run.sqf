@@ -23,9 +23,9 @@ _missionMarkerRadius = _missionOpt select 4;
 if (!isServer || !isDedicated) then
 {
 	private["_taskTitle"];
-	_taskTitle = "Materialkisten zerstören";
+	_taskTitle = "Materialkisten zerstÃ¶ren";
 	private["_taskDescription"];
-	_taskDescription = "Unser Nachrichtendienst hat Informationen abgefangen die darauf hinweisen, dass im Zielgebiet neue Technologie getestet werden soll. Laut den Informationen der verdeckten Ermittler, handelt es sich dabei um Material welche in zwei Kisten transportiert wird. Zerstören Sie diese Materialkisten. Es ist mit Feindlicher Infantrie zu rechnen, welche zur Bewachung abgestellt wurde.";
+	_taskDescription = "Unser Nachrichtendienst hat Informationen abgefangen die darauf hinweisen, dass im Zielgebiet neue Technologie getestet werden soll. Laut den Informationen der verdeckten Ermittler, handelt es sich dabei um Material welche in zwei Kisten transportiert wird. ZerstÃ¶ren Sie diese Materialkisten. Es ist mit Feindlicher Infantrie zu rechnen, welche zur Bewachung abgestellt wurde.";
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
 };

@@ -25,9 +25,9 @@ _missionMarkerRadius = _missionOpt select 4;
 if (!isServer || !isDedicated) then
 {
 	private["_taskTitle"];
-	_taskTitle = format["Gebäude zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+	_taskTitle = format["GebÃ¤ude zerstÃ¶ren (%1)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	private["_taskDescription"];
-	_taskDescription = format["Der Feind hat ein für uns strategisch wichtiges Gebäude in Einsatzreichweite. Zerstören Sie dieses Gebäude um jeden Preis. (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+	_taskDescription = format["Der Feind hat ein fÃ¼r uns strategisch wichtiges GebÃ¤ude in Einsatzreichweite. ZerstÃ¶ren Sie dieses GebÃ¤ude um jeden Preis. (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	

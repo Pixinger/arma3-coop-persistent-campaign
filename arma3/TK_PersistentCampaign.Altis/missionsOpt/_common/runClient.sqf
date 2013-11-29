@@ -22,16 +22,19 @@ _currentTask setTaskState "Assigned";
 /* Eindeutigen Markernamen erstellen */
 /*-----------------------------------*/
 private["_markerName"];
-_markerName = call fn_missionsOpt_GetUniqueMarkerName;
+if (_missionMarkerRadius > 0) then
+{
+	_markerName = call fn_missionsOpt_GetUniqueMarkerName;
 
-/*------------------*/
-/* Marker erstellen */
-/*------------------*/
-createMarkerLocal [_markerName, _missionMarkerPosition];
-_markerName setMarkerShapeLocal "ELLIPSE";
-_markerName setMarkerSizeLocal [_missionMarkerRadius, _missionMarkerRadius];
-_markerName setMarkerAlphaLocal 0.5;
-_markerName setMarkerColorLocal "ColorRed";
+	/*------------------*/
+	/* Marker erstellen */
+	/*------------------*/
+	createMarkerLocal [_markerName, _missionMarkerPosition];
+	_markerName setMarkerShapeLocal "ELLIPSE";
+	_markerName setMarkerSizeLocal [_missionMarkerRadius, _missionMarkerRadius];
+	_markerName setMarkerAlphaLocal 0.5;
+	_markerName setMarkerColorLocal "ColorRed";
+};
 
 /*------------------------------------*/
 /* Warten bis die Mission zu Ende ist */
@@ -56,8 +59,13 @@ else
 	_currentTask setTaskState "Failed";
 };
 
-/*-----------------*/
-/* Maker entfernen */
-/*-----------------*/
-deleteMarkerLocal _markerName; 
-_markerName = nil;
+
+
+if (_missionMarkerRadius > 0) then
+{
+	/*-----------------*/
+	/* Maker entfernen */
+	/*-----------------*/
+	deleteMarkerLocal _markerName; 
+	_markerName = nil;
+};

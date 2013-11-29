@@ -25,9 +25,9 @@ _missionMarkerRadius = _missionOpt select 4;
 if (!isServer || !isDedicated) then
 {
 	private["_taskTitle"];
-	_taskTitle = format["Fahrzeug zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskTitle = format["Fahrzeug zerstÃ¶ren (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	private["_taskDescription"];
-	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeug ermittelt in dem neues Technisches Gerät verbaut ist. Wir können nicht zulassen, dass diese Entwicklung zu Einsatz kommt. Vernichten sie das Fahrzeug (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeug ermittelt in dem neues Technisches GerÃ¤t verbaut ist. Wir kÃ¶nnen nicht zulassen, dass diese Entwicklung zu Einsatz kommt. Vernichten sie das Fahrzeug (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	

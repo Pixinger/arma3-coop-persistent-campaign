@@ -25,7 +25,7 @@ _missionMarkerRadius = _missionOpt select 4;
 if (!isServer || !isDedicated) then
 {
 	private["_taskTitle"];
-	_taskTitle = format["Fahrzeuge zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskTitle = format["Fahrzeuge zerstÃ¶ren (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	private["_taskDescription"];
 	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeuggruppe ermittelt. Vernichten sie diese Fahrzeuge (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	
