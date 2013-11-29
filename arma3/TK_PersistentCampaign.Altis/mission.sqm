@@ -9,7 +9,8 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_gamma",
 		"A3_Structures_F_Mil_Helipads",
-		"A3_Structures_F_Mil_Cargo"
+		"A3_Structures_F_Mil_Cargo",
+		"A3_Structures_F_Mil_Flags"
 	};
 	addOnsAuto[]=
 	{
@@ -19,6 +20,7 @@ class Mission
 		"a3_characters_f_gamma",
 		"A3_Structures_F_Mil_Helipads",
 		"A3_Structures_F_Mil_Cargo",
+		"A3_Structures_F_Mil_Flags",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
@@ -577,7 +579,7 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={26740.762,20.659843,24643.996};
+					position[]={26740.826,20.659552,24644.068};
 					azimut=-141.85699;
 					special="NONE";
 					id=33;
@@ -594,7 +596,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=30;
+		items=31;
 		class Item0
 		{
 			position[]={26816.734,20.882652,24677.379};
@@ -865,6 +867,14 @@ class Mission
 			vehicle="Land_JumpTarget_F";
 			skill=0.60000002;
 			init="this setVariable [""pixLogisticStoreType"", 0, false];";
+		};
+		class Item30
+		{
+			position[]={26745.309,20.428329,24624.137};
+			id=64;
+			side="EMPTY";
+			vehicle="Flag_NATO_F";
+			skill=0.60000002;
 		};
 	};
 	class Markers
