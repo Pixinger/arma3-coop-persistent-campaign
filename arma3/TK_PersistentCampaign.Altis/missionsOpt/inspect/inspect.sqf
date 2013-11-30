@@ -23,10 +23,12 @@ if (_missionInfoIndex == -1) then {
 _vehicle removeAction _id;
 
 hint format ["Untersuche Fahrzeug..."]; 
+// note that we inspected the vehicle
+_vehicle setVariable ["TeTeT_inspected", true, true];
 sleep 10;
 
 // 2 in 3 chance ;)
-_found = [true, true, false] call BIS_fnc_selectRandom;
+_found = [true, true, true] call BIS_fnc_selectRandom;
 
 if (_found) then {
   _what = ["ammo", "drug", "weapon"] call BIS_fnc_selectRandom;
@@ -35,17 +37,6 @@ if (_found) then {
   _ret = true;
 } else {
   hint "Nichts gefunden!";
-  // easiest way to complete the mission
-  if (pixZones_ActiveIndex != -1) then {
-    (pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1];
-  } else {
-    (pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2];
-  };
-  publicVariable "pvehPixZones_MissionStatus";
-  if (isNil "pixZones_ActiveIndex") then {
-    player sideChat "Should not happen?";
-  };
-
   _ret = false;
 };
 
