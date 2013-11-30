@@ -33,7 +33,7 @@ pixParamMissionFactor = _paramValues select (paramsArray select 7);
 diag_log format["pixParamMissionFactor: %1", pixParamMissionFactor];
 
 /*-----------------------------------------------*/
-cutText ["please wait...", "BLACK FADED",1];
+cutText ["Initialization...", "BLACK FADED",1];
 
 /* FAR-revive initialisieren */
 if (pixDebug) then { player globalChat "init: FAR_revive";};

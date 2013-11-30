@@ -33,7 +33,7 @@ else
 			{				
 				/* Wenn der Zufall es will, einen Gegenangriff starten */
 				/* vorübergehend deaktvieirt, da die mission noch nicht fertig ist. if (random 1 < 0.4) then */
-				if (1 == 2) then
+				if (1 == 1) then
 				{
 					/* Pürfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
