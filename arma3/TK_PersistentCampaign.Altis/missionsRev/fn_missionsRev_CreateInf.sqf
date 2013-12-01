@@ -35,14 +35,14 @@ if (isServer) then
 
 		/* Wegpunkt für die Gruppe */
 		private["_waypoint"];
-		_waypoint = _group addWaypoint [_stopPosition, 0];
+		_waypoint = _group addWaypoint [_stopPosition, 15];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointStatements ["True", ""];
 		_waypoint setWaypointSpeed "FULL";
 		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "RED";		
 		/*_waypoint setWaypointTimeout [10, 30, 60]; */
-		/*_waypoint setWaypointStatements ["missionsRev_Engage", "missionsRev_EngageFinished = true;"];*/
+		_waypoint setWaypointStatements ["true", "missionsRev_AttackFinished = true;"];
 		_waypoints = _waypoints + [_waypoint];
 		
 		/* Rückgabe-Ergebnis fertig machen */

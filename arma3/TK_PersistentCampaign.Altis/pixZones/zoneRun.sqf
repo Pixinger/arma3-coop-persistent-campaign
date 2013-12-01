@@ -74,6 +74,7 @@ else
 		/*----------------------*/
 		/* Rev-Missions starten */
 		/*----------------------*/
+		missionsRev_AttackFinished = false;
 		for "_i" from 0 to ((count _missionsRev) - 1) do
 		{
 			/* [zoneIndex, _missionInfoIndex] */

@@ -11,7 +11,8 @@ if (count _possibleAttackingZones > 0) then
 {		
 	/* bestimmen wieviele Zonen am Angriff teilnehmen */
 	private["_attackingZoneCount"];
-	_attackingZoneCount = floor(random(count _possibleAttackingZones));
+	_attackingZoneCount = count _possibleAttackingZones;
+	/*_attackingZoneCount = floor(random(count _possibleAttackingZones));*/
 	if (_attackingZoneCount == 0) then { _attackingZoneCount = 1; };
 	/* bestimmen welche Zonen nun auch wirklich angreifen */
 	while { (count _result < _attackingZoneCount) } do

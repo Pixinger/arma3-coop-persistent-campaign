@@ -17,22 +17,19 @@ _missionDirection = _missionRev select 2;
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
-/*if (!isServer || !isDedicated) then
+if (!isServer || !isDedicated) then
 {
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionPosition, _missionDirection] execVM "missionsRev\camp\runClient.sqf";	
-};*/
+};
 
 if (isServer) then
 {
-	diag_log "missionsRev\camp\run.sqf isServer";
 	/*---------------------------------------------------------------------*/
 	/* Angreifende Zonen bestimmen, also da wo die Gegner herkommen sollen */
 	/*---------------------------------------------------------------------*/
 	private["_attackingZones"];
 	_attackingZones = [_zoneIndex] call compile preprocessFileLineNumbers "missionsRev\fn_GetAttackingZones.sqf";
-
-	diag_log format["missionsRev\camp\run.sqf attacking zones: %1", _attackingZones];
 
 	/*-------------------*/
 	/* Mission erstellen */
@@ -50,35 +47,35 @@ if (isServer) then
 	player setpos _missionPosition;
 	
 	/* Bunker1 erstellen */
-/*	private["_bunker1"];
+	private["_bunker1"];
 	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [6.5,-2,-2], [], 0, "NONE"];
 	Sleep .5;
 	_bunker1 setDir (random 359);
 	_buildings = _buildings + [_bunker1];
 	/* Bunker2 erstellen */
-/*	private["_bunker2"];
+	private["_bunker2"];
 	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [-8,-2,-2], [], 0, "NONE"];
 	Sleep .5;
 	_bunker2 setDir (random 359);
 	_buildings = _buildings + [_bunker2];
 	/* MG1 erstellen */
-/*	private["_mg1"];
+	private["_mg1"];
 	_mg1 = createVehicle ["I_HMG_01_high_F", _bunker1 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
 	Sleep .5;
 	_mg1 setDir (random 359);
 	_buildings = _buildings + [_mg1];
 	/* MG2 erstellen */
-/*	private["_mg2"];
+	private["_mg2"];
 	_mg2 = createVehicle ["I_HMG_01_high_F", _bunker2 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
 	Sleep .5;
 	_mg2 setDir (random 359);
 	_buildings = _buildings + [_mg2];
 
 	/* Einheit im Bunker1 */
-/*	private["_group"];
-	_group = createGroup _side;
+	private["_group"];
+	_group = createGroup west;
 	private["_unitBunker1"];
-	_unitBunker1 = _group createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
+	_unitBunker1 = _group createUnit ["B_Soldier_F", _missionPosition, [], 0, "NONE"];
 	sleep .5;
 	_unitBunker1 action ["getInGunner",_mg1];
 	doStop _unitBunker1;
@@ -86,9 +83,9 @@ if (isServer) then
 	_groups = _groups + [_group];
 	
 	/* Einheit im Bunker2 */
-/*	_group = createGroup _side;
+	_group = createGroup west;
 	private["_unitBunker2"];
-	_unitBunker2 = _group createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
+	_unitBunker2 = _group createUnit ["B_Soldier_F", _missionPosition, [], 0, "NONE"];
 	sleep .5;
 	_unitBunker2 action ["getInGunner",_mg2];
 	doStop _unitBunker2;
@@ -144,22 +141,22 @@ if (isServer) then
 	/*--------------------------------------*/
 	private["_limit"];
 	_limit = ceil((count _enemyUnits) / 10);
-	private["_lost"];
-	_lost = false;	
+	/*private["_lost"];
+	_lost = false;	*/
 	private["_aliveEnemyUnits"];
 	_aliveEnemyUnits = 60000;
-	while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!_lost)) } do
+	while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
 	{
 		Sleep 2;
 		_aliveEnemyUnits = 0;
 		{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
-		if ((position nearObjects["SoldierEB", 20]) > 0) then { _lost = true; };
+		/*if ((position nearObjects["SoldierEB", 20]) > 0) then { _lost = true; };*/
 	};
 
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	if ((pixZones_ActiveIndex != -1) && (!_lost)) then
+	if ((pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) then
 	{
 		(pvehPixZones_MissionStatus select 2) set [_missionInfoIndex, 1]; /* erfolgreich */	
 	}

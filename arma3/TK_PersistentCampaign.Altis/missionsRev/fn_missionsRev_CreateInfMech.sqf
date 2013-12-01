@@ -47,7 +47,7 @@ if (isServer) then
 		
 		/* Wegpunkt für die Gruppe */
 		private["_waypoint"];
-		_waypoint = _group addWaypoint [_stopPosition, 0];
+		_waypoint = _group addWaypoint [_stopPosition, 15];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointStatements ["True", ""];
 		_waypoint setWaypointSpeed "FULL";
