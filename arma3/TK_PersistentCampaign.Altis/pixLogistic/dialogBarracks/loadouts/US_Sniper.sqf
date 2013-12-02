@@ -1,56 +1,105 @@
-removeAllAssignedItems _this;
-removeAllPrimaryWeaponItems _this;
-removeAllWeapons _this; 
-removeBackpack _this;
-removeHeadgear _this;
-removeVest _this;
-removeUniform _this;
-removeGoggles _this;
+private["_result"];
+_result = [
+	/* Goggles */
+	"G_Sport_Greenblack",
+	
+	/* Headgear */
+	"H_Cap_tan_specops_US",
+	
+	/* Binoculars */
+	"Laserdesignator",
+	
+	/* Nightvision */
+	"NVGoggles",
+	
+	/* Linked Items */
+	[
+		"ItemMap",
+		"ItemWatch",
+		"ItemCompass",
+		"B_UavTerminal"
+	],
+	
+	/* Primary Weapon */
+	[
+		"srifle_LRR_SOS_F",
+		/* Primary weapon Magazine */
+		"7Rnd_408_Mag",
+		/* Primary Weapon Items */
+		[]
+	],
+	
+	/* Secondary Weapon */
+	[
+		"",
+		/* Secondary weapon Magazine */
+		"",
+		/* Secondary Weapon Items */
+		[]
+	],
+	
+	/* Handgun Weapon */
+	[
+		"hgun_Pistol_heavy_01_MRD_F",
+		/* Handgun Weapon Magazine */
+		"11Rnd_45ACP_Mag",
+		/* Handgun Weapon Items */
+		["muzzle_snds_acp"]
+	],
+	
+	/* Uniform */
+	[
+		"U_B_GhillieSuit", 
+		/* Uniform-Weapons */
+		[], 
+		/* Uniform-Magazines */
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		/* Uniform-Items */
+		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
+	],
+	
+	/* Vest */
+	[	
+		"V_TacVest_camo", 
+		/* Vest-Weapons */
+		[], 
+		/* Vest-Magazines */
+		[
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag"
+		],
+		/* Vest-Items */
+		[]
+	],
+	
+	/* Backpack */
+	[
+		"B_AssaultPack_sgg", 
+		/* Backpack-Weapons */
+		[], 
+		/* Backpack-Magazines */
+		[	
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"11Rnd_45ACP_Mag",
+			"11Rnd_45ACP_Mag"
+		],
+		/* Backpack-Items */
+		[
+			"H_HelmetB"
+		]
+	]
+];
 
-_this addHeadgear "H_Bandanna_mcamo";
-
-/*Uniform*/
-_this addUniform "U_B_CombatUniform_mcam_tshirt";
-_this addItem "FirstAidKit";
-_this addItem "FirstAidKit";
-_this addMagazine "SmokeShell";
-_this addMagazine "SmokeShell";
-_this addMagazine "HandGrenade";
-_this addMagazine "HandGrenade";
-_this addMagazine "SmokeShellRed";
-
-
-/*Weste & Waffen*/
-_this addVest "V_TacVest_camo";
-_this addMagazine "7Rnd_408_Mag";
-_this addWeapon "srifle_LRR_SOS_F";
-_this addMagazine "11Rnd_45ACP_Mag";
-_this addWeapon "hgun_Pistol_heavy_01_MRD_F";
-_this addHandgunItem "muzzle_snds_acp";
-_this addMagazine "Laserbatteries";
-_this addWeapon "Laserdesignator";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-
-/*Rucksack & Werfer*/
-_this addBackpack "B_AssaultPack_cbr";
-_this addItem "optic_Arco";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "7Rnd_408_Mag";
-_this addMagazine "11Rnd_45ACP_Mag";
-_this addMagazine "11Rnd_45ACP_Mag";
-_this addItem "NVGoggles";
-_this addItem "ItemGPS";
-_this assignItem "ItemGPS";
-_this addItem "H_HelmetB_light";
+_result;

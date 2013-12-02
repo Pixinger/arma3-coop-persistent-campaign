@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Red",
+	"G_Diving",
 	
 	/* Headgear */
-	"H_Cap_khaki_specops_UK",
+	"",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -22,18 +22,18 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_MX_F",
+		"arifle_SDAR_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"20Rnd_556x45_UW_mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		[]
 	],
 	
 	/* Secondary Weapon */
 	[
-		"launch_NLAW_F",
+		"",
 		/* Secondary weapon Magazine */
-		"NLAW_F",
+		"",
 		/* Secondary Weapon Items */
 		[]
 	],
@@ -49,56 +49,44 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_B_CTRG_1", 
+		"U_B_Wetsuit", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","SmokeShell","SmokeShell"],
 		/* Uniform-Items */
 		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */
 	[	
-		"V_PlateCarrierH_CTRG", 
+		"V_RebreatherB", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
-		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
-		],
+		[],
 		/* Vest-Items */
 		[]
 	],
 	
 	/* Backpack */
 	[
-		"B_Bergen_blk", 
+		"B_AssaultPack_blk", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[	
-			"NLAW_F",
-			"NLAW_F"
+		[
+			"30Rnd_556x45_Stanag",
+			"30Rnd_556x45_Stanag",
+			"30Rnd_556x45_Stanag",
+			"30Rnd_556x45_Stanag",
+			"30Rnd_556x45_Stanag",
+			"30Rnd_556x45_Stanag",
+			"SatchelCharge_Remote_Mag",
+			"DemoCharge_Remote_Mag"
 		],
 		/* Backpack-Items */
-		[
-			"H_HelmetB_snakeskin"
-		]
+		[]
 	]
 ];
 

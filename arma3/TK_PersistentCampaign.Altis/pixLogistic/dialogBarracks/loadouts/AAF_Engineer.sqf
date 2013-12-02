@@ -1,57 +1,107 @@
-removeAllAssignedItems _this;
-removeAllPrimaryWeaponItems _this;
-removeAllWeapons _this; 
-removeBackpack _this;
-removeHeadgear _this;
-removeVest _this;
-removeUniform _this;
-removeGoggles _this;
+private["_result"];
+_result = [
+	/* Goggles */
+	"G_Sport_Greenblack",
+	
+	/* Headgear */
+	"H_Cap_blk_Raven",
+	
+	/* Binoculars */
+	"Laserdesignator",
+	
+	/* Nightvision */
+	"NVGoggles",
+	
+	/* Linked Items */
+	[
+		"ItemMap",
+		"ItemWatch",
+		"ItemCompass",
+		"B_UavTerminal"
+	],
+	
+	/* Primary Weapon */
+	[
+		"srifle_EBR_ARCO_pointer_F", //TODO
+		/* Primary weapon Magazine */
+		"20Rnd_762x51_Mag",
+		/* Primary Weapon Items */
+		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+	],
+	
+	/* Secondary Weapon */
+	[
+		"launch_NLAW_F",
+		/* Secondary weapon Magazine */
+		"NLAW_F",
+		/* Secondary Weapon Items */
+		[]
+	],
+	
+	/* Handgun Weapon */
+	[
+		"hgun_Pistol_heavy_01_MRD_F",
+		/* Handgun Weapon Magazine */
+		"11Rnd_45ACP_Mag",
+		/* Handgun Weapon Items */
+		["muzzle_snds_acp"]
+	],
+	
+	/* Uniform */
+	[
+		"U_I_CombatUniform", 
+		/* Uniform-Weapons */
+		[], 
+		/* Uniform-Magazines */
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade", "SmokeShellRed"],
+		/* Uniform-Items */
+		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
+	],
+	
+	/* Vest */
+	[	
+		"V_PlateCarrierIA2_dgtl", 
+		/* Vest-Weapons */
+		[], 
+		/* Vest-Magazines */
+		[
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag"
+		],
+		/* Vest-Items */
+		[]
+	],
+	
+	/* Backpack */
+	[
+		"B_Carryall_oli", 
+		/* Backpack-Weapons */
+		[], 
+		/* Backpack-Magazines */
+		[	
+			"NLAW_F",
+			"NLAW_F",
+			"SatchelCharge_Remote_Mag",
+			"DemoCharge_Remote_Mag",
+			"DemoCharge_Remote_Mag",
+			"DemoCharge_Remote_Mag",
+			"20Rnd_762x51_Mag"
+		],
+		/* Backpack-Items */
+		[
+			"H_HelmetIA",
+			"optic_SOS",//TODO: MG?
+			"ToolKit"
+		]
+	]
+];
 
-_this addHeadgear "H_Cap_blk_Raven";
-
-/*Uniform*/
-_this addUniform "U_I_CombatUniform";
-_this addItem "FirstAidKit";
-_this addItem "FirstAidKit";
-_this addMagazine "SmokeShell";
-_this addMagazine "SmokeShell";
-_this addMagazine "HandGrenade";
-_this addMagazine "HandGrenade";
-_this addMagazine "SmokeShellRed";
-
-
-/*Weste & Waffen*/
-_this addVest "V_PlateCarrierIA2_dgtl";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addWeapon "srifle_EBR_ARCO_pointer_F";
-_this addPrimaryWeaponItem "optic_Arco";
-_this addMagazine "11Rnd_45ACP_Mag";
-_this addWeapon "hgun_Pistol_heavy_01_MRD_F";
-_this addHandgunItem "muzzle_snds_acp";
-_this addMagazine "Laserbatteries";
-_this addWeapon "Laserdesignator";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-_this addMagazine "20Rnd_762x51_Mag";
-
-/*Rucksack & Werfer*/
-_this addBackpack "B_Carryall_oli";
-_this addItem "optic_SOS";
-_this addItem "muzzle_snds_B";
-_this addItem "ToolKit";
-_this addMagazine "20Rnd_762x51_Mag ";
-_this addMagazine "SatchelCharge_Remote_Mag";
-_this addMagazine "DemoCharge_Remote_Mag";
-_this addMagazine "DemoCharge_Remote_Mag";
-_this addMagazine "DemoCharge_Remote_Mag";
-_this addItem "NVGoggles_INDEP";
-_this addItem "ItemGPS";
-_this assignItem "ItemGPS";
-_this addItem "H_HelmetIA";
+_result;

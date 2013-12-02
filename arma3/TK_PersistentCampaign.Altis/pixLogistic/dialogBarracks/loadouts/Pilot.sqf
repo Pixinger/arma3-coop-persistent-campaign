@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"G_Sport_BlackWhite",
 	
 	/* Headgear */
-	"H_Cap_tan_specops_US",
+	"H_PilotHelmetFighter_B",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -22,9 +22,9 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_MX_F",
+		"SMG_02_ARCO_pointg_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_9x21_Mag",
 		/* Primary Weapon Items */
 		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
 	],
@@ -49,58 +49,37 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam", 
+		"U_B_PilotCoveralls", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["SmokeShell","HandGrenade","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps"]
+		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */
 	[	
-		"V_PlateCarrier3_rgr", 
+		"", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		["FirstAidKit","FirstAidKit"]
+		[]
 	],
 	
 	/* Backpack */
 	[
-		"tf_rt1523g", 
+		"B_Parachute", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"SmokeShellPurple"
 		],
 		/* Backpack-Items */
 		[
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit"
 		]
 	]
 ];

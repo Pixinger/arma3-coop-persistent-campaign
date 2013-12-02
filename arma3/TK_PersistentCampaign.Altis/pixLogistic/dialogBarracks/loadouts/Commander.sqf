@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Red",
+	"G_Tactical_Clear",
 	
 	/* Headgear */
-	"H_Cap_khaki_specops_UK",
+	"H_Cap_headphones",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -22,18 +22,18 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_MX_F",
+		"SMG_02_ARCO_pointg_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_9x21_Mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Arco","acc_pointer_IR","muzzle_snds_L"]
 	],
 	
 	/* Secondary Weapon */
 	[
-		"launch_NLAW_F",
+		"",
 		/* Secondary weapon Magazine */
-		"NLAW_F",
+		"",
 		/* Secondary Weapon Items */
 		[]
 	],
@@ -49,55 +49,51 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_B_CTRG_1", 
+		"U_Competitor", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["HandGrenade","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
+		["ItemRadio","ItemGps","FirstAidKit"]
 	],
 	
 	/* Vest */
 	[	
-		"V_PlateCarrierH_CTRG", 
+		"V_Rangemaster_belt", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
-		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
-		],
+		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell"],
 		/* Vest-Items */
 		[]
 	],
 	
 	/* Backpack */
 	[
-		"B_Bergen_blk", 
+		"B_AssaultPack_blk", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[	
-			"NLAW_F",
-			"NLAW_F"
+		[
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag",
+			"30Rnd_9x21_Mag"
 		],
 		/* Backpack-Items */
 		[
-			"H_HelmetB_snakeskin"
+			"optic_Nightstalker"
 		]
 	]
 ];
