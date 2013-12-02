@@ -54,6 +54,7 @@ Sleep .1;
 player setvariable ["BIS_nocoreconversations",true];
 
 /* Module initialisieren */
+call compile preprocessFileLineNumbers "initPlayer.sqf";
 call compile preprocessFileLineNumbers "missionsEnv\init.sqf";
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
 call compile preprocessFileLineNumbers "missionsRev\init.sqf";
