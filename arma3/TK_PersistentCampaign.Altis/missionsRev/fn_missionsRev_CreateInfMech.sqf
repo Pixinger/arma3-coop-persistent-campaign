@@ -54,7 +54,7 @@ if (isServer) then
 		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "RED";		
 		/*_waypoint setWaypointTimeout [10, 30, 60]; */
-		/*_waypoint setWaypointStatements ["missionsRev_Engage", "missionsRev_EngageFinished = true;"];*/
+		_waypoint setWaypointStatements ["true", "missionsRev_AttackFinished = true;"];
 		_waypoints = _waypoints + [_waypoint];
 		
 		/* Rückgabe-Ergebnis fertig machen */
@@ -63,3 +63,6 @@ if (isServer) then
 };
 
 _result;
+
+
+
