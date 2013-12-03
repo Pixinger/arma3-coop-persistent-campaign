@@ -22,7 +22,7 @@ fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_p
 pixZones_ActiveIndex = -1;
 pixZones_MarkerNames = []; 		/* ["Zone0", "Zone1", "Zone2", ..] */
 pixZones_ZoneCoordinates = []; 	/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
-pixZones_ReverseAttackTime = paramsArray select 3;
+pixZones_ReverseAttackTime = pixParamReverseAttack;
 if (pixDebug) then { player sidechat format["pixZones_ReverseAttackTime: %1", pixZones_ReverseAttackTime];};
 
 if (isNil "pvehPixZones_OnRequestActivation") then { pvehPixZones_OnRequestActivation = -1;};

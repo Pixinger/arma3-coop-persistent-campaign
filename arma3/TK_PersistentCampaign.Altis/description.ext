@@ -64,42 +64,35 @@ class Params
 	    texts[] = {"Urban Patrol Skript (by Kronzky)", "Ultra Simple Patrol Skript (by JW Custom)"};
 	    default = 0;
 	};
-	class Radio /* paramsArray[2]*/
-	{		
-	    title = "Radios";
-	    values[] = {0, 1};
-	    texts[] = {"Task-Force-Radio", "ACRE"};
-	    default = 0;
-	};
-	class ReverseAttack /* paramsArray[3]*/
+	class ReverseAttack /* paramsArray[2]*/
 	{		
 	    title = "Gegenangriff nach";
 	    values[] = {5, 10, 15, 20, 30};
 	    texts[] = {"5 min.", "10 min.", "15 min.", "20 min.", "30 min."};
 	    default = 15;
 	};
-	class Date /* paramsArray[4]*/
+	class Date /* paramsArray[3]*/
 	{		
 	    title = "Datum";
 	    values[] = {0, 1,2,3,4};
 	    texts[] = {"Zufall", "Sommer", "Frühling", "Herbst", "Winter"};
 	    default = 1;
 	};
-	class Daytime /* paramsArray[5]*/
+	class Daytime /* paramsArray[4]*/
 	{		
 	    title = "Uhrzeit";
 	    values[] = {0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24};
 	    texts[] = {"Zufall", "1 Uhr", "2 Uhr", "3 Uhr", "4 Uhr", "5 Uhr", "6 Uhr", "7 Uhr", "8 Uhr", "9 Uhr", "10 Uhr", "11 Uhr", "12 Uhr", "13 Uhr", "14 Uhr", "15 Uhr", "16 Uhr", "17 Uhr", "18 Uhr", "19 Uhr", "20 Uhr", "21 Uhr", "22 Uhr", "23 Uhr", "24 Uhr"};
 	    default = 0;
 	};
-	class Weather /* paramsArray[6]*/
+	class Weather /* paramsArray[5]*/
 	{		
 	    title = "Wetter";
 	    values[] = {7, 0,1,2,3,4,5,6};
 	    texts[] = {"Zufall", "(1) sonnig", "(2)", "(3) bewölkt", "(4)", "(5) regnerisch", "(6)", "(7) stürmisch"};
 	    default = 7;
 	};
-	class MissionFactor /* paramsArray[7]*/
+	class MissionFactor /* paramsArray[6]*/
 	{		
 	    title = "Schwierigkeitsgrad";
 	    values[] = {0, 1, 2, 3};

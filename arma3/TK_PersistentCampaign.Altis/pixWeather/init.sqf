@@ -1,4 +1,4 @@
-if (isServer) then
+if (isServer && isDedicated) then
 {
 	private["_config"];
 	_config = [

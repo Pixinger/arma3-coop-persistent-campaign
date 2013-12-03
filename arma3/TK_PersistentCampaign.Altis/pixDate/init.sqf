@@ -2,7 +2,7 @@
 	pixParamTime = hour */
 
 /* right now this skript is in no way magic. but for the start it should be fine */	
-if (isServer) then
+if (isServer && isDedicated) then
 {
 	/* debug */
 	if (isServer && !isDedicated) then { pixParamDate = [2,1]; pixParamTime = 12; };

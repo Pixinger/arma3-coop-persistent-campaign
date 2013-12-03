@@ -285,7 +285,7 @@ FAR_Check_Revive =
 		_return = true;
 
 		// [ReviveMode] Check if player has a Medikit
-		if ( FAR_ReviveMode == 2 && !("Medikit" in (items player)) ) then
+		if ( FAR_ReviveMode == 2 && !(FAR_RequiredItem in (items player)) ) then
 		{
 			_return = false;
 		};

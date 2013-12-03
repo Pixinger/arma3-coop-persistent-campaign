@@ -267,13 +267,6 @@ if (!isServer || !isDedicated) then
 		20  /*"Box_East_Wps_F"*/
 		];
 		
-	if (pixRadioType == "ACRE") then 
-	{ 	
-		pixlogisticMovableObjects = pixlogisticMovableObjects + ["ACRE_RadioBox"];
-		pixlogisticMovableObjectsSize = pixlogisticMovableObjectsSize + [20];
-	};
-		
-		
 	/* Container-Gebäude die zu einem Container verpackt werden können */
 	pixlogisticBuildings = [		
 		"Land_Cargo_Patrol_V1_F",
@@ -636,12 +629,6 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_WpsLaunch_F" >> "displayName"), 500, 0, "Box_NATO_WpsLaunch_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]		
 	];
-	
-	if (pixRadioType == "ACRE") then 
-	{ 	
-		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]];
-	};
-		
 	
 	/*---------------------------------------------------*/
 	/* Definiert, welche Container gekauft werden können */
