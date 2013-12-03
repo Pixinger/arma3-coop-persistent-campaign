@@ -49,7 +49,7 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_Competitor", 
+		"U_B_CTRG_3", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
@@ -60,7 +60,7 @@ _result = [
 	
 	/* Vest */
 	[	
-		"V_Rangemaster_belt", 
+		"V_PlateCarrierH_CTRG", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
@@ -71,18 +71,11 @@ _result = [
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_blk", 
+		"tf_rt1523g", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
 			"30Rnd_45ACP_Mag_SMG_01",
 			"30Rnd_45ACP_Mag_SMG_01",
 			"30Rnd_45ACP_Mag_SMG_01",

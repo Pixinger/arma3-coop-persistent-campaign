@@ -13,8 +13,5 @@ if (!isServer || !isDedicated) then
 		removeBackpack player;
 		removeHeadgear player;
 		removeVest player;
-		removeUniform player;
-		removeGoggles player;
-		player addUniform "U_C_Poloshirt_redwhite";
 	};
 };
