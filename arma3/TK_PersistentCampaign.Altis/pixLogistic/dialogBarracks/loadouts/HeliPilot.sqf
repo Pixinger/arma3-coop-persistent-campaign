@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"SMG_02_ARCO_pointg_F",
+		"SMG_01_Holo_F",
 		/* Primary weapon Magazine */
-		"30Rnd_9x21_Mag",
+		"30Rnd_45ACP_Mag_SMG_01",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["acc_pointer_IR", "muzzle_snds_acp"]
 	],
 	
 	/* Secondary Weapon */
@@ -53,9 +53,9 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","HandGrenade","30Rnd_9x21_Mag","30Rnd_9x21_Mag"],
+		["SmokeShell","HandGrenade","30Rnd_45ACP_Mag_SMG_01","30Rnd_45ACP_Mag_SMG_01"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps","FirstAidKit"]
+		["ItemRadio","FirstAidKit","acc_pointer_IR"]
 	],
 	
 	/* Vest */

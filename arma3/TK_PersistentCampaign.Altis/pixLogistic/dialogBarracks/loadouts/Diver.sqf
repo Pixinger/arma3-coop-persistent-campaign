@@ -55,7 +55,7 @@ _result = [
 		/* Uniform-Magazines */
 		["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","SmokeShell","SmokeShell"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
+		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */

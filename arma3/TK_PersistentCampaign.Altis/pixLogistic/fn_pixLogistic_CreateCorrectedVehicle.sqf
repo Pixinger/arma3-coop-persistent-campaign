@@ -62,6 +62,11 @@ if (_classname in _vehicleClearCargoTypes) then
 if(getNumber(configFile >> "CfgVehicles" >> _classname >> "isUav")==1) then 
 {
 	createVehicleCrew _object; 
+	
+	if (_classname == "B_UGV_01_F") then
+	{
+		_object setCaptive 1;
+	};
 };
 
 /* BOX: Empty */
