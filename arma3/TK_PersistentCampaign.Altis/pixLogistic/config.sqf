@@ -119,7 +119,7 @@ if (!isServer || !isDedicated) then
 		40, /*B_MRAP_01_hmg_F",*/
 		10, /*B_Quadbike_01_F",*/
 		15, /*B_UGV_01_rcws_F",*/
-		15, /*B_UGV_01_F",*/
+		40, /*B_UGV_01_F",*/
 		100, /*B_APC_Wheeled_01_cannon_F",*/
 		100, /*B_APC_Tracked_01_AA_F",*/
 		100, /*B_APC_Tracked_01_rcws_F",*/
@@ -220,15 +220,15 @@ if (!isServer || !isDedicated) then
 		
 	/* Benötigter Ladeplatz */
 	pixlogisticMovableObjectsSize = [
-		2, /*"B_HMG_01_F",*/
-		3, /*"B_HMG_01_high_F",*/
-		2, /*"B_HMG_01_A_F",*/
-		2, /*"B_GMG_01_F",*/
-		3, /*"B_GMG_01_high_F",*/
-		2, /*"B_GMG_01_A_F",*/
-		4, /*"B_Mortar_01_F",*/
-		4, /*"B_static_AA_F",*/
-		4, /*"B_static_AT_F",*/
+		15, /*"B_HMG_01_F",*/
+		15, /*"B_HMG_01_high_F",*/
+		15, /*"B_HMG_01_A_F",*/
+		15, /*"B_GMG_01_F",*/
+		15, /*"B_GMG_01_high_F",*/
+		15, /*"B_GMG_01_A_F",*/
+		15, /*"B_Mortar_01_F",*/
+		15, /*"B_static_AA_F",*/
+		15, /*"B_static_AT_F",*/
 		10, /*"Land_CncWall1_F",*/
 		40, /*"Land_CncWall4_F",*/
 		20, /*"Land_CncBarrierMedium4_F",*/

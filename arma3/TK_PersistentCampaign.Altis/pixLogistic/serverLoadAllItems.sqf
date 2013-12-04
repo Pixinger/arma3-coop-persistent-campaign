@@ -100,11 +100,14 @@ if (isServer) then
 				_item setDir _dir;
 				_item setPos [_pos select 0, _pos select 1, 0];
 				_item setVariable ["pixLogisticContent", _content, true]; 
-				_item setDamage _damage;
 				if (_damage > 0.9) then
 				{
-					_item enablesimulation false; 
-					/*_item setdamage 1;_item setdamage 1; _item setdamage 0.9;*/				
+					/*_item enablesimulation false; */
+					_item setdamage 1;_item setdamage 1; _item setdamage 0.9;
+				}
+				else
+				{
+					_item setDamage _damage;
 				};
 				
 				/*------------------------------------*/
