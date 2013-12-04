@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Red",
+	"G_Sport_Greenblack",
 	
 	/* Headgear */
-	"H_HelmetB_snakeskin",
+	"H_HelmetB",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"srifle_LRR_SOS_F",
+		"arifle_MX_F",
 		/* Primary weapon Magazine */
-		"7Rnd_408_Mag",
+		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		[]
+		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
 	],
 	
 	/* Secondary Weapon */
@@ -60,19 +60,19 @@ _result = [
 	
 	/* Vest */
 	[	
-		"V_TacVest_blk", 
+		"V_TacVest_camo", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
 		[
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag"
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
 		[]
@@ -80,18 +80,18 @@ _result = [
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_blk", 
+		"B_AssaultPack_sgg", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
+			"SmokeShell",
+			"SmokeShell",
+			"SmokeShell",
+			"SmokeShell",
+			"SmokeShellPurple",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
 			"11Rnd_45ACP_Mag",
 			"11Rnd_45ACP_Mag"
 		],
