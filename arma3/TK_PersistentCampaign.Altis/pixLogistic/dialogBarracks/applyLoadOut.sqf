@@ -103,6 +103,26 @@ if (_uniformClassname != "") then {	_unit addUniform _uniformClassname;};
 if (_vestClassname != "") then { _unit addVest _vestClassname;};
 if (_backpackClassname != "") then { _unit addBackpack _backpackClassname;};
 
+/* Munition hinzufügen, sonst ist diese nacher nicht verfügbar */
+if (_uniformClassname != "") then 
+{
+	{ _unit addItemToUniform _x; } foreach _uniformWeapons;
+	{ _unit addItemToUniform _x; } foreach _uniformMagazines;
+	{ _unit addItemToUniform _x; } foreach _uniformItems;
+};
+if (_vestClassname != "") then 
+{
+	{ _unit addItemToVest _x; } foreach _vestWeapons;
+	{ _unit addItemToVest _x; } foreach _vestMagazines;
+	{ _unit addItemToVest _x; } foreach _vestItems;
+};
+if (_backpackClassname != "") then 
+{
+	{ _unit addItemToBackpack _x; } foreach _backpackWeapons;
+	{ _unit addItemToBackpack _x; } foreach _backpackMagazines;	
+	{ _unit addItemToBackpack _x; } foreach _backpackItems;
+};
+
 /* Dann die Waffen hinzufügen, damit diese die Magazine gleich aufnehmen können 
    das Inventar sollte danach wieder leersein. */
 if (_primaryWeaponClassname != "") then
@@ -144,28 +164,4 @@ if (_binocularClassname != "") then
 if (_nightVisionClassname != "") then 
 {
 	_unit linkItem _nightVisionClassname;
-};
-if (_uniformClassname != "") then 
-{
-	private["_slot"];
-	_slot = uniformContainer _unit;
-	{ _slot addWeaponCargoGlobal [_x, 1]; } foreach _uniformWeapons;
-	{ _slot addMagazineCargoGlobal [_x, 1]; } foreach _uniformMagazines;
-	{ _slot addItemCargoGlobal [_x, 1]; } foreach _uniformItems;
-};
-if (_vestClassname != "") then 
-{
-	private["_slot"];
-	_slot = vestContainer _unit;
-	{ _slot addWeaponCargoGlobal [_x, 1]; } foreach _vestWeapons;
-	{ _slot addMagazineCargoGlobal [_x, 1]; } foreach _vestMagazines;
-	{ _slot addItemCargoGlobal [_x, 1]; } foreach _vestItems;
-};
-if (_backpackClassname != "") then 
-{
-	private["_slot"];
-	_slot = unitbackpack _unit;
-	{ _slot addWeaponCargoGlobal [_x, 1]; } foreach _backpackWeapons;
-	{ _slot addMagazineCargoGlobal [_x, 1]; } foreach _backpackMagazines;	
-	{ _slot addItemCargo [_x, 1]; } foreach _backpackItems;
 };

@@ -1,7 +1,7 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"G_Sport_Red",
 	
 	/* Headgear */
 	"H_HelmetB_snakeskin",

@@ -42,7 +42,7 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 	if ((pixLogisticDialogHqStore_AdminSpawn) || (pvPixLogisticMoney - _money >= 0)) then
 	{	
 		/* Nur mit Karte im Inventar kann auf der Map geklickt werden */
-		if ("ItemMap" in (items player)) then
+		if ("ItemMap" in (assignedItems player)) then
 		{
 			/* Position bestimmen an der die Ware spawnen soll. */
 			private["_spawnObject"];
