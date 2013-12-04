@@ -55,7 +55,7 @@ _result = [
 		/* Uniform-Magazines */
 		["SmokeShell","SmokeShell","SmokeShellRed","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
+		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */

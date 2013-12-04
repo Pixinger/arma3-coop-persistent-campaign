@@ -4,7 +4,7 @@ _result = [
 	"G_Sport_Red",
 	
 	/* Headgear */
-	"H_MilCap_gry",
+	"H_HelmetB_snakeskin",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -55,7 +55,7 @@ _result = [
 		/* Uniform-Magazines */
 		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps","FirstAidKit","FirstAidKit"]
+		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */

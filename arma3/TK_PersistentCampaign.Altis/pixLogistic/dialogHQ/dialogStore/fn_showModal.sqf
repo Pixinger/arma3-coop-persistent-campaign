@@ -82,7 +82,7 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 
 							if (isServer && !isDedicated) then
 							{
-								player sidechat "simulate server";
+								player globalChat "simulate server";
 								[_object] execVM "pixLogistic\serverInsertItem.sqf"
 							}
 							else
@@ -91,36 +91,36 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 								publicVariable "pvehPixlogisticInsertItem";
 							};
 							
-							player sidechat "Die Waren wurden erfolgreich geliefert.";
+							player globalChat "Die Waren wurden erfolgreich geliefert.";
 						}
 						else
 						{
-							player sidechat "Sie sind nicht berechtigt Materialanfragen zu stellen.";
+							player globalChat "Sie sind nicht berechtigt Materialanfragen zu stellen.";
 						};
 					}
 					else
 					{
-						player sidechat "Die Ladestelle liegt nicht in Ihrer Zone!";
+						player globalChat "Die Ladestelle liegt nicht in Ihrer Zone!";
 					};
 				}
 				else
 				{
-					player sidechat "ERROR: Invalid ZoneIndex";
+					player globalChat "ERROR: Invalid ZoneIndex";
 				};
 			}
 			else
 			{
-				player sidechat "ERROR: Ungültige Position";
+				player globalChat "ERROR: Ungültige Position";
 			};
 		}
 		else
 		{
-				player sidechat "ERROR: Du musst eine Karte im Inventar haben.";
+			player globalChat "ERROR: Du musst eine Karte im Inventar haben.";
 		};
 	}
 	else
 	{
-		player sidechat format["Nicht genug Geld um diesen Gegenstand anzufordern. SOLL(%1) HABEN(%2).", _money, pvPixLogisticMoney];
+		player globalChat format["Nicht genug Geld um diesen Gegenstand anzufordern. SOLL(%1) HABEN(%2).", _money, pvPixLogisticMoney];
 	};
 };
 

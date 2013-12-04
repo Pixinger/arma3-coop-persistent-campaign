@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"SMG_02_ARCO_pointg_F",
+		"SMG_01_Holo_F",
 		/* Primary weapon Magazine */
-		"30Rnd_9x21_Mag",
+		"30Rnd_45ACP_Mag_SMG_01",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_L"]
+		["acc_pointer_IR", "muzzle_snds_acp"]
 	],
 	
 	/* Secondary Weapon */
@@ -49,18 +49,18 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_Competitor", 
+		"U_B_CTRG_3", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
 		["HandGrenade","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps","FirstAidKit"]
+		["ItemRadio","FirstAidKit"]
 	],
 	
 	/* Vest */
 	[	
-		"V_Rangemaster_belt", 
+		"V_PlateCarrierH_CTRG", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
@@ -71,25 +71,18 @@ _result = [
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_blk", 
+		"tf_rt1523g", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag",
-			"30Rnd_9x21_Mag"
+			"30Rnd_45ACP_Mag_SMG_01",
+			"30Rnd_45ACP_Mag_SMG_01",
+			"30Rnd_45ACP_Mag_SMG_01",
+			"30Rnd_45ACP_Mag_SMG_01",
+			"30Rnd_45ACP_Mag_SMG_01",
+			"30Rnd_45ACP_Mag_SMG_01",
+			"30Rnd_45ACP_Mag_SMG_01"
 		],
 		/* Backpack-Items */
 		[
