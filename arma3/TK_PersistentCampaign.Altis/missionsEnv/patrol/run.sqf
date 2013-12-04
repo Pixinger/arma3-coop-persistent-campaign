@@ -89,7 +89,7 @@ if (isServer) then
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
 	waitUntil {(pixZones_ActiveIndex == -1)};
-	player sidechat "zone beendet. patrol wird gelöscht";
+	player globalChat "zone beendet. patrol wird gelöscht";
 	
 	Sleep 10;
 	

@@ -14,7 +14,7 @@ else
 	openMap [true, true] ;
 
 	/* Mapclick freigeben */
-	player sidechat "Bitte gewünschte Lieferstelle anklicken...";
+	player globalChat "Bitte gewünschte Lieferstelle anklicken...";
 	pixLogisticMapClick = nil;		
 	onMapSingleClick "pixLogisticMapClick = _pos; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;";
 

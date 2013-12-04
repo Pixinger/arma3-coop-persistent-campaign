@@ -119,11 +119,11 @@ if (pixLogisticDialogService_ButtonOK == 1) then
 		pvPixLogisticMoney = pvPixLogisticMoney + _recycleMoney;
 		publicVariable "pvPixLogisticMoney";
 		
-		player sideChat format["Recycelt für %1€. HABEN=%2", _recycleMoney, pvPixLogisticMoney];
+		player globalChat format["Recycelt für %1€. HABEN=%2", _recycleMoney, pvPixLogisticMoney];
 
 		if (isServer && !isDedicated) then
 		{
-			player sidechat "simulate server";
+			player globalChat "simulate server";
 			[_object] execVM "pixLogistic\serverDeleteItem.sqf";
 		}
 		else
@@ -134,7 +134,7 @@ if (pixLogisticDialogService_ButtonOK == 1) then
 	}
 	else
 	{
-		player sidechat "Sie sind nicht berechtigt das Recyeln eines Gegenstandes zu beantragen.";
+		player globalChat "Sie sind nicht berechtigt das Recyeln eines Gegenstandes zu beantragen.";
 	};
 };
 pixLogisticDialogService_Selection = nil;

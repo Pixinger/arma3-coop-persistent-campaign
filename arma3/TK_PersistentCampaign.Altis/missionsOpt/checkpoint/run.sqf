@@ -162,7 +162,7 @@ if (isServer) then
 	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointTimeout [10, 30, 60];
 
-	if (pixDebug) then { player sideChat "Checkpoint spawned";};
+	if (pixDebug) then { player globalChat "Checkpoint spawned";};
 
 	if (_missionPosition distance [0,0,0] > 1000) then 
 	{ 
@@ -210,6 +210,6 @@ if (isServer) then
 	deleteGroup _groupPatrol; _groupPatrol = nil;
 	deleteCenter _center; _center = nil;
 	
-	if (pixDebug) then { player sideChat "Checkpoint deleted";};	
+	if (pixDebug) then { player globalChat "Checkpoint deleted";};	
 };
  

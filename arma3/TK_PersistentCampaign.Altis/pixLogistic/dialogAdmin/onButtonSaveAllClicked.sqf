@@ -2,7 +2,7 @@ closeDialog 0;
 
 if (isServer && !isDedicated) then
 {
-	player sidechat "simulate server";
+	player globalChat "simulate server";
 	_tmp = [] execVM "pixLogistic\serverSaveAllItems.sqf";
 }
 else

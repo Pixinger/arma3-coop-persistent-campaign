@@ -1,5 +1,5 @@
 openMap [true, true];
-player sidechat "HQ werden gesucht";
+player globalChat "HQ werden gesucht";
 
 pixZonesHqBeamTriggerDone = 0;
 pixZonesHqBeamTriggerData = [];		
@@ -43,7 +43,7 @@ _i = 0;
 
 
 /* Mapclick freigeben */
-player sidechat "Bitte gewünschtes HQ anklicken...";
+player globalChat "Bitte gewünschtes HQ anklicken...";
 onMapSingleClick "if (count nearestObjects [player, [""Land_Cargo20_military_green_F""], 50] > 0) then { player setPos _pos;} else { hint ""Kein HQ in der Nähe dieser Position"";}; pixZonesHqBeamTriggerData = nil; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;";
 
 /* warten bis geklickt wurde */
@@ -57,4 +57,4 @@ while { _i > 0 } do
 	deleteMarkerLocal _markerName;	
 	_i = _i - 1;
 };
-player sidechat "Beamen abgeschlossen";
+player globalChat "Beamen abgeschlossen";

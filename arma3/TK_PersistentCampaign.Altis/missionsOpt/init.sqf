@@ -3,7 +3,7 @@
 /*-----------------------------------------------------------------*/
 if (isNil "pixZones_Initialized") then
 {
-	player sidechat "ERROR: pixZones wurden noch nicht initialisiert.";
+	player globalChat "ERROR: pixZones wurden noch nicht initialisiert.";
 };
 
 

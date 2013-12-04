@@ -38,7 +38,7 @@ if (isServer && isDedicated) then
 		1 setWindForce (pvPixWeatherData select 3);
 		Sleep 1;
 		1 setWindDir (pvPixWeatherData select 4);*/
-		player sidechat "weather done";
+		player globalChat "weather done";
 	};
 };
 
@@ -62,6 +62,6 @@ if (!isServer) then
 		1 setWindForce (pvPixWeatherData select 3);
 		Sleep 1;
 		1 setWindDir (pvPixWeatherData select 4);*/
-		player sidechat "weather done";
+		player globalChat "weather done";
 	};
 };
