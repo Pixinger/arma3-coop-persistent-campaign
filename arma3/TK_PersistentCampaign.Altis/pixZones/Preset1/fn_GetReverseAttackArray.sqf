@@ -38,7 +38,7 @@ if (isServer) then
 		_missionRevCfgIndices = []; {_missionRevCfgIndices set [count _missionRevCfgIndices, count _missionRevCfgIndices];} foreach missionsRev_Missions;
 	};
 	
-	private["_missionsRev"];/* [[missionEnvIndex, missionPosition, missionDirection],[..]] */
+	private["_missionsRev"];/* [[missionEnvIndex, missionPosition, missionDirection, markerPosition, markerRadius],[..]] */
 	_missionsRev = [];
 	
 	
@@ -53,7 +53,7 @@ if (isServer) then
 	{
 		private["_missionRevLocation"];
 		_missionRevLocation = [_zoneIndex, _missionRevLocations] call compile preprocessFileLineNumbers format["missionsRev\%1\fn_GetMissionLocation.sqf", (missionsRev_Missions select _x)];
-		_missionRevLocations = _missionRevLocations + _missionRevLocation;
+		_missionRevLocations = _missionRevLocations + [_missionRevLocation];
 	} foreach _missionRevCfgIndices;
 	
 	
@@ -65,9 +65,9 @@ if (isServer) then
 	_index = 0;
 	{
 		/* Nur wenn eine gültige Position gefunden wurde,zum Missionsarray hinzufügen.*/
-		if (str(_missionRevLocations select _index) != "[[0,0,0],0]") then
+		if (str(_missionRevLocations select _index) != "[[0,0,0],0,[0,0],0]") then
 		{
-			_missionsRev set [count _missionsRev, [_x, (_missionRevLocations select _index) select 0, (_missionRevLocations select _index) select 1]];		
+			_missionsRev set [count _missionsRev, [_x, (_missionRevLocations select _index) select 0, (_missionRevLocations select _index) select 1, (_missionRevLocations select _index) select 2, (_missionRevLocations select _index) select 3]];		
 		}
 		else
 		{

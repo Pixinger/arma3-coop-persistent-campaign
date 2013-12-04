@@ -12,13 +12,8 @@ fn_pixZones_GetZoneIndex = compile preprocessFileLineNumbers "pixZones\fn_pixZon
 fn_pixZones_IsZoneForbidden = compile preprocessFileLineNumbers "pixZones\fn_pixZones_IsZoneForbidden.sqf";
 fn_pixZones_CanBlueforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanBlueforEngageZone.sqf";
 fn_pixZones_GetConnectedHostileZones = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetConnectedHostileZones.sqf";
-fn_pixZones_GetMinDistance = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetMinDistance.sqf";
 fn_pixZones_AllMissionsFinished = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsFinished.sqf";
 fn_pixZones_AllMissionsSuccessfull = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsSuccessfull.sqf";
-fn_pixZones_RandomPositionField = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionField.sqf";
-fn_pixZones_RandomPositionHouse = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionHouse.sqf";
-fn_pixZones_RandomPositionMarker = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionMarker.sqf";
-fn_pixZones_RandomPositionRoad = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionRoad.sqf";
 fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_pixZones_UpdateMarkerColor.sqf";
 
 /* ---------------------------------------------------- */
@@ -27,7 +22,7 @@ fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_p
 pixZones_ActiveIndex = -1;
 pixZones_MarkerNames = []; 		/* ["Zone0", "Zone1", "Zone2", ..] */
 pixZones_ZoneCoordinates = []; 	/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
-pixZones_ReverseAttackTime = paramsArray select 3;
+pixZones_ReverseAttackTime = pixParamReverseAttack;
 if (pixDebug) then { player sidechat format["pixZones_ReverseAttackTime: %1", pixZones_ReverseAttackTime];};
 
 if (isNil "pvehPixZones_OnRequestActivation") then { pvehPixZones_OnRequestActivation = -1;};
