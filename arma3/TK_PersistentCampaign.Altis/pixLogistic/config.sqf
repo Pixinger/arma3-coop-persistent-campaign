@@ -595,7 +595,7 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_ammo_F" >> "displayName"), 3000, 0, "B_Truck_01_ammo_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_ammo_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_medical_F" >> "displayName"), 3000, 0, "B_Truck_01_medical_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_medical_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_fuel_F" >> "displayName"), 3000, 0, "B_Truck_01_fuel_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_fuel_F" >> "icon"), []],
-		[gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "displayName"), 100, 0, "B_UGV_01_rcws_F", gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "displayName"), 3000, 0, "B_UGV_01_rcws_F", gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_UGV_01_F" >> "displayName"), 100, 0, "B_UGV_01_F", gettext (configFile >> "CfgVehicles" >> "B_UGV_01_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_UAV_02_CAS_F" >> "displayName"), 3000, 0, "B_UAV_02_CAS_F", gettext (configFile >> "CfgVehicles" >> "B_UAV_02_CAS_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_UAV_02_F" >> "displayName"), 3000, 0, "B_UAV_02_F", gettext (configFile >> "CfgVehicles" >> "B_UAV_02_F" >> "icon"), []],
