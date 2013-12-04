@@ -880,7 +880,7 @@ class Mission
 		};
 		class Item30
 		{
-			position[]={26745.309,20.428329,24624.137};
+			position[]={26750.771,20.538006,24634.869};
 			id=64;
 			side="EMPTY";
 			vehicle="Flag_NATO_F";
