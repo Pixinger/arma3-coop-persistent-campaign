@@ -38,7 +38,7 @@ if (isServer) then
 	}
 	else
 	{
-		player sidechat format["ERROR: Unable to start Zone %1. Invalid zone index: %1", _zoneIndex];
+		player globalChat format["ERROR: Unable to start Zone %1. Invalid zone index: %1", _zoneIndex];
 	};
 };
 

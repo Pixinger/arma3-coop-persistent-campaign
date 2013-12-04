@@ -21,7 +21,7 @@ if (_result == "OK") then
 			{
 				/* Sollte fälschlicherweise mehr als nur eine Zeile in der Datei vorhanden sein, lesen  wir bis zum Ende */
 				diag_log "WARNING: pixZones Db-File contains to many lines. only one line is allowed.";
-				player sideChat "WARNING: pixZones Db-File contains to many lines. only one line is allowed.";	
+				player globalChat "WARNING: pixZones Db-File contains to many lines. only one line is allowed.";	
 				_result = [] call fn_pixZones_DbReadNext; /* Eigentlich sollte direkt schluss sein */
 			};			
 		}
@@ -29,7 +29,7 @@ if (_result == "OK") then
 		{
 			/* Die Datei scheint leer zu sein => Standard verwenden... */
 			diag_log "WARNING: fn_pixZones_DbReadNext returned no pvehPixZones_ZoneStatus array. using default data instead.";
-			player sidechat "WARNING: fn_pixZones_DbReadNext returned no pvehPixZones_ZoneStatus array. using default data instead.";
+			player globalChat "WARNING: fn_pixZones_DbReadNext returned no pvehPixZones_ZoneStatus array. using default data instead.";
 			
 			/* Staus ID's:
 			0 = Sperrzone
@@ -48,13 +48,13 @@ if (_result == "OK") then
 		while {count pvehPixZones_ZoneStatus < pixZones_ZoneCount} do
 		{		
 			diag_log "WARNING: ((count pvehPixZones_ZoneStatus) < pixZones_ZoneCount). Element will be added.";
-			player sideChat "WARNING: ((count pvehPixZones_ZoneStatus) < pixZones_ZoneCount). Element will be added.";
+			player globalChat "WARNING: ((count pvehPixZones_ZoneStatus) < pixZones_ZoneCount). Element will be added.";
 			pvehPixZones_ZoneStatus = pvehPixZones_ZoneStatus + [0];
 		};
 		if (count pvehPixZones_ZoneStatus > pixZones_ZoneCount) then 
 		{
 			diag_log "WARNING: ((count pvehPixZones_ZoneStatus) > pixZones_ZoneCount). Elements will be removed.";
-			player sideChat "WARNING: ((count pvehPixZones_ZoneStatus) > pixZones_ZoneCount). Elements will be removed.";
+			player globalChat "WARNING: ((count pvehPixZones_ZoneStatus) > pixZones_ZoneCount). Elements will be removed.";
 			pvehPixZones_ZoneStatus resize pixZones_ZoneCount;
 		};
 		private["_o"];
@@ -75,14 +75,14 @@ if (_result == "OK") then
 	else
 	{
 		diag_log format["ERROR: fn_pixZones_DbBeginLoad=>fn_pixZones_DbIsThreadFinished failed: %1", _result];
-		player sidechat format["ERROR: fn_pixZones_DbBeginLoad=>fn_pixZones_DbIsThreadFinished failed: %1", _result];
+		player globalChat format["ERROR: fn_pixZones_DbBeginLoad=>fn_pixZones_DbIsThreadFinished failed: %1", _result];
 	};
 }
 else
 {
 	diag_log format["ERROR: fn_pixZones_DbBeginLoad failed: %1", _result];
-	player sidechat format["ERROR: fn_pixZones_DbBeginLoad failed: %1", _result];
+	player globalChat format["ERROR: fn_pixZones_DbBeginLoad failed: %1", _result];
 };
  
-player sidechat "INFO: pixZones: Loading successfull";
+player globalChat "INFO: pixZones: Loading successfull";
 pixZonesDbMutex = false;

@@ -76,6 +76,7 @@ if (isServer) then
 	{
 		/*_missionOptCfgIndices = [0,1,2,3,4,5,6,7,8,9];*/
 		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
+		/*_missionOptCfgIndices = [1];*/
 	};
 	
 	
@@ -90,24 +91,25 @@ if (isServer) then
 	{
 		private["_missionLocation"];
 		_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
-		_missionOptLocations = _missionOptLocations + _missionLocation;
+
+		_missionOptLocations = _missionOptLocations + [_missionLocation];
 	} foreach _missionOptCfgIndices;
 	
 	/*-----------------------------------------------*/
 	/* Die Mission-OPT Informationen zusammenstellen */
 	/*-----------------------------------------------*/
-	private["_missionsOpt"]; /* [[missionOptCfgIndex, missionPosition, missionDirection],[..]] */
+	private["_missionsOpt"]; /* [[missionOptCfgIndex, missionPosition, missionDirection, markerPosition, markerRadius],[..]] */
 	_missionsOpt = [];
 	_index = 0;
 	{
 		/* Nur wenn eine gültige Position gefunden wurde,zum Missionsarray hinzufügen.*/
-		if (str(_missionOptLocations select _index) != "[[0,0,0],0]") then
+		if (str(_missionOptLocations select _index) != "[[0,0,0],0,[0,0],0]") then
 		{
-			_missionsOpt set [count _missionsOpt, [_x, (_missionOptLocations select _index) select 0, (_missionOptLocations select _index) select 1]];		
+			_missionsOpt set [count _missionsOpt, [_x, (_missionOptLocations select _index) select 0, (_missionOptLocations select _index) select 1, (_missionOptLocations select _index) select 2, (_missionOptLocations select _index) select 3]];		
 		}
 		else
 		{
-			player sidechat format["missionOpt Index(%1) hat keine Position gefunden", _x];
+			player globalChat format["missionOpt Index(%1) hat keine Position gefunden", _x];
 		};
 		_index = _index + 1;
 	} foreach _missionOptCfgIndices;

@@ -8,18 +8,29 @@ _vehicleClassname = _this select 2;
 /*----------------------------------*/
 /* Die Missionsdaten herausarbeiten */
 /*----------------------------------*/
-private["_missionOpt"]; /* [missionIndex, missionPosition, missionStatus] */
+private["_missionOpt"]; /* [missionIndex, missionPosition, missionDirection, markerPosition, markerRadius] */
 _missionOpt = ((pvehPixZones_MissionInfos select 2) select _missionInfoIndex);
 private["_missionPosition"];
 _missionPosition = _missionOpt select 1;
+private["_missionDirection"];
+_missionDirection = _missionOpt select 2;
+private["_missionMarkerPosition"];
+_missionMarkerPosition = _missionOpt select 3;
+private["_missionMarkerRadius"];
+_missionMarkerRadius = _missionOpt select 4;
 
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
+	private["_taskTitle"];
+	_taskTitle = format["Fahrzeuge zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	private["_taskDescription"];
+	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeuggruppe ermittelt. Vernichten sie diese Fahrzeuge (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	
 	private["_tmp"];
-	_tmp = [_missionInfoIndex, _missionPosition, _vehicleClassname] execVM "missionsOpt\vehicles\runClient.sqf";	
+	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
 };
 
 if (isServer) then

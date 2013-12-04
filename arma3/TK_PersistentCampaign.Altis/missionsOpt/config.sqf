@@ -27,3 +27,12 @@ missionsOpt_MissionPlayers = [
 	4, /*"killOfficer",			/* 8 */
 	4  /*"retrieveIntel"		/* 9 */
 ];
+
+IF (isServer && !isDedicated) then 
+{	/* debug modus */
+	missionsOpt_DefaultMarkerRadius = 10;
+}
+else
+{
+	missionsOpt_DefaultMarkerRadius = 500;
+};

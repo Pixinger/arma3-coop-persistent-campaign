@@ -18,7 +18,7 @@ if (isServer) then
 	}
 	else
 	{
-		player sidechat "pixLogistic: Error: unable to insert item";		
+		player globalChat "pixLogistic: Error: unable to insert item";		
 	};
 	
 	pixlogisticDbMutex = false;

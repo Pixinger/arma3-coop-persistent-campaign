@@ -6,18 +6,29 @@ _missionInfoIndex = _this select 1;
 /*----------------------------------*/
 /* Die Missionsdaten herausarbeiten */
 /*----------------------------------*/
-private["_missionOpt"]; /* [missionIndex, missionPosition, missionStatus] */
+private["_missionOpt"]; /* [missionIndex, missionPosition, missionDirection, markerPosition, markerRadius] */
 _missionOpt = ((pvehPixZones_MissionInfos select 2) select _missionInfoIndex);
 private["_missionPosition"];
 _missionPosition = _missionOpt select 1;
+private["_missionDirection"];
+_missionDirection = _missionOpt select 2;
+private["_missionMarkerPosition"];
+_missionMarkerPosition = _missionOpt select 3;
+private["_missionMarkerRadius"];
+_missionMarkerRadius = _missionOpt select 4;
 
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
+	private["_taskTitle"];
+	_taskTitle = "Geheime Dokumente vernichten";
+	private["_taskDescription"];
+	_taskDescription = "Einer unserer Hubschrauber wurde abgeschossen und vom Feind gesichert. Leider befanden sich geheime Dokumente im Hubschrauber. Diese müssen von uns umgehend vernichtet werden. Beginnen Sie mit der Suche an der Absturztstelle.";
+	
 	private["_tmp"];
-	_tmp = [_missionInfoIndex, _missionPosition] execVM "missionsOpt\retrieveIntel\runClient.sqf";	
+	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
 };
 
 if (isServer) then

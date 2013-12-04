@@ -13,7 +13,7 @@
 /* ------------------------- */
 /* Client, oder Serverclient */
 /* ------------------------- */
-if (!isServer || !isDedicated) then
+if (!isServer) then
 {
 	/* Erst nach dem Briefing starten */
 	Sleep 0.1;

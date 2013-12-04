@@ -8,6 +8,6 @@ _missionLocations = _this select 1;
 _markerName = format["Zone%1", _zoneIndex];
 
 private["_result"];
-_result = [[_markerName, _missionLocations, 100] call fn_pixZones_RandomPositionField];
-	
+_result = [_markerName, _missionLocations, 100, missionsOpt_DefaultMarkerRadius] call fn_missionsOpt_RandomPositionField;
+
 _result;

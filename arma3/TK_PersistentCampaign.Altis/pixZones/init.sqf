@@ -2,8 +2,8 @@
 /* Configuration laden und überprüfen */
 /* ---------------------------------- */
 call compile preprocessFileLineNumbers "pixZones\config.sqf";
-if (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount) then { player sidechat "ERROR: (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount)";};
-if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player sidechat "ERROR: (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount)";};
+if (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount) then { player globalChat "ERROR: (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount)";};
+if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player globalChat "ERROR: (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount)";};
 
 /* -------------------------------- */
 /* Spezielle Funktionen kompilieren */
@@ -12,13 +12,8 @@ fn_pixZones_GetZoneIndex = compile preprocessFileLineNumbers "pixZones\fn_pixZon
 fn_pixZones_IsZoneForbidden = compile preprocessFileLineNumbers "pixZones\fn_pixZones_IsZoneForbidden.sqf";
 fn_pixZones_CanBlueforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanBlueforEngageZone.sqf";
 fn_pixZones_GetConnectedHostileZones = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetConnectedHostileZones.sqf";
-fn_pixZones_GetMinDistance = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetMinDistance.sqf";
 fn_pixZones_AllMissionsFinished = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsFinished.sqf";
 fn_pixZones_AllMissionsSuccessfull = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsSuccessfull.sqf";
-fn_pixZones_RandomPositionField = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionField.sqf";
-fn_pixZones_RandomPositionHouse = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionHouse.sqf";
-fn_pixZones_RandomPositionMarker = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionMarker.sqf";
-fn_pixZones_RandomPositionRoad = compile preprocessFileLineNumbers "pixZones\fn_pixZones_RandomPositionRoad.sqf";
 fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_pixZones_UpdateMarkerColor.sqf";
 
 /* ---------------------------------------------------- */
@@ -27,8 +22,8 @@ fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_p
 pixZones_ActiveIndex = -1;
 pixZones_MarkerNames = []; 		/* ["Zone0", "Zone1", "Zone2", ..] */
 pixZones_ZoneCoordinates = []; 	/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
-pixZones_ReverseAttackTime = paramsArray select 3;
-if (pixDebug) then { player sidechat format["pixZones_ReverseAttackTime: %1", pixZones_ReverseAttackTime];};
+pixZones_ReverseAttackTime = pixParamReverseAttack;
+if (pixDebug) then { player globalChat format["pixZones_ReverseAttackTime: %1", pixZones_ReverseAttackTime];};
 
 if (isNil "pvehPixZones_OnRequestActivation") then { pvehPixZones_OnRequestActivation = -1;};
 if (isNil "pvehPixZones_MissionInfos") then { pvehPixZones_MissionInfos = [];};
@@ -39,7 +34,7 @@ for "_i" from 0  to (pixZones_ZoneCount - 1) do
 {
 	private["_name"];
 	_name = format["Zone%1", _i];
-	if (str(getMarkerPos _name) == "[0,0,0]") then { player sidechat format["ERROR: Marker '%1' not found.", _name];	};
+	if (str(getMarkerPos _name) == "[0,0,0]") then { player globalChat format["ERROR: Marker '%1' not found.", _name];	};
 	
 	private["_pos"];
 	private["_size"];
@@ -101,7 +96,7 @@ if (isServer) then
 	fn_pixZones_DbCleanup = compile preprocessFileLineNumbers "pixZones\fn_pixZones_DbCleanup.sqf";
 
 	diag_log format["pixZones: %1", call fn_pixZones_DbVersion];
-	if (pixDebug) then { player sidechat format["INFO: pixZones: %1", call fn_pixZones_DbVersion];};
+	if (pixDebug) then { player globalChat format["INFO: pixZones: %1", call fn_pixZones_DbVersion];};
 
 	/* ------------------------ */
 	/* Variablen Initialisieren */
@@ -114,7 +109,7 @@ if (isServer) then
 	if (call fn_pixZones_DbCleanup != "OK") then
 	{
 		diag_log format["ERROR: fn_pixZones_DbCleanup failed: %1", _result];
-		player sidechat format["ERROR: fn_pixZones_DbCleanup failed: %1", _result];
+		player globalChat format["ERROR: fn_pixZones_DbCleanup failed: %1", _result];
 	};
 
 	/*------------------------------------------------*/

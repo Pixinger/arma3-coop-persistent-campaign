@@ -62,54 +62,125 @@ if (_classname in _vehicleClearCargoTypes) then
 if(getNumber(configFile >> "CfgVehicles" >> _classname >> "isUav")==1) then 
 {
 	createVehicleCrew _object; 
+	
+	if (_classname == "B_UGV_01_F") then
+	{
+		_object setCaptive 1;
+	};
 };
 
-/* ACRE Box fixen */
-if (_classname == "ACRE_RadioBox") then
+/* BOX: Empty */
+if (_classname == "Box_NATO_AmmoVeh_F") then
 { 
 	clearMagazineCargoGlobal _object;
 	clearWeaponCargoGlobal _object;
 	clearItemCargoGlobal _object;
-	removeallweapons _object;  
-	removeallassigneditems _object;  
-	removeuniform _object;  
-	removevest _object;  
-	removebackpack _object; 
-	_object	addItemCargoGlobal["ACRE_PRC148",50];
-	_object addItemCargoGlobal ["ACRE_PRC119",25];	
-	_object addBackpackCargoGlobal ["ACRE_PRC117F",25];	
+	clearBackpackCargoGlobal _object;
 };
 
-if (_classname == "Box_NATO_AmmoVeh_F") then
-{ 
-	_object	addItemCargoGlobal["optic_Arco",10];
-	_object	addItemCargoGlobal["optic_Hamr",10];
-	_object	addItemCargoGlobal["optic_MRCO",10];	 	
-	_object addItemCargoGlobal["optic_Holosight",25];	 	
-	_object addItemCargoGlobal["optic_SOS",3];	
-	_object addItemCargoGlobal["optic_TWS",3];	
-	_object addItemCargoGlobal["optic_TWS_MG",3];	
-};
-
+/* BOX: Waffen */
 if (_classname == "Box_NATO_Wps_F") then
 { 
 	clearMagazineCargoGlobal _object;
 	clearWeaponCargoGlobal _object;
 	clearItemCargoGlobal _object;
 	clearBackpackCargoGlobal _object;
-
-	_object	addItemCargoGlobal["ItemGPS",8];
-	_object	addItemCargoGlobal["Rangefinder",8];
-	_object addItemCargoGlobal["optic_Holosight",8];
-	_object addItemCargoGlobal["optic_TWS",1];	
-	_object addItemCargoGlobal["optic_TWS_MG",1];	
-	_object	addWeaponCargoGlobal["arifle_MX_GL_Hamr_pointer_F",3];
-	_object	addWeaponCargoGlobal["arifle_MXM_SOS_pointer_F",3];
-	_object	addWeaponCargoGlobal["LMG_Zafir_pointer_F",2];
-	_object	addWeaponCargoGlobal["srifle_EBR_ARCO_pointer_F",2];
-	_object	addWeaponCargoGlobal["srifle_GM6_SOS_F",1];
-	_object	addWeaponCargoGlobal["srifle_LRR_SOS_F",1];
 };
 
+/* BOX: Waffen spezial */
+if (_classname == "Box_NATO_WpsSpecial_F") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+};
+
+/* BOX: Ammunition */
+if (_classname == "Box_NATO_Ammo_F") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+	_object	addMagazineCargoGlobal["30Rnd_65x39_caseless_mag", 7];
+	_object	addMagazineCargoGlobal["30Rnd_65x39_caseless_mag_Tracer", 7];
+	_object	addMagazineCargoGlobal["100Rnd_65x39_caseless_mag", 7];
+	_object	addMagazineCargoGlobal["100Rnd_65x39_caseless_mag_Tracer", 7];
+	_object	addMagazineCargoGlobal["200Rnd_65x39_cased_Box", 7];
+	_object	addMagazineCargoGlobal["200Rnd_65x39_cased_Box_Tracer", 7];
+	_object	addMagazineCargoGlobal["20Rnd_762x51_Mag", 7];
+	_object	addMagazineCargoGlobal["11Rnd_45ACP_Mag", 7];
+	_object	addMagazineCargoGlobal["7Rnd_408_Mag", 7];
+};
+
+/* BOX: Launcher */
+if (_classname == "Box_LAUNCHER") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+	_object	addMagazineCargoGlobal["NLAW_F",10];
+	_object	addMagazineCargoGlobal["Titan_AT",10];
+	_object	addMagazineCargoGlobal["Titan_AP",10];
+	_object	addMagazineCargoGlobal["Titan_AA",10];	
+};
+	
+/* BOX: Explosives */
+if (_classname == "Box_NATO_AmmoOrd_F") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+	_object	addMagazineCargoGlobal["SatchelCharge_Remote_Mag",10];
+	_object	addMagazineCargoGlobal["DemoCharge_Remote_Mag",10];
+	_object	addMagazineCargoGlobal["ATMine_Range_Mag",10];
+	_object	addMagazineCargoGlobal["APERSMine_Range_Mag",10];
+	_object	addMagazineCargoGlobal["APERSBoundingMine_Range_Mag",10];
+	_object	addMagazineCargoGlobal["SLAMDirectionalMine_Wire_Mag",10];
+	_object	addMagazineCargoGlobal["APERSTripMine_Wire_Mag",10];	
+};
+
+/* BOX: Grenades */
+if (_classname == "Box_NATO_Grenades_F") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+	_object	addMagazineCargoGlobal["HandGrenade",10];
+	_object	addMagazineCargoGlobal["SmokeShell",10];
+	_object	addMagazineCargoGlobal["SmokeShellPurple",10];
+	_object	addMagazineCargoGlobal["SmokeShellRed",10];
+	_object	addMagazineCargoGlobal["Chemlight_green",5];
+	_object	addMagazineCargoGlobal["Chemlight_red",5];
+	_object	addMagazineCargoGlobal["1Rnd_HE_Grenade_shell",10];	
+};
+
+/* BOX: Items */
+if (_classname == "Box_NATO_Support_F") then
+{ 
+	clearMagazineCargoGlobal _object;
+	clearWeaponCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+	_object	addItemCargoGlobal["FirstAidKit", 30];
+	_object	addItemCargoGlobal["Toolkit", 1];
+	_object	addItemCargoGlobal["Rangefinder", 1];
+	_object	addItemCargoGlobal["optic_TWS", 1];
+	_object	addItemCargoGlobal["optic_TWS_MG", 1];
+	_object	addItemCargoGlobal["optic_Holosight", 1];
+	_object	addItemCargoGlobal["optic_Arco", 1];
+	_object	addItemCargoGlobal["optic_Hamr", 1];
+	_object	addItemCargoGlobal["optic_MRCO", 1];	 	
+	_object addItemCargoGlobal["optic_SOS", 1];		
+};
 
 _object

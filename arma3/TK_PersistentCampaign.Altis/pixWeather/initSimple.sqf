@@ -1,7 +1,7 @@
 /*[overcast,rain,fog,windforce,winddir]*/
 [] spawn {
 	Sleep 1;
-	player sidechat format["p %1", pixParamWeather];
+	player globalChat format["p %1", pixParamWeather];
 	private["_time"];
 	_time = 5;
 	_time setOvercast (pixParamWeather select 0);

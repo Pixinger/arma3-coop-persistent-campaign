@@ -2,7 +2,7 @@
 private["_position"];
 _position = (_this select 0);
 private["_locations"];
-_locations =(_this select 1);
+_locations =(_this select 1); /* [[0,0,0],0, [0,0,0],0] */
 
 private["_result"];
 _result = 65000;
