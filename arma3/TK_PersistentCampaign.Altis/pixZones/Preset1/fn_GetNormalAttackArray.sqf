@@ -45,6 +45,8 @@ if (isServer) then
 	{
 		_missionsEnv = [];
 	};
+
+	diag_log format["_missionsEnv = %1", _missionsEnv];
 	
 
 	/*------------------------------------------------------------------------------------------------*/
@@ -113,6 +115,7 @@ if (isServer) then
 		};
 		_index = _index + 1;
 	} foreach _missionOptCfgIndices;
+	diag_log format["_missionsOpt = %1", _missionsOpt];
 	
 	
 	
