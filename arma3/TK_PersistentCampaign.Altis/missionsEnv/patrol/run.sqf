@@ -72,7 +72,7 @@ if (isServer) then
 	
 	if (pixPatrolSkriptType == "UPS") then
 	{
-		_tmp = [leader _group, _markerName,"randomdn","min:1/max:3","nofollow","nowait","showmarker","NOTRIGGER"] execVM "missionsEnv\patrol\ups.sqf"; /*,"track"*/
+		_tmp = [leader _group, _markerName,"randomdn","min:2/max:2","nofollow","nowait","showmarker","NOTRIGGER"] execVM "missionsEnv\patrol\ups.sqf"; /*,"track"*/
 	}
 	else
 	{

@@ -58,17 +58,6 @@ if (isServer) then
 	createVehicleCrew _vehicle2;
 	_units = _units + (crew _vehicle2);
 
-	private["_vehicle3"];
-	_vehicle3 = _vehicleClassname createVehicle [(_missionPosition select 0) + ((random 100) - 50), _missionPosition select 1, 0]; 
-	Sleep .2;
-	_vehicle3 lock true;
-	_vehicle3 setdir random 360;
-	_normal = surfaceNormal (position _vehicle3);
-	_vehicle3 setVectorUp _normal;
-	createVehicleCrew _vehicle3;
-	_units = _units + (crew _vehicle3);
-	
-
 	private["_spawnGroup"];
 	private["_randomPos"];
 	private["_random"];
@@ -95,15 +84,11 @@ if (isServer) then
 
 	_vehicle1 setDamage 0.5;
 	_vehicle2 setDamage 0.5;
-	_vehicle3 setDamage 0.5;
-	if (_vehicle1 distance [0,0,0] < 1000) then { _vehicle1 setDamage 1;};
-	if (_vehicle2 distance [0,0,0] < 1000) then { _vehicle2 setDamage 1;};
-	if (_vehicle3 distance [0,0,0] < 1000) then { _vehicle3 setDamage 1;};
 
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	waitUntil {((!alive _vehicle1) &&(!alive _vehicle2) &&(!alive _vehicle3)) || (pixZones_ActiveIndex == -1)};
+	waitUntil {((!alive _vehicle1) &&(!alive _vehicle2)) || (pixZones_ActiveIndex == -1)};
 	
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
@@ -136,13 +121,6 @@ if (isServer) then
 		waitUntil { scriptDone _script;};
 		_vehicle2 = nil;
 	};
-	if (!canMove _vehicle3) then 
-	{
-		private["_script"];
-		_script = [_vehicle3] execVM "pixLogistic\serverInsertItem.sqf";
-		waitUntil { scriptDone _script;};
-		_vehicle3 = nil;
-	};
 
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
@@ -154,6 +132,5 @@ if (isServer) then
 	/*------------------------*/
 	if (!(isNil "_vehicle1")) then {deletevehicle _vehicle1;};
 	if (!(isNil "_vehicle2")) then {deletevehicle _vehicle2;};
-	if (!(isNil "_vehicle3")) then {deletevehicle _vehicle3;};
 	{deletevehicle _x} foreach _units;
 };
