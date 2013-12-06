@@ -56,6 +56,8 @@ if (isServer) then
 		nul = [_spawnGroup, _missionPosition, random 600 + 300] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup] spawn fn_missionsRev_TrackGroup;};
 	};
 
 	_random = floor (random 2) + 1;
@@ -66,6 +68,8 @@ if (isServer) then
 		[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup] spawn fn_missionsRev_TrackGroup;};
 	};
 	
 	_building setDamage 0.5;

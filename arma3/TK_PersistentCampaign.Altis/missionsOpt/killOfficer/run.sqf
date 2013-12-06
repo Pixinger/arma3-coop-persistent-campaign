@@ -58,6 +58,8 @@ if (isServer) then
 		_tmp = [_spawnGroup, _missionPosition, random missionsOpt_DefaultMarkerRadius] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup] spawn fn_missionsRev_TrackGroup;};
 	};
 
 	

@@ -2,6 +2,9 @@ if (isServer && !isDedicated) then
 {
 	private["_group"];
 	_group = _this select 0;
+	private["_trackHistory"];
+	_trackHistory = _this select 1;
+	if (isNil "_trackHistory") then { _trackHistory = true; };
 	
 	/* Marker erstellen */
 	private["_markernames"];
@@ -21,21 +24,24 @@ if (isServer && !isDedicated) then
 	while { (pixZones_ActiveIndex != -1) } do
 	{
 		_markerName setMarkerPosLocal (getPos (leader _group));/*(getPos _group);*/
-		if (_i == 5) then
+		if (_trackHistory) then
 		{
-			/* Marker erstellen */
-			private["_markername2"];
-			_markername2 = [] call fn_missionsOpt_GetUniqueMarkerName;
-			createMarkerLocal [_markername2, (getPos (leader _group))];
-			_markernames = _markernames + [_markername2];
-			_markerName2 setMarkerShapeLocal "ELLIPSE";
-			_markerName2 setMarkerSizeLocal [10, 10];
-			_markerName2 setMarkerAlphaLocal 1;
-			_markerName2 setMarkerColorLocal "ColorRed";
-			_i = 0;
-		} else
-		{
-			_i = _i + 1;
+			if (_i == 5) then
+			{
+				/* Marker erstellen */
+				private["_markername2"];
+				_markername2 = [] call fn_missionsOpt_GetUniqueMarkerName;
+				createMarkerLocal [_markername2, (getPos (leader _group))];
+				_markernames = _markernames + [_markername2];
+				_markerName2 setMarkerShapeLocal "ELLIPSE";
+				_markerName2 setMarkerSizeLocal [10, 10];
+				_markerName2 setMarkerAlphaLocal 1;
+				_markerName2 setMarkerColorLocal "ColorRed";
+				_i = 0;
+			} else
+			{
+				_i = _i + 1;
+			};
 		};
 		Sleep 2;		
 	};	

@@ -162,21 +162,16 @@ if (isServer) then
 	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointTimeout [10, 30, 60];
 
-	if (pixDebug) then { player globalChat "Checkpoint spawned";};
-
-	if (_missionPosition distance [0,0,0] > 1000) then 
-	{ 
-		/*--------------------------------------*/
-		/* Warten bis die Mission erfüllt wurde */
-		/*--------------------------------------*/
-		private["_aliveUnits"];
-		_aliveUnits = 5;
-		while { (_aliveUnits > 1) && (pixZones_ActiveIndex != -1) } do
-		{
-			Sleep 2;
-			_aliveUnits = 0;
-			{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _units;
-		};
+	/*--------------------------------------*/
+	/* Warten bis die Mission erfüllt wurde */
+	/*--------------------------------------*/
+	private["_aliveUnits"];
+	_aliveUnits = 5;
+	while { (_aliveUnits > 1) && (pixZones_ActiveIndex != -1) } do
+	{
+		Sleep 2;
+		_aliveUnits = 0;
+		{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _units;
 	};
 	
 	/*--------------------------------------------------------*/
