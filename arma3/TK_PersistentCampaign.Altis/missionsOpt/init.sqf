@@ -13,8 +13,6 @@ if (isNil "pixZones_Initialized") then
 /*---------------------*/
 call compile preprocessFileLineNumbers "missionsOpt\config.sqf";
 
-fn_missionsOpt_Patrol = compile preprocessFileLineNumbers "missionsOpt\fn_missionsOpt_Patrol.sqf";
-fn_missionsOpt_SetSkill = compile preprocessFileLineNumbers "missionsOpt\fn_missionsOpt_SetSkill.sqf";
 fn_missionsOpt_RandomPositionRoad = compile preprocessFileLineNumbers "missionsOpt\fn_missionsOpt_RandomPositionRoad.sqf";
 fn_missionsOpt_RandomPositionMarker = compile preprocessFileLineNumbers "missionsOpt\fn_missionsOpt_RandomPositionMarker.sqf";
 fn_missionsOpt_RandomPositionHouse = compile preprocessFileLineNumbers "missionsOpt\fn_missionsOpt_RandomPositionHouse.sqf";

@@ -47,8 +47,7 @@ if (isServer) then
 	private["_randomPos"];
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	private["_currentPlayerCount"];
-	_currentPlayerCount = 10;
-	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
+	_currentPlayerCount = call PC_fnc_GetPlayerCount;
 	private["_patrolCount"];
 	_patrolCount = ceil(_currentPlayerCount / 4);
 	for "_i" from 0 to _patrolCount do 
@@ -58,11 +57,10 @@ if (isServer) then
 		_randomPos = [[[_missionPosition, random 600]],["water","out"]] call BIS_fnc_randomPos;
 		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
 		private["_tmp"];
-		_tmp = [_spawnGroup, _missionPosition, random 600] call fn_missionsOpt_Patrol;
+		_tmp = [_spawnGroup, _zoneIndex, _missionPosition, random 500] call PC_fnc_PatrolObject;
 		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
 		/* Nur im Debug */
-		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed","optIntelP"] spawn fn_missionsRev_TrackGroup;};
 	};
 
 	/* Verteidigungs Truppe */
@@ -70,11 +68,10 @@ if (isServer) then
 	_teamTypes = ["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInfTeam","OIA_MotInf_AT","OIA_InfSentry"];				
 	_randomPos = [[[_missionPosition, random 80]],["water","out"]] call BIS_fnc_randomPos;	
 	_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
-	[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
+	[_spawnGroup, _missionPosition] call PC_fnc_GuardObject;
 	_units = _units + (units _spawnGroup);
-	 [_spawnGroup] call fn_missionsOpt_SetSkill;
 	/* Nur im Debug */
-	if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
+	if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed","optIntelD"] spawn fn_missionsRev_TrackGroup;};
 	
 	_intel setDamage 0.9;
 	if (_intel distance [0,0,0] < 1000) then { _intel setDamage 1;};

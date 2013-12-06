@@ -23,7 +23,7 @@ if (!isServer) then
 	while { true } do 
 	{
 		Sleep PIXZONE_CHECKINTERVAL;
-		_zoneIndex = (getPos player) call fn_pixZones_GetZoneIndex;		
+		_zoneIndex = [getPos player] call PC_fnc_GetZoneIndex;		
 		if ([_zoneIndex] call fn_pixZones_IsZoneForbidden) then
 		{
 			private["_counter"];
@@ -34,7 +34,7 @@ if (!isServer) then
 			{
 				Sleep 1;
 				_counter = _counter - 1;
-				_zoneIndex = (getPos player) call fn_pixZones_GetZoneIndex;
+				_zoneIndex = [getPos player] call PC_fnc_GetZoneIndex;
 				hint format["You entered an prohibited area. Return immediately or you will be punished!\n\n%1 seconds left", _counter];
 			};
 			

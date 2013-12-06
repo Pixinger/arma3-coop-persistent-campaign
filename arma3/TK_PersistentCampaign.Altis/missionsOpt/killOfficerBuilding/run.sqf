@@ -60,9 +60,8 @@ if (isServer) then
 	{
 		_randomPos = [[[_missionPosition, random 700 + 500]],["water","out"]] call BIS_fnc_randomPos;
 		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		_tmp = [_spawnGroup, _missionPosition, random 400] call fn_missionsOpt_Patrol;
+		_tmp = [_spawnGroup, _zoneIndex, _missionPosition, random 500] call PC_fnc_PatrolObject;
 		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
 		/* Nur im Debug */
 		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};
@@ -74,9 +73,8 @@ if (isServer) then
 		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
 		[_officer] join _spawnGroup;
 		
-		_tmp = [_spawnGroup, _missionPosition, random 100] call fn_missionsOpt_Patrol;
+		_tmp = [_spawnGroup, _zoneIndex, _missionPosition, random 500] call PC_fnc_PatrolObject;
 		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
 		/* Nur im Debug */
 		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};

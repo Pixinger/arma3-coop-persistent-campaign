@@ -8,7 +8,6 @@ if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player glo
 /* -------------------------------- */
 /* Spezielle Funktionen kompilieren */
 /* -------------------------------- */
-fn_pixZones_GetZoneIndex = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetZoneIndex.sqf";
 fn_pixZones_IsZoneForbidden = compile preprocessFileLineNumbers "pixZones\fn_pixZones_IsZoneForbidden.sqf";
 fn_pixZones_CanBlueforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanBlueforEngageZone.sqf";
 fn_pixZones_GetConnectedHostileZones = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetConnectedHostileZones.sqf";

@@ -29,6 +29,10 @@ diag_log format["pixParamWeather: %1", pixParamWeather];
 _paramValues = [0.5,1,1.5,2];
 pixParamMissionFactor = _paramValues select (paramsArray select 6);
 diag_log format["pixParamMissionFactor: %1", pixParamMissionFactor];
+/* Parameter (7): ZoneAttackType */
+pixParamZoneAttackType = _paramValues select (paramsArray select 7); // 0=zufall 1=attack 2=reverseattack
+if (isServer && !isDedicated) then {pixParamZoneAttackType = 1;};
+diag_log format["pixParamZoneAttackType: %1", pixParamZoneAttackType];
 
 /*-----------------------------------------------*/
 cutText ["Initialization...", "BLACK FADED",1];

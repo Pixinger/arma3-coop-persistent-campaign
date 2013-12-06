@@ -10,9 +10,7 @@ if (isServer) then
 	
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	private["_currentPlayerCount"];
-	_currentPlayerCount = 10;
-	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
-
+	_currentPlayerCount = call PC_fnc_GetPlayerCount;
 	
 	/*------------------------------------------------------------------------------------------------*/
 	/* Missionen auf Grund von Zufall & Spieleranzahl die Missionen bestimmen */

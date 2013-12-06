@@ -116,7 +116,7 @@ else
 					waitUntil { !pixlogisticDbMutex };
 					pixlogisticDbMutex = true;
 					{
-						if (((getPos _x) call fn_pixZones_GetZoneIndex) == pixZones_ActiveIndex) then
+						if (([getPos _x] call PC_fnc_GetZoneIndex) == pixZones_ActiveIndex) then
 						{
 							_x setDamage 1;
 						};

@@ -40,8 +40,7 @@ if (isServer) then
 	_unitTypes = ["O_Soldier_SL_F", "O_medic_F"];
 
 	private["_currentPlayerCount"];
-	_currentPlayerCount = 10;
-	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
+	_currentPlayerCount = call PC_fnc_GetPlayerCount;
 	if (_currentPlayerCount <= 3) then
 	{
 		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
@@ -88,7 +87,7 @@ if (isServer) then
 	/* Nur im Debug */
 	if (isServer && !isDedicated) then
 	{
-		[_group, true, "ColorBlue"] spawn fn_missionsRev_TrackGroup;
+		[_group, true, "ColorBlue", "envPatrol"] spawn fn_missionsRev_TrackGroup;
 	};
 
 	/*Sleep 5;	

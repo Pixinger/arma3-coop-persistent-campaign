@@ -29,7 +29,7 @@ if (isServer) then
 		/* Infantrie Gruppe erzeugen */
 		private["_group"];
 		_group = [_startPosition, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		[_group] call fn_missionsOpt_SetSkill;
+		[_group] call PC_fnc_SetSkill;
 		_groups = _groups + [_group];
 		_units = _units + (units _group);
 

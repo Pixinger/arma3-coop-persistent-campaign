@@ -8,6 +8,9 @@ if (isServer && !isDedicated) then
 	private["_trackColor"];
 	_trackColor = _this select 2;
 	if (isNil "_trackColor") then { _trackColor = "ColorRed"; };
+	private["_trackText"];
+	_trackText = _this select 3;
+	if (isNil "_trackText") then { _trackText = ""; };
 	
 	/* Marker erstellen */
 	private["_markernames"];
@@ -20,6 +23,7 @@ if (isServer && !isDedicated) then
 	_markerName setMarkerSizeLocal [25, 25];
 	_markerName setMarkerAlphaLocal 1;
 	_markerName setMarkerColorLocal "ColorRed";
+	_markerName setMarkerTextLocal _trackText;
 	
 	/* Marker aktualisieren */
 	private["_i"];

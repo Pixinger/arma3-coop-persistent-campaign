@@ -10,8 +10,7 @@ if (isServer) then
 	
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	private["_currentPlayerCount"];
-	_currentPlayerCount = 10;
-	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
+	_currentPlayerCount = call PC_fnc_GetPlayerCount;
 
 	/*------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------------------------------------------------------------*/
@@ -22,20 +21,21 @@ if (isServer) then
 	/*------------------------------------------------*/
 	private["_missionsEnv"];/* [[missionEnvIndex, missionPosition, missionDirection],[..]] */
 	_missionsEnv = [];
-	if (_currentPlayerCount <= 3) then
+	diag_log format["_currentPlayerCount for ZoneMission: %1", _currentPlayerCount];
+	if (_currentPlayerCount >= 3) then
 	{
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
-	if (_currentPlayerCount <= 6) then
+	if (_currentPlayerCount >= 6) then
 	{
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
-	if (_currentPlayerCount <= 10) then
+	if (_currentPlayerCount >= 10) then
 	{
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
-	if (_currentPlayerCount <= 15) then
+	if (_currentPlayerCount >= 15) then
 	{
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
