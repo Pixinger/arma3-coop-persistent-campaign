@@ -61,7 +61,7 @@ if (isServer) then
 	{
 		private["_teamTypes"];
 		_teamTypes = ["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInfTeam","OIA_MotInf_AT"];
-		_randomPos = [[[_missionPosition, random 600 + 300]],["water","out"]] call BIS_fnc_randomPos;
+		_randomPos = [[[_missionPosition, random 600]],["water","out"]] call BIS_fnc_randomPos;
 		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
 		private["_tmp"];
 		_tmp = [_spawnGroup, _missionPosition, random 600] call fn_missionsOpt_Patrol;
@@ -70,7 +70,6 @@ if (isServer) then
 		/* Nur im Debug */
 		if (isServer && !isDedicated) then { [_spawnGroup] spawn fn_missionsRev_TrackGroup;};
 	};
-
 
 	/* Verteidigungs Truppe */
 	private["_teamTypes"];
@@ -111,6 +110,7 @@ if (isServer) then
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep 60;
 
 	/*------------------------*/
