@@ -58,7 +58,7 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 				_zoneIndex = (getPos _spawnObject) call fn_pixZones_GetZoneIndex;
 				if (_zoneIndex >= 0) then
 				{
-					if ((pvehPixZones_ZoneStatus select _zoneIndex) >= 2) then 
+					if ((getPlayerUID player in pvPixLogisticAdminUIDs) || ((pvehPixZones_ZoneStatus select _zoneIndex) >= 2)) then
 					{				
 						/* Nur berechtigte Personen dürfen anfragen */
 						if ((getPlayerUID player in pvPixLogisticAdminUIDs) || (getPlayerUID player in pvPixLogisticTeamLeaderUIDs) || (isServer && !isDedicated)) then
