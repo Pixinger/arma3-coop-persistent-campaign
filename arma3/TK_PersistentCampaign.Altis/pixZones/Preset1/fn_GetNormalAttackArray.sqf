@@ -43,7 +43,7 @@ if (isServer) then
 	/* Zum debuggen */
 	if (isServer && !isDedicated) then
 	{
-		_missionsEnv = [];
+		/*_missionsEnv = [];*/
 	};
 
 	diag_log format["_missionsEnv = %1", _missionsEnv];

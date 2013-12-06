@@ -129,7 +129,7 @@ if (isServer) then
 			{
 				for "_o" from 0 to (count (_enemyInfo select 1) - 1) do
 				{
-					[(_enemyInfo select 1) select _o] spawn fn_missionsRev_TrackGroup;
+					[(_enemyInfo select 1) select _o, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;
 				}
 			};
 		};

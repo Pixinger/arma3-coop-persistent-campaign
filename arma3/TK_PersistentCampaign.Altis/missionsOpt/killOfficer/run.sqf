@@ -46,7 +46,7 @@ if (isServer) then
 	_units = _units + (units _groupOfficer);	
 	private["_officer"];
 	_officer = _units select 0;
-	if (isServer && !isDedicated) then { [_groupOfficer] spawn fn_missionsRev_TrackGroup;};
+	if (isServer && !isDedicated) then { [_groupOfficer, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 
 	private["_spawnGroup"];
 	private["_randomPos"];
@@ -67,7 +67,7 @@ if (isServer) then
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
 		/* Nur im Debug */
-		if (isServer && !isDedicated) then { [_spawnGroup] spawn fn_missionsRev_TrackGroup;};
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};
 	
 	/*--------------------------------------*/

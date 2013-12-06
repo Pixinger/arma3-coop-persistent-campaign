@@ -5,6 +5,9 @@ if (isServer && !isDedicated) then
 	private["_trackHistory"];
 	_trackHistory = _this select 1;
 	if (isNil "_trackHistory") then { _trackHistory = true; };
+	private["_trackColor"];
+	_trackColor = _this select 2;
+	if (isNil "_trackColor") then { _trackColor = "ColorRed"; };
 	
 	/* Marker erstellen */
 	private["_markernames"];
@@ -36,7 +39,7 @@ if (isServer && !isDedicated) then
 				_markerName2 setMarkerShapeLocal "ELLIPSE";
 				_markerName2 setMarkerSizeLocal [10, 10];
 				_markerName2 setMarkerAlphaLocal 1;
-				_markerName2 setMarkerColorLocal "ColorRed";
+				_markerName2 setMarkerColorLocal _trackColor;
 				_i = 0;
 			} else
 			{

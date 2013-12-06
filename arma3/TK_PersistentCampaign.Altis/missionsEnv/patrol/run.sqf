@@ -88,7 +88,7 @@ if (isServer) then
 	/* Nur im Debug */
 	if (isServer && !isDedicated) then
 	{
-		[_group] spawn fn_missionsRev_TrackGroup;
+		[_group, true, "ColorBlue"] spawn fn_missionsRev_TrackGroup;
 	};
 
 	/*Sleep 5;	

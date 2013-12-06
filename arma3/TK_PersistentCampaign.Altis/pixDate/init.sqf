@@ -15,7 +15,7 @@ if (isServer && isDedicated) then
 	} 
 	else 
 	{ 
-		_date = _date + [pixParamTime - 1; 
+		_date = _date + [pixParamTime - 1]; 
 	};
 
 	/* debug */
