@@ -5,12 +5,11 @@
 #define CIRCLEPOS2(p,d,r) CIRCLEPOS((p select 0), (p select 1), d, r)
 #define CIRCLEPOS(x,y,d,r) [x+r*sin(d),y+r*cos(d)]
 
-private ["_what", "_where", "_loot", "_missionInfoIndex", "_type", "_markerName"];
+private ["_what", "_misPos", "_where", "_loot", "_missionInfoIndex", "_type", "_markerName"];
 
 _what = [_this, 0, "drug"] call BIS_fnc_param;
-_what = "drug";
 // this is the mission position
-_where = [_this, 1, [0,0,0]] call BIS_fnc_param;
+_misPos = [_this, 1, [0,0,0]] call BIS_fnc_param;
 _missionInfoIndex = [_this, 2, -1] call BIS_fnc_param;
 
 if (_missionInfoIndex == -1) then {
@@ -18,7 +17,10 @@ if (_missionInfoIndex == -1) then {
 };
 
 // change mission position to somewhere in 500 meter distance
-_where = CIRCLEPOS2(_where, random 360, 500);
+_where = CIRCLEPOS2(_misPos, random 360, 500);
+while { surfaceIsWater _where } do {
+  _where = CIRCLEPOS2(_misPos, random 360, 500);
+};
 
 switch (_what) do {
   case ("ammo"): {

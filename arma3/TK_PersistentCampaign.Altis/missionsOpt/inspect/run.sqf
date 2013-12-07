@@ -1,6 +1,19 @@
 /* ***************************************************************************************************** 
 Written by TeTeT
 ********************************************************************************************************/
+
+/**
+  * globals for debugging
+  */
+TTT_DEBUG = true;
+publicVariable "TTT_DEBUG";
+ttt_fnc_debug = {
+  if (TTT_DEBUG) then {
+    player sideChat str(_this select 0);
+    (_this select 0) call BIS_fnc_log;
+  };
+};
+
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_missionInfoIndex"];
@@ -35,7 +48,7 @@ if (!isServer || !isDedicated) then
 
 if (isServer) then
 {
-  "server side run.sqf of inspect" call BIS_fnc_log;
+  ["server side run.sqf of inspect"] call TTT_fnc_debug;
   private["_vehicle", "_types", "_type", "_wheels", "_wheel", "_action", "_count"];
   _types = [ "C_Hatchback_01_F", "C_Hatchback_01_sport_F", "O_MRAP_02_F", 
              "C_Offroad_01_F", "C_Quadbike_01_F", "C_SUV_01_F", 
@@ -43,7 +56,7 @@ if (isServer) then
              "O_Truck_02_covered_F"];
   _type = _types call BIS_fnc_selectRandom;
   _vehicle = _type createVehicle _missionPosition;
-  player sideChat "Debug: Created vehicle";
+  ["Debug: Created vehicle"] call TTT_fnc_debug;
   _wheels = ["wheel_1_1_steering", "wheel_1_2_steering", "wheel_2_1_steering", "wheel_2_2_steering"];
   _wheel = _wheels call BIS_fnc_selectRandom;
   _vehicle setHit [_wheel, 1];
@@ -65,35 +78,34 @@ if (isServer) then
     "in event handler pvTeTeT_lootMoney" call BIS_fnc_log;
     if (!TeTeT_lootMoney) then {
       TeTeT_lootMoney = true;
-      hint "Geld eingezahlt...";
-      player sideChat "Debug: geld eingezahlt";
-      "Debug: geld eingezahlt" call BIS_fnc_log;
+      ["Debug: Received Money (inspect)"] call TTT_fnc_debug;
       pvPixLogisticMoney = pvPixLogisticMoney + pvTeTeT_lootMoney;
-      player sideChat format ["Money %1", pvPixLogisticMoney];
+      [format ["Money %1", pvPixLogisticMoney]] call TTT_fnc_debug;
     };
   };
   
   // safety if addAction doesn't work
   // waitUntil {player distance _vehicle < 10};
-  player sideChat "Debug: checking distance";
+  ["Debug: checking distance"] call TTT_fnc_debug;
   _count = count ( (position _vehicle) nearEntities ["B_Soldier_base_F", 10]);
   while {_count == 0} do {
-    player sideChat "Debug: distance to far";
+    ["Debug: distance to far"] call TTT_fnc_debug;
     sleep 5;
     _count = count ((position _vehicle) nearEntities ["B_Soldier_base_F", 10]);
   };
-  player sideChat "Debug: close to car";
+  ["Debug: close to car"] call TTT_fnc_debug;
   // FIXME: increase timeout
   sleep 15;
   _action = _vehicle getVariable "TeTeT_inspected";
   if (player distance _vehicle < 10 and isNil "_action") then {
+    // TODO check if this works on dedicated server
     hint "Untersuche Fahrzeug ...";
     sleep 10;
     hint "Nichts gefunden.";
   } else {
-    player sideChat "Debug: vehicle got inspected";
+    ["Debug: vehicle got inspected"] call TTT_fnc_debug;
   };
-  player sideChat "Debug: completing mission";
+  ["Debug: completing mission"] call TTT_fnc_debug;
   if (pixZones_ActiveIndex != -1) then {
     (pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1];
   } else {

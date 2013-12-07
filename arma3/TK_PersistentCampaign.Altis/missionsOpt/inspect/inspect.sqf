@@ -15,8 +15,8 @@ _params = [_this, 3, []] call BIS_fnc_param;
 _missionInfoIndex = [_params, 0, -1] call BIS_fnc_param;
 
 if (_missionInfoIndex == -1) then {
-  player sideChat "Mission Info Index not correct";
-  player sideChat str(_params);
+  ["Mission Info Index not correct"] call TTT_fnc_debug;
+  [str(_params)] call TTT_fnc_debug;
 };
 
 // only one inspection per vehicle
@@ -28,7 +28,7 @@ _vehicle setVariable ["TeTeT_inspected", true, true];
 sleep 10;
 
 // 2 in 3 chance ;)
-_found = [true, true, true] call BIS_fnc_selectRandom;
+_found = [true, true, false] call BIS_fnc_selectRandom;
 
 if (_found) then {
   _what = ["ammo", "drug", "weapon"] call BIS_fnc_selectRandom;
