@@ -98,11 +98,8 @@ if (!isServer || !isDedicated) then
 		"O_Truck_02_box_F",
 		"O_Truck_02_medical_F",
 		"O_Truck_02_fuel_F",
-		"O_UAV_01_F",
 		"O_UGV_01_F",
 		"O_UGV_01_rcws_F",
-		"O_UAV_02_F",
-		"O_UAV_02_CAS_F",
 		"O_Heli_Light_02_unarmed_F",
 		"O_Heli_Light_02_F",
 		"O_Heli_Attack_02_black_F",
@@ -119,7 +116,7 @@ if (!isServer || !isDedicated) then
 		40, /*B_MRAP_01_hmg_F",*/
 		10, /*B_Quadbike_01_F",*/
 		15, /*B_UGV_01_rcws_F",*/
-		15, /*B_UGV_01_F",*/
+		40, /*B_UGV_01_F",*/
 		100, /*B_APC_Wheeled_01_cannon_F",*/
 		100, /*B_APC_Tracked_01_AA_F",*/
 		100, /*B_APC_Tracked_01_rcws_F",*/
@@ -167,7 +164,7 @@ if (!isServer || !isDedicated) then
 		10, /*"O_Heli_Attack_02_black_F",*/
 		10  /*"O_Heli_Attack_02_F"*/
 	];
-
+	
 		
 	/* Objekte die Bewegt und in Container/Fahrzeuge geladen werden können */
 	pixlogisticMovableObjects = [
@@ -180,6 +177,7 @@ if (!isServer || !isDedicated) then
 		"B_Mortar_01_F",
 		"B_static_AA_F",
 		"B_static_AT_F",
+		"B_UAV_01_F",
 		"Land_CncWall1_F",
 		"Land_CncWall4_F",
 		"Land_CncBarrierMedium4_F",
@@ -207,6 +205,7 @@ if (!isServer || !isDedicated) then
 		"Box_NATO_AmmoVeh_F",
 		"Box_NATO_WpsLaunch_F",
 		/* OPFOR */
+		"O_UAV_01_F",
 		"Box_East_WpsLaunch_F",
 		"Box_East_Support_F",
 		"O_supplyCrate_F",
@@ -220,15 +219,16 @@ if (!isServer || !isDedicated) then
 		
 	/* Benötigter Ladeplatz */
 	pixlogisticMovableObjectsSize = [
-		2, /*"B_HMG_01_F",*/
-		3, /*"B_HMG_01_high_F",*/
-		2, /*"B_HMG_01_A_F",*/
-		2, /*"B_GMG_01_F",*/
-		3, /*"B_GMG_01_high_F",*/
-		2, /*"B_GMG_01_A_F",*/
-		4, /*"B_Mortar_01_F",*/
-		4, /*"B_static_AA_F",*/
-		4, /*"B_static_AT_F",*/
+		15, /*"B_HMG_01_F",*/
+		15, /*"B_HMG_01_high_F",*/
+		15, /*"B_HMG_01_A_F",*/
+		15, /*"B_GMG_01_F",*/
+		15, /*"B_GMG_01_high_F",*/
+		15, /*"B_GMG_01_A_F",*/
+		15, /*"B_Mortar_01_F",*/
+		15, /*"B_static_AA_F",*/
+		15, /*"B_static_AT_F",*/
+		5,  /*"B_UAV_01_F",*/
 		10, /*"Land_CncWall1_F",*/
 		40, /*"Land_CncWall4_F",*/
 		20, /*"Land_CncBarrierMedium4_F",*/
@@ -256,6 +256,7 @@ if (!isServer || !isDedicated) then
 		100, /*"Box_NATO_AmmoVeh_F",*/
 		20, /*"Box_NATO_WpsLaunch_F"*/
 		/* OPFOR */
+		5, /*"O_UAV_01_F",*/
 		20, /*"Box_East_WpsLaunch_F",*/
 		20, /*"Box_East_Support_F",*/
 		100, /*"O_supplyCrate_F",*/
@@ -266,13 +267,6 @@ if (!isServer || !isDedicated) then
 		20, /*"Box_East_Ammo_F",*/
 		20  /*"Box_East_Wps_F"*/
 		];
-		
-	if (pixRadioType == "ACRE") then 
-	{ 	
-		pixlogisticMovableObjects = pixlogisticMovableObjects + ["ACRE_RadioBox"];
-		pixlogisticMovableObjectsSize = pixlogisticMovableObjectsSize + [20];
-	};
-		
 		
 	/* Container-Gebäude die zu einem Container verpackt werden können */
 	pixlogisticBuildings = [		
@@ -326,7 +320,6 @@ if (!isServer || !isDedicated) then
 		"B_UGV_01_F",
 		"B_UAV_02_CAS_F",
 		"B_UAV_02_F",
-		"B_UAV_01_F",
 		"B_Heli_Light_01_armed_F",
 		"B_Heli_Attack_01_F",
 		"B_Heli_Light_01_F",
@@ -368,7 +361,6 @@ if (!isServer || !isDedicated) then
 		"O_Truck_02_box_F",
 		"O_Truck_02_medical_F",
 		"O_Truck_02_fuel_F",
-		"O_UAV_01_F",
 		"O_UGV_01_F",
 		"O_UGV_01_rcws_F",
 		"O_UAV_02_F",
@@ -428,7 +420,6 @@ if (!isServer || !isDedicated) then
 		"B_UGV_01_F",
 		"B_UAV_02_CAS_F",
 		"B_UAV_02_F",
-		"B_UAV_01_F",
 		"B_Heli_Light_01_armed_F",
 		"B_Heli_Attack_01_F",
 		"B_Heli_Light_01_F",
@@ -470,7 +461,6 @@ if (!isServer || !isDedicated) then
 		"O_Truck_02_box_F",
 		"O_Truck_02_medical_F",
 		"O_Truck_02_fuel_F",
-		"O_UAV_01_F",
 		"O_UGV_01_F",
 		"O_UGV_01_rcws_F",
 		"O_UAV_02_F",
@@ -508,7 +498,6 @@ if (!isServer || !isDedicated) then
 		2000, /*"B_UGV_01_F",*/
 		2000, /*"B_UAV_02_CAS_F",*/
 		2000, /*"B_UAV_02_F",*/
-		2000, /*"B_UAV_01_F",*/
 		2000, /*"B_Heli_Light_01_armed_F",*/
 		2000, /*"B_Heli_Attack_01_F",*/
 		2000, /*"B_Heli_Light_01_F",*/
@@ -550,7 +539,6 @@ if (!isServer || !isDedicated) then
 		2000, /*"O_Truck_02_box_F",*/
 		2000, /*"O_Truck_02_medical_F",*/
 		2000, /*"O_Truck_02_fuel_F",*/
-		100,  /*"O_UAV_01_F",*/
 		2000, /*"O_UGV_01_F",*/
 		2000, /*"O_UGV_01_rcws_F",*/
 		2000, /*"O_UAV_02_F",*/
@@ -602,7 +590,7 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_ammo_F" >> "displayName"), 3000, 0, "B_Truck_01_ammo_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_ammo_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_medical_F" >> "displayName"), 3000, 0, "B_Truck_01_medical_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_medical_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_fuel_F" >> "displayName"), 3000, 0, "B_Truck_01_fuel_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_fuel_F" >> "icon"), []],
-		[gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "displayName"), 100, 0, "B_UGV_01_rcws_F", gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "displayName"), 3000, 0, "B_UGV_01_rcws_F", gettext (configFile >> "CfgVehicles" >> "B_UGV_01_rcws_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_UGV_01_F" >> "displayName"), 100, 0, "B_UGV_01_F", gettext (configFile >> "CfgVehicles" >> "B_UGV_01_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_UAV_02_CAS_F" >> "displayName"), 3000, 0, "B_UAV_02_CAS_F", gettext (configFile >> "CfgVehicles" >> "B_UAV_02_CAS_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "B_UAV_02_F" >> "displayName"), 3000, 0, "B_UAV_02_F", gettext (configFile >> "CfgVehicles" >> "B_UAV_02_F" >> "icon"), []],
@@ -636,12 +624,6 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_WpsLaunch_F" >> "displayName"), 500, 0, "Box_NATO_WpsLaunch_F", "", []],
 		[gettext (configFile >> "CfgVehicles" >> "Box_NATO_AmmoVeh_F" >> "displayName"), 500, 0, "Box_NATO_AmmoVeh_F", "", []]		
 	];
-	
-	if (pixRadioType == "ACRE") then 
-	{ 	
-		pixLogisticStoreWeapons = pixLogisticStoreWeapons + [["ACRE RadioBox", 500, 0, "ACRE_RadioBox", "", []]];
-	};
-		
 	
 	/*---------------------------------------------------*/
 	/* Definiert, welche Container gekauft werden können */
@@ -689,5 +671,44 @@ if (!isServer || !isDedicated) then
 			"Land_Medevac_HQ_V1_F"
 			]]			
 	];
+		
+	if (count pixlogisticTransportContainers != count pixlogisticTransportContainersSize) then
+	{
+		private["_msg"];
+		_msg = "ERROR: pixLogistic\config.sqf: (count pixlogisticTransportContainers != count pixlogisticTransportContainersSize)";
+		diag_log _msg;
+		player globalChat _msg;
+	};
+
+	if (count pixlogisticTransportVehicles != count pixlogisticTransportVehiclesSize) then
+	{
+		private["_msg"];
+		_msg = "ERROR: pixLogistic\config.sqf: (count pixlogisticTransportVehicles != count pixlogisticTransportVehiclesSize)";
+		diag_log _msg;
+		player globalChat _msg;
+	};
 	
+	if (count pixlogisticMovableObjects != count pixlogisticMovableObjectsSize) then
+	{
+		private["_msg"];
+		_msg = "ERROR: pixLogistic\config.sqf: (count pixlogisticMovableObjects != count pixlogisticMovableObjectsSize)";
+		diag_log _msg;
+		player globalChat _msg;
+	};
+	
+	if (count pixLogisticLiftVehicles != count pixLogisticLiftVehiclesStrength) then
+	{
+		private["_msg"];
+		_msg = "ERROR: pixLogistic\config.sqf: (count pixLogisticLiftVehicles != count pixLogisticLiftVehiclesStrength)";
+		diag_log _msg;
+		player globalChat _msg;
+	};
+
+	if (count pixLogisticLiftObjects != count pixLogisticLiftObjectWeights) then
+	{
+		private["_msg"];
+		_msg = "ERROR: pixLogistic\config.sqf: (count pixLogisticLiftObjects != count pixLogisticLiftObjectWeights)";
+		diag_log _msg;
+		player globalChat _msg;
+	};
 };

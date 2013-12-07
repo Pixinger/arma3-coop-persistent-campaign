@@ -23,7 +23,7 @@ if (isServer) then
 	}
 	else
 	{
-		player sidechat "pixLogistic: Error: unable to delete item";
+		player globalChat "pixLogistic: Error: unable to delete item";
 		diag_log "pixLogistic: Error: unable to delete item";
 	};
 

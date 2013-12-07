@@ -15,6 +15,16 @@ _currentTask setSimpleTaskDescription ["Der Feind rückt auf einen alliierten St
 _currentTask setSimpleTaskDestination _missionPosition;
 _currentTask setTaskState "Assigned";
 
+/*------------------*/
+/* Marker erstellen */
+/*------------------*/
+_markerName = call fn_missionsOpt_GetUniqueMarkerName;
+createMarkerLocal [_markerName, _missionPosition];
+_markerName setMarkerShapeLocal "ELLIPSE";
+_markerName setMarkerSizeLocal [25, 25];
+_markerName setMarkerAlphaLocal 0.8;
+_markerName setMarkerColorLocal "ColorBlue";
+
 /*------------------------------------*/
 /* Warten bis die Mission zu Ende ist */
 /*------------------------------------*/
@@ -37,3 +47,9 @@ else
 	/* Fehlgeschlagen */
 	_currentTask setTaskState "Failed";
 };
+
+/*-----------------*/
+/* Maker entfernen */
+/*-----------------*/
+deleteMarkerLocal _markerName; 
+_markerName = nil;

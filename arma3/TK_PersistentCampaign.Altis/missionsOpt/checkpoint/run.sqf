@@ -161,22 +161,39 @@ if (isServer) then
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointTimeout [10, 30, 60];
+	
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	private["_currentPlayerCount"];
+	_currentPlayerCount = 10;
+	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
+	private["_patrolCount"];
+	_patrolCount = ceil(_currentPlayerCount / 4);
+	for "_i" from 0 to _patrolCount do 
+	{
+		private["_teamTypes"];
+		_teamTypes = ["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInfTeam","OIA_MotInf_AT"];
+		private["_randomPos"];
+		_randomPos = [[[_missionPosition, random 600]],["water","out"]] call BIS_fnc_randomPos;
+		private["_spawnGroup"];
+		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
+		private["_tmp"];
+		_tmp = [_spawnGroup, _missionPosition, random 600] call fn_missionsOpt_Patrol;
+		_units = _units + (units _spawnGroup);
+		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
+	};	
 
-	if (pixDebug) then { player sideChat "Checkpoint spawned";};
-
-	if (_missionPosition distance [0,0,0] > 1000) then 
-	{ 
-		/*--------------------------------------*/
-		/* Warten bis die Mission erfüllt wurde */
-		/*--------------------------------------*/
-		private["_aliveUnits"];
-		_aliveUnits = 5;
-		while { (_aliveUnits > 1) && (pixZones_ActiveIndex != -1) } do
-		{
-			Sleep 2;
-			_aliveUnits = 0;
-			{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _units;
-		};
+	/*--------------------------------------*/
+	/* Warten bis die Mission erfüllt wurde */
+	/*--------------------------------------*/
+	private["_aliveUnits"];
+	_aliveUnits = 5;
+	while { (_aliveUnits > 1) && (pixZones_ActiveIndex != -1) } do
+	{
+		Sleep 2;
+		_aliveUnits = 0;
+		{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _units;
 	};
 	
 	/*--------------------------------------------------------*/
@@ -196,6 +213,7 @@ if (isServer) then
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep 60;
 
 	/*------------------------*/
@@ -210,6 +228,6 @@ if (isServer) then
 	deleteGroup _groupPatrol; _groupPatrol = nil;
 	deleteCenter _center; _center = nil;
 	
-	if (pixDebug) then { player sideChat "Checkpoint deleted";};	
+	if (pixDebug) then { player globalChat "Checkpoint deleted";};	
 };
  

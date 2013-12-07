@@ -1,6 +1,6 @@
 ﻿if (pixZones_ActiveIndex != -1) then
 {
-	player sidechat "Es ist bereits eine Zone aktiv. Eine neue Zone kann nicht angegriffen werden.";	
+	player globalChat "Es ist bereits eine Zone aktiv. Eine neue Zone kann nicht angegriffen werden.";	
 }
 else
 {
@@ -16,7 +16,7 @@ else
 
 	if (_timeout < time) then
 	{
-		player sidechat "Auswahl wegen Zeitüberschreitung beendet. Erst nachdenken, dann klicken...";
+		player globalChat "Auswahl wegen Zeitüberschreitung beendet. Erst nachdenken, dann klicken...";
 		onMapSingleClick ''; 
 		openMap [true, false]; 
 		openMap [false, false]; 
@@ -33,7 +33,7 @@ else
 			{				
 				/* Wenn der Zufall es will, einen Gegenangriff starten */
 				/* vorübergehend deaktvieirt, da die mission noch nicht fertig ist. if (random 1 < 0.4) then */
-				if (1 == 2) then
+				if (random 1 < 0.2) then
 				{
 					/* Pürfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
@@ -67,7 +67,7 @@ else
 			}
 			else
 			{
-				player sidechat "Diese Zone kann nicht angegriffen werden.";
+				player globalChat "Diese Zone kann nicht angegriffen werden.";
 			};
 		};	
 	};

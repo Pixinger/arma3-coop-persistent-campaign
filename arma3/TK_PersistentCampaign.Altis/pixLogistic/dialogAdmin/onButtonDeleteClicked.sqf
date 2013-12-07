@@ -7,7 +7,7 @@ if !(isNull _cursorTarget) then
 	
 	if (isServer && !isDedicated) then
 	{
-		player sidechat "simulate server";
+		player globalChat "simulate server";
 		[_cursorTarget] execVM "pixLogistic\serverDeleteItem.sqf";
 	}
 	else

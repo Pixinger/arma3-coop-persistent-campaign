@@ -74,6 +74,7 @@ else
 		/*----------------------*/
 		/* Rev-Missions starten */
 		/*----------------------*/
+		missionsRev_AttackFinished = false;
 		for "_i" from 0 to ((count _missionsRev) - 1) do
 		{
 			/* [zoneIndex, _missionInfoIndex] */
@@ -106,12 +107,26 @@ else
 				publicVariable "pvPixLogisticMoney";
 				
 				pvehPixZones_ZoneStatus set [pixZones_ActiveIndex, 2];
-				[] call compile preprocessFileLineNumbers "pixZones\serverSaveToDb.sqf";		
 			}
 			else
 			{
+				/* Wenn es sich um eine ReverseAttack Mission handelt, dann müssen wir nun leider alle BlueFor Fahrzeuge in der Zone vernichten. */
+				if (count (pvehPixZones_MissionInfos select 3) > 0) then
+				{
+					waitUntil { !pixlogisticDbMutex };
+					pixlogisticDbMutex = true;
+					{
+						if (((getPos _x) call fn_pixZones_GetZoneIndex) == pixZones_ActiveIndex) then
+						{
+							_x setDamage 1;
+						};
+					} foreach pixlogisticDbItems;
+					pixlogisticDbMutex = false;
+				};
+				
 				pvehPixZones_ZoneStatus set [pixZones_ActiveIndex, 0];
 			};
+			[] call compile preprocessFileLineNumbers "pixZones\serverSaveToDb.sqf";		
 			publicVariable "pvehPixZones_ZoneStatus";
 			if (!isDedicated) then	{ call compile preprocessFileLineNumbers "pixZones\pvehPixZones_ZoneStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
 			

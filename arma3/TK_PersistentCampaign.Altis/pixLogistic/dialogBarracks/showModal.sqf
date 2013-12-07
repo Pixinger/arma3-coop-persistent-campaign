@@ -6,26 +6,54 @@ _building = _this select 0;
 #include "defines.hpp";
 createDialog "PIXLOGISTIC_DIALOG_BARRACK"; 	
 
-private["_compositions"];
-_compositions = [ 	
-	["Gruppenführer", ["G_Combat","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
-	["Soldat 1", ["G_Sport_Red","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
-	["Soldat 2", ["G_Sport_Greenblack","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
-	["Soldat 3", ["G_Sport_BlackWhite","H_HelmetB_plain_blk","U_B_CombatUniform_mcam_vest","V_PlateCarrierGL_rgr","keep"]],
-	["Sniper 1", ["G_Sport_Red","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
-	["Sniper 2", ["G_Sport_Greenblack","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
-	["Sniper 3", ["G_Sport_BlackWhite","H_HelmetSpecB","U_B_GhillieSuit","V_TacVest_camo","keep"]],
-	["Helipilot", ["G_Shades_Black","H_PilotHelmetHeli_B","U_B_HeliPilotCoveralls","",""]],
-	["Pilot", ["G_Shades_Black","H_PilotHelmetFighter_B","U_B_PilotCoveralls","",""]],
-	["Spielleiter", ["G_Tactical_Clear","H_Cap_headphones","U_Competitor","V_Rangemaster_belt",""]],
-	["Taucher", ["G_Diving","","U_B_Wetsuit","V_RebreatherB","keep"]]
+private["_loadouts"];
+_loadouts = [
+	/*AAF*/
+/*	["AAF Gruppenführer","AAF_Teamleader.sqf"],
+	["AAF Automatikschütze","AAF_Autorifleman.sqf"],
+	["AAF Automatikschütze(Gurt)","AAF_Belt_Autorifleman.sqf"],
+	["AAF Ingenieur","AAF_Engineer.sqf"],
+	["AAF Sanitäter","AAF_Medic.sqf"],
+	["AAF PCML","AAF_PCML.sqf"],
+	["AAF Scharfschütze","AAF_Sniper.sqf"],
+	["AAF Unterstüzung","AAF_Support.sqf"],
+	["AAF Titan AT","AAF_Titan.sqf"],
+	["AAF Titan AA","AAF_TitanAA.sqf"],*/
+	/*UK*/
+	["UK Gruppenführer","UK_Teamleader.sqf"],
+	["UK Automatikschütze","UK_Autorifleman.sqf"],
+	["UK Automatikschütze(Gurt)","UK_Belt_Autorifleman.sqf"],
+	["UK Ingenieur","UK_Engineer.sqf"],
+	["UK Sanitäter","UK_Medic.sqf"],
+	["UK PCML","UK_PCML.sqf"],
+	["UK Scharfschütze","UK_Sniper.sqf"],
+	["UK Beobachter","UK_Spotter.sqf"],
+	["UK Unterstüzung","UK_Support.sqf"],
+	["UK Titan AT","UK_Titan.sqf"],
+	["UK Titan AA","UK_TitanAA.sqf"],
+	/*US*/
+	["US Gruppenführer","US_Teamleader.sqf"],
+	["US Automatikschütze","US_Autorifleman.sqf"],
+	["US Automatikschütze(Gurt)","US_Belt_Autorifleman.sqf"],
+	["US Ingenieur","US_Engineer.sqf"],
+	["US Sanitäter","US_Medic.sqf"],
+	["US PCML","US_PCML.sqf"],
+	["US Scharfschütze","US_Sniper.sqf"],
+	["US Beobachter","US_Spotter.sqf"],
+	["US Unterstüzung","US_Support.sqf"],
+	["US Titan AT","US_Titan.sqf"],
+	["US Titan AA","US_TitanAA.sqf"],
+	["Taucher", "Diver.sqf"],
+	["Helipilot", "HeliPilot.sqf"],
+	["Pilot", "Pilot.sqf"],
+	["Kommandeur", "Commander.sqf"]	
 ];
 
 /*-----------------------------------------------------------------		*/
 /* Listbox füllen*/
 {
 	lbAdd [PIXLOGISTIC_IDC_DIALOG_BARRACK_List, (_x select 0)];
-} foreach _compositions;
+} foreach _loadouts;
 lbSetCurSel [PIXLOGISTIC_IDC_DIALOG_BARRACK_List, 0];
 
 /*-----------------------------------------------------------------	*/
@@ -38,86 +66,11 @@ waitUntil { !dialog };
 /* Wenn OK geklickt wurde, die Eingaben verarbeiten*/
 if (pixLogisticDialogBarrack_ButtonOK == 1) then
 {		
-	private["_composition"];
-	_composition = (_compositions select pixLogisticDialogBarrack_Selection) select 1;
-	
-	private["_goggles"];
-	_goggles =  _composition select 0;
-	private["_headgear"];
-	_headgear = _composition select 1;
-	private["_uniform"];
-	_uniform = _composition select 2;
-	private["_vest"];
-	_vest = _composition select 3;
-	private["_backpack"];
-	_backpack = _composition select 4;
-	
-	if (_goggles != "keep") then
-	{
-		removeGoggles player;
-		if (_goggles != "") then
-		{
-			player addGoggles _goggles;
-		};
-	};
-	if (_headgear != "keep") then
-	{
-		removeHeadgear player;
-		if (_headgear != "") then
-		{
-			player addHeadgear _headgear;
-		};
-	};
-	if (_uniform != "keep") then
-	{
-		removeUniform player;
-		if (_uniform != "") then
-		{
-			player addUniform _uniform;
-		};
-	};
-	if (_vest != "keep") then
-	{
-		removeVest player;
-		if (_vest != "") then
-		{
-			player addVest _vest;
-		};
-	};
-	if (_backpack != "keep") then
-	{
-		removeBackpack player;
-		if (_backpack != "") then
-		{
-			player addBackpack _backpack;
-		};
-	};
-	
-	titleCut ["","BLACK IN",1];
-	_camera = "camera" camcreate [((getPos player) select 0) + 3,((getPos player) select 1) + 3,((getPos player) select 2) + 2];
-	_camera cameraeffect ["internal", "back"];
-	_camera camPrepareTarget player;
-	_camera camPreparePos [((getPos player) select 0) + 3,((getPos player) select 1) + 3,((getPos player) select 2) + 2];
-	_camera camPrepareFOV 0.700;
-	_camera camCommitPrepared 0;		
-	_camera camsettarget [(getPos player) select 0, (getPos player) select 1, ((getPos player) select 2) + 1];
-	_camera camsetrelpos [0,5,1];
-	_camera camcommit 0;
-	Sleep 1;
-	_camera camsetrelpos [5,0,1];
-	_camera camcommit 2;
-	waitUntil { camCommitted _camera };
-	_camera camsetrelpos [0,-5,1];
-	_camera camcommit 2;
-	waitUntil { camCommitted _camera };
-	_camera camsetrelpos [-5,0,1];
-	_camera camcommit 2;
-	waitUntil { camCommitted _camera };
-	_camera camsetrelpos [0,5,1];
-	_camera camcommit 2;
-	waitUntil { camCommitted _camera };
-	Sleep 1;
-	player cameraEffect ["terminate","back"];
-	camDestroy _camera;
+	private["_scriptFilename"];
+	_scriptFilename = (_loadouts select pixLogisticDialogBarrack_Selection) select 1;
+
+	/* LoadOut zuweisen */
+	private["_result"];
+	_result = [player, _scriptFilename] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";	
 };
 pixLogisticDialogBarrack_Selection = nil;

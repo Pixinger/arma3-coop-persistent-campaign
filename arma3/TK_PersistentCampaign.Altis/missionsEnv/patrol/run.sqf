@@ -66,13 +66,15 @@ if (isServer) then
 	{
 		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
 	};
+	diag_log format["INFO: missionsEnv\patrol: _unitTypes: %1", _unitTypes];
 	
 	private["_group"];
 	_group = [getMarkerPos _markerName, east, _unitTypes] call BIS_fnc_spawnGroup;		
 	
 	if (pixPatrolSkriptType == "UPS") then
 	{
-		_tmp = [leader _group, _markerName,"randomdn","min:1/max:3","nofollow","nowait","showmarker","NOTRIGGER"] execVM "missionsEnv\patrol\ups.sqf"; /*,"track"*/
+		_tmp = [leader _group, _markerName,"randomdn","min:1/max:1","nofollow","nowait","showmarker","NOTRIGGER"] execVM "missionsEnv\patrol\ups.sqf"; /*,"track"*/
+		diag_log "INFO: missionsEnv\patrol: started UPS";
 	}
 	else
 	{
@@ -80,7 +82,14 @@ if (isServer) then
 		_size = markerSize _markerName;
 		if (_size select 0 > _size select 1) then { _size = _size select 1; } else { _size = _size select 0; };
 		_tmp = [leader _group, 100, _size, _markerName, _markerName, _size, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [true,35,25,3,1]] execVM "missionsEnv\patrol\USPS.sqf";		
+		diag_log "INFO: missionsEnv\patrol: started USPS";
 	};		
+	
+	/* Nur im Debug */
+	if (isServer && !isDedicated) then
+	{
+		[_group, true, "ColorBlue"] spawn fn_missionsRev_TrackGroup;
+	};
 
 	/*Sleep 5;	
 	player setPos (getpos (leader _group));*/
@@ -89,7 +98,7 @@ if (isServer) then
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
 	waitUntil {(pixZones_ActiveIndex == -1)};
-	player sidechat "zone beendet. patrol wird gelöscht";
+	player globalChat "zone beendet. patrol wird gelöscht";
 	
 	Sleep 10;
 	

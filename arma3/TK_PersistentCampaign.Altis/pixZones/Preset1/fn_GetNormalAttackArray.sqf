@@ -43,8 +43,10 @@ if (isServer) then
 	/* Zum debuggen */
 	if (isServer && !isDedicated) then
 	{
-		_missionsEnv = [];
+		/*_missionsEnv = [];*/
 	};
+
+	diag_log format["_missionsEnv = %1", _missionsEnv];
 	
 
 	/*------------------------------------------------------------------------------------------------*/
@@ -109,10 +111,11 @@ if (isServer) then
 		}
 		else
 		{
-			player sidechat format["missionOpt Index(%1) hat keine Position gefunden", _x];
+			player globalChat format["missionOpt Index(%1) hat keine Position gefunden", _x];
 		};
 		_index = _index + 1;
 	} foreach _missionOptCfgIndices;
+	diag_log format["_missionsOpt = %1", _missionsOpt];
 	
 	
 	

@@ -134,7 +134,7 @@ if (((typeof _object) in pixlogisticMovableObjects) || ((typeof _object) in pixl
 
 							if (_totalLoad + _currentLoad > _maxLoad) then
 							{
-								player sidechat "Nicht genug Platz im Laderaum!";
+								player globalChat "Nicht genug Platz im Laderaum!";
 							}
 							else
 							{
@@ -144,7 +144,7 @@ if (((typeof _object) in pixlogisticMovableObjects) || ((typeof _object) in pixl
 								/* Aus der Datenbank entfernen*/
 								if (isServer && !isDedicated) then
 								{
-									player sidechat "simulate server";
+									player globalChat "simulate server";
 									[_object] execVM "pixLogistic\serverDeleteItem.sqf";
 								}
 								else

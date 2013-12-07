@@ -45,5 +45,5 @@ if (isNull pixLogisticLift_AttachedObject) then
 }
 else
 {
-	player sidechat "ERROR: Already something attached.";	
+	player globalChat "ERROR: Already something attached.";	
 };

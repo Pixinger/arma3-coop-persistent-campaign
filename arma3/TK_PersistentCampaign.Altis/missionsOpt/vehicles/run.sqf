@@ -58,52 +58,46 @@ if (isServer) then
 	createVehicleCrew _vehicle2;
 	_units = _units + (crew _vehicle2);
 
-	private["_vehicle3"];
-	_vehicle3 = _vehicleClassname createVehicle [(_missionPosition select 0) + ((random 100) - 50), _missionPosition select 1, 0]; 
-	Sleep .2;
-	_vehicle3 lock true;
-	_vehicle3 setdir random 360;
-	_normal = surfaceNormal (position _vehicle3);
-	_vehicle3 setVectorUp _normal;
-	createVehicleCrew _vehicle3;
-	_units = _units + (crew _vehicle3);
-	
-
 	private["_spawnGroup"];
 	private["_randomPos"];
-	private["_random"];
-	_random = floor (random 3) + 1;
-	for "_i" from 0 to _random do 
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	private["_currentPlayerCount"];
+	_currentPlayerCount = 10;
+	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
+	private["_patrolCount"];
+	_patrolCount = ceil(_currentPlayerCount / 4);
+	for "_i" from 0 to _patrolCount do 
 	{
-		_randomPos = [[[_missionPosition, random 400 + 250]],["water","out"]] call BIS_fnc_randomPos;
-		private["_spawnGroup"];
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		nul = [_spawnGroup, _missionPosition, random 600 + 300] call fn_missionsOpt_Patrol;
+		private["_teamTypes"];
+		_teamTypes = ["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInfTeam","OIA_MotInf_AT"];
+		_randomPos = [[[_missionPosition, random 600]],["water","out"]] call BIS_fnc_randomPos;
+		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
+		private["_tmp"];
+		_tmp = [_spawnGroup, _missionPosition, random 600] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};
 
-	_random = floor (random 2) + 1;
-	for "_i" from 0 to _random do 	
-	{
-		_randomPos = [[[_missionPosition,random 150]],["water","out"]] call BIS_fnc_randomPos;
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
-	};
+	/* Verteidigungs Truppe */
+	private["_teamTypes"];
+	_teamTypes = ["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInfTeam","OIA_MotInf_AT","OIA_InfSentry"];				
+	_randomPos = [[[_missionPosition, random 80]],["water","out"]] call BIS_fnc_randomPos;	
+	_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
+	[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
+	_units = _units + (units _spawnGroup);
+	 [_spawnGroup] call fn_missionsOpt_SetSkill;
+	/* Nur im Debug */
+	if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 
 	_vehicle1 setDamage 0.5;
 	_vehicle2 setDamage 0.5;
-	_vehicle3 setDamage 0.5;
-	if (_vehicle1 distance [0,0,0] < 1000) then { _vehicle1 setDamage 1;};
-	if (_vehicle2 distance [0,0,0] < 1000) then { _vehicle2 setDamage 1;};
-	if (_vehicle3 distance [0,0,0] < 1000) then { _vehicle3 setDamage 1;};
 
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	waitUntil {((!alive _vehicle1) &&(!alive _vehicle2) &&(!alive _vehicle3)) || (pixZones_ActiveIndex == -1)};
+	waitUntil {((!alive _vehicle1) &&(!alive _vehicle2)) || (pixZones_ActiveIndex == -1)};
 	
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
@@ -136,17 +130,11 @@ if (isServer) then
 		waitUntil { scriptDone _script;};
 		_vehicle2 = nil;
 	};
-	if (!canMove _vehicle3) then 
-	{
-		private["_script"];
-		_script = [_vehicle3] execVM "pixLogistic\serverInsertItem.sqf";
-		waitUntil { scriptDone _script;};
-		_vehicle3 = nil;
-	};
 
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep 60;
 
 	/*------------------------*/
@@ -154,6 +142,5 @@ if (isServer) then
 	/*------------------------*/
 	if (!(isNil "_vehicle1")) then {deletevehicle _vehicle1;};
 	if (!(isNil "_vehicle2")) then {deletevehicle _vehicle2;};
-	if (!(isNil "_vehicle3")) then {deletevehicle _vehicle3;};
 	{deletevehicle _x} foreach _units;
 };

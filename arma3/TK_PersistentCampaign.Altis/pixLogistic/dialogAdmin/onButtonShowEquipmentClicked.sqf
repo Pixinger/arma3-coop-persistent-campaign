@@ -20,7 +20,8 @@ if !(isNull _cursorTarget) then
 	_items = items _cursorTarget;
 	private["_weapons"];
 	_weapons = weapons _cursorTarget;
-	
+	private["_primaryWeaponItems"];
+	_primaryWeaponItems = primaryWeaponItems _cursorTarget;	
 	
 	private["_parsedText"];
 	_parsedText = parseText format["
@@ -32,7 +33,8 @@ if !(isNull _cursorTarget) then
 		backpack: %6<br/>
 		items: %7<br/>
 		weapons: %8<br/>
-		", _classname, _goggles, _vest, _headgear, _uniform, _backpack, _items, _weapons];
+		pwi's: %9<br/>
+		", _classname, _goggles, _vest, _headgear, _uniform, _backpack, _items, _weapons, _primaryWeaponItems];
 	hintSilent _parsedText; 
 	diag_log _parsedText;
 };

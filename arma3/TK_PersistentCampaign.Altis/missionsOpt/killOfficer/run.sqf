@@ -46,20 +46,29 @@ if (isServer) then
 	_units = _units + (units _groupOfficer);	
 	private["_officer"];
 	_officer = _units select 0;
+	if (isServer && !isDedicated) then { [_groupOfficer, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 
-	private["_random"];
-	_random = floor (random 4) + 1;
-	for "_i" from 0 to _random do 
+	private["_spawnGroup"];
+	private["_randomPos"];
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	private["_currentPlayerCount"];
+	_currentPlayerCount = 10;
+	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
+	private["_patrolCount"];
+	_patrolCount = ceil(_currentPlayerCount / 4);
+	for "_i" from 0 to _patrolCount do 
 	{
-		private["_randomPos"];
-		_randomPos = [[[_missionPosition, random 700 + 500]],["water","out"]] call BIS_fnc_randomPos;
-		private["_spawnGroup"];
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		_tmp = [_spawnGroup, _missionPosition, random missionsOpt_DefaultMarkerRadius] call fn_missionsOpt_Patrol;
+		private["_teamTypes"];
+		_teamTypes = ["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInfTeam","OIA_MotInf_AT"];
+		_randomPos = [[[_missionPosition, random 600]],["water","out"]] call BIS_fnc_randomPos;
+		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> (_teamTypes select floor(random(count _teamTypes))))] call BIS_fnc_spawnGroup;
+		private["_tmp"];
+		_tmp = [_spawnGroup, _missionPosition, random 600] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};
-
 	
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
@@ -83,6 +92,7 @@ if (isServer) then
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep 60;
 
 	/*------------------------*/

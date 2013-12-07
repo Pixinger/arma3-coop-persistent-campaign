@@ -63,6 +63,8 @@ if (isServer) then
 		_tmp = [_spawnGroup, _missionPosition, random 400] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};
 
 	_random = floor (random 2) + 1;
@@ -75,6 +77,8 @@ if (isServer) then
 		_tmp = [_spawnGroup, _missionPosition, random 100] call fn_missionsOpt_Patrol;
 		_units = _units + (units _spawnGroup);
 		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		/* Nur im Debug */
+		if (isServer && !isDedicated) then { [_spawnGroup, true, "ColorRed"] spawn fn_missionsRev_TrackGroup;};
 	};
 	
 	/*--------------------------------------*/

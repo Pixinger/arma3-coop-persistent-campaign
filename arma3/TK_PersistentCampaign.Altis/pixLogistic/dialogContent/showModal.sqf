@@ -90,7 +90,7 @@ if (((typeof _vehicle) in pixlogisticTransportVehicles) || ((typeof _vehicle) in
 			/* zur Datenbank hinzufügen*/
 			if (isServer && !isDedicated) then
 			{
-				player sidechat "simulate server";
+				player globalChat "simulate server";
 				[_object] execVM "pixLogistic\serverInsertItem.sqf";
 			}
 			else
@@ -113,5 +113,5 @@ if (((typeof _vehicle) in pixlogisticTransportVehicles) || ((typeof _vehicle) in
 }
 else
 {
-	player sidechat "invalid object";
+	player globalChat "invalid object";
 };

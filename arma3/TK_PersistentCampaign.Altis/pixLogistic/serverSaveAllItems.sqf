@@ -26,31 +26,31 @@ if (isServer) then
 		if (_result != "OK") then
 		{
 			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticMoney failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticMoney failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticMoney failed: %1", _result];
 		};		
 		_result = [format["pvPixLogisticTeamLeaderUIDs = %1;", pvPixLogisticTeamLeaderUIDs]] call _fn_pixLogistic_DataWriteNext;
 		if (_result != "OK") then
 		{
 			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticTeamLeaderUIDs failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticTeamLeaderUIDs failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticTeamLeaderUIDs failed: %1", _result];
 		};		
 		_result = [format["pvPixLogisticAdminUIDs = %1;", pvPixLogisticAdminUIDs]] call _fn_pixLogistic_DataWriteNext;
 		if (_result != "OK") then
 		{
 			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticAdminUIDs failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticAdminUIDs failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pvPixLogisticAdminUIDs failed: %1", _result];
 		};		
 		_result = [format["pixlogisticRewardForZone = %1;", pixlogisticRewardForZone]] call _fn_pixLogistic_DataWriteNext;
 		if (_result != "OK") then
 		{
 			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForZone failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForZone failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForZone failed: %1", _result];
 		};		
 		_result = [format["pixlogisticRewardForExistingZone = %1;", pixlogisticRewardForExistingZone]] call _fn_pixLogistic_DataWriteNext;
 		if (_result != "OK") then
 		{
 			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForExistingZone failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForExistingZone failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForExistingZone failed: %1", _result];
 		};		
 		
 
@@ -64,24 +64,24 @@ if (isServer) then
 			while { _result == "INPROGRESS" } do {	Sleep 0.5; _result = call _fn_pixLogistic_DataIsThreadFinished; };
 			if (_result == "OK") then
 			{	
-				if (isServer && !isDedicated) then { player sidechat "pixLogisticData saved";}; /* ersatzmechanismus "publicVariable" */
+				if (isServer && !isDedicated) then { player globalChat "pixLogisticData saved";}; /* ersatzmechanismus "publicVariable" */
 			}
 			else
 			{
 				diag_log format["ERROR: _fn_pixLogistic_DataEndSave=>_fn_pixLogistic_DataIsThreadFinished failed: %1", _result];
-				player sidechat format["ERROR: _fn_pixLogistic_DataEndSave=>_fn_pixLogistic_DataIsThreadFinished failed: %1", _result];
+				player globalChat format["ERROR: _fn_pixLogistic_DataEndSave=>_fn_pixLogistic_DataIsThreadFinished failed: %1", _result];
 			};
 		}
 		else
 		{
 			diag_log format["ERROR: _fn_pixLogistic_DataEndSave failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_DataEndSave failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataEndSave failed: %1", _result];
 		};
 	}
 	else
 	{
 		diag_log format["ERROR: _fn_pixLogistic_DataBeginSave failed: %1", _result];
-		player sidechat format["ERROR: _fn_pixLogistic_DataBeginSave failed: %1", _result];
+		player globalChat format["ERROR: _fn_pixLogistic_DataBeginSave failed: %1", _result];
 	};
 
 	
@@ -142,7 +142,7 @@ if (isServer) then
 			if (_result != "OK") then
 			{
 				diag_log format["ERROR: _fn_pixLogistic_ItemWriteNext failed: %1", _result];
-				player sidechat format["ERROR: _fn_pixLogistic_ItemWriteNext failed: %1", _result];
+				player globalChat format["ERROR: _fn_pixLogistic_ItemWriteNext failed: %1", _result];
 			};		
 			
 		} foreach pixlogisticDbItems;
@@ -159,24 +159,24 @@ if (isServer) then
 			{	
 				pvehPixlogisticSaved = pvehPixlogisticSaved + 1;
 				publicVariable "pvehPixlogisticSaved";			
-				if (isServer && !isDedicated) then { player sidechat "pixLogisticItem saved";}; /* ersatzmechanismus "publicVariable" */
+				if (isServer && !isDedicated) then { player globalChat "pixLogisticItem saved";}; /* ersatzmechanismus "publicVariable" */
 			}
 			else
 			{
 				diag_log format["ERROR: _fn_pixLogistic_ItemEndSave=>_fn_pixLogistic_ItemIsThreadFinished failed: %1", _result];
-				player sidechat format["ERROR: _fn_pixLogistic_ItemEndSave=>_fn_pixLogistic_ItemIsThreadFinished failed: %1", _result];
+				player globalChat format["ERROR: _fn_pixLogistic_ItemEndSave=>_fn_pixLogistic_ItemIsThreadFinished failed: %1", _result];
 			};
 		}
 		else
 		{
 			diag_log format["ERROR: _fn_pixLogistic_ItemEndSave failed: %1", _result];
-			player sidechat format["ERROR: _fn_pixLogistic_ItemEndSave failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_ItemEndSave failed: %1", _result];
 		};
 	}
 	else
 	{
 		diag_log format["ERROR: _fn_pixLogistic_ItemBeginSave failed: %1", _result];
-		player sidechat format["ERROR: _fn_pixLogistic_ItemBeginSave failed: %1", _result];
+		player globalChat format["ERROR: _fn_pixLogistic_ItemBeginSave failed: %1", _result];
 	};
 
 	pixlogisticDbMutex = false;

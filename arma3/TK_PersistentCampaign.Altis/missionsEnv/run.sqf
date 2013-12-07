@@ -13,8 +13,8 @@ _missionInfoIndex = _this select 1;
 /*--------------*/
 /* Error Checks */
 /*--------------*/
-if (_zoneIndex < 0) then { player sidechat format["ERROR: Invalid MissionEnv-ZoneIndex %1 (too small)", _zoneIndex]; };
-if (_zoneIndex >= pixZones_ZoneCount) then { player sidechat format["ERROR: Invalid MissionEnv-ZoneIndex %1 (too large)", _zoneIndex]; };
+if (_zoneIndex < 0) then { player globalChat format["ERROR: Invalid MissionEnv-ZoneIndex %1 (too small)", _zoneIndex]; };
+if (_zoneIndex >= pixZones_ZoneCount) then { player globalChat format["ERROR: Invalid MissionEnv-ZoneIndex %1 (too large)", _zoneIndex]; };
 
 /*-----------------*/
 /* Mission starten */

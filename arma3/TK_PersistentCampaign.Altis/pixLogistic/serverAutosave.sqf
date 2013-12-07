@@ -3,7 +3,7 @@ if (isServer) then
 	/* -------------------------------------*/
 	/* Schleife zum automatischen speichern */
 	/* -------------------------------------*/
-	player sidechat "pixLogistic: Autosave enabled";
+	player globalChat "pixLogistic: Autosave enabled";
 	while { true } do
 	{
 		Sleep 580; /* knapp 10 Minuten um eine gewisse asynchronität zu erhalten. */

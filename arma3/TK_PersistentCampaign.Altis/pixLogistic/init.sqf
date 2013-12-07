@@ -59,7 +59,7 @@ fn_pixLogistic_CreateCorrectedVehicle = compile preprocessFileLineNumbers "pixLo
 if (isServer) then
 {
 	diag_log format["pixLogistic: %1", call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllVersion.sqf"];
-	if (pixDebug) then { player sidechat format["pixLogistic: %1", call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllVersion.sqf"];};
+	if (pixDebug) then { player globalChat format["pixLogistic: %1", call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllVersion.sqf"];};
 	
 	/* ------------------------ */
 	/* Variablen Initialisieren */
@@ -79,7 +79,7 @@ if (isServer) then
 	if ((call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllCleanup.sqf") != "OK") then
 	{
 		diag_log format["fn_pixLogistic_Cleanup failed: %1", _result];
-		player sidechat format["fn_pixLogistic_Cleanup failed: %1", _result];
+		player globalChat format["fn_pixLogistic_Cleanup failed: %1", _result];
 	};
 	
 	/*------------------------------------*/
@@ -134,7 +134,7 @@ if (!isServer || !isDedicated) then
 	/* EventHandler Initialisieren */
 	/* --------------------------- */
 	"pvehPixlogisticAllItemsSaved" addPublicVariableEventHandler {		
-		player sidechat "pixLogistic: All items saved";
+		player globalChat "pixLogistic: All items saved";
 	};
 
 	waitUntil { !(isNil "pvPixLogisticMoney") };
@@ -148,7 +148,7 @@ if (!isServer || !isDedicated) then
 		/* 	20=T 22=U 86=< 24=O 21=Z 220=rwin, 221=rapp 37=K*/
 		waituntil {!(IsNull (findDisplay 46))};
 		private["_tmp"];
-		/*_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "player sidechat format['key: %1',_this select 1];"];*/
+		/*_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "player globalChat format['key: %1',_this select 1];"];*/
 		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if ((!pixLogisitcActionKeyPressed) && ((_this select 1 == 220) || (_this select 1 == 86))) then { pixLogisitcActionKeyPressed = true; _tmp = [] execVM 'pixlogistic\clientActionKey.sqf';}"];
 		if ((getPlayerUID player in pvPixLogisticAdminUIDs) || (isServer && !isDedicated))then
 		{

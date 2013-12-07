@@ -41,7 +41,7 @@ if (driver _vehicle == player) then
 				_cargo attachTo [_vehicle, [0,-4.5 - (_maxWidth / 2),1]]; 
 				/*_cargo setVectorDirAndUp [[0,1,0],[0,1,1]];  /*[[1,0,0],[0,0,1]]; */
 			};
-			player sidechat "Fracht aufgeladen";
+			player globalChat "Fracht aufgeladen";
 		}
 	}
 	else
@@ -50,7 +50,7 @@ if (driver _vehicle == player) then
 		detach _vehicleCargo;
 		_vehicleCargo setPos _behind;	
 		_vehicle setVariable ["pixlogisticCargo",nil,true];			
-		player sidechat "Fracht abgeladen";		
+		player globalChat "Fracht abgeladen";		
 	};
 };
 
