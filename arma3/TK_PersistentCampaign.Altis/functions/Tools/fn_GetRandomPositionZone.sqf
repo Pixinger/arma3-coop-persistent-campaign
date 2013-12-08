@@ -6,7 +6,7 @@ Parameter:
 	safetyBorder: Sicherheitsabstand zum Rand.
 
 Return: 
-	The random position. [0,0] if no position was found or markername was invalid.
+	The random position. [0,0,0] if no position was found or markername was invalid.
 
 /*-------------------------------------------------------------------*/
 
@@ -22,7 +22,7 @@ if (_safetyBorder < 0) then { _safetyBorder = 0; };
 /*-------------------------------------------------------------------*/
 
 private["_result"];
-_result = [0,0];
+_result = [0,0,0];
 
 private["_size"];
 _size = getMarkerSize (pixZones_MarkerNames select _zoneIndex);
@@ -34,7 +34,7 @@ if ((_sizeX > 0) && (_sizeY > 0)) then
 {
 	private["_pos"];
 	_pos = getMarkerPos (pixZones_MarkerNames select _zoneIndex);
-	_result = [(_pos select 0) + (-_sizeX + (2 * random _sizeX)), (_pos select 1) + (-_sizeY + (2 * random _sizeY)),0];
+	_result = [(_pos select 0) + (-_sizeX + (2 * random _sizeX)), (_pos select 1) + (-_sizeY + (2 * random _sizeY)), 0];
 };
 
 _result;

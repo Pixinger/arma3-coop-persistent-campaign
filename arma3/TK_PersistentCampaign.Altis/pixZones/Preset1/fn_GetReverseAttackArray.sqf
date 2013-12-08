@@ -63,13 +63,13 @@ if (isServer) then
 	_index = 0;
 	{
 		/* Nur wenn eine gültige Position gefunden wurde,zum Missionsarray hinzufügen.*/
-		if (str(_missionRevLocations select _index) != "[[0,0,0],0,[0,0],0]") then
+		if (str(_missionRevLocations select _index) != "[[0,0,0],0,[0,0,0],0]") then
 		{
 			_missionsRev set [count _missionsRev, [_x, (_missionRevLocations select _index) select 0, (_missionRevLocations select _index) select 1, (_missionRevLocations select _index) select 2, (_missionRevLocations select _index) select 3]];		
 		}
 		else
 		{
-			player globalChat format["missionOpt Index(%1) hat keine Position gefunden", _x];
+			diag_log format["ERROR: missionRev Index(%1) hat keine Position gefunden: (%2)", _index, (_missionRevLocations select _index)];
 		};
 		_index = _index + 1;
 	} foreach _missionRevCfgIndices;

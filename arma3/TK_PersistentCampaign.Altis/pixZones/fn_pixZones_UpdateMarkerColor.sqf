@@ -21,7 +21,7 @@ for "_i" from 0 to (pixZones_ZoneCount-1) do
 			/* Sperrzone / Angreifbar */
 			case 0: 
 			{ 
-				if ([_i] call fn_pixZones_CanBlueforEngageZone) then
+				if ([_i] call PC_fnc_CanBlueforEngageZone) then
 				{
 					/* Angreifbar */
 					(pixZones_MarkerNames select _i) setMarkerColorLocal "ColorOrange"; 

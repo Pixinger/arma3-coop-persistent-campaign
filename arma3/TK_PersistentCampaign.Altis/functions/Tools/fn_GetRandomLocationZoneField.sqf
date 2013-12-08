@@ -40,7 +40,6 @@ while { _loopLimit > 0 } do
 { 
 	_loopLimit = _loopLimit - 1;
 	private["_position"];	
-	diag_log format["%1, %2", _objectPosition, _objectRadius];
 	if ((str(_objectPosition) == "[0,0,0]") || (_objectRadius == 0)) then
 	{
 		_position = [_zoneIndex, _safetyBorder] call PC_fnc_GetRandomPositionZone;
@@ -52,7 +51,7 @@ while { _loopLimit > 0 } do
 	if (!surfaceIsWater _position) then 
 	{	
 		_position = _position findEmptyPosition [0,50];
-		if (count (_position nearObjects ["House",25]) == 0) then
+		if (count (_position nearObjects ["House", 25]) == 0) then
 		{
 			if (count (_position nearRoads 25) == 0) then
 			{

@@ -78,8 +78,8 @@ if (isServer) then
 	/* -------------------------------------------------------------- */
 	if ((call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllCleanup.sqf") != "OK") then
 	{
-		diag_log format["fn_pixLogistic_Cleanup failed: %1", _result];
-		player globalChat format["fn_pixLogistic_Cleanup failed: %1", _result];
+		diag_log format["ERROR: fn_pixLogistic_Cleanup failed: %1", _result];
+		player globalChat format["ERROR: fn_pixLogistic_Cleanup failed: %1", _result];
 	};
 	
 	/*------------------------------------*/

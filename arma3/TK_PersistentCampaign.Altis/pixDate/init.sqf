@@ -26,6 +26,5 @@ if (isServer && isDedicated) then
 	};
 	
 	/* Datum setzen */
-	diag_log format["Setting date to: %1", _date];
 	setDate [2013, _date select 0, _date select 1, _date select 2, 0];
 };

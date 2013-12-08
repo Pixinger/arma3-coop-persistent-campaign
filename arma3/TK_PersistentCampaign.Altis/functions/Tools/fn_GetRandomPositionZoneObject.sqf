@@ -45,7 +45,7 @@ if ((str(_objectPosition) != "[0,0,0]") && (_objectRadius > 0)) then
 		_rnd = random 360;
 
 		private["_position"];
-		_position = [(_objectPosition select 0) + (cos _rnd * (random _objectRadius)),(_objectPosition select 1) +(sin _rnd * (random _objectRadius))];
+		_position = [(_objectPosition select 0) + (cos _rnd * (random _objectRadius)),(_objectPosition select 1) +(sin _rnd * (random _objectRadius)), 0];
 		
 		if ([_zoneIndex, _position, _zoneSafetyBorder] call PC_fnc_IsPositionInZone) then { _result = _position; _loopLimit = 0; };
 	};

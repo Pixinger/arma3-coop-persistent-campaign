@@ -4,7 +4,6 @@ if (!isServer || !isDedicated) then
 	private["_tmp"];
 	_tmp = [] spawn {
 		waitUntil { player == player };
-		Sleep 2;
 		/* Aktuelle Ausrüstung löschen */
 		removeAllAssignedItems player;
 		removeAllPrimaryWeaponItems player;
@@ -13,5 +12,6 @@ if (!isServer || !isDedicated) then
 		removeBackpack player;
 		removeHeadgear player;
 		removeVest player;
+		player linkItem "ItemMap";
 	};
 };

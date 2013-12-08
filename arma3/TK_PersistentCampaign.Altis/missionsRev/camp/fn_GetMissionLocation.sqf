@@ -1,13 +1,15 @@
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 
-private["_missionLocations"];
-_missionLocations = _this select 1;
-
- private["_markerName"];
-_markerName = format["Zone%1", _zoneIndex];
-
 private["_result"];
-_result = [_markerName, _missionLocations, 100, 0] call fn_missionsOpt_RandomPositionField;
+_result = [[0,0,0],0,[0,0],0];
+
+private["_location"]; /*[[0,0,0],0]*/
+_location = [_zoneIndex, 200] call PC_fnc_GetRandomLocationZoneField;
+if (str(_location) != "[[0,0,0],0]") then
+{
+	_result = [_location select 0, _location select 1,[0,0,0], 0];
+};
 	
-_result;
+/*[[0,0,0],0,[0,0,0],0]*/
+_result

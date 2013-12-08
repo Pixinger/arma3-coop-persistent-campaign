@@ -6,7 +6,7 @@ Parameter:
 	markerName: Der Markername als String. Innerhalb dieses Markers wird die Zufällige Position liegen.
 
 Return: 
-	The random position. [0,0] if no position was found or markername was invalid.
+	The random position. [0,0,0] if no position was found or markername was invalid.
 
 /*-------------------------------------------------------------------*/
 
@@ -20,7 +20,7 @@ if (_safetyBorder < 0) then { _safetyBorder = 0; };
 /*-------------------------------------------------------------------*/
 
 private["_result"];
-_result = [0,0];
+_result = [0,0,0];
 if (!isNull _markerName) then
 {
 	private["_sizeX"];

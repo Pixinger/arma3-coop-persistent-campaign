@@ -24,7 +24,7 @@ _currentTask setTaskState "Assigned";
 private["_markerName"];
 if (_missionMarkerRadius > 0) then
 {
-	_markerName = call fn_missionsOpt_GetUniqueMarkerName;
+	_markerName = call PC_fnc_GetUniqueMarkerName;
 
 	/*------------------*/
 	/* Marker erstellen */

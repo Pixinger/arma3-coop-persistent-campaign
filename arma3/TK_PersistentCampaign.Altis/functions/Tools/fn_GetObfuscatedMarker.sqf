@@ -2,23 +2,23 @@
 	Berechnet eine verschleierte Position (typischer Weise die eines Markers).
 
 Parameter:
-	position: Die Position die verschleiert werden soll. [0,0]
+	position: Die Position die verschleiert werden soll. [0,0,0]
 	radius: Der maximale Radius der Verschleierung. 
 
 Return: 
-	Die verschleierte Position. [[x,y], radius]
+	Die verschleierte Position. [[x,y,0], radius]
 
 /*-------------------------------------------------------------------*/
 
 private["_position"];
-_position = [_this, 0, objNull, [[]], [2]] call BIS_fnc_param;
+_position = [_this, 0, [0,0,0], [[]], [2,3]] call BIS_fnc_param;
 
 private["_radius"];
 _radius = [_this, 1, 0, [0]] call BIS_fnc_param;
 
 private["_result"];
 _result = [[0,0,0],0];
-if ((!isNull _position) && (_radius > 0)) then
+if ((str(_position) != "[0,0,0]") && (_radius > 0)) then
 {
 	private["_markerX"];
 	_markerX = _position select 0;
@@ -35,4 +35,4 @@ if ((!isNull _position) && (_radius > 0)) then
 	_result = [[_markerX, _markerY], _radius];
 };
 
-_result;
+_result

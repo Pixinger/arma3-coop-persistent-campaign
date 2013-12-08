@@ -28,7 +28,7 @@ else
 		if (_zoneIndex != -1) then
 		{
 			private["_canEngage"];
-			_canEngage = [_zoneIndex] call fn_pixZones_CanBlueforEngageZone;
+			_canEngage = [_zoneIndex] call PC_fnc_CanBlueforEngageZone;
 			if (_canEngage) then
 			{				
 				/* Reverse Attack laut Parameter  */
@@ -60,7 +60,7 @@ else
 				{
 					/* Pürfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
-					_validConnectedZones = [_zoneIndex] call fn_pixZones_GetConnectedHostileZones;					
+					_validConnectedZones = [_zoneIndex] call PC_fnc_GetConnectedHostileZones;					
 					if (count _validConnectedZones > 0) then
 					{
 						/* Jetzt tricksen wir ein wenig. Bisher steht in "_zoneIndex" der Index der Zone die BlueFor angreifen will 

@@ -18,7 +18,7 @@ _currentTask setTaskState "Assigned";
 /*------------------*/
 /* Marker erstellen */
 /*------------------*/
-_markerName = call fn_missionsOpt_GetUniqueMarkerName;
+_markerName = call PC_fnc_GetUniqueMarkerName;
 createMarkerLocal [_markerName, _missionPosition];
 _markerName setMarkerShapeLocal "ELLIPSE";
 _markerName setMarkerSizeLocal [25, 25];

@@ -8,11 +8,6 @@ if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player glo
 /* -------------------------------- */
 /* Spezielle Funktionen kompilieren */
 /* -------------------------------- */
-fn_pixZones_IsZoneForbidden = compile preprocessFileLineNumbers "pixZones\fn_pixZones_IsZoneForbidden.sqf";
-fn_pixZones_CanBlueforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanBlueforEngageZone.sqf";
-fn_pixZones_GetConnectedHostileZones = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetConnectedHostileZones.sqf";
-fn_pixZones_AllMissionsFinished = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsFinished.sqf";
-fn_pixZones_AllMissionsSuccessfull = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsSuccessfull.sqf";
 fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_pixZones_UpdateMarkerColor.sqf";
 
 /* ---------------------------------------------------- */
@@ -94,7 +89,7 @@ if (isServer) then
 	fn_pixZones_DbVersion = compile preprocessFileLineNumbers "pixZones\fn_pixZones_DbVersion.sqf";
 	fn_pixZones_DbCleanup = compile preprocessFileLineNumbers "pixZones\fn_pixZones_DbCleanup.sqf";
 
-	diag_log format["pixZones: %1", call fn_pixZones_DbVersion];
+	diag_log format["INFO: pixZones: %1", call fn_pixZones_DbVersion];
 	if (pixDebug) then { player globalChat format["INFO: pixZones: %1", call fn_pixZones_DbVersion];};
 
 	/* ------------------------ */

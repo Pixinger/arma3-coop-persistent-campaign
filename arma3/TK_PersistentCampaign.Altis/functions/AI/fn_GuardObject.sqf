@@ -6,32 +6,25 @@ Parameter:
 	guardPosition: Die Position die verteidigt werden soll.
 	
 Return: 
-	nix
+	Wenn erfolgreich true, sonst false.
 
 /*-------------------------------------------------------------------*/
+
+if (!isServer) exitWith { false };
 
 private["_group"];
 _group = [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
+if (isNull _group) exitwith {["Empty group parameter"] call BIS_fnc_error; false };
 
 private["_guardPosition"];
 _guardPosition = [_this, 1, [0,0,0], [[]], [2,3]] call BIS_fnc_param;
-[_group] call PC_fnc_SetSkill;
+if (str(_guardPosition)=="[0,0,0]") exitwith {["Invalid guardPosition parameter"] call BIS_fnc_error; false };
 
 /*-------------------------------------------------------------------*/
 
-if (!isNull _group) then 
-{	
-	if (str(_guardPosition) != "[0,0,0]") then 
-	{
-		[_group, _guardPosition] call BIS_fnc_taskDefend;
-		[_group] call PC_fnc_SetSkill;
-	}
-	else
-	{
-		["Invalid Guardposition: %1", _guardPosition] call BIS_fnc_error; 
-	};
-}
-else
-{
-	if (isNull _group) then { ["No group parameter: %1", _group] call BIS_fnc_error; };
-};
+private["_result"];
+_result = [_group, _guardPosition] call BIS_fnc_taskDefend;
+	
+if (!_result) exitwith {["PC_fnc_GuardObject failed."] call BIS_fnc_error; false};
+	
+_result

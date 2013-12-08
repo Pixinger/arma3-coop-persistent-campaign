@@ -15,24 +15,24 @@ if (paramsArray select 0 == 0) then { pixDebug = false; } else { pixDebug = fals
 if (paramsArray select 1 == 0) then { pixPatrolSkriptType = "UPS"; } else { pixPatrolSkriptType = "USPS"; };
 /* Parameter (2): ReverseAttack */
 pixParamReverseAttack = (paramsArray select 2);
-diag_log format["pixParamReverseAttack: %1", pixParamReverseAttack];
+diag_log format["INFO: pixParamReverseAttack: %1", pixParamReverseAttack];
 /* Parameter (3): Date */
 pixParamDate = (paramsArray select 3);
-diag_log format["pixParamDate: %1", pixParamDate];
+diag_log format["INFO: pixParamDate: %1", pixParamDate];
 /* Parameter (4): DayTime */
 pixParamTime = (paramsArray select 4);
-diag_log format["pixParamTime: %1", pixParamTime];
+diag_log format["INFO: pixParamTime: %1", pixParamTime];
 /* Parameter (5): Weather */
 pixParamWeather = (paramsArray select 5); 
-diag_log format["pixParamWeather: %1", pixParamWeather];
+diag_log format["INFO: pixParamWeather: %1", pixParamWeather];
 /* Parameter (6): Mission Factor */
 _paramValues = [0.5,1,1.5,2];
 pixParamMissionFactor = _paramValues select (paramsArray select 6);
-diag_log format["pixParamMissionFactor: %1", pixParamMissionFactor];
+diag_log format["INFO: pixParamMissionFactor: %1", pixParamMissionFactor];
 /* Parameter (7): ZoneAttackType */
 pixParamZoneAttackType = _paramValues select (paramsArray select 7); // 0=zufall 1=attack 2=reverseattack
 if (isServer && !isDedicated) then {pixParamZoneAttackType = 1;};
-diag_log format["pixParamZoneAttackType: %1", pixParamZoneAttackType];
+diag_log format["INFO: pixParamZoneAttackType: %1", pixParamZoneAttackType];
 
 /*-----------------------------------------------*/
 cutText ["Initialization...", "BLACK FADED",1];
