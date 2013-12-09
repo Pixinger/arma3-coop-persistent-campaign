@@ -1,3 +1,38 @@
+ï»¿/*
+pixlogisticTransportContainers
+pixlogisticTransportContainersSize
+
+pixlogisticTransportVehicles
+pixlogisticTransportVehiclesSize
+
+pixlogisticMovableObjects
+pixlogisticMovableObjectsSize
+
+pixlogisticBuildings 
+pixlogisticBuildingsService
+pixlogisticBuildingsBarracks 
+pixlogisticHQs 
+pixlogisticBuildingContainer 
+
+pixlogisticHaulers 
+pixlogisticHaulerCargos
+
+pixLogisticLiftVehicles
+pixLogisticLiftVehiclesStrength
+
+pixLogisticLiftObjects
+pixLogisticLiftObjectWeights
+
+pixLogisticLiftPilots
+pixLogisticLiftRadius = 5;
+pixLogisticLiftHeightMin = 8;
+pixLogisticLiftHeightMax = 15;
+
+pixLogisticStoreVehicles
+pixLogisticStoreWeapons
+pixLogisticStoreContainer
+pixLogisticStoreSellOnly
+*/
 
 /* ---------------------------- */
 /* Nur Server oder ServerClient */
@@ -29,7 +64,7 @@ if (!isServer || !isDedicated) then
 		"Land_Cargo20_military_green_F",
 		"Land_CargoBox_V1_F"
 	];
-	/* Laderaumgrösse */
+	/* LaderaumgrÃ¶sse */
 	pixlogisticTransportContainersSize = [
 		1000, /*"Land_Cargo20_blue_F",*/
 		1000, /*"Land_Cargo20_cyan_F",*/
@@ -105,7 +140,7 @@ if (!isServer || !isDedicated) then
 		"O_Heli_Attack_02_black_F",
 		"O_Heli_Attack_02_F"		
 	];
-	/* Laderaumgösse */
+	/* LaderaumgÃ¶sse */
 	pixlogisticTransportVehiclesSize = [
 		50, /*B_Truck_01_mover_F",  HEMT */
 		500, /*B_Truck_01_box_F",*/
@@ -164,9 +199,9 @@ if (!isServer || !isDedicated) then
 		10, /*"O_Heli_Attack_02_black_F",*/
 		10  /*"O_Heli_Attack_02_F"*/
 	];
-	
+
 		
-	/* Objekte die Bewegt und in Container/Fahrzeuge geladen werden können */
+	/* Objekte die Bewegt und in Container/Fahrzeuge geladen werden kÃ¶nnen */
 	pixlogisticMovableObjects = [
 		"B_HMG_01_F",
 		"B_HMG_01_high_F",
@@ -217,7 +252,7 @@ if (!isServer || !isDedicated) then
 		"Box_East_Wps_F"		
 		];
 		
-	/* Benötigter Ladeplatz */
+	/* BenÃ¶tigter Ladeplatz */
 	pixlogisticMovableObjectsSize = [
 		15, /*"B_HMG_01_F",*/
 		15, /*"B_HMG_01_high_F",*/
@@ -268,31 +303,31 @@ if (!isServer || !isDedicated) then
 		20  /*"Box_East_Wps_F"*/
 		];
 		
-	/* Container-Gebäude die zu einem Container verpackt werden können */
+	/* Container-GebÃ¤ude die zu einem Container verpackt werden kÃ¶nnen */
 	pixlogisticBuildings = [		
 		"Land_Cargo_Patrol_V1_F",
 		"Land_Medevac_HQ_V1_F"
 	];
-	/* Container-Gebäude die zu einem Container verpackt werden können */
-	pixlogisticBuildingsService = [		
+	/* Container-GebÃ¤ude die zu einem Container verpackt werden kÃ¶nnen */
+	pixlogisticBuildingsService = [
 		"Land_Cargo_House_V2_F"
 	];
-	/* Container-Gebäude die zu einem Container verpackt werden können */
+	/* Container-GebÃ¤ude die zu einem Container verpackt werden kÃ¶nnen */
 	pixlogisticBuildingsBarracks = [		
 		"Land_Cargo_House_V1_F"
 	];
-	/* HQ-Container-Gebäude die zu einem Container verpackt werden können */
+	/* HQ-Container-GebÃ¤ude die zu einem Container verpackt werden kÃ¶nnen */
 	pixlogisticHQs = [
 		"Land_Cargo_HQ_V1_F"
 	];
-	/* Der entsprechende Container für die Container-Gebäude */
+	/* Der entsprechende Container fÃ¼r die Container-GebÃ¤ude */
 	pixlogisticBuildingContainer = "Land_Cargo40_military_green_F";
 	
-	/* Hauler (Schlepper) die bestimmte Container bewegen können */
+	/* Hauler (Schlepper) die bestimmte Container bewegen kÃ¶nnen */
 	pixlogisticHaulers = [
 		"B_Truck_01_mover_F"
 	];
-	/* Dinge die einem Schlepper aufgeladen werden können */
+	/* Dinge die einem Schlepper aufgeladen werden kÃ¶nnen */
 	pixlogisticHaulerCargos = [
 		"Land_Cargo20_blue_F",
 		"Land_Cargo20_cyan_F",
@@ -374,7 +409,7 @@ if (!isServer || !isDedicated) then
 
 	
 	/*--------------------------------------------------*/
-	/* Alle Hubschrauber definieren, die Liften können  */
+	/* Alle Hubschrauber definieren, die Liften kÃ¶nnen  */
 	/*--------------------------------------------------*/
 	pixLogisticLiftVehicles = [
 		"B_Heli_Light_01_F",
@@ -550,7 +585,7 @@ if (!isServer || !isDedicated) then
 	];
 
 	/*-----------------------------------------*/
-	/* Definiert, welche Klassen Liften können */
+	/* Definiert, welche Klassen Liften kÃ¶nnen */
 	/*-----------------------------------------*/
 	pixLogisticLiftPilots = [
 		"B_Helipilot_F"
@@ -561,7 +596,7 @@ if (!isServer || !isDedicated) then
 	pixLogisticLiftHeightMax = 15;
 
 	/*---------------------------------------------------*/
-	/* Definiert, welche Fahrzeuge gekauft werden können */
+	/* Definiert, welche Fahrzeuge gekauft werden kÃ¶nnen */
 	/*---------------------------------------------------*/
 	pixLogisticStoreVehicles = [ /* Bezeichnung, Kosten, SpawnTyp (>=0:hafen / 1>=:airport), Classname, Image, Content-Array */
 		[gettext (configFile >> "CfgVehicles" >> "B_APC_Wheeled_01_cannon_F" >> "displayName"), 4000, 0, "B_APC_Wheeled_01_cannon_F", gettext (configFile >> "CfgVehicles" >> "B_APC_Wheeled_01_cannon_F" >> "icon"), []],
@@ -602,7 +637,7 @@ if (!isServer || !isDedicated) then
 	];	
 	
 	/*------------------------------------------------*/
-	/* Definiert, welche Waffen gekauft werden können */
+	/* Definiert, welche Waffen gekauft werden kÃ¶nnen */
 	/*------------------------------------------------*/
 	pixLogisticStoreWeapons = [ /* Bezeichnung, Kosten, SpawnTyp (>=0:hafen / 1>=:airport), Classname, Image, Content-Array */
 		[gettext (configFile >> "CfgVehicles" >> "B_HMG_01_F" >> "displayName"), 1000, 0, "B_HMG_01_F", "", []],
@@ -626,7 +661,7 @@ if (!isServer || !isDedicated) then
 	];
 	
 	/*---------------------------------------------------*/
-	/* Definiert, welche Container gekauft werden können */
+	/* Definiert, welche Container gekauft werden kÃ¶nnen */
 	/*---------------------------------------------------*/
 	pixLogisticStoreContainer = [ /* Bezeichnung, Kosten, SpawnTyp (>=0:hafen / 1>=:airport), Classname, Image, Content-Array */
 		["Leerer Container", 10, 0, "Land_Cargo20_blue_F", "", [
@@ -671,6 +706,43 @@ if (!isServer || !isDedicated) then
 			"Land_Medevac_HQ_V1_F"
 			]]			
 	];
+	
+	/*----------------------------------------------------------------*/
+	/* Definiert, welche Sachen ausschlieÃŸlich verkauft werden kÃ¶nnen */
+	/*----------------------------------------------------------------*/
+	pixLogisticStoreSellOnly = [gettext (configFile >> "CfgVehicles" >> "B_APC_Wheeled_01_cannon_F" >> "displayName"), 4000, 0, "B_APC_Wheeled_01_cannon_F", gettext (configFile >> "CfgVehicles" >> "B_APC_Wheeled_01_cannon_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_AA_F" >> "displayName"), 5000, 0, "O_APC_Tracked_02_AA_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_AA_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_APC_Wheeled_02_rcws_F" >> "displayName"), 5000, 0, "O_APC_Wheeled_02_rcws_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Wheeled_02_rcws_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "displayName"), 4000, 0, "O_APC_Tracked_02_cannon_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_MBT_02_cannon_F" >> "displayName"), 7000, 0, "O_MBT_02_cannon_F", gettext (configFile >> "CfgVehicles" >> "O_MBT_02_cannon_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_MBT_02_arty_F" >> "displayName"), 7000, 0, "O_MBT_02_arty_F", gettext (configFile >> "CfgVehicles" >> "O_MBT_02_arty_F" >> "icon"), []],
+		/*[gettext (configFile >> "CfgVehicles" >> "B_MBT_01_mlrs_F" >> "displayName"), 7000, 0, "B_MBT_01_mlrs_F", gettext (configFile >> "CfgVehicles" >> "B_MBT_01_mlrs_F" >> "icon"), []],*/
+		[gettext (configFile >> "CfgVehicles" >> "O_Heli_Light_02_unarmed_F" >> "displayName"), 3000, 0, "O_Heli_Light_02_unarmed_F", gettext (configFile >> "CfgVehicles" >> "O_Heli_Light_02_unarmed_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Heli_Attack_02_F" >> "displayName"), 8000, 0, "O_Heli_Attack_02_F", gettext (configFile >> "CfgVehicles" >> "O_Heli_Attack_02_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Heli_Light_02_F" >> "displayName"), 3500, 0, "O_Heli_Light_02_F", gettext (configFile >> "CfgVehicles" >> "O_Heli_Light_02_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Heli_Attack_02_black_F" >> "displayName"), 8000, 0, "O_Heli_Attack_02_black_F", gettext (configFile >> "CfgVehicles" >> "O_Heli_Attack_02_black_F" >> "icon"), []],
+		/*[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_mover_F" >> "displayName"), 2000, 0, "B_Truck_01_mover_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_mover_F" >> "icon"), []],*/
+		[gettext (configFile >> "CfgVehicles" >> "O_Truck_02_box_F" >> "displayName"), 3000, 0, "O_Truck_02_box_F", gettext (configFile >> "CfgVehicles" >> "O_Truck_02_box_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Truck_02_transport_F" >> "displayName"), 3000, 0, "O_Truck_02_transport_F", gettext (configFile >> "CfgVehicles" >> "O_Truck_02_transport_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Truck_02_covered_F" >> "displayName"), 3000, 0, "O_Truck_02_covered_F", gettext (configFile >> "CfgVehicles" >> "O_Truck_02_covered_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_MRAP_02_F" >> "displayName"), 1000, 0, "O_MRAP_02_F", gettext (configFile >> "CfgVehicles" >> "O_MRAP_02_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_MRAP_02_gmg_F" >> "displayName"), 3000, 0, "O_MRAP_02_gmg_F", gettext (configFile >> "CfgVehicles" >> "O_MRAP_02_gmg_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_MRAP_02_hmg_F" >> "displayName"), 2000, 0, "O_MRAP_02_hmg_F", gettext (configFile >> "CfgVehicles" >> "O_MRAP_02_hmg_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Quadbike_01_F" >> "displayName"), 500, 0, "O_Quadbike_01_F", gettext (configFile >> "CfgVehicles" >> "O_Quadbike_01_F" >> "icon"), []],
+		/*[gettext (configFile >> "CfgVehicles" >> "B_Truck_01_Repair_F" >> "displayName"), 3000, 0, "B_Truck_01_Repair_F", gettext (configFile >> "CfgVehicles" >> "B_Truck_01_Repair_F" >> "icon"), []],*/
+		[gettext (configFile >> "CfgVehicles" >> "O_Truck_02_Ammo_F" >> "displayName"), 3000, 0, "O_Truck_02_Ammo_F", gettext (configFile >> "CfgVehicles" >> "O_Truck_02_Ammo_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Truck_02_medical_F" >> "displayName"), 3000, 0, "O_Truck_02_medical_F", gettext (configFile >> "CfgVehicles" >> "O_Truck_02_medical_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Truck_02_fuel_F" >> "displayName"), 3000, 0, "O_Truck_02_fuel_F", gettext (configFile >> "CfgVehicles" >> "O_Truck_02_fuel_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_UGV_01_rcws_F" >> "displayName"), 3000, 0, "O_UGV_01_rcws_F", gettext (configFile >> "CfgVehicles" >> "O_UGV_01_rcws_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_UGV_01_F" >> "displayName"), 100, 0, "O_UGV_01_F", gettext (configFile >> "CfgVehicles" >> "O_UGV_01_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_UAV_02_CAS_F" >> "displayName"), 3000, 0, "O_UAV_02_CAS_F", gettext (configFile >> "CfgVehicles" >> "O_UAV_02_CAS_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_UAV_02_F" >> "displayName"), 3000, 0, "O_UAV_02_F", gettext (configFile >> "CfgVehicles" >> "O_UAV_02_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_UAV_01_F" >> "displayName"), 10, 0, "O_UAV_01_F", gettext (configFile >> "CfgVehicles" >> "O_UAV_01_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Boat_Transport_01_F" >> "displayName"), 1000, 0, "O_Boat_Transport_01_F", gettext (configFile >> "CfgVehicles" >> "O_Boat_Transport_01_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Lifeboat" >> "displayName"), 100, 0, "O_Lifeboat", gettext (configFile >> "CfgVehicles" >> "O_Lifeboat" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "displayName"), 2000, 0, "O_Boat_Armed_01_hmg_F", gettext (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "icon"), []],
+		[gettext (configFile >> "CfgVehicles" >> "O_SDV_01_F" >> "displayName"), 3000, 0, "O_SDV_01_F", gettext (configFile >> "CfgVehicles" >> "O_SDV_01_F" >> "icon"), []]
+	];	
 		
 	if (count pixlogisticTransportContainers != count pixlogisticTransportContainersSize) then
 	{

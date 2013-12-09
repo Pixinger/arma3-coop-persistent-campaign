@@ -6,7 +6,6 @@ _building = _this select 0;
 #include "defines.hpp";
 createDialog "PIXLOGISTIC_DIALOG_SERVICE"; 	
 
-
 /* -----------------------------------------------------------------*/	
 /* Gültige Objekte in der Nähe suchen*/
 private["_vehicleTypes"];
@@ -27,11 +26,18 @@ _containerTypes = [];
 private["_containers"];
 _containers = nearestObjects [_building, _containerTypes, 20];
 /*-------*/
+private["_sellOnlyTypes"];
+_sellOnlyTypes = [];
+{ _sellOnlyTypes set[count _sellOnlyTypes, _x select 3];} foreach pixLogisticStoreSellOnly;
+private["_sellOnlys"];
+_sellOnlys = nearestObjects [_building, _sellOnlyTypes, 20];
+/*-------*/
 private["_objects"];
 _objects = [];
 { _objects set [count _objects, _x];} foreach _weapons;
 { _objects set [count _objects, _x];} foreach _vehicles;
 { _objects set [count _objects, _x];} foreach _containers;
+{ _objects set [count _objects, _x];} foreach _sellOnlys;
 
 /*-----------------------------------------------------------------	*/
 /* Listbox füllen */
@@ -111,8 +117,25 @@ if (pixLogisticDialogService_ButtonOK == 1) then
 					};
 				};
 			} foreach pixLogisticStoreWeapons;
+		};
+		/* SellOnly */
+		if (_recycleMoney == 0) then
+		{
+			{
+				if (_x select 3 == _classname) exitWith
+				{
+					if (damage _object > 0.2) then
+					{
+						_recycleMoney = round((_x select 1) * 0.33);
+					}
+					else
+					{
+						_recycleMoney = round((_x select 1) * 0.8);
+					};
+				};
+			} foreach pixLogisticStoreSellOnly;
 		};		
-				
+						
 		/*--------------------------*/
 		/* Kontostand aktualisieren */
 		/*--------------------------*/

@@ -13,5 +13,24 @@ if (!isServer || !isDedicated) then
 		removeHeadgear player;
 		removeVest player;
 		player linkItem "ItemMap";
+		player setVariable["pixLoadout", ""];		
+			
+		// Event Handlers
+		player addEventHandler 
+		[
+			"Respawn", 
+			{ 
+				waitUntil { alive player };
+				
+				/* LoadOut zuweisen */
+				private["_scriptFilename"];
+				_scriptFilename = player getVariable "pixLoadout";		
+				if (_scriptFilename != "") then
+				{
+					private["_result"];
+					_result = [player, _scriptFilename] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";	
+				};				
+			}
+		];	
 	};
 };
