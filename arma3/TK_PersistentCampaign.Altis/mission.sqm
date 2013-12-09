@@ -26,7 +26,7 @@ class Mission
 	randomSeed=14739900;
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign V2.01.0";
+		briefingName="[TK]Persistent Campaign V2.02.0";
 		overviewText="www.teamkommando.de";
 		timeOfChanges=28800;
 		startWeather=0;

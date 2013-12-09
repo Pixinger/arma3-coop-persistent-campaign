@@ -710,10 +710,11 @@ if (!isServer || !isDedicated) then
 	/*----------------------------------------------------------------*/
 	/* Definiert, welche Sachen ausschließlich verkauft werden können */
 	/*----------------------------------------------------------------*/
-	pixLogisticStoreSellOnly = [gettext (configFile >> "CfgVehicles" >> "B_APC_Wheeled_01_cannon_F" >> "displayName"), 4000, 0, "B_APC_Wheeled_01_cannon_F", gettext (configFile >> "CfgVehicles" >> "B_APC_Wheeled_01_cannon_F" >> "icon"), []],
+	pixLogisticStoreSellOnly = [
+		[gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "displayName"), 4000, 0, "O_APC_Tracked_02_cannon_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_AA_F" >> "displayName"), 5000, 0, "O_APC_Tracked_02_AA_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_AA_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "O_APC_Wheeled_02_rcws_F" >> "displayName"), 5000, 0, "O_APC_Wheeled_02_rcws_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Wheeled_02_rcws_F" >> "icon"), []],
-		[gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "displayName"), 4000, 0, "O_APC_Tracked_02_cannon_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "icon"), []],
+		/*[gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "displayName"), 4000, 0, "O_APC_Tracked_02_cannon_F", gettext (configFile >> "CfgVehicles" >> "O_APC_Tracked_02_cannon_F" >> "icon"), []],*/
 		[gettext (configFile >> "CfgVehicles" >> "O_MBT_02_cannon_F" >> "displayName"), 7000, 0, "O_MBT_02_cannon_F", gettext (configFile >> "CfgVehicles" >> "O_MBT_02_cannon_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "O_MBT_02_arty_F" >> "displayName"), 7000, 0, "O_MBT_02_arty_F", gettext (configFile >> "CfgVehicles" >> "O_MBT_02_arty_F" >> "icon"), []],
 		/*[gettext (configFile >> "CfgVehicles" >> "B_MBT_01_mlrs_F" >> "displayName"), 7000, 0, "B_MBT_01_mlrs_F", gettext (configFile >> "CfgVehicles" >> "B_MBT_01_mlrs_F" >> "icon"), []],*/
@@ -743,7 +744,7 @@ if (!isServer || !isDedicated) then
 		[gettext (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "displayName"), 2000, 0, "O_Boat_Armed_01_hmg_F", gettext (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "icon"), []],
 		[gettext (configFile >> "CfgVehicles" >> "O_SDV_01_F" >> "displayName"), 3000, 0, "O_SDV_01_F", gettext (configFile >> "CfgVehicles" >> "O_SDV_01_F" >> "icon"), []]
 	];	
-		
+			
 	if (count pixlogisticTransportContainers != count pixlogisticTransportContainersSize) then
 	{
 		private["_msg"];
@@ -782,5 +783,5 @@ if (!isServer || !isDedicated) then
 		_msg = "ERROR: pixLogistic\config.sqf: (count pixLogisticLiftObjects != count pixLogisticLiftObjectWeights)";
 		diag_log _msg;
 		player globalChat _msg;
-	};
+	};	
 };
