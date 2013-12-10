@@ -40,10 +40,65 @@ if (isServer) then
 	private["_buildings"];
 	_buildings = [];	
 	
+	/*------------------------------*/
+	/* Gruppe des Officers erzeugen */
+	/*------------------------------*/
+	private["_unitTypes"];
+	_unitTypes = ["O_officer_F","O_Soldier_AT_F","O_Soldier_AA_F","O_medic_F","O_recon_F","O_recon_F"];	
+	private["_groupOfficer"];
+	_groupOfficer = [_missionPosition, east, _unitTypes] call BIS_fnc_spawnGroup;	
+	Sleep .2;
+	_groups = _groups + [_groupOfficer];	
+	private["_officer"];
+	_officer = (units _groupOfficer) select 0;
+	[_groupOfficer] call PC_fnc_SetSkill;	
+	
+	private["_house"];
+	_house = nearestObject[_missionPosition, "House"];
+	if (!isNull _house) then
+	{
+		private["_maxIndex"];
+		_maxIndex = 0;
+		while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
+
+		if (str(_house buildingPos _missionDirection) != "[0,0,0]") then
+		{
+			{
+				private["_bpos"];
+				_bpos = _house buildingPos (floor random (_maxIndex));
+				if (count (_bpos nearEntities ["Man", 1]) == 0) then
+				{
+					_x setPos _bpos;
+					doStop _x;
+				};				
+			} foreach (units _groupOfficer);
+		};	
+	};
+	
+	/*----------------------------------------------------------------------------*/
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	/*----------------------------------------------------------------------------*/
+	private["_patrolCount"];
+	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 4);
+
+	/*-------------------------*/
+	/* Patroullierende Truppen */
+	/*-------------------------*/
+	for "_i" from 0 to _patrolCount do 
+	{
+		private["_groupInfos"];
+		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		if (count _groupInfos > 0) then
+		{
+			_groups = _groups + [(_groupInfos select 0)];
+			_vehicles = _vehicles + (_groupInfos select 1);
+		};
+	};
+	
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	waitUntil { (pixZones_ActiveIndex == -1) };
+	waitUntil {(!alive _officer) || (pixZones_ActiveIndex == -1)};
 	
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */

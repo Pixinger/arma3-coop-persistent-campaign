@@ -12,20 +12,22 @@ missionsOpt_Missions = [
 	"buildingBunker",		/* 6 */
 	"ammobox",				/* 7 */
 	"killOfficer",			/* 8 */
-	"retrieveIntel"			/* 9 */
+	"retrieveIntel",		/* 9 */
+	"killOfficerBuilding"	/* 10 */
 	];
 
 missionsOpt_MissionPlayers = [
-	4, /*"vehicleAPC",			/* 0 */
-	6, /*"vehiclesAntiAir",		/* 1 */
-	6, /*"vehiclesArtillery",	/* 2 */
-	6, /*"vehiclesArmored",		/* 3 */
-	2, /*"checkpoint",			/* 4 */
-	4, /*"buildingTower",		/* 5 */
-	4, /*"buildingBunker",		/* 6 */
-	4, /*"ammobox",				/* 7 */
-	4, /*"killOfficer",			/* 8 */
-	4  /*"retrieveIntel"		/* 9 */
+	6, /*"vehicleAPC",			/* 0 */
+	8, /*"vehiclesAntiAir",		/* 1 */
+	8, /*"vehiclesArtillery",	/* 2 */
+	8, /*"vehiclesArmored",		/* 3 */
+	4, /*"checkpoint",			/* 4 */
+	6, /*"buildingTower",		/* 5 */
+	6, /*"buildingBunker",		/* 6 */
+	6, /*"ammobox",				/* 7 */
+	6, /*"killOfficer",			/* 8 */
+	6, /*"retrieveIntel"		/* 9 */
+	6  /*"killOfficerBuilding"	/* 10 */
 ];
 
 IF (isServer && !isDedicated) then 

@@ -43,10 +43,8 @@ if (isServer) then
 	/*------------------------------*/
 	/* Gruppe des Officers erzeugen */
 	/*------------------------------*/
-	private["_unitTypes"];
-	_unitTypes = ["O_officer_F","O_Soldier_AT_F","O_Soldier_AA_F","O_medic_F","O_recon_F","O_recon_F"];	
 	private["_groupOfficer"];
-	_groupOfficer = [_missionPosition, east, _unitTypes] call BIS_fnc_spawnGroup;	
+	_groupOfficer = [_missionPosition, east, ["O_officer_F","O_medic_F","O_recon_F"]] call BIS_fnc_spawnGroup;	
 	Sleep .2;
 	_groups = _groups + [_groupOfficer];	
 	private["_officer"];

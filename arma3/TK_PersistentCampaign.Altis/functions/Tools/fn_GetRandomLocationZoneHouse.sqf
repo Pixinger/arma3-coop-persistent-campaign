@@ -10,7 +10,7 @@ Parameter:
 	
 
 Return: 
-	The random location. [[0,0,0], 0] ([position, buildingPos-Index]) 
+	The random location. [[0,0,0], 0] ([position, immer 0]) 
 	If no position was found or markername is invalid: [[0,0,0],0]
 
 /*-------------------------------------------------------------------*/
@@ -59,11 +59,7 @@ while { _loopLimit > 0 } do
 		_house = _houses select (floor(random(count _houses)));		
 		_position = getPos _house;
 	
-		private["_maxIndex"];
-		_maxIndex = 0;
-		while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
-		
-		_result = [_position, floor random (_maxIndex)];
+		_result = [_position, 0];
 		_loopLimit = 0;
 	};
 };
