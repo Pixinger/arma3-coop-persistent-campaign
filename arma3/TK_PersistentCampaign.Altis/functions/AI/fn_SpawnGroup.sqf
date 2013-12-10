@@ -82,15 +82,25 @@ for "_i" from 0 to ((count _types) - 1) do
 	/* Is this a character or vehicle? */
 	if (getNumber(configFile >> "CfgVehicles" >> _type >> "isMan") == 1) then 
 	{	
-		_unit = _tmpGroup createUnit [_type, _position, [], 0, "FORM"];
-		_unit setDir _azimuth;
+		private["_freePosition"];
+		_freePosition = _position findEmptyPosition [0, 100, _type];
+		if (count _freePosition > 0) then
+		{
+			_unit = _tmpGroup createUnit [_type, _position, [], 0, "FORM"];
+			_unit setDir _azimuth;
+		};
 	} 
 	else 
 	{
-		private["_vehicleResult"];
-		_vehicleResult = [_position, _azimuth, _type, _tmpGroup] call BIS_fnc_spawnVehicle;
-		_unit = _vehicleResult select 0; /* Das eigentliche Vehicle. Es wird hier als unit gesetzt, damit die unten stehende Rank zuweisung funktioniert. */
-		_vehicles = _vehicles + [_unit]; 
+		private["_freePosition"];
+		_freePosition = _position findEmptyPosition [0, 100, _type];
+		if (count _freePosition > 0) then
+		{
+			private["_vehicleResult"];
+			_vehicleResult = [_freePosition, _azimuth, _type, _tmpGroup] call BIS_fnc_spawnVehicle;
+			_unit = _vehicleResult select 0; /* Das eigentliche Vehicle. Es wird hier als unit gesetzt, damit die unten stehende Rank zuweisung funktioniert. */
+			_vehicles = _vehicles + [_unit]; 
+		};
 	};
 		
 	/* If given, set the unit's rank. */

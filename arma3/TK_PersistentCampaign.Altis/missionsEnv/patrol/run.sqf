@@ -45,5 +45,5 @@ if (isServer) then
 	/*-------------------------------------------------------------------------------------------------------------*/
 	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep (random 60);
-	[_groups, _vehicles, _buildings, true] call PN_fnc_CleanupMission;
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

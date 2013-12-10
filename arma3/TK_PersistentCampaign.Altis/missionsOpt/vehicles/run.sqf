@@ -111,7 +111,7 @@ if (isServer) then
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	[_missionInfoIndex] call PC_fn_FinishMissionStatus;
+	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
@@ -124,5 +124,5 @@ if (isServer) then
 	/*-------------------------------------------------------------------------------------------------------------*/
 	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep (random 60);
-	[_groups, _vehicles, _buildings, true] call PN_fnc_CleanupMission;
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

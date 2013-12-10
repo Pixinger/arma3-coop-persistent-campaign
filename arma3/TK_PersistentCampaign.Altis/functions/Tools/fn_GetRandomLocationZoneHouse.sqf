@@ -51,16 +51,22 @@ while { _loopLimit > 0 } do
 		_position = [_zoneIndex, _safetyBorder, _objectPosition, _objectRadius] call PC_fnc_GetRandomPositionZoneObject;
 	};
 	
-	private["_houses"];
-	_houses = _position nearEntities ["House", 100];
-	if (count _houses > 0) then
+	private["_house"];
+	_house = nearestObject [_position, "house"];
+	if (!isNull _house) then
 	{
-		private["_house"];
-		_house = _houses select (floor(random(count _houses)));		
-		_position = getPos _house;
-	
-		_result = [_position, 0];
-		_loopLimit = 0;
+		if ([_zoneIndex, getPos _house, 25] call PC_fnc_IsPositionInZone) then
+		{
+			private["_maxIndex"];
+			_maxIndex = 0;
+			while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
+
+			if (_maxIndex < 8) then
+			{
+				_result = [getPos _house, 0];
+				_loopLimit = 0;
+			};
+		};
 	};
 };
 

@@ -76,7 +76,7 @@ if (isServer) then
 	if (isServer && !isDedicated) then
 	{
 		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
-		/*_missionOptCfgIndices = [4];*/
+		/*_missionOptCfgIndices = [10];*/
 	};
 	
 	
