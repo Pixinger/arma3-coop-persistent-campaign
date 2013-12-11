@@ -105,8 +105,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 50.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "---";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonAmmoBoxClicked.sqf';";
+		text = "Group Manager";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonGroupManagerClicked.sqf';";
 	};	
 	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier6 : RscButtonMenu
 	{
@@ -115,8 +115,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 60.3 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Group Manager";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonGroupManagerClicked.sqf';";
+		text = "---";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonAmmoBoxClicked.sqf';";
 	};	
 	
 	/* Admin Buttons */

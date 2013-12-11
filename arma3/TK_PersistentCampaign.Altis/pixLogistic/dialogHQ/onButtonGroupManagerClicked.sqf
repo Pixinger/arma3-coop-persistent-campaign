@@ -1,4 +1,4 @@
 closeDialog 0;
 
 private["_tmp"];
-_tmp = [] execVM "pixLogistic\dialogHQ\groupManager\showModal.sqf";
+_tmp = [] execVM "pixLogistic\dialogHQ\dialogGroupManager\showModal.sqf";

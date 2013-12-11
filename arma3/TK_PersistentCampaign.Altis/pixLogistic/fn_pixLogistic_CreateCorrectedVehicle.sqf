@@ -67,6 +67,11 @@ if(getNumber(configFile >> "CfgVehicles" >> _classname >> "isUav")==1) then
 	{
 		_object setCaptive 1;
 	};
+	if (_classname == "B_UAV_01_F") then
+	{
+		_object setCaptive 1;
+		_object setPos [((getPos _object) select 0), ((getPos _object) select 1), 0.3];		
+	};
 };
 
 /* BOX: Empty */

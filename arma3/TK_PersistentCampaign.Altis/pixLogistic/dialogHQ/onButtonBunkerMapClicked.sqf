@@ -1,7 +1,7 @@
 closeDialog 0;
 
 private["_radius"];
-_radius = 4000;
+_radius = 5000;
 
 openMap [true, false] ;
 
