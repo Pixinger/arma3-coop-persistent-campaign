@@ -21,6 +21,7 @@ _loadouts = [
 	["AAF Titan AA","AAF_TitanAA.sqf"],*/
 	/*UK*/
 	["UK Gruppenführer","UK_Teamleader.sqf"],
+	["UK Grenadier","UK_Grenade.sqf"],
 	["UK Automatikschütze","UK_Autorifleman.sqf"],
 	["UK Automatikschütze(Gurt)","UK_Belt_Autorifleman.sqf"],
 	["UK Ingenieur","UK_Engineer.sqf"],
@@ -33,6 +34,7 @@ _loadouts = [
 	["UK Titan AA","UK_TitanAA.sqf"],
 	/*US*/
 	["US Gruppenführer","US_Teamleader.sqf"],
+	["US Grenadier","US_Grenade.sqf"],
 	["US Automatikschütze","US_Autorifleman.sqf"],
 	["US Automatikschütze(Gurt)","US_Belt_Autorifleman.sqf"],
 	["US Ingenieur","US_Engineer.sqf"],
@@ -71,6 +73,6 @@ if (pixLogisticDialogBarrack_ButtonOK == 1) then
 
 	/* LoadOut zuweisen */
 	private["_result"];
-	_result = [player, _scriptFilename] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";	
+	_result = [player, _scriptFilename] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";
 };
 pixLogisticDialogBarrack_Selection = nil;

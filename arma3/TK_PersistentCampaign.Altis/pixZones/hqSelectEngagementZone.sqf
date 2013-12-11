@@ -24,20 +24,43 @@ else
 	else
 	{
 		private["_zoneIndex"];
-		_zoneIndex = pixZones_MapCoordinates call fn_pixZones_GetZoneIndex;
+		_zoneIndex = [pixZones_MapCoordinates] call PC_fnc_GetZoneIndex;
 		if (_zoneIndex != -1) then
 		{
 			private["_canEngage"];
-			_canEngage = [_zoneIndex] call fn_pixZones_CanBlueforEngageZone;
+			_canEngage = [_zoneIndex] call PC_fnc_CanBlueforEngageZone;
 			if (_canEngage) then
 			{				
-				/* Wenn der Zufall es will, einen Gegenangriff starten */
-				/* vorübergehend deaktvieirt, da die mission noch nicht fertig ist. if (random 1 < 0.4) then */
-				if (random 1 < 0.2) then
+				/* Reverse Attack laut Parameter  */
+				private["_reverseAttack"];
+				if (pixParamZoneAttackType == 0) then
+				{
+					if (random 1 < 0.2) then
+					{
+						_reverseAttack = true;
+					}
+					else
+					{
+						_reverseAttack = false;
+					};
+				}
+				else
+				{
+					if (pixParamZoneAttackType == 1) then
+					{
+						_reverseAttack = false;
+					}
+					else
+					{
+						_reverseAttack = true;
+					};
+				};
+				
+				if (_reverseAttack) then
 				{
 					/* Pürfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
-					_validConnectedZones = [_zoneIndex] call fn_pixZones_GetConnectedHostileZones;					
+					_validConnectedZones = [_zoneIndex] call PC_fnc_GetConnectedHostileZones;					
 					if (count _validConnectedZones > 0) then
 					{
 						/* Jetzt tricksen wir ein wenig. Bisher steht in "_zoneIndex" der Index der Zone die BlueFor angreifen will 
@@ -46,10 +69,10 @@ else
 						/* Bestimmen welche Zone durch Opfor angegriffen wird */
 						_zoneIndex = _validConnectedZones select (floor(random(count _validConnectedZones)));
 						/* Dem Teamleader noch einen Hinweis auf das Problem geben */
-						hintC format["Unser Nachrichtendienst meldet uns Bewegung in feindlichen Sektoren.
+						hintC "Unser Nachrichtendienst meldet uns Bewegung in feindlichen Sektoren.
 							Es scheint so als würde der Gegner einen Gegenangriff vorbereiten.
 							Die Satelliten melden Bewegung in mehreren Sektoren.
-							Bereiten sie alles für die Verteidigung vor. Laut unseren Informanten beginnt der Angriff in ewta %1 Minuten.", pixZones_ReverseAttackTime];
+							Bereiten sie alles für die Verteidigung vor.";
 					}
 					else
 					{

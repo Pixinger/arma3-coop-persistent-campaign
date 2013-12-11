@@ -26,7 +26,7 @@ class Mission
 	randomSeed=14739900;
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign V1.24.1";
+		briefingName="[TK]Persistent Campaign V2.03.0";
 		overviewText="www.teamkommando.de";
 		timeOfChanges=28800;
 		startWeather=0;
@@ -93,7 +93,7 @@ class Mission
 				items=8;
 				class Item0
 				{
-					position[]={26714.551,19.777349,24646.102};
+					position[]={26716.783,19.772381,24642.615};
 					azimut=-141.85699;
 					special="NONE";
 					id=2;
@@ -596,10 +596,10 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=31;
+		items=32;
 		class Item0
 		{
-			position[]={26816.734,20.882652,24677.379};
+			position[]={26832.439,21.092299,24683.287};
 			azimut=140;
 			id=34;
 			side="EMPTY";
@@ -880,11 +880,22 @@ class Mission
 		};
 		class Item30
 		{
-			position[]={26750.771,20.538006,24634.869};
+			position[]={26713.613,19.77,24639.303};
 			id=64;
 			side="EMPTY";
 			vehicle="Flag_NATO_F";
 			skill=0.60000002;
+			init="if (isServer && !isDedicated) then {this addaction[""test"",""test.sqf""];};";
+		};
+		class Item31
+		{
+			position[]={26788.043,23.805038,24556.568};
+			azimut=140;
+			id=65;
+			side="EMPTY";
+			vehicle="Land_HelipadEmpty_F";
+			skill=0.60000002;
+			text="HTest";
 		};
 	};
 	class Markers

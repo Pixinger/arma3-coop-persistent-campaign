@@ -11,10 +11,6 @@ _missionEnv = ((pvehPixZones_MissionInfos select 1) select _missionInfoIndex);
 private["_missionPosition"];
 _missionPosition = _missionEnv select 1;
 
-
-
-
-
 /*--------------------------*/
 /* Server oder ServerClient */
 /*--------------------------*/
@@ -26,75 +22,28 @@ if (isServer) then
 	_groupSize = _this select 1;
 	private["_tmp"];
 	
-	private["_markerName"];
-	_markerName = format["Zone%1", _zoneIndex];
+	private["_groups"];
+	_groups = [];
+	private["_vehicles"];
+	_vehicles = [];
+	private["_buildings"];
+	_buildings = [];
 	
-	
-	/* Aller verfügbaren Einheiten */
-	private["_unitTypePool"];
-	_unitTypePool = ["O_Soldier_AT_F","O_Soldier_AA_F","O_medic_F","O_engineer_F"];
+	/*---------------------*/
+	/* Patroullie erzeugen */
+	/*---------------------*/
+	private["_groupInfos"];
+	_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_InfTeam_AA","OIA_MechInf_AT","OIA_MechInfSquad","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_MotInf_MortTeam","OIA_MotInf_Team"], _zoneIndex, 25] call PC_fnc_SpawnGroupPatrolZone;		
+	if (count _groupInfos > 0) then
+	{
+		_groups = _groups + [(_groupInfos select 0)];
+		_vehicles = _vehicles + (_groupInfos select 1);
+	};
 
-
-	/* Jetzt verwendete einheiten */
-	private["_unitTypes"];
-	_unitTypes = ["O_Soldier_SL_F", "O_medic_F"];
-
-	private["_currentPlayerCount"];
-	_currentPlayerCount = 10;
-	if (isDedicated) then { _currentPlayerCount = count playableUnits;};
-	if (_currentPlayerCount <= 3) then
-	{
-		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
-	};
-	if (_currentPlayerCount <= 6) then
-	{
-		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
-	};
-	if (_currentPlayerCount <= 10) then
-	{
-		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
-	};
-	if (_currentPlayerCount <= 15) then
-	{
-		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
-	};
-	if (_currentPlayerCount <= 20) then
-	{
-		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
-	};
-	if (_currentPlayerCount <= 25) then
-	{
-		_unitTypes set [count _unitTypes, _unitTypePool select (floor(random (count _unitTypePool)))];
-	};
-	
-	private["_group"];
-	_group = [getMarkerPos _markerName, east, _unitTypes] call BIS_fnc_spawnGroup;		
-	
-	if (pixPatrolSkriptType == "UPS") then
-	{
-		_tmp = [leader _group, _markerName,"randomdn","min:1/max:3","nofollow","nowait","showmarker","NOTRIGGER"] execVM "missionsEnv\patrol\ups.sqf"; /*,"track"*/
-	}
-	else
-	{
-		private["_size"];
-		_size = markerSize _markerName;
-		if (_size select 0 > _size select 1) then { _size = _size select 1; } else { _size = _size select 0; };
-		_tmp = [leader _group, 100, _size, _markerName, _markerName, _size, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [true,35,25,3,1]] execVM "missionsEnv\patrol\USPS.sqf";		
-	};		
-
-	/*Sleep 5;	
-	player setPos (getpos (leader _group));*/
-	
-	/*--------------------------------------*/
-	/* Warten bis die Mission erfüllt wurde */
-	/*--------------------------------------*/
-	waitUntil {(pixZones_ActiveIndex == -1)};
-	player globalChat "zone beendet. patrol wird gelöscht";
-	
-	Sleep 10;
-	
-	{
-		deleteVehicle _x;
-	} foreach (units _group);
-	deleteGroup _group;
+	/*-------------------------------------------------------------------------------------------------------------*/
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/*-------------------------------------------------------------------------------------------------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
+	sleep (random 60);
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

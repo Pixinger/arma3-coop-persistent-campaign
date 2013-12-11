@@ -1,4 +1,3 @@
-diag_log "missionsRev\camp\run.sqf";
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_missionInfoIndex"];
@@ -34,17 +33,16 @@ if (isServer) then
 	/*-------------------*/
 	/* Mission erstellen */
 	/*-------------------*/	
-	private["_buildings"];
-	_buildings = [];
-	private["_units"];
-	_units = [];
 	private["_groups"];
 	_groups = [];
+	private["_vehicles"];
+	_vehicles = [];
+	private["_buildings"];
+	_buildings = [];
 
 	private["_flag"];
 	_flag = "Flag_NATO_F" createVehicle _missionPosition;
 	_buildings = _buildings + [_flag];
-	player setpos _missionPosition;
 	
 	/* Bunker1 erstellen */
 	private["_bunker1"];
@@ -79,7 +77,6 @@ if (isServer) then
 	sleep .5;
 	_unitBunker1 action ["getInGunner",_mg1];
 	doStop _unitBunker1;
-	_units = _units + [_unitBunker1];	
 	_groups = _groups + [_group];
 	
 	/* Einheit im Bunker2 */
@@ -89,60 +86,43 @@ if (isServer) then
 	sleep .5;
 	_unitBunker2 action ["getInGunner",_mg2];
 	doStop _unitBunker2;
-	_units = _units + [_unitBunker2];
 	_groups = _groups + [_group];
 
-	/*-----------------------------------------------------------*/
-	/* Wegpunkt als Ziel für die feindlichen Einheiten erstellen */
-	/*-----------------------------------------------------------*/
-	
 	/*-----------------------------------*/
 	/* Die Angriffs-Einheiten erstellen  */
 	/*-----------------------------------*/
-	private["_enemyUnits"];
-	_enemyUnits = [];
 	private["_enemyGroups"];
 	_enemyGroups = [];
-	private["_enemyVehicles"];
-	_enemyVehicles = [];
-	private["_enemyWaypoints"];
-	_enemyWaypoints = [];
-	
-	private["_config"];
-	_config = [fn_missionsRev_CreateInf, fn_missionsRev_CreateInfMech];/*, fn_missionsRev_CreateInfMech];*/
 	
 	{
-		for "_i" from 0 to (count _config -1) do 
+		for "_i" from 0 to 1 do
 		{
-			private["_enemyInfo"]; /* [units, groups, vehicles, waypoints] */	
-			_enemyInfo = [_x, _missionPosition] call (_config select _i);/*fn_missionsRev_CreateInf; */
-			if (count _enemyInfo > 0) then
+			private["_groupInfos"];
+			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OIA_MechInf_AT","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_TankPlatoon"], _x, _missionPosition, 200] call PC_fnc_SpawnGroupAttackObject;
+			if (str(_groupInfos) != "[[0,0,0],0]") then
+			{			
+				_groups = _groups + [_groupInfos select 0];
+				_vehicles = _vehicles + (_groupInfos select 1);
+				_enemyGroups = _enemyGroups + [_groupInfos select 0];
+			}
+			else
 			{
-				_enemyUnits = _enemyUnits + (_enemyInfo select 0);
-				_enemyGroups = _enemyGroups + (_enemyInfo select 1);
-				_enemyVehicles = _enemyVehicles + (_enemyInfo select 2);
-				_enemyWaypoints = _enemyWaypoints + (_enemyInfo select 3);			
-			};
-			
-			/* Nur im Debug */
-			if (isServer && !isDedicated) then
-			{
-				for "_o" from 0 to (count (_enemyInfo select 1) - 1) do
-				{
-					[(_enemyInfo select 1) select _o] spawn fn_missionsRev_TrackGroup;
-				}
+				diag_log format["ERROR: PC_fnc_SpawnGroupAttackObject for attacking zone %1 in rev\camp\run.sqf failed", _x];
 			};
 		};
-	
 	} foreach _attackingZones;
 
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
+	private["_enemyUnits"];
+	_enemyUnits = [];
+	{
+		_enemyUnits = _enemyUnits + (units _x);		
+	} foreach _enemyGroups;
+	
 	private["_limit"];
-	_limit = ceil((count _enemyUnits) / 10);
-	/*private["_lost"];
-	_lost = false;	*/
+	_limit = ceil((count _enemyUnits) / 25);
 	private["_aliveEnemyUnits"];
 	_aliveEnemyUnits = 60000;
 	while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
@@ -150,7 +130,6 @@ if (isServer) then
 		Sleep 2;
 		_aliveEnemyUnits = 0;
 		{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
-		/*if ((position nearObjects["SoldierEB", 20]) > 0) then { _lost = true; };*/
 	};
 
 	/*--------------------------------------------------------*/
@@ -167,21 +146,11 @@ if (isServer) then
 	publicVariable "pvehPixZones_MissionStatus";
 	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
 
-	/*-----------------------*/
-	/* Kurze Zeitverzögerung */
-	/*-----------------------*/
-	sleep 60;
-
-	/*------------------------*/
-	/* Alle Einheiten löschen */
-	/*------------------------*/
-	{deletevehicle _x} foreach _units;
-	{deletevehicle _x} foreach _buildings;
-	{deleteGroup _x} foreach _groups;
-	
-	{deletevehicle _x} foreach _enemyUnits;
-	{deletevehicle _x} foreach _enemyVehicles;
-	{deleteGroup _x} foreach _enemyGroups;
-	{deleteWaypoint _x} foreach _enemyWaypoints;
+	/*-------------------------------------------------------------------------------------------------------------*/
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/*-------------------------------------------------------------------------------------------------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
+	sleep (random 60);
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };
  

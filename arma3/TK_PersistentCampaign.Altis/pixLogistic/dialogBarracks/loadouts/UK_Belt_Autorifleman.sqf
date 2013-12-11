@@ -4,7 +4,7 @@ _result = [
 	"G_Sport_Red",
 	
 	/* Headgear */
-	"H_Cap_khaki_specops_UK",
+	"H_HelmetB_snakeskin",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -86,7 +86,6 @@ _result = [
 		],
 		/* Backpack-Items */
 		[
-			"H_HelmetB_snakeskin",
 			"optic_DMS"
 		]
 	]

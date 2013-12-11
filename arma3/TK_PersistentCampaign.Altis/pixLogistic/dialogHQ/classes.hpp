@@ -85,8 +85,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 30.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Beamen";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamClicked.sqf';";
+		text = "Bunker Karte anzeigen";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonBunkerMapClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier4 : RscButtonMenu
 	{
@@ -116,7 +116,7 @@ class PIXLOGISTIC_DIALOG_HQ
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
 		text = "---";
-		action = "";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamClicked.sqf';";
 	};	
 	
 	/* Admin Buttons */

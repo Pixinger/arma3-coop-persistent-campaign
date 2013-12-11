@@ -5,10 +5,10 @@ if (isServer && isDedicated) then
 		[0.30, 0.00, 0.00, 0.00, random 360], /*(1) sonnig */
 		[0.50, 0.00, 0.00, 0.20, random 360],
 		[0.70, 0.00, 0.00, 0.30, random 360], /*(3) bewölkt */
-		[0.85, 0.10, 0.00, 0.40, random 360], /* niesel */
-		[1.00, 0.30, 0.10, 0.60, random 360], /* (5) regnerisch */
+		[0.85, 0.10, 0.00, 0.40, random 360], /*(4) niesel */
+		[1.00, 0.30, 0.10, 0.60, random 360], /*(5) regnerisch */
 		[1.00, 0.60, 0.30, 0.80, random 360],
-		[1.00, 1.00, 0.50, 1.00, random 360] /* (7) stürmisch */
+		[1.00, 1.00, 0.50, 1.00, random 360]  /*(7) stürmisch */
 	]; 
 	
 	/* debug */

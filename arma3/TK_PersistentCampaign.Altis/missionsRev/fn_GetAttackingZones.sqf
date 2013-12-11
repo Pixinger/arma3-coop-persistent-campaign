@@ -6,7 +6,7 @@ private["_result"];
 _result = [];
 
 private["_possibleAttackingZones"];
-_possibleAttackingZones = [_attackedZoneIndex] call fn_pixZones_GetConnectedHostileZones;
+_possibleAttackingZones = [_attackedZoneIndex] call PC_fnc_GetConnectedHostileZones;
 if (count _possibleAttackingZones > 0) then
 {		
 	/* bestimmen wieviele Zonen am Angriff teilnehmen */

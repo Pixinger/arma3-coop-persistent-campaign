@@ -35,125 +35,94 @@ if (!isServer || !isDedicated) then
 
 if (isServer) then
 {
-	private["_units"];
-	_units = [];
+	private["_groups"];
+	_groups = [];
+	private["_vehicles"];
+	_vehicles = [];
+	private["_buildings"];
+	_buildings = [];
 
+	/*---------------------*/
+	/* Fahrzeuge erstellen */
+	/*---------------------*/
 	private["_vehicle1"];
 	_vehicle1 = _vehicleClassname createVehicle _missionPosition;
 	Sleep .2;
-	_vehicle1 lock true;
 	_vehicle1 setdir random 360;
+	private["_normal"];
 	_normal = surfaceNormal (position _vehicle1);
 	_vehicle1 setVectorUp _normal;
 	createVehicleCrew _vehicle1;
-	_units = _units + (crew _vehicle1);
+	_groups = _groups + [group ((crew _vehicle1) select 0)];
+	_vehicles = _vehicles + [_vehicle1];
 
 	private["_vehicle2"];
 	_vehicle2 = _vehicleClassname createVehicle [_missionPosition select 0, (_missionPosition select 1) + ((random 100) - 50), 0]; 
 	Sleep .2;
-	_vehicle2 lock true;
 	_vehicle2 setdir random 360;
 	_normal = surfaceNormal (position _vehicle2);
 	_vehicle2 setVectorUp _normal;
 	createVehicleCrew _vehicle2;
-	_units = _units + (crew _vehicle2);
+	_groups = _groups + [group ((crew _vehicle2) select 0)];
+	_vehicles = _vehicles + [_vehicle2];
 
-	private["_vehicle3"];
-	_vehicle3 = _vehicleClassname createVehicle [(_missionPosition select 0) + ((random 100) - 50), _missionPosition select 1, 0]; 
-	Sleep .2;
-	_vehicle3 lock true;
-	_vehicle3 setdir random 360;
-	_normal = surfaceNormal (position _vehicle3);
-	_vehicle3 setVectorUp _normal;
-	createVehicleCrew _vehicle3;
-	_units = _units + (crew _vehicle3);
-	
+	/*----------------------------------------------------------------------------*/
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	/*----------------------------------------------------------------------------*/
+	private["_patrolCount"];
+	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 4);
 
-	private["_spawnGroup"];
-	private["_randomPos"];
-	private["_random"];
-	_random = floor (random 3) + 1;
-	for "_i" from 0 to _random do 
+	/*-------------------------*/
+	/* Patroullierende Truppen */
+	/*-------------------------*/
+	for "_i" from 0 to _patrolCount do 
 	{
-		_randomPos = [[[_missionPosition, random 400 + 250]],["water","out"]] call BIS_fnc_randomPos;
-		private["_spawnGroup"];
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		nul = [_spawnGroup, _missionPosition, random 600 + 300] call fn_missionsOpt_Patrol;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		private["_groupInfos"];
+		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		if (count _groupInfos > 0) then
+		{
+			_groups = _groups + [(_groupInfos select 0)];
+			_vehicles = _vehicles + (_groupInfos select 1);
+		};
 	};
 
-	_random = floor (random 2) + 1;
-	for "_i" from 0 to _random do 	
+	/*----------------------*/
+	/* Verteidigungs Truppe */
+	/*----------------------*/
+	private["_groupInfos"];
+	_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT","OIA_InfSentry"], _missionPosition] call PC_fnc_SpawnGroupGuardObject;
+	if (count _groupInfos > 0) then
 	{
-		_randomPos = [[[_missionPosition,random 150]],["water","out"]] call BIS_fnc_randomPos;
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		_groups = _groups + [(_groupInfos select 0)];
+		_vehicles = _vehicles + (_groupInfos select 1);
 	};
 
+	/*--------------*/
+	/* Vorschädigen */
+	/*--------------*/
 	_vehicle1 setDamage 0.5;
 	_vehicle2 setDamage 0.5;
-	_vehicle3 setDamage 0.5;
-	if (_vehicle1 distance [0,0,0] < 1000) then { _vehicle1 setDamage 1;};
-	if (_vehicle2 distance [0,0,0] < 1000) then { _vehicle2 setDamage 1;};
-	if (_vehicle3 distance [0,0,0] < 1000) then { _vehicle3 setDamage 1;};
 
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	waitUntil {((!alive _vehicle1) &&(!alive _vehicle2) &&(!alive _vehicle3)) || (pixZones_ActiveIndex == -1)};
+	waitUntil {((!alive _vehicle1) &&(!alive _vehicle2)) || (pixZones_ActiveIndex == -1)};
 	
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	if (pixZones_ActiveIndex != -1) then
-	{
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
-	}
-	else
-	{	
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
-	};
-	publicVariable "pvehPixZones_MissionStatus";
-	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
-
-	/*-------------------------------------------------------*/
-	/* Bewegungsunfähige Fahrzeuge in die Logistic aufnehmen */
-	/*-------------------------------------------------------*/
-	if (!canMove _vehicle1) then 
-	{
-		private["_script"];
-		_script = [_vehicle1] execVM "pixLogistic\serverInsertItem.sqf";
-		waitUntil { scriptDone _script;};
-		_vehicle1 = nil;
-	};
-	if (!canMove _vehicle2) then 
-	{
-		private["_script"];
-		_script = [_vehicle2] execVM "pixLogistic\serverInsertItem.sqf";
-		waitUntil { scriptDone _script;};
-		_vehicle2 = nil;
-	};
-	if (!canMove _vehicle3) then 
-	{
-		private["_script"];
-		_script = [_vehicle3] execVM "pixLogistic\serverInsertItem.sqf";
-		waitUntil { scriptDone _script;};
-		_vehicle3 = nil;
-	};
+	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
 	/*-----------------------*/
 	/* Kurze Zeitverzögerung */
 	/*-----------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep 60;
 
-	/*------------------------*/
-	/* Alle Einheiten löschen */
-	/*------------------------*/
-	if (!(isNil "_vehicle1")) then {deletevehicle _vehicle1;};
-	if (!(isNil "_vehicle2")) then {deletevehicle _vehicle2;};
-	if (!(isNil "_vehicle3")) then {deletevehicle _vehicle3;};
-	{deletevehicle _x} foreach _units;
+	/*-------------------------------------------------------------------------------------------------------------*/
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/*-------------------------------------------------------------------------------------------------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
+	sleep (random 60);
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

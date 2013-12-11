@@ -19,6 +19,8 @@ respawnDelay = 5;
 respawnDialog = 1; 			/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
 enableItemsDropping = 0; 	/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre Ausrüstung verliert oder nicht. Mögliche Werte sind 0 (= Einheit verliert keine Ausrüstung) und 1 (= Einheit verliert ihre Ausrüstung).*/
 joinUnassigned = 1; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
+allowFunctionsRecompile = 1;
+allowFunctionsLog=1;
 /*
 0 / "NONE" - Kein Respawn
 1 / "BIRD" - Respawn als Möwe / Krähe
@@ -45,6 +47,7 @@ disableChannels[]={2,5,6};
 class CfgFunctions
 {
 	#include "VAS\cfgfunctions.hpp"
+	#include "functions\cfgfunctions.hpp"
 };
 
 
@@ -98,6 +101,13 @@ class Params
 	    values[] = {0, 1, 2, 3};
 	    texts[] = {"Einfach", "Normal", "Schwer", "Sehr schwer"};
 	    default = 1;
+	};
+	class ZoneAttackType /* paramsArray[7]*/
+	{		
+	    title = "Zonen Angriffstyp";
+	    values[] = {0, 1, 2};
+	    texts[] = {"Zufall", "Angriff", "Gegenangriff"};
+	    default = 0;
 	};
 };
 

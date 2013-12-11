@@ -36,29 +36,28 @@ if (!isServer || !isDedicated) then
 
 if (isServer) then
 {
-	/* Parameter prüfen */
-	/*_missionDirection = _missionDirection + 90;*/
-	private["_patrolCount"];
-	_patrolCount = 2;
-	
-	/* Alle Gebäude sammeln */
+	private["_relevantGroups"];
+	_relevantGroups = [];
+	private["_groups"];
+	_groups = [];
+	private["_vehicles"];
+	_vehicles = [];
 	private["_buildings"];
 	_buildings = [];
-	private["_units"];
-	_units = [];
 	
-	/* Schranke erstellen */
+	/* Als erstes die Schranke erstellen, da sich alles um diese Schranke dreht. */
 	private["_bargate"];
 	_missionPosition set [2,0];
 	_bargate = createVehicle ["Land_BarGate_F", _missionPosition, [], 0, "NONE"];
-	Sleep .5;
+	Sleep .2;
 	_bargate setDir _missionDirection;	 
 	_bargate setPos _missionPosition;
 	_tmp = _bargate addEventHandler ["HandleDamage", {false}];
 	_buildings = _buildings + [_bargate];
-
-	Sleep 1;
-	_missionPosition = _bargate modelToWorld [7,0,0]; /* Position korrigieren, da die Schranke nicht mittig steht */
+	Sleep .2;
+	
+	/* Position korrigieren, da die Schranke nicht mittig steht */
+	_missionPosition = _bargate modelToWorld [7,0,0]; 
 	_missionPosition set [2,0];
 	_bargate setPos _missionPosition;
 
@@ -66,27 +65,27 @@ if (isServer) then
 	/* Bunker1 erstellen */
 	private["_bunker1"];
 	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [6.5,-2,-2], [], 0, "NONE"];
-	Sleep .5;
+	Sleep .2;
 	_bunker1 setDir _missionDirection;
 	_buildings = _buildings + [_bunker1];
 	
 	/* Bunker2 erstellen */
 	private["_bunker2"];
 	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [-8,-2,-2], [], 0, "NONE"];
-	Sleep .5;
+	Sleep .2;
 	_bunker2 setDir _missionDirection;
 	_buildings = _buildings + [_bunker2];
 	
 	/* MG1 erstellen */
 	private["_mg1"];
 	_mg1 = createVehicle ["I_HMG_01_high_F", _bunker1 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
-	Sleep .5;
+	Sleep .2;
 	_mg1 setDir (_missionDirection-180);
 	_buildings = _buildings + [_mg1];
 	/* MG2 erstellen */
 	private["_mg2"];
 	_mg2 = createVehicle ["I_HMG_01_high_F", _bunker2 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
-	Sleep .5;
+	Sleep .2;
 	_mg2 setDir (_missionDirection-180);
 	_buildings = _buildings + [_mg2];
 	
@@ -94,122 +93,81 @@ if (isServer) then
 	/*----------------------------------*/
 	/* Vorbereitungen für die Einheiten */
 	/*----------------------------------*/
-	private["_side"];
-	_side = EAST;
-	private["_center"];
-	_center = createCenter _side;
 	private["_unittypes"];
 	_unittypes = ["O_Soldier_SL_F", "O_Soldier_AT_F", "O_medic_F", "O_Soldier_AR_F","O_Soldier_GL_F","O_Soldier_F","O_Soldier_F"];
 	
 	/* Einheiten an der Schranke */
 	private["_groupBargate"];
-	_groupBargate = createGroup _side;
+	_groupBargate = createGroup east;
 	private["_unitBargate"];
-	_unitBargate = _groupBargate createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
-	sleep .5;
+	_unitBargate = _groupBargate createUnit ["O_Soldier_SL_F", _missionPosition, [], 0, "NONE"];
+	sleep .2;
 	doStop _unitBargate;
-	_units = _units + [_unitBargate];
+	_groups = _groups + [_groupBargate];
+	_relevantGroups = _relevantGroups + [_groupBargate];
 
 	/* Einheit im Bunker1 */
 	private["_groupBunker1"];
-	_groupBunker1 = createGroup _side;
+	_groupBunker1 = createGroup east;
 	private["_unitBunker1"];
 	_unitBunker1 = _groupBunker1 createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
 	sleep .5;
 	_unitBunker1 action ["getInGunner",_mg1];
 	doStop _unitBunker1;
-	_units = _units + [_unitBunker1];
+	_groups = _groups + [_groupBunker1];
+	_relevantGroups = _relevantGroups + [_groupBunker1];
 	
 	/* Einheit im Bunker2 */
 	private["_groupBunker2"];
-	_groupBunker2 = createGroup _side;
+	_groupBunker2 = createGroup east;
 	private["_unitBunker2"];
 	_unitBunker2 = _groupBunker2 createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
 	sleep .5;
 	_unitBunker2 action ["getInGunner",_mg2];
 	doStop _unitBunker2;
-	_units = _units + [_unitBunker2];
-
-	/* Patrollierende Einheiten erstellen */
-	private["_groupPatrol"];
-	_groupPatrol = createGroup _side;
+	_groups = _groups + [_unitBunker2];
+	_relevantGroups = _relevantGroups + [_unitBunker2];
 	
-	private["_unitPatrol"];
-	_unitPatrol = _groupPatrol createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
-	sleep .5;
-	_units = _units + [_unitPatrol];
-	_unitPatrol = _groupPatrol createUnit [(_unittypes call BIS_fnc_selectRandom), _missionPosition, [], 0, "NONE"];
-	sleep .5;
-	_units = _units + [_unitPatrol];
+	/*----------------------------------*/
+	/* Patroullierende Truppe erstellen */
+	/*----------------------------------*/
+	private["_groupInfos"];
+	_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 150, 25] call PC_fnc_SpawnGroupPatrolObject;		
+	if (count _groupInfos > 0) then
+	{
+		_groups = _groups + [(_groupInfos select 0)];
+		_vehicles = _vehicles + (_groupInfos select 1);
+		_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
+	};
 	
-	private["_waypoint"];
-	_waypoint = _groupPatrol addWaypoint [(_bargate modelToWorld [0,-30,-1]), 0];
-	_waypoint setwaypointtype "MOVE";
-	_waypoint setwaypointstatements ["True", ""];
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointTimeout [10, 30, 60]; 
-	_waypoint = _groupPatrol addWaypoint [(_bargate modelToWorld [0,random 30,random 30]), 0];
-	_waypoint setwaypointtype "MOVE";
-	_waypoint setwaypointstatements ["True", ""];
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointTimeout [10, 30, 60]; 
-	_waypoint = _groupPatrol addWaypoint [(_bargate modelToWorld [0,-30,-1]), 0];
-	_waypoint setwaypointtype "CYCLE";
-	_waypoint setwaypointstatements ["True", ""];
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointTimeout [10, 30, 60];
-
-	if (pixDebug) then { player globalChat "Checkpoint spawned";};
-
-	if (_missionPosition distance [0,0,0] > 1000) then 
-	{ 
-		/*--------------------------------------*/
-		/* Warten bis die Mission erfüllt wurde */
-		/*--------------------------------------*/
-		private["_aliveUnits"];
-		_aliveUnits = 5;
-		while { (_aliveUnits > 1) && (pixZones_ActiveIndex != -1) } do
-		{
-			Sleep 2;
-			_aliveUnits = 0;
-			{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _units;
-		};
+	/*--------------------------------------*/
+	/* Warten bis die Mission erfüllt wurde */
+	/*--------------------------------------*/
+	private["_relevantUnits"];
+	_relevantUnits = [];
+	{
+		_relevantUnits = _relevantUnits + (units _x);		
+	} foreach _relevantGroups;
+	private["_aliveUnits"];
+	_aliveUnits = 65000;
+	while { (_aliveUnits > 1) && (pixZones_ActiveIndex != -1) } do
+	{
+		Sleep 2;
+		_aliveUnits = 0;
+		{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _relevantUnits;
 	};
 	
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	if (pixZones_ActiveIndex != -1) then
-	{
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
-	}
-	else
-	{	
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
-	};
-	publicVariable "pvehPixZones_MissionStatus";
-	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
+	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
-	/*-----------------------*/
-	/* Kurze Zeitverzögerung */
-	/*-----------------------*/
-	sleep 60;
-
-	/*------------------------*/
-	/* Alle Einheiten löschen */
-	/*------------------------*/
-	{deletevehicle _x} foreach _units;	
-	{deletevehicle _x} foreach _buildings;	
-	/* Cleanup */
-	deleteGroup _groupBargate; _groupBargate = nil;
-	deleteGroup _groupBunker1; _groupBunker1 = nil;
-	deleteGroup _groupBunker2; _groupBunker2 = nil;
-	deleteGroup _groupPatrol; _groupPatrol = nil;
+	/*-------------------------------------------------------------------------------------------------------------*/
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/*-------------------------------------------------------------------------------------------------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
+	sleep (random 60);
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 	deleteCenter _center; _center = nil;
-	
-	if (pixDebug) then { player globalChat "Checkpoint deleted";};	
 };
  

@@ -5,6 +5,8 @@ _unit = _this select 0;
 private["_loadout"];
 _loadout = _this select 1;
 
+player setVariable["pixLoadout", _loadout];
+
 /* Loadout abfragen */
 private["_result"];
 _result = _unit call compile preprocessFileLineNumbers format["pixLogistic\dialogBarracks\loadouts\%1", _loadout];

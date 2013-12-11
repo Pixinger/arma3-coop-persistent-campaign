@@ -92,7 +92,7 @@ else
 			/*---------------------------------------------*/
 			/* Warten bis die Missionen abgeschlossen sind */	
 			/*---------------------------------------------*/
-			while { !call fn_pixZones_AllMissionsFinished } do
+			while { !call PC_fnc_AllMissionsFinished } do
 			{	
 				Sleep 10;				
 			};	
@@ -100,7 +100,7 @@ else
 			/*----------------------------------------*/
 			/* pvehPixZones_ZoneStatus aktualisieren  */
 			/*----------------------------------------*/
-			if (call fn_pixZones_AllMissionsSuccessfull) then
+			if (call PC_fnc_AllMissionsSuccessfull) then
 			{
 				pvPixLogisticMoney = pvPixLogisticMoney + pixlogisticRewardForZone;
 				{ if (_x >= 2) then { pvPixLogisticMoney = pvPixLogisticMoney + pixlogisticRewardForExistingZone;};	} foreach pvehPixZones_ZoneStatus;				
@@ -116,7 +116,7 @@ else
 					waitUntil { !pixlogisticDbMutex };
 					pixlogisticDbMutex = true;
 					{
-						if (((getPos _x) call fn_pixZones_GetZoneIndex) == pixZones_ActiveIndex) then
+						if (([getPos _x] call PC_fnc_GetZoneIndex) == pixZones_ActiveIndex) then
 						{
 							_x setDamage 1;
 						};
