@@ -14,6 +14,7 @@ missionsOpt_Missions = [
 	"killOfficer",			/* 8 */
 	"retrieveIntel",		/* 9 */
 	"killOfficerBuilding"	/* 10 */
+	/*"inspect"*/
 	];
 
 missionsOpt_MissionPlayers = [
@@ -27,7 +28,8 @@ missionsOpt_MissionPlayers = [
 	6, /*"ammobox",				/* 7 */
 	6, /*"killOfficer",			/* 8 */
 	6, /*"retrieveIntel"		/* 9 */
-	6  /*"killOfficerBuilding"	/* 10 */
+	6 /*"killOfficerBuilding"	/* 10 */
+	/*6  /*"inspect"				/* 11 */
 ];
 
 IF (isServer && !isDedicated) then 
