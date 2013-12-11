@@ -43,6 +43,8 @@ class PC
 	class Tools
 	{
 		file = "functions\tools";
+		class Debug {description = "";};
+		class Error {description = "";};
 		class GetMinDistance {description = "";};
 		class GetObfuscatedMarker {description = "";};
 		class GetPlayerCount {description = "";};
