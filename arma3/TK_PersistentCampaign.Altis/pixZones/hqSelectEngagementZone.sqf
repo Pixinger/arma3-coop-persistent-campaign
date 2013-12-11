@@ -56,7 +56,6 @@ else
 					};
 				};
 				
-				_reverseAttack = true;
 				if (_reverseAttack) then
 				{
 					/* Pürfen welche Zonen angegriffen werden könnten */

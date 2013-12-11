@@ -17,7 +17,7 @@ _groups = [];
 
 /* Listbox füllen*/
 {
-	lbAdd [PIXLOGISTIC_IDC_DIALOG_HQ_GROUPMANAGER_List, str(leader _x)];
+	lbAdd [PIXLOGISTIC_IDC_DIALOG_HQ_GROUPMANAGER_List, name (leader _x)];
 } foreach _groups;
 if (count _groups > 0) then
 {

@@ -16,16 +16,16 @@ _group = [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 
 private["_leader"];
 _leader = leader _group;
-_leader setSkill random 1;
+_leader setSkill random .7;
 {
-	_x setSkill ["aimingAccuracy",random 1];
-	_x setSkill ["endurance",random 1];
-	_x setSkill ["reloadSpeed",random 1];
-	_x setSkill ["general",random 1];
-	_x setSkill ["spotDistance",random 1];
-	_x setSkill ["spotTime",random 1];
-	_x setSkill ["courage",random 1];
-	_x setSkill ["commanding",random 1];
-	_x setSkill ["aimingShake",random 1];
-	_x setSkill ["aimingSpeed",random 1];
+	_x setSkill ["endurance",random .7];
+	_x setSkill ["reloadSpeed",random .7];
+	_x setSkill ["general",random .7];
+	_x setSkill ["spotDistance",random .7];
+	_x setSkill ["spotTime",random .7];
+	_x setSkill ["courage",random .7];
+	_x setSkill ["commanding",random .7];
+	_x setSkill ["aimingShake",random .7];
+	_x setSkill ["aimingSpeed",random .7];
+	_x setSkill ["aimingAccuracy",random .7];
 } foreach units _group;
