@@ -42,11 +42,8 @@ respawn = BASE;
 */
 disableChannels[]={2,5,6};
 
-#include "VAS\menu.hpp"
-
 class CfgFunctions
 {
-	#include "VAS\cfgfunctions.hpp"
 	#include "functions\cfgfunctions.hpp"
 };
 
