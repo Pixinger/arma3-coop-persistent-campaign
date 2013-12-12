@@ -74,6 +74,7 @@ else
 		/*----------------------*/
 		/* Rev-Missions starten */
 		/*----------------------*/
+		missionsRev_AttackStarted = false;
 		missionsRev_AttackFinished = false;
 		for "_i" from 0 to ((count _missionsRev) - 1) do
 		{
@@ -89,6 +90,15 @@ else
 		/*----------------------------------------------------------------------------*/
 		if (isServer) then
 		{
+			/*--------------------------------------------------------------------------------------------------*/
+			/* Wenn es sich um eine ReverseAttack Mission handelt, dann verzögern wir nun noch ein paar Minuten */
+			/*--------------------------------------------------------------------------------------------------*/
+			if (count (pvehPixZones_MissionInfos select 3) > 0) then
+			{
+				Sleep (60 * pixParamReverseAttackDelay);
+				missionsRev_AttackStarted = true;
+			};
+			
 			/*---------------------------------------------*/
 			/* Warten bis die Missionen abgeschlossen sind */	
 			/*---------------------------------------------*/
