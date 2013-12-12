@@ -18,17 +18,17 @@ missionsOpt_Missions = [
 	];
 
 missionsOpt_MissionPlayers = [
-	6, /*"vehicleAPC",			/* 0 */
-	8, /*"vehiclesAntiAir",		/* 1 */
-	8, /*"vehiclesArtillery",	/* 2 */
-	8, /*"vehiclesArmored",		/* 3 */
-	4, /*"checkpoint",			/* 4 */
-	6, /*"buildingTower",		/* 5 */
-	6, /*"buildingBunker",		/* 6 */
-	6, /*"ammobox",				/* 7 */
-	6, /*"killOfficer",			/* 8 */
-	6, /*"retrieveIntel"		/* 9 */
-	6 /*"killOfficerBuilding"	/* 10 */
+	7, /*"vehicleAPC",			/* 0 */
+	9, /*"vehiclesAntiAir",		/* 1 */
+	9, /*"vehiclesArtillery",	/* 2 */
+	9, /*"vehiclesArmored",		/* 3 */
+	5, /*"checkpoint",			/* 4 */
+	7, /*"buildingTower",		/* 5 */
+	7, /*"buildingBunker",		/* 6 */
+	7, /*"ammobox",				/* 7 */
+	7, /*"killOfficer",			/* 8 */
+	7, /*"retrieveIntel"		/* 9 */
+	7 /*"killOfficerBuilding"	/* 10 */
 	/*6  /*"inspect"				/* 11 */
 ];
 

@@ -25,6 +25,8 @@ if (isServer) then
 	{
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
+		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
+		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
 	if (_currentPlayerCount >= 6) then
 	{
@@ -64,7 +66,7 @@ if (isServer) then
 	private["_missionOptPlayerCount"];
 	_missionOptPlayerCount = 0;
 	private["_index"];
-	while { (_missionOptPlayerCount < _currentPlayerCount) } do 
+	while { (_missionOptPlayerCount < (_currentPlayerCount * pixParamMissionFactor)) } do 
 	{
 		_index = floor(random _missionOptCount);
 		
