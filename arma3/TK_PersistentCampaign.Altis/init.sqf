@@ -52,8 +52,6 @@ call compile preprocessFileLineNumbers "initPlayer.sqf";
 call compile preprocessFileLineNumbers "missionsEnv\init.sqf";
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
 call compile preprocessFileLineNumbers "missionsRev\init.sqf";
-call compile preprocessFileLineNumbers "pixDate\init.sqf";
-call compile preprocessFileLineNumbers "pixWeather\init.sqf";
 call compile preprocessFileLineNumbers "tfr\init.sqf";
 [] spawn compile preprocessFileLineNumbers "pixGps\init.sqf";
 [] spawn compile preprocessFileLineNumbers "credits\init.sqf";
