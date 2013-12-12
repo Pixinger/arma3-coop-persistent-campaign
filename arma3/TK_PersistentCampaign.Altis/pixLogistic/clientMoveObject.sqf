@@ -48,7 +48,7 @@ if (((typeof _object) in pixlogisticMovableObjects) || ((typeof _object) in pixl
 			private["_offsetY"];
 			_offsetY = 4;
 			private["_offsetZ"];
-			_offsetZ = 1;/*-1.4;*/
+			_offsetZ = .1;/*-1.4;*/
 			private["_boundingBox"];
 			_boundingBox = boundingBoxReal _object; /* An array with the extreme points of the model. Format [[x1,y1,z1],[x2,y2,z2]]. */
 			private["_p1"];

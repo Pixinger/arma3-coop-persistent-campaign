@@ -81,7 +81,10 @@ _result = [
 		/* Backpack-Items */
 		[
 		]
-	]
+	],
+	
+	/* unit classname */
+	"B_Pilot_F"
 ];
 
 _result;

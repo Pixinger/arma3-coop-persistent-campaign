@@ -95,7 +95,10 @@ _result = [
 		[
 			"ToolKit"
 		]
-	]
+	],
+	
+	/* unit classname */
+	"B_engineer_F"
 ];
 
 _result;
