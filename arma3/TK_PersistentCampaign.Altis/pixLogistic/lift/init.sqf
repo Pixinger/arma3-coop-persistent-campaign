@@ -30,17 +30,17 @@ if (!isServer || !isDedicated) then
 	[] spawn
 	{			
 		waitUntil {!isNull player};
-		if ((pixLogisticLiftPilots find (typeof player)) != - 1) then
-		{
-			call fn_pixLogisticList_AddActionMenus;
+		
+		call fn_pixLogisticList_AddActionMenus;
 
-			private["_inHeli"];
-			_inHeli = false;
-			/* Infinite Loop */
-			while { true } do
+		private["_inHeli"];
+		_inHeli = false;			
+		/* Infinite Loop */
+		while { true } do
+		{
+			if ((pixLogisticLiftPilots find (typeof player)) != - 1) then
 			{
 				Sleep 1;
-			
 				_inHeli = (((vehicle player) isKindOf "Helicopter") && (driver (vehicle player) == player));
 				/*pixLogisticLift_ShowMenuPiP = (((vehicle player) isKindOf "Helicopter") && (driver (vehicle player) == player));*/
 				pixLogisticLift_ShowMenuAttach = (_inHeli) && (isNull pixLogisticLift_AttachedObject);
@@ -54,6 +54,10 @@ if (!isServer || !isDedicated) then
 					pixLogisticLift_ShowMenuAttach = false;
 					pixLogisticLift_ShowMenuDetach = false;
 				};			
+			}
+			else
+			{
+				Sleep 15;
 			};
 		};
 	};
