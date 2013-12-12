@@ -91,6 +91,8 @@ private["_unitClassname"];
 if (count _result > 11) then { _unitClassname = _result select 11; } else { _unitClassname = "B_Soldier_F"; };
 
 /* Switch Unit durführen */
+private["_vehicleVarName"];
+_vehicleVarName = vehicleVarName _unit;
 private["_rank"];
 _rank = rank _unit;
 private["_dir"];
@@ -106,6 +108,8 @@ _unit = _newunit;
 _unit setpos _pos;
 _unit setdir _dir;
 _unit setUnitRank _rank;
+_unit SetVehicleVarName _vehicleVarName;
+_unit call Compile Format ["%1=_this ; PublicVariable ""%1""", _vehicleVarName];
 
 /* Aktuelle Ausrüstung löschen */
 removeAllAssignedItems _unit;
