@@ -132,8 +132,8 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button11;
 		y = 80.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Test.sqf";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonTestClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button12 : RscButtonAdminMenu
 	{

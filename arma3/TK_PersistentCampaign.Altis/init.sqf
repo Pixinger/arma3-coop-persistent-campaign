@@ -27,7 +27,6 @@ diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDel
 /*-----------------------------------------------*/
 cutText ["Initialization...", "BLACK FADED",1];
 
-call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 call compile preprocessFileLineNumbers "pixZones\init.sqf";
 call compile preprocessFileLineNumbers "pixLogistic\init.sqf";
 
@@ -38,7 +37,7 @@ Sleep .1;
 player setvariable ["BIS_nocoreconversations",true];
 
 /* Module initialisieren */
-call compile preprocessFileLineNumbers "initPlayer.sqf";
+call compile preprocessFileLineNumbers "pixRevive\init.sqf"; /* Vor pixLogistic! */
 call compile preprocessFileLineNumbers "missionsEnv\init.sqf";
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
 call compile preprocessFileLineNumbers "missionsRev\init.sqf";

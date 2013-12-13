@@ -40,3 +40,4 @@ if !(isNull _cursorTarget) then
 	hintSilent _parsedText; 
 	diag_log _parsedText;
 };
+

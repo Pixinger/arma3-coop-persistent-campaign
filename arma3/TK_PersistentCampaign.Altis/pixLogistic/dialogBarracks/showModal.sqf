@@ -8,17 +8,6 @@ createDialog "PIXLOGISTIC_DIALOG_BARRACK";
 
 private["_loadouts"];
 _loadouts = [
-	/*AAF*/
-/*	["AAF Gruppenführer","AAF_Teamleader.sqf"],
-	["AAF Automatikschütze","AAF_Autorifleman.sqf"],
-	["AAF Automatikschütze(Gurt)","AAF_Belt_Autorifleman.sqf"],
-	["AAF Ingenieur","AAF_Engineer.sqf"],
-	["AAF Sanitäter","AAF_Medic.sqf"],
-	["AAF PCML","AAF_PCML.sqf"],
-	["AAF Scharfschütze","AAF_Sniper.sqf"],
-	["AAF Unterstüzung","AAF_Support.sqf"],
-	["AAF Titan AT","AAF_Titan.sqf"],
-	["AAF Titan AA","AAF_TitanAA.sqf"],*/
 	/*UK*/
 	["UK Gruppenführer","UK_Teamleader.sqf"],
 	["UK Grenadier","UK_Grenade.sqf"],
@@ -48,7 +37,8 @@ _loadouts = [
 	["Taucher", "Diver.sqf"],
 	["Helipilot", "HeliPilot.sqf"],
 	["Pilot", "Pilot.sqf"],
-	["Kommandeur", "Commander.sqf"]	
+	["Kommandeur", "Commander.sqf"],
+	["Freizeit", "Default.sqf"]	
 ];
 
 /*-----------------------------------------------------------------		*/

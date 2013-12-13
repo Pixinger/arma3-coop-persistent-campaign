@@ -1,16 +1,16 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"",
 	
 	/* Headgear */
-	"H_Bandanna_sgg",
+	"",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"",
 	
 	/* Nightvision */
-	"NVGoggles",
+	"",
 	
 	/* Linked Items */
 	[
@@ -22,9 +22,9 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"srifle_LRR_SOS_F",
+		"", //TODO
 		/* Primary weapon Magazine */
-		"7Rnd_408_Mag",
+		"",
 		/* Primary Weapon Items */
 		[]
 	],
@@ -40,65 +40,44 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[]
 	],
 	
 	/* Uniform */
 	[
-		"U_BG_Guerilla1_1", 
+		"U_B_CTRG_1", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade"],
+		[],
 		/* Uniform-Items */
 		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */
 	[	
-		"V_TacVest_oli", 
+		"V_PlateCarrierH_CTRG", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
-		[
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag"
-		],
+		[],
 		/* Vest-Items */
 		[]
 	],
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_rgr", 
+		"", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[	
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"11Rnd_45ACP_Mag",
-			"11Rnd_45ACP_Mag"
-		],
+		[],
 		/* Backpack-Items */
-		[
-			"optic_Arco", "H_HelmetIA"
-		]
+		[]
 	]
 ];
 
