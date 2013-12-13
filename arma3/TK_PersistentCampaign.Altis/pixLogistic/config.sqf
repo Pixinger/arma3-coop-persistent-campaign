@@ -314,7 +314,8 @@ if (!isServer || !isDedicated) then
 	
 	/* Hauler (Schlepper) die bestimmte Container bewegen können */
 	pixlogisticHaulers = [
-		"B_Truck_01_mover_F"
+		"B_Truck_01_mover_F",
+		"B_SDV_01_F"
 	];
 	/* Dinge die einem Schlepper aufgeladen werden können */
 	pixlogisticHaulerCargos = [
