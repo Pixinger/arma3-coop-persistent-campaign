@@ -12,16 +12,19 @@ enableSaving [false, false];
 pixDebug = true;
 private["_paramValues"];
 if (paramsArray select 0 == 0) then { pixDebug = false; } else { pixDebug = false; }; if (isServer && !isDedicated) then { pixDebug = true; };
-/* Parameter (1): Mission Factor */
+/* Parameter (1): Zone Capture Time */
+pixParamzoneCaptureTime = (paramsArray select 1);
+diag_log format["INFO: pixParamzoneCaptureTime: %1", pixParamzoneCaptureTime];
+/* Parameter (2): Mission Factor */
 _paramValues = [0.5,1,1.5,2];
-pixParamMissionFactor = _paramValues select (paramsArray select 1);
+pixParamMissionFactor = _paramValues select (paramsArray select 2);
 diag_log format["INFO: pixParamMissionFactor: %1", pixParamMissionFactor];
-/* Parameter (2): ZoneAttackType */
-pixParamZoneAttackType = _paramValues select (paramsArray select 2); // 0=zufall 1=attack 2=reverseattack
+/* Parameter (3): ZoneAttackType */
+pixParamZoneAttackType = _paramValues select (paramsArray select 3); // 0=zufall 1=attack 2=reverseattack
 if (isServer && !isDedicated) then {pixParamZoneAttackType = 1;};
 diag_log format["INFO: pixParamZoneAttackType: %1", pixParamZoneAttackType];
-/* Parameter (3): ReverseAttack */
-pixParamReverseAttackDelay = (paramsArray select 3);
+/* Parameter (4): ReverseAttack */
+pixParamReverseAttackDelay = (paramsArray select 4);
 diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDelay];
 
 /*-----------------------------------------------*/

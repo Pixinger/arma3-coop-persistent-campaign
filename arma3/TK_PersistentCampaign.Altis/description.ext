@@ -57,21 +57,28 @@ class Params
 	    texts[] = {"Aus", "An"};
 	    default = 0;
 	};	
-	class MissionFactor /* paramsArray[1]*/
+	class ZoneCaptureTime /* paramsArray[1]*/
+	{		
+	    title = "Zeit für Einnahme der Zone";
+	    values[] = {30, 60, 90, 120, 150, 180, 1000};
+	    texts[] = {"30min", "60min", "90min", "120min", "150min", "180min", "1000min"};
+	    default = 120;
+	};
+	class MissionFactor /* paramsArray[2]*/
 	{		
 	    title = "Schwierigkeitsgrad";
 	    values[] = {0, 1, 2, 3};
 	    texts[] = {"Einfach", "Normal", "Schwer", "Sehr schwer"};
 	    default = 1;
 	};
-	class ZoneAttackType /* paramsArray[2]*/
+	class ZoneAttackType /* paramsArray[3]*/
 	{		
 	    title = "Zonen Angriffstyp";
 	    values[] = {0, 1, 2};
 	    texts[] = {"Zufall", "Angriff", "Gegenangriff"};
 	    default = 0;
 	};
-	class ReverseAttack /* paramsArray[3]*/
+	class ReverseAttack /* paramsArray[4]*/
 	{		
 	    title = "Gegenangriff nach";
 	    values[] = {5, 10, 15, 20, 30};
