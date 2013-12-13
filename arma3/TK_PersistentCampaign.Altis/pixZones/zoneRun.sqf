@@ -112,7 +112,7 @@ else
 			/*----------------------------------------*/
 			/* pvehPixZones_ZoneStatus aktualisieren  */
 			/*----------------------------------------*/
-			if ((time < _timeout) && (call PC_fnc_AllMissionsSuccessfull) then
+			if ((time < _timeout) && (call PC_fnc_AllMissionsSuccessfull)) then
 			{
 				pvPixLogisticMoney = pvPixLogisticMoney + pixlogisticRewardForZone;
 				{ if (_x >= 2) then { pvPixLogisticMoney = pvPixLogisticMoney + pixlogisticRewardForExistingZone;};	} foreach pvehPixZones_ZoneStatus;				
