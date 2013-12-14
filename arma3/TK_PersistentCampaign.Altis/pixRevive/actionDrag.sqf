@@ -1,10 +1,20 @@
 if (!isServer || !isDedicated) then
 {	
+	private["_target"];
+	_target = cursorTarget;
+		
+	if (!alive player) exitWith { false };
+	if ((player getVariable "pixRevive_UNC") == 1) exitWith { false };
+	if ((_target getVariable "pixRevive_UNC") == 0) exitWith { false };
+	if ((_target getVariable "pixRevive_DRG") == 1) exitWith { false };
+	if (pixRevive_IsDragging) exitWith { false };
+	if (isNil "_target") exitWith { false };
+	if (!alive _target) exitWith { false };
+	if ((_target distance player) > 2 ) exitWith { false };
+	if (isNil "_target") exitWith { false };
+
 	pixRevive_IsDragging = true;
 
-	private ["_target"];
-	_target = _this select 0;
-	
 	_target attachTo [player, [0, 1.1, 0.092]];
 	_target setDir 180;
 	_target setVariable ["pixRevive_DRG", 1, true];
@@ -21,13 +31,7 @@ if (!isServer || !isDedicated) then
 	hint "Press 'C' if you can't move.";
 	
 	/* Das ziehen überwachen, bis es abgebrochen werden soll. Das können viele Gründe sein */
-	while { 
-		(alive player) && 
-		((player getVariable "pixRevive_UNC") == 0) &&
-		(alive _target) &&
-		((_target getVariable "pixRevive_UNC") == 1) &&
-		(pixRevive_IsDragging) && 
-		((_target getVariable "pixRevive_DRG") == !) } do
+	while { ((alive player) && ((player getVariable "pixRevive_UNC") == 0) && (alive _target) && ((_target getVariable "pixRevive_UNC") == 1) && (pixRevive_IsDragging) &&  ((_target getVariable "pixRevive_DRG") == 1)) } do
 	{
 		Sleep 1;
 	};

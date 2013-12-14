@@ -25,6 +25,7 @@ else
 	{
 		private["_zoneIndex"];
 		_zoneIndex = [pixZones_MapCoordinates] call PC_fnc_GetZoneIndex;
+		diag_log format["INFO: hqSelectEngagementZone.sqf: selected _zoneIndex: %1", _zoneIndex];
 		if (_zoneIndex != -1) then
 		{
 			private["_canEngage"];

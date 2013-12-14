@@ -48,7 +48,7 @@ if (!isServer || !isDedicated) then
 				};
 			};
 				
-			Sleep 2;
+			Sleep 1;
 		};
 		
 		deleteVehicle _playerObject; /* Sicherheitshalber löschen, wahrscheinlich hat sich aber das SwitchUnit skript schon darum gekümmert. */

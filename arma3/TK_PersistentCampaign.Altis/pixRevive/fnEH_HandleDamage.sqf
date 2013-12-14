@@ -57,14 +57,14 @@ if (alive _unit) then
 				private["_bleedOut"];
 				_bleedOut = time + pixRevive_Bleedout;
 				
-				while { (!isNull _unit) && (alive _unit) && (_unit getVariable "pixRevive_UNC" == 1) && ((pixRevive_Bleedout <= 0) || (time < _bleedOut)) } do
+				while { (!isNull _unit) && (alive _unit) && (_unit getVariable "pixRevive_UNC" == 1) && (time < _bleedOut) } do
 				{
 					hintSilent format["Sie verbluten in %1 Sekunden", round (_bleedOut - time)];
 					sleep 1;
 				};
 				
 				/* Prüfen ob der Spieler verblutet ist */
-				if ((pixRevive_Bleedout > 0) && (time > _bleedOut)) then
+				if (time > _bleedOut) then
 				{
 					/* Leider verblutet */
 					_unit setDamage 1;
@@ -79,6 +79,7 @@ if (alive _unit) then
 					while {_cnt > 0} do
 					{
 						hintSilent format["Sie werden versorgt: %1", _cnt];
+						_cnt = _cnt - 1;
 						sleep 1;
 					};
 					hintSilent "";
@@ -91,7 +92,6 @@ if (alive _unit) then
 					_unit playMove "amovppnemstpsraswrfldnon";
 					_unit playMove "";
 				};		
-				player globalchat "fnEH_HandleDamage done";				
 			};
 		};
 	};
