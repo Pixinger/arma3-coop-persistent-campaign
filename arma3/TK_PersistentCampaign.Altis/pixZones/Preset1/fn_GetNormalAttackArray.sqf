@@ -26,14 +26,15 @@ if (isServer) then
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
-		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
 	if (_currentPlayerCount >= 6) then
 	{
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
+		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
 	if (_currentPlayerCount >= 10) then
 	{
+		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
 	if (_currentPlayerCount >= 15) then
@@ -63,44 +64,57 @@ if (isServer) then
 	
 	private["_missionOptCfgIndices"];
 	_missionOptCfgIndices = [];
-	private["_missionOptPlayerCount"];
-	_missionOptPlayerCount = 0;
-	private["_index"];
-	while { (_missionOptPlayerCount < (_currentPlayerCount * pixParamMissionFactor)) } do 
-	{
-		_index = floor(random _missionOptCount);
-		
-		_missionOptCfgIndices set [count _missionOptCfgIndices, _index];
-		_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _index);
-	};
-	
-	/* Zum debuggen */
-	if (isServer && !isDedicated) then
-	{
-		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
-		/*_missionOptCfgIndices = [10];*/
-	};
-	
-	
-	/*-------------------------------*/
-	/* Missions Positionen berechnen */
-	/* => "_missionOptLocations" */
-	/*-------------------------------*/
 	private["_missionOptLocations"];
 	_missionOptLocations = [];
-	private["_markerName"];
-	_markerName = format["Zone%1", _zoneIndex];
+	
+	private["_missionOptPlayerCount"];
+	_missionOptPlayerCount = 0;
+	private["_loopLimit"];
+	_loopLimit = 500;
+	while { (_missionOptPlayerCount < (_currentPlayerCount * pixParamMissionFactor)) && (_loopLimit > 0) } do 
 	{
+		_loopLimit = _loopLimit - 1;
+		
+		/* zufälligen Index bestimmen */
+		private["_index"];
+		_index = floor(random _missionOptCount);
+		
+		/* Mission Location zu diesem Index bestimmen */
 		private["_missionLocation"];
-		_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
-		_missionOptLocations = _missionOptLocations + [_missionLocation];
-	} foreach _missionOptCfgIndices;
+		_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _index)];
+
+		/* Wenn eine gültige Location gefunden wurde, dann zu Index und Location Array hinzufügen */
+		if (str(_missionLocation) != "[[0,0,0],0,[0,0,0],0]") then
+		{
+			_missionOptCfgIndices set [count _missionOptCfgIndices, _index];
+			_missionOptLocations set [count _missionOptLocations, _missionLocation];
+			_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _index);
+		};			
+	};
+	
+	/* Zum Debuggen */
+	if (isServer && !isDedicated) then
+	{
+		/* Missionen festlegen */
+		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
+		/*_missionOptCfgIndices = [10];*/
+		
+		/* Locations berechnen */
+		{
+			private["_missionLocation"];
+			_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
+			_missionOptLocations set [count _missionOptLocations, _missionLocation];
+		} foreach _missionOptCfgIndices;
+	};
+	
+	
 	
 	/*-----------------------------------------------*/
 	/* Die Mission-OPT Informationen zusammenstellen */
 	/*-----------------------------------------------*/
 	private["_missionsOpt"]; /* [[missionOptCfgIndex, missionPosition, missionDirection, markerPosition, markerRadius],[..]] */
 	_missionsOpt = [];
+	private["_index"];
 	_index = 0;
 	{
 		/* Nur wenn eine gültige Position gefunden wurde,zum Missionsarray hinzufügen.*/
