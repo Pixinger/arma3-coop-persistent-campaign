@@ -32,6 +32,6 @@ _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "AWARE";
 _waypoint setWaypointCombatMode "RED";		
 /*_waypoint setWaypointTimeout [10, 30, 60]; */
-_waypoint setWaypointStatements ["missionsRev_AttackStarted", "missionsRev_AttackFinished = true;"];
+_waypoint setWaypointStatements ["true", "missionsRev_AttackFinished = true;"];
 
 true

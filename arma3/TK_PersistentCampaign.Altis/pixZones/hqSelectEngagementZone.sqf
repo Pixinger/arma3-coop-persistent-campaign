@@ -70,10 +70,10 @@ else
 						/* Bestimmen welche Zone durch Opfor angegriffen wird */
 						_zoneIndex = _validConnectedZones select (floor(random(count _validConnectedZones)));
 						/* Dem Teamleader noch einen Hinweis auf das Problem geben */
-						hintC "Unser Nachrichtendienst meldet uns Bewegung in feindlichen Sektoren.
+						hintC format["Unser Nachrichtendienst meldet uns Bewegung in feindlichen Sektoren.
 							Es scheint so als würde der Gegner einen Gegenangriff vorbereiten.
 							Die Satelliten melden Bewegung in mehreren Sektoren.
-							Bereiten sie alles für die Verteidigung vor.";
+							Bereiten sie alles für die Verteidigung vor. (%1 Minuten)", pixParamReverseAttackDelay];
 					}
 					else
 					{

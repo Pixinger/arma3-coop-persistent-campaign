@@ -1,4 +1,6 @@
 ﻿/*
+pixLogisticDeleteDamagedItems
+
 pixlogisticTransportContainers
 pixlogisticTransportContainersSize
 
@@ -30,13 +32,56 @@ if (isServer) then
 {
 	pixlogisticItemDbFilename = "pixLogisticItem.txt";
 	pixlogisticDataDbFilename = "pixLogisticData.txt";
+
+	/* Gibt an, welche Classnames nicht mehr gebaut werden sollen, wenn sie mehr damage als 0.9 haben */
+	pixLogisticDeleteDamagedItems = [
+		"B_UAV_01_F",
+		"Land_CncWall1_F",
+		"Land_CncWall4_F",
+		"Land_CncBarrierMedium4_F",
+		"Land_CncBarrierMedium_F",
+		"Land_CncBarrier_F",
+		"Land_CncBarrier_stripes_F",
+		"Land_Crash_barrier_F",
+		"Land_HBarrier_1_F",
+		"Land_HBarrier_3_F",
+		"Land_HBarrier_5_F",
+		"Land_HBarrierBig_F",
+		"Land_BagFence_Short_F",
+		"Land_BagFence_Long_F",
+		"Land_BagFence_Round_F",
+		"Land_BagBunker_Large_F",
+		"Land_BagBunker_Small_F",
+		"Land_BagBunker_Tower_F",
+		"Box_NATO_Grenades_F",
+		"Box_NATO_AmmoOrd_F",
+		"B_supplyCrate_F",
+		"Box_NATO_WpsSpecial_F",
+		"Box_NATO_Ammo_F",
+		"Box_NATO_Wps_F",
+		"Box_NATO_Support_F",
+		"Box_NATO_AmmoVeh_F",
+		"Box_NATO_WpsLaunch_F",
+		/* OPFOR */
+		"O_UAV_01_F",
+		"Box_East_WpsLaunch_F",
+		"Box_East_Support_F",
+		"O_supplyCrate_F",
+		"Box_East_AmmoVeh_F",
+		"Box_East_Grenades_F",
+		"Box_East_WpsSpecial_F",
+		"Box_East_AmmoOrd_F",
+		"Box_East_Ammo_F",
+		"Box_East_Wps_F"				
+	];	
+	
 };
 
 /* ---------------------------- */
 /* Nur Client oder ServerClient */
 /* ---------------------------- */
 if (!isServer || !isDedicated) then
-{
+{	
 	/* Container in die etwas geladen werden kann */
 	pixlogisticTransportContainers = [
 		"Land_Cargo20_blue_F", 			/*statische waffen*/

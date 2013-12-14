@@ -88,35 +88,48 @@ if (isServer) then
 				private["_damage"];
 				_damage = _result select 4;
 				
-				/*------------------*/
-				/* Vehicle erzeugen */
-				/*------------------*/
-				private["_item"];
-				_item = [_classname, _pos] call fn_pixLogistic_CreateCorrectedVehicle; /* Kapselt z.B. Änderungen an der Ladung */
-				
-				/*----------------*/
-				/* Details setzen */
-				/*----------------*/
-				_item setDir _dir;
-				_item setPosATL [_pos select 0, _pos select 1, 0];
-				_item setVariable ["pixLogisticContent", _content, true]; 
-				if (_damage >= 0.9) then
+				private["_ignore"];
+				_ignore = false;
+				if (_damage > 0.9) then
 				{
-					_item enablesimulation false; 
-					_item setdamage 1;
-					/*
-					_item setdamage 1;_item setdamage 1; _item setdamage 0.9;*/
-				}
-				else
-				{
-					_item setDamage _damage;
+					if (_classname in pixLogisticDeleteDamagedItems) then
+					{
+						_ignore = true;
+					};
 				};
 				
-				/*------------------------------------*/
-				/* In die Überwachungsliste aufnehmen */
-				/*------------------------------------*/
-				pixlogisticDbItems = pixlogisticDbItems + [_item];	
 				
+				if (!_ignore) then
+				{
+					/*------------------*/
+					/* Vehicle erzeugen */
+					/*------------------*/
+					private["_item"];
+					_item = [_classname, _pos] call fn_pixLogistic_CreateCorrectedVehicle; /* Kapselt z.B. Änderungen an der Ladung */
+					
+					/*----------------*/
+					/* Details setzen */
+					/*----------------*/
+					_item setDir _dir;
+					_item setPosATL [_pos select 0, _pos select 1, 0];
+					_item setVariable ["pixLogisticContent", _content, true]; 
+					if (_damage >= 0.9) then
+					{
+						_item enablesimulation false; 
+						_item setdamage 1;
+						/*
+						_item setdamage 1;_item setdamage 1; _item setdamage 0.9;*/
+					}
+					else
+					{
+						_item setDamage _damage;
+					};
+					
+					/*------------------------------------*/
+					/* In die Überwachungsliste aufnehmen */
+					/*------------------------------------*/
+					pixlogisticDbItems = pixlogisticDbItems + [_item];	
+				};
 			
 				/*-------------------------*/
 				/* Nächstes Datenset laden */

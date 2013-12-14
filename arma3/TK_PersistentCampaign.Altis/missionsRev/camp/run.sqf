@@ -98,7 +98,7 @@ if (isServer) then
 		for "_i" from 0 to 1 do
 		{
 			private["_groupInfos"];
-			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OIA_MechInf_AT","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_TankPlatoon"], _x, _missionPosition, 200] call PC_fnc_SpawnGroupAttackObject;
+			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OIA_MechInf_AT","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_TankPlatoon"], _x, _missionPosition, 200, pixParamReverseAttackDelay] call PC_fnc_SpawnGroupAttackObject;
 			if (str(_groupInfos) != "[[0,0,0],0]") then
 			{			
 				_groups = _groups + [_groupInfos select 0];

@@ -30,6 +30,10 @@ private["_zoneSafetyBorder"];
 _zoneSafetyBorder = [_this, 3, 25, [0]] call BIS_fnc_param;
 if (_zoneSafetyBorder < 0) then { _zoneSafetyBorder = 0; };
 
+private["_attackDelay"];
+_attackDelay = [_this, 4, -1, [0]] call BIS_fnc_param;
+if (_attackDelay < 0) then { _attackDelay = 0; };
+
 /*-------------------------------------------------------------------*/
 
 /* Startpunkt in der Nähe des Objektes suchen */
@@ -42,8 +46,32 @@ private["_groupInfos"];
 _groupInfos = [_cfgGroupNames, (_location select 0)] call PC_fnc_SpawnGroup;
 if (count _groupInfos == 0) exitwith {["PC_fnc_SpawnGroup failed"] call BIS_fnc_error; []};
 
-/* Das Objekt bewachen */	
-[_groupInfos select 0, _attackPosition] call PC_fnc_AttackObject;
+/* Angriffsverzögerung */
+if (_attackDelay > 0) then
+{
+	[_attackDelay, _groupInfos, _attackPosition] spawn {
+		private["_attackDelay"];
+		_attackDelay = _this select 0;
+		private["_groupInfos"];
+		_groupInfos = _this select 1;
+		private["_attackPosition"];
+		_attackPosition = _this select 2;
+		
+		private["_cnt"];
+		_cnt = (60 * _attackDelay); 
+		while { _cnt > 0 } do
+		{
+			Sleep 1;
+			_cnt = _cnt - 1;
+		};
+		
+		[_groupInfos select 0, _attackPosition] call PC_fnc_AttackObject;
+	};
+}
+else
+{
+	[_groupInfos select 0, _attackPosition] call PC_fnc_AttackObject;
+};
 
 /* Im Debug die Gruppe mit einem Marker tracken */
 if (!isDedicated) then { [_groupInfos select 0, true, "ColorRed","AO"] spawn PC_fnc_TrackGroup; };

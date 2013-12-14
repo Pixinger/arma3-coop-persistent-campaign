@@ -21,10 +21,11 @@ pixParamMissionFactor = _paramValues select (paramsArray select 2);
 diag_log format["INFO: pixParamMissionFactor: %1", pixParamMissionFactor];
 /* Parameter (3): ZoneAttackType */
 pixParamZoneAttackType = _paramValues select (paramsArray select 3); // 0=zufall 1=attack 2=reverseattack
-if (isServer && !isDedicated) then {pixParamZoneAttackType = 1;};
+if (isServer && !isDedicated) then {pixParamZoneAttackType = 2;};
 diag_log format["INFO: pixParamZoneAttackType: %1", pixParamZoneAttackType];
 /* Parameter (4): ReverseAttack */
 pixParamReverseAttackDelay = (paramsArray select 4);
+if (isServer && !isDedicated) then {pixParamReverseAttackDelay = 1;};
 diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDelay];
 
 /*-----------------------------------------------*/

@@ -74,7 +74,6 @@ else
 		/*----------------------*/
 		/* Rev-Missions starten */
 		/*----------------------*/
-		missionsRev_AttackStarted = false;
 		missionsRev_AttackFinished = false;
 		for "_i" from 0 to ((count _missionsRev) - 1) do
 		{
@@ -90,25 +89,18 @@ else
 		/*----------------------------------------------------------------------------*/
 		if (isServer) then
 		{
-			/*--------------------------------------------------------------------------------------------------*/
-			/* Wenn es sich um eine ReverseAttack Mission handelt, dann verzögern wir nun noch ein paar Minuten */
-			/*--------------------------------------------------------------------------------------------------*/
-			if (count (pvehPixZones_MissionInfos select 3) > 0) then
-			{
-				Sleep (60 * pixParamReverseAttackDelay);
-				missionsRev_AttackStarted = true;
-			};
-			
 			/*---------------------------------------------*/
 			/* Warten bis die Missionen abgeschlossen sind */	
 			/*---------------------------------------------*/
 			private["_timeout"];
-			_timeout = time + (pixParamzoneCaptureTime * 60);
+			_timeout = time + (pixParamZoneCaptureTime * 60);
+			/* Wenn es sich um eine ReverseAttack Mission handelt, dann muss dass _timeout noch um den 'pixParamReverseAttackDelay' erhöht werden. */
+			if (count (pvehPixZones_MissionInfos select 3) > 0) then { _timeout = _timeout + (60 * pixParamReverseAttackDelay);};
 			while { (!call PC_fnc_AllMissionsFinished) && (time < _timeout)} do
 			{	
 				Sleep 10;				
 			};	
-						
+
 			/*----------------------------------------*/
 			/* pvehPixZones_ZoneStatus aktualisieren  */
 			/*----------------------------------------*/
@@ -138,7 +130,7 @@ else
 			[] call compile preprocessFileLineNumbers "pixZones\serverSaveToDb.sqf";		
 			publicVariable "pvehPixZones_ZoneStatus";
 			if (!isDedicated) then	{ call compile preprocessFileLineNumbers "pixZones\pvehPixZones_ZoneStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
-			
+
 			pixZones_ActiveIndex = -1;
 			pvehPixZones_MissionInfos = [];
 			publicVariable "pvehPixZones_MissionInfos";

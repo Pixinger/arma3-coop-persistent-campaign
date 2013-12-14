@@ -72,4 +72,4 @@ _i = 0;
 	_i = _i + 1;
 } foreach _objects;
 
-player globalChat format["Alle Anlagen im Unkreis von %1m wurden eingetragen.", _radius];
+player globalChat format["Alle Anlagen im Umkreis von %1m wurden eingetragen.", _radius];

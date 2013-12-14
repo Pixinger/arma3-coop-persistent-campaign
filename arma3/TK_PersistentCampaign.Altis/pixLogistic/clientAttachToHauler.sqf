@@ -4,7 +4,7 @@ _vehicle = vehicle player;
 if (driver _vehicle == player) then
 {
 	private["_behind"];
-	_behind = _vehicle modelToWorld [0,-8,0]; 
+	_behind = _vehicle modelToWorld [0,-15,0]; 
 	private["_vehicleCargo"];
 	_vehicleCargo = _vehicle getVariable "pixlogisticCargo";
 	if (isNil "_vehicleCargo") then 
