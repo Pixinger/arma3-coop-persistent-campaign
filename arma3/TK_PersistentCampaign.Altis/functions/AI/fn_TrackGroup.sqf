@@ -32,7 +32,7 @@ _text = [_this, 3, "", [""]] call BIS_fnc_param;
 private["_markernames"];
 _markernames = [];
 private["_markername"];
-private["_waypoints"];
+/*private["_waypoints"];
 _waypoints = waypoints _group;
 for "_i" from 0 to (count _waypoints - 1) do
 {
@@ -46,7 +46,7 @@ for "_i" from 0 to (count _waypoints - 1) do
 	_markerName setMarkerColorLocal _color;
 	_markerName setMarkerTextLocal format["%1", _i];
 	_markernames = _markernames + [_markername];
-};
+};*/
 
 /* Marker erstellen */
 _markername = [] call PC_fnc_GetUniqueMarkerName;

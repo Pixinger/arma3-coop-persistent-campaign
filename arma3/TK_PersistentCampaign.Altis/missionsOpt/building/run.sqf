@@ -2,8 +2,6 @@ private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_missionInfoIndex"];
 _missionInfoIndex = _this select 1;
-private["_buildingClassname"];
-_buildingClassname = _this select 2;
 
 /*----------------------------------*/
 /* Die Missionsdaten herausarbeiten */
@@ -19,15 +17,24 @@ _missionMarkerPosition = _missionOpt select 3;
 private["_missionMarkerRadius"];
 _missionMarkerRadius = _missionOpt select 4;
 
+/*-------------------------*/
+/* Building Typen definieren */
+/*-------------------------*/
+private["_buildingClassnames"];
+_buildingClassnames = ["Land_TTowerBig_1_F"];
+
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
+	private["_buildingClassname"];
+	_buildingClassname = [_missionPosition, _buildingClassnames, (_buildingClassnames select 0)] call PC_fnc_FindVehicleTypeInRange;
+
 	private["_taskTitle"];
-	_taskTitle = format["Gebäude zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+	_taskTitle = format["Gebäude zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	private["_taskDescription"];
-	_taskDescription = format["Der Feind hat ein für uns strategisch wichtiges Gebäude in Einsatzreichweite. Zerstören Sie dieses Gebäude um jeden Preis. (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+	_taskDescription = format["Der Feind hat ein für uns strategisch wichtiges Gebäude in Einsatzreichweite. Zerstören Sie dieses Gebäude um jeden Preis. (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -41,6 +48,10 @@ if (isServer) then
 	_vehicles = [];
 	private["_buildings"];
 	_buildings = [];
+	
+	/* Vehicle classname festlegen */
+	private["_buildingClassname"];
+	_buildingClassname =  _buildingClassnames call BIS_fnc_selectRandom;
 	
 	private["_building"];
 	_building = _buildingClassname createVehicle _missionPosition;

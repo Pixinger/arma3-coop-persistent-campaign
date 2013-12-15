@@ -39,6 +39,7 @@ class PC
 	class missionsOpt
 	{
 		class FinishMissionStatus {description = "";};
+		class FindVehicleTypeInRange {description = "";};
 	};
 	class Tools
 	{

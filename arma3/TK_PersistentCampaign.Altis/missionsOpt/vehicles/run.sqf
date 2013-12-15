@@ -2,8 +2,6 @@ private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_missionInfoIndex"];
 _missionInfoIndex = _this select 1;
-private["_vehicleClassname"];
-_vehicleClassname = _this select 2;
 
 /*----------------------------------*/
 /* Die Missionsdaten herausarbeiten */
@@ -19,15 +17,25 @@ _missionMarkerPosition = _missionOpt select 3;
 private["_missionMarkerRadius"];
 _missionMarkerRadius = _missionOpt select 4;
 
+/*-------------------------*/
+/* VehicleTypen definieren */
+/*-------------------------*/
+private["_vehicleClassnames"];
+_vehicleClassnames = ["O_APC_Tracked_02_AA_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
+
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
+	private["_vehicleClassname"];
+	_vehicleClassname = [_missionPosition, _vehicleClassnames, (_vehicleClassnames select 0)] call PC_fnc_FindVehicleTypeInRange;
+
 	private["_taskTitle"];
-	_taskTitle = format["Fahrzeuge zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskTitle = format["Fahrzeuge zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	
 	private["_taskDescription"];
-	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeuggruppe ermittelt. Vernichten sie diese Fahrzeuge (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeuggruppe ermittelt. Vernichten sie diese Fahrzeuge (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -41,6 +49,10 @@ if (isServer) then
 	_vehicles = [];
 	private["_buildings"];
 	_buildings = [];
+
+	/* Vehicle classname festlegen */
+	private["_vehicleClassname"];
+	_vehicleClassname =  _vehicleClassnames call BIS_fnc_selectRandom;
 
 	/*---------------------*/
 	/* Fahrzeuge erstellen */

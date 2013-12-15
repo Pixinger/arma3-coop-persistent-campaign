@@ -33,7 +33,7 @@ if (isServer) then
 	/* Patroullie erzeugen */
 	/*---------------------*/
 	private["_groupInfos"];
-	_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_InfTeam_AA","OIA_MechInf_AT","OIA_MechInfSquad","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_MotInf_MortTeam","OIA_MotInf_Team"], _zoneIndex, 25] call PC_fnc_SpawnGroupPatrolZone;		
+	_groupInfos = [["OIA_InfSquad","OIA_InfSquad","OIA_InfTeam","OIA_InfTeam","OIA_InfTeam_AT","OIA_InfTeam_AT","OIA_InfTeam_AA","OIA_MechInf_AT","OIA_MechInfSquad","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_MotInf_MortTeam","OIA_MotInf_Team"], _zoneIndex, 25] call PC_fnc_SpawnGroupPatrolZone;		
 	if (count _groupInfos > 0) then
 	{
 		_groups = _groups + [(_groupInfos select 0)];

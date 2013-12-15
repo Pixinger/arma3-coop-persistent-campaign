@@ -2,8 +2,6 @@ private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_missionInfoIndex"];
 _missionInfoIndex = _this select 1;
-private["_vehicleClassname"];
-_vehicleClassname = _this select 2;
 
 /*----------------------------------*/
 /* Die Missionsdaten herausarbeiten */
@@ -19,15 +17,24 @@ _missionMarkerPosition = _missionOpt select 3;
 private["_missionMarkerRadius"];
 _missionMarkerRadius = _missionOpt select 4;
 
+/*-------------------------*/
+/* VehicleTypen definieren */
+/*-------------------------*/
+private["_vehicleClassnames"];
+_vehicleClassnames = ["O_APC_Wheeled_02_rcws_F", "O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
+
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
+	private["_vehicleClassname"];
+	_vehicleClassname = [_missionPosition, _vehicleClassnames, (_vehicleClassnames select 0)] call PC_fnc_FindVehicleTypeInRange;
+
 	private["_taskTitle"];
-	_taskTitle = format["Fahrzeug zerstören (%1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskTitle = format["Fahrzeug zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	private["_taskDescription"];
-	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeug ermittelt in dem neues Technisches Gerät verbaut ist. Wir können nicht zulassen, dass diese Entwicklung zu Einsatz kommt. Vernichten sie das Fahrzeug (Typ: %1)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeug ermittelt in dem neues Technisches Gerät verbaut ist. Wir können nicht zulassen, dass diese Entwicklung zu Einsatz kommt. Vernichten sie das Fahrzeug (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -41,6 +48,10 @@ if (isServer) then
 	_vehicles = [];
 	private["_buildings"];
 	_buildings = [];
+	
+	/* Vehicle classname festlegen */
+	private["_vehicleClassname"];
+	_vehicleClassname =  _vehicleClassnames call BIS_fnc_selectRandom;
 
 	/*--------------------*/
 	/* Fahrzeug erstellen */

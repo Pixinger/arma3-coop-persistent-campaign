@@ -25,7 +25,7 @@ if (!isServer || !isDedicated) then
 	private["_taskTitle"];
 	_taskTitle = "Offizier eliminieren (Gebäude)";
 	private["_taskDescription"];
-	_taskDescription = "Ein feindlicher Offizier hat einen unserer verdeckten Ermittler aufgespürt und diesen mit Aufdeckung erpresst. Momentan hat sich der Offizier mit einer Truppe in ein paar Gebäuden verschanzt. Wir können kein weiteres Risiko eingehen. Eliminieren sie den Offizier.";
+	_taskDescription = "Ein feindlicher Offizier hat einen unserer verdeckten Ermittler aufgespürt und diesen mit Aufdeckung erpresst. Momentan hat sich der Offizier mit einer Truppe in einem Gebäude verschanzt. Wir können kein weiteres Risiko eingehen. Eliminieren sie den Offizier.";
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	

@@ -3,35 +3,27 @@
 /* [Foldername, Exercisename/description]
 /*-------------------------------------------------------*/
 missionsOpt_Missions = [
-	"vehicleAPC",			/* 0 */
-	"vehiclesAntiAir",		/* 1 */
-	"vehiclesArtillery",	/* 2 */
-	"vehiclesArmored",		/* 3 */
-	"checkpoint",			/* 4 */
-	"buildingTower",		/* 5 */
-	"buildingBunker",		/* 6 */
-	"ammobox",				/* 7 */
-	"killOfficer",			/* 8 */
-	"retrieveIntel",		/* 9 */
-	"killOfficerBuilding",	/* 10 */
-	"checkpoint"			/* 11 */
-	/*"inspect"*/			/* 12 */
+	"vehicle",				/* 0 */
+	"vehicles",				/* 1 */
+	"checkpoint",			/* 2 */
+	"building",				/* 3 */
+	"ammobox",				/* 4 */
+	"killOfficer",			/* 5 */
+	"retrieveIntel",		/* 6 */
+	"killOfficerBuilding"	/* 7 */
+	/*"inspect"*/			/* 8 */
 	];
 
 missionsOpt_MissionPlayers = [
-	7, /*"vehicleAPC",			 0 */
-	9, /*"vehiclesAntiAir",		 1 */
-	9, /*"vehiclesArtillery",	 2 */
-	9, /*"vehiclesArmored",		 3 */
-	3, /*"checkpoint",			 4 */
-	7, /*"buildingTower",		 5 */
-	7, /*"buildingBunker",		 6 */
-	7, /*"ammobox",				 7 */
-	7, /*"killOfficer",			 8 */
-	7, /*"retrieveIntel"		 9 */
-	7, /*"killOfficerBuilding"	 10 */
-	3 /*"checkpoint",			 11 */
-	/*6  /*"inspect"			 12 */
+	7, /*"vehicle",				0 */
+	9, /*"vehicles",			1 */
+	9, /*"checkpoint",	 		2 */
+	9, /*"building",		3 */
+	3, /*"ammobox",				4 */
+	7, /*"killOfficer",			5 */
+	7, /*"retrieveIntel",		6 */
+	7  /*"killOfficerBuilding",	7 */
+	/*6  /*"inspect"			8 */
 ];
 
 IF (isServer && !isDedicated) then 
