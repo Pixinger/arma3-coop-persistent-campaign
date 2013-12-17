@@ -2,11 +2,11 @@ author = "[TK]Pix";  /* Hier kann der Names des Missionserstellers eingetragen w
 onLoadName = "[TK]Persistent Campaign"; /* Mission Name*/
 onLoadMission = "Eine persistent gespeicherte Coop Mission, die in Angriffs- und Logistikzyklen unterteilt ist."; /* Beschreibung*/
 OnLoadIntro = "by [TK]Pix";
-onLoadMissionTime = true; /* Mit diesem Eintrag könnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
-onLoadIntroTime = false;   /* Mit diesem Eintrag könnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
-loadScreen = "loadScreen.paa"; /*Mit LoadScreen wird ein Bild während des Ladens der init.sqf eingeblendet. Die Bilddatei muss im Missionsordner (bzw. einem Unterordner) vorhanden sein. "pfad\zum\bild.paa"*/
-briefing = 1; /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
-debriefing = 1;   /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
+onLoadMissionTime = true; /* Mit diesem Eintrag kÃ¶nnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
+onLoadIntroTime = false;   /* Mit diesem Eintrag kÃ¶nnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
+loadScreen = "loadScreen.paa"; /*Mit LoadScreen wird ein Bild wÃ¶hrend des Ladens der init.sqf eingeblendet. Die Bilddatei muss im Missionsordner (bzw. einem Unterordner) vorhanden sein. "pfad\zum\bild.paa"*/
+briefing = 1; /* Mit diesen EintrÃ¤gen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. MÃ¶gliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
+debriefing = 1;   /* Mit diesen EintrÃ¤gen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. MÃ¶gliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
 disabledAI = true;
 showCompass = 1;
 showGPS = 1;
@@ -16,14 +16,16 @@ showRadio = 1;
 showWatch = 1;
 enableDebugConsole = 1;
 respawnDelay = 5;
-respawnDialog = 1; 			/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
-enableItemsDropping = 0; 	/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre Ausrüstung verliert oder nicht. Mögliche Werte sind 0 (= Einheit verliert keine Ausrüstung) und 1 (= Einheit verliert ihre Ausrüstung).*/
-joinUnassigned = 1; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
+respawnDialog = 1; 			/* legt fest ob wÃ¤hrend des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
+enableItemsDropping = 0; 	/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre AusrÃ¼stung verliert oder nicht. MÃ¶gliche Werte sind 0 (= Einheit verliert keine AusrÃ¼stung) und 1 (= Einheit verliert ihre AusrÃ¼stung).*/
+joinUnassigned = 1; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.MÃ¶gliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
+allowFunctionsRecompile = 1;
+allowFunctionsLog=1;
 /*
 0 / "NONE" - Kein Respawn
-1 / "BIRD" - Respawn als Möwe / Krähe
+1 / "BIRD" - Respawn als MÃ¶we / KrÃ¤he
 2 / "INSTANT" - Respawn an der Stelle an der der Spieler gestorben ist
-3 / "BASE" - Respawn an einer festgelegten Position (benötigt einen Marker mit dem Namen "respawn_west", "respawn_east", "respawn_guerilla", "respawn_Civilian"; sollen Fahrzeuge ebenfalls respawnen, werden entsprechende Marker mit den Namen "respawn_vehicle_west", "respawn_vehicle_east", "respawn_vehicle_guerilla", "respawn_vehicle_civilian" benötigt)
+3 / "BASE" - Respawn an einer festgelegten Position (benÃ¶tigt einen Marker mit dem Namen "respawn_west", "respawn_east", "respawn_guerilla", "respawn_Civilian"; sollen Fahrzeuge ebenfalls respawnen, werden entsprechende Marker mit den Namen "respawn_vehicle_west", "respawn_vehicle_east", "respawn_vehicle_guerilla", "respawn_vehicle_civilian" benötigt)
 4 / "GROUP" - Respawn in eine (noch lebende) KI Einheit der eigenen Gruppe
 5 / "SIDE" - Respawn in eine (noch lebende) KI Einheit der eigenen Seite
 */
@@ -40,11 +42,9 @@ respawn = BASE;
 */
 disableChannels[]={2,5,6};
 
-#include "VAS\menu.hpp"
-
 class CfgFunctions
 {
-	#include "VAS\cfgfunctions.hpp"
+	#include "functions\cfgfunctions.hpp"
 };
 
 
@@ -56,48 +56,34 @@ class Params
 	    values[] = {0, 1};
 	    texts[] = {"Aus", "An"};
 	    default = 0;
-	};
-	class PatrolSkript /* paramsArray[1]*/
+	};	
+	class ZoneCaptureTime /* paramsArray[1]*/
 	{		
-	    title = "Patrolskript";
-	    values[] = {0, 1};
-	    texts[] = {"Urban Patrol Skript (by Kronzky)", "Ultra Simple Patrol Skript (by JW Custom)"};
-	    default = 0;
+	    title = "Zeit fÃ¼r Einnahme der Zone";
+	    values[] = {30, 60, 90, 120, 150, 180, 1000};
+	    texts[] = {"30min", "60min", "90min", "120min", "150min", "180min", "1000min"};
+	    default = 120;
 	};
-	class ReverseAttack /* paramsArray[2]*/
-	{		
-	    title = "Gegenangriff nach";
-	    values[] = {5, 10, 15, 20, 30};
-	    texts[] = {"5 min.", "10 min.", "15 min.", "20 min.", "30 min."};
-	    default = 15;
-	};
-	class Date /* paramsArray[3]*/
-	{		
-	    title = "Datum";
-	    values[] = {0, 1,2,3,4};
-	    texts[] = {"Zufall", "Sommer", "Frühling", "Herbst", "Winter"};
-	    default = 1;
-	};
-	class Daytime /* paramsArray[4]*/
-	{		
-	    title = "Uhrzeit";
-	    values[] = {0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24};
-	    texts[] = {"Zufall", "1 Uhr", "2 Uhr", "3 Uhr", "4 Uhr", "5 Uhr", "6 Uhr", "7 Uhr", "8 Uhr", "9 Uhr", "10 Uhr", "11 Uhr", "12 Uhr", "13 Uhr", "14 Uhr", "15 Uhr", "16 Uhr", "17 Uhr", "18 Uhr", "19 Uhr", "20 Uhr", "21 Uhr", "22 Uhr", "23 Uhr", "24 Uhr"};
-	    default = 0;
-	};
-	class Weather /* paramsArray[5]*/
-	{		
-	    title = "Wetter";
-	    values[] = {7, 0,1,2,3,4,5,6};
-	    texts[] = {"Zufall", "(1) sonnig", "(2)", "(3) bewölkt", "(4)", "(5) regnerisch", "(6)", "(7) stürmisch"};
-	    default = 7;
-	};
-	class MissionFactor /* paramsArray[6]*/
+	class MissionFactor /* paramsArray[2]*/
 	{		
 	    title = "Schwierigkeitsgrad";
 	    values[] = {0, 1, 2, 3};
 	    texts[] = {"Einfach", "Normal", "Schwer", "Sehr schwer"};
 	    default = 1;
+	};
+	class ZoneAttackType /* paramsArray[3]*/
+	{		
+	    title = "Zonen Angriffstyp";
+	    values[] = {0, 1, 2};
+	    texts[] = {"Zufall", "Angriff", "Gegenangriff"};
+	    default = 0;
+	};
+	class ReverseAttack /* paramsArray[4]*/
+	{		
+	    title = "Gegenangriff nach";
+	    values[] = {5, 10, 15, 20, 30};
+	    texts[] = {"5 min.", "10 min.", "15 min.", "20 min.", "30 min."};
+	    default = 5;
 	};
 };
 

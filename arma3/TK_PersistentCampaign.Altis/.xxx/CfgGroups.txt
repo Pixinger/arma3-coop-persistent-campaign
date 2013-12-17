@@ -1,0 +1,57 @@
+EAST:
+	---Armored:
+	OIA_SPGPlatoon_Scorcher
+	OIA_SPGSection_Scorcher
+	OIA_TankPlatoon
+	OIA_TankPlatoon_AA
+	OIA_TankSection
+
+	--Infantry:
+	OI_reconPatrol
+	OI_reconSentry
+	OI_reconTeam
+	OI_SniperTeam
+	OIA_InfSentry
+	OIA_InfSquad
+	OIA_InfSquad_Weapons
+	OIA_InfTeam
+	OIA_InfTeam_AA
+	OIA_InfTeam_AT
+
+	---Mechanized:
+	OIA_MechInf_AA
+	OIA_MechInf_AT
+	OIA_MechInf_Support
+	OIA_MechInfSquad
+	
+	---Motorized_MTP:
+	OIA_MotInf_AA
+	OIA_MotInf_AT
+	OIA_MotInf_GMGTeam
+	OIA_MotInf_MGTeam
+	OIA_MotInf_MortTeam
+	OIA_MotInf_Team
+
+	---SpecOps:
+	OI_AttackTeam_UAV
+	OI_AttackTeam_UGV
+	OI_diverTeam
+	OI_diverTeam_Boat
+	OI_diverTeam_SDV
+	OI_ReconTeam_UAV
+	OI_ReconTeam_UGZ
+	OI_SmallTeam_UAV
+
+	---Support:
+	OI_recon_EOD
+	OI_support_CLS
+	OI_support_ENG
+	OI_support_EOD
+	OI_support_GMG
+	OI_support_MG
+	OI_support_Mort
+
+	---UInfantry:
+	OIA_GuardSentry
+	OIA_GuardSquad
+	OIA_GuardTeam	

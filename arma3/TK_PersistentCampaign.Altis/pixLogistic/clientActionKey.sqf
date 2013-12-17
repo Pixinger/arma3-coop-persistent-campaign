@@ -99,8 +99,7 @@ if (player isKindOf "SoldierWB") then
 													/*--------------------*/
 													/* Move object around */
 													/*--------------------*/
-													_scrp = [_cursorTarget] execVM "pixLogistic\clientMoveObject.sqf";				
-													waituntil { scriptDone _scrp;};
+													[_cursorTarget] call compile preprocessFileLineNumbers "pixLogistic\clientMoveObject.sqf";				
 												};
 											};
 										};

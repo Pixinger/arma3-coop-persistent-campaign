@@ -23,23 +23,23 @@ if (!isServer) then
 	while { true } do 
 	{
 		Sleep PIXZONE_CHECKINTERVAL;
-		_zoneIndex = (getPos player) call fn_pixZones_GetZoneIndex;		
-		if ([_zoneIndex] call fn_pixZones_IsZoneForbidden) then
+		_zoneIndex = [getPos player] call PC_fnc_GetZoneIndex;		
+		if ([_zoneIndex] call PC_fnc_IsZoneForbidden) then
 		{
 			private["_counter"];
 			_counter = PIXZONE_ALLOWEDREDTIME_INF;
 			if ((getPos player) select 2 > PIXZONE_ALLOWEDAIRALTITUDE) then { _counter = PIXZONE_ALLOWEDREDTIME_AIR; };
 			hint format["You entered an prohibited area. Return immediately or you will be punished!\n\n%1 seconds left", _counter];
-			while { ([_zoneIndex] call fn_pixZones_IsZoneForbidden) && (_counter > 0) } do
+			while { ([_zoneIndex] call PC_fnc_IsZoneForbidden) && (_counter > 0) } do
 			{
 				Sleep 1;
 				_counter = _counter - 1;
-				_zoneIndex = (getPos player) call fn_pixZones_GetZoneIndex;
+				_zoneIndex = [getPos player] call PC_fnc_GetZoneIndex;
 				hint format["You entered an prohibited area. Return immediately or you will be punished!\n\n%1 seconds left", _counter];
 			};
 			
 			/* Wer jetzt noch in der Zone ist, hat Pech... */
-			if ([_zoneIndex] call fn_pixZones_IsZoneForbidden) then
+			if ([_zoneIndex] call PC_fnc_IsZoneForbidden) then
 			{
 				player setDamage 1;
 			};

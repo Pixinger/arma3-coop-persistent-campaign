@@ -92,44 +92,45 @@ else
 			/*---------------------------------------------*/
 			/* Warten bis die Missionen abgeschlossen sind */	
 			/*---------------------------------------------*/
-			while { !call fn_pixZones_AllMissionsFinished } do
+			private["_timeout"];
+			_timeout = time + (pixParamZoneCaptureTime * 60);
+			/* Wenn es sich um eine ReverseAttack Mission handelt, dann muss dass _timeout noch um den 'pixParamReverseAttackDelay' erhöht werden. */
+			if (count (pvehPixZones_MissionInfos select 3) > 0) then { _timeout = _timeout + (60 * pixParamReverseAttackDelay);};
+			while { (!call PC_fnc_AllMissionsFinished) && (time < _timeout)} do
 			{	
 				Sleep 10;				
 			};	
-			
+
 			/*----------------------------------------*/
 			/* pvehPixZones_ZoneStatus aktualisieren  */
 			/*----------------------------------------*/
-			if (call fn_pixZones_AllMissionsSuccessfull) then
+			if ((time < _timeout) && (call PC_fnc_AllMissionsSuccessfull)) then
 			{
 				pvPixLogisticMoney = pvPixLogisticMoney + pixlogisticRewardForZone;
 				{ if (_x >= 2) then { pvPixLogisticMoney = pvPixLogisticMoney + pixlogisticRewardForExistingZone;};	} foreach pvehPixZones_ZoneStatus;				
 				publicVariable "pvPixLogisticMoney";
 				
-				pvehPixZones_ZoneStatus set [pixZones_ActiveIndex, 2];
+				pvehPixZones_ZoneStatus set [pixZones_ActiveIndex, 2]; /* Die Zone geht an BlueFor */
 			}
 			else
 			{
-				/* Wenn es sich um eine ReverseAttack Mission handelt, dann müssen wir nun leider alle BlueFor Fahrzeuge in der Zone vernichten. */
-				if (count (pvehPixZones_MissionInfos select 3) > 0) then
+				/* Leider ist die Zone verloren. Deshalb müssen nun alle Fahrzeuge in der DB zerstört werden */
+				waitUntil { !pixlogisticDbMutex };
+				pixlogisticDbMutex = true;
 				{
-					waitUntil { !pixlogisticDbMutex };
-					pixlogisticDbMutex = true;
+					if (([getPos _x] call PC_fnc_GetZoneIndex) == pixZones_ActiveIndex) then
 					{
-						if (((getPos _x) call fn_pixZones_GetZoneIndex) == pixZones_ActiveIndex) then
-						{
-							_x setDamage 1;
-						};
-					} foreach pixlogisticDbItems;
-					pixlogisticDbMutex = false;
-				};
+						_x setDamage 1;
+					};
+				} foreach pixlogisticDbItems;
+				pixlogisticDbMutex = false;
 				
-				pvehPixZones_ZoneStatus set [pixZones_ActiveIndex, 0];
+				pvehPixZones_ZoneStatus set [pixZones_ActiveIndex, 0]; /* Die Zone geht an OpFor */
 			};
 			[] call compile preprocessFileLineNumbers "pixZones\serverSaveToDb.sqf";		
 			publicVariable "pvehPixZones_ZoneStatus";
 			if (!isDedicated) then	{ call compile preprocessFileLineNumbers "pixZones\pvehPixZones_ZoneStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
-			
+
 			pixZones_ActiveIndex = -1;
 			pvehPixZones_MissionInfos = [];
 			publicVariable "pvehPixZones_MissionInfos";

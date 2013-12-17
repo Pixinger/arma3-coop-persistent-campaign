@@ -8,12 +8,6 @@ if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player glo
 /* -------------------------------- */
 /* Spezielle Funktionen kompilieren */
 /* -------------------------------- */
-fn_pixZones_GetZoneIndex = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetZoneIndex.sqf";
-fn_pixZones_IsZoneForbidden = compile preprocessFileLineNumbers "pixZones\fn_pixZones_IsZoneForbidden.sqf";
-fn_pixZones_CanBlueforEngageZone = compile preprocessFileLineNumbers "pixZones\fn_pixZones_CanBlueforEngageZone.sqf";
-fn_pixZones_GetConnectedHostileZones = compile preprocessFileLineNumbers "pixZones\fn_pixZones_GetConnectedHostileZones.sqf";
-fn_pixZones_AllMissionsFinished = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsFinished.sqf";
-fn_pixZones_AllMissionsSuccessfull = compile preprocessFileLineNumbers "pixZones\fn_pixZones_AllMissionsSuccessfull.sqf";
 fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_pixZones_UpdateMarkerColor.sqf";
 
 /* ---------------------------------------------------- */
@@ -22,8 +16,6 @@ fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_p
 pixZones_ActiveIndex = -1;
 pixZones_MarkerNames = []; 		/* ["Zone0", "Zone1", "Zone2", ..] */
 pixZones_ZoneCoordinates = []; 	/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
-pixZones_ReverseAttackTime = pixParamReverseAttack;
-if (pixDebug) then { player globalChat format["pixZones_ReverseAttackTime: %1", pixZones_ReverseAttackTime];};
 
 if (isNil "pvehPixZones_OnRequestActivation") then { pvehPixZones_OnRequestActivation = -1;};
 if (isNil "pvehPixZones_MissionInfos") then { pvehPixZones_MissionInfos = [];};
@@ -95,7 +87,7 @@ if (isServer) then
 	fn_pixZones_DbVersion = compile preprocessFileLineNumbers "pixZones\fn_pixZones_DbVersion.sqf";
 	fn_pixZones_DbCleanup = compile preprocessFileLineNumbers "pixZones\fn_pixZones_DbCleanup.sqf";
 
-	diag_log format["pixZones: %1", call fn_pixZones_DbVersion];
+	diag_log format["INFO: pixZones: %1", call fn_pixZones_DbVersion];
 	if (pixDebug) then { player globalChat format["INFO: pixZones: %1", call fn_pixZones_DbVersion];};
 
 	/* ------------------------ */

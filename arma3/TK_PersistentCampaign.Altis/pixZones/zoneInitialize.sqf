@@ -31,8 +31,9 @@ if (isServer) then
 		angegriffen werden muss, welche Missionen (env,opt, rev) wo gestartet werden sollen. Dadurch das wir jedes Verzeichnis einzeln ansteuern
 		können, kann jede Zone die nicht den Standard-Preset1 verwenden will, die "pvehPixZones_MissionInfos" nach eigenen Vorgaben erstellen. */
 		pvehPixZones_MissionInfos = [_reverseAttack] call compile preprocessFileLineNumbers format["pixZones\Zone%1\fn_GetMissionInfoArray.sqf", _zoneIndex];
+		diag_log format["INFO: zoneInitialize.sqf: pvehPixZones_MissionInfos: %1", pvehPixZones_MissionInfos];
 		publicVariable "pvehPixZones_MissionInfos";
-		/* Der PublicVariablen-EventHandler startet bei den CLienten die "zoneRun.sqf". 
+		/* Der PublicVariablen-EventHandler startet bei den Clienten die "zoneRun.sqf". 
 		Auf dem Server müssen wir das aber noch manuell machen  */
 		call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionInfos.sqf"; 
 	}

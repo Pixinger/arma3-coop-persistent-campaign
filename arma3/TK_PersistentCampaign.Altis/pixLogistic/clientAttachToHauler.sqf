@@ -4,7 +4,7 @@ _vehicle = vehicle player;
 if (driver _vehicle == player) then
 {
 	private["_behind"];
-	_behind = _vehicle modelToWorld [0,-8,0]; 
+	_behind = _vehicle modelToWorld [0,-15,0]; 
 	private["_vehicleCargo"];
 	_vehicleCargo = _vehicle getVariable "pixlogisticCargo";
 	if (isNil "_vehicleCargo") then 
@@ -19,8 +19,8 @@ if (driver _vehicle == player) then
 			
 			if (_cargo isKindOf "Cargo_base_F") then /*((typeof _cargo == "B_APC_Wheeled_01_cannon_F") || (typeof _cargo == "B_MRAP_01_gmg_F")) then /*"B_MRAP_01_gmg_F"*/
 			{
-				_cargo attachTo [_vehicle, [0,-2.7,1]]; 
-				_cargo setDir 90;
+				_cargo attachTo [_vehicle, [0,-2.7,1]]; /*_cargo attachTo [_vehicle, [0,-2.7,1]]; */				
+				/*_cargo setDir 90;*/
 				/*_cargo setVectorDirAndUp [[0,1,0],[0,0,1]];  /*[[1,0,0],[0,0,1]]; */
 			}
 			else
@@ -38,7 +38,8 @@ if (driver _vehicle == player) then
 				private["_maxHeight"];
 				_maxHeight = abs ((_p2 select 2) - (_p1 select 2));
 			
-				_cargo attachTo [_vehicle, [0,-4.5 - (_maxWidth / 2),1]]; 
+				_cargo attachTo [_vehicle, [0,-4.5 - (_maxWidth),1]]; 
+				/*_cargo attachTo [_vehicle, [0,-4.5 - (_maxWidth / 2),1]]; */
 				/*_cargo setVectorDirAndUp [[0,1,0],[0,1,1]];  /*[[1,0,0],[0,0,1]]; */
 			};
 			player globalChat "Fracht aufgeladen";

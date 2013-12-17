@@ -1,9 +1,10 @@
-/*G_Sport_Red / G_Sport_BlackWhite / G_Shades_Black / G_Combat /  G_Tactical_Clear / ["Taucher", ["G_Diving","","U_B_Wetsuit","V_RebreatherB","keep"]]
 /* _this parameter abfragen */
 private["_unit"];
 _unit = _this select 0;
 private["_loadout"];
 _loadout = _this select 1;
+
+pixLogisticLastLoadOut = _loadout;
 
 /* Loadout abfragen */
 private["_result"];
@@ -85,7 +86,35 @@ _backpackMagazines = _backpack select 2;
 private["_backpackItems"];
 _backpackItems = _backpack select 3;
 
-/* Aktuelle Ausrüstung löschen */
+private["_unitClassname"];
+if (count _result > 11) then { _unitClassname = _result select 11; } else { _unitClassname = "B_Soldier_F"; };
+
+/* Switch Unit durfÃ¼hren */
+disableUserInput true;
+titleText ["", "BLACK FADED"];
+private["_vehicleVarName"];
+_vehicleVarName = vehicleVarName _unit;
+private["_rank"];
+_rank = rank _unit;
+private["_dir"];
+_dir = (getdir _unit);
+private["_pos"];
+_pos = (getpos _unit);			
+private["_newunit"];
+_newunit = (group _unit) createUnit [_unitClassname, [0,0,0], [], 0, "None"];	
+addSwitchableUnit _newunit;
+selectPlayer _newunit;
+deletevehicle _unit;
+_unit = _newunit;
+_unit setpos _pos;
+_unit setdir _dir;
+_unit setUnitRank _rank;
+_unit setVehicleVarName _vehicleVarName;
+call compile format ["%1=_unit; PublicVariable ""%1""", _vehicleVarName];
+titleText ["", "BLACK IN", 1];
+disableUserInput false;
+
+/* Aktuelle AusrÃ¼stung lÃ¶schen */
 removeAllAssignedItems _unit;
 removeAllPrimaryWeaponItems _unit;
 removeAllHandgunItems _unit;
@@ -96,14 +125,12 @@ removeVest _unit;
 removeUniform _unit;
 removeGoggles _unit;
 
-
-
-/* Erstmal Klamotten anziehen, damit Platz zum befüllen ist */
+/* Erstmal Klamotten anziehen, damit Platz zum befÃ¼llen ist */
 if (_uniformClassname != "") then {	_unit addUniform _uniformClassname;};
 if (_vestClassname != "") then { _unit addVest _vestClassname;};
 if (_backpackClassname != "") then { _unit addBackpack _backpackClassname;};
 
-/* Munition hinzufügen, sonst ist diese nacher nicht verfügbar */
+/* Munition hinzufÃ¼gen, sonst ist diese nacher nicht verfÃ¼gbar */
 if (_uniformClassname != "") then 
 {
 	{ _unit addItemToUniform _x; } foreach _uniformWeapons;
@@ -123,7 +150,7 @@ if (_backpackClassname != "") then
 	{ _unit addItemToBackpack _x; } foreach _backpackItems;
 };
 
-/* Dann die Waffen hinzufügen, damit diese die Magazine gleich aufnehmen können 
+/* Dann die Waffen hinzufÃ¼gen, damit diese die Magazine gleich aufnehmen kÃ¶nnen 
    das Inventar sollte danach wieder leersein. */
 if (_primaryWeaponClassname != "") then
 {
@@ -144,7 +171,7 @@ if (_handgunClassname != "") then
 	{_unit addHandgunItem _x;} foreach _handgunItems;
 };
 
-/* Ausrüstung hinzufügen */
+/* AusrÃ¼stung hinzufÃ¼gen */
 { 
 	_unit linkItem _x; 
 } foreach _linkedItems;
@@ -165,3 +192,11 @@ if (_nightVisionClassname != "") then
 {
 	_unit linkItem _nightVisionClassname;
 };
+
+/* Bei den Piloten muss nun das Lift Menu neu gestartet werden */
+if (_unitClassname in pixLogisticLiftPilots) then
+{
+	call compile preprocessFileLineNumbers "pixLogistic\lift\run.sqf";
+};
+
+player globalChat "Neue AusrÃ¼stung angelegt."

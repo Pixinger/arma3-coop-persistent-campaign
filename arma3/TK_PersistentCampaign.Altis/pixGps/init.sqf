@@ -16,7 +16,7 @@ if (!isServer || !isDedicated) then
 		_markerName setMarkerColorLocal "ColorBlue";
 		_markerName setMarkerShapeLocal "ICON";
 		_markerName setMarkerTypeLocal "o_inf";
-		_markerName setMarkerSizeLocal [0.4, 0.4];
+		_markerName setMarkerSizeLocal [0.5, 0.5];
 	};
 	
 	while {true} do
@@ -31,23 +31,18 @@ if (!isServer || !isDedicated) then
 			{
 				private["_unit"];
 				call compile format["_unit = Unit%1;", _i];
-				_markerName setMarkerAlphaLocal 0.7;
-				_markerName setMarkerTextLocal (name _unit);
 				_markerName setMarkerPosLocal (getPos _unit);
-				if (!alive _unit) then 
+				if (captive _unit) then 
 				{ 
 					_markerName setMarkerColorLocal "ColorBlack"; 
 					_markerName setMarkerAlphaLocal 0.4;
+					_markerName setMarkerTextLocal "*help*";
 				} 
 				else 
 				{
-					switch (typeof _unit) do 
-					{ 
-						case "B_Soldier_SL_F": {_markerName setMarkerColorLocal "ColorRed"; }; 
-						case "B_medic_F": { _markerName setMarkerColorLocal "ColorOrange"; };
-						case "B_engineer_F": { _markerName setMarkerColorLocal "ColorYellow"; };
-						default {_markerName setMarkerColorLocal "ColorBlue";}; 
-					};				
+					_markerName setMarkerColorLocal "ColorBlue";
+					_markerName setMarkerAlphaLocal 0.7;
+					_markerName setMarkerTextLocal (name _unit);
 				};
 			}
 			else

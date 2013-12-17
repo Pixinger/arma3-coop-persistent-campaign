@@ -111,7 +111,10 @@ _result = [
 		/* Backpack-Items */
 		[			
 		]
-	]
+	],
+	
+	/* unit classname */
+	"B_Soldier_SL_F"
 ];
 
 _result;

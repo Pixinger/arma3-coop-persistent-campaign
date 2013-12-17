@@ -32,51 +32,61 @@ if (!isServer || !isDedicated) then
 
 if (isServer) then
 {
-	private["_units"];
-	_units = [];
-	
+	private["_groups"];
+	_groups = [];
+	private["_vehicles"];
+	_vehicles = [];
+	private["_buildings"];
+	_buildings = [];
 	
 	private["_ammobox1"];
 	_ammobox1 = "Box_East_WpsSpecial_F" createVehicle _missionPosition;
 	_ammobox1 setdir random 360;
 	_ammobox1 setVectorUp surfaceNormal (position _ammobox1);
-	_units = _units + [_ammobox1];
+	_buildings = _buildings + [_ammobox1];
 
 	private["_ammobox2"];
 	_ammobox2 = "Box_East_WpsSpecial_F" createVehicle _missionPosition;
 	_ammobox2 setdir random 360;
 	_ammobox2 setVectorUp surfaceNormal (position _ammobox2);
-	_units = _units + [_ammobox2];
-	
+	_buildings = _buildings + [_ammobox2];	
 
-	private["_spawnGroup"];
-	private["_randomPos"];
-	private["_random"];
-	_random = floor (random 3) + 1;
-	for "_i" from 0 to _random do 
+	/*----------------------------------------------------------------------------*/
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	/*----------------------------------------------------------------------------*/
+	private["_patrolCount"];
+	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 4);
+
+	/*-------------------------*/
+	/* Patroullierende Truppen */
+	/*-------------------------*/
+	for "_i" from 0 to _patrolCount do 
 	{
-		_randomPos = [[[_missionPosition, random 600 + 300]],["water","out"]] call BIS_fnc_randomPos;
-		private["_spawnGroup"];
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		nul = [_spawnGroup, _missionPosition, random 600 + 300] call fn_missionsOpt_Patrol;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		private["_groupInfos"];
+		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		if (count _groupInfos > 0) then
+		{
+			_groups = _groups + [(_groupInfos select 0)];
+			_vehicles = _vehicles + (_groupInfos select 1);
+		};
 	};
 
-	_random = floor (random 2) + 1;
-	for "_i" from 0 to _random do 	
+	/*----------------------*/
+	/* Verteidigungs Truppe */
+	/*----------------------*/
+	private["_groupInfos"];
+	_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT","OIA_InfSentry"], _missionPosition] call PC_fnc_SpawnGroupGuardObject;
+	if (count _groupInfos > 0) then
 	{
-		_randomPos = [[[_missionPosition, random 80]],["water","out"]] call BIS_fnc_randomPos;
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		[_spawnGroup, _missionPosition] call BIS_fnc_taskDefend;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		_groups = _groups + [(_groupInfos select 0)];
+		_vehicles = _vehicles + (_groupInfos select 1);
 	};
 
+	/*--------------*/
+	/* Vorschädigen */
+	/*--------------*/
 	_ammobox1 setDamage 0.5;
 	_ammobox2 setDamage 0.5;
-	if (_ammobox1 distance [0,0,0] < 1000) then { _ammobox1 setDamage 1;};
-	if (_ammobox2 distance [0,0,0] < 1000) then { _ammobox2 setDamage 1;};
 	
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
@@ -86,25 +96,12 @@ if (isServer) then
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	if (pixZones_ActiveIndex != -1) then
-	{
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
-	}
-	else
-	{	
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
-	};
-	publicVariable "pvehPixZones_MissionStatus";
-	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
+	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
-
-	/*-----------------------*/
-	/* Kurze Zeitverzögerung */
-	/*-----------------------*/
-	sleep 60;
-
-	/*------------------------*/
-	/* Alle Einheiten löschen */
-	/*------------------------*/
-	{deletevehicle _x} foreach _units;
+	/*-------------------------------------------------------------------------------------------------------------*/
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/*-------------------------------------------------------------------------------------------------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
+	sleep (random 60);
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

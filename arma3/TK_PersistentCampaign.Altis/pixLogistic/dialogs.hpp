@@ -4,5 +4,6 @@
 #include "dialogFoldedBuilding\classes.hpp"
 #include "dialogHQ\classes.hpp"
 #include "dialogHQ\dialogStore\classes.hpp"
+#include "dialogHQ\dialogGroupManager\classes.hpp"
 #include "dialogService\classes.hpp"
 #include "dialogBarracks\classes.hpp"

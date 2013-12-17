@@ -78,8 +78,8 @@ if (isServer) then
 	/* -------------------------------------------------------------- */
 	if ((call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllCleanup.sqf") != "OK") then
 	{
-		diag_log format["fn_pixLogistic_Cleanup failed: %1", _result];
-		player globalChat format["fn_pixLogistic_Cleanup failed: %1", _result];
+		diag_log format["ERROR: fn_pixLogistic_Cleanup failed: %1", _result];
+		player globalChat format["ERROR: fn_pixLogistic_Cleanup failed: %1", _result];
 	};
 	
 	/*------------------------------------*/
@@ -125,6 +125,7 @@ if (!isServer || !isDedicated) then
 	pixLogisitcActionKeyPressed = false;
 	pixLogisitcAdminKeyPressed = false;
 	pixLogisticDialogHqStore_AdminSpawn = false; 
+	pixLogisticLastLoadOut = "Default.sqf";
 	
 	fn_pixLogistic_FoldBuilding = compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_FoldBuilding.sqf";
 	fn_pixLogistic_UnfoldBuilding = compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_UnfoldBuilding.sqf";
@@ -143,7 +144,7 @@ if (!isServer || !isDedicated) then
 	waitUntil { !(isNil "pixlogisticRewardForZone") };
 	waitUntil { !(isNil "pixlogisticRewardForExistingZone") };
 			
-	/* Das Spawn ist nicht zwingend notwendig, aber verhidnert dass die initialisierung bockiert wird. */
+	/* Das Spawn ist nicht zwingend notwendig, aber verhindert dass die initialisierung bockiert wird. */
 	[] spawn {
 		/* 	20=T 22=U 86=< 24=O 21=Z 220=rwin, 221=rapp 37=K*/
 		waituntil {!(IsNull (findDisplay 46))};
@@ -154,6 +155,10 @@ if (!isServer || !isDedicated) then
 		{
 			_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if ((!pixLogisitcAdminKeyPressed) && (_this select 1 == 24)) then { pixLogisitcAdminKeyPressed = true; _tmp = [] execVM 'pixlogistic\clientAdminKey.sqf';}"];
 		};
+		
+		waitUntil {alive player};
+		private["_tmp"]; 
+		_tmp = [player, pixLogisticLastLoadOut] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";			
 	};
 };
 

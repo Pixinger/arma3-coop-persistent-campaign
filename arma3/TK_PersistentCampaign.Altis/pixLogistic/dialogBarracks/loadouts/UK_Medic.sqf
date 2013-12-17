@@ -53,7 +53,7 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
 		["ItemRadio","ItemGps"]
 	],
@@ -102,7 +102,10 @@ _result = [
 			"FirstAidKit",
 			"FirstAidKit"
 		]
-	]
+	],
+	
+	/* unit classname */
+	"B_medic_F"
 ];
 
 _result;

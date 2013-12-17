@@ -55,10 +55,10 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 				_content = _ware select 5;
 				
 				private["_zoneIndex"];
-				_zoneIndex = (getPos _spawnObject) call fn_pixZones_GetZoneIndex;
+				_zoneIndex = [(getPos _spawnObject)] call PC_fnc_GetZoneIndex;
 				if (_zoneIndex >= 0) then
 				{
-					if ((pvehPixZones_ZoneStatus select _zoneIndex) >= 2) then 
+					if ((getPlayerUID player in pvPixLogisticAdminUIDs) || ((pvehPixZones_ZoneStatus select _zoneIndex) >= 2)) then
 					{				
 						/* Nur berechtigte Personen dürfen anfragen */
 						if ((getPlayerUID player in pvPixLogisticAdminUIDs) || (getPlayerUID player in pvPixLogisticTeamLeaderUIDs) || (isServer && !isDedicated)) then

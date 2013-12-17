@@ -65,8 +65,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 10.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "VirtualAmmoBox";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonAmmoBoxClicked.sqf';";
+		text = "Bunker Karte anzeigen";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonBunkerMapClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier2 : RscButtonMenu
 	{
@@ -85,8 +85,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 30.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Beamen";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamClicked.sqf';";
+		text = "Beamen zu HQ";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamHQClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier4 : RscButtonMenu
 	{
@@ -95,8 +95,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 40.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Beamen zu HQ";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamHQClicked.sqf';";
+		text = "Datenbank speichern";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonSaveAllClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier5 : RscButtonMenu
 	{
@@ -105,8 +105,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 50.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Datenbank speichern";
-		action = "execVM 'pixLogistic\dialogAdmin\onButtonSaveAllClicked.sqf';";
+		text = "Group Manager";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonGroupManagerClicked.sqf';";
 	};	
 	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier6 : RscButtonMenu
 	{
@@ -115,8 +115,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 60.3 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "---";
-		action = "";
+		text = "Beamen";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamClicked.sqf';";
 	};	
 	
 	/* Admin Buttons */

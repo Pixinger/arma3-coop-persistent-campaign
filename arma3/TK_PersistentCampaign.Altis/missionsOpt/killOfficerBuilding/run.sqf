@@ -25,7 +25,7 @@ if (!isServer || !isDedicated) then
 	private["_taskTitle"];
 	_taskTitle = "Offizier eliminieren (Gebäude)";
 	private["_taskDescription"];
-	_taskDescription = "Ein feindlicher Offizier hat einen unserer verdeckten Ermittler aufgespürt und diesen mit Aufdeckung erpresst. Momentan hat sich der Offizier mit einer Truppe in ein paar Gebäuden verschanzt. Wir können kein weiteres Risiko eingehen. Eliminieren sie den Offizier.";
+	_taskDescription = "Ein feindlicher Offizier hat einen unserer verdeckten Ermittler aufgespürt und diesen mit Aufdeckung erpresst. Momentan hat sich der Offizier mit einer Truppe in einem Gebäude verschanzt. Wir können kein weiteres Risiko eingehen. Eliminieren sie den Offizier.";
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -33,76 +33,82 @@ if (!isServer || !isDedicated) then
 
 if (isServer) then
 {
-	private["_units"];
-	_units = [];
+	private["_groups"];
+	_groups = [];
+	private["_vehicles"];
+	_vehicles = [];
+	private["_buildings"];
+	_buildings = [];	
 	
-	
+	/*------------------------------*/
+	/* Gruppe des Officers erzeugen */
+	/*------------------------------*/
+	private["_unitTypes"];
+	_unitTypes = ["O_officer_F","O_Soldier_AT_F","O_Soldier_AA_F","O_medic_F","O_recon_F","O_recon_F"];	
+	private["_groupOfficer"];
+	_groupOfficer = [_missionPosition, east, _unitTypes] call BIS_fnc_spawnGroup;	
+	Sleep .2;
+	_groups = _groups + [_groupOfficer];	
 	private["_officer"];
-	_officer = "O_officer_F" createVehicle _missionPosition;
-	Sleep .2;
-	_officer setdir random 360;
-	_units = _units + [_officer];
+	_officer = (units _groupOfficer) select 0;
+	[_groupOfficer] call PC_fnc_SetSkill;	
 	
-	private["_guard1"];
-	_guard1 = "O_recon_F" createVehicle _missionPosition;
-	Sleep .2;
-	_guard1 setdir random 360;
-	_units = _units + [_guard1];
-
-
-	
-	private["_spawnGroup"];
-	private["_randomPos"];
-	private["_random"];
-	private["_tmp"];
-	_random = floor (random 3) + 1;
-	for "_i" from 0 to _random do 
+	private["_house"];
+	_house = nearestObject[_missionPosition, "House"];
+	if (!isNull _house) then
 	{
-		_randomPos = [[[_missionPosition, random 700 + 500]],["water","out"]] call BIS_fnc_randomPos;
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		_tmp = [_spawnGroup, _missionPosition, random 400] call fn_missionsOpt_Patrol;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		private["_maxIndex"];
+		_maxIndex = 0;
+		while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
+
+		if (str(_house buildingPos _missionDirection) != "[0,0,0]") then
+		{
+			{
+				private["_bpos"];
+				_bpos = _house buildingPos (floor random (_maxIndex));
+				if (count (_bpos nearEntities ["Man", 1]) == 0) then
+				{
+					_x setPos _bpos;
+					doStop _x;
+				};				
+			} foreach (units _groupOfficer);
+		};	
 	};
+	
+	/*----------------------------------------------------------------------------*/
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+	/*----------------------------------------------------------------------------*/
+	private["_patrolCount"];
+	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 4);
 
-	_random = floor (random 2) + 1;
-	for "_i" from 0 to _random do 	
+	/*-------------------------*/
+	/* Patroullierende Truppen */
+	/*-------------------------*/
+	for "_i" from 0 to _patrolCount do 
 	{
-		_randomPos = [[[_missionPosition, random 150]],["water","out"]] call BIS_fnc_randomPos;
-		_spawnGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
-		[_officer] join _spawnGroup;
-		
-		_tmp = [_spawnGroup, _missionPosition, random 100] call fn_missionsOpt_Patrol;
-		_units = _units + (units _spawnGroup);
-		 [_spawnGroup] call fn_missionsOpt_SetSkill;
+		private["_groupInfos"];
+		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		if (count _groupInfos > 0) then
+		{
+			_groups = _groups + [(_groupInfos select 0)];
+			_vehicles = _vehicles + (_groupInfos select 1);
+		};
 	};
 	
 	/*--------------------------------------*/
-	/* Warten bis die Mission erf�llt wurde */
+	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
 	waitUntil {(!alive _officer) || (pixZones_ActiveIndex == -1)};
 	
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	if (pixZones_ActiveIndex != -1) then
-	{
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
-	}
-	else
-	{	
-		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
-	};
-	publicVariable "pvehPixZones_MissionStatus";
-	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
+	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
-	/*-----------------------*/
-	/* Kurze Zeitverz�gerung */
-	/*-----------------------*/
-	sleep 60;
-
-	/*------------------------*/
-	/* Alle Einheiten l�schen */
-	/*------------------------*/
-	{deletevehicle _x} foreach _units;
+	/*-------------------------------------------------------------------------------------------------------------*/
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/*-------------------------------------------------------------------------------------------------------------*/
+	waitUntil {pixZones_ActiveIndex == -1 };
+	sleep (random 60);
+	[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

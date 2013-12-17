@@ -28,3 +28,4 @@ _mission_cfg_Index = _missionEnv select 0;
 /* Wichtig: Als execVM starten */
 /*-----------------------------*/
 _tmp = [_zoneIndex, _missionInfoIndex] execVM format["missionsEnv\%1\run.sqf", (missionsEnv_Missions select _mission_cfg_Index)];
+Sleep 1;
