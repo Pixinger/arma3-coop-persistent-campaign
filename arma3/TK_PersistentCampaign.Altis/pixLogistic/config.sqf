@@ -546,7 +546,7 @@ if (!isServer || !isDedicated) then
 		["Werkstatt", 5000, 0, "Land_Cargo40_military_green_F", "", [
 			"Land_Cargo_House_V2_F"
 			]],
-		["Wachturm", 2000, 0, "Land_Cargo40_military_green_F", "", [	
+		["Wachturm", 200, 0, "Land_Cargo40_military_green_F", "", [	
 			"Land_Cargo_Patrol_V1_F"
 			]],
 		["Lazaret", 2000, 0, "Land_Cargo40_military_green_F", "", [
