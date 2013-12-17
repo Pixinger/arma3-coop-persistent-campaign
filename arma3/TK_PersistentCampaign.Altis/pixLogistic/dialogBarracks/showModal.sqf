@@ -21,6 +21,7 @@ _loadouts = [
 	["UK Unterstüzung","UK_Support.sqf"],
 	["UK Titan AT","UK_Titan.sqf"],
 	["UK Titan AA","UK_TitanAA.sqf"],
+	["UK UAV","UK_UAV.sqf"],
 	/*US*/
 	["US Gruppenführer","US_Teamleader.sqf"],
 	["US Grenadier","US_Grenade.sqf"],
@@ -34,6 +35,7 @@ _loadouts = [
 	["US Unterstüzung","US_Support.sqf"],
 	["US Titan AT","US_Titan.sqf"],
 	["US Titan AA","US_TitanAA.sqf"],
+	["US UAV","US_UAV.sqf"],
 	["Taucher", "Diver.sqf"],
 	["Helipilot", "HeliPilot.sqf"],
 	["Pilot", "Pilot.sqf"],
