@@ -14,11 +14,13 @@ if (isServer) then
 	/* Zeit einmalig auf dem Server setzen. Ab jetzt l‰uft sie selbstst‰ndig */
 	setDate [2013, 5, 1, _newDate, 0];
 	
+	Sleep 1;
+
 	/* Die Clienten regelm‰ﬂig informieren */
 	while {true} do
 	{
-		pvehPixlogisticInsertItem = date;
-		publicVariable "pvehPixlogisticInsertItem";
+		pvehPixTimeUpdate = date;
+		publicVariable "pvehPixTimeUpdate";
 		Sleep (60*5);
 	};
 };
