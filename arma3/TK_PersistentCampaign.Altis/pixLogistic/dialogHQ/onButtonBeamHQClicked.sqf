@@ -4,7 +4,7 @@ player globalChat "HQ werden gesucht";
 pixZonesHqBeamTriggerDone = 0;
 pixZonesHqBeamTriggerData = [];		
 
-/* Trigger erstellen und Rückmeldung abwarten */
+/* Trigger erstellen und RÃ¼ckmeldung abwarten */
 private ["_trigger"];
 _trigger = createTrigger["EmptyDetector", [15000,15000,0]]; 
 _trigger setTriggerArea[15000,15000,0,true];
@@ -43,14 +43,14 @@ _i = 0;
 
 
 /* Mapclick freigeben */
-player globalChat "Bitte gewünschtes HQ anklicken...";
-onMapSingleClick "if (count nearestObjects [player, [""Land_Cargo20_military_green_F""], 50] > 0) then { player setPos _pos;} else { hint ""Kein HQ in der Nähe dieser Position"";}; pixZonesHqBeamTriggerData = nil; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;";
+player globalChat "Bitte gewÃ¼nschtes HQ anklicken...";
+onMapSingleClick "if (count nearestObjects [player, [""Land_Cargo20_military_green_F""], 50] > 0) then { player setPos _pos;} else { hint ""Kein HQ in der NÃ¤he dieser Position"";}; pixZonesHqBeamTriggerData = nil; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;";
 
 /* warten bis geklickt wurde */
 waitUntil { isNil "pixZonesHqBeamTriggerData" };
 pixZonesHqBeamTriggerDone = nil;
 
-/* Marker wieder löschen */
+/* Marker wieder lÃ¶schen */
 while { _i > 0 } do
 {
 	_markerName = format["pixZonesHqBeamMarker%1", _i];

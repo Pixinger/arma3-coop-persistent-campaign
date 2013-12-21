@@ -125,6 +125,11 @@ if (isServer) then
 						_item setDamage _damage;
 					};
 					
+					if ((_classname in pixlogisticBuildings) || (_calssname in pixlogisticBuildingsService) || (_calssname in pixlogisticBuildingsBarracks) || (_calssname in pixlogisticHQs)) then
+					{
+						_item setVariable ["pixLogisticControlled", true, true];
+					};
+						
 					/*------------------------------------*/
 					/* In die Überwachungsliste aufnehmen */
 					/*------------------------------------*/

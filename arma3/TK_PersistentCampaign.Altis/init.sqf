@@ -27,12 +27,18 @@ diag_log format["INFO: pixParamZoneAttackType: %1", pixParamZoneAttackType];
 pixParamReverseAttackDelay = (paramsArray select 4);
 if (isServer && !isDedicated) then {pixParamReverseAttackDelay = 1;};
 diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDelay];
+/* Parameter (5): TimeSettings */
+pixParamTimeSettings = (paramsArray select 5);
+if (isServer && !isDedicated) then {pixParamTimeSettings = 12;};
+diag_log format["INFO: pixParamTimeSettings: %1", pixParamTimeSettings];
+
 
 /*-----------------------------------------------*/
 cutText ["Initialization...", "BLACK FADED",1];
 
 call compile preprocessFileLineNumbers "pixZones\init.sqf";
 call compile preprocessFileLineNumbers "pixLogistic\init.sqf";
+call compile preprocessFileLineNumbers "pixTime\init.sqf";
 
 /* Warten bis das Briefing beendet wurde */
 Sleep .1;

@@ -87,11 +87,11 @@ _result = [
 	
 	/* Backpack */
 	[
-		"B_Bergen_sgg", 
+		"B_Bergen_sgg",
 		/* Backpack-Weapons */
-		[], 
+		[],
 		/* Backpack-Magazines */
-		[	
+		[
 			"Titan_AA",
 			"Titan_AA"
 		],
