@@ -1,6 +1,5 @@
 /* 
-	Prüft, ob eine bestimmte Zone für den Spieler verboten ist.
-	Dazu gehören ausschließlich OpFor Zonen. Gerade aktive Angriffszonen sind nicht verboten!
+	Prüft, ob eine bestimmte Zone eine BlueFor Zone ist. Aktive Angriffszonen gehören nicht dazu!
 
 Parameter:
 	zoneIndex: Der Index der Zone die den gültigen Bereich definiert.
@@ -20,6 +19,6 @@ if (_zoneIndex < 0) exitWith {false;};
 if (_zoneIndex >= count pvehPixZones_ZoneStatus) exitWith {false;};
 
 /* Gültige Indizes werden geprüft */
-if ((pvehPixZones_ZoneStatus select _zoneIndex) >= 1) exitWith { false; };
+if ((pvehPixZones_ZoneStatus select _zoneIndex) < 2) exitWith { false; };
 
 true;

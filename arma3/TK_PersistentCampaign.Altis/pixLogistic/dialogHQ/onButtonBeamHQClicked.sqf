@@ -1,60 +1,69 @@
+closeDialog 0;
+
 openMap [true, true];
-player globalChat "HQ werden gesucht";
 
-pixZonesHqBeamTriggerDone = 0;
-pixZonesHqBeamTriggerData = [];		
+pixZonesHqBeamClicked = [];
 
-/* Trigger erstellen und Rückmeldung abwarten */
-private ["_trigger"];
-_trigger = createTrigger["EmptyDetector", [15000,15000,0]]; 
-_trigger setTriggerArea[15000,15000,0,true];
-_trigger setTriggerActivation["ANY", "PRESENT", true]; /* WEST,EAST,CIV*/
-_trigger setTriggerStatements["this", "pixZonesHqBeamTriggerData = thislist; pixZonesHqBeamTriggerDone = 1;", ""]; 
-_trigger setPos [15000,15000,0];
-
-/* Warten auf die Beendigung des Triggers */
-_i = 0;
-while { pixZonesHqBeamTriggerDone == 0 and _i < 50} do 
+private["_hqs"];
+_hqs = nearestObjects [player, pixlogisticHQs, 5000];
+if (count _hqs > 0) then
 {
-	_i = _i + 1;
-	sleep 0.1;
-};
-deleteVehicle _trigger;
-
-
-/* Marker an den Positionen erstellen */
-private ["_i", "_markerName"];
-_i = 0;
-{
-	if (_x isKindOf "Land_Cargo20_military_green_F") then
+	/* Marker an den Positionen erstellen */
+	private ["_i", "_markerName"];
+	_i = 0;
 	{
 		_i = _i + 1;
 		_markerName = format["pixZonesHqBeamMarker%1", _i];
-		createMarkerLocal [_markerName, position _x ];
+		createMarkerLocal [_markerName, getPos _x ];
 		
-		_markerName setMarkerColorLocal "ColorBlue";
+		_markerName setMarkerColorLocal "ColorYellow";
 		_markerName setMarkerShapeLocal "ICON";				
-		_markerName setMarkerTypeLocal "o_inf";
+		_markerName setMarkerTypeLocal "selector_selectable";
 		_markerName setMarkerTextLocal format["HQ-%1", _i];
 		_markerName setMarkerAlphaLocal 1;
 		//_markerName setMarkerSizeLocal [0.5, 0.5];
+	} foreach _hqs;
+
+
+	/* Mapclick freigeben */
+	player globalChat "Bitte gewünschtes HQ anklicken...";
+	
+	onMapSingleClick "pixZonesHqBeamClicked = _pos; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;";
+
+	/* warten bis geklickt wurde */
+	waitUntil {(count pixZonesHqBeamClicked) > 0};
+
+	private["_clickedHQs"];
+	_clickedHQs = nearestObjects [pixZonesHqBeamClicked, pixlogisticHQs, 100];
+	if (count _clickedHQs > 0) then
+	{
+		private["_clickedHQ"];
+		_clickedHQ = _clickedHQs select 0;
+		
+		private["_zoneIndex"];
+		_zoneIndex = [(getPos _clickedHQ)] call PC_fnc_GetZoneIndex;
+		
+		if ([_zoneIndex] call PC_fnc_IsZoneBlueFor) then
+		{
+			player setPos (getpos _clickedHQ);
+		}
+		else
+		{
+			player globalChat "ERROR: HQ liegt in feindlicher Zone.";
+		};
+	}
+	else
+	{
+		player globalchat "ERROR: Kein HQ in der Nähe dieser Position";
 	};
-} foreach pixZonesHqBeamTriggerData;
 
-
-/* Mapclick freigeben */
-player globalChat "Bitte gewünschtes HQ anklicken...";
-onMapSingleClick "if (count nearestObjects [player, [""Land_Cargo20_military_green_F""], 50] > 0) then { player setPos _pos;} else { hint ""Kein HQ in der Nähe dieser Position"";}; pixZonesHqBeamTriggerData = nil; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;";
-
-/* warten bis geklickt wurde */
-waitUntil { isNil "pixZonesHqBeamTriggerData" };
-pixZonesHqBeamTriggerDone = nil;
-
-/* Marker wieder löschen */
-while { _i > 0 } do
-{
-	_markerName = format["pixZonesHqBeamMarker%1", _i];
-	deleteMarkerLocal _markerName;	
-	_i = _i - 1;
+	/* Marker wieder löschen */
+	while { _i > 0 } do
+	{
+		_markerName = format["pixZonesHqBeamMarker%1", _i];
+		deleteMarkerLocal _markerName;	
+		_i = _i - 1;
+	};
+	
+	pixZonesHqBeamClicked = nil;
 };
-player globalChat "Beamen abgeschlossen";

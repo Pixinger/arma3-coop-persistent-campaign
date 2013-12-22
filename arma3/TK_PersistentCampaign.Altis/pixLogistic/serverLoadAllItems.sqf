@@ -115,10 +115,14 @@ if (isServer) then
 					_item setVariable ["pixLogisticContent", _content, true]; 
 					if (_damage >= 0.9) then
 					{
-						_item enablesimulation false; 
-						_item setdamage 1;
-						/*
-						_item setdamage 1;_item setdamage 1; _item setdamage 0.9;*/
+						_item enableSimulation false;
+						_item setdamage 1; 
+						_item setdamage 1; 
+						_item setdamage 0.9;
+						_item setdamage 0.9;
+						_item setdamage 0.9;
+						_item setdamage 0.9;
+						_item allowDamage false;
 					}
 					else
 					{

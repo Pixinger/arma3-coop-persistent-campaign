@@ -33,6 +33,7 @@ class PC
 		class GetConnectedHostileZones {description = "";};
 		class GetZoneIndex {description = "";};
 		class IsPositionInZone {description = "";};
+		class IsZoneBlueFor {description = "";};
 		class IsZoneForbidden {description = "";};
 	};
 	

@@ -62,6 +62,9 @@ if (((typeof _object) in pixlogisticMovableObjects) || ((typeof _object) in pixl
 			private["_maxHeight"];
 			_maxHeight = abs ((_p2 select 2) - (_p1 select 2));
 
+			/* Object unzerstörbar machen */
+			_object allowDamage false;
+			
 			/*--------------------------------------------------------------------*/
 			/* Jetzt fangen wir an das Objekt zu bewegen*/
 			_object attachTo [player, [
@@ -175,6 +178,9 @@ if (((typeof _object) in pixlogisticMovableObjects) || ((typeof _object) in pixl
 				_object setPos [getPos _object select 0, getPos _object select 1, 0];
 				_object setVelocity [0, 0, 0];				
 				_object setVariable ["pixlogisticIsMoving", objNull, true];
+				
+				/* Object unzerstörbar machen */
+				_object allowDamage true;				
 			};
 		};
 	}

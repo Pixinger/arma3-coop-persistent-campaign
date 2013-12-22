@@ -198,5 +198,3 @@ if (_unitClassname in pixLogisticLiftPilots) then
 {
 	call compile preprocessFileLineNumbers "pixLogistic\lift\run.sqf";
 };
-
-player globalChat "Neue Ausrüstung angelegt."

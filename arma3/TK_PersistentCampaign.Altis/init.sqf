@@ -36,6 +36,7 @@ diag_log format["INFO: pixParamTimeSettings: %1", pixParamTimeSettings];
 /*-----------------------------------------------*/
 cutText ["Initialization...", "BLACK FADED",1];
 
+call compile preprocessFileLineNumbers "pixTime\init.sqf";
 call compile preprocessFileLineNumbers "pixZones\init.sqf";
 call compile preprocessFileLineNumbers "pixLogistic\init.sqf";
 
@@ -46,7 +47,6 @@ Sleep .1;
 player setvariable ["BIS_nocoreconversations",true];
 
 /* Module initialisieren */
-call compile preprocessFileLineNumbers "pixTime\init.sqf";
 call compile preprocessFileLineNumbers "pixRevive\init.sqf"; /* Vor pixLogistic! */
 call compile preprocessFileLineNumbers "missionsEnv\init.sqf";
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
