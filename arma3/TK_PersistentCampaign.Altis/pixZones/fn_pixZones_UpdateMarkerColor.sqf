@@ -7,7 +7,7 @@
 	1 = Aktivierte/Angegriffene Zone
 	2 = Freundliche Zone */
 
-if (pixDebug) then { player globalChat format["INFO: fn_pixZones_UpdateMarkerColor: pvehPixZones_ZoneStatus=%1", pvehPixZones_ZoneStatus]; };
+/*if (pixDebug) then { player globalChat format["INFO: fn_pixZones_UpdateMarkerColor: pvehPixZones_ZoneStatus=%1", pvehPixZones_ZoneStatus]; };*/
 	
 private["_i"];
 for "_i" from 0 to (pixZones_ZoneCount-1) do

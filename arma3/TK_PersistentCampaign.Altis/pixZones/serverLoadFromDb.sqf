@@ -84,5 +84,4 @@ else
 	player globalChat format["ERROR: fn_pixZones_DbBeginLoad failed: %1", _result];
 };
  
-player globalChat "INFO: pixZones: Loading successfull";
 pixZonesDbMutex = false;

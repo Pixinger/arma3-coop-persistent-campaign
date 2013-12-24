@@ -36,6 +36,7 @@ diag_log format["INFO: pixParamTimeSettings: %1", pixParamTimeSettings];
 /*-----------------------------------------------*/
 cutText ["Initialization...", "BLACK FADED",1];
 
+call compile preprocessFileLineNumbers "tfr\init.sqf";
 call compile preprocessFileLineNumbers "pixTime\init.sqf";
 call compile preprocessFileLineNumbers "pixZones\init.sqf";
 call compile preprocessFileLineNumbers "pixLogistic\init.sqf";
@@ -51,7 +52,6 @@ call compile preprocessFileLineNumbers "pixRevive\init.sqf"; /* Vor pixLogistic!
 call compile preprocessFileLineNumbers "missionsEnv\init.sqf";
 call compile preprocessFileLineNumbers "missionsOpt\init.sqf";
 call compile preprocessFileLineNumbers "missionsRev\init.sqf";
-call compile preprocessFileLineNumbers "tfr\init.sqf";
 [] spawn compile preprocessFileLineNumbers "pixGps\init.sqf";
 [] spawn compile preprocessFileLineNumbers "credits\init.sqf";
 

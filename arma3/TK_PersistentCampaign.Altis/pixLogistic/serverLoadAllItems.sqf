@@ -158,6 +158,5 @@ if (isServer) then
 		player globalChat format["ERROR: _fn_pixLogistic_ItemBeginLoad failed: %1", _result];
 	};
 	 
-	player globalChat "pixLogistic: Loading items successfull";
 	pixlogisticDbMutex = false;
 };

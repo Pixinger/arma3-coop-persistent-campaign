@@ -41,7 +41,7 @@ if (pixLogisticDialogHqGroupManager_Button == 1) then
 	[player] join grpNull;	
 	Sleep .1;
 	[player] join _group;	
-	player globalChat "Gruppe erstellt";
+	player globalChat "INFO: Gruppe erstellt";
 };
 /* Join */
 if ((pixLogisticDialogHqGroupManager_Button == 2) && (pixLogisticDialogHqGroupManager_Selection != -1)) then 
@@ -54,14 +54,14 @@ if ((pixLogisticDialogHqGroupManager_Button == 2) && (pixLogisticDialogHqGroupMa
 	[player] join grpNull;	
 	Sleep .1;
 	[player] join _group;	
-	player globalChat "Gruppe begetreten";
+	player globalChat "INFO: Gruppe begetreten";
 };
 /* Leave */
 if (pixLogisticDialogHqGroupManager_Button == 3) then 
 {		
 	player setRank "PRIVATE";
 	[player] join grpNull;	
-	player globalChat "Gruppe verlassen";
+	player globalChat "INFO: Gruppe verlassen";
 };
 
 pixLogisticDialogHqGroupManager_Button = nil;

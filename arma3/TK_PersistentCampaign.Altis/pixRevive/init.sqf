@@ -14,7 +14,6 @@ if (!isServer || !isDedicated) then
 	
 	"pvehPixReviveDragging" addPublicVariableEventHandler 
 	{
-		player globalchat "pvehPixReviveDragging";
 		pvehPixReviveDragging setDir 180;
 		pvehPixReviveDragging = 0;
 	};	

@@ -42,6 +42,11 @@ class PC
 		class FinishMissionStatus {description = "";};
 		class FindVehicleTypeInRange {description = "";};
 	};
+	
+	class TFR
+	{
+		class ActivateTFRRadio {description = "Activates a TFR radio that is somewhere stored in the uniform.";};
+	};
 	class Tools
 	{
 		file = "functions\tools";

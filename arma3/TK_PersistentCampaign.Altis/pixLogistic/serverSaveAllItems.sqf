@@ -64,7 +64,7 @@ if (isServer) then
 			while { _result == "INPROGRESS" } do {	Sleep 0.5; _result = call _fn_pixLogistic_DataIsThreadFinished; };
 			if (_result == "OK") then
 			{	
-				if (isServer && !isDedicated) then { player globalChat "pixLogisticData saved";}; /* ersatzmechanismus "publicVariable" */
+				if (isServer && !isDedicated) then { player globalChat "INFO: pixLogisticData saved";}; /* ersatzmechanismus "publicVariable" */
 			}
 			else
 			{
@@ -159,7 +159,7 @@ if (isServer) then
 			{	
 				pvehPixlogisticSaved = pvehPixlogisticSaved + 1;
 				publicVariable "pvehPixlogisticSaved";			
-				if (isServer && !isDedicated) then { player globalChat "pixLogisticItem saved";}; /* ersatzmechanismus "publicVariable" */
+				if (isServer && !isDedicated) then { player globalChat "INFO: pixLogisticItem saved";}; /* ersatzmechanismus "publicVariable" */
 			}
 			else
 			{

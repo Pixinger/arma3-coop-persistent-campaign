@@ -26,7 +26,7 @@ if !(isNull _cursorTarget) then
 			/*-------------------------*/
 			if (isServer && !isDedicated) then
 			{
-				player globalChat "simulate server";
+				player globalChat "INFO: simulate server";
 				[_cursorTarget] execVM "pixLogistic\serverDeleteItem.sqf";
 			}
 			else
@@ -48,7 +48,7 @@ if !(isNull _cursorTarget) then
 			/* zur Datenbank hinzufügen*/
 			if (isServer && !isDedicated) then
 			{
-				player globalChat "simulate server";
+				player globalChat "INFO: simulate server";
 				[_object] execVM "pixLogistic\serverInsertItem.sqf";
 			}
 			else
