@@ -82,7 +82,7 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 
 							if (isServer && !isDedicated) then
 							{
-								player globalChat "simulate server";
+								player globalChat "INFO: simulate server";
 								[_object] execVM "pixLogistic\serverInsertItem.sqf"
 							}
 							else
@@ -95,12 +95,12 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 						}
 						else
 						{
-							player globalChat "Sie sind nicht berechtigt Materialanfragen zu stellen.";
+							player globalChat "ERROR: Sie sind nicht berechtigt Materialanfragen zu stellen.";
 						};
 					}
 					else
 					{
-						player globalChat "Die Ladestelle liegt nicht in Ihrer Zone!";
+						player globalChat "ERROR: Die Ladestelle liegt nicht in Ihrer Zone!";
 					};
 				}
 				else
@@ -120,7 +120,7 @@ if (pixLogisticDialogHqStore_ButtonOK == 1) then
 	}
 	else
 	{
-		player globalChat format["Nicht genug Geld um diesen Gegenstand anzufordern. SOLL(%1) HABEN(%2).", _money, pvPixLogisticMoney];
+		player globalChat format["ERROR: Nicht genug Geld um diesen Gegenstand anzufordern. SOLL(%1) HABEN(%2).", _money, pvPixLogisticMoney];
 	};
 };
 

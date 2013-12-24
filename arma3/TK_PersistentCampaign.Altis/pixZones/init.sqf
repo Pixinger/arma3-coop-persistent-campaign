@@ -33,7 +33,7 @@ for "_i" from 0  to (pixZones_ZoneCount - 1) do
 	_pos = getMarkerPos _name;
 	_size = getMarkerSize _name;
 	pixZones_MarkerNames = pixZones_MarkerNames + [_name];
-	pixZones_ZoneCoordinates = pixZones_ZoneCoordinates + [[(_pos select 0) - (_size select 0), (_pos select 1) - (_size select 1), (_pos select 0) + (_size select 0), (_pos select 1) + (_size select 1)]]; 
+	pixZones_ZoneCoordinates = pixZones_ZoneCoordinates + [[(_pos select 0) - (_size select 0) - 50, (_pos select 1) - (_size select 1) - 50, (_pos select 0) + (_size select 0) +50, (_pos select 1) + (_size select 1)+50]]; 
 };
 
 /* -------------------------------------------------------------------------- */

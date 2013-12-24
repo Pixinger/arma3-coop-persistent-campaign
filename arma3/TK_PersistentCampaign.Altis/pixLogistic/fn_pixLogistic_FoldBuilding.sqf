@@ -6,8 +6,13 @@ if !(isNull _cursorTarget) then
 	_cursorTargetType = typeof _cursorTarget;
 	if ((_cursorTargetType in pixlogisticBuildings) || (_cursorTargetType in pixlogisticHQs) || (_cursorTargetType in pixlogisticBuildingsService) || (_cursorTargetType in pixlogisticBuildingsBarracks)) then
 	{
+		private["_allowFold"];
 		_allowFold = !(_cursorTarget getvariable "pixLogisticNoFold");
 		if (isNil "_allowFold") then { _allowFold = true; };
+		
+		private["_isPixLogisticControlled"];
+		_isPixLogisticControlled = (_cursorTarget getvariable "pixLogisticContent");
+		if (isNil "_isPixLogisticControlled") then { _allowFold = false; };
 	
 		if (_allowFold) then
 		{
@@ -21,7 +26,7 @@ if !(isNull _cursorTarget) then
 			/*-------------------------*/
 			if (isServer && !isDedicated) then
 			{
-				player globalChat "simulate server";
+				player globalChat "INFO: simulate server";
 				[_cursorTarget] execVM "pixLogistic\serverDeleteItem.sqf";
 			}
 			else
@@ -43,7 +48,7 @@ if !(isNull _cursorTarget) then
 			/* zur Datenbank hinzufügen*/
 			if (isServer && !isDedicated) then
 			{
-				player globalChat "simulate server";
+				player globalChat "INFO: simulate server";
 				[_object] execVM "pixLogistic\serverInsertItem.sqf";
 			}
 			else

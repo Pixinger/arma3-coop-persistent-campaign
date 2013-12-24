@@ -33,7 +33,10 @@ if (isNull pixLogisticLift_AttachedObject) then
 			private["_rel_position"];
 			_rel_position = _vehicle worldToModel (getPosATL pixLogisticLift_AttachedObject);
 			private["_attachHeight"];
-			_attachHeight = (_rel_position select 2) + 2.5;
+			_attachHeight = (_rel_position select 2) + 4;
+			
+			/* Object unzerstörbar machen */
+			pixLogisticLift_AttachedObject allowDamage false;
 			
 			/* Attachen */
 			pixLogisticLift_AttachedObject attachTo [_vehicle, [0, 0, _attachHeight]];

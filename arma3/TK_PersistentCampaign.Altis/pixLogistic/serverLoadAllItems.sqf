@@ -115,16 +115,25 @@ if (isServer) then
 					_item setVariable ["pixLogisticContent", _content, true]; 
 					if (_damage >= 0.9) then
 					{
-						_item enablesimulation false; 
-						_item setdamage 1;
-						/*
-						_item setdamage 1;_item setdamage 1; _item setdamage 0.9;*/
+						_item enableSimulation false;
+						_item setdamage 1; 
+						_item setdamage 1; 
+						_item setdamage 0.9;
+						_item setdamage 0.9;
+						_item setdamage 0.9;
+						_item setdamage 0.9;
+						_item allowDamage false;
 					}
 					else
 					{
 						_item setDamage _damage;
 					};
 					
+					/*if ((_classname in pixlogisticBuildings) || (_classname in pixlogisticBuildingsService) || (_classname in pixlogisticBuildingsBarracks) || (_classname in pixlogisticHQs)) then
+					{
+						_item setVariable ["pixLogisticControlled", true, true];
+					};*/
+						
 					/*------------------------------------*/
 					/* In die Überwachungsliste aufnehmen */
 					/*------------------------------------*/
@@ -149,6 +158,5 @@ if (isServer) then
 		player globalChat format["ERROR: _fn_pixLogistic_ItemBeginLoad failed: %1", _result];
 	};
 	 
-	player globalChat "pixLogistic: Loading items successfull";
 	pixlogisticDbMutex = false;
 };

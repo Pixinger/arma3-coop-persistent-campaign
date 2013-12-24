@@ -13,7 +13,7 @@ _misPos = [_this, 1, [0,0,0]] call BIS_fnc_param;
 _missionInfoIndex = [_this, 2, -1] call BIS_fnc_param;
 
 if (_missionInfoIndex == -1) then {
-  player globalChat "Mission Info index not correct";
+  player globalChat "ERROR: Mission Info index not correct";
 };
 
 /* change mission position to somewhere in 500 meter distance */

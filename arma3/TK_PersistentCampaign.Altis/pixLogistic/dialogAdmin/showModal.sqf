@@ -1,4 +1,3 @@
-Sleep 1;
 /* -----------------------------------------------------------------	*/
 /* Dialog erstellen*/
 createDialog "PIXLOGISTIC_DIALOG_ADMIN"; 	

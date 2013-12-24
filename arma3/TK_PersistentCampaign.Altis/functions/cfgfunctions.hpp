@@ -33,6 +33,7 @@ class PC
 		class GetConnectedHostileZones {description = "";};
 		class GetZoneIndex {description = "";};
 		class IsPositionInZone {description = "";};
+		class IsZoneBlueFor {description = "";};
 		class IsZoneForbidden {description = "";};
 	};
 	
@@ -40,6 +41,11 @@ class PC
 	{
 		class FinishMissionStatus {description = "";};
 		class FindVehicleTypeInRange {description = "";};
+	};
+	
+	class TFR
+	{
+		class ActivateTFRRadio {description = "Activates a TFR radio that is somewhere stored in the uniform.";};
 	};
 	class Tools
 	{

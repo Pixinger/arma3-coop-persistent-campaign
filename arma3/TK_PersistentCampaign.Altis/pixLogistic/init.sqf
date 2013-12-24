@@ -59,7 +59,7 @@ fn_pixLogistic_CreateCorrectedVehicle = compile preprocessFileLineNumbers "pixLo
 if (isServer) then
 {
 	diag_log format["pixLogistic: %1", call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllVersion.sqf"];
-	if (pixDebug) then { player globalChat format["pixLogistic: %1", call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllVersion.sqf"];};
+	if (pixDebug) then { player globalChat format["INFO: pixLogistic: %1", call compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_DllVersion.sqf"];};
 	
 	/* ------------------------ */
 	/* Variablen Initialisieren */

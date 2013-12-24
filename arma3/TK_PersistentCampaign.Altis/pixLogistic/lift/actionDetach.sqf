@@ -3,6 +3,9 @@ if (!isNull pixLogisticLift_AttachedObject) then
 	/* Entkoppeln */
 	detach pixLogisticLift_AttachedObject;
 	
+	/* Object unzerstörbar machen */
+	pixLogisticLift_AttachedObject allowDamage true;
+	
 	/* Melden */
 	(vehicle player) vehicleChat format["%1 dropped", getText (configFile >> "cfgVehicles" >> typeof pixLogisticLift_AttachedObject >> "displayName")];
 	
@@ -18,7 +21,7 @@ if (!isNull pixLogisticLift_AttachedObject) then
 	if (pixLogisticLift_AttachedObject isKindOf "Strategic") then 
 	{	
 		private["_tmp"];
-		_tmp = [pixLogisticLift_AttachedObject] spawn fn_pixLogisticLift_ObjectFall;
+		_tmp = [pixLogisticLift_AttachedObject] spawn call compile preprocessFileLineNumbers "pixLogistic\lift\fn_ObjectFall.sqf";
 	} 
 	else 
 	{

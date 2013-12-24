@@ -1,0 +1,85 @@
+//----------------------------------------
+// Verhindert, das Gruppenführer automatisch 
+// ein Rucksackfunkgerät bekommen
+tf_no_auto_long_range_radio = true;
+
+//----------------------------------------
+// Sollte für jede Seite die gelichen 
+// Frequenzen setzen
+tf_same_frequencies_for_side = true;
+
+//----------------------------------------
+// Prüft ob der Plugin aktiviert ist.
+if (call tf_isTeamSpeakPluginEnabled) then
+{
+	// Plugin ist AN
+} 
+else
+{
+	// Plugin ist AUS
+};
+
+//----------------------------------------
+// Wartet bis der Spieler ein kleines
+// Funkgerät hat, und setzt dann die 
+// Frequenz. Das Warten kann dauern,
+// deshalb das SPAWN.
+// Hat mir Tetet mal gegeben
+// Sollte auch in der 0.8.3 funktionieren.
+// Es gibt zwar neuere Befehle, aber...
+[] spawn {
+	waituntil {sleep 0.5; player call haveSwRadio};
+	[call activeSwRadio, "101.1" ] call setSwFrequency;
+};
+
+tf_setPersonalRadioFrequency	_frequency = _this
+tf_setLongRangeRadioFrequency 	_frequency = _this
+
+//-----------------------------------------------------------------
+// Folgende Befehle habe ich so noch in den SQF Dateien gefunden
+//-----------------------------------------------------------------
+getSwRadioCode 		_radio_id = _this;
+setSwRadioCode		- non existent -
+getLrRadioCode 		_radio_object = _this select 0;
+setLrRadioCode		- non existent -
+//-----------------
+getSwSettings 		_radio_id = _this;
+setSwSetting 		_radio_id = _this select 0; _value = _this select 1;
+getLrSettings 		_radio_object = _this select 0; _radio_qualifier = _this select 1;
+setLrSettings 		_radio_object = _this select 0; _radio_qualifier = _this select 1; _value = _this select 2;
+//-----------------
+getSwChannel 		_radio_id = _this;
+setSwChannel 		_radio_id = _this select 0; _channel_to_set = _this select 1;
+getLrChannel 		_radio_id = _this;
+setLrChannel 		_radio_object = _this select 0; _radio_qualifier = _this select 1; _value = _this select 2;
+//-----------------
+currentSWFrequency	nothing
+getSwFrequency 		_radio_id = _this select 0;
+setSwFrequency 		_radio_id = _this select 0; _freq = _this select 1;
+currentLRFrequency 	nothing
+getLrFrequency 		_radio_id = _this select 0;
+setLrFrequency 		_radio_object = _this select 0; _radio_qualifier = _this select 1; _value = _this select 2;
+//-----------------
+getSwStereo 		_radio_id = _this;
+setSwStereo 		_radio_id = _this select 0; _value_to_set = _this select 1;
+getLrStereo 		nothing
+setLrStereo 		_radio_object = _this select 0; _radio_qualifier = _this select 1; _value = _this select 2;
+//-----------------
+getSwVolume 		nothing
+setSwVolume 		_radio_id = _this select 0; _value = _this select 1;
+getLrVolume 		nothing
+setLrVolume 		_radio_object = _this select 0; _radio_qualifier = _this select 1; _value = _this select 2;
+//-----------------
+activeSwRadio 		nothing		active radio
+setActiveSwRadio 	_radio_id = _this;
+activeLrRadio 		nothing		active radio
+setActiveLrRadio 	_radio_id = _this;
+//-----------------
+isRadio 
+haveSWRadio 		nothing 	true/false 
+haveLRRadio  		nothing		true/false
+haveDDRadio  		nothing		true/false
+lrRadiosList		nothing		Liste mit verfügbaren lr-radios
+radiosList 			nothing		Liste mit verfügbaren sw-radios
+//-----------------
+

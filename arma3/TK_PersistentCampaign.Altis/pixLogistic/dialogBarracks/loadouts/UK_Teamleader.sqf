@@ -2,16 +2,16 @@ private["_result"];
 _result = [
 	/* Goggles */
 	"G_Sport_Red",
-	
+
 	/* Headgear */
 	"H_HelmetB_snakeskin",
-	
+
 	/* Binoculars */
 	"Laserdesignator",
-	
+
 	/* Nightvision */
 	"NVGoggles",
-	
+
 	/* Linked Items */
 	[
 		"ItemMap",
@@ -19,16 +19,16 @@ _result = [
 		"ItemCompass",
 		"B_UavTerminal"
 	],
-	
+
 	/* Primary Weapon */
 	[
-		"arifle_MX_GL_F",
+		"arifle_MX_GL_Black_F",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Hamr","acc_pointer_IR","muzzle_snds_H"]
 	],
-	
+
 	/* Secondary Weapon */
 	[
 		"",
@@ -37,7 +37,7 @@ _result = [
 		/* Secondary Weapon Items */
 		[]
 	],
-	
+
 	/* Handgun Weapon */
 	[
 		"hgun_Pistol_heavy_01_MRD_F",
@@ -46,23 +46,23 @@ _result = [
 		/* Handgun Weapon Items */
 		["muzzle_snds_acp"]
 	],
-	
+
 	/* Uniform */
 	[
-		"U_B_CTRG_3", 
+		"U_B_CTRG_3",
 		/* Uniform-Weapons */
-		[], 
+		[],
 		/* Uniform-Magazines */
 		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
 		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
-	
+
 	/* Vest */
-	[	
-		"V_PlateCarrierH_CTRG", 
+	[
+		"V_PlateCarrierH_CTRG",
 		/* Vest-Weapons */
-		[], 
+		[],
 		/* Vest-Magazines */
 		[
 			"30Rnd_65x39_caseless_mag",
@@ -85,14 +85,14 @@ _result = [
 		"optic_Nightstalker"
 		]
 	],
-	
+
 	/* Backpack */
 	[
-		"tf_rt1523g", 
+		"tf_rt1523g",
 		/* Backpack-Weapons */
-		[], 
+		[],
 		/* Backpack-Magazines */
-		[	
+		[
 			"1Rnd_HE_Grenade_shell",
 			"1Rnd_HE_Grenade_shell",
 			"1Rnd_HE_Grenade_shell",
@@ -109,10 +109,10 @@ _result = [
 			"1Rnd_Smoke_Grenade_shell"
 		],
 		/* Backpack-Items */
-		[			
+		[
 		]
 	],
-	
+
 	/* unit classname */
 	"B_Soldier_SL_F"
 ];

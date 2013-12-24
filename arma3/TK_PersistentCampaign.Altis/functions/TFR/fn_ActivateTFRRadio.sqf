@@ -19,3 +19,13 @@ while {_timeout > time } do
 		_timeout = 0;
 	};
 };
+
+if (call haveSWRadio) then
+{
+	player globalChat "INFO: TFR Radio available.";
+}
+else
+{
+	player globalChat "ERROR: Unable to active TFR Radio.";
+};
+	

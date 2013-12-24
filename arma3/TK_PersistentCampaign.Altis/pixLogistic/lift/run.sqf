@@ -35,7 +35,5 @@ if (!isServer || !isDedicated) then
 			pixLogisticLift_ShowMenuAttach = (_inHeli) && (isNull pixLogisticLift_AttachedObject);
 			pixLogisticLift_ShowMenuDetach = (_inHeli) && (!(isNull pixLogisticLift_AttachedObject));			
 		};
-		
-		player globalChat "lift.run.sqf finished due to player exchange.";
 	};
 };

@@ -52,6 +52,5 @@ if (!isServer || !isDedicated) then
 		};
 		
 		deleteVehicle _playerObject; /* Sicherheitshalber löschen, wahrscheinlich hat sich aber das SwitchUnit skript schon darum gekümmert. */
-		player globalchat "finished player object";
 	};	
 };
