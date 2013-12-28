@@ -25,7 +25,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign";
-		overviewText="www.teamkommando.de | V2.15.01";
+		overviewText="www.teamkommando.de | V2.14.02";
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0;
@@ -99,6 +99,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit2";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -120,6 +121,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit16";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -141,6 +143,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit17";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -162,6 +165,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit32";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -183,6 +187,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit1";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -204,6 +209,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit8";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -225,6 +231,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit7";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -246,6 +253,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit6";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -267,6 +275,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit5";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -288,6 +297,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit4";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -309,6 +319,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit3";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -330,6 +341,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit9";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -351,6 +363,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit10";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -372,6 +385,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit11";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -393,6 +407,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit12";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -414,6 +429,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit13";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -435,6 +451,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit14";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -456,6 +473,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit15";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -477,6 +495,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit24";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -498,6 +517,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit23";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -519,6 +539,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit22";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -540,6 +561,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit21";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -561,6 +583,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit20";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -582,6 +605,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit18";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -603,6 +627,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit25";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -624,6 +649,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit19";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -645,6 +671,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit26";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -666,6 +693,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit27";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -687,6 +715,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit28";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -708,6 +737,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit29";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -729,6 +759,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit30";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};
@@ -750,6 +781,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit31";
+					init="[this] joinSilent grpNull;";
 				};
 			};
 		};

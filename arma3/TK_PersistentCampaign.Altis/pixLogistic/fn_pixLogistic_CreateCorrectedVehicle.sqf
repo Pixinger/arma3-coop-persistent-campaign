@@ -186,6 +186,7 @@ if (_classname == "Box_NATO_Support_F") then
 	_object	addItemCargoGlobal["optic_Hamr", 1];
 	_object	addItemCargoGlobal["optic_MRCO", 1];	 	
 	_object addItemCargoGlobal["optic_SOS", 1];		
+	_object	addItemCargoGlobal["ItemRadio", 5];	
 };
 
 _object
