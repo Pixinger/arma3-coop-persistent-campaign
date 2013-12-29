@@ -93,20 +93,20 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_HE_Grenade_shell",
-			"1Rnd_Smoke_Grenade_shell",
-			"1Rnd_Smoke_Grenade_shell",
-			"1Rnd_Smoke_Grenade_shell"
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell"
 		],
 		/* Backpack-Items */
 		[			

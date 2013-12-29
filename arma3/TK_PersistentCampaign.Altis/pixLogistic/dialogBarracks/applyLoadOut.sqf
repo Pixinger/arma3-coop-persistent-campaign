@@ -102,6 +102,7 @@ private["_pos"];
 _pos = (getpos _unit);			
 private["_newunit"];
 _newunit = (group _unit) createUnit [_unitClassname, [0,0,0], [], 0, "None"];	
+Sleep 1;
 addSwitchableUnit _newunit;
 selectPlayer _newunit;
 deletevehicle _unit;
@@ -200,4 +201,4 @@ if (_unitClassname in pixLogisticLiftPilots) then
 };
 
 /* Dafür sorgen, dass das TFR-Radio auch aktiv in den Slot gezogen wird. */
-[] spawn PC_fnc_ActivateTFRRadio;
+/*[] spawn PC_fnc_ActivateTFRRadio;*/

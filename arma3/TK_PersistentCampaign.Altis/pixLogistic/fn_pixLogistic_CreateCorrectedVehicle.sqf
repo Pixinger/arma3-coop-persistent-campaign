@@ -165,7 +165,8 @@ if (_classname == "Box_NATO_Grenades_F") then
 	_object	addMagazineCargoGlobal["SmokeShellRed",10];
 	_object	addMagazineCargoGlobal["Chemlight_green",5];
 	_object	addMagazineCargoGlobal["Chemlight_red",5];
-	_object	addMagazineCargoGlobal["1Rnd_HE_Grenade_shell",10];	
+	_object	addMagazineCargoGlobal["3Rnd_HE_Grenade_shell",10];	
+	_object	addMagazineCargoGlobal["1Rnd_HE_Grenade_shell",10];		
 };
 
 /* BOX: Items */
@@ -186,7 +187,7 @@ if (_classname == "Box_NATO_Support_F") then
 	_object	addItemCargoGlobal["optic_Hamr", 1];
 	_object	addItemCargoGlobal["optic_MRCO", 1];	 	
 	_object addItemCargoGlobal["optic_SOS", 1];		
-	_object	addItemCargoGlobal["ItemRadio", 5];	
+	/*_object	addItemCargoGlobal["ItemRadio", 5];	*/
 };
 
 _object
