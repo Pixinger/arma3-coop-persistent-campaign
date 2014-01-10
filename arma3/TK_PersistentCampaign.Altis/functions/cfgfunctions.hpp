@@ -50,6 +50,8 @@ class PC
 	class Tools
 	{
 		file = "functions\tools";
+		class CreateMineField {description = "Erzeugt ein Minenfeld";};
+		class CreateMineFieldAtTarget {description = "Erzeugt ein Minenfeld in der Nähe eines Zieles";};		
 		class Debug {description = "";};
 		class Error {description = "";};
 		class GetMinDistance {description = "";};

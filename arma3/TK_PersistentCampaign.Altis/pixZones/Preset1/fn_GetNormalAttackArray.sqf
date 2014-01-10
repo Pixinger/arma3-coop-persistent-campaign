@@ -96,19 +96,18 @@ if (isServer) then
 	};
 	
 	/* Zum Debuggen */
-/*	if (isServer && !isDedicated) then
+	if (isServer && !isDedicated) then
 	{
-		/* Missionen festlegen */
-/*		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
-		/*_missionOptCfgIndices = [10];*/
+		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
+		/*_missionOptCfgIndices = [4];*/
 		
 		/* Locations berechnen */
-/*		{
+		{
 			private["_missionLocation"];
 			_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
 			_missionOptLocations set [count _missionOptLocations, _missionLocation];
 		} foreach _missionOptCfgIndices;
-	};*/
+	};
 	
 	
 	

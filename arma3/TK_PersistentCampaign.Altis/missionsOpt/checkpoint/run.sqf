@@ -139,7 +139,17 @@ if (isServer) then
 		_vehicles = _vehicles + (_groupInfos select 1);
 		_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
 	};
-	
+		
+	/*-------------*/
+	/* Minenfelder */
+	/*-------------*/
+	private["_mineFieldCount"];
+	_mineFieldCount = floor(random 2);
+	for "_i" from 0 to _mineFieldCount do 
+	{
+		[_missionPosition, ["APERSMine","APERSBoundingMine","APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+	};
+
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
