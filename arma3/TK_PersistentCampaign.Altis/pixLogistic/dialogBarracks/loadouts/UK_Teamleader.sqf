@@ -88,7 +88,7 @@ _result = [
 
 	/* Backpack */
 	[
-		"tf_rt1523g",
+		"B_Bergen_blk",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
@@ -104,6 +104,25 @@ _result = [
 			"3Rnd_HE_Grenade_shell",
 			"3Rnd_HE_Grenade_shell",
 			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell"

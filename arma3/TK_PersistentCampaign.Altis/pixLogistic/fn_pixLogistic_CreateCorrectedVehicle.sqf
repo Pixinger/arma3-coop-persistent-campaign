@@ -142,6 +142,7 @@ if (_classname == "Box_NATO_AmmoOrd_F") then
 	clearItemCargoGlobal _object;
 	clearBackpackCargoGlobal _object;
 
+	_object	addItemCargoGlobal["MineDetector",1];
 	_object	addMagazineCargoGlobal["SatchelCharge_Remote_Mag",10];
 	_object	addMagazineCargoGlobal["DemoCharge_Remote_Mag",10];
 	_object	addMagazineCargoGlobal["ATMine_Range_Mag",10];

@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_MX_F",
+		"srifle_EBR_ARCO_pointer_F", //TODO
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"20Rnd_762x51_Mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Arco","acc_pointer_IR","muzzle_snds_B"]
 	],
 	
 	/* Secondary Weapon */
@@ -53,9 +53,9 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps"]
+		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
 	
 	/* Vest */
@@ -65,22 +65,19 @@ _result = [
 		[], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag"
 		],
 		/* Vest-Items */
-		["FirstAidKit","FirstAidKit"]
+		[]
 	],
 	
 	/* Backpack */
@@ -90,37 +87,18 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"SmokeShellPurple"
+			"SatchelCharge_Remote_Mag",
+			"DemoCharge_Remote_Mag",
+			"DemoCharge_Remote_Mag"
 		],
 		/* Backpack-Items */
 		[
-			"Medikit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit"
+			"MineDetector"
 		]
 	],
 	
 	/* unit classname */
-	"B_medic_F"
+	"B_engineer_F"
 ];
 
 _result;

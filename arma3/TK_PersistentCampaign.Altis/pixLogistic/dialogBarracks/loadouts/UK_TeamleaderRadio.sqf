@@ -22,7 +22,7 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_MX_Black_F",
+		"arifle_MX_GL_Black_F",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
@@ -49,13 +49,13 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CTRG_1",
+		"U_B_CTRG_3",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps"]
+		["ItemRadio","FirstAidKit","FirstAidKit"]
 	],
 
 	/* Vest */
@@ -74,53 +74,47 @@ _result = [
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag_Tracer",
+			"30Rnd_65x39_caseless_mag_Tracer",
 			"30Rnd_65x39_caseless_mag_Tracer",
 			"30Rnd_65x39_caseless_mag_Tracer",
 			"30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		["FirstAidKit","FirstAidKit"]
+		[
+		"optic_Nightstalker"
+		]
 	],
 
 	/* Backpack */
 	[
-		"B_Bergen_blk",
+		"tf_rt1523g",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"SmokeShellPurple"
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_HE_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell",
+			"3Rnd_Smoke_Grenade_shell"
 		],
 		/* Backpack-Items */
 		[
-			"Medikit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit"
 		]
 	],
 
 	/* unit classname */
-	"B_medic_F"
+	"B_Soldier_SL_F"
 ];
 
 _result;

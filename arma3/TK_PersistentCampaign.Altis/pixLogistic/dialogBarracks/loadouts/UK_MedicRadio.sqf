@@ -53,7 +53,7 @@ _result = [
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
 		["ItemRadio","ItemGps"]
 	],
@@ -85,30 +85,15 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_Bergen_blk",
+		"tf_rt1523g",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"SmokeShellPurple",
 			"SmokeShellPurple"
 		],
 		/* Backpack-Items */
 		[
-			"Medikit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
 			"FirstAidKit",
 			"FirstAidKit",
 			"FirstAidKit",

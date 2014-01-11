@@ -201,4 +201,4 @@ if (_unitClassname in pixLogisticLiftPilots) then
 };
 
 /* Dafür sorgen, dass das TFR-Radio auch aktiv in den Slot gezogen wird. */
-/*[] spawn PC_fnc_ActivateTFRRadio;*/
+[] spawn PC_fnc_ActivateTFRRadio;
