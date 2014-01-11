@@ -12,25 +12,25 @@ private["_vehicleTypes"];
 _vehicleTypes = [];
 { _vehicleTypes set[count _vehicleTypes, _x select 3];} foreach pixLogisticStoreVehicles;
 private["_vehicles"];
-_vehicles = nearestObjects [_building, _vehicleTypes, 20];
+_vehicles = nearestObjects [_building, _vehicleTypes, 50];
 /*-------*/
 private["_weaponTypes"];
 _weaponTypes = [];
 { _weaponTypes set[count _weaponTypes, _x select 3];} foreach pixLogisticStoreWeapons;
 private["_weapons"];
-_weapons = nearestObjects [_building, _weaponTypes, 20];
+_weapons = nearestObjects [_building, _weaponTypes, 50];
 /*-------*/
 private["_containerTypes"];
 _containerTypes = [];
 { _containerTypes set[count _containerTypes, _x select 3];} foreach pixLogisticStoreContainer;
 private["_containers"];
-_containers = nearestObjects [_building, _containerTypes, 20];
+_containers = nearestObjects [_building, _containerTypes, 50];
 /*-------*/
 private["_sellOnlyTypes"];
 _sellOnlyTypes = [];
 { _sellOnlyTypes set[count _sellOnlyTypes, _x select 3];} foreach pixLogisticStoreSellOnly;
 private["_sellOnlys"];
-_sellOnlys = nearestObjects [_building, _sellOnlyTypes, 20];
+_sellOnlys = nearestObjects [_building, _sellOnlyTypes, 50];
 /*-------*/
 private["_objects"];
 _objects = [];
