@@ -102,6 +102,7 @@ private["_pos"];
 _pos = (getpos _unit);			
 private["_newunit"];
 _newunit = (group _unit) createUnit [_unitClassname, [0,0,0], [], 0, "None"];	
+Sleep 1;
 addSwitchableUnit _newunit;
 selectPlayer _newunit;
 deletevehicle _unit;
