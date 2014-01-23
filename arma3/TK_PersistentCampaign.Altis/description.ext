@@ -92,6 +92,13 @@ class Params
 	    texts[] = {"0 Uhr", "1 Uhr", "2 Uhr", "3 Uhr", "4 Uhr", "5 Uhr", "6 Uhr", "7 Uhr", "8 Uhr", "9 Uhr", "10 Uhr", "11 Uhr", "12 Uhr", "13 Uhr", "14 Uhr", "15 Uhr", "16 Uhr", "17 Uhr", "18 Uhr", "19 Uhr", "20 Uhr", "21 Uhr", "22 Uhr", "23 Uhr", "Zufällig"};
 	    default = 24;
 	};
+	class AISkill /* paramsArray[6]*/
+	{		
+	    title = "AI-Skill";
+	    values[] = {0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1};
+	    texts[] = {"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+	    default = 0.7;
+	};
 };
 
 class Header

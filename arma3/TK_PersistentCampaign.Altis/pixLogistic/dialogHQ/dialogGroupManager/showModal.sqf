@@ -11,7 +11,12 @@ _groups = [];
 	{
 		private["_group"];
 		_group = group _x;
-		_groups = _groups + [_group];
+		private["_leader"];
+		_leader = leader _group;
+		if (rankId _leader > 0) then 
+		{
+			_groups = _groups + [_group];
+		}
 	};
 } foreach playableUnits;
 
@@ -38,8 +43,8 @@ if (pixLogisticDialogHqGroupManager_Button == 1) then
 	
 	private["_group"];
 	_group = createGroup west;
-	[player] join grpNull;	
-	Sleep .1;
+	/*[player] join grpNull;	
+	Sleep .1;*/
 	[player] join _group;	
 	player globalChat "INFO: Gruppe erstellt";
 };
@@ -50,9 +55,9 @@ if ((pixLogisticDialogHqGroupManager_Button == 2) && (pixLogisticDialogHqGroupMa
 
 	private["_group"];
 	_group = _groups select pixLogisticDialogHqGroupManager_Selection;	
-	
-	[player] join grpNull;	
-	Sleep .1;
+		
+	/*[player] join grpNull;	
+	Sleep .1;*/
 	[player] join _group;	
 	player globalChat "INFO: Gruppe begetreten";
 };

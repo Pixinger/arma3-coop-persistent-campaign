@@ -460,7 +460,7 @@ class RscListBox
 	};
 	arrowEmpty = "#(argb,8,8,3)color(1,1,1,1)";
 	arrowFull = "#(argb,8,8,3)color(1,1,1,1)";
-	class ScrollBar
+	class ListScrollBar
 	{
 		color[] = 
 		{
@@ -487,7 +487,9 @@ class RscListBox
 		thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
 		arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
 		arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
-		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";			
+		
+		autoScrollEnabled = 1;
 	};
 	style = 16;
 	font = "PuristaMedium";
@@ -756,13 +758,13 @@ class RscButton
 	};
 	soundPush[] = 
 	{
-		"\A3\ui_f\data\sound\new1",
+		"\A3\ui_f\data\sound\RscButton\soundPush",
 		0,
 		0
 	};
 	soundClick[] = 
 	{
-		"\A3\ui_f\data\sound\onclick",
+		"\A3\ui_f\data\sound\RscButton\soundClick",
 		0.07,
 		1
 	};
@@ -875,13 +877,13 @@ class RscShortcutButton
 	};
 	soundPush[] = 
 	{
-		"\A3\ui_f\data\sound\new1",
+		"\A3\ui_f\data\sound\RscButton\soundPush",
 		0,
 		0
 	};
 	soundClick[] = 
 	{
-		"\A3\ui_f\data\sound\onclick",
+		"\A3\ui_f\data\sound\RscButton\soundClick",
 		0.07,
 		1
 	};
@@ -956,6 +958,20 @@ class RscButtonMenu
 		1,
 		1
 	};
+	colorFocused[] = 
+	{
+		1,
+		1,
+		1,
+		1
+	};
+	colorBackgroundFocused[] = 
+	{
+		1,
+		1,
+		1,
+		1
+	};
 	colorDisabled[] = 
 	{
 		1,
@@ -999,13 +1015,13 @@ class RscButtonMenu
 	};
 	soundPush[] = 
 	{
-		"\A3\ui_f\data\sound\new1",
+		"\A3\ui_f\data\sound\RscButton\soundPush",
 		0,
 		0
 	};
 	soundClick[] = 
 	{
-		"\A3\ui_f\data\sound\onclick",
+		"\A3\ui_f\data\sound\RscButton\soundClick",
 		0.07,
 		1
 	};

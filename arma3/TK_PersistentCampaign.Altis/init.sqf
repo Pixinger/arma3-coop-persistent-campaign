@@ -31,6 +31,9 @@ diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDel
 pixParamTimeSettings = (paramsArray select 5);
 if (isServer && !isDedicated) then {pixParamTimeSettings = 12;};
 diag_log format["INFO: pixParamTimeSettings: %1", pixParamTimeSettings];
+/* Parameter (5): TimeSettings */
+pixParamAISkillSettings = (paramsArray select 6);
+diag_log format["INFO: pixParamAISkillSettings: %1", pixParamAISkillSettings];
 
 
 /*-----------------------------------------------*/

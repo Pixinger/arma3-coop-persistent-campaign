@@ -92,8 +92,6 @@ if (count _result > 11) then { _unitClassname = _result select 11; } else { _uni
 /* Switch Unit durführen */
 disableUserInput true;
 titleText ["", "BLACK FADED"];
-private["_vehicleVarName"];
-_vehicleVarName = vehicleVarName _unit;
 private["_rank"];
 _rank = rank _unit;
 private["_dir"];
@@ -103,15 +101,15 @@ _pos = (getpos _unit);
 private["_newunit"];
 _newunit = (group _unit) createUnit [_unitClassname, [0,0,0], [], 0, "None"];	
 Sleep 1;
+_newunit setUnitRank _rank;
 addSwitchableUnit _newunit;
 selectPlayer _newunit;
+[_unit] join grpNull;	
 deletevehicle _unit;
 _unit = _newunit;
 _unit setpos _pos;
 _unit setdir _dir;
 _unit setUnitRank _rank;
-_unit setVehicleVarName _vehicleVarName;
-call compile format ["%1=_unit; PublicVariable ""%1""", _vehicleVarName];
 titleText ["", "BLACK IN", 1];
 disableUserInput false;
 
@@ -152,7 +150,7 @@ if (_backpackClassname != "") then
 };
 
 /* Dann die Waffen hinzufügen, damit diese die Magazine gleich aufnehmen können 
-   das Inventar sollte danach wieder leersein. */
+   das Inventar sollte danach wieder leer sein. */
 if (_primaryWeaponClassname != "") then
 {
 	if (_primaryWeaponMagazine != "") then { _unit addMagazine _primaryWeaponMagazine; };
