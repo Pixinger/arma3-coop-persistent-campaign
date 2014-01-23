@@ -1,2 +1,2 @@
-call "C:\Program Files (x86)\Mikero\DePboTools\bin\MakePbo" -A -N TK_PersistentCampaign.Altis D:\[TK]PersistentCampaign.Altis.pbo
+call "D:\_TeamKommando\_Programme\ExtractPbo\MakePbo" -A -N TK_PersistentCampaign.Altis D:\[TK]PersistentCampaign.Altis.pbo
 
