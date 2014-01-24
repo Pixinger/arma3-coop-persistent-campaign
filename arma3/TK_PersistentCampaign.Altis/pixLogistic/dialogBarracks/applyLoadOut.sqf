@@ -110,6 +110,10 @@ _unit = _newunit;
 _unit setpos _pos;
 _unit setdir _dir;
 _unit setUnitRank _rank;
+if (rankId _unit == 6) then 
+{
+	(group _unit) selectLeader _unit;
+};
 titleText ["", "BLACK IN", 1];
 disableUserInput false;
 
