@@ -17,6 +17,8 @@ _currentTask = player createSimpleTask [_taskTitle];
 _currentTask setSimpleTaskDescription [_taskDescription, _taskTitle, ""];
 _currentTask setSimpleTaskDestination _missionMarkerPosition;
 _currentTask setTaskState "Assigned";
+private["_taskObject"];
+_taskObject = player; /* Changes, when player switches unit */
 
 /*-----------------------------------*/
 /* Eindeutigen Markernamen erstellen */
@@ -42,7 +44,17 @@ if (_missionMarkerRadius > 0) then
 waitUntil { str(pvehPixZones_MissionStatus) != "[]" };
 while { (pixZones_ActiveIndex != -1) && (((pvehPixZones_MissionStatus select 1) select _missionInfoIndex) == 0) } do
 {
-	 Sleep 2;
+	if (_taskObject != player) then
+	{
+		_currentTask = player createSimpleTask [_taskTitle];
+		_currentTask setSimpleTaskDescription [_taskDescription, _taskTitle, ""];
+		_currentTask setSimpleTaskDestination _missionMarkerPosition;
+		_currentTask setTaskState "Assigned";
+		_taskObject = player; /* Changes, when player switches unit */
+		player globalchat "INFO: Recreating Tasks";
+	};
+
+	Sleep 2;
 };
 
 /*-------------------*/

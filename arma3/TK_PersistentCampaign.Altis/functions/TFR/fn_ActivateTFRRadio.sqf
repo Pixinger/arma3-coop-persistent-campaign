@@ -1,5 +1,8 @@
+waitUntil {!isNull player};
+waitUntil {alive player};
+
 private["_timeout"];
-_timeout = time + 10;
+_timeout = time + 20;
 while {_timeout > time } do
 {
 	Sleep 1;
@@ -22,10 +25,10 @@ while {_timeout > time } do
 
 if (call haveSWRadio) then
 {
-	player globalChat "INFO: TFR Radio available.";
+	player globalChat "INFO: TFR device available.";
 }
 else
 {
-	player globalChat "ERROR: Unable to active TFR Radio.";
+	player globalChat "ERROR: Unable to activate TFR device.";
 };
 	

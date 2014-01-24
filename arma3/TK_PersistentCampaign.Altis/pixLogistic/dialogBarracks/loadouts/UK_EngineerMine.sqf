@@ -93,7 +93,8 @@ _result = [
 		],
 		/* Backpack-Items */
 		[
-			"MineDetector"
+			"MineDetector",
+			"ToolKit"
 		]
 	],
 

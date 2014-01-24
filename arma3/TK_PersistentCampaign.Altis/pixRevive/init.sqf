@@ -20,4 +20,15 @@ if (!isServer || !isDedicated) then
 	
 	private["_tmp"];
 	_tmp = [] execVM "pixRevive\run.sqf";	
+
+	/* Am Anfang einmal warten und dann zum verschobenen Respawn setzen. */
+	[] spawn {
+		waitUntil {!isNull player};
+		waitUntil {alive player};
+	
+		Sleep 2;
+		player setPos (getMarkerPos "respawn_west");	
+	};
+	
+
 };
