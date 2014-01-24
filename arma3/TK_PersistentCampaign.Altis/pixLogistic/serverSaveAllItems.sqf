@@ -52,6 +52,12 @@ if (isServer) then
 			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForExistingZone failed: %1", _result];
 			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pixlogisticRewardForExistingZone failed: %1", _result];
 		};		
+		_result = [format["pixLogisticRespawnPos = %1;", getMarkerPos "respawn_west"]] call _fn_pixLogistic_DataWriteNext;
+		if (_result != "OK") then
+		{
+			diag_log format["ERROR: _fn_pixLogistic_DataWriteNext=>pixLogisticRespawnPos failed: %1", _result];
+			player globalChat format["ERROR: _fn_pixLogistic_DataWriteNext=>pixLogisticRespawnPos failed: %1", _result];
+		};		
 		
 
 		/*----------------------------------------------------*/

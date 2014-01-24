@@ -167,8 +167,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 50.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.8 * GRID_H;
-		text = "---";
-		action = "";
+		text = "Respawn verlegen";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonChangeRespawnClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin6 : RscButtonMenu
 	{

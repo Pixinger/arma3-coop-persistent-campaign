@@ -32,8 +32,12 @@ if (isServer) then
 			publicVariable "pvPixLogisticTeamLeaderUIDs";
 			publicVariable "pvPixLogisticAdminUIDs";
 			publicVariable "pixlogisticRewardForZone";
-			publicVariable "pixlogisticRewardForExistingZone";
-			
+			publicVariable "pixlogisticRewardForExistingZone";			
+			if (!isNil "pixLogisticRespawnPos") then
+			{
+				"respawn_west" setMarkerPos pixLogisticRespawnPos;
+				pixLogisticRespawnPos = nil;
+			};			
 		}
 		else
 		{
