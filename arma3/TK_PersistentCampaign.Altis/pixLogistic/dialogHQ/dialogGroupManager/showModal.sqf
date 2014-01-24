@@ -13,10 +13,15 @@ _groups = [];
 		_group = group _x;
 		private["_leader"];
 		_leader = leader _group;
-		if (rankId _leader > 0) then 
+		private["_hasGroup"];
+		_hasGroup = _leader getVariable "HasGroup";
+		if (!isNil "_hasGroup") then
 		{
-			_groups = _groups + [_group];
-		}
+			if (_hasGroup) then
+			{
+				_groups = _groups + [_group];
+			};
+		};
 	};
 } foreach playableUnits;
 
@@ -39,32 +44,30 @@ waitUntil { !dialog };
 /* Create */
 if (pixLogisticDialogHqGroupManager_Button == 1) then 
 {		
-	player setRank "COLONEL";
+	player setVariable ["HasGroup",true,true];
+	player setUnitRank "COLONEL";
 	
 	private["_group"];
 	_group = createGroup west;
-	/*[player] join grpNull;	
-	Sleep .1;*/
 	[player] join _group;	
 	player globalChat "INFO: Gruppe erstellt";
 };
 /* Join */
 if ((pixLogisticDialogHqGroupManager_Button == 2) && (pixLogisticDialogHqGroupManager_Selection != -1)) then 
 {		
-	player setRank "MAJOR";
+	player setVariable ["HasGroup",false,true];
+	player setUnitRank "MAJOR";
 
 	private["_group"];
 	_group = _groups select pixLogisticDialogHqGroupManager_Selection;	
-		
-	/*[player] join grpNull;	
-	Sleep .1;*/
 	[player] join _group;	
 	player globalChat "INFO: Gruppe begetreten";
 };
 /* Leave */
 if (pixLogisticDialogHqGroupManager_Button == 3) then 
 {		
-	player setRank "PRIVATE";
+	player setVariable ["HasGroup",false,true];
+	player setUnitRank "PRIVATE";
 	[player] join grpNull;	
 	player globalChat "INFO: Gruppe verlassen";
 };

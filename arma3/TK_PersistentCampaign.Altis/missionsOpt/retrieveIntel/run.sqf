@@ -82,6 +82,16 @@ if (isServer) then
 		_vehicles = _vehicles + (_groupInfos select 1);
 	};
 
+	/*-------------*/
+	/* Minenfelder */
+	/*-------------*/
+	private["_mineFieldCount"];
+	_mineFieldCount = 1 + floor(random 3);
+	for "_i" from 0 to _mineFieldCount do 
+	{
+		[_missionPosition, ["APERSMine","APERSBoundingMine","APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+	};
+
 	/*--------------*/
 	/* Vorschädigen */
 	/*--------------*/

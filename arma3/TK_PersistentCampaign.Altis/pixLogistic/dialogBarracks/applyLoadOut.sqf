@@ -89,6 +89,7 @@ _backpackItems = _backpack select 3;
 private["_unitClassname"];
 if (count _result > 11) then { _unitClassname = _result select 11; } else { _unitClassname = "B_Soldier_F"; };
 
+
 /* Switch Unit durführen */
 disableUserInput true;
 titleText ["", "BLACK FADED"];
@@ -99,7 +100,7 @@ _dir = (getdir _unit);
 private["_pos"];
 _pos = (getpos _unit);			
 private["_newunit"];
-_newunit = (group _unit) createUnit [_unitClassname, [0,0,0], [], 0, "None"];	
+_newunit = (group _unit) createUnit [_unitClassname, [0,0,1000], [], 0, "None"];	
 Sleep 1;
 _newunit setUnitRank _rank;
 addSwitchableUnit _newunit;
@@ -116,6 +117,7 @@ if (rankId _unit == 6) then
 };
 titleText ["", "BLACK IN", 1];
 disableUserInput false;
+
 
 /* Aktuelle Ausrüstung löschen */
 removeAllAssignedItems _unit;
