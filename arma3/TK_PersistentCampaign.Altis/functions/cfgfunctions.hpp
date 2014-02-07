@@ -35,6 +35,7 @@ class PC
 		class IsPositionInZone {description = "";};
 		class IsZoneBlueFor {description = "";};
 		class IsZoneForbidden {description = "";};
+		class IsMissionLocationValid {description = "Prüft, ob eine MissionLocation gültig ist. Dazu wird verglichen, ob andere Missionen weit genug entfernt liegen.";};
 	};
 	
 	class missionsOpt
