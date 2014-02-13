@@ -54,15 +54,6 @@ else
 		};
 
 		/*----------------------*/
-		/* Env-Missions starten */
-		/*----------------------*/
-		for "_i" from 0 to ((count _missionsEnv) - 1) do
-		{
-			/* [zoneIndex, _missionInfoIndex] */
-			[pixZones_ActiveIndex, _i] call compile preprocessFileLineNumbers "missionsEnv\run.sqf";
-		};
-
-		/*----------------------*/
 		/* Opt-Missions starten */
 		/*----------------------*/
 		for "_i" from 0 to ((count _missionsOpt) - 1) do
@@ -71,6 +62,15 @@ else
 			[pixZones_ActiveIndex, _i] call compile preprocessFileLineNumbers "missionsOpt\run.sqf";
 		};
 		
+		/*----------------------*/
+		/* Env-Missions starten */
+		/*----------------------*/
+		for "_i" from 0 to ((count _missionsEnv) - 1) do
+		{
+			/* [zoneIndex, _missionInfoIndex] */
+			[pixZones_ActiveIndex, _i] call compile preprocessFileLineNumbers "missionsEnv\run.sqf";
+		};
+
 		/*----------------------*/
 		/* Rev-Missions starten */
 		/*----------------------*/

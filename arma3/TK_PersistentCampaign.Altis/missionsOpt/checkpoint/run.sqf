@@ -144,10 +144,10 @@ if (isServer) then
 	/* Minenfelder */
 	/*-------------*/
 	private["_mineFieldCount"];
-	_mineFieldCount = 1 + floor(random 3);
+	_mineFieldCount = 1 + floor(random 2);
 	for "_i" from 0 to _mineFieldCount do 
 	{
-		[_missionPosition, ["APERSMine","APERSBoundingMine","APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		[_missionPosition, ["APERSBoundingMine"]] call PC_fnc_CreateMineFieldAtTarget;
 	};
 
 	/*--------------------------------------*/

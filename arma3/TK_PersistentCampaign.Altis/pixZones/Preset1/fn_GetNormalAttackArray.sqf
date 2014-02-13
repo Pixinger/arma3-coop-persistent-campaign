@@ -39,11 +39,6 @@ if (isServer) then
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
-	if (_currentPlayerCount >= 15) then
-	{
-		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
-		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
-	};
 	
 	/* Zum debuggen */
 	if (isServer && !isDedicated) then
