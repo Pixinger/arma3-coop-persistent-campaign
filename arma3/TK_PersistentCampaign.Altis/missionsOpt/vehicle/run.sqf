@@ -70,7 +70,7 @@ if (isServer) then
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	/*----------------------------------------------------------------------------*/
 	private["_patrolCount"];
-	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 4);
+	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 6);
 
 	/*-------------------------*/
 	/* Patroullierende Truppen */
@@ -101,10 +101,10 @@ if (isServer) then
 	/* Minenfelder */
 	/*-------------*/
 	private["_mineFieldCount"];
-	_mineFieldCount = 1 +  floor(random 4);
+	_mineFieldCount = 1 +  floor(random 3);
 	for "_i" from 0 to _mineFieldCount do 
 	{
-		[_missionPosition, ["APERSMine","APERSBoundingMine","APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
 	};
 
 	/*--------------*/

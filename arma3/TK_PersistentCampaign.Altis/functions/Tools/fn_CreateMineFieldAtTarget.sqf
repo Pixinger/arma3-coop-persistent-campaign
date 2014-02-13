@@ -25,9 +25,9 @@ _types = [_this, 1, [[]]] call BIS_fnc_param;
 /*-------------------------------------------------------------------*/
 
 private["_mineCount"];
-_mineCount = 10 + random 50;
+_mineCount = 20 + random 40;
 private["_mineDensity"];
-_mineDensity = 700 + random 300;
+_mineDensity = 600 + random 400;
 
 private["_mineFieldRadius"];
 _mineFieldRadius = sqrt((_mineCount*_mineDensity) / 3.1413);

@@ -14,13 +14,13 @@ _group = [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 
 /*-------------------------------------------------------------------*/
 
-private["_leader"];
+/*private["_leader"];
 _leader = leader _group;
 _leader setSkill random pixParamAISkillSettings;
 {
 	_x setSkill ["general", pixParamAISkillSettings];
 	/*setSkill ["endurance", pixParamAISkillSettings];*/
-	_x setSkill ["reloadSpeed", 0];
+	/*_x setSkill ["reloadSpeed", 0];
 	_x setSkill ["spotDistance", 0.9];
 	_x setSkill ["spotTime", 0.9];
 	_x setSkill ["courage", 0.3];
@@ -28,6 +28,22 @@ _leader setSkill random pixParamAISkillSettings;
 	_x setSkill ["aimingShake", pixParamAISkillSettings];
 	_x setSkill ["aimingSpeed", pixParamAISkillSettings];
 	_x setSkill ["aimingAccuracy", pixParamAISkillSettings];
+} foreach units _group;*/
+
+private["_leader"];
+_leader = leader _group;
+_leader setSkill random .7;
+{
+	_x setSkill ["endurance",random .7];
+	_x setSkill ["reloadSpeed",random .7];
+	_x setSkill ["general",random .7];
+	_x setSkill ["spotDistance",random .7];
+	_x setSkill ["spotTime",random .7];
+	_x setSkill ["courage",random .7];
+	_x setSkill ["commanding",random .7];
+	_x setSkill ["aimingShake",random .7];
+	_x setSkill ["aimingSpeed",random .7];
+	_x setSkill ["aimingAccuracy",random .7];
 } foreach units _group;
 
 /*

@@ -39,11 +39,6 @@ if (isServer) then
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
 	};
-	if (_currentPlayerCount >= 15) then
-	{
-		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
-		_missionsEnv set [count _missionsEnv, [0,[0,0,0],_zoneIndex]]; /* missionEnv-Index, location, direction */
-	};
 	
 	/* Zum debuggen */
 	if (isServer && !isDedicated) then
@@ -89,9 +84,14 @@ if (isServer) then
 		/* Wenn eine gültige Location gefunden wurde, dann zu Index und Location Array hinzufügen */
 		if (str(_missionLocation) != "[[0,0,0],0,[0,0,0],0]") then
 		{
-			_missionOptCfgIndices set [count _missionOptCfgIndices, _index];
-			_missionOptLocations set [count _missionOptLocations, _missionLocation];
-			_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _index);
+			/* Aber nur, wenn keine andere Mission in der Nähe liegt */
+			if ([_missionLocation, _missionOptLocations, 700] call PC_fnc_IsMissionLocationValid) then
+			{			
+				/* zu Index und Location Array hinzufügen */
+				_missionOptCfgIndices set [count _missionOptCfgIndices, _index];
+				_missionOptLocations set [count _missionOptLocations, _missionLocation];
+				_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _index);
+			};
 		};			
 	};
 	
@@ -105,6 +105,7 @@ if (isServer) then
 		{
 			private["_missionLocation"];
 			_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
+			[_missionLocation, _missionOptLocations] call PC_fnc_IsMissionLocationValid;
 			_missionOptLocations set [count _missionOptLocations, _missionLocation];
 		} foreach _missionOptCfgIndices;
 	};
