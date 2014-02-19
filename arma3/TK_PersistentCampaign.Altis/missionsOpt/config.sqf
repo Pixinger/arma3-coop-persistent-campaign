@@ -15,14 +15,14 @@ missionsOpt_Missions = [
 	];
 
 missionsOpt_MissionPlayers = [
-	7, /*"vehicle",				0 */
+	9, /*"vehicle",				0 */
 	9, /*"vehicles",			1 */
 	9, /*"checkpoint",	 		2 */
 	9, /*"building",		3 */
 	3, /*"ammobox",				4 */
-	7, /*"killOfficer",			5 */
-	7, /*"retrieveIntel",		6 */
-	7  /*"killOfficerBuilding",	7 */
+	9, /*"killOfficer",			5 */
+	9, /*"retrieveIntel",		6 */
+	9  /*"killOfficerBuilding",	7 */
 	/*6  /*"inspect"			8 */
 ];
 

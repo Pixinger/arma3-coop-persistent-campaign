@@ -13,5 +13,6 @@ if (!alive _target) exitWith { false };
 if ((_target distance player) > 3 ) exitWith { false };
 if (isNil "_target") exitWith { false };
 if (!(pixRevive_RequiredItem in (items player))) exitWith { false };
+if (!captive _target) exitWith { false };
 	
 true
