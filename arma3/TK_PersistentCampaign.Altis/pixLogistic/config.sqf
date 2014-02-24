@@ -514,26 +514,26 @@ if (!isServer || !isDedicated) then
 		["Leerer Container", 10, 0, "Land_Cargo20_blue_F", "", [
 			]],
 		["Befestigungen (Beton)", 500, 0, "Land_Cargo20_grey_F", "", [
-			"Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F",
-			"Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F",
-			"Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F",
-			"Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F",
-			"Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F"
+			"Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F","Land_CncWall1_F",
+			"Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F","Land_CncBarrierMedium4_F",
+			"Land_CncBarrierMedium_F","Land_CncBarrierMedium_F","Land_CncBarrierMedium_F",
+			"Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F","Land_CncBarrier_F",
+			"Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F","Land_CncBarrier_stripes_F"
 			]],
 		["Befestigungen (Stahl)", 500, 0, "Land_Cargo20_sand_F", "", [
 			"Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F","Land_Crash_barrier_F"
 			]],
 		["Befestigungen (Sand)", 500, 0, "Land_Cargo20_brick_red_F", "", [
-			"Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F","Land_HBarrier_1_F",
-			"Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F","Land_HBarrier_3_F",
-			"Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F",
-			"Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F","Land_HBarrierBig_F",
-			"Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F","Land_BagFence_Short_F",
-			"Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F","Land_BagFence_Long_F",
-			"Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F","Land_BagFence_Round_F"
+			"Land_HBarrier_1_F","Land_HBarrier_1_F",
+			"Land_HBarrier_3_F","Land_HBarrier_3_F",
+			"Land_HBarrier_5_F","Land_HBarrier_5_F",
+			"Land_HBarrierBig_F","Land_HBarrierBig_F",
+			"Land_BagFence_Short_F","Land_BagFence_Short_F",
+			"Land_BagFence_Long_F","Land_BagFence_Long_F",
+			"Land_BagFence_Round_F","Land_BagFence_Round_F"
 			]],
 		["Bunker (Sand)", 500, 0, "Land_Cargo20_red_F", "", [
-			"Land_BagBunker_Small_F","Land_BagBunker_Small_F","Land_BagBunker_Small_F","Land_BagBunker_Small_F","Land_BagBunker_Small_F",
+			"Land_BagBunker_Small_F","Land_BagBunker_Small_F","Land_BagBunker_Small_F",
 			"Land_BagBunker_Large_F","Land_BagBunker_Large_F","Land_BagBunker_Large_F",
 			"Land_BagBunker_Tower_F","Land_BagBunker_Tower_F","Land_BagBunker_Tower_F"
 			]],
