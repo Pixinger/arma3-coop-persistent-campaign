@@ -112,6 +112,16 @@ if (isServer) then
 		};
 	} foreach _attackingZones;
 
+	/*-------------------*/
+	/* Trigger erstellen */
+	/*-------------------*/
+	missionsRev_AttackFinished = false;
+	private["_trg"];
+	_trg = createTrigger["EmptyDetector", _missionPosition]; 
+	_trg setTriggerArea[25,25,0,false];
+	_trg setTriggerActivation["EAST","PRESENT",true];
+	_trg setTriggerStatements["this", "missionsRev_AttackFinished = true;", ""]; 
+	
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
@@ -131,6 +141,11 @@ if (isServer) then
 		_aliveEnemyUnits = 0;
 		{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
 	};
+	
+	/*-----------------*/
+	/* Trigger löschen */
+	/*-----------------*/
+	deleteVehicle _trg;
 
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
