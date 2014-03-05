@@ -64,14 +64,14 @@ if (isServer) then
 	
 	/* Bunker1 erstellen */
 	private["_bunker1"];
-	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [6.5,-2,-2], [], 0, "NONE"];
+	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [6.5,-2,0], [], 0, "NONE"];
 	Sleep .2;
 	_bunker1 setDir _missionDirection;
 	_buildings = _buildings + [_bunker1];
 	
 	/* Bunker2 erstellen */
 	private["_bunker2"];
-	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [-8,-2,-2], [], 0, "NONE"];
+	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [-8,-2,0], [], 0, "NONE"];
 	Sleep .2;
 	_bunker2 setDir _missionDirection;
 	_buildings = _buildings + [_bunker2];
