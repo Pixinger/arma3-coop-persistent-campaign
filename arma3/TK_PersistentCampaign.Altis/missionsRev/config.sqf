@@ -7,5 +7,5 @@ missionsRev_Missions = [
 	];
 	
 missionsRev_MissionPlayers = [
-	15 /*"camp",			/* 0 */
+	50 /*"camp",			/* 0 */
 ];

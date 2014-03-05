@@ -46,13 +46,13 @@ if (isServer) then
 	
 	/* Bunker1 erstellen */
 	private["_bunker1"];
-	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [6.5,-2,-2], [], 0, "NONE"];
+	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [6.5,-2,0], [], 0, "NONE"];
 	Sleep .5;
 	_bunker1 setDir (random 359);
 	_buildings = _buildings + [_bunker1];
 	/* Bunker2 erstellen */
 	private["_bunker2"];
-	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [-8,-2,-2], [], 0, "NONE"];
+	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [-8,-2,0], [], 0, "NONE"];
 	Sleep .5;
 	_bunker2 setDir (random 359);
 	_buildings = _buildings + [_bunker2];
@@ -94,8 +94,14 @@ if (isServer) then
 	private["_enemyGroups"];
 	_enemyGroups = [];
 	
+	private["_currentPlayerCount"];
+	_currentPlayerCount = call PC_fnc_GetPlayerCount;
+	
+	private["_attackerCount"];
+	_attackerCount = ceil(_currentPlayerCount / 3);
+	
 	{
-		for "_i" from 0 to 1 do
+		for "_i" from 0 to _attackerCount do
 		{
 			private["_groupInfos"];
 			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OIA_MechInf_AT","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_TankPlatoon"], _x, _missionPosition, 200, pixParamReverseAttackDelay] call PC_fnc_SpawnGroupAttackObject;
