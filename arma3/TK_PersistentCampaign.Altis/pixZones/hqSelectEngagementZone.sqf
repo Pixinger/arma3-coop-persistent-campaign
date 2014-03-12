@@ -43,6 +43,7 @@ else
 					else
 					{
 						_reverseAttack = false;
+						pixZones_IgnoreReverseAttack = false;
 					};
 				}
 				else
@@ -50,6 +51,7 @@ else
 					if (pixParamZoneAttackType == 1) then
 					{
 						_reverseAttack = false;
+						pixZones_IgnoreReverseAttack = false;
 					}
 					else
 					{
@@ -57,8 +59,16 @@ else
 					};
 				};
 				
-				if (_reverseAttack) then
+				if ((!pixZones_IgnoreReverseAttack) && (_reverseAttack)) then
 				{
+					/* Es wird nur der Zonenindex der Zone übernmittelt. Der Server entscheidet später anhand des Zonen-Status, */
+					/* ob es sich um einen Gegenangriff handelt oder nicht. */
+					/* Gehört die Zone eigentlich mir, ist es eine Gegenangriff. */
+					/* Ist die Zone noch feindlich, ist es ein normaler Angriff. */
+					
+					/* ReverseAttack nur einmal zulassen */
+					pixZones_IgnoreReverseAttack = true;
+					
 					/* Pürfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
 					_validConnectedZones = [_zoneIndex] call PC_fnc_GetConnectedHostileZones;					

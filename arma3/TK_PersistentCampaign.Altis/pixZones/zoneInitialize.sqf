@@ -14,6 +14,9 @@ if (isServer) then
 		/*------------------------------------------------------------------------------------*/
 		/* Merken um welche Art von Angriff es sich handelt, bevor wir den ZonenStatus ändern */
 		/*------------------------------------------------------------------------------------*/
+		/* Hier kann das Skript erkennen um welche Art Angriff es sich handelt: */
+		/* Gehört die Zone eigentlich mir, ist es eine Gegenangriff. */
+		/* Ist die zone noch feindlich, ist es ein normaler Angriff. */
 		private["_reverseAttack"];
 		if (pvehPixZones_ZoneStatus select _zoneIndex == 2) then { _reverseAttack = true; } else { _reverseAttack = false; };
 		

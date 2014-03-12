@@ -88,6 +88,16 @@ if (isServer) then
 	doStop _unitBunker2;
 	_groups = _groups + [_group];
 
+	
+	/*------------------*/
+	/* Vehicle erzeugen */
+	/*------------------*/
+	private["_content"];
+	_content = ["Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_BagBunker_Small_F","Land_BagBunker_Small_F","B_static_AT_F","B_static_AT_F","B_static_AT_F"];
+	private["_mrap"];
+	_mrap = ["B_MRAP_01_F", _flag modelToWorld [8,8,0]] call fn_pixLogistic_CreateCorrectedVehicle; /* Kapselt z.B. Änderungen an der Ladung */
+	_mrap setVariable ["pixLogisticContent", _content, true]; 
+	
 	/*-----------------------------------*/
 	/* Die Angriffs-Einheiten erstellen  */
 	/*-----------------------------------*/
