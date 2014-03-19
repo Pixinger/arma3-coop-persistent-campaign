@@ -62,7 +62,7 @@ class Params
 	    title = "Zeit für Einnahme der Zone";
 	    values[] = {30, 60, 90, 120, 150, 180, 1000};
 	    texts[] = {"30min", "60min", "90min", "120min", "150min", "180min", "1000min"};
-	    default = 120;
+	    default = 150;
 	};
 	class MissionFactor /* paramsArray[2]*/
 	{		
@@ -83,7 +83,7 @@ class Params
 	    title = "Gegenangriff nach";
 	    values[] = {5, 10, 15, 20, 30};
 	    texts[] = {"5 min.", "10 min.", "15 min.", "20 min.", "30 min."};
-	    default = 5;
+	    default = 20;
 	};
 	class TimeSettings /* paramsArray[5]*/
 	{		
