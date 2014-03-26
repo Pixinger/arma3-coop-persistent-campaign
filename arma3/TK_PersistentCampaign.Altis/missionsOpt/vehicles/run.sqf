@@ -119,12 +119,6 @@ if (isServer) then
 		[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
 	};
 
-	/*--------------*/
-	/* Vorschädigen */
-	/*--------------*/
-	_vehicle1 setDamage 0.5;
-	_vehicle2 setDamage 0.5;
-
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/

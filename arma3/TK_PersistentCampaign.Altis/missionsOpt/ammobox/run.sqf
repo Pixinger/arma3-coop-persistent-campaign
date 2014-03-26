@@ -92,12 +92,6 @@ if (isServer) then
 		[_missionPosition, ["APERSMine","APERSBoundingMine","APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
 	};
 
-	/*--------------*/
-	/* Vorschädigen */
-	/*--------------*/
-	_ammobox1 setDamage 0.5;
-	_ammobox2 setDamage 0.5;
-	
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/

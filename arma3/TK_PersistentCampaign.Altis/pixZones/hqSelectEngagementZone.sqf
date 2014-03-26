@@ -34,9 +34,10 @@ else
 			{				
 				/* Reverse Attack laut Parameter  */
 				private["_reverseAttack"];
+				_reverseAttack = false; /* just for safety */
 				if (pixParamZoneAttackType == 0) then
 				{
-					if (random 1 < 0.2) then
+					if ((random 100) < 20) then
 					{
 						_reverseAttack = true;
 					}
