@@ -12,3 +12,8 @@ if (isNil "pixZones_Initialized") then
 /* Konfiguration laden */
 /*---------------------*/
 call compile preprocessFileLineNumbers "missionsOpt\config.sqf";
+
+if (!isServer || !isDedicated) then
+{
+	pixExplosivesArray = [];
+};

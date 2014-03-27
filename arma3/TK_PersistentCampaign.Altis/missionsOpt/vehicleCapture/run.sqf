@@ -11,7 +11,7 @@ _missionOpt = ((pvehPixZones_MissionInfos select 2) select _missionInfoIndex);
 private["_missionPosition"];
 _missionPosition = _missionOpt select 1;
 private["_missionDirection"];
-_missionDirection = _missionOpt select 2; /* Wird hier verwendet um den Gebäude Typen zu bestimmen */
+_missionDirection = _missionOpt select 2; /* Wird hier verwendet um den Fahrzeug Typen zu bestimmen */
 private["_missionMarkerPosition"];
 _missionMarkerPosition = _missionOpt select 3;
 private["_missionMarkerRadius"];
@@ -21,7 +21,7 @@ _missionMarkerRadius = _missionOpt select 4;
 /* Building Typen definieren */
 /*---------------------------*/
 private["_buildingClassnames"];
-_buildingClassnames = ["Land_TTowerBig_1_F"];
+_buildingClassnames = ["O_APC_Wheeled_02_rcws_F", "O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
 
 /* Aus der zufälligen Richtung den Klassennamen errechnen */
 private["_buildingClassnameIndex"];
@@ -38,36 +38,16 @@ _buildingClassname = _buildingClassnames select _buildingClassnameIndex;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[] spawn {
-		/*-------------------------*/
-		/* Missions vorbereitungen */
-		/*-------------------------*/
-		/* Objekte suchen (warten bis erzeugt) */
-		private["_counter"];
-		_counter = 20;
-		private["_objects"];
-		_objects = [];
-		while { (count _objects != 1) && (_counter > 0) } do
-		{
-			Sleep 0.5;
-			_objects = nearestObjects [_missionPosition, [_buildingClassname], 50];
-			_counter = _counter - 1;
-		};
-		
-		/* Action Menü zu den Objekten hinzufügen */
-		{ _x addAction["Sprengladung platzieren", "missionsOpt\_common\actionPlaceExplosives.sqf"]; } foreach _objects;
-
-		/*----------------------------------------*/
-		/* Standart Missions verarbeitung starten */
-		/*----------------------------------------*/
-		private["_taskTitle"];
-		_taskTitle = format["Gebäude zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
-		private["_taskDescription"];
-		_taskDescription = format["Der Feind hat ein für uns strategisch wichtiges Gebäude in Einsatzreichweite. Zerstören Sie dieses Gebäude um jeden Preis. (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
-		
-		private["_tmp"];
-		_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
-	};
+	/*----------------------------------------*/
+	/* Standart Missions verarbeitung starten */
+	/*----------------------------------------*/
+	private["_taskTitle"];
+	_taskTitle = format["Fahrzeug untersuchen (%1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+	private["_taskDescription"];
+	_taskDescription = format["Unser Geheimdienst hat ein Fahrzeug ermittelt in dem ein neues technisches Gerät verbaut ist. Bringen sie das Fahrzeug aus dem feindlichen Sektor, damit wir es genauer untersuchen können (Typ: %1?).", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+	
+	private["_tmp"];
+	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
 };
 
 if (isServer) then
@@ -79,12 +59,16 @@ if (isServer) then
 	private["_buildings"];
 	_buildings = [];
 	
-	private["_building"];
-	_building = _buildingClassname createVehicle _missionPosition;
-	_building setdir _missionDirection;
-	_building setVectorUp surfaceNormal (position _building);
-	_building allowDamage false;
-	_buildings = _buildings + [_building];
+	/*--------------------*/
+	/* Fahrzeug erstellen */
+	/*--------------------*/
+	private["_vehicle"];
+	_vehicle = _buildingClassname createVehicle _missionPosition;
+	_vehicle setdir (random 360);
+	private["_normal"];
+	_normal = surfaceNormal (position _vehicle);
+	_vehicle setVectorUp _normal;
+	_vehicles = _vehicles + [_vehicle];
 
 	/*----------------------------------------------------------------------------*/
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
@@ -121,7 +105,7 @@ if (isServer) then
 	/* Minenfelder */
 	/*-------------*/
 	private["_mineFieldCount"];
-	_mineFieldCount = 1 + floor(random 3);
+	_mineFieldCount = 1 +  floor(random 3);
 	for "_i" from 0 to _mineFieldCount do 
 	{
 		[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
@@ -130,12 +114,29 @@ if (isServer) then
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	waitUntil {(!alive _building) || (pixZones_ActiveIndex == -1)};
-	
+	private["_continue"];
+	_continue = true;
+	while { _continue } do
+	{
+		if (pixZones_ActiveIndex == -1) then { _continue = false; };
+		if (!([_zoneIndex, getPos _vehicle] call PC_fnc_IsPositionInZone)) then { _continue = false; };
+		Sleep 5;
+	};
+		
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
+	/*[_missionInfoIndex] call PC_fnc_FinishMissionStatus;*/
+	if (pixZones_ActiveIndex == -1) then
+	{
+		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
+	}
+	else
+	{
+		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
+	};
+	publicVariable "pvehPixZones_MissionStatus";
+	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
 
 	/*-------------------------------------------------------------------------------------------------------------*/
 	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */

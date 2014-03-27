@@ -22,13 +22,36 @@ _missionMarkerRadius = _missionOpt select 4;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	private["_taskTitle"];
-	_taskTitle = "Geheime Dokumente vernichten";
-	private["_taskDescription"];
-	_taskDescription = "Einer unserer Hubschrauber wurde abgeschossen und vom Feind gesichert. Leider befanden sich geheime Dokumente im Hubschrauber. Diese m√ºssen von uns umgehend vernichtet werden. Beginnen Sie mit der Suche an der Absturztstelle.";
-	
-	private["_tmp"];
-	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
+	[] spawn {
+		/*-------------------------*/
+		/* Missions vorbereitungen */
+		/*-------------------------*/
+		/* Objekte suchen (warten bis erzeugt) */
+		private["_counter"];
+		_counter = 20;
+		private["_objects"];
+		_objects = [];
+		while { (count _objects != 1) && (_counter > 0) } do
+		{
+			Sleep 0.5;
+			_objects = nearestObjects [_missionPosition, ["Land_Suitcase_F"], 50];
+			_counter = _counter - 1;
+		};
+		
+		/* Action Men√º zu den Objekten hinzuf√ºgen */
+		{ _x addAction["Dokumente sicherstellen", "missionsOpt\_common\actionSecure.sqf"]; } foreach _objects;
+
+		/*----------------------------------------*/
+		/* Standart Missions verarbeitung starten */
+		/*----------------------------------------*/
+		private["_taskTitle"];
+		_taskTitle = "Geheime Dokumente sicherstellen";
+		private["_taskDescription"];
+		_taskDescription = "Einer unserer Hubschrauber wurde abgeschossen und vom Feind gesichert. Leider befanden sich geheime Dokumente im Hubschrauber. Diese m√ºssen von uns umgehend gesichert werden. Beginnen Sie mit der Suche an der Absturztstelle.";
+		
+		private["_tmp"];
+		_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
+	};	
 };
 
 if (isServer) then
@@ -52,7 +75,7 @@ if (isServer) then
 	_buildings = _buildings + [_intel];
 
 	/*----------------------------------------------------------------------------*/
-	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu kˆnnen */
+	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu k√∂nnen */
 	/*----------------------------------------------------------------------------*/
 	private["_patrolCount"];
 	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 6);
@@ -92,14 +115,8 @@ if (isServer) then
 		[_missionPosition, ["APERSMine"]] call PC_fnc_CreateMineFieldAtTarget;
 	};
 
-	/*--------------*/
-	/* Vorsch‰digen */
-	/*--------------*/
-	_intel setDamage 0.9;
-	if (_intel distance [0,0,0] < 1000) then { _intel setDamage 1;};
-	
 	/*--------------------------------------*/
-	/* Warten bis die Mission erf¸llt wurde */
+	/* Warten bis die Mission erf√ºllt wurde */
 	/*--------------------------------------*/
 	waitUntil {(!alive _intel) || (pixZones_ActiveIndex == -1)};
 	
@@ -109,7 +126,7 @@ if (isServer) then
 	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
 	/*-------------------------------------------------------------------------------------------------------------*/
-	/* Warten bis Zone beendet. Dann nocheinmal zuf‰llige Zeitverzˆgerung, damit nicht alle gleichzeitig aufr‰umen */
+	/* Warten bis Zone beendet. Dann nocheinmal zuf√§llige Zeitverz√∂gerung, damit nicht alle gleichzeitig aufr√§umen */
 	/*-------------------------------------------------------------------------------------------------------------*/
 	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep (random 60);

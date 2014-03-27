@@ -45,6 +45,7 @@ _loadouts = [
 	["Taucher", "Diver.sqf"],
 	["Helipilot", "HeliPilot.sqf"],
 	["Pilot", "Pilot.sqf"],
+	["Crew", "Crew.sqf"],
 	["Kommandeur", "Commander.sqf"],
 	["Freizeit", "Default.sqf"]	
 ];

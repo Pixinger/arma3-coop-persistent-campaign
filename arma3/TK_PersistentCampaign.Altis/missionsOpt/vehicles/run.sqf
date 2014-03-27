@@ -17,25 +17,34 @@ _missionMarkerPosition = _missionOpt select 3;
 private["_missionMarkerRadius"];
 _missionMarkerRadius = _missionOpt select 4;
 
-/*-------------------------*/
-/* VehicleTypen definieren */
-/*-------------------------*/
-private["_vehicleClassnames"];
-_vehicleClassnames = ["O_APC_Tracked_02_AA_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
+/*---------------------------*/
+/* Building Typen definieren */
+/*---------------------------*/
+private["_buildingClassnames"];
+_buildingClassnames = ["O_APC_Tracked_02_AA_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
+
+/* Aus der zuf�lligen Richtung den Klassennamen errechnen */
+private["_buildingClassnameIndex"];
+_buildingClassnameIndex = floor (((count _buildingClassnames) / 360) * _missionDirection);
+if (_buildingClassnameIndex < 0) then { _buildingClassnameIndex = 0;};
+if (_buildingClassnameIndex >= count _buildingClassnames) then { _buildingClassnameIndex = (count _buildingClassnames) - 1;};
+
+private["_buildingClassname"];
+_buildingClassname = _buildingClassnames select _buildingClassnameIndex;
+
 
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	private["_vehicleClassname"];
-	_vehicleClassname = [_missionPosition, _vehicleClassnames, (_vehicleClassnames select 0)] call PC_fnc_FindVehicleTypeInRange;
-
+	/*----------------------------------------*/
+	/* Standart Missions verarbeitung starten */
+	/*----------------------------------------*/
 	private["_taskTitle"];
-	_taskTitle = format["Fahrzeuge zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
-	
+	_taskTitle = format["Fahrzeuge zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];	
 	private["_taskDescription"];
-	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeuggruppe ermittelt. Vernichten sie diese Fahrzeuge (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeuggruppe ermittelt. Vernichten sie diese Fahrzeuge (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -50,15 +59,11 @@ if (isServer) then
 	private["_buildings"];
 	_buildings = [];
 
-	/* Vehicle classname festlegen */
-	private["_vehicleClassname"];
-	_vehicleClassname =  _vehicleClassnames call BIS_fnc_selectRandom;
-
 	/*---------------------*/
 	/* Fahrzeuge erstellen */
 	/*---------------------*/
 	private["_vehicle1"];
-	_vehicle1 = _vehicleClassname createVehicle _missionPosition;
+	_vehicle1 = _buildingClassname createVehicle _missionPosition;
 	Sleep .2;
 	_vehicle1 setdir random 360;
 	private["_normal"];
