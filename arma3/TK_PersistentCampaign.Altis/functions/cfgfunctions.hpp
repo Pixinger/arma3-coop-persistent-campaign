@@ -58,10 +58,11 @@ class PC
 		class GetMinDistance {description = "";};
 		class GetObfuscatedMarker {description = "";};
 		class GetPlayerCount {description = "";};
-		class GetRandomLocationZoneWater {description = "";};
+		class GetRandomLocationZoneCity {description = "";};
 		class GetRandomLocationZoneField {description = "";};
 		class GetRandomLocationZoneHouse {description = "";};
 		class GetRandomLocationZoneRoad {description = "";};
+		class GetRandomLocationZoneWater {description = "";};
 		class GetRandomPositionMarker {description = "";};
 		class GetRandomPositionZone {description = "";};
 		class GetRandomPositionZoneObject {description = "";};

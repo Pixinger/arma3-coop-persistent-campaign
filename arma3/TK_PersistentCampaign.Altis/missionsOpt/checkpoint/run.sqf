@@ -168,7 +168,7 @@ if (isServer) then
 	};
 	
 	/*--------------------------------------------------------*/
-	/* Status auf beendet setzen und allen Clienten mitteilen */
+	/* Status auf Beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
 	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 

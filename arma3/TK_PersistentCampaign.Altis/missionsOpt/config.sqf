@@ -13,7 +13,8 @@ missionsOpt_Missions = [
 	"killOfficerBuilding",	/* 7 */
 	"captureOfficer",		/* 8 */
 	"captureScientist",		/* 9 */
-	"vehicleCapture"		/* 10 */
+	"vehicleCapture",		/* 10 */
+	"cqb"					/* 11 */
 	];
 
 missionsOpt_MissionPlayers = [
@@ -27,7 +28,8 @@ missionsOpt_MissionPlayers = [
 	7, /*"killOfficerBuilding",	7 */
 	9, /*"captureOfficer",		8 */
 	9, /*"captureScientist",	9 */
-	9  /*"vehicleCapture"		10 */
+	9, /*"vehicleCapture"		10 */
+	9  /*"cqb"					11 */
 ];
 
 IF (isServer && !isDedicated) then 
