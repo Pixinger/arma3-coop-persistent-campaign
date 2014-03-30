@@ -38,7 +38,18 @@ _buildingClassname = _buildingClassnames select _buildingClassnameIndex;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[] spawn {
+	[_missionPosition, _missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _buildingClassname] spawn {
+		/* Variablen übergeben */
+		private["_missionPosition"];
+		_missionPosition = _this select 0;
+		private["_missionInfoIndex"];
+		_missionInfoIndex = _this select 1;
+		private["_missionMarkerPosition"];
+		_missionMarkerPosition = _this select 2;
+		private["_missionMarkerRadius"];
+		_missionMarkerRadius = _this select 3;
+		private["_buildingClassname"];
+		_buildingClassname = _this select 4;
 		/*-------------------------*/
 		/* Missions vorbereitungen */
 		/*-------------------------*/
@@ -55,7 +66,7 @@ if (!isServer || !isDedicated) then
 		};
 		
 		/* Action Menü zu den Objekten hinzufügen */
-		{ _x addAction["Sprengladung platzieren", "missionsOpt\_common\actionPlaceExplosives.sqf"]; } foreach _objects;
+		{ _x addAction["Sprengladung platzieren", "missionsOpt\ammobox\actionPlaceCharge.sqf"]; } foreach _objects;
 
 		/*----------------------------------------*/
 		/* Standart Missions verarbeitung starten */

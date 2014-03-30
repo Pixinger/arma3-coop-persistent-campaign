@@ -39,7 +39,18 @@ _unitClassname = _unitClassnames select _unitClassnameIndex;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[] spawn {
+	[_missionPosition, _missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _unitClassname] spawn {
+		/* Variablen übergeben */
+		private["_missionPosition"];
+		_missionPosition = _this select 0;
+		private["_missionInfoIndex"];
+		_missionInfoIndex = _this select 1;
+		private["_missionMarkerPosition"];
+		_missionMarkerPosition = _this select 2;
+		private["_missionMarkerRadius"];
+		_missionMarkerRadius = _this select 3;
+		private["_unitClassname"];
+		_unitClassname = _this select 4;
 		/*-------------------------*/
 		/* Missions vorbereitungen */
 		/*-------------------------*/
@@ -56,7 +67,13 @@ if (!isServer || !isDedicated) then
 		};
 		
 		/* Action Menü zu den Objekten hinzufügen */
-		{ _x addAction["Gefangen nehmen", "missionsOpt\_common\actionTakeCaptive.sqf"]; } foreach _objects;
+		{ 
+			if (_x getVariable ["missionOptCaptureScientist", false]) then
+			{
+				_x addAction["Gefangen nehmen", "missionsOpt\_common\actionTakeCaptive.sqf"];
+			};
+		} foreach _objects;
+		
 		
 		/*----------------------------------------*/
 		/* Standart Missions verarbeitung starten */
@@ -90,6 +107,7 @@ if (isServer) then
 	private["_scientist"];
 	_scientist = (units _groupScientist) select 0;
 	_scientist setCaptive true;
+	_scientist setVariable ["missionOptCaptureScientist", true, true];
 	[_groupScientist] call PC_fnc_SetSkill;	
 	
 	private["_house"];
@@ -143,9 +161,9 @@ if (isServer) then
 	_continue = true;
 	while { _continue } do
 	{
-		if (!alive _scientist) then { _continue = false; };
-		if (pixZones_ActiveIndex == -1) then { _continue = false; };
-		if (!([_zoneIndex, getPos _scientist] call PC_fnc_IsPositionInZone)) then { _continue = false; };
+		if (!alive _scientist) then { _continue = false;};
+		if (pixZones_ActiveIndex == -1) then { _continue = false;};
+		if (!([_zoneIndex, getPos _scientist] call PC_fnc_IsPositionInZone)) then { _continue = false;};
 		Sleep 5;
 	};
 		

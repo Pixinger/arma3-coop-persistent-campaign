@@ -22,7 +22,16 @@ _missionMarkerRadius = _missionOpt select 4;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[] spawn {
+	[_missionPosition, _missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius] spawn {
+		/* Variablen übergeben */
+		private["_missionPosition"];
+		_missionPosition = _this select 0;
+		private["_missionInfoIndex"];
+		_missionInfoIndex = _this select 1;
+		private["_missionMarkerPosition"];
+		_missionMarkerPosition = _this select 2;
+		private["_missionMarkerRadius"];
+		_missionMarkerRadius = _this select 3;
 		/*-------------------------*/
 		/* Missions vorbereitungen */
 		/*-------------------------*/
@@ -34,12 +43,19 @@ if (!isServer || !isDedicated) then
 		while { (count _objects != 1) && (_counter > 0) } do
 		{
 			Sleep 0.5;
-			_objects = nearestObjects [_missionPosition, ["O_officer_F"], 50];
+			_objects = nearestObjects [_missionPosition, ["O_officer_F"], 300];
 			_counter = _counter - 1;
 		};
 		
+		Sleep 1;
+		
 		/* Action Menü zu den Objekten hinzufügen */
-		{ _x addAction["Gefangen nehmen", "missionsOpt\_common\actionTakeCaptive.sqf"]; } foreach _objects;
+		{ 
+			if (_x getVariable ["missionOptCaptureOfficer", false]) then
+			{
+				_x addAction["Gefangen nehmen", "missionsOpt\_common\actionTakeCaptive.sqf"]; 
+			};
+		} foreach _objects;
 		
 		/*----------------------------------------*/
 		/* Standart Missions verarbeitung starten */
@@ -72,6 +88,7 @@ if (isServer) then
 	_groups = _groups + [_groupOfficer];	
 	private["_officer"];
 	_officer = (units _groupOfficer) select 0;
+	_officer setVariable ["missionOptCaptureOfficer", true, true];
 
 	/*-----------------*/
 	/* Skill festlegen */

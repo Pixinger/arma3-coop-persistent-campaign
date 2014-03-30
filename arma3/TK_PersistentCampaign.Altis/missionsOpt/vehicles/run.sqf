@@ -74,7 +74,7 @@ if (isServer) then
 	_vehicles = _vehicles + [_vehicle1];
 
 	private["_vehicle2"];
-	_vehicle2 = _vehicleClassname createVehicle [_missionPosition select 0, (_missionPosition select 1) + ((random 100) - 50), 0]; 
+	_vehicle2 = _buildingClassname createVehicle [_missionPosition select 0, (_missionPosition select 1) + ((random 100) - 50), 0]; 
 	Sleep .2;
 	_vehicle2 setdir random 360;
 	_normal = surfaceNormal (position _vehicle2);

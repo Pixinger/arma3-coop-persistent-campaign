@@ -67,6 +67,7 @@ class PC
 		class GetRandomPositionZone {description = "";};
 		class GetRandomPositionZoneObject {description = "";};
 		class GetUniqueMarkerName {description = "";};
+		class IsFlat {description = "";};
 	};
 };
 

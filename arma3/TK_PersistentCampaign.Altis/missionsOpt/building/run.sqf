@@ -21,7 +21,9 @@ _missionMarkerRadius = _missionOpt select 4;
 /* Building Typen definieren */
 /*---------------------------*/
 private["_buildingClassnames"];
-_buildingClassnames = ["Land_TTowerBig_1_F"];
+_buildingClassnames = ["Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
+private["_actionObjectClassname"];
+_actionObjectClassname = "Land_PowerGenerator_F"; /*Land_dp_transformer_F Target_Rail_End_F*/
 
 /* Aus der zufälligen Richtung den Klassennamen errechnen */
 private["_buildingClassnameIndex"];
@@ -38,7 +40,21 @@ _buildingClassname = _buildingClassnames select _buildingClassnameIndex;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[] spawn {
+	[_missionPosition, _missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _buildingClassname, _actionObjectClassname] spawn {
+		/* Variablen übergeben */
+		private["_missionPosition"];
+		_missionPosition = _this select 0;
+		private["_missionInfoIndex"];
+		_missionInfoIndex = _this select 1;
+		private["_missionMarkerPosition"];
+		_missionMarkerPosition = _this select 2;
+		private["_missionMarkerRadius"];
+		_missionMarkerRadius = _this select 3;
+		private["_buildingClassname"];
+		_buildingClassname = _this select 4;
+		private["_actionObjectClassname"];
+		_actionObjectClassname = _this select 5;
+		
 		/*-------------------------*/
 		/* Missions vorbereitungen */
 		/*-------------------------*/
@@ -50,20 +66,20 @@ if (!isServer || !isDedicated) then
 		while { (count _objects != 1) && (_counter > 0) } do
 		{
 			Sleep 0.5;
-			_objects = nearestObjects [_missionPosition, [_buildingClassname], 50];
+			_objects = nearestObjects [_missionPosition, [_actionObjectClassname], 50];
 			_counter = _counter - 1;
 		};
-		
+
 		/* Action Menü zu den Objekten hinzufügen */
-		{ _x addAction["Sprengladung platzieren", "missionsOpt\_common\actionPlaceExplosives.sqf"]; } foreach _objects;
+		{ _x addAction["Sprengladung platzieren", "missionsOpt\building\actionPlaceCharge.sqf"]; } foreach _objects;
 
 		/*----------------------------------------*/
 		/* Standart Missions verarbeitung starten */
 		/*----------------------------------------*/
 		private["_taskTitle"];
-		_taskTitle = format["Gebäude zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+		_taskTitle = "Funkturm zerstören";
 		private["_taskDescription"];
-		_taskDescription = format["Der Feind hat ein für uns strategisch wichtiges Gebäude in Einsatzreichweite. Zerstören Sie dieses Gebäude um jeden Preis. (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
+		_taskDescription = "Der Feind hat einen für uns strategisch wichtigen Funkturm in Einsatzreichweite. Zerstören Sie diesen um jeden Preis";
 		
 		private["_tmp"];
 		_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -81,11 +97,25 @@ if (isServer) then
 	
 	private["_building"];
 	_building = _buildingClassname createVehicle _missionPosition;
-	_building setdir _missionDirection;
-	_building setVectorUp surfaceNormal (position _building);
+	Sleep .3;
 	_building allowDamage false;
+	_building setdir _missionDirection;
+	_building setPos _missionPosition;
+	_building setVectorUp [0,0,1];
 	_buildings = _buildings + [_building];
 
+
+	private["_actionBuilding"];
+	_actionBuilding = _actionObjectClassname createVehicle _missionPosition;
+	Sleep .3;
+	_actionBuilding allowDamage false;
+	_actionBuilding setdir (getDir _building);
+	_actionBuilding setPos (getPos _building);
+	_actionBuilding setVectorUp [0,0,1];
+	//_actionBuilding attachTo [_building, [0,0,0]];
+	//_actionBuilding setVectorUp surfaceNormal (position _actionBuilding);
+	_buildings = _buildings + [_actionBuilding];
+	
 	/*----------------------------------------------------------------------------*/
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	/*----------------------------------------------------------------------------*/

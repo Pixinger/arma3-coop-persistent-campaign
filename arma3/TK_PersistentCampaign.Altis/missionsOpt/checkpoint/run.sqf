@@ -63,28 +63,33 @@ if (isServer) then
 
 	
 	/* Bunker1 erstellen */
+	private["_bunkerPos"];
+	_bunkerPos = _bargate modelToWorld [6.5,-2,-2];
+	_bunkerPos set [2, 0];
 	private["_bunker1"];
-	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [6.5,-2,0], [], 0, "NONE"];
+	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "NONE"];
 	Sleep .2;
 	_bunker1 setDir _missionDirection;
 	_buildings = _buildings + [_bunker1];
 	
 	/* Bunker2 erstellen */
+	_bunkerPos = _bargate modelToWorld [-8,-2,-2],;
+	_bunkerPos set [2, 0];
 	private["_bunker2"];
-	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [-8,-2,0], [], 0, "NONE"];
+	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "NONE"];
 	Sleep .2;
 	_bunker2 setDir _missionDirection;
 	_buildings = _buildings + [_bunker2];
 	
 	/* MG1 erstellen */
 	private["_mg1"];
-	_mg1 = createVehicle ["I_HMG_01_high_F", _bunker1 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
+	_mg1 = createVehicle ["I_HMG_01_high_F", getPos _bunker1, [], 0, "CAN_COLLIDE"];
 	Sleep .2;
 	_mg1 setDir (_missionDirection-180);
 	_buildings = _buildings + [_mg1];
 	/* MG2 erstellen */
 	private["_mg2"];
-	_mg2 = createVehicle ["I_HMG_01_high_F", _bunker2 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
+	_mg2 = createVehicle ["I_HMG_01_high_F", getPos _bunker2, [], 0, "CAN_COLLIDE"];
 	Sleep .2;
 	_mg2 setDir (_missionDirection-180);
 	_buildings = _buildings + [_mg2];

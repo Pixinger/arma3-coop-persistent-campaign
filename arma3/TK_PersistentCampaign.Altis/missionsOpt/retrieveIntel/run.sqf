@@ -22,7 +22,16 @@ _missionMarkerRadius = _missionOpt select 4;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[] spawn {
+	[_missionPosition, _missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius] spawn {
+		/* Variablen übergeben */
+		private["_missionPosition"];
+		_missionPosition = _this select 0;
+		private["_missionInfoIndex"];
+		_missionInfoIndex = _this select 1;
+		private["_missionMarkerPosition"];
+		_missionMarkerPosition = _this select 2;
+		private["_missionMarkerRadius"];
+		_missionMarkerRadius = _this select 3;
 		/*-------------------------*/
 		/* Missions vorbereitungen */
 		/*-------------------------*/

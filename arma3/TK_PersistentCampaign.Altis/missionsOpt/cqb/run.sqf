@@ -81,9 +81,11 @@ if (isServer) then
 			_unit = _group createUnit [_unittypes select (floor(random(count _unittypes))), _buildingPos, [], 0, "NONE"];
 			sleep .2;
 			_relevantGroups = _relevantGroups + [_group];
-			_x setPos _buildingPos;
+			_unit setPos _buildingPos;
 			doStop _unit;			
 			[_group] call PC_fnc_SetSkill;	
+			/* Im Debug die Gruppe mit einem Marker tracken */
+			if (!isDedicated) then { [_group, true, "ColorRed","CQB"] spawn PC_fnc_TrackGroup; };			
 		};
 	};	
 	
@@ -93,7 +95,7 @@ if (isServer) then
 	for "_i" from 0 to _patrolCount do 
 	{
 		private["_groupInfos"];
-		_groupInfos = [["OIA_InfSquad"], _zoneIndex, _missionPosition, _missionMarkerRadius, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		_groupInfos = [["OIA_InfTeam"], _zoneIndex, _missionPosition, _missionMarkerRadius, 25] call PC_fnc_SpawnGroupPatrolObject;		
 		if (count _groupInfos > 0) then
 		{
 			_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
@@ -111,11 +113,14 @@ if (isServer) then
 	} foreach _relevantGroups;
 	private["_aliveUnits"];
 	_aliveUnits = 65000;
-	while { (_aliveUnits > ((count _relevantUnits) / 10) && (pixZones_ActiveIndex != -1) } do
+	private["_relevantUnitsCount"];
+	_relevantUnitsCount = ((count _relevantUnits) / 20);
+	while { (_aliveUnits > _relevantUnitsCount) && (pixZones_ActiveIndex != -1) } do
 	{
 		Sleep 5;
 		_aliveUnits = 0;
 		{ if (alive _x) then { _aliveUnits = _aliveUnits + 1;};} foreach _relevantUnits;
+		diag_log format["_relevantUnitsCount: %1 %2 %3", count _relevantUnits, _relevantUnitsCount, _aliveUnits];
 	};	
 	/*--------------------------------------------------------*/
 	/* Status auf Beendet setzen und allen Clienten mitteilen */
@@ -126,6 +131,6 @@ if (isServer) then
 	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
 	/*-------------------------------------------------------------------------------------------------------------*/
 	waitUntil {pixZones_ActiveIndex == -1 };
-	sleep (random 60);
+	sleep 120 + (random 60);
 	[_relevantGroups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
 };

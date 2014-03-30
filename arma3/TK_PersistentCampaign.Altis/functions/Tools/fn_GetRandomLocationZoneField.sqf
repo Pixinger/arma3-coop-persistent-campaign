@@ -29,6 +29,9 @@ _objectPosition = [_this, 2, [0,0,0], [[]], [2,3]] call BIS_fnc_param;
 private["_objectRadius"];
 _objectRadius = [_this, 3, 0, [0]] call BIS_fnc_param;
 
+private["_maxElevation"];
+_maxElevation = [_this, 4, 100, [0]] call BIS_fnc_param;
+
 /*-------------------------------------------------------------------*/
 
 private["_result"];
@@ -50,18 +53,30 @@ while { _loopLimit > 0 } do
 	};
 	if (!surfaceIsWater _position) then 
 	{	
-		_position = _position findEmptyPosition [0,50];
+		/*_position = _position findEmptyPosition [0,50];
 		if (count _position > 0) then
-		{
-			if (count (_position nearObjects ["House", 5]) == 0) then
+		{*/
+			_position set [2,0];
+			if (count (_position nearObjects ["House", 20]) == 0) then
 			{
-				if (count (_position nearRoads 5) == 0) then
+				if (count (_position nearRoads 20) == 0) then
 				{
-					_result = [_position, random 360];
-					_loopLimit = 0; /* Exit */
+					if (_maxElevation <= 100) then
+					{
+						if ([_position, 10, _maxElevation] call PC_fnc_IsFlat) then
+						{
+							_result = [_position, random 360];
+							_loopLimit = 0; /* Exit */
+						};
+					}
+					else
+					{
+						_result = [_position, random 360];
+						_loopLimit = 0; /* Exit */
+					};
 				};
 			};
-		};
+		/*};*/
 	};
 };
 

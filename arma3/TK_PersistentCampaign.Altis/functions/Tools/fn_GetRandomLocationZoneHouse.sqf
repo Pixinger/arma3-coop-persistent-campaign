@@ -61,7 +61,7 @@ while { _loopLimit > 0 } do
 			_maxIndex = 0;
 			while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
 
-			if (_maxIndex < 8) then
+			if ((_maxIndex < 8) && (_maxIndex > 0)) then
 			{
 				_result = [getPos _house, 0];
 				_loopLimit = 0;

@@ -43,7 +43,7 @@ if (isServer) then
 	/* Zum debuggen */
 	if (isServer && !isDedicated) then
 	{
-		/*_missionsEnv = [];*/
+		_missionsEnv = [];
 	};
 
 	diag_log format["INFO: _missionsEnv = %1", _missionsEnv];
@@ -98,13 +98,16 @@ if (isServer) then
 	/* Zum Debuggen */
 	if (isServer && !isDedicated) then
 	{
-		_missionOptCfgIndices = [];{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;
-		/*_missionOptCfgIndices = [4];*/
+		_missionOptLocations = [];
+	
+		/*{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;*/
+		_missionOptCfgIndices = [3,11];
 		
 		/* Locations berechnen */
 		{
 			private["_missionLocation"];
 			_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
+
 			[_missionLocation, _missionOptLocations] call PC_fnc_IsMissionLocationValid;
 			_missionOptLocations set [count _missionOptLocations, _missionLocation];
 		} foreach _missionOptCfgIndices;

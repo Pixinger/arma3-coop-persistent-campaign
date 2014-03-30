@@ -1,17 +1,30 @@
 /* _this variable is: [target, caller, ID, arguments] */
+private["_target"];
+_target = (_this select 0);
 
 private["_expl1"];
-/*_expl1 = "DemoCharge_Remote_Ammo_Scripted" createVehicle position player;*/
-_expl1 = "DemoCharge_Remote_Ammo" createVehicle position player;
-Sleep .3;
-_expl1 attachTo [(_this select 0), [-0.1,0.1,0.15]];
+_expl1 = "DemoCharge_Remote_Ammo_Scripted" createVehicle position player; 
+//_expl1 = "SatchelCharge_Remote_Ammo_Scripted" createVehicle position player; 
+_expl1 attachTo [_target, [0,0,0.2]]; 
 _expl1 setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
 
-(_this select 0) allowDamage true;
-
-_n = count pixExplosivesArray; 
-pixExplosivesArray set [_n, _expl1];
-player addAction [format ["Detonate Charge #%1", _n + 1], { player removeAction (_this select 2); (pixExplosivesArray select (_this select 3)) setDamage 1; }, _n]; 
+player addAction ["Sprengladung zünden", 
+{ 
+	//fff allowDamage true;
+	private["_target"];
+	_target = (_this select 0);
+	private["_argument"];
+	_argument = (_this select 3);
+	private["_charge"];
+	_charge = _argument select 0;
+	private["_target"];
+	_target = _argument select 1;
+	player removeAction (_this select 2); 
+	detach _charge; 
+	_charge setDamage 1;
+	_target allowDamage true;
+	_target setDamage 1;
+}, [_expl1,_target]]; 
 
 /*
 player addMagazine "DemoCharge_Remote_Mag"; 
@@ -33,4 +46,4 @@ player addAction ["Place Charge", {
 	player addAction [format ["Detonate Charge #%1", _n + 1], { 
 		player removeAction (_this select 2); (c4 select (_this select 3)) setDamage 1; 
 	}, _n]; 
-}];
+}];*/
