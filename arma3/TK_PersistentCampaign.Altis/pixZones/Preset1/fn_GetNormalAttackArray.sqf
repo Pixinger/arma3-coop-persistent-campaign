@@ -101,7 +101,7 @@ if (isServer) then
 		_missionOptLocations = [];
 	
 		/*{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;*/
-		_missionOptCfgIndices = [3,11];
+		_missionOptCfgIndices = [3,11,12,13];
 		
 		/* Locations berechnen */
 		{

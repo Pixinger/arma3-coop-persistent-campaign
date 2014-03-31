@@ -4,7 +4,7 @@ _container = (_this select 0); /* Die Ammobox */
 
 private["_expl1"];
 _expl1 = "DemoCharge_Remote_Ammo_Scripted" createVehicle position player; /*SatchelCharge_Remote_Ammo_Scripted*/
-_expl1 attachTo [_container, [0,0,0.2]]; 
+_expl1 attachTo [_container, [0,0,1.5]]; 
 _expl1 setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
 
 player addAction ["Sprengladung zünden", 

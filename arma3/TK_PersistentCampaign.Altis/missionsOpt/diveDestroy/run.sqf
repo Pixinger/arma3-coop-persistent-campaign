@@ -58,10 +58,10 @@ if (!isServer || !isDedicated) then
 		_counter = 20;
 		private["_objects"];
 		_objects = [];
-		while { (count _objects != 2) && (_counter > 0) } do
+		while { (count _objects != 1) && (_counter > 0) } do
 		{
 			Sleep 0.5;
-			_objects = nearestObjects [_missionPosition, [_buildingClassname], 50];
+			_objects = nearestObjects [_missionPosition, [_buildingClassname], 100];
 			_counter = _counter - 1;
 		};
 		
@@ -95,8 +95,9 @@ if (isServer) then
 	private["_container"];
 	_container = _buildingClassname createVehicle _missionPosition;
 	_container setdir (random 360);
+	_container setPosASL _missionPosition;
 	_buildings = _buildings + [_container];
-
+	
 	/*-------------------------*/
 	/* Patroullierende Truppen */
 	/*-------------------------*/

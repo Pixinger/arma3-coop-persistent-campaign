@@ -7,6 +7,8 @@ Parameter:
 	(optional) safetyBorder: Sicherheitsabstand zum Rand. (Default 25)
 	(optional) objectPosition: Wenn angegeben, dann wird nicht nur die Zone, sondern auch diese Position und der folgende Radius verwendet um die Ergenis-Position zu bestimmen. 
 	(optional) objectRadius: Der Radius (siehe objectPosition).
+	(optional) minDepth: Gibt an, wie tief diese Position mindestens sein muss.
+	(optional) maxDepth: Gibt an, wie tief diese Position maximal sein darf.
 
 Return: 
 	The random location. [[0,0,0],0] ([position, direction]) 
@@ -29,6 +31,12 @@ _objectPosition = [_this, 2, [0,0,0], [[]], [2,3]] call BIS_fnc_param;
 private["_objectRadius"];
 _objectRadius = [_this, 3, 0, [0]] call BIS_fnc_param;
 
+private["_minDepth"];
+_minDepth = [_this, 4, 0, [0]] call BIS_fnc_param;
+
+private["_maxDepth"];
+_maxDepth = [_this, 5, 0, [0]] call BIS_fnc_param;
+
 /*-------------------------------------------------------------------*/
 
 private["_result"];
@@ -50,11 +58,19 @@ while { _loopLimit > 0 } do
 	};
 	if (surfaceIsWater _position) then 
 	{	
+		private["_isValid"];
+		_isValid = true;
+		
 		private["_depth"];
 		_depth = getTerrainHeightASL _position; 
-		_position set [2, (random _depth)];
-		_result = [_position, random 360];
-		_loopLimit = 0; /* Exit */
+		if ((_minDepth < 0) && (_depth > _minDepth)) then {	_isValid = false; };
+		if ((_maxDepth < 0) && (_depth < _maxDepth)) then {	_isValid = false; };		
+		if (_isValid) then
+		{
+			_position set [2, (random _depth)];
+			_result = [_position, random 360];
+			_loopLimit = 0; /* Exit */
+		};
 	};
 };
 
