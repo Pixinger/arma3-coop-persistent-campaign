@@ -43,8 +43,6 @@ if (isServer) then
 	/*----------------------------------------------------------------------------*/
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	/*----------------------------------------------------------------------------*/
-	private["_patrolCount"];
-	_patrolCount = 4;
 	private["_staticCount"];
 	_staticCount = ceil((call PC_fnc_GetPlayerCount) * 1.5);
 
@@ -92,10 +90,30 @@ if (isServer) then
 	/*-------------------------*/
 	/* Patroullierende Truppen */
 	/*-------------------------*/
-	for "_i" from 0 to _patrolCount do 
+	for "_i" from 0 to 1 do 
 	{
 		private["_groupInfos"];
-		_groupInfos = [["OIA_InfTeam"], _zoneIndex, _missionPosition, _missionMarkerRadius, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		_groupInfos = [["OI_reconTeam"], _zoneIndex, _missionPosition, _missionMarkerRadius, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		if (count _groupInfos > 0) then
+		{
+			_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
+			_vehicles = _vehicles + (_groupInfos select 1);
+		};
+	};
+	for "_i" from 0 to 1 do 
+	{
+		private["_groupInfos"];
+		_groupInfos = [["OI_reconPatrol"], _zoneIndex, _missionPosition, _missionMarkerRadius, 25] call PC_fnc_SpawnGroupPatrolHouse;		
+		if (count _groupInfos > 0) then
+		{
+			_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
+			_vehicles = _vehicles + (_groupInfos select 1);
+		};
+	};
+	for "_i" from 0 to 1 do 
+	{
+		private["_groupInfos"];
+		_groupInfos = [["OIA_InfTeam"], _zoneIndex, _missionPosition, _missionMarkerRadius, 25] call PC_fnc_SpawnGroupPatrolRoad;		
 		if (count _groupInfos > 0) then
 		{
 			_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
