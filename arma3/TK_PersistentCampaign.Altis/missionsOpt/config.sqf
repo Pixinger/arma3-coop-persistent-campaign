@@ -14,23 +14,27 @@ missionsOpt_Missions = [
 	"captureOfficer",		/* 8 */
 	"captureScientist",		/* 9 */
 	"vehicleCapture",		/* 10 */
-	"cqb"					/* 11 */
+	"cqb",					/* 11 */
+	"diveCapture",			/* 12 */
+	"diveDestroy"			/* 13 */
 	];
 
 missionsOpt_MissionPlayers = [
-	7, /*"vehicle",				0 */
-	9, /*"vehicles",			1 */
-	9, /*"checkpoint",	 		2 */
-	9, /*"building",			3 */
-	5, /*"ammobox",				4 */
-	7, /*"killOfficer",			5 */
-	7, /*"retrieveIntel",		6 */
-	7, /*"killOfficerBuilding",	7 */
-	9, /*"captureOfficer",		8 */
-	9, /*"captureScientist",	9 */
-	9, /*"vehicleCapture"		10 */
-	9  /*"cqb"					11 */
-];
+	7, 	/*"vehicle",				0 */
+	9, 	/*"vehicles",				1 */
+	9, 	/*"checkpoint",	 			2 */
+	9, 	/*"building",				3 */
+	5, 	/*"ammobox",				4 */
+	7, 	/*"killOfficer",			5 */
+	7, 	/*"retrieveIntel",			6 */
+	7, 	/*"killOfficerBuilding",	7 */
+	9, 	/*"captureOfficer",			8 */
+	9, 	/*"captureScientist",		9 */
+	9, 	/*"vehicleCapture"			10 */
+	9, 	/*"cqb"						11 */
+	9,	/*"diveCapture"				12 */
+	9	/*"diveDestroy"				13 */
+	];
 
 IF (isServer && !isDedicated) then 
 {	/* debug modus */

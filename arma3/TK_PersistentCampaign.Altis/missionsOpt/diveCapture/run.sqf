@@ -1,3 +1,10 @@
+/*OI_diverTeam
+"OI_diverTeam_Boat"
+"OI_diverTeam_SDV"
+
+"OIA_GuardSquad"
+"OIA_GuardTeam"*/
+
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_missionInfoIndex"];
@@ -21,7 +28,7 @@ _missionMarkerRadius = _missionOpt select 4;
 /* Building Typen definieren */
 /*---------------------------*/
 private["_buildingClassnames"];
-_buildingClassnames = ["Land_Cargo20_cyan_F"];
+_buildingClassnames = ["O_Boat_Armed_01_hmg_F"];
 
 /* Aus der zufälligen Richtung den Klassennamen errechnen */
 private["_buildingClassnameIndex"];
@@ -38,46 +45,16 @@ _buildingClassname = _buildingClassnames select _buildingClassnameIndex;
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	[_missionPosition, _missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _buildingClassname] spawn {
-		/* Variablen übergeben */
-		private["_missionPosition"];
-		_missionPosition = _this select 0;
-		private["_missionInfoIndex"];
-		_missionInfoIndex = _this select 1;
-		private["_missionMarkerPosition"];
-		_missionMarkerPosition = _this select 2;
-		private["_missionMarkerRadius"];
-		_missionMarkerRadius = _this select 3;
-		private["_buildingClassname"];
-		_buildingClassname = _this select 4;
-		/*-------------------------*/
-		/* Missions vorbereitungen */
-		/*-------------------------*/
-		/* Munitionskisten suchen (warten bis erzeugt) */
-		private["_counter"];
-		_counter = 20;
-		private["_objects"];
-		_objects = [];
-		while { (count _objects != 2) && (_counter > 0) } do
-		{
-			Sleep 0.5;
-			_objects = nearestObjects [_missionPosition, [_buildingClassname], 50];
-			_counter = _counter - 1;
-		};
-		
-		/* Action Menü zu den Objekten hinzufügen */
-		{ _x addAction["Sprengladung platzieren", "missionsOpt\diveDestroy\actionPlaceCharge.sqf"]; } foreach _objects;
-
-		/*----------------------------------------*/
-		/* Standart Missions verarbeitung starten */
-		/*----------------------------------------*/
-		private["_taskTitle"];
-		_taskTitle = "Container zerstören";
-		private["_taskDescription"];
-		_taskDescription = "Wir haben einen Container mit geheimem Material verloren. Finden und zerstören sie den Container.";
-		private["_tmp"];
-		_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
-	};
+	/*----------------------------------------*/
+	/* Standart Missions verarbeitung starten */
+	/*----------------------------------------*/
+	private["_taskTitle"];
+	_taskTitle = "Boot untersuchen";
+	private["_taskDescription"];
+	_taskDescription = "Unser Geheimdienst hat ein Boot ermittelt in dem ein neues technisches Gerät verbaut ist. Bringen sie das Fahrzeug aus dem feindlichen Sektor, damit wir es genauer untersuchen können.";
+	
+	private["_tmp"];
+	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
 };
 
 if (isServer) then
@@ -92,10 +69,10 @@ if (isServer) then
 	/*--------------------*/
 	/* Fahrzeug erstellen */
 	/*--------------------*/
-	private["_container"];
-	_container = _buildingClassname createVehicle _missionPosition;
-	_container setdir (random 360);
-	_buildings = _buildings + [_container];
+	private["_vehicle"];
+	_vehicle = _buildingClassname createVehicle _missionPosition;
+	_vehicle setdir (random 360);
+	_vehicles = _vehicles + [_vehicle];
 
 	/*-------------------------*/
 	/* Patroullierende Truppen */
@@ -114,12 +91,29 @@ if (isServer) then
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	waitUntil {(!alive _container) || (pixZones_ActiveIndex == -1)};
-	
+	private["_continue"];
+	_continue = true;
+	while { _continue } do
+	{
+		if (pixZones_ActiveIndex == -1) then { _continue = false; };
+		if (!([_zoneIndex, getPos _vehicle] call PC_fnc_IsPositionInZone)) then { _continue = false; };
+		Sleep 5;
+	};
+		
 	/*--------------------------------------------------------*/
 	/* Status auf beendet setzen und allen Clienten mitteilen */
 	/*--------------------------------------------------------*/
-	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
+	/*[_missionInfoIndex] call PC_fnc_FinishMissionStatus;*/
+	if (pixZones_ActiveIndex == -1) then
+	{
+		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 2]; /* Fehlgeschlagen */
+	}
+	else
+	{
+		(pvehPixZones_MissionStatus select 1) set [_missionInfoIndex, 1]; /* erfolgreich */	
+	};
+	publicVariable "pvehPixZones_MissionStatus";
+	if (!isDedicated) then { call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf"; }; /* PublicVariableEventHandler simulieren */
 
 	/*-------------------------------------------------------------------------------------------------------------*/
 	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */

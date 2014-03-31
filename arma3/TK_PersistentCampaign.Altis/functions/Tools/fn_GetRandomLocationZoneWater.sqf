@@ -50,12 +50,11 @@ while { _loopLimit > 0 } do
 	};
 	if (surfaceIsWater _position) then 
 	{	
-		_position = _position findEmptyPosition [0,50];
-		if (count _position > 0) then
-		{
-			_result = [_position, random 360];
-			_loopLimit = 0; /* Exit */
-		};
+		private["_depth"];
+		_depth = getTerrainHeightASL _position; 
+		_position set [2, (random _depth)];
+		_result = [_position, random 360];
+		_loopLimit = 0; /* Exit */
 	};
 };
 

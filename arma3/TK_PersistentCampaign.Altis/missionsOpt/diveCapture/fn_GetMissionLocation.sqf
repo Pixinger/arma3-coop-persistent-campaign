@@ -2,12 +2,15 @@ private["_zoneIndex"];
 _zoneIndex = _this select 0;
 
 private["_result"];
-_result = [[0,0,0],0,[0,0,0],0]; /* [position, direction(buildingtype), obfuscatedPosition, obfuscatedRadius] */
+_result = [[0,0,0],0,[0,0,0],0]; /* [position, direction, obfuscatedPosition, obfuscatedRadius] */
 
 private["_location"]; /*[[0,0,0],0]*/
 _location = [_zoneIndex, missionsOpt_DefaultMarkerRadius] call PC_fnc_GetRandomLocationZoneWater;
 if (str(_location) != "[[0,0,0],0]") then
 {
+	/* Diese Mission findet an der Wasseroberfläche statt */
+	(_location select 0) set [2, 0];
+
 	private["_obfuscatedLocation"]; /*[[0,0,0],0]*/
 	_obfuscatedLocation = [(_location select 0), missionsOpt_DefaultMarkerRadius] call PC_fnc_GetObfuscatedMarker;
 	if (str(_obfuscatedLocation) != "[[0,0,0],0]") then

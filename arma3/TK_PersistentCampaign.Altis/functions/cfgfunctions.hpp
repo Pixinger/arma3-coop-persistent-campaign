@@ -10,6 +10,7 @@ class PC
 		class GuardObject {description = "Parameter(group/guardPosition)";};
 		class PatrolHouse {description = "Lässt eine Gruppe von einem Gebäude zum anderen patrollieren. Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class PatrolObject {description = "Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class PatrolObjectWater {description = "Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class PatrolRoad {description = "Lässt eine Gruppe auf Strassensegmenten patrollieren. Der Weg zwischen den Wegpunkten muss nicht zwingend über die Strasse gehen. Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class PatrolZone {description = "Parameter(group/zoneIndex/(opt)zoneSafetyBorder)";};
 		class SetSkill {description = "";};
@@ -19,6 +20,7 @@ class PC
 		class SpawnGroupPatrolRoad {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class SpawnGroupPatrolHouse {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class SpawnGroupPatrolObject {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class SpawnGroupPatrolObjectWater {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class SpawnGroupPatrolZone {description = "";};
 		class TrackGroup {description = "";};
 	};

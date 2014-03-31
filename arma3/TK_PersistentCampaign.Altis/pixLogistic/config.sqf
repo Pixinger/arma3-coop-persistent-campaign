@@ -85,7 +85,7 @@ if (!isServer || !isDedicated) then
 	/* Container in die etwas geladen werden kann */
 	pixlogisticTransportContainers = [
 		"Land_Cargo20_blue_F", 			/*statische waffen*/
-		"Land_Cargo20_cyan_F",
+		/*"Land_Cargo20_cyan_F", wird für diveDestroy Mission verwendet*/
 		"Land_Cargo20_yellow_F",
 		"Land_Cargo20_grey_F", 			/*bunker*/
 		"Land_Cargo20_light_blue_F",
@@ -101,7 +101,7 @@ if (!isServer || !isDedicated) then
 	/* Laderaumgrösse */
 	pixlogisticTransportContainersSize = [
 		1000, /*"Land_Cargo20_blue_F",*/
-		1000, /*"Land_Cargo20_cyan_F",*/
+		/*1000, /*"Land_Cargo20_cyan_F",wird für diveDestroy Mission verwendet*/
 		1000, /*"Land_Cargo20_yellow_F",*/
 		1000, /*"Land_Cargo20_grey_F",*/
 		1000, /*"Land_Cargo20_light_blue_F",*/
