@@ -136,11 +136,32 @@ if (isServer) then
 	/*--------------------------------------*/
 	private["_continue"];
 	_continue = true;
+	private["_disarmed"];
+	_disarmed = false;
 	while { _continue } do
 	{
 		if (!alive _officer) then { _continue = false; };
 		if (pixZones_ActiveIndex == -1) then { _continue = false; };
 		if (!([_zoneIndex, getPos _officer] call PC_fnc_IsPositionInZone)) then { _continue = false; };
+		
+		if (!_disarmed) then
+		{
+				player globalChat "check";
+			if (count units group _officer == 1) then
+			{
+				player globalChat "disarmed";
+				_disarmed = true;
+				
+				/* Aktuelle Ausrüstung löschen */
+				removeAllPrimaryWeaponItems _officer;
+				removeAllHandgunItems _officer;
+				removeAllWeapons _officer; 
+				
+				/* Officer gibt auf */
+				doStop _officer;
+				_officer action["sitdown", _officer];
+			};
+		};
 		Sleep 5;
 	};
 		
