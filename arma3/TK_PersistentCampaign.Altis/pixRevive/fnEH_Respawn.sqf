@@ -7,6 +7,9 @@
 
 	Sleep 2;	
 	
-	private["_tmp"]; 
-	_tmp = [player, pixLogisticLastLoadOut] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";
+	if (side player == west) then
+	{
+		private["_tmp"]; 
+		_tmp = [player, pixLogisticLastLoadOut] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";
+	};
 };

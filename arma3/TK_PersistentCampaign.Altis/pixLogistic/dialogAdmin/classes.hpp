@@ -139,29 +139,29 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button12;
 		y = 88.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
+		text = "";
 		action = "";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button13 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button13;
 		y = 96.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Zone beenden (gewonnen)";
+		action = "[1] execVM 'pixLogistic\dialogAdmin\onButtonZoneBeendenClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button14 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button14;
 		y = 104.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Zone beenden (verloren)";
+		action = "[2] execVM 'pixLogistic\dialogAdmin\onButtonZoneBeendenClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button15 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button15;
 		y = 112.5 * GRID_H + GRID_ABS_Y; 
 		text = "--";
-		action = "";
+		action = "f";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button16 : RscButtonAdminMenu
 	{
