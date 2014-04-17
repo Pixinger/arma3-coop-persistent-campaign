@@ -160,8 +160,8 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button15;
 		y = 112.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "f";
+		text = "Funkgerät hinzufügen";
+		action = "[] execVM 'pixLogistic\dialogAdmin\onButtonAddRadioClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button16 : RscButtonAdminMenu
 	{

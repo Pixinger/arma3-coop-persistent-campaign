@@ -1,6 +1,6 @@
 
-if (player isKindOf "SoldierWB") then
-{
+/*if (player isKindOf "SoldierWB") then
+{*/
 	if (isNull pixlogisticMovingObject) then
 	{	
 		if ((typeof (vehicle player)) in pixlogisticHaulers) then
@@ -110,4 +110,4 @@ if (player isKindOf "SoldierWB") then
 	};
 	
 	pixLogisitcActionKeyPressed = false; /* Die T-Taste wieder freigeben */
-};
+/*};*/

@@ -31,9 +31,15 @@ diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDel
 pixParamTimeSettings = (paramsArray select 5);
 if (isServer && !isDedicated) then {pixParamTimeSettings = 12;};
 diag_log format["INFO: pixParamTimeSettings: %1", pixParamTimeSettings];
-/* Parameter (5): TimeSettings */
+/* Parameter (6): TimeSettings */
 pixParamAISkillSettings = (paramsArray select 6);
 diag_log format["INFO: pixParamAISkillSettings: %1", pixParamAISkillSettings];
+/* Parameter (7): Mission-ENV */
+pixParamMissionEnv = (paramsArray select 7); //0=aus 1=an pixParamMissionEnv = 0;
+diag_log format["INFO: pixParamMissionEnv: %1", pixParamMissionEnv];
+/* Parameter (8): Mission-OPT */
+pixParamMissionOpt = (paramsArray select 8); //0=aus 1=an pixParamMissionOpt = 0;
+diag_log format["INFO: pixParamMissionOpt: %1", pixParamMissionOpt];
 
 
 /*-----------------------------------------------*/
