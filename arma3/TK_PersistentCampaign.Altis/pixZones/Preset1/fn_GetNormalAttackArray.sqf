@@ -83,25 +83,28 @@ if (isServer) then
 			/* zufälligen Index bestimmen */
 			private["_index"];
 			_index = floor(random _missionOptCount);
-			if (_index > 0) then /* z.B. 0=Zeus ist gesperrt für automatisches generieren. */
-			{			
-				/* Mission Location zu diesem Index bestimmen */
-				private["_missionLocation"];
-				_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _index)];
-
-				/* Wenn eine gültige Location gefunden wurde, dann zu Index und Location Array hinzufügen */
-				if (str(_missionLocation) != "[[0,0,0],0,[0,0,0],0]") then
-				{
-					/* Aber nur, wenn keine andere Mission in der Nähe liegt */
-					if ([_missionLocation, _missionOptLocations, 700] call PC_fnc_IsMissionLocationValid) then
-					{			
-						/* zu Index und Location Array hinzufügen */
-						_missionOptCfgIndices set [count _missionOptCfgIndices, _index];
-						_missionOptLocations set [count _missionOptLocations, _missionLocation];
-						_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _index);
-					};
-				};			
+			/* Solange bis dieser Laut Richtlinien gültig ist */
+			while { ((!(missionsOpt_ValidFor_Preset select _index)) || ((pixParamMissionOpt == 2) && (!(missionsOpt_ValidFor_NoAI select _index)))) } do
+			{
+				_index = floor(random _missionOptCount);
 			};
+			
+			/* Mission Location zu diesem Index bestimmen */
+			private["_missionLocation"];
+			_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _index)];
+
+			/* Wenn eine gültige Location gefunden wurde, dann zu Index und Location Array hinzufügen */
+			if (str(_missionLocation) != "[[0,0,0],0,[0,0,0],0]") then
+			{
+				/* Aber nur, wenn keine andere Mission in der Nähe liegt */
+				if ([_missionLocation, _missionOptLocations, 700] call PC_fnc_IsMissionLocationValid) then
+				{			
+					/* zu Index und Location Array hinzufügen */
+					_missionOptCfgIndices set [count _missionOptCfgIndices, _index];
+					_missionOptLocations set [count _missionOptLocations, _missionLocation];
+					_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _index);
+				};
+			};			
 		};
 		
 		/* Zum Debuggen */
@@ -110,7 +113,7 @@ if (isServer) then
 			_missionOptLocations = [];
 		
 			/*{_missionOptCfgIndices set [count _missionOptCfgIndices, count _missionOptCfgIndices];} foreach missionsOpt_Missions;*/
-			_missionOptCfgIndices = [8,13];
+			_missionOptCfgIndices = [13,14];
 			
 			/* Locations berechnen */
 			{

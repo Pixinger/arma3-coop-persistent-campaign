@@ -109,6 +109,13 @@ class Params
 	class MissionOpt /* paramsArray[8]*/
 	{		
 	    title = "Mission-OPT";
+	    values[] = {0, 1, 2};
+	    texts[] = {"Off","On","On (no AI)"};
+	    default = 1;
+	};
+	class MineFields /* paramsArray[9]*/
+	{		
+	    title = "Minenfelder";
 	    values[] = {0, 1};
 	    texts[] = {"Off","On"};
 	    default = 1;

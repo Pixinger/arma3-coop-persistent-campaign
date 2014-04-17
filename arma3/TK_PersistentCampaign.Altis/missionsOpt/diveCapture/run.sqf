@@ -74,17 +74,20 @@ if (isServer) then
 	_vehicle setdir (random 360);
 	_vehicles = _vehicles + [_vehicle];
 
-	/*-------------------------*/
-	/* Patroullierende Truppen */
-	/*-------------------------*/
-	for "_i" from 0 to 3 do 
+	if (pixParamMissionOpt == 1) then
 	{
-		private["_groupInfos"];
-		_groupInfos = [["OI_diverTeam"], _zoneIndex, _missionPosition, 500, 25] call PC_fnc_SpawnGroupPatrolObjectWater;		
-		if (count _groupInfos > 0) then
+		/*-------------------------*/
+		/* Patroullierende Truppen */
+		/*-------------------------*/
+		for "_i" from 0 to 3 do 
 		{
-			_groups = _groups + [(_groupInfos select 0)];
-			_vehicles = _vehicles + (_groupInfos select 1);
+			private["_groupInfos"];
+			_groupInfos = [["OI_diverTeam"], _zoneIndex, _missionPosition, 500, 25] call PC_fnc_SpawnGroupPatrolObjectWater;		
+			if (count _groupInfos > 0) then
+			{
+				_groups = _groups + [(_groupInfos select 0)];
+				_vehicles = _vehicles + (_groupInfos select 1);
+			};
 		};
 	};
 

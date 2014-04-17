@@ -145,14 +145,19 @@ if (isServer) then
 		_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
 	};
 		
-	/*-------------*/
-	/* Minenfelder */
-	/*-------------*/
-	private["_mineFieldCount"];
-	_mineFieldCount = 1 + floor(random 2);
-	for "_i" from 0 to _mineFieldCount do 
+	};
+	
+	if (pixParamMineFields == 1) then
 	{
-		[_missionPosition, ["APERSBoundingMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		/*-------------*/
+		/* Minenfelder */
+		/*-------------*/
+		private["_mineFieldCount"];
+		_mineFieldCount = 1 + floor(random 2);
+		for "_i" from 0 to _mineFieldCount do 
+		{
+			[_missionPosition, ["APERSBoundingMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		};
 	};
 
 	/*--------------------------------------*/

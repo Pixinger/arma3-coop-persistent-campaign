@@ -38,8 +38,12 @@ diag_log format["INFO: pixParamAISkillSettings: %1", pixParamAISkillSettings];
 pixParamMissionEnv = (paramsArray select 7); //0=aus 1=an pixParamMissionEnv = 0;
 diag_log format["INFO: pixParamMissionEnv: %1", pixParamMissionEnv];
 /* Parameter (8): Mission-OPT */
-pixParamMissionOpt = (paramsArray select 8); //0=aus 1=an pixParamMissionOpt = 0;
+pixParamMissionOpt = (paramsArray select 8); //0=aus 1=an 2=an (ohne AI)
 diag_log format["INFO: pixParamMissionOpt: %1", pixParamMissionOpt];
+/*pixParamMissionOpt = 2;*/
+/* Parameter (9): MineFields */
+pixParamMineFields = (paramsArray select 9); //0=aus 1=an pixParamMineFields = 0;
+diag_log format["INFO: pixParamMineFields: %1", pixParamMineFields];
 
 
 /*-----------------------------------------------*/

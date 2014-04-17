@@ -61,38 +61,44 @@ if (isServer) then
 	[_groupOfficer, _zoneIndex, _missionPosition, 100, 10] call PC_fnc_PatrolObject;
 	if (isServer && !isDedicated) then { [_groupOfficer, true, "ColorRed","Ofc"] spawn PC_fnc_TrackGroup;};
 
-	/*----------------------------------------------------------------------------*/
-	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
-	/*----------------------------------------------------------------------------*/
-	private["_patrolCount"];
-	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 6);
-
-	/*-------------------------*/
-	/* Patroullierende Truppen */
-	/*-------------------------*/
-	for "_i" from 0 to _patrolCount do 
+	if (pixParamMissionOpt == 1) then
 	{
-		private["_groupInfos"];
-		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
-		if (count _groupInfos > 0) then
+		/*----------------------------------------------------------------------------*/
+		/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu kÃ¶nnen */
+		/*----------------------------------------------------------------------------*/
+		private["_patrolCount"];
+		_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 6);
+
+		/*-------------------------*/
+		/* Patroullierende Truppen */
+		/*-------------------------*/
+		for "_i" from 0 to _patrolCount do 
 		{
-			_groups = _groups + [(_groupInfos select 0)];
-			_vehicles = _vehicles + (_groupInfos select 1);
+			private["_groupInfos"];
+			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+			if (count _groupInfos > 0) then
+			{
+				_groups = _groups + [(_groupInfos select 0)];
+				_vehicles = _vehicles + (_groupInfos select 1);
+			};
 		};
 	};
-
-	/*-------------*/
-	/* Minenfelder */
-	/*-------------*/
-	private["_mineFieldCount"];
-	_mineFieldCount = 1 + floor(random 2);
-	for "_i" from 0 to _mineFieldCount do 
+	
+	if (pixParamMineFields == 1) then
 	{
-		[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		/*-------------*/
+		/* Minenfelder */
+		/*-------------*/
+		private["_mineFieldCount"];
+		_mineFieldCount = 1 + floor(random 2);
+		for "_i" from 0 to _mineFieldCount do 
+		{
+			[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		};
 	};
 	
 	/*--------------------------------------*/
-	/* Warten bis die Mission erfüllt wurde */
+	/* Warten bis die Mission erfÃ¼llt wurde */
 	/*--------------------------------------*/
 	waitUntil {(!alive _officer) || (pixZones_ActiveIndex == -1)};
 	
@@ -102,7 +108,7 @@ if (isServer) then
 	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
 	/*-------------------------------------------------------------------------------------------------------------*/
-	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
+	/* Warten bis Zone beendet. Dann nocheinmal zufÃ¤llige ZeitverzÃ¶gerung, damit nicht alle gleichzeitig aufrÃ¤umen */
 	/*-------------------------------------------------------------------------------------------------------------*/
 	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep (random 60);
