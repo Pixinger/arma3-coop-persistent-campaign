@@ -7,6 +7,10 @@ if (isServer) then
 	/* Weil es ein Preset ist, wird hier noch der Index der eigentlich aufgerufenen Zone angegeben */
 	private["_zoneIndex"]; 
 	_zoneIndex = _this select 0;
+
+	/* Manche Zonen können eine bestimmte missionOpt erzwingen */
+	private["_enforcedMissionOptIndices"];
+	_enforcedMissionOptIndices = [_this, 1, [], [[]]] call BIS_fnc_param;	
 	
 	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
 	private["_currentPlayerCount"];
@@ -71,9 +75,29 @@ if (isServer) then
 		_missionOptCfgIndices = [];
 		private["_missionOptLocations"];
 		_missionOptLocations = [];
-		
 		private["_missionOptPlayerCount"];
 		_missionOptPlayerCount = 0;
+		
+		/* Erzwungene Missionen werden zuerst festgelegt */
+		if (count _enforcedMissionOptIndices > 0) then
+		{
+			{
+				/* Mission Location zu diesem Index bestimmen */
+				private["_missionLocation"];
+				_missionLocation = [_zoneIndex, _missionOptLocations] call compile preprocessFileLineNumbers format["missionsOpt\%1\fn_GetMissionLocation.sqf", (missionsOpt_Missions select _x)];
+
+				/* Wenn eine gültige Location gefunden wurde, dann zu Index und Location Array hinzufügen */
+				if (str(_missionLocation) != "[[0,0,0],0,[0,0,0],0]") then
+				{
+					/* zu Index und Location Array hinzufügen */
+					_missionOptCfgIndices set [count _missionOptCfgIndices, _x];
+					_missionOptLocations set [count _missionOptLocations, _missionLocation];
+					_missionOptPlayerCount = _missionOptPlayerCount + (missionsOpt_MissionPlayers select _x);
+				};			
+			} foreach _enforcedMissionOptIndices;
+		};
+		
+		/* Danach mit anderen Missionen auffüllen */
 		private["_loopLimit"];
 		_loopLimit = 500;
 		while { (_missionOptPlayerCount < (_currentPlayerCount * pixParamMissionFactor)) && (_loopLimit > 0) } do 
