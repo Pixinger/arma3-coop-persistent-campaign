@@ -144,8 +144,6 @@ if (isServer) then
 		_vehicles = _vehicles + (_groupInfos select 1);
 		_relevantGroups = _relevantGroups + [(_groupInfos select 0)];
 	};
-		
-	};
 	
 	if (pixParamMineFields == 1) then
 	{

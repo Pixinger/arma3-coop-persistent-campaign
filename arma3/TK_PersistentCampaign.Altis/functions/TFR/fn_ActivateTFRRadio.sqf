@@ -1,4 +1,4 @@
-waitUntil {!isNull player};
+/*waitUntil {!isNull player};
 waitUntil {alive player};
 
 private["_timeout"];
@@ -9,7 +9,7 @@ while {_timeout > time } do
 	if (!call TFAR_fnc_haveSWRadio) then
 	{
 		/* Maybe there are inactive radios somewhere in the uniform */
-		private["_radios"];
+	/*	private["_radios"];
 		_radios = call TFAR_fnc_radiosList;
 		if (count _radios > 0) then
 		{ 
@@ -31,4 +31,4 @@ else
 {
 	player globalChat "ERROR: Unable to activate TFR device.";
 };
-	
+	*/

@@ -27,4 +27,7 @@ _mission_cfg_Index = _missionOpt select 0;
 /*-----------------------------*/
 /* Wichtig: Als execVM starten */
 /*-----------------------------*/
+diag_log format["pvehPixZones_MissionInfos: %1", pvehPixZones_MissionInfos];
+diag_log format["missionsOpt_Missions: %1", missionsOpt_Missions];
+diag_log format["_mission_cfg_Index: %1", _mission_cfg_Index];
 _tmp = [_zoneIndex, _missionInfoIndex] execVM format["missionsOpt\%1\run.sqf", (missionsOpt_Missions select _mission_cfg_Index)];
