@@ -44,6 +44,9 @@ diag_log format["INFO: pixParamMissionOpt: %1", pixParamMissionOpt];
 /* Parameter (9): MineFields */
 pixParamMineFields = (paramsArray select 9); //0=aus 1=an pixParamMineFields = 0;
 diag_log format["INFO: pixParamMineFields: %1", pixParamMineFields];
+/* Parameter (10): TFR-Muted while dead */
+pixParamTFARMutedOnDeath = (paramsArray select 10); //0=aus 1=an 
+diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
 
 
 /*-----------------------------------------------*/

@@ -120,6 +120,13 @@ class Params
 	    texts[] = {"Off","On"};
 	    default = 1;
 	};
+	class TFARMutedOnDeath /* paramsArray[10]*/
+	{		
+	    title = "TFAR muted on death";
+	    values[] = {0, 1};
+	    texts[] = {"Off","On"};
+	    default = 1;
+	};
 };
 
 class Header
