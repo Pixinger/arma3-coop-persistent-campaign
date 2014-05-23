@@ -71,6 +71,7 @@ if (isServer) then
 	pvehPixlogisticUpdateItem = ""; 	/* EventHandler Variable zum Aktualisieren von erzeugten Objekten in der Datenbank. */
 	pvehPixlogisticSaved = 0; 			/* Wird bei jedem speichern um eins erhöht */
 	pvPixLogisticServerInitialized = false;
+	pvehPixlogisticHidePlayer = "";
 	publicVariable "pvPixLogisticServerInitialized";
 
 	/* -------------------------------------------------------------- */
@@ -90,6 +91,10 @@ if (isServer) then
 	/* --------------------------- */
 	/* EventHandler Initialisieren */
 	/* --------------------------- */
+	"pvehPixlogisticHidePlayer" addPublicVariableEventHandler {
+		private["_tmp"];
+		_tmp = (_this select 1) execVM "pixLogistic\serverHideObject.sqf";		
+	};
 	"pvehPixlogisticInsertItem" addPublicVariableEventHandler {
 		private["_tmp"];
 		_tmp = [_this select 1] execVM "pixLogistic\serverInsertItem.sqf";

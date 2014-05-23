@@ -160,29 +160,29 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button15;
 		y = 112.5 * GRID_H + GRID_ABS_Y; 
-		text = "Funkgerät hinzufügen";
-		action = "[] execVM 'pixLogistic\dialogAdmin\onButtonAddRadioClicked.sqf';";
+		text = "Rucksack Funkgerät hinzufügen";
+		action = "[] execVM 'pixLogistic\dialogAdmin\onButtonAddBackpackRadioClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button16 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button16;
 		y = 120.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Funkgerät hinzufügen";
+		action = "[] execVM 'pixLogistic\dialogAdmin\onButtonAddRadioClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button17 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button17;
 		y = 128.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Unsichtbar";
+		action = "[true] execVM 'pixLogistic\dialogAdmin\onButtonHideClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button18 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button18;
 		y = 136.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Sichtbar";
+		action = "[false] execVM 'pixLogistic\dialogAdmin\onButtonHideClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button19 : RscButtonAdminMenu
 	{
