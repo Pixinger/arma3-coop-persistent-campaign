@@ -15,11 +15,13 @@ if (!isServer || !isDedicated) then
 				_playerPosition = getPos player;
 				private["_playerDirection"];
 				_playerDirection = getDir player;
-				
+				private["_captiveNum"];
+				_captiveNum = captiveNum player;
 
 				// Player an die RemoteUnit attachen
+				player setCaptive 3;
 				player allowDamage false;
-				if (isServer && !isDedicated) then { player hideObject true;} else {player hideObjectGlobal true;};
+				//if (isServer && !isDedicated) then { player hideObject true;} else {player hideObjectGlobal true;};
 				player attachTo [missionnamespace getvariable ["bis_fnc_moduleRemoteControl_unit",objnull], [0, 0, 0]];
 				
 				// Überwachen
@@ -29,8 +31,11 @@ if (!isServer || !isDedicated) then
 				detach player;
 				player setPos _playerPosition;
 				player setDir _playerDirection;
+				Sleep 0.5;
 				player allowDamage true;
-				if (isServer && !isDedicated) then { player hideObject false;} else {player hideObjectGlobal false;};
+				player setDamage 0;
+				player setCaptive _captiveNum;
+				if (isServer && !isDedicated) then { player hideObject pixLogisticAdminHide;} else {player hideObjectGlobal pixLogisticAdminHide;};
 			};
 		}
 		else
@@ -43,25 +48,31 @@ if (!isServer || !isDedicated) then
 			_playerPosition = getPos player;
 			private["_playerDirection"];
 			_playerDirection = getDir player;
+			private["_captiveNum"];
+			_captiveNum = captiveNum player;
 
 			// Player an die ZeusCamera attachen
+			player setCaptive 3;
 			player allowDamage false;
-			if (isServer && !isDedicated) then { player hideObject true;} else {player hideObjectGlobal true;};
+			//if (isServer && !isDedicated) then { player hideObject true;} else {player hideObjectGlobal true;};
 			player attachTo [curatorCamera, [0, 0, 0]];
 			
 			// Überwachen
 			while { !(isNull curatorCamera) } do
 			{
 				player setPos (getPos curatorCamera);
-				Sleep 1;
+				Sleep 0.5;
 			};
 			
 			// Spieler wieder zurück setzen
 			detach player;
 			player setPos _playerPosition;
 			player setDir _playerDirection;
+			Sleep 0.5;
 			player allowDamage true;
-			if (isServer && !isDedicated) then { player hideObject false;} else {player hideObjectGlobal false;};
+			player setDamage 0;
+			player setCaptive _captiveNum;
+			if (isServer && !isDedicated) then { player hideObject pixLogisticAdminHide;} else {player hideObjectGlobal pixLogisticAdminHide;};
 		};
 		
 		// Sleep a while
