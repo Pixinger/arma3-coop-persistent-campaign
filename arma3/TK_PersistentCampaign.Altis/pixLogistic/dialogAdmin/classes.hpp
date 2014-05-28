@@ -139,8 +139,8 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button12;
 		y = 88.5 * GRID_H + GRID_ABS_Y; 
-		text = "ZeusFix";
-		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFix.sqf';";
+		text = "";
+		action = "";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button13 : RscButtonAdminMenu
 	{
@@ -174,15 +174,15 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button17;
 		y = 128.5 * GRID_H + GRID_ABS_Y; 
-		text = "";
-		action = "";
+		text = "ZeusFix";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFix.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button18 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button18;
 		y = 136.5 * GRID_H + GRID_ABS_Y; 
-		text = "";
-		action = "";
+		text = "ZeusFix-Remote";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFixRemote.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button19 : RscButtonAdminMenu
 	{
