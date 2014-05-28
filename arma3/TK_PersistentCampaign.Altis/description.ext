@@ -62,21 +62,21 @@ class Params
 	    title = "Zeit für Einnahme der Zone";
 	    values[] = {30, 60, 90, 120, 150, 180, 1000};
 	    texts[] = {"30min", "60min", "90min", "120min", "150min", "180min", "1000min"};
-	    default = 150;
+	    default = 1000;
 	};
 	class MissionFactor /* paramsArray[2]*/
 	{		
 	    title = "Schwierigkeitsgrad";
 	    values[] = {0, 1, 2, 3};
 	    texts[] = {"Einfach", "Normal", "Schwer", "Sehr schwer"};
-	    default = 1;
+	    default = 0;
 	};
 	class ZoneAttackType /* paramsArray[3]*/
 	{		
 	    title = "Zonen Angriffstyp";
 	    values[] = {0, 1, 2};
 	    texts[] = {"Zufall", "Angriff", "Gegenangriff"};
-	    default = 0;
+	    default = 1;
 	};
 	class ReverseAttack /* paramsArray[4]*/
 	{		
@@ -104,14 +104,14 @@ class Params
 	    title = "Mission-ENV";
 	    values[] = {0, 1};
 	    texts[] = {"Off","On"};
-	    default = 1;
+	    default = 0;
 	};
 	class MissionOpt /* paramsArray[8]*/
 	{		
 	    title = "Mission-OPT";
 	    values[] = {0, 1, 2};
 	    texts[] = {"Off","On","On (no AI)"};
-	    default = 1;
+	    default = 2;
 	};
 	class MineFields /* paramsArray[9]*/
 	{		
@@ -132,7 +132,7 @@ class Params
 	    title = "TFAR terrain interception coefficient";
 	    values[] = {0, 1, 3, 4, 5, 6, 7, 8, 9, 10};
 	    texts[] = {"0","1","2","3","4","5","6","7","8","9","10"};
-	    default = 7;
+	    default = 1;
 	};
 };
 

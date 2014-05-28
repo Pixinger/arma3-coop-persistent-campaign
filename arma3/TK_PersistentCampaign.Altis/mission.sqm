@@ -32,7 +32,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign";
-		overviewText="www.teamkommando.de | V2.70";
+		overviewText="www.teamkommando.de | V2.72.8";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -790,7 +790,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={28036.863,35.46896,25666.697};
+					position[]={28324.291,14.563179,25761.566};
 					class args
 					{
 						items=4;
@@ -839,7 +839,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={28036.809,35.658779,25670.816};
+					position[]={28324.236,14.566104,25765.686};
 					id=36;
 					side="LOGIC";
 					vehicle="ModuleMPTypeGameMaster_F";
@@ -918,7 +918,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=32;
+		items=34;
 		class Item0
 		{
 			position[]={26832.439,21.092299,24683.287};
@@ -1212,10 +1212,28 @@ class Mission
 		};
 		class Item31
 		{
-			position[]={28036.838,35.632755,25659.736};
+			position[]={28324.266,14.550181,25754.605};
 			id=69;
 			side="EMPTY";
-			vehicle="Sign_Sphere25cm_F";
+			vehicle="Sign_Arrow_Cyan_F";
+			leader=1;
+			skill=0.2;
+		};
+		class Item32
+		{
+			position[]={28334.969,14.47344,25754.619};
+			id=70;
+			side="EMPTY";
+			vehicle="Sign_Arrow_Green_F";
+			leader=1;
+			skill=0.2;
+		};
+		class Item33
+		{
+			position[]={28329.629,14.493114,25754.582};
+			id=71;
+			side="EMPTY";
+			vehicle="Sign_Arrow_Blue_F";
 			leader=1;
 			skill=0.2;
 		};
@@ -1926,10 +1944,10 @@ class Mission
 	};
 	class Sensors
 	{
-		items=1;
+		items=3;
 		class Item0
 		{
-			position[]={28036.855,35.631546,25659.766};
+			position[]={28324.283,14.55001,25754.635};
 			a=2;
 			b=2;
 			activationBy="ANY";
@@ -1937,6 +1955,34 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expActiv="if (isServer) then {(thislist select 0) assignCurator ZeusModule1;};";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={28334.986,14.474663,25754.648};
+			a=2;
+			b=2;
+			activationBy="ANY";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="if (isServer) then {(thislist select 0) hideObjectGlobal true;};";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={28329.646,14.494328,25754.611};
+			a=2;
+			b=2;
+			activationBy="ANY";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="if (isServer) then {(thislist select 0) hideObjectGlobal false;};";
 			class Effects
 			{
 			};

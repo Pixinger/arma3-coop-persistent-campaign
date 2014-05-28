@@ -41,7 +41,7 @@ Clientseitig:
 	pixLogisticObjectDialogContentButton	(Gibt an, ob bei dem Auswahl-Dialog die OK Taste gedrückt wurde, oder nicht)
 	pixLogisticObjectDialogContentSelection = 0;
 	pixLogisticDialogHqStore_AdminSpawn = false; (Enthält die SpawnPosition eines Gegenstandes, wenn über das AdminMenü aufgerufen wurd.)
-	pixLogisticAdminHide = false;
+	pixLogisticZeusFix = false				(Gibt an, ob der ZeusFix aktiviert ist, oder nicht.)
 */
 
 /* ------------------- */
@@ -92,10 +92,6 @@ if (isServer) then
 	/* --------------------------- */
 	/* EventHandler Initialisieren */
 	/* --------------------------- */
-	"pvehPixlogisticHidePlayer" addPublicVariableEventHandler {
-		private["_tmp"];
-		_tmp = (_this select 1) execVM "pixLogistic\serverHideObject.sqf";		
-	};
 	"pvehPixlogisticInsertItem" addPublicVariableEventHandler {
 		private["_tmp"];
 		_tmp = [_this select 1] execVM "pixLogistic\serverInsertItem.sqf";
@@ -132,7 +128,7 @@ if (!isServer || !isDedicated) then
 	pixLogisitcAdminKeyPressed = false;
 	pixLogisticDialogHqStore_AdminSpawn = false; 
 	pixLogisticLastLoadOut = "Default.sqf";
-	pixLogisticAdminHide = false;
+	pixLogisticZeusFix = false;
 	
 	fn_pixLogistic_FoldBuilding = compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_FoldBuilding.sqf";
 	fn_pixLogistic_UnfoldBuilding = compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_UnfoldBuilding.sqf";
