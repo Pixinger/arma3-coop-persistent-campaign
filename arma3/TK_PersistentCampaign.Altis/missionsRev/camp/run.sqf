@@ -144,23 +144,34 @@ if (isServer) then
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	private["_enemyUnits"];
-	_enemyUnits = [];
+	if (pixParamMissionOpt == 1) then 
+	{		
+		/* Mit KI als Angreifer */
+		private["_enemyUnits"];
+		_enemyUnits = [];
+		{
+			_enemyUnits = _enemyUnits + (units _x);		
+		} foreach _enemyGroups;
+		
+		private["_limit"];
+		_limit = ceil((count _enemyUnits) / 25);
+		private["_aliveEnemyUnits"];
+		_aliveEnemyUnits = 60000;
+		while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
+		{
+			Sleep 2;
+			_aliveEnemyUnits = 0;
+			{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
+		};
+	}
+	else
 	{
-		_enemyUnits = _enemyUnits + (units _x);		
-	} foreach _enemyGroups;
-	
-	private["_limit"];
-	_limit = ceil((count _enemyUnits) / 25);
-	private["_aliveEnemyUnits"];
-	_aliveEnemyUnits = 60000;
-	while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
-	{
-		Sleep 2;
-		_aliveEnemyUnits = 0;
-		{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
+		/* Mit Zeus als Angreifer */
+		while { ((pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
+		{
+			Sleep 2;
+		};	
 	};
-	
 	/*-----------------*/
 	/* Trigger löschen */
 	/*-----------------*/

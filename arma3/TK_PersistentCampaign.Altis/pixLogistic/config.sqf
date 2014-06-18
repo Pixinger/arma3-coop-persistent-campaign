@@ -348,11 +348,13 @@ if (!isServer || !isDedicated) then
 	];
 	/* Container-Gebäude die zu einem Container verpackt werden können */
 	pixlogisticBuildingsBarracks = [		
-		"Land_Cargo_House_V1_F"
+		"Land_Cargo_House_V1_F",
+		"Land_Cargo_House_V3_F"
 	];
 	/* HQ-Container-Gebäude die zu einem Container verpackt werden können */
 	pixlogisticHQs = [
-		"Land_Cargo_HQ_V1_F"
+		"Land_Cargo_HQ_V1_F",
+		"Land_Cargo_HQ_V3_F"
 	];
 	/* Der entsprechende Container für die Container-Gebäude */
 	pixlogisticBuildingContainer = "Land_Cargo40_military_green_F";
