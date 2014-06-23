@@ -21,12 +21,14 @@ class PIXLOGISTIC_DIALOG_HQ
 		PIXLOGISTIC_DIALOG_HQ_ButtonSoldier4,
 		PIXLOGISTIC_DIALOG_HQ_ButtonSoldier5,
 		PIXLOGISTIC_DIALOG_HQ_ButtonSoldier6,
+		PIXLOGISTIC_DIALOG_HQ_ButtonSoldier7,
 		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin1,
 		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin2,
 		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin3,
 		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin4,
 		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin5,
-		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin6
+		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin6,
+		PIXLOGISTIC_DIALOG_HQ_ButtonAdmin7
 	};
 		
 	class PIXLOGISTIC_DIALOG_HQ_Title : RscTitle
@@ -118,6 +120,16 @@ class PIXLOGISTIC_DIALOG_HQ
 		text = "Beamen";
 		action = "execVM 'pixLogistic\dialogHQ\onButtonBeamClicked.sqf';";
 	};	
+	class PIXLOGISTIC_DIALOG_HQ_ButtonSoldier7 : RscButtonMenu
+	{
+		idc = PIXLOGISTIC_IDC_DIALOG_HQ_ButtonSoldier7;
+		x = 0 * GRID_W + GRID_ABS_X; 
+		y = 70.3 * GRID_H + GRID_ABS_Y; 
+		w = 49.9 * GRID_W;
+		h = 9.9 * GRID_H;
+		text = "---";
+		action = "";
+	};	
 	
 	/* Admin Buttons */
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin1 : RscButtonMenu
@@ -127,8 +139,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 10.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Angriff auf Zone starten";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonStartZoneClicked.sqf';";
+		text = "Zone angreifen (rnd)";
+		action = "[0] execVM 'pixLogistic\dialogHQ\onButtonStartZoneClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin2 : RscButtonMenu
 	{
@@ -137,8 +149,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 20.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Fahrzeug anfordern";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonRequestVehicleClicked.sqf';";
+		text = "Zone angreifen (attack)";
+		action = "[1] execVM 'pixLogistic\dialogHQ\onButtonStartZoneClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin3 : RscButtonMenu
 	{
@@ -147,8 +159,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 30.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Kontainer anfordern";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonRequestContainerClicked.sqf';";
+		text = "Zone angreifen (reverse)";
+		action = "[2] execVM 'pixLogistic\dialogHQ\onButtonStartZoneClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin4 : RscButtonMenu
 	{
@@ -157,8 +169,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 40.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "Waffen anfordern";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonRequestWeaponClicked.sqf';";
+		text = "Fahrzeug anfordern";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonRequestVehicleClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin5 : RscButtonMenu
 	{
@@ -167,8 +179,8 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 50.1 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.8 * GRID_H;
-		text = "Respawn verlegen";
-		action = "execVM 'pixLogistic\dialogHQ\onButtonChangeRespawnClicked.sqf';";
+		text = "Kontainer anfordern";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonRequestContainerClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin6 : RscButtonMenu
 	{
@@ -177,8 +189,18 @@ class PIXLOGISTIC_DIALOG_HQ
 		y = 60.3 * GRID_H + GRID_ABS_Y; 
 		w = 49.9 * GRID_W;
 		h = 9.9 * GRID_H;
-		text = "---";
-		action = "";
+		text = "Waffen anfordern";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonRequestWeaponClicked.sqf';";
+	};
+	class PIXLOGISTIC_DIALOG_HQ_ButtonAdmin7 : RscButtonMenu
+	{
+		idc = PIXLOGISTIC_IDC_DIALOG_HQ_ButtonAdmin7;
+		x = 50.1 * GRID_W + GRID_ABS_X; 
+		y = 70.3 * GRID_H + GRID_ABS_Y; 
+		w = 49.9 * GRID_W;
+		h = 9.9 * GRID_H;
+		text = "Respawn verlegen";
+		action = "execVM 'pixLogistic\dialogHQ\onButtonChangeRespawnClicked.sqf';";
 	};
 	
 

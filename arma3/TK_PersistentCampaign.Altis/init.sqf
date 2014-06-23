@@ -19,36 +19,32 @@ diag_log format["INFO: pixParamzoneCaptureTime: %1", pixParamzoneCaptureTime];
 _paramValues = [0.5,1,1.5,2];
 pixParamMissionFactor = _paramValues select (paramsArray select 2);
 diag_log format["INFO: pixParamMissionFactor: %1", pixParamMissionFactor];
-/* Parameter (3): ZoneAttackType */
-pixParamZoneAttackType = _paramValues select (paramsArray select 3); // 0=zufall 1=attack 2=reverseattack
-if (isServer && !isDedicated) then {pixParamZoneAttackType = 1;};
-diag_log format["INFO: pixParamZoneAttackType: %1", pixParamZoneAttackType];
-/* Parameter (4): ReverseAttack */
-pixParamReverseAttackDelay = (paramsArray select 4);
+/* Parameter (3): ReverseAttack */
+pixParamReverseAttackDelay = (paramsArray select 3);
 if (isServer && !isDedicated) then {pixParamReverseAttackDelay = 1;};
 diag_log format["INFO: pixParamReverseAttackDelay: %1", pixParamReverseAttackDelay];
-/* Parameter (5): TimeSettings */
-pixParamTimeSettings = (paramsArray select 5);
+/* Parameter (4): TimeSettings */
+pixParamTimeSettings = (paramsArray select 4);
 if (isServer && !isDedicated) then {pixParamTimeSettings = 12;};
 diag_log format["INFO: pixParamTimeSettings: %1", pixParamTimeSettings];
-/* Parameter (6): TimeSettings */
-pixParamAISkillSettings = (paramsArray select 6);
+/* Parameter (5): TimeSettings */
+pixParamAISkillSettings = (paramsArray select 5);
 diag_log format["INFO: pixParamAISkillSettings: %1", pixParamAISkillSettings];
-/* Parameter (7): Mission-ENV */
-pixParamMissionEnv = (paramsArray select 7); //0=aus 1=an pixParamMissionEnv = 0;
+/* Parameter (6): Mission-ENV */
+pixParamMissionEnv = (paramsArray select 6); //0=aus 1=an pixParamMissionEnv = 0;
 diag_log format["INFO: pixParamMissionEnv: %1", pixParamMissionEnv];
-/* Parameter (8): Mission-OPT */
-pixParamMissionOpt = (paramsArray select 8); //0=aus 1=an 2=an (ohne AI)
+/* Parameter (7): Mission-OPT */
+pixParamMissionOpt = (paramsArray select 7); //0=aus 1=an 2=an (ohne AI)
 diag_log format["INFO: pixParamMissionOpt: %1", pixParamMissionOpt];
 /*pixParamMissionOpt = 2;*/
-/* Parameter (9): MineFields */
-pixParamMineFields = (paramsArray select 9); //0=aus 1=an pixParamMineFields = 0;
+/* Parameter (8): MineFields */
+pixParamMineFields = (paramsArray select 8); //0=aus 1=an pixParamMineFields = 0;
 diag_log format["INFO: pixParamMineFields: %1", pixParamMineFields];
-/* Parameter (10): TFR-Muted while dead */
-pixParamTFARMutedOnDeath = (paramsArray select 10); //0=aus 1=an 
+/* Parameter (9): TFR-Muted while dead */
+pixParamTFARMutedOnDeath = (paramsArray select 9); //0=aus 1=an 
 diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
 /* Parameter (10): TFR-Muted while dead */
-pixParamTFARTerrainInterceptionCoefficient = (paramsArray select 11); //0,1,2,3,4,5,6,7,8,9,10
+pixParamTFARTerrainInterceptionCoefficient = (paramsArray select 10); //0,1,2,3,4,5,6,7,8,9,10
 diag_log format["INFO: pixParamTFARTerrainInterceptionCoefficient: %1", pixParamTFARTerrainInterceptionCoefficient];
 TF_terrain_interception_coefficient = pixParamTFARTerrainInterceptionCoefficient;
 

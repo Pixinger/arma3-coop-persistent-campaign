@@ -44,51 +44,7 @@ if (isServer) then
 	_flag = "Flag_NATO_F" createVehicle _missionPosition;
 	_buildings = _buildings + [_flag];
 	
-	/* Bunker1 erstellen */
-	private["_bunker1"];
-	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [6.5,-2,0], [], 0, "NONE"];
-	Sleep .5;
-	_bunker1 setDir (random 359);
-	_buildings = _buildings + [_bunker1];
-	/* Bunker2 erstellen */
-	private["_bunker2"];
-	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [-8,-2,0], [], 0, "NONE"];
-	Sleep .5;
-	_bunker2 setDir (random 359);
-	_buildings = _buildings + [_bunker2];
-	/* MG1 erstellen */
-	private["_mg1"];
-	_mg1 = createVehicle ["I_HMG_01_high_F", _bunker1 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
-	Sleep .5;
-	_mg1 setDir (random 359);
-	_buildings = _buildings + [_mg1];
-	/* MG2 erstellen */
-	private["_mg2"];
-	_mg2 = createVehicle ["I_HMG_01_high_F", _bunker2 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
-	Sleep .5;
-	_mg2 setDir (random 359);
-	_buildings = _buildings + [_mg2];
 
-	/* Einheit im Bunker1 */
-	private["_group"];
-	_group = createGroup west;
-	private["_unitBunker1"];
-	_unitBunker1 = _group createUnit ["B_Soldier_F", _missionPosition, [], 0, "NONE"];
-	sleep .5;
-	_unitBunker1 action ["getInGunner",_mg1];
-	doStop _unitBunker1;
-	_groups = _groups + [_group];
-	
-	/* Einheit im Bunker2 */
-	_group = createGroup west;
-	private["_unitBunker2"];
-	_unitBunker2 = _group createUnit ["B_Soldier_F", _missionPosition, [], 0, "NONE"];
-	sleep .5;
-	_unitBunker2 action ["getInGunner",_mg2];
-	doStop _unitBunker2;
-	_groups = _groups + [_group];
-
-	
 	/*------------------*/
 	/* Vehicle erzeugen */
 	/*------------------*/

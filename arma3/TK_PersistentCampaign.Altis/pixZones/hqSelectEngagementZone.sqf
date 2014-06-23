@@ -23,6 +23,9 @@ else
 	}
 	else
 	{
+		private["_attackMode"]; /* 0=random 1=attack 2=reverseattack */
+		_attackMode = _this select 0;
+
 		private["_zoneIndex"];
 		_zoneIndex = [pixZones_MapCoordinates] call PC_fnc_GetZoneIndex;
 		diag_log format["INFO: hqSelectEngagementZone.sqf: selected _zoneIndex: %1", _zoneIndex];
@@ -37,7 +40,7 @@ else
 				/* Reverse Attack laut Parameter  */
 				private["_reverseAttack"];
 				_reverseAttack = false; /* just for safety */
-				if (pixParamZoneAttackType == 0) then
+				if (_attackMode == 0) then
 				{
 					if ((random 100) < 20) then
 					{
@@ -51,7 +54,7 @@ else
 				}
 				else
 				{
-					if (pixParamZoneAttackType == 1) then
+					if (_attackMode == 1) then
 					{
 						_reverseAttack = false;
 						pixZones_IgnoreReverseAttack = false;
@@ -72,7 +75,7 @@ else
 					/* ReverseAttack nur einmal zulassen */
 					pixZones_IgnoreReverseAttack = true;
 					
-					/* Pürfen welche Zonen angegriffen werden könnten */
+					/* Prüfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
 					_validConnectedZones = [_zoneIndex] call PC_fnc_GetConnectedHostileZones;					
 					if (count _validConnectedZones > 0) then

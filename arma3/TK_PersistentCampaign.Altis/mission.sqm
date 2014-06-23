@@ -13,11 +13,14 @@ class Mission
 		"A3_Modules_F_Curator_Curator",
 		"A3_Missions_F_Curator",
 		"A3_Misc_F_Helpers",
-		"task_force_radio_items"
+		"task_force_radio_items",
+		"a3_characters_f",
+		"A3_Structures_F_Items_Vessels"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_OPFOR",
+		"a3_characters_f",
 		"A3_Characters_F_BLUFOR",
 		"A3_Characters_F_Civil",
 		"A3_Modules_F_Curator_Curator",
@@ -26,13 +29,14 @@ class Mission
 		"A3_Structures_F_Mil_Helipads",
 		"A3_Structures_F_Mil_Cargo",
 		"A3_Misc_F_Helpers",
+		"A3_Structures_F_Items_Vessels",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign";
-		overviewText="www.teamkommando.de | V2.74";
+		overviewText="www.teamkommando.de | V2.76.1";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -918,7 +922,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=34;
+		items=37;
 		class Item0
 		{
 			position[]={26832.439,21.092299,24683.287};
@@ -1236,6 +1240,30 @@ class Mission
 			vehicle="Sign_Arrow_Blue_F";
 			leader=1;
 			skill=0.2;
+		};
+		class Item34
+		{
+			position[]={28324.254,14.553906,25757.717};
+			id=72;
+			side="EMPTY";
+			vehicle="MetalBarrel_burning_F";
+			skill=0.60000002;
+		};
+		class Item35
+		{
+			position[]={28329.734,14.517938,25757.578};
+			id=73;
+			side="EMPTY";
+			vehicle="MetalBarrel_burning_F";
+			skill=0.60000002;
+		};
+		class Item36
+		{
+			position[]={28335.004,14.496959,25757.613};
+			id=74;
+			side="EMPTY";
+			vehicle="MetalBarrel_burning_F";
+			skill=0.60000002;
 		};
 	};
 	class Markers
