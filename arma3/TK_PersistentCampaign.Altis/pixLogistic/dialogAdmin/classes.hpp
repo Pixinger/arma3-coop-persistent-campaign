@@ -181,8 +181,8 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button18;
 		y = 136.5 * GRID_H + GRID_ABS_Y; 
-		text = "ZeusFix-Remote";
-		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFixRemote.sqf';";
+		text = "ZeusFix switch attach unit";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFixAttach.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button19 : RscButtonAdminMenu
 	{
