@@ -1,6 +1,6 @@
 
-if (player isKindOf "SoldierWB") then
-{
+/*if (player isKindOf "SoldierWB") then
+{*/
 	if (isNull pixlogisticMovingObject) then
 	{	
 		if ((typeof (vehicle player)) in pixlogisticHaulers) then
@@ -89,18 +89,10 @@ if (player isKindOf "SoldierWB") then
 											}
 											else 
 											{	
-												if (_cursorTargetType == "Land_Suitcase_F") then
-												{
-													_cursorTarget setDamage 1;
-													_cursorTarget setPos [0,0,0];
-												}
-												else
-												{
-													/*--------------------*/
-													/* Move object around */
-													/*--------------------*/
-													[_cursorTarget] call compile preprocessFileLineNumbers "pixLogistic\clientMoveObject.sqf";				
-												};
+												/*--------------------*/
+												/* Move object around */
+												/*--------------------*/
+												[_cursorTarget] call compile preprocessFileLineNumbers "pixLogistic\clientMoveObject.sqf";				
 											};
 										};
 									};
@@ -118,4 +110,4 @@ if (player isKindOf "SoldierWB") then
 	};
 	
 	pixLogisitcActionKeyPressed = false; /* Die T-Taste wieder freigeben */
-};
+/*};*/

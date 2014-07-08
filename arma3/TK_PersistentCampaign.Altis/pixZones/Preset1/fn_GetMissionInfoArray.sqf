@@ -11,6 +11,9 @@ if (isServer) then
 	private["_zoneIndex"]; 
 	_zoneIndex = _this select 1;
 	
+	private["_enforcedMissionOptIndices"];
+	_enforcedMissionOptIndices = [_this, 2, [], [[]]] call BIS_fnc_param;
+	
 	/* Aufruf der besseren Übersicht halber an die entsprechende Datei weiterleiten */
 	if (_reverseAttack) then
 	{
@@ -18,7 +21,7 @@ if (isServer) then
 	}
 	else
 	{
-		_result  = [_zoneIndex] call compile preprocessFileLineNumbers "pixZones\Preset1\fn_GetNormalAttackArray.sqf";
+		_result  = [_zoneIndex, _enforcedMissionOptIndices] call compile preprocessFileLineNumbers "pixZones\Preset1\fn_GetNormalAttackArray.sqf";
 	};
 };
 _result;

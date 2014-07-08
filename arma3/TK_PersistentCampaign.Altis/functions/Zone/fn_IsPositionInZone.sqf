@@ -4,7 +4,7 @@
 Parameter:
 	zoneIndex: Der Index der Zone die den gültigen Bereich definiert.
 	position: Die Position die geprüft werden soll.
-	(optional)safetyBorder: Sicherheitsabstand zum Rand.
+	(optional)safetyBorder: Sicherheitsabstand zum Rand (default 0).
 
 Return: 
 	true, wenn die Position innerhalb des ZonenIndex liegt. 

@@ -20,7 +20,13 @@ if (alive _unit) then
 			_unit setDamage 0;
 			_unit allowDamage false;
 			_amountOfDamage = 0; /* für als result verwendet */
-
+			
+			if (pixParamTFARMutedOnDeath == 1) then
+			{
+				player setVariable ["tf_voiceVolume", 0];
+				player setVariable ["tf_unable_to_use_radio", true];
+			};
+			
 			/* Ab hier müssen wir "unblocking" weiter arbeiten. der EH darf nicht blockiert werden. */
 			[_unit] spawn {
 				private["_unit"];
@@ -91,7 +97,13 @@ if (alive _unit) then
 					
 					_unit playMove "amovppnemstpsraswrfldnon";
 					_unit playMove "";
-				};		
+				};	
+
+				if (pixParamTFARMutedOnDeath == 1) then
+				{
+					player setVariable ["tf_voiceVolume", 1];
+					player setVariable ["tf_unable_to_use_radio", false];				
+				};
 			};
 		};
 	};

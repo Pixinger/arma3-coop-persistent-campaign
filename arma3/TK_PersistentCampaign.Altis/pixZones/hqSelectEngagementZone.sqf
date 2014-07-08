@@ -23,33 +23,41 @@ else
 	}
 	else
 	{
+		private["_attackMode"]; /* 0=random 1=attack 2=reverseattack */
+		_attackMode = _this select 0;
+
 		private["_zoneIndex"];
 		_zoneIndex = [pixZones_MapCoordinates] call PC_fnc_GetZoneIndex;
 		diag_log format["INFO: hqSelectEngagementZone.sqf: selected _zoneIndex: %1", _zoneIndex];
+		if (pixDebug) then { player sidechat format["_zoneIndex: %1", _zoneIndex];};
 		if (_zoneIndex != -1) then
 		{
 			private["_canEngage"];
 			_canEngage = [_zoneIndex] call PC_fnc_CanBlueforEngageZone;
 			if (_canEngage) then
 			{				
+
 				/* Reverse Attack laut Parameter  */
 				private["_reverseAttack"];
-				if (pixParamZoneAttackType == 0) then
+				_reverseAttack = false; /* just for safety */
+				if (_attackMode == 0) then
 				{
-					if (random 1 < 0.2) then
+					if ((random 100) < 20) then
 					{
 						_reverseAttack = true;
 					}
 					else
 					{
 						_reverseAttack = false;
+						pixZones_IgnoreReverseAttack = false;
 					};
 				}
 				else
 				{
-					if (pixParamZoneAttackType == 1) then
+					if (_attackMode == 1) then
 					{
 						_reverseAttack = false;
+						pixZones_IgnoreReverseAttack = false;
 					}
 					else
 					{
@@ -57,9 +65,17 @@ else
 					};
 				};
 				
-				if (_reverseAttack) then
+				if ((!pixZones_IgnoreReverseAttack) && (_reverseAttack)) then
 				{
-					/* Pürfen welche Zonen angegriffen werden könnten */
+					/* Es wird nur der Zonenindex der Zone übernmittelt. Der Server entscheidet später anhand des Zonen-Status, */
+					/* ob es sich um einen Gegenangriff handelt oder nicht. */
+					/* Gehört die Zone eigentlich mir, ist es eine Gegenangriff. */
+					/* Ist die Zone noch feindlich, ist es ein normaler Angriff. */
+					
+					/* ReverseAttack nur einmal zulassen */
+					pixZones_IgnoreReverseAttack = true;
+					
+					/* Prüfen welche Zonen angegriffen werden könnten */
 					private["_validConnectedZones"];
 					_validConnectedZones = [_zoneIndex] call PC_fnc_GetConnectedHostileZones;					
 					if (count _validConnectedZones > 0) then

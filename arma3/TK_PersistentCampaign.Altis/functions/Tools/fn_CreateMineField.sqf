@@ -41,24 +41,32 @@ while { _counter > 0 } do
 	private["_type"];
 	_type = _types call BIS_fnc_selectRandom;
 	
-	private["_mine"];
-	_mine = createMine [_type, _position, [], _radius];
-	_mine setDir (random 360);
-	east revealMine _mine;
+	private["_posX"];
+	_posX = (_position select 0) + (random (_radius*2) - _radius);
+	private["_posY"];
+	_posY = (_position select 1) + (random (_radius*2) - _radius);
 	
-	// Lokaler Server: Debuggen
-	if (isServer && !isDedicated) then
-	{
-		/* Marker erstellen */
-		_markername = [] call PC_fnc_GetUniqueMarkerName;
-		createMarkerLocal [_markerName,  getPos _mine];
-		_markerName setMarkerDirLocal (getDir _mine);
-		_markerName setMarkerShapeLocal "ICON";
-		_markerName setMarkerTypeLocal "mil_dot";
-		_markerName setMarkerSizeLocal [.5, .5];
-		_markerName setMarkerAlphaLocal 1;
-		_markerName setMarkerColorLocal "ColorRed";
-		_markerName setMarkerTextLocal "";
+	if (!surfaceIsWater [_posX,_posY]) then
+	{		
+		private["_mine"];
+		_mine = createMine [_type, [_posX,_posY,0], [], 0];
+		_mine setDir (random 360);
+		east revealMine _mine;
+		
+		// Lokaler Server: Debuggen
+		if (isServer && !isDedicated) then
+		{
+			/* Marker erstellen */
+			_markername = [] call PC_fnc_GetUniqueMarkerName;
+			createMarkerLocal [_markerName,  getPos _mine];
+			_markerName setMarkerDirLocal (getDir _mine);
+			_markerName setMarkerShapeLocal "ICON";
+			_markerName setMarkerTypeLocal "mil_dot";
+			_markerName setMarkerSizeLocal [.5, .5];
+			_markerName setMarkerAlphaLocal 1;
+			_markerName setMarkerColorLocal "ColorRed";
+			_markerName setMarkerTextLocal "";
+		};
 	};
 };
 

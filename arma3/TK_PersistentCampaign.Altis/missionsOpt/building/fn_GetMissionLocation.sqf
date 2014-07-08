@@ -2,10 +2,10 @@ private["_zoneIndex"];
 _zoneIndex = _this select 0;
 
 private["_result"];
-_result = [[0,0,0],0,[0,0,0],0];
+_result = [[0,0,0],0,[0,0,0],0]; /* [position, direction(buildingtype), obfuscatedPosition, obfuscatedRadius] */
 
 private["_location"]; /*[[0,0,0],0]*/
-_location = [_zoneIndex, missionsOpt_DefaultMarkerRadius] call PC_fnc_GetRandomLocationZoneField;
+_location = [_zoneIndex, missionsOpt_DefaultMarkerRadius, [0,0,0], 0, 2] call PC_fnc_GetRandomLocationZoneField;
 if (str(_location) != "[[0,0,0],0]") then
 {
 	private["_obfuscatedLocation"]; /*[[0,0,0],0]*/

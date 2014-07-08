@@ -100,7 +100,7 @@ _dir = (getdir _unit);
 private["_pos"];
 _pos = (getpos _unit);			
 private["_newunit"];
-_newunit = (group _unit) createUnit [_unitClassname, [0,0,1000], [], 0, "None"];	
+_newunit = (group _unit) createUnit [_unitClassname, getPos _unit, [], 0, "None"];	
 Sleep 1;
 _newunit setUnitRank _rank;
 addSwitchableUnit _newunit;

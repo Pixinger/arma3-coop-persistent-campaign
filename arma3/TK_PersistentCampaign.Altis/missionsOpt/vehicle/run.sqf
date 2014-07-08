@@ -11,30 +11,40 @@ _missionOpt = ((pvehPixZones_MissionInfos select 2) select _missionInfoIndex);
 private["_missionPosition"];
 _missionPosition = _missionOpt select 1;
 private["_missionDirection"];
-_missionDirection = _missionOpt select 2;
+_missionDirection = _missionOpt select 2; /* Wird hier verwendet um den Fahrzeug Typen zu bestimmen */
 private["_missionMarkerPosition"];
 _missionMarkerPosition = _missionOpt select 3;
 private["_missionMarkerRadius"];
 _missionMarkerRadius = _missionOpt select 4;
 
-/*-------------------------*/
-/* VehicleTypen definieren */
-/*-------------------------*/
-private["_vehicleClassnames"];
-_vehicleClassnames = ["O_APC_Wheeled_02_rcws_F", "O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
+/*---------------------------*/
+/* Building Typen definieren */
+/*---------------------------*/
+private["_buildingClassnames"];
+_buildingClassnames = ["O_APC_Wheeled_02_rcws_F", "O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
+
+/* Aus der zufälligen Richtung den Klassennamen errechnen */
+private["_buildingClassnameIndex"];
+_buildingClassnameIndex = floor (((count _buildingClassnames) / 360) * _missionDirection);
+if (_buildingClassnameIndex < 0) then { _buildingClassnameIndex = 0;};
+if (_buildingClassnameIndex >= count _buildingClassnames) then { _buildingClassnameIndex = (count _buildingClassnames) - 1;};
+
+private["_buildingClassname"];
+_buildingClassname = _buildingClassnames select _buildingClassnameIndex;
+
 
 /*---------------------------------------*/
 /* Wenn notwendig die Clientside starten */
 /*---------------------------------------*/
 if (!isServer || !isDedicated) then
 {
-	private["_vehicleClassname"];
-	_vehicleClassname = [_missionPosition, _vehicleClassnames, (_vehicleClassnames select 0)] call PC_fnc_FindVehicleTypeInRange;
-
+	/*----------------------------------------*/
+	/* Standart Missions verarbeitung starten */
+	/*----------------------------------------*/
 	private["_taskTitle"];
-	_taskTitle = format["Fahrzeug zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskTitle = format["Fahrzeug zerstören (%1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	private["_taskDescription"];
-	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeug ermittelt in dem neues Technisches Gerät verbaut ist. Wir können nicht zulassen, dass diese Entwicklung zu Einsatz kommt. Vernichten sie das Fahrzeug (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _vehicleClassname >> "displayName")];
+	_taskDescription = format["Unser Geheimdienst hat eine Fahrzeug ermittelt in dem neues Technisches Gerät verbaut ist. Wir können nicht zulassen, dass diese Entwicklung zu Einsatz kommt. Vernichten sie das Fahrzeug (Typ: %1?)", gettext (configFile >> "CfgVehicles" >> _buildingClassname >> "displayName")];
 	
 	private["_tmp"];
 	_tmp = [_missionInfoIndex, _missionMarkerPosition, _missionMarkerRadius, _taskTitle, _taskDescription] execVM "missionsOpt\_common\runClient.sqf";	
@@ -49,15 +59,11 @@ if (isServer) then
 	private["_buildings"];
 	_buildings = [];
 	
-	/* Vehicle classname festlegen */
-	private["_vehicleClassname"];
-	_vehicleClassname =  _vehicleClassnames call BIS_fnc_selectRandom;
-
 	/*--------------------*/
 	/* Fahrzeug erstellen */
 	/*--------------------*/
 	private["_vehicle"];
-	_vehicle = _vehicleClassname createVehicle _missionPosition;
+	_vehicle = _buildingClassname createVehicle _missionPosition;
 	_vehicle setdir (random 360);
 	private["_normal"];
 	_normal = surfaceNormal (position _vehicle);
@@ -66,54 +72,55 @@ if (isServer) then
 	_groups = _groups + [group ((crew _vehicle) select 0)];
 	_vehicles = _vehicles + [_vehicle];
 
-	/*----------------------------------------------------------------------------*/
-	/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu k�nnen */
-	/*----------------------------------------------------------------------------*/
-	private["_patrolCount"];
-	_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 6);
-
-	/*-------------------------*/
-	/* Patroullierende Truppen */
-	/*-------------------------*/
-	for "_i" from 0 to _patrolCount do 
+	if (pixParamMissionOpt == 1) then
 	{
+		/*----------------------------------------------------------------------------*/
+		/* Anzahl der Spieler berechnen um den Schwierigkeitsgrad bestimmen zu können */
+		/*----------------------------------------------------------------------------*/
+		private["_patrolCount"];
+		_patrolCount = ceil((call PC_fnc_GetPlayerCount) / 6);
+
+		/*-------------------------*/
+		/* Patroullierende Truppen */
+		/*-------------------------*/
+		for "_i" from 0 to _patrolCount do 
+		{
+			private["_groupInfos"];
+			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+			if (count _groupInfos > 0) then
+			{
+				_groups = _groups + [(_groupInfos select 0)];
+				_vehicles = _vehicles + (_groupInfos select 1);
+			};
+		};
+
+		/*----------------------*/
+		/* Verteidigungs Truppe */
+		/*----------------------*/
 		private["_groupInfos"];
-		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
+		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT","OIA_InfSentry"], _missionPosition] call PC_fnc_SpawnGroupGuardObject;
 		if (count _groupInfos > 0) then
 		{
 			_groups = _groups + [(_groupInfos select 0)];
 			_vehicles = _vehicles + (_groupInfos select 1);
 		};
 	};
-
-	/*----------------------*/
-	/* Verteidigungs Truppe */
-	/*----------------------*/
-	private["_groupInfos"];
-	_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT","OIA_InfSentry"], _missionPosition] call PC_fnc_SpawnGroupGuardObject;
-	if (count _groupInfos > 0) then
+	
+	if (pixParamMineFields == 1) then
 	{
-		_groups = _groups + [(_groupInfos select 0)];
-		_vehicles = _vehicles + (_groupInfos select 1);
+		/*-------------*/
+		/* Minenfelder */
+		/*-------------*/
+		private["_mineFieldCount"];
+		_mineFieldCount = 1 +  floor(random 3);
+		for "_i" from 0 to _mineFieldCount do 
+		{
+			[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
+		};
 	};
-
-	/*-------------*/
-	/* Minenfelder */
-	/*-------------*/
-	private["_mineFieldCount"];
-	_mineFieldCount = 1 +  floor(random 3);
-	for "_i" from 0 to _mineFieldCount do 
-	{
-		[_missionPosition, ["APERSTripMine"]] call PC_fnc_CreateMineFieldAtTarget;
-	};
-
-	/*--------------*/
-	/* Vorsch�digen */
-	/*--------------*/
-	_vehicle setDamage 0.5;
 
 	/*--------------------------------------*/
-	/* Warten bis die Mission erf�llt wurde */
+	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
 	waitUntil {(!alive _vehicle) || (pixZones_ActiveIndex == -1)};
 	
@@ -123,7 +130,7 @@ if (isServer) then
 	[_missionInfoIndex] call PC_fnc_FinishMissionStatus;
 
 	/*-------------------------------------------------------------------------------------------------------------*/
-	/* Warten bis Zone beendet. Dann nocheinmal zuf�llige Zeitverz�gerung, damit nicht alle gleichzeitig aufr�umen */
+	/* Warten bis Zone beendet. Dann nocheinmal zufällige Zeitverzögerung, damit nicht alle gleichzeitig aufräumen */
 	/*-------------------------------------------------------------------------------------------------------------*/
 	waitUntil {pixZones_ActiveIndex == -1 };
 	sleep (random 60);

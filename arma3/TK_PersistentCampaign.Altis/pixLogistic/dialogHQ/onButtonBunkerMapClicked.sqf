@@ -50,7 +50,7 @@ _i = 0;
 	_markerName setMarkerShapeLocal "ICON";
 	_markerName setMarkerSizeLocal [1,1];
 	_markerName setMarkerAlphaLocal 0.9;
-	if (typeof(_x) == "Land_Cargo_HQ_V1_F") then
+	if (typeof(_x) in pixlogisticHQs) then
 	{
 		_markerName setMarkerTypeLocal "n_hq";
 		_markerName setMarkerColorLocal "ColorBlue";

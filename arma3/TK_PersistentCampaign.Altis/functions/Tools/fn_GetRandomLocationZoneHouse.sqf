@@ -1,13 +1,12 @@
 /* 
 	Berechnet eine zufällige Position innerhalb einer Zone.
-	Die Position muss auf dem "freien Feld" liegen.
+	Die Position ist die Position eines Gebäudes.
 	
 Parameter:
 	zoneIndex: Der Index der Zone die den gültigen Bereich definiert.
 	(optional) safetyBorder: Sicherheitsabstand zum Rand. (Default 25)
 	(optional) objectPosition: Wenn angegeben, dann wird nicht nur die Zone, sondern auch diese Position und der folgende Radius verwendet um die Ergenis-Position zu bestimmen. 
 	(optional) objectRadius: Der Radius (siehe objectPosition).
-	
 
 Return: 
 	The random location. [[0,0,0], 0] ([position, immer 0]) 
@@ -61,7 +60,7 @@ while { _loopLimit > 0 } do
 			_maxIndex = 0;
 			while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
 
-			if (_maxIndex < 8) then
+			if ((_maxIndex < 8) && (_maxIndex > 0)) then
 			{
 				_result = [getPos _house, 0];
 				_loopLimit = 0;

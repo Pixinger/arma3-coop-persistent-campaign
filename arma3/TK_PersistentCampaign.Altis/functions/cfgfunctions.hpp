@@ -7,14 +7,20 @@ class PC
 		file = "functions\ai";
 		class AttackObject {description = "";};
 		class CleanupMission {description = "";};
-		class GuardObject {description = "";};
-		class PatrolObject {description = "";};
-		class PatrolZone {description = "";};
+		class GuardObject {description = "Parameter(group/guardPosition)";};
+		class PatrolHouse {description = "Lässt eine Gruppe von einem Gebäude zum anderen patrollieren. Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class PatrolObject {description = "Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class PatrolObjectWater {description = "Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class PatrolRoad {description = "Lässt eine Gruppe auf Strassensegmenten patrollieren. Der Weg zwischen den Wegpunkten muss nicht zwingend über die Strasse gehen. Parameter(group/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class PatrolZone {description = "Parameter(group/zoneIndex/(opt)zoneSafetyBorder)";};
 		class SetSkill {description = "";};
 		class SpawnGroup {description = "";};
 		class SpawnGroupAttackObject {description = "";};
 		class SpawnGroupGuardObject {description = "";};
-		class SpawnGroupPatrolObject {description = "";};
+		class SpawnGroupPatrolRoad {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class SpawnGroupPatrolHouse {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class SpawnGroupPatrolObject {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
+		class SpawnGroupPatrolObjectWater {description = "Parameter(cfgGroupNames/zoneIndex/centerPosition/radius/(opt)zoneSafetyBorder)";};
 		class SpawnGroupPatrolZone {description = "";};
 		class TrackGroup {description = "";};
 	};
@@ -40,6 +46,7 @@ class PC
 	
 	class missionsOpt
 	{
+		class IsMissionFinished {description = "";};
 		class FinishMissionStatus {description = "";};
 		class FindVehicleTypeInRange {description = "";};
 	};
@@ -58,13 +65,17 @@ class PC
 		class GetMinDistance {description = "";};
 		class GetObfuscatedMarker {description = "";};
 		class GetPlayerCount {description = "";};
+		class GetPlayerWithUid {description = "";};
+		class GetRandomLocationZoneCity {description = "";};
 		class GetRandomLocationZoneField {description = "";};
 		class GetRandomLocationZoneHouse {description = "";};
 		class GetRandomLocationZoneRoad {description = "";};
+		class GetRandomLocationZoneWater {description = "";};
 		class GetRandomPositionMarker {description = "";};
 		class GetRandomPositionZone {description = "";};
 		class GetRandomPositionZoneObject {description = "";};
 		class GetUniqueMarkerName {description = "";};
+		class IsFlat {description = "";};
 	};
 };
 

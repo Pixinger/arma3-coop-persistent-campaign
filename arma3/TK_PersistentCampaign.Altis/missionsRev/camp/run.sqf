@@ -44,73 +44,48 @@ if (isServer) then
 	_flag = "Flag_NATO_F" createVehicle _missionPosition;
 	_buildings = _buildings + [_flag];
 	
-	/* Bunker1 erstellen */
-	private["_bunker1"];
-	_bunker1 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [6.5,-2,-2], [], 0, "NONE"];
-	Sleep .5;
-	_bunker1 setDir (random 359);
-	_buildings = _buildings + [_bunker1];
-	/* Bunker2 erstellen */
-	private["_bunker2"];
-	_bunker2 = createVehicle ["Land_BagBunker_Small_F", _flag modelToWorld [-8,-2,-2], [], 0, "NONE"];
-	Sleep .5;
-	_bunker2 setDir (random 359);
-	_buildings = _buildings + [_bunker2];
-	/* MG1 erstellen */
-	private["_mg1"];
-	_mg1 = createVehicle ["I_HMG_01_high_F", _bunker1 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
-	Sleep .5;
-	_mg1 setDir (random 359);
-	_buildings = _buildings + [_mg1];
-	/* MG2 erstellen */
-	private["_mg2"];
-	_mg2 = createVehicle ["I_HMG_01_high_F", _bunker2 modelToWorld [0,0,0], [], 0, "CAN_COLLIDE"];
-	Sleep .5;
-	_mg2 setDir (random 359);
-	_buildings = _buildings + [_mg2];
 
-	/* Einheit im Bunker1 */
-	private["_group"];
-	_group = createGroup west;
-	private["_unitBunker1"];
-	_unitBunker1 = _group createUnit ["B_Soldier_F", _missionPosition, [], 0, "NONE"];
-	sleep .5;
-	_unitBunker1 action ["getInGunner",_mg1];
-	doStop _unitBunker1;
-	_groups = _groups + [_group];
+	/*------------------*/
+	/* Vehicle erzeugen */
+	/*------------------*/
+	private["_content"];
+	_content = ["Land_HBarrier_5_F","Land_HBarrier_5_F","Land_HBarrier_5_F","Land_BagBunker_Small_F","Land_BagBunker_Small_F","B_static_AT_F","B_static_AT_F","B_static_AT_F"];
+	private["_mrap"];
+	_mrap = ["B_MRAP_01_F", _flag modelToWorld [8,8,0]] call fn_pixLogistic_CreateCorrectedVehicle; /* Kapselt z.B. Änderungen an der Ladung */
+	_mrap setVariable ["pixLogisticContent", _content, true]; 
 	
-	/* Einheit im Bunker2 */
-	_group = createGroup west;
-	private["_unitBunker2"];
-	_unitBunker2 = _group createUnit ["B_Soldier_F", _missionPosition, [], 0, "NONE"];
-	sleep .5;
-	_unitBunker2 action ["getInGunner",_mg2];
-	doStop _unitBunker2;
-	_groups = _groups + [_group];
-
 	/*-----------------------------------*/
 	/* Die Angriffs-Einheiten erstellen  */
 	/*-----------------------------------*/
 	private["_enemyGroups"];
 	_enemyGroups = [];
 	
-	{
-		for "_i" from 0 to 1 do
+	if (pixParamMissionOpt == 1) then
+	{	
+		private["_currentPlayerCount"];
+		_currentPlayerCount = call PC_fnc_GetPlayerCount;
+		
+		private["_attackerCount"];
+		_attackerCount = ceil(_currentPlayerCount / 3);
+		
 		{
-			private["_groupInfos"];
-			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OIA_MechInf_AT","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_TankPlatoon"], _x, _missionPosition, 200, pixParamReverseAttackDelay] call PC_fnc_SpawnGroupAttackObject;
-			if (str(_groupInfos) != "[[0,0,0],0]") then
-			{			
-				_groups = _groups + [_groupInfos select 0];
-				_vehicles = _vehicles + (_groupInfos select 1);
-				_enemyGroups = _enemyGroups + [_groupInfos select 0];
-			}
-			else
+			for "_i" from 0 to _attackerCount do
 			{
-				diag_log format["ERROR: PC_fnc_SpawnGroupAttackObject for attacking zone %1 in rev\camp\run.sqf failed", _x];
+				private["_groupInfos"];
+				_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OIA_MechInf_AT","OIA_MotInf_AT","OIA_MotInf_GMGTeam","OIA_MotInf_MGTeam","OIA_TankPlatoon"], _x, _missionPosition, 200, pixParamReverseAttackDelay] call PC_fnc_SpawnGroupAttackObject;
+				if (str(_groupInfos) != "[[0,0,0],0]") then
+				{			
+					_groups = _groups + [_groupInfos select 0];
+					_vehicles = _vehicles + (_groupInfos select 1);
+					_enemyGroups = _enemyGroups + [_groupInfos select 0];
+				}
+				else
+				{
+					diag_log format["ERROR: PC_fnc_SpawnGroupAttackObject for attacking zone %1 in rev\camp\run.sqf failed", _x];
+				};
 			};
-		};
-	} foreach _attackingZones;
+		} foreach _attackingZones;
+	};
 
 	/*-------------------*/
 	/* Trigger erstellen */
@@ -125,23 +100,34 @@ if (isServer) then
 	/*--------------------------------------*/
 	/* Warten bis die Mission erfüllt wurde */
 	/*--------------------------------------*/
-	private["_enemyUnits"];
-	_enemyUnits = [];
+	if (pixParamMissionOpt == 1) then 
+	{		
+		/* Mit KI als Angreifer */
+		private["_enemyUnits"];
+		_enemyUnits = [];
+		{
+			_enemyUnits = _enemyUnits + (units _x);		
+		} foreach _enemyGroups;
+		
+		private["_limit"];
+		_limit = ceil((count _enemyUnits) / 25);
+		private["_aliveEnemyUnits"];
+		_aliveEnemyUnits = 60000;
+		while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
+		{
+			Sleep 2;
+			_aliveEnemyUnits = 0;
+			{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
+		};
+	}
+	else
 	{
-		_enemyUnits = _enemyUnits + (units _x);		
-	} foreach _enemyGroups;
-	
-	private["_limit"];
-	_limit = ceil((count _enemyUnits) / 25);
-	private["_aliveEnemyUnits"];
-	_aliveEnemyUnits = 60000;
-	while { ((_aliveEnemyUnits > _limit) && (pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
-	{
-		Sleep 2;
-		_aliveEnemyUnits = 0;
-		{ if (alive _x) then { _aliveEnemyUnits = _aliveEnemyUnits + 1;};} foreach _enemyUnits;
+		/* Mit Zeus als Angreifer */
+		while { ((pixZones_ActiveIndex != -1) && (!missionsRev_AttackFinished)) } do
+		{
+			Sleep 2;
+		};	
 	};
-	
 	/*-----------------*/
 	/* Trigger löschen */
 	/*-----------------*/

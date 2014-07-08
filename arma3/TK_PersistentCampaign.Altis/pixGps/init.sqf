@@ -43,7 +43,7 @@ if (!isServer || !isDedicated) then
 			private["_unit"];
 			_unit = _units select _i;
 			_markerName setMarkerPosLocal (getPos _unit);
-			if (captive _unit) then 
+			if (captiveNum _unit == 1) then 
 			{ 
 				_markerName setMarkerColorLocal "ColorBlack"; 
 				_markerName setMarkerAlphaLocal 0.4;
@@ -51,6 +51,8 @@ if (!isServer || !isDedicated) then
 			} 
 			else 
 			{
+				if (captiveNum _unit == 3) then  { _markerName setMarkerPosLocal [0,0,0];}; // Position nicht darstellen
+
 				_markerName setMarkerColorLocal "ColorBlue";
 				_markerName setMarkerAlphaLocal 0.7;
 				_markerName setMarkerTextLocal (name _unit);

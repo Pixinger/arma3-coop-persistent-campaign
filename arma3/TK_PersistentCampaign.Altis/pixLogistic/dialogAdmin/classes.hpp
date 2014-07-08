@@ -139,50 +139,50 @@ class PIXLOGISTIC_DIALOG_ADMIN
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button12;
 		y = 88.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
+		text = "";
 		action = "";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button13 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button13;
 		y = 96.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Zone beenden (gewonnen)";
+		action = "[1] execVM 'pixLogistic\dialogAdmin\onButtonZoneBeendenClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button14 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button14;
 		y = 104.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Zone beenden (verloren)";
+		action = "[2] execVM 'pixLogistic\dialogAdmin\onButtonZoneBeendenClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button15 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button15;
 		y = 112.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Rucksack Funkgerät hinzufügen";
+		action = "[] execVM 'pixLogistic\dialogAdmin\onButtonAddBackpackRadioClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button16 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button16;
 		y = 120.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "Funkgerät hinzufügen";
+		action = "[] execVM 'pixLogistic\dialogAdmin\onButtonAddRadioClicked.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button17 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button17;
 		y = 128.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "ZeusFix";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFix.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button18 : RscButtonAdminMenu
 	{
 		idc = PIXLOGISTIC_IDC_DIALOG_ADMIN_Button18;
 		y = 136.5 * GRID_H + GRID_ABS_Y; 
-		text = "--";
-		action = "";
+		text = "ZeusFix switch attach unit";
+		action = "execVM 'pixLogistic\dialogAdmin\onButtonZeusFixAttach.sqf';";
 	};
 	class PIXLOGISTIC_DIALOG_ADMIN_Button19 : RscButtonAdminMenu
 	{

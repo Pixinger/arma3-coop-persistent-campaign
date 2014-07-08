@@ -26,8 +26,12 @@ if (!isServer || !isDedicated) then
 		waitUntil {!isNull player};
 		waitUntil {alive player};
 	
-		Sleep 2;
-		player setPos (getMarkerPos "respawn_west");	
+	
+		if (side player == west) then
+		{
+			Sleep 2;
+			player setPos (getMarkerPos "respawn_west");	
+		};
 	};
 	
 

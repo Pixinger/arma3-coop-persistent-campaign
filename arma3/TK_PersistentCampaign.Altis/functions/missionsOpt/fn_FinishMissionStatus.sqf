@@ -1,16 +1,16 @@
 /* 
-	Diese Funktion stellt sicher, dass eine Gruppe eine bestimmte Position verteidigt.
+	Prüft eine Mission ob sie erfolgreich war, oder nicht.
+	Danach wird der Status an alle CLienten Kommuniziert.
 	
 Parameter:
-	group: Die Gruppe welche die Position verteidigen soll.
-	guardPosition: Die Position die verteidigt werden soll.
+	_missionInfoIndex: Der MissionINdex der mission die 
 	
 Return: 
-	Wenn erfolgreich true, sonst false.
+	true
 
 /*-------------------------------------------------------------------*/
 
-if (!isServer) exitwith {["This functino is server-side only"] call BIS_fnc_error; false };
+if (!isServer) exitwith {["This function is server-side only"] call BIS_fnc_error; false };
 
 private["_missionInfoIndex"];
 _missionInfoIndex = [_this, 0, -1, [0]] call BIS_fnc_param;

@@ -1,3 +1,10 @@
 closeDialog 0;
 
-player setCaptive true;
+if (captiveNum player > 0) then 
+{
+	player setCaptive 0;
+}
+else
+{
+	player setCaptive 2;
+};

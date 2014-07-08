@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------*/
 /* Sicherstellen, dass die "pixZones" bereits initialisiert wurden */
 /*-----------------------------------------------------------------*/
-if (isNil "pixZones_Initialized") then
+/*if (isNil "pixZones_Initialized") then
 {
 	player globalChat "ERROR: pixZones wurden noch nicht initialisiert.";
-};
+};*/
 
 
 
@@ -12,3 +12,8 @@ if (isNil "pixZones_Initialized") then
 /* Konfiguration laden */
 /*---------------------*/
 call compile preprocessFileLineNumbers "missionsOpt\config.sqf";
+
+if (!isServer || !isDedicated) then
+{
+	pixExplosivesArray = [];
+};

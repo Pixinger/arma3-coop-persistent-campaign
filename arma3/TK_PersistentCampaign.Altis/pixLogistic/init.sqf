@@ -41,6 +41,7 @@ Clientseitig:
 	pixLogisticObjectDialogContentButton	(Gibt an, ob bei dem Auswahl-Dialog die OK Taste gedrückt wurde, oder nicht)
 	pixLogisticObjectDialogContentSelection = 0;
 	pixLogisticDialogHqStore_AdminSpawn = false; (Enthält die SpawnPosition eines Gegenstandes, wenn über das AdminMenü aufgerufen wurd.)
+	pixLogisticZeusFix = false				(Gibt an, ob der ZeusFix aktiviert ist, oder nicht.)
 */
 
 /* ------------------- */
@@ -71,6 +72,7 @@ if (isServer) then
 	pvehPixlogisticUpdateItem = ""; 	/* EventHandler Variable zum Aktualisieren von erzeugten Objekten in der Datenbank. */
 	pvehPixlogisticSaved = 0; 			/* Wird bei jedem speichern um eins erhöht */
 	pvPixLogisticServerInitialized = false;
+	pvehPixlogisticHidePlayer = "";
 	publicVariable "pvPixLogisticServerInitialized";
 
 	/* -------------------------------------------------------------- */
@@ -126,6 +128,7 @@ if (!isServer || !isDedicated) then
 	pixLogisitcAdminKeyPressed = false;
 	pixLogisticDialogHqStore_AdminSpawn = false; 
 	pixLogisticLastLoadOut = "Default.sqf";
+	pixLogisticZeusFix = false;
 	
 	fn_pixLogistic_FoldBuilding = compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_FoldBuilding.sqf";
 	fn_pixLogistic_UnfoldBuilding = compile preprocessFileLineNumbers "pixLogistic\fn_pixLogistic_UnfoldBuilding.sqf";
@@ -157,8 +160,11 @@ if (!isServer || !isDedicated) then
 		};
 		
 		waitUntil {alive player};
-		private["_tmp"]; 
-		_tmp = [player, pixLogisticLastLoadOut] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";			
+		if (side player == west) then
+		{
+			private["_tmp"]; 
+			_tmp = [player, pixLogisticLastLoadOut] call compile preprocessFileLineNumbers "pixLogistic\dialogBarracks\applyLoadOut.sqf";			
+		};
 	};
 };
 

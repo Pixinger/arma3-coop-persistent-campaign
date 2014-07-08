@@ -2,7 +2,7 @@ private["_zoneIndex"];
 _zoneIndex = _this select 0;
 
 private["_result"];
-_result = [[0,0,0],0,[0,0,0],0];
+_result = [[0,0,0],0,[0,0,0],0]; /* [position, direction, obfuscatedPosition, obfuscatedRadius] */
 
 private["_location"]; /*[[0,0,0],0]*/
 _location = [_zoneIndex, missionsOpt_DefaultMarkerRadius] call PC_fnc_GetRandomLocationZoneField;
