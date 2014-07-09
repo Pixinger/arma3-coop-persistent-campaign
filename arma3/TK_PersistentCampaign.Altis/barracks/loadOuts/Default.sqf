@@ -55,7 +55,7 @@ _result = [
 		/* Uniform-Magazines */
 		[],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
+		["ItemRadio","x39_medikit","x39_medikit","x39_medikit","x39_earplug"]
 	],
 	
 	/* Vest */
@@ -66,7 +66,33 @@ _result = [
 		/* Vest-Magazines */
 		[],
 		/* Vest-Items */
-		[]
+		[
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine"
+		]
 	],
 	
 	/* Backpack */
@@ -77,24 +103,7 @@ _result = [
 		/* Backpack-Magazines */
 		[],
 		/* Backpack-Items */
-		[
-			"x39_earplug",
-			"x39_bandage",	
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine"
-		]
+		[]
 	]
 ];
 

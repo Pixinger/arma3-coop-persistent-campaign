@@ -38,7 +38,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign LIGHT";
-		overviewText="www.teamkommando.de | V1.04";
+		overviewText="www.teamkommando.de | V1.05";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;

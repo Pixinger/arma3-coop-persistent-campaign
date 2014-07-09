@@ -9,6 +9,7 @@ pixLogisticLastLoadOut = _loadout;
 /* Loadout abfragen */
 private["_result"];
 _result = _unit call compile preprocessFileLineNumbers format["barracks\loadouts\%1", _loadout];
+player sidechat str(_result);
 
 /* Result lesbar machen */
 private["_goggleClassname"];
@@ -106,26 +107,6 @@ if (_uniformClassname != "") then {	_unit addUniform _uniformClassname;};
 if (_vestClassname != "") then { _unit addVest _vestClassname;};
 if (_backpackClassname != "") then { _unit addBackpack _backpackClassname;};
 
-/* Munition hinzufügen, sonst ist diese nacher nicht verfügbar */
-if (_uniformClassname != "") then 
-{
-	{ _unit addItemToUniform _x; } foreach _uniformWeapons;
-	{ _unit addItemToUniform _x; } foreach _uniformMagazines;
-	{ _unit addItemToUniform _x; } foreach _uniformItems;
-};
-if (_vestClassname != "") then 
-{
-	{ _unit addItemToVest _x; } foreach _vestWeapons;
-	{ _unit addItemToVest _x; } foreach _vestMagazines;
-	{ _unit addItemToVest _x; } foreach _vestItems;
-};
-if (_backpackClassname != "") then 
-{
-	{ _unit addItemToBackpack _x; } foreach _backpackWeapons;
-	{ _unit addItemToBackpack _x; } foreach _backpackMagazines;	
-	{ _unit addItemToBackpack _x; } foreach _backpackItems;
-};
-
 /* Dann die Waffen hinzufügen, damit diese die Magazine gleich aufnehmen können 
    das Inventar sollte danach wieder leer sein. */
 if (_primaryWeaponClassname != "") then
@@ -145,6 +126,26 @@ if (_handgunClassname != "") then
 	if (_handgunMagazine != "") then {_unit addMagazine  _handgunMagazine; };
 	_unit addWeapon _handgunClassname;
 	{_unit addHandgunItem _x;} foreach _handgunItems;
+};
+
+/* Munition hinzufügen, sonst ist diese nacher nicht verfügbar */
+if (_uniformClassname != "") then 
+{
+	{ _unit addItemToUniform _x; } foreach _uniformWeapons;
+	{ _unit addItemToUniform _x; } foreach _uniformMagazines;
+	{ _unit addItemToUniform _x; } foreach _uniformItems;
+};
+if (_vestClassname != "") then 
+{
+	{ _unit addItemToVest _x; } foreach _vestWeapons;
+	{ _unit addItemToVest _x; } foreach _vestMagazines;
+	{ _unit addItemToVest _x; } foreach _vestItems;
+};
+if (_backpackClassname != "") then 
+{
+	{ _unit addItemToBackpack _x; } foreach _backpackWeapons;
+	{ _unit addItemToBackpack _x; } foreach _backpackMagazines;	
+	{ _unit addItemToBackpack _x; } foreach _backpackItems;
 };
 
 /* Ausrüstung hinzufügen */

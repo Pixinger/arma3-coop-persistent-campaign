@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Diving",
+	"G_Sport_Greenblack",
 	
 	/* Headgear */
-	"",
+	"H_HelmetB",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -22,9 +22,9 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_SDAR_F",
+		"srifle_LRR_SOS_F",
 		/* Primary weapon Magazine */
-		"20Rnd_556x45_UW_mag",
+		"7Rnd_408_Mag",
 		/* Primary Weapon Items */
 		[]
 	],
@@ -49,63 +49,76 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_B_Wetsuit", 
+		"U_B_GhillieSuit", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","SmokeShell","SmokeShell"],
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
-		[	"ItemRadio",
-			"x39_medikit",
-			"x39_earplug",
-			"x39_bandage",	
-			"x39_bandage",	
-			"x39_bandage",	
-			"x39_bandage",	
-			"x39_bandage",	
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine"
-		]
+		["ItemRadio","x39_medikit","x39_earplug"]
 	],
 	
 	/* Vest */
 	[	
-		"V_RebreatherB", 
+		"V_TacVest_camo", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
-		[],
+		[
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag"
+		],
 		/* Vest-Items */
 		[]
 	],
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_blk", 
+		"B_AssaultPack_sgg", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[
-			"30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag",
-			"SatchelCharge_Remote_Mag",
-			"DemoCharge_Remote_Mag"
+		[	
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"7Rnd_408_Mag",
+			"11Rnd_45ACP_Mag",
+			"11Rnd_45ACP_Mag"
 		],
 		/* Backpack-Items */
 		[
+			"x39_bandage",	
 			"x39_bandage",
 			"x39_bandage",
 			"x39_bandage",
 			"x39_bandage",
-			"x39_bandage"
-		]		
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine"
+		]
 	]
 ];
 

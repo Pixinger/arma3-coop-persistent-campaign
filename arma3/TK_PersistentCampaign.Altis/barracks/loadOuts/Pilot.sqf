@@ -55,7 +55,7 @@ _result = [
 		/* Uniform-Magazines */
 		["SmokeShell","HandGrenade","30Rnd_45ACP_Mag_SMG_01","30Rnd_45ACP_Mag_SMG_01","30Rnd_45ACP_Mag_SMG_01"],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit","acc_pointer_IR"]
+		["ItemRadio", "x39_earplug", "x39_bandage", "x39_morphine"]
 	],
 	
 	/* Vest */
@@ -79,24 +79,7 @@ _result = [
 		[	
 		],
 		/* Backpack-Items */
-		[
-			"x39_earplug",
-			"x39_bandage",	
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine"
-		]
+		[]
 	],
 	
 	/* unit classname */

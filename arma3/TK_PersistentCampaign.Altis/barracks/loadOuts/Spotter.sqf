@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Tactical_Clear",
+	"G_Sport_Greenblack",
 	
 	/* Headgear */
-	"H_Cap_headphones",
+	"H_HelmetB",
 	
 	/* Binoculars */
 	"Laserdesignator",
@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"SMG_01_Holo_F",
+		"arifle_MX_F",
 		/* Primary weapon Magazine */
-		"30Rnd_45ACP_Mag_SMG_01",
+		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["acc_pointer_IR", "muzzle_snds_acp"]
+		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
 	],
 	
 	/* Secondary Weapon */
@@ -49,68 +49,55 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_B_CTRG_2", 
+		"U_B_GhillieSuit", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["HandGrenade","HandGrenade","HandGrenade"],
+		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
 		/* Uniform-Items */
 		["ItemRadio","x39_medikit","x39_earplug"]
 	],
 	
 	/* Vest */
 	[	
-		"V_PlateCarrierH_CTRG", 
+		"V_TacVest_camo", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell","SmokeShell"],
-		/* Vest-Items */
 		[
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_bandage",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_morphine",
-			"x39_epinephrine",
-			"x39_epinephrine",
-			"x39_epinephrine",
-			"x39_epinephrine",
-			"x39_epinephrine",
-			"x39_tourniquet",
-			"x39_medikit",
-			"x39_medikit",
-			"x39_medikit"
-		]		
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag"
+		],
+		/* Vest-Items */
+		[]
 	],
 	
 	/* Backpack */
 	[
-		"tf_rt1523g", 
+		"B_AssaultPack_sgg", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01"
+		[	
+			"SmokeShell",
+			"SmokeShell",
+			"SmokeShell",
+			"SmokeShell",
+			"SmokeShellPurple",
+			"30Rnd_65x39_caseless_mag",
+			"30Rnd_65x39_caseless_mag",
+			"11Rnd_45ACP_Mag",
+			"11Rnd_45ACP_Mag"
 		],
 		/* Backpack-Items */
 		[
+			"x39_bandage",	
 			"x39_bandage",
 			"x39_bandage",
 			"x39_bandage",
@@ -120,8 +107,26 @@ _result = [
 			"x39_bandage",
 			"x39_bandage",
 			"x39_bandage",
+			"x39_bandage",	
 			"x39_bandage",
-			"optic_Nightstalker"
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_bandage",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine",
+			"x39_morphine"
 		]
 	]
 ];
