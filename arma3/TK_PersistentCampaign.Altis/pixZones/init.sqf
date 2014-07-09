@@ -5,23 +5,15 @@ call compile preprocessFileLineNumbers "pixZones\config.sqf";
 if (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount) then { player globalChat "ERROR: (count pixZones_ZoneConnectionsBlueFor != pixZones_ZoneCount)";};
 if (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount) then { player globalChat "ERROR: (count pixZones_ZoneConnectionsOpFor != pixZones_ZoneCount)";};
 
-/* -------------------------------- */
-/* Spezielle Funktionen kompilieren */
-/* -------------------------------- */
-fn_pixZones_UpdateMarkerColor = compile preprocessFileLineNumbers "pixZones\fn_pixZones_UpdateMarkerColor.sqf";
-
 /* ---------------------------------------------------- */
 /* Noch fehlende globale Variablen automatisch erzeugen */
 /* ---------------------------------------------------- */
-pixZones_ActiveIndex = -1;
 pixZones_MarkerNames = []; 		/* ["Zone0", "Zone1", "Zone2", ..] */
-pixZones_ZoneCoordinates = []; 	/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
-pixZones_IgnoreReverseAttack = false;
+pixZones_ZoneCoordinates = []; 		/* Koordinaten des jeweiligen Markers [[Left1, Top1, Right1, Bottom1], ..] */
 
-if (isNil "pvehPixZones_OnRequestActivation") then { pvehPixZones_OnRequestActivation = -1;};
-if (isNil "pvehPixZones_MissionInfos") then { pvehPixZones_MissionInfos = [];};
-if (isNil "pvehPixZones_MissionStatus") then { pvehPixZones_MissionStatus = [];};
 if (isNil "pvehPixZones_ZoneStatus") then { pvehPixZones_ZoneStatus = [];};
+if (isNil "pvehPixZones_SaveDatabase") then { pvehPixZones_SaveDatabase = false;};
+
 
 for "_i" from 0  to (pixZones_ZoneCount - 1) do
 {
@@ -37,31 +29,6 @@ for "_i" from 0  to (pixZones_ZoneCount - 1) do
 	pixZones_ZoneCoordinates = pixZones_ZoneCoordinates + [[(_pos select 0) - (_size select 0) - 50, (_pos select 1) - (_size select 1) - 50, (_pos select 0) + (_size select 0) +50, (_pos select 1) + (_size select 1)+50]]; 
 };
 
-/* -------------------------------------------------------------------------- */
-/* EventHandler, wenn ein Client beim Server den Start einer Zone beauftragt. */
-/* Dieser EventHandler wird nur auf dem Server empfangen.*/
-/* -------------------------------------------------------------------------- */
-"pvehPixZones_OnRequestActivation" addPublicVariableEventHandler 
-{
-	call compile preprocessFileLineNumbers "pixZones\pvehPixZones_OnRequestActivation.sqf";
-};
-/*------------------------------------------------------------------------------------------------------------*/
-/* EventHandler, wenn eine Mission gestartet wurde */
-/* Der Server selbst startet die Mission. Der Client fragt vorher über "pvehPixZones_OnRequestActivation" an. */
-/*------------------------------------------------------------------------------------------------------------*/
-"pvehPixZones_MissionInfos" addPublicVariableEventHandler 
-{
-	call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionInfos.sqf";
-};
-/*-------------------------------------------------------------------------------------------------*/
-/* EventHandler, wenn sich der Status einer Mission ändert */
-/* Hier wird momentan nur eine Anzeige vorgenommen. Dies Skripte selbst pollen den Missionsstatus. */
-/*-------------------------------------------------------------------------------------------------*/
-"pvehPixZones_MissionStatus" addPublicVariableEventHandler 
-{
-	call compile preprocessFileLineNumbers "pixZones\pvehPixZones_MissionStatus.sqf";
-};
-
 /*------------------------------------------------------------------------------------------------------------*/
 /* EventHandler, wenn sich der Status eines Sektors ändert.
 /*------------------------------------------------------------------------------------------------------------*/
@@ -70,6 +37,13 @@ for "_i" from 0  to (pixZones_ZoneCount - 1) do
 	call compile preprocessFileLineNumbers "pixZones\pvehPixZones_ZoneStatus.sqf";
 };
 
+/*------------------------------------------------------------------------------------------------------------*/
+/* EventHandler, zum Speichern der Datenbank
+/*------------------------------------------------------------------------------------------------------------*/
+"pvehPixZones_SaveDatabase" addPublicVariableEventHandler 
+{
+	call compile preprocessFileLineNumbers "pixZones\pvehPixZones_SaveDatabase.sqf";
+};
 
 /* ------------------------- */
 /* Server, oder Serverclient */
@@ -121,14 +95,7 @@ if (!isServer || !isDedicated) then
 	_tmp = [] execVM "pixZones\observePlayer.sqf";
 	
 	/* Die Farben der Zonen aktualisieren */
-	if (!isServer || !isDedicated) then	{ call fn_pixZones_UpdateMarkerColor; };	
-	
-	/* Sollte bereits eine Zone aktiv sein, dann diese nachstarten */
-	if (str(pvehPixZones_MissionInfos) != "[]") then
-	{
-		private["_tmp"];
-		_tmp = [] execVM "pixZones\zoneRun.sqf"; /* liest aus "pvehPixZones_MissionInfos" aus */
-	};
+	call PC_fnc_UpdateMarkerColor;
 };
 
 /* -------------------------- */
