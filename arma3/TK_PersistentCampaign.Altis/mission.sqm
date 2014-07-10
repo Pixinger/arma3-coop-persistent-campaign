@@ -38,7 +38,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign LIGHT";
-		overviewText="www.teamkommando.de | V1.05";
+		overviewText="www.teamkommando.de | V1.06";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -47,9 +47,9 @@ class Mission
 		forecastWind=0;
 		forecastWaves=0;
 		year=2035;
-		month=6;
-		day=24;
-		hour=12;
+		month=7;
+		day=5;
+		hour=5;
 		minute=0;
 		startFogBase=0.001;
 		forecastFogBase=0.001;
@@ -58,7 +58,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=40;
+		items=39;
 		class Item0
 		{
 			side="EAST";
@@ -72,7 +72,6 @@ class Mission
 					id=0;
 					side="EAST";
 					vehicle="O_Soldier_F";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					text="DummyUnit3";
@@ -760,7 +759,6 @@ class Mission
 					id=33;
 					side="CIV";
 					vehicle="C_man_1";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.2;
 					text="DummyUnit1";
@@ -775,7 +773,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={26716.086,19.780865,24645.541};
+					position[]={26732.945,20.278223,24629.297};
 					azimut=-135.218;
 					special="NONE";
 					id=34;
@@ -785,6 +783,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="Unit1";
+					description="Zeus";
 				};
 			};
 		};
@@ -802,7 +801,7 @@ class Mission
 						items=4;
 						class Item0
 						{
-							value="DummyUnit1";
+							value="#adminLogged";
 							parentCls="ModuleCurator_F";
 							typeName="Owner";
 						};
@@ -929,7 +928,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={26808.322,22.870306,24608.467};
+					position[]={26697.4,17.53846,24665.313};
 					class args
 					{
 						items=5;
@@ -973,44 +972,24 @@ class Mission
 				};
 			};
 		};
-		class Item39
-		{
-			side="WEST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={26716,19.771336,24640.889};
-					azimut=-135.218;
-					special="NONE";
-					id=39;
-					side="WEST";
-					vehicle="B_Soldier_F";
-					leader=1;
-					skill=0.60000002;
-					init="[this] call X39_MedSys_fnc_initializeUnit;";
-				};
-			};
-		};
 	};
 	class Vehicles
 	{
 		items=7;
 		class Item0
 		{
-			position[]={26712.33,19.77,24641.539};
+			position[]={26729.189,20.258259,24625.295};
 			azimut=221.35699;
-			id=40;
+			id=39;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
-			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];this addAction[""Beamen"",""barracks\onBeamClicked.sqf""];";
+			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];this addAction[""Beamen"",""barracks\onBeamClicked.sqf""];this addAction[""Groupmanager"",""dialogGroupmanager\showModal.sqf""];";
 		};
 		class Item1
 		{
 			position[]={28324.266,14.550181,25754.605};
-			id=41;
+			id=40;
 			side="EMPTY";
 			vehicle="Sign_Arrow_Cyan_F";
 			leader=1;
@@ -1018,8 +997,8 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={28334.969,14.47344,25754.619};
-			id=42;
+			position[]={28329.613,14.490029,25754.51};
+			id=41;
 			side="EMPTY";
 			vehicle="Sign_Arrow_Green_F";
 			leader=1;
@@ -1027,8 +1006,8 @@ class Mission
 		};
 		class Item3
 		{
-			position[]={28329.629,14.493114,25754.582};
-			id=43;
+			position[]={28341.781,14.472085,25755.063};
+			id=42;
 			side="EMPTY";
 			vehicle="Sign_Arrow_Blue_F";
 			leader=1;
@@ -1037,23 +1016,23 @@ class Mission
 		class Item4
 		{
 			position[]={28324.254,14.553906,25757.717};
-			id=44;
+			id=43;
 			side="EMPTY";
 			vehicle="MetalBarrel_burning_F";
 			skill=0.60000002;
 		};
 		class Item5
 		{
-			position[]={28329.734,14.517938,25757.578};
-			id=45;
+			position[]={28341.887,14.476525,25758.059};
+			id=44;
 			side="EMPTY";
 			vehicle="MetalBarrel_burning_F";
 			skill=0.60000002;
 		};
 		class Item6
 		{
-			position[]={28335.004,14.496959,25757.613};
-			id=46;
+			position[]={28329.648,14.518081,25757.504};
+			id=45;
 			side="EMPTY";
 			vehicle="MetalBarrel_burning_F";
 			skill=0.60000002;
@@ -1550,7 +1529,7 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={28334.986,14.474663,25754.648};
+			position[]={28329.631,14.491246,25754.539};
 			a=2;
 			b=2;
 			activationBy="ANY";
@@ -1564,7 +1543,7 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={28329.646,14.494328,25754.611};
+			position[]={28341.799,14.472115,25755.092};
 			a=2;
 			b=2;
 			activationBy="ANY";

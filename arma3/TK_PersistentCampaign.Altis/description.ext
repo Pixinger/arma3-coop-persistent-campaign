@@ -78,3 +78,4 @@ class Header
 #include "dialogDefines.hpp"
 #include "admin\classes.hpp"
 #include "barracks\classes.hpp"
+#include "dialogGroupManager\classes.hpp"
