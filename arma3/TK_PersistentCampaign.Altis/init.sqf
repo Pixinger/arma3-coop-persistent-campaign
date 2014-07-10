@@ -34,6 +34,7 @@ player setvariable ["BIS_nocoreconversations",true];
 /* Module initialisieren */
 [] spawn compile preprocessFileLineNumbers "pixGps\init.sqf";
 [] spawn compile preprocessFileLineNumbers "credits\init.sqf";
+[] spawn compile preprocessFileLineNumbers "xmedsys\init.sqf";
 
 /* Camera deaktivieren */
 cutText ["", "BLACK IN",1];

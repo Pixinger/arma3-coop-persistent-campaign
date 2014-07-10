@@ -169,3 +169,6 @@ if (_nightVisionClassname != "") then
 {
 	_unit linkItem _nightVisionClassname;
 };
+
+// xmedsys
+call X39_MedSys_fnc_UseEarplugs;

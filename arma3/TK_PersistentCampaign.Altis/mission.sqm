@@ -58,7 +58,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=39;
+		items=40;
 		class Item0
 		{
 			side="EAST";
@@ -973,6 +973,26 @@ class Mission
 				};
 			};
 		};
+		class Item39
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={26716,19.771336,24640.889};
+					azimut=-135.218;
+					special="NONE";
+					id=39;
+					side="WEST";
+					vehicle="B_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+					init="[this] call X39_MedSys_fnc_initializeUnit;";
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -981,7 +1001,7 @@ class Mission
 		{
 			position[]={26712.33,19.77,24641.539};
 			azimut=221.35699;
-			id=39;
+			id=40;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
@@ -990,7 +1010,7 @@ class Mission
 		class Item1
 		{
 			position[]={28324.266,14.550181,25754.605};
-			id=40;
+			id=41;
 			side="EMPTY";
 			vehicle="Sign_Arrow_Cyan_F";
 			leader=1;
@@ -999,7 +1019,7 @@ class Mission
 		class Item2
 		{
 			position[]={28334.969,14.47344,25754.619};
-			id=41;
+			id=42;
 			side="EMPTY";
 			vehicle="Sign_Arrow_Green_F";
 			leader=1;
@@ -1008,7 +1028,7 @@ class Mission
 		class Item3
 		{
 			position[]={28329.629,14.493114,25754.582};
-			id=42;
+			id=43;
 			side="EMPTY";
 			vehicle="Sign_Arrow_Blue_F";
 			leader=1;
@@ -1017,7 +1037,7 @@ class Mission
 		class Item4
 		{
 			position[]={28324.254,14.553906,25757.717};
-			id=43;
+			id=44;
 			side="EMPTY";
 			vehicle="MetalBarrel_burning_F";
 			skill=0.60000002;
@@ -1025,7 +1045,7 @@ class Mission
 		class Item5
 		{
 			position[]={28329.734,14.517938,25757.578};
-			id=44;
+			id=45;
 			side="EMPTY";
 			vehicle="MetalBarrel_burning_F";
 			skill=0.60000002;
@@ -1033,7 +1053,7 @@ class Mission
 		class Item6
 		{
 			position[]={28335.004,14.496959,25757.613};
-			id=45;
+			id=46;
 			side="EMPTY";
 			vehicle="MetalBarrel_burning_F";
 			skill=0.60000002;
