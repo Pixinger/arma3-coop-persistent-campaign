@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "Database.h"
 
-#define PIXLOGISTIC_VERSION "Version 1.0"
+#define PIXLOGISTIC_VERSION "Version 1.1"
 Database g_Database;
 
 bool GetArgument(std::string& fnc)
@@ -123,9 +123,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 			strncpy_s(output, outputSize, "INPROGRESS", _TRUNCATE); 
 		else 
 		{
-			//strncpy_s(output, outputSize, "ERROR", _TRUNCATE); 
-			_itoa_s(g_Database.StatusEx(), output, outputSize, 10);
-			//strncpy_s(output, outputSize, "ERROR", _TRUNCATE); 
+			strncpy_s(output, outputSize, "ERROR", _TRUNCATE); 
 		}
 	}
 
