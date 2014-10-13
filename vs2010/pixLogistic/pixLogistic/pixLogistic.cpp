@@ -122,7 +122,11 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 		else if (g_Database.IsThreadFinished() == Database::Status::InProgress)
 			strncpy_s(output, outputSize, "INPROGRESS", _TRUNCATE); 
 		else 
-			strncpy_s(output, outputSize, "ERROR", _TRUNCATE); 
+		{
+			//strncpy_s(output, outputSize, "ERROR", _TRUNCATE); 
+			_itoa_s(g_Database.StatusEx(), output, outputSize, 10);
+			//strncpy_s(output, outputSize, "ERROR", _TRUNCATE); 
+		}
 	}
 
 	// fncVersion

@@ -27,6 +27,7 @@ private:
 	std::vector<std::string>::iterator _Iter;
 	CriticalSection _CriticalSection;
 	Status _Status;
+	int _StatusEx;
 	int _ReadIndex;
 public:
 	Database();
@@ -39,6 +40,7 @@ public:
 	int WriteNext(const char* text);
 	int ReadNext(char* output, int outputSize);
 	void Cleanup();
+	int StatusEx() {return  _StatusEx;}
 private:
 	static void ThreadProc_Load(void* pData);
 	static void ThreadProc_Save(void* pData);

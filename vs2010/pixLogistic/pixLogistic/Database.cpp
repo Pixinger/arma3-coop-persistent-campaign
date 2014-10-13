@@ -14,6 +14,7 @@ Database::Database()
 {
 	_Mode = Modes::Nothing;
 	_Status = Status::Ok;
+	_StatusEx = 0;
 }
 Database::~Database()
 {
@@ -64,6 +65,7 @@ int Database::BeginSave(const char* filename)
 	_Filename = filename;
 	_Mode = Modes::Saving;
 	_Status = Status::Ok;
+	_StatusEx = 0;
 	_Vector = new std::vector<std::string>();
 
 	return 0;
@@ -78,6 +80,7 @@ int Database::EndSave()
 		return 2;
 	
 	_Status = Status::InProgress;
+	_StatusEx = 0;
 	_beginthread(Database::ThreadProc_Save, 0, this);
 
 	return 0;
@@ -177,19 +180,28 @@ void Database::OnThreadProc_Load()
 }
 void Database::OnThreadProc_Save()
 {
+	_StatusEx = 1;
 	// Daten auf die Festplatte schreiben
 	char tmpFilename[1024];
-	tmpnam_s(tmpFilename, 1024);
+	strcpy_s(tmpFilename, 1024, _Filename.c_str());
+	strcat_s(tmpFilename, 1024, ".sav.tmp");
+	_StatusEx = 2;
+	_StatusEx = 3;
 	std::ofstream file(tmpFilename, std::ios_base::trunc);
+	_StatusEx = 4;
 	if (!file.fail())
 	{
+		_StatusEx = 5;
 		for (std::vector<std::string>::iterator iter = _Vector->begin(); iter != _Vector->end(); iter++)
 			file << (*iter).c_str() << std::endl;
+		_StatusEx = 6;
 		file.close();
+		_StatusEx = 7;
 
 		if (FileExists(_Filename))
 			remove(_Filename.c_str());
 		rename(tmpFilename, _Filename.c_str());
+		_StatusEx = 9;
 
 		_Filename = "";
 		if (_Vector != NULL)
@@ -198,6 +210,7 @@ void Database::OnThreadProc_Save()
 			_Vector = NULL;
 		}
 
+		_StatusEx = 10;
 		_CriticalSection.Enter();
 		_Status = Status::Ok;
 		_Mode = Modes::Nothing;
@@ -205,6 +218,7 @@ void Database::OnThreadProc_Save()
 	}
 	else
 	{
+		_StatusEx = 11;
 		_Filename = "";
 		if (_Vector != NULL)
 		{
