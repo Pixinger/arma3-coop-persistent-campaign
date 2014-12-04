@@ -1,4 +1,4 @@
-arma3-coop-persistent-campaign
+arma3-coop-persistent-campaign-2
 ==============================
 
 This project is licensed under the MIT-License. 
@@ -29,4 +29,4 @@ I34dKarma's Roadblock-Script
 Unknown person for an idea of the implementation of the sidemissions (missionOpt)
 Many, many other people... just writing a quick post or showing a piece of code.
 
-I feel yourself missing, please let me know...
+If you feel yourself missing, please let me know...

@@ -1,12 +1,12 @@
 author = "[TK]Pix";  /* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben, so erscheint Unknown Author. */
-onLoadName = "[TK]Persistent Campaign LIGHT"; /* Mission Name*/
-onLoadMission = "Eine persistent gespeicherte Coop Mission, die in Angriffs- und Logistikzyklen unterteilt ist."; /* Beschreibung*/
+onLoadName = "[TK]Persistent Campaign 2"; /* Mission Name*/
+onLoadMission = ""; /* Beschreibung*/
 OnLoadIntro = "by [TK]Pix";
-onLoadMissionTime = true; /* Mit diesem Eintrag könnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
+onLoadMissionTime = false; /* Mit diesem Eintrag könnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
 onLoadIntroTime = false;   /* Mit diesem Eintrag könnt ihr durch die Variablen true oder false festlegen ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll.*/
-loadScreen = "loadScreen.paa"; /*Mit LoadScreen wird ein Bild wöhrend des Ladens der init.sqf eingeblendet. Die Bilddatei muss im Missionsordner (bzw. einem Unterordner) vorhanden sein. "pfad\zum\bild.paa"*/
-briefing = 1; /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
-debriefing = 1;   /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
+loadScreen = ""; /*Mit LoadScreen wird ein Bild während des Ladens der init.sqf eingeblendet. Die Bilddatei muss im Missionsordner (bzw. einem Unterordner) vorhanden sein. "pfad\zum\bild.paa"*/
+briefing = 0; /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
+debriefing = 0;   /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
 disabledAI = true;
 showCompass = 1;
 showGPS = 1;
@@ -18,7 +18,7 @@ enableDebugConsole = 1;
 respawnDelay = 5;
 respawnDialog = 1; 			/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
 enableItemsDropping = 0; 	/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre Ausrüstung verliert oder nicht. Mögliche Werte sind 0 (= Einheit verliert keine Ausrüstung) und 1 (= Einheit verliert ihre Ausrüstung).*/
-joinUnassigned = 1; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
+joinUnassigned = 0; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
 allowFunctionsRecompile = 1;
 allowFunctionsLog=1;
 /*
@@ -76,6 +76,3 @@ class Header
 
 
 #include "dialogDefines.hpp"
-#include "admin\classes.hpp"
-#include "barracks\classes.hpp"
-#include "dialogGroupManager\classes.hpp"
