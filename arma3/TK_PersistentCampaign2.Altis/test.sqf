@@ -1,0 +1,1 @@
+[civ1, civ2] doFSM ["civilian.fsm", getPos player, getPos player]

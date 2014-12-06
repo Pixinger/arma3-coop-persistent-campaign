@@ -20,7 +20,7 @@ TF_terrain_interception_coefficient = pixParamTFARTerrainInterceptionCoefficient
 
 /*-----------------------------------------------*/
 cutText ["Initialization...\n[TK]Persistenct Campaign 2", "BLACK FADED",1];
-
+call compile preprocessFileLineNumbers "town\init.sqf";
 
 /* Warten bis das Briefing beendet wurde */
 Sleep .1;
