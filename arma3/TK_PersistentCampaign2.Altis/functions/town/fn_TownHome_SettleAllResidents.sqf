@@ -12,6 +12,7 @@ Return:
 	[_setteledEnemies, _setteledCivilians]	
 */
 
+diag_log "Settling residents";
 private["_homes"];
 _homes = _this select 0;
 private["_totalEnemies"];
@@ -32,6 +33,7 @@ for "_x" from 1 to _totalEnemies do
 	
 	_setteledEnemies = _setteledEnemies + 1;
 	_room set [1, [pixTown_EnemyClassnames] call PC_fnc_RandomElement];
+	diag_log format["room-enemy: %1", _room];
 };
 
 private["_setteledCivilians"];
@@ -43,6 +45,9 @@ for "_x" from 1 to _totalCivilians do
 	if (count _room == 0) exitWith {};
 	_setteledCivilians = _setteledCivilians + 1;
 	_room set [1, [pixTown_CivilianClassnames] call PC_fnc_RandomElement];
+	diag_log format["room-civilian: %1", _room];
 };
+
+diag_log "Settled residents";
 
 [_setteledEnemies, _setteledCivilians];

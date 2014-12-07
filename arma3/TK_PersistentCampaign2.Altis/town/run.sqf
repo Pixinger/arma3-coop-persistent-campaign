@@ -18,28 +18,30 @@ _townName = _this select 2;
 // Wohnungen erstellen (Home-Array)
 private["_homes"];
 _homes = [_townCenter, _townRadius] call PC_fnc_TownHome_Create;
-player globalChat format["found %1 homes", count _homes];
 
-private["_maxResidents"];
-_maxResidents = [_homes] call PC_fnc_TownHome_MaxResidents;
-player globalChat format["found %1 maxResidents", _maxResidents];
+//private["_maxResidents"];
+//_maxResidents = [_homes] call PC_fnc_TownHome_MaxResidents;
+//player globalChat format["found %1 maxResidents", _maxResidents];
 
 // In die Wohnungen einziehen
 private["_settleResult"];
-_settleResult = [_homes, 100, 100]call PC_fnc_TownHome_SettleAllResidents;
+_settleResult = [_homes, 0, 100]call PC_fnc_TownHome_SettleAllResidents;
 player globalchat format["_settleResult: %1", _settleResult];
-
+//[_homes] call PC_fnc_TownHome_DebugHomes;
 
 
 private["_civilianSOLL"];
-_civilianSOLL = 0;
+_civilianSOLL = 20;
 private["_civiliansActive"];
 _civiliansActive = [];
 
 while { true } do 
 {
+	Sleep(1);
+	player globalchat "1";
 	if (_civilianSOLL > (count _civiliansActive)) then
 	{
+		player globalchat "noch platz";
 		private["_count"];
 		_count = _civilianSOLL - (count _civiliansActive);
 		if (_count > 5) then { _count = 5; };
@@ -48,13 +50,13 @@ while { true } do
 		{
 			//room: [position, classname, isEnemy, unit-obj]
 			private["_room"];
-			_room = [_homes, pixTown_CivilianClassnames] call PC_fnc_GetInactiveRoom;
-			if (count _room != 0) then
+			_room = [_homes, pixTown_CivilianClassnames] call PC_fnc_TownHome_GetInactiveRoom;
+			if (count _room != 0) then // Wenn Spieler in der Nähe sind, kann es sein dass diese vorhandene Räume blockieren.
 			{
 				private["_classname"];
 				_classname = _room select 1;
 				private["_unitPosition"];
-				_unitPosition = (_room select 0) findEmptyPosition [0, 100, _classname];
+				_unitPosition = _room select 0;//(_room select 0) findEmptyPosition [0, 100, _classname];
 				if (count _unitPosition > 0) then
 				{
 					private ["_unitGroup"];
@@ -65,16 +67,20 @@ while { true } do
 					waitUntil {!isNil "_unit"};
 					_unit setDir (floor(random 360));
 					_unit setpos _unitPosition;
-					_unit moveto player;
+					_unit setSpeedmode "FULL";
+					_unit doMove (getPos player);
 					//_unit doFSM "town\fsm\civilian.fsm";
 					
-					_civiliansActive set [(count _civiliansActive), [_unit, _unitGroup]];					
+					_room set [1, _unit];
+					
+					_civiliansActive set [(count _civiliansActive), [_unit, _unitGroup, _room]];					
 					player globalchat "civilian created";
+					//player setpos (getpos _unit);
 				};
 			}
 			else
 			{
-				diag_log format["ERROR: Town: %1. Es konnte kein inaktiver ROOM gefunden werden.", _townName];
+				player globalchat format["WARN: Town: %1. Es konnte kein ROOM gefunden werden in dem eine Einheit gespawnt werden kann. Evtl ist ein Spieler in der Nähe.", _townName];
 			};
 		};		
 	};	

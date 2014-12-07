@@ -18,9 +18,6 @@ _homes = _this select 0;
 private["_classnames"];
 _classnames = _this select 1;
 
-private["_players"];
-_players = [] call PC_fnc_GetNearestPlayers;
-
 private["_rooms"];
 _rooms = [];
 
@@ -39,21 +36,25 @@ while { (_homeIndex < _countHomes) } do
 
 	private["_roomIndex"];
 	_roomIndex = 0;
-	while { ((!_found) and (_roomIndex < _countRooms)) } do
+	while { (_roomIndex < _countRooms) } do
 	{
 		private["_room"];
 		_room = (_home select 1) select _roomIndex;
-		
+	
 		if (count _room == 2) then // if _room is occopied, but not active
 		{
 			if ((_room select 1) in _classnames) then
 			{
-				if (!([_room select 0, 100] call PC_fnc_IsAnyPlayerNear)) then
+				if (!([_room select 0, 40] call PC_fnc_IsAnyPlayerNear)) then
 				{
 					_rooms set [count _rooms, _room]; // Ein (weiterer) passender "Room" gefunden.
+				}
+				else
+				{
+					//diag_log format["found inactive room (but player is no close): %1", _room];
 				};
 			};
-		}
+		};
 
 		_roomIndex = _roomIndex + 1;
 	};

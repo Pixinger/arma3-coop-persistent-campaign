@@ -22,9 +22,9 @@ _players = playableUnits;
 if (count _players == 0) then { _players = [player]; };
 
 private["_maxDistance"];
-_maxDistance = [position, [position select 0, (position select 1) + _distance] call BIS_fnc_distance2Dsqr;
+_maxDistance = [_position, [_position select 0, (_position select 1) + _distance]] call BIS_fnc_distance2Dsqr;
 {
-	if (_maxDistance >= [position, _x] call BIS_fnc_distance2Dsqr) exitWith { _result = true; };
+	if (_maxDistance >= [_position, _x] call BIS_fnc_distance2Dsqr) exitWith { _result = true; };
 } foreach _players;
 
 _result;
