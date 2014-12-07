@@ -15,5 +15,16 @@ private["_distance"];
 _distance = [_this, 1, 0, [2000]] call BIS_fnc_param;
 
 private["_result"];
-_result = ((player distance _position) < _distance);
+_result = false;
+
+private["_players"];
+_players = playableUnits;
+if (count _players == 0) then { _players = [player]; };
+
+private["_maxDistance"];
+_maxDistance = [position, [position select 0, (position select 1) + _distance] call BIS_fnc_distance2Dsqr;
+{
+	if (_maxDistance >= [position, _x] call BIS_fnc_distance2Dsqr) exitWith { _result = true; };
+} foreach _players;
+
 _result;

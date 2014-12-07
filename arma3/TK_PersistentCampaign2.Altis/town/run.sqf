@@ -9,7 +9,7 @@ _townName = _this select 2;
 //----------------------------------------------------------------------------------------------------------------
 // _homes: 
 //----------------------------------------------------------------------------------------------------------------
-// _homes = [  [building-obj, [_room, _room, ...]],     [building-obj, [_room, _room, ...]],    ...   ]
+// _homes = [  [building-obj, [_room, _room, ...], searched],     [building-obj, [_room, _room, ...], searched],    ...   ]
 // _room (frei)       = [[x,y,z]]
 // _room (deaktviert) = [[x,y,z], classname, isEnemy]
 // _room (aktviert)   = [[x,y,z], classname, isEnemy, unit-obj]
@@ -30,12 +30,56 @@ _settleResult = [_homes, 100, 100]call PC_fnc_TownHome_SettleAllResidents;
 player globalchat format["_settleResult: %1", _settleResult];
 
 
+
+private["_civilianSOLL"];
+_civilianSOLL = 0;
+private["_civiliansActive"];
+_civiliansActive = [];
+
+while { true } do 
 {
-	_position = [getpos (_x select 0) select 0, getpos (_x select 0) select 1, (getpos (_x select 0) select 2) + 10];
-	_veh = "Sign_Arrow_Large_F" createVehicle _position;
-	_veh setpos (_position);
-	
-} foreach _homes;
+	if (_civilianSOLL > (count _civiliansActive)) then
+	{
+		private["_count"];
+		_count = _civilianSOLL - (count _civiliansActive);
+		if (_count > 5) then { _count = 5; };
+		
+		for "_i" from 1 to _count do
+		{
+			//room: [position, classname, isEnemy, unit-obj]
+			private["_room"];
+			_room = [_homes, pixTown_CivilianClassnames] call PC_fnc_GetInactiveRoom;
+			if (count _room != 0) then
+			{
+				private["_classname"];
+				_classname = _room select 1;
+				private["_unitPosition"];
+				_unitPosition = (_room select 0) findEmptyPosition [0, 100, _classname];
+				if (count _unitPosition > 0) then
+				{
+					private ["_unitGroup"];
+					_unitGroup = createGroup independent;
+					
+					private["_unit"];
+					_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
+					waitUntil {!isNil "_unit"};
+					_unit setDir (floor(random 360));
+					_unit setpos _unitPosition;
+					_unit moveto player;
+					//_unit doFSM "town\fsm\civilian.fsm";
+					
+					_civiliansActive set [(count _civiliansActive), [_unit, _unitGroup]];					
+					player globalchat "civilian created";
+				};
+			}
+			else
+			{
+				diag_log format["ERROR: Town: %1. Es konnte kein inaktiver ROOM gefunden werden.", _townName];
+			};
+		};		
+	};	
+};
+
 
 /*
 // Noch ist die Stadt DEAKTIVIERT. 
@@ -61,6 +105,8 @@ while { true } do
 	{
 		player sidechat "calc ONLINE";
 		// CODE: Stadt weiter verwalten (AKTIVERT)
+		
+		
 		Sleep(1);
 	};
 		
@@ -77,7 +123,7 @@ while { true } do
 
 
 
-
+/*
 
 
 
@@ -109,6 +155,15 @@ if (count _freePosition > 0) then
 	player globalchat format["lll %1", _lll];
 };
 
-*/
 
+
+
+{
+	_position = [getpos (_x select 0) select 0, getpos (_x select 0) select 1, (getpos (_x select 0) select 2) + 10];
+	_veh = "Sign_Arrow_Large_F" createVehicle _position;
+	_veh setpos (_position);
+	
+} foreach _homes;
+
+*/
 

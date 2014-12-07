@@ -6,6 +6,7 @@ class PC
 	{
 		file = "functions\Tools";
 		class IsAnyPlayerNear {description = "";};
+		class GetNearestPlayers {description = "";};
 		class GetMaxBuildingPositions {description = "";};
 		class GetMaxBuildingsPositions {description = "";};
 		class RandomElement {description = "";};
