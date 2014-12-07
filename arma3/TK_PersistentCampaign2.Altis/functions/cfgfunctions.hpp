@@ -16,6 +16,8 @@ class PC
 		file = "functions\Town";
 		class TownHome_Create {description = "";};
 		class TownHome_DebugHomes {description = "";};
+		class TownHome_DebugHomesActive {description = "";};
+		class TownHome_DebugHomesInactive {description = "";};
 		class TownHome_SettleAllResidents {description = "";};
 		class TownHome_GetUnoccupiedRoom {description = "";};
 		class TownHome_MaxResidents {description = "";};

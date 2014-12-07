@@ -11,8 +11,8 @@ _townName = _this select 2;
 //----------------------------------------------------------------------------------------------------------------
 // _homes = [  [building-obj, [_room, _room, ...], searched],     [building-obj, [_room, _room, ...], searched],    ...   ]
 // _room (frei)       = [[x,y,z]]
-// _room (deaktviert) = [[x,y,z], classname, isEnemy]
-// _room (aktviert)   = [[x,y,z], classname, isEnemy, unit-obj]
+// _room (deaktviert) = [[x,y,z], classname]
+// _room (aktviert)   = [[x,y,z], classname, unit-obj]
 //----------------------------------------------------------------------------------------------------------------
 
 // Wohnungen erstellen (Home-Array)
@@ -37,11 +37,9 @@ _civiliansActive = [];
 
 while { true } do 
 {
-	Sleep(1);
-	player globalchat "1";
+	Sleep(10);
 	if (_civilianSOLL > (count _civiliansActive)) then
 	{
-		player globalchat "noch platz";
 		private["_count"];
 		_count = _civilianSOLL - (count _civiliansActive);
 		if (_count > 5) then { _count = 5; };
@@ -68,10 +66,10 @@ while { true } do
 					_unit setDir (floor(random 360));
 					_unit setpos _unitPosition;
 					_unit setSpeedmode "FULL";
-					_unit doMove (getPos player);
-					//_unit doFSM "town\fsm\civilian.fsm";
+					//_unit doMove (getPos player);
+					_unit doFSM ["town\fsm\civilian.fsm", _unitPosition, _unit];
 					
-					_room set [1, _unit];
+					_room set [2, _unit];
 					
 					_civiliansActive set [(count _civiliansActive), [_unit, _unitGroup, _room]];					
 					player globalchat "civilian created";
@@ -84,6 +82,28 @@ while { true } do
 			};
 		};		
 	};	
+	
+	private["_index"];
+	_index = 0;
+	while { (_index < count _civiliansActive) } do
+	{
+		if (isNull ((_civiliansActive select _index) select 0)) then 
+		{
+			deleteGroup ((_civiliansActive select _index) select 1); // gruppe löschen
+			((_civiliansActive select _index) select 2) resize 2; // room inaktivieren
+			_civiliansActive deleteAt _index; // Aus der Liste nehmen		
+			_civilianSOLL = _civilianSOLL - 1;			
+		}
+		else
+		{
+			_index = _index + 1;
+		};
+	};
+
+	diag_log format["alive: %1", count _civiliansActive];	
+	[_homes] call PC_fnc_TownHome_DebugHomesActive;
+	//[_homes] call PC_fnc_TownHome_DebugHomesInActive;
+	player globalchat format["alive: %1", count _civiliansActive];	
 };
 
 
