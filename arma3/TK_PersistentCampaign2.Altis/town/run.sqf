@@ -1,11 +1,3 @@
-// Statische Variablen
-private["_townCenter"];
-_townCenter = _this select 0;
-private["_townRadius"];
-_townRadius = _this select 1;
-private["_townName"];
-_townName = _this select 2;
-
 //----------------------------------------------------------------------------------------------------------------
 // _homes: 
 //----------------------------------------------------------------------------------------------------------------
@@ -15,181 +7,285 @@ _townName = _this select 2;
 // _room (aktviert)   = [[x,y,z], classname, unit-obj]
 //----------------------------------------------------------------------------------------------------------------
 
+// -----------------------------------
+// Parameter auslesen
+// -----------------------------------
+private["_townCenter"];
+_townCenter = _this select 0;
+_townCenter = [_townCenter select 0, _townCenter select 2, _townCenter select 1]; // Konvertierung der MarkerPosition in eine normale Position.
+private["_townName"];
+_townName = _this select 1;
+private["_townRadius"];
+_townRadius = _this select 2;
+
+// -----------------------------------
 // Wohnungen erstellen (Home-Array)
+// -----------------------------------
 private["_homes"];
 _homes = [_townCenter, _townRadius] call PC_fnc_TownHome_Create;
 
-//private["_maxResidents"];
-//_maxResidents = [_homes] call PC_fnc_TownHome_MaxResidents;
-//player globalChat format["found %1 maxResidents", _maxResidents];
+// ----------------------------------------------------------------------
+// Stadtparameter auslesen (aus der Datenbank)
+// ----------------------------------------------------------------------
+private["_townStockWater"];	// Der Lagerbestand an Wasser
+_townStockWater = 0;//DB
+private["_townStockFood"];     // Der Lagerbestand an Nahrungsmitteln
+_townStockFood = 0;//DB
+private["_townStockPower"];    // Der Lagerbestand an Strom
+_townStockPower = 0;//DB
+private["_townMood"];
+_townMood = 0;//DB			// Die Stimmung in der Stadt: -1 Red < 0 < Blu +1.
+private["_townCivCount"];
+_townCivCount = 10;//DB		// Die Anzahl der Zivilisten in der Stadt (virtuell).
+private["_townRedCount"];
+_townRedCount = 10;//DB		// Die Anzahl der Feinde in der Stadt (virtuell).
+private["_townWeaponCount"];
+_townWeaponCount = 0;//DB		// Die Anzahl der Waffen in der Stadt (virtuell).
+private["_townWarlordCount"];
+_townWarlordCount = 0;//DB		// Die Anzahl der Warlords in der Stadt (virtuell).
+private["_townInjuredCount"];
+_townInjuredCount = 0;//DB		// Die Anzahl der verletzten in der Stadt (virtuell). Das können CIV und RED sein!
 
+// -----------------------------------
 // In die Wohnungen einziehen
-private["_settleResult"];
-_settleResult = [_homes, 0, 100]call PC_fnc_TownHome_SettleAllResidents;
-player globalchat format["_settleResult: %1", _settleResult];
-//[_homes] call PC_fnc_TownHome_DebugHomes;
+// -----------------------------------
+private["_result"];
+_result = [_homes, _townRedCount, _townCivCount] call PC_fnc_TownHome_SettleAllResidents;
+private["_townMaxPopulation"];
+_townMaxPopulation = _result select 2; // Die maximal mögliche Bevölkerung (abhängig von den Wohneinheiten).
+player globalchat format["_result: %1(Red, Civ, Max)", _result];
+_result = nil;
 
+// -----------------------------------
+// Parameter prüfen
+// -----------------------------------
+if (_townCivCount > _townMaxPopulation) then { _townCivCount = _townMaxPopulation; };
+if (_townCivCount + _townRedCount > _townMaxPopulation) then { _townRedCount = _townMaxPopulation - _townCivCount; };
+if (_townCivCount + _townRedCount + _townWarlordCount > _townMaxPopulation) then { _townWarlordCount = _townMaxPopulation - (_townCivCount + _townRedCount); };
+if (_townInjuredCount < 0) then { _townInjuredCount = 0; };
+if (_townWeaponCount < 0) then { _townWeaponCount = 0; };
+if (_townMood > 1) then { _townMood = 1; };
+if (_townMood < -1) then { _townMood = -1; };
+if (_townStockFood < 0) then { _townStockFood = 0; };
+if (_townStockWater < 0) then { _townStockWater = 0; };
+if (_townStockPower < 0) then { _townStockPower = 0; };
 
-private["_civilianSOLL"];
-_civilianSOLL = 20;
-private["_civiliansActive"];
-_civiliansActive = [];
+// -----------------------------------
+// Parameter errechnen
+// -----------------------------------
+private["_townPopulation"];
+_townPopulation = _townCivCount + _townRedCount + _townWarlordCount;
 
+// -----------------------------------
+// Dauerschleife beginnen
+// -----------------------------------
+private["_civSOLL"];
+_civSOLL = 0;
+private["_civActives"];
+_civActives = [];
+private["_civActivesCount"];
+_civActivesCount = 0;
+private["_redSOLL"];
+_redSOLL = 0;
+private["_redActives"];
+_redActives = [];
+private["_redActivesCount"];
+_redActivesCount = 0;
+
+// Parameter zur Datenübertragung.
+private["_townBluKills"];
+_townBluKills = 0;
+
+private["_lastServerTime"];
+_lastServerTime = serverTime;
+
+Sleep (1);
 while { true } do 
 {
-	Sleep(10);
-	if (_civilianSOLL > (count _civiliansActive)) then
-	{
-		private["_count"];
-		_count = _civilianSOLL - (count _civiliansActive);
-		if (_count > 5) then { _count = 5; };
-		
-		for "_i" from 1 to _count do
-		{
-			//room: [position, classname, isEnemy, unit-obj]
-			private["_room"];
-			_room = [_homes, pixTown_CivilianClassnames] call PC_fnc_TownHome_GetInactiveRoom;
-			if (count _room != 0) then // Wenn Spieler in der Nähe sind, kann es sein dass diese vorhandene Räume blockieren.
-			{
-				private["_classname"];
-				_classname = _room select 1;
-				private["_unitPosition"];
-				_unitPosition = _room select 0;//(_room select 0) findEmptyPosition [0, 100, _classname];
-				if (count _unitPosition > 0) then
-				{
-					private ["_unitGroup"];
-					_unitGroup = createGroup independent;
-					
-					private["_unit"];
-					_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
-					waitUntil {!isNil "_unit"};
-					_unit setDir (floor(random 360));
-					_unit setpos _unitPosition;
-					_unit setSpeedmode "FULL";
-					//_unit doMove (getPos player);
-					_unit doFSM ["town\fsm\civilian.fsm", _unitPosition, _unit];
-					
-					_room set [2, _unit];
-					
-					_civiliansActive set [(count _civiliansActive), [_unit, _unitGroup, _room]];					
-					player globalchat "civilian created";
-					//player setpos (getpos _unit);
-				};
-			}
-			else
-			{
-				player globalchat format["WARN: Town: %1. Es konnte kein ROOM gefunden werden in dem eine Einheit gespawnt werden kann. Evtl ist ein Spieler in der Nähe.", _townName];
-			};
-		};		
-	};	
+	private["_deltaHours"];
+	_deltaHours = 0.1;
+	//_deltaHours = (serverTime - _lastServerTime) / 3600.0;      
+
+	private["_newRedCount"];
+	_simulatedRedCount = _townRedCount;
+	private["_newCivCount"];
+	_simulatedCivCount = _townCivCount;
 	
-	private["_index"];
-	_index = 0;
-	while { (_index < count _civiliansActive) } do
+	// -----------------------------------
+	// RED simulieren
+	// -----------------------------------
+	// Konvertierung berechnen
+	if (_townMood < 0) then
 	{
-		if (isNull ((_civiliansActive select _index) select 0)) then 
+		private["_conversion"];
+		_conversion = (pixTown_ConfigMaxRed2CivConversionPPH * _CivCount * _deltaHours) * (_Mood * -1);
+		_simulatedRedCount = _simulatedRedCount + _conversion;
+		_simulatedCivCount = _simulatedCivCount - _conversion;
+		if (_simulatedCivCount < 0) then { _simulatedCivCount = 0; };
+	};
+
+	// Blu-Force kills fördern das Wachstum
+	_simulatedRedCount = _simulatedRedCount + (pixTown_ConfigRedGrowPerBluKill * _townBluKills);
+
+	// Ein Warlord fördert das Wachstum
+	private["_factor"];
+	if (_townWarlordCount > 0) then { _factor = (pixTown_ConfigRedGrowFactorPerWarlord * _townWarlordCount); } else { _factor = 1; };
+
+	// Wachstum berechnen und hinzufügen
+	_simulatedRedCount = _simulatedRedCount + ((pixTown_ConfigRedGrowRatePPH * _simulatedRedCount * _deltaHours) * _factor);
+	if (_townPopulation > _townMaxPopulation) then { _simulatedRedCount = _townMaxPopulation - _simulatedCivCount - _townWarlordCount; };
+		
+	// -----------------------------------
+	// CIV simulieren
+	// -----------------------------------
+	// Konvertierung berechnen
+	if (_townMood > 0) then
+	{
+		private["_conversion"];
+		_conversion = (pixTown_ConfigMaxCiv2RedConversionPPH * _simulatedRedCount * _deltaHours) * _townMood;
+		_simulatedCivCount = _simulatedCivCount + _conversion;
+		_simulatedRedCount = _simulatedRedCount - _conversion;
+		if (_simulatedRedCount < 0) then { _simulatedRedCount = 0; };
+	};
+
+	// _Stock Veränderungen berechnen
+	_townStockWater = _townStockWater - ((pixTown_ConfigWaterConsumptionPPH * _townPopulation) * _deltaHours);
+	if (_townStockWater < 0) then { _townStockWater = 0; };
+	_townStockFood = _townStockFood - ((pixTown_ConfigFoodConsumptionPPH * _townPopulation) * _deltaHours);
+	if (_townStockFood < 0) then { _townStockFood = 0; };
+	if (_townStockPower < 0) then { _townStockPower = 0; };
+
+	// Berechnen wie sich das Lager auf das Wachstum auswirkt.
+	private["_factor"];
+	_factor = pixTown_ConfigCivGrowFactorMinimum;
+	if (_townStockWater > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorWater; };
+	if (_townStockFood > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorFood; };
+	if (_townStockPower > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorPower; };
+
+	// Wachstum berechnen und hinzufügen
+	_simulatedCivCount = _simulatedCivCount + (pixTown_ConfigCivGrowRatePPH * _simulatedCivCount * _deltaHours * _factor);
+	if (_townPopulation > _townMaxPopulation) then { _simulatedCivCount = _townMaxPopulation - _townRedCount - _townWarlordCount; };
+
+	// ----------------------------------------------------------------------
+	// _simulatedRedCount in Homes/_townRedCount übertragen (RED)
+	// ----------------------------------------------------------------------
+	private["_count"];		
+	_count = floor(_simulatedRedCount) - floor(_townRedCount);
+	private["_result"];
+	_result = [_homes, pixTown_ConfigRedClassnames, _count] call PC_fnc_TownHome_SettleRooms;
+	if (_count != _result) then
+	{
+		_townRedCount = floor(_townRedCount) + _result;
+	}
+	else
+	{
+		_townRedCount = _simulatedRedCount;
+	};
+
+	// ----------------------------------------------------------------------
+	// _simulatedCivCount in Homes/_townCivCount übertragen (CIV)
+	// ----------------------------------------------------------------------
+	private["_count"];		
+	_count = floor(_simulatedCivCount) - floor(_townCivCount);
+	private["_result"];
+	_result = [_homes, pixTown_ConfigCivClassnames, _count] call PC_fnc_TownHome_SettleRooms;
+	if (_count != _result) then
+	{
+		_townCivCount = floor(_townCivCount) + _result;
+	}
+	else
+	{
+		_townCivCount = _simulatedCivCount;
+	};
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// Ab jetzt kommt der Teil, den man sehen kann, wenn man in der Stadt ist.
+	// -----------------------------------------------------------------------------------
+	// Festlegen wieviele Einheiten in dieser Stadt aktiv sein sollen RED/CIV
+	// -----------------------------------------------------------------------------------
+	if ([_townCenter, _townRadius] call PC_fnc_IsAnyPlayerNear) then
+	{
+		// Einmalig eine Anzahl berechnen
+		if (_civSOLL == 0) then
 		{
-			deleteGroup ((_civiliansActive select _index) select 1); // gruppe löschen
-			((_civiliansActive select _index) select 2) resize 2; // room inaktivieren
-			_civiliansActive deleteAt _index; // Aus der Liste nehmen		
-			_civilianSOLL = _civilianSOLL - 1;			
-		}
-		else
+			_civSOLL = 20;
+			_redSOLL = 20;
+		};		
+		
+		// RED Einheiten AKTIVIEREN / DEAKTIVEREN
+		if (_redSOLL > _redActivesCount) then
 		{
-			_index = _index + 1;
+			private["_count"];
+			_count = _redSOLL - _redActivesCount;
+			if (_count > 5) then { _count = 5; };
+			
+			[_homes, pixTown_ConfigRedClassnames, _redActives, _count, east, "town\fsm\red.fsm"] call PC_fnc_TownHome_Units_Activate;
+		};			
+		// "Fertige" RED Einheiten DEAKTIVIEREN
+		[_redActives] call PC_fnc_TownHome_Units_DeactivateFinished;
+		_redActivesCount = count _redActives; // Zähler aktualisieren
+		
+
+		// CIV Einheiten AKTIVIEREN / DEAKTIVEREN
+		if (_civSOLL > _civActivesCount) then
+		{
+			private["_count"];
+			_count = _civSOLL - _civActivesCount;
+			if (_count > 5) then { _count = 5; };
+			
+			[_homes, pixTown_ConfigCivClassnames, _civActives, _count, independent, "town\fsm\civ.fsm"] call PC_fnc_TownHome_Units_Activate;		
+		};			
+		// "Fertige" CIV Einheiten DEAKTIVIEREN
+		[_civActives] call PC_fnc_TownHome_Units_DeactivateFinished;
+		_civActivesCount = count _civActives;		
+	}
+	else
+	{
+		player globalchat "not near";
+
+		// Alle Einheiten DEAKTIVIEREN
+		if (_redActivesCount > 0) then
+		{
+			player globalchat "deaktivate RED";
+
+			_redSOLL = 0;
+			[_redActives] call PC_fnc_TownHome_Units_DeactivateAll;
+			_redActivesCount = 0;
+		};
+		if (_civActivesCount > 0) then
+		{
+			player globalchat "deaktivate CIV";
+			_civSOLL = 0;
+			[_civActives] call PC_fnc_TownHome_Units_DeactivateAll;
+			_civActivesCount = 0;
 		};
 	};
-
-	diag_log format["alive: %1", count _civiliansActive];	
-	[_homes] call PC_fnc_TownHome_DebugHomesActive;
-	//[_homes] call PC_fnc_TownHome_DebugHomesInActive;
-	player globalchat format["alive: %1", count _civiliansActive];	
+	
+	Sleep(10);
 };
 
 
 /*
-// Noch ist die Stadt DEAKTIVIERT. 
-player sidechat "starting town";
-while { true } do
-{
-	// Solange keine Spieler in die Nähe kommen
-	while { !([_townCenter, 1000] call PC_fnc_IsAnyPlayerNear) } do
-	{
-	
-		player sidechat "calc offline";
-		// CODE: Stadt weiter verwalten (DEAKTIVIERT)
-		Sleep(1);
-	};
-	
-	// CODE: Stadt aktivieren
-	// CODE: Festlegen in welchen Wohnungen Feinde wohnen und in welchen Wohnungen Waffen liegen.
-	// CODE: Erzeuge _maxVisibleCivilians Zivilisten in der Stadt
-		
-	// Solange Spieler in der Nähe bleiben
-	player sidechat "Stadt aktivert";
-	while { ([_townCenter, 1500] call PC_fnc_IsAnyPlayerNear) } do
-	{
-		player sidechat "calc ONLINE";
-		// CODE: Stadt weiter verwalten (AKTIVERT)
-		
-		
-		Sleep(1);
-	};
-		
-	// CODE: Stadt deaktivieren
-	// CODE: Alle "durchsuchten" Wohnungen demarkieren
-	player sidechat "Stadt deaktivert";
-};
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-Sleep 1;
-private ["_tmpGroup"];
-_tmpGroup = createGroup east;
-
-private["_myarray"];
-private["_mysubarray1"];
-_mysubarray1 = [1,2,3];
-private["_mysubarray2"];
-_mysubarray2 = [4,5,6];
-_myarray = [_mysubarray1, _mysubarray2];
-player globalchat format["_myarray %1", _myarray];
-
-private["_freePosition"];
-_freePosition = (position player) findEmptyPosition [0, 100, "C_man_1_1_F"];
-if (count _freePosition > 0) then
-{
-	_unit = _tmpGroup createUnit ["C_man_1_1_F", _freePosition, [], 0, "FORM"];
-	_unit setDir 180;
-	_unit setVariable["test", _mysubarray1];
-	private["_lll"];
-	_lll= _unit getVariable "test";
-	player globalchat format["lll %1", _lll];
-	
-	_lll set [1,100];
-	player globalchat format["_myarray %1", _myarray];
-	player globalchat format["lll %1", _lll];
-};
-
-
-
 
 {
 	_position = [getpos (_x select 0) select 0, getpos (_x select 0) select 1, (getpos (_x select 0) select 2) + 10];
 	_veh = "Sign_Arrow_Large_F" createVehicle _position;
-	_veh setpos (_position);
-	
+	_veh setpos (_position);	
 } foreach _homes;
 
 */
 
+//[_homes] call PC_fnc_TownHome_DebugHomes;

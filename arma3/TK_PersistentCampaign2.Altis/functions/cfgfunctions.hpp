@@ -19,10 +19,15 @@ class PC
 		class TownHome_DebugHomesActive {description = "";};
 		class TownHome_DebugHomesInactive {description = "";};
 		class TownHome_SettleAllResidents {description = "";};
+		class TownHome_SettleRooms {description = "";};
 		class TownHome_GetUnoccupiedRoom {description = "";};
-		class TownHome_MaxResidents {description = "";};
+		class TownHome_MaxPopulation {description = "";};
 		class TownHome_GetInactiveRoom {description = "";};
 		class TownHome_GetInactiveRooms {description = "";};
+
+		class TownHome_Units_Activate {description = "";};
+		class TownHome_Units_DeactivateAll {description = "";};
+		class TownHome_Units_DeactivateFinished {description = "";};
 
 		class TownParam_SetTotalCivilians {description = "";};
 		class TownParam_GetTotalCivilians {description = "";};

@@ -13,8 +13,8 @@ Return:
 	----------------------------------------------------------------------------------------------------------------
 	_homes = [  [building-obj, [_room, _room, ...]],     [building-obj, [_room, _room, ...]],    ...   ]
 	_room (frei)       = [[x,y,z]]
-	_room (deaktviert) = [[x,y,z], classname, isEnemy]
-	_room (aktviert)   = [[x,y,z], classname, isEnemy, unit-obj]
+	_room (deaktviert) = [[x,y,z], classname]
+	_room (aktviert)   = [[x,y,z], classname, unit-obj]
 */
 
 private["_townCenter"];
@@ -25,7 +25,7 @@ _townRadius = _this select 1;
 private["_homes"];
 _homes = [];
 private["_buildingsAvailable"]; 
-_buildingsAvailable = nearestObjects [_townCenter, pixTown_HomeClassnames, _townRadius];
+_buildingsAvailable = nearestObjects [_townCenter, pixTown_ConfigHomeClassnames, _townRadius];
 {
 	private["_rooms"];
 	_rooms = [];	

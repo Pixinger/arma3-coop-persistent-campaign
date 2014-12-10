@@ -1,5 +1,6 @@
 
-pixTown_HomeClassnames = [ 
+// Klassennamen der bewohnbaren Häuser
+pixTown_ConfigHomeClassnames = [ 
 	"Land_i_house_big_01_v1_f",
 	"Land_i_house_big_01_v2_f",
 	"Land_i_house_big_01_v3_f",
@@ -24,13 +25,61 @@ pixTown_HomeClassnames = [
 	"Land_i_house_small_02_v2_f",
 	"Land_i_house_small_02_v3_f"];
 	
-pixTown_PeoplesPerBuildingPos = 1; // Im Bereich: 0.1 - 1.0
-//Fl�cheninhalt = Pi * (Radius * Radius);
+// Klassennamen der zivilien Einheiten
+pixTown_ConfigCivClassnames = [
+	"C_man_1_1_F",
+	"C_man_1_1_F"];
+	
+// Klassennamen der feindlichen Einheiten
+pixTown_ConfigRedClassnames = [
+	"I_G_Soldier_TL_F",
+	"I_G_Soldier_lite_F"];
 
-pixTown_EnemyClassnames = [
+// Klassennamen der Warlords	
+pixTown_ConfigWarlordClassnames = [
 	"I_G_Soldier_TL_F",
 	"I_G_Soldier_lite_F"];
 	
-pixTown_CivilianClassnames = [
-	"C_man_1_1_F",
-	"C_man_1_1_F"];
+// PPH = PerPeopleHour = pro Bürger in einer Stunde.
+pixTown_ConfigRedGrowRatePPH = 0.04;            // Zuwachs in PPH.
+pixTown_ConfigRedGrowPerBluKill = 0;            // Zuwachs pro Blu-Kill-
+pixTown_ConfigRedGrowFactorPerWarlord = 1.5;     // Zuwachsfaktor für jeden Warlord.
+
+// (Water + Food + Power + Uninfluenced) muss 1 ergeben. Andernfalls werden die Parameter automatisch korrigiert.
+pixTown_ConfigCivGrowRatePPH = 0.05;             // Zuwachs in PPH.
+pixTown_ConfigCivGrowFactorWater = 0.4;
+pixTown_ConfigCivGrowFactorFood = 0.3;
+pixTown_ConfigCivGrowFactorPower = 0.3;
+pixTown_ConfigCivGrowFactorMinimum = 0.0;
+
+pixTown_ConfigFoodConsumptionPPH = 1;             // Nahrungsverbrauch in PPH.
+pixTown_ConfigWaterConsumptionPPH = 1;            // Wasserverbrauch in PPH.
+pixTown_ConfigPowerConsumptionPPH = 1;            // Stromverbrauch in PPH.
+
+// Conversion Factors
+pixTown_ConfigMaxCiv2RedConversionPPH = 0.05;     // Maximale Konvertierungen von Civ zu Red in PPH
+pixTown_ConfigMaxRed2CivConversionPPH = 0.05;     // Maximale Konvertierungen von Red zu Civ in PPH
+
+// Angaben wie die Stimmung bei bestimmten Events beinflusst wird.
+pixTown_ConfigMoodPerCivWater = 0.01;
+pixTown_ConfigMoodPerCivFood = 0.01;
+pixTown_ConfigMoodPerCivPower = 0.5;
+pixTown_ConfigMoodPerCivKill = -0.2;
+pixTown_ConfigMoodPerRedKill = 0.01;
+pixTown_ConfigMoodPerRedArrest = 0.1;
+pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
+pixTown_ConfigMoodPerHouseSearchRed = 0.05;
+
+// PH = PerHour = pro Stunde
+pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
+
+// Grenzen ab wann Bewegungen in der Stadt beginnen
+pixTown_ConfigRedLeaveTown = 10;  
+
+
+// ------------------------------------------------------------
+// Überprüfen der Configuration
+if (pixTown_ConfigCivGrowFactorWater > 1.0) then { pixTown_ConfigCivGrowFactorWater = 1.0; };
+if (pixTown_ConfigCivGrowFactorWater + pixTown_ConfigCivGrowFactorFood > 1.0) then { pixTown_ConfigCivGrowFactorFood = 1.0 - pixTown_ConfigCivGrowFactorWater; };
+if (pixTown_ConfigCivGrowFactorWater + pixTown_ConfigCivGrowFactorFood + pixTown_ConfigCivGrowFactorPower > 1.0) then { pixTown_ConfigCivGrowFactorPower = 1.0 - (pixTown_ConfigCivGrowFactorWater + pixTown_ConfigCivGrowFactorFood); };
+pixTown_ConfigCivGrowFactorMinimum = 1.0 - (pixTown_ConfigCivGrowFactorWater + pixTown_ConfigCivGrowFactorFood + pixTown_ConfigCivGrowFactorPower);
