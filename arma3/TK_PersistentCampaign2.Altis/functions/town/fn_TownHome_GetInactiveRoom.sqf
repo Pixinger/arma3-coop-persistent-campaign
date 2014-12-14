@@ -29,4 +29,5 @@ else
 	_resultRoom = [];
 };
 
+diag_log format["_resultRoom %1", _resultRoom];
 _resultRoom;

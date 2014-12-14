@@ -1,23 +1,13 @@
-[civ1, civ2] doFSM ["civilian.fsm", getPos player, getPos player]
+//[civ1, civ2] doFSM ["civilian.fsm", getPos player, getPos player]
 
+//_jeep = "Land_WaterTank_F" createVehicle position player;
 
+call compile preprocessFileLineNumbers "town\config.sqf";
+_jeep = pixTown_ConfigWaterClassname createVehicle position player;
+_jeep setVariable["content", 2];
+_jeep = pixTown_ConfigFoodClassname createVehicle position player;
+_jeep setVariable["content", 2];
 
-/*
-//NameVillage NameTown NameCity
-_array = "getText ( _x >> 'type') == 'NameVillage' " configClasses (configFile >> "CfgWorlds" >> "Altis" >> "Names");
+_jeep = "B_Truck_01_medical_F" createVehicle position player;
+_jeep setVariable["active", true];
 
-for "_i" from 0 to ((count _array)-1) do 
-{
-	_myposition = getArray ((_array select _i) >> "Position");
-	_myname = getText ((_array select _i) >> "Name");
-	_myradiusa = getNumber ((_array select _i) >> "radiusA");
-	_myradiusb = getNumber ((_array select _i) >> "radiusB");
-	
-	
-	_markername = format["Marker_%1", _myname];
-	_marker = createMarker [_markername, _myposition];
-	_marker setMarkerSize [_myradiusb, _myradiusb];
-	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerColor "ColorBlue";
-};
-*/

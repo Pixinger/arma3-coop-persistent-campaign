@@ -48,10 +48,11 @@ while { (_homeIndex < _countHomes) } do
 				if (!([_room select 0, 40] call PC_fnc_IsAnyPlayerNear)) then
 				{
 					_rooms set [count _rooms, _room]; // Ein (weiterer) passender "Room" gefunden.
+					diag_log format["rooms %1", _rooms];
 				}
 				else
 				{
-					//diag_log format["found inactive room (but player is no close): %1", _room];
+					diag_log format["found inactive room (but player is close): %1", _room];
 				};
 			};
 		};

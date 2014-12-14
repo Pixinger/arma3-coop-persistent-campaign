@@ -1,64 +1,18 @@
 call compile preprocessFileLineNumbers "town\config.sqf";
 
+pixTowns = entities "Land_VRGoggles_01_F";
 
+_x = pixTowns select 0;
+//{
+	_x enableSimulationGlobal false;
+	hideObjectGlobal _x;
 
-
-[[20790.801,36.471306,6742.562], "selakano", 200] execVM "town\run.sqf";
-
-[[21676.881,14.874914,7598.5049], "feres", 200] execVM "town\run.sqf";
-[[20430.268,37.85265,8890.6699], "panagia", 300] execVM "town\run.sqf";
-[[20232.738,49.02486,11695.642], "chalkeia", 300] execVM "town\run.sqf";
-[[16786.92,23.406158,12669.358], "pyrgos", 400] execVM "town\run.sqf";
-[[19393.65,37.910461,13284.248], "dorida", 250] execVM "town\run.sqf";
-[[21380.527,19.496462,16341.766], "kalochori", 250] execVM "town\run.sqf";
-[[18140.055,23.639704,15199.738], "charkia", 300] execVM "town\run.sqf";
-[[18763.869,32.685013,16629.277], "rudopoli", 300] execVM "town\run.sqf";
-[[20949.76,42.449608,16980.455], "paros", 300] execVM "town\run.sqf";
-[[21824.367,22.714151,20978.064], "iraklia", 200] execVM "town\run.sqf";
-[[25662.889,20.584803,21350.881], "sofia", 300] execVM "town\run.sqf";
-[[27019.863,20.763437,23200.527], "molos", 250] execVM "town\run.sqf";
-[[23207.209,14.184982,19982.463], "ioannina", 200] execVM "town\run.sqf";
-[[19216.059,34.31152,17569.848], "agios_petros", 200] execVM "town\run.sqf";
-[[16662.879,17.81694,16133.304], "anthrakia", 200] execVM "town\run.sqf";
-[[16380.988,23.826666,17231.918], "telos", 300] execVM "town\run.sqf";
-[[14475.329,20.025312,17683.6], "gravia", 250] execVM "town\run.sqf";
-[[14039.785,27.505493,18699.727], "athira", 300] execVM "town\run.sqf";
-[[12933.29,28.996099,15030.778], "stavros", 200] execVM "town\run.sqf";
-[[12420.61,21.181002,15723.06], "lakka", 300] execVM "town\run.sqf";
-[[12500.576,11.261793,14331.268], "neochori", 300] execVM "town\run.sqf";
-[[11134.581,41.681816,14568.208], "alikampos", 150] execVM "town\run.sqf";
-[[11761.775,12.930122,13695.714], "katalaki", 200] execVM "town\run.sqf";
-[[10966.04,28.364828,13429.938], "poliakko", 200] execVM "town\run.sqf";
-[[10614.653,15.218024,12286.955], "therisa", 200] execVM "town\run.sqf";
-[[9137.3076,16.866776,11914.701], "zaros", 400] execVM "town\run.sqf";
-[[9349.6699,118.04185,15909.916], "agios_dionysios", 300] execVM "town\run.sqf";
-[[10326.041,127.72449,19078.711], "galati", 200] execVM "town\run.sqf";
-[[12819.188,45.320744,19670.891], "ifestonia", 100] execVM "town\run.sqf";
-[[14649.98,45.779514,20755.457], "frini", 200] execVM "town\run.sqf";
-[[9423.0986,118.75603,20236.379], "abdera", 200] execVM "town\run.sqf";
-[[4596.7344,299.46637,21395.242], "oreokastro", 150] execVM "town\run.sqf";
-[[8596.2344,178.8943,18290.721], "syrta", 200] execVM "town\run.sqf";
-[[7126.9531,126.70584,16508.367], "kore", 200] execVM "town\run.sqf";
-[[4927.3667,68.373413,16191.026], "negades", 200] execVM "town\run.sqf";
-[[4241.1602,14.949646,16911.309], "agios_konstantinos_sued", 200] execVM "town\run.sqf";
-[[3802.8958,18.355747,13749.457], "aggelochori", 400] execVM "town\run.sqf";
-[[3567.355,9.6666775,12988.393], "kavala", 400] execVM "town\run.sqf";
-[[4116.5435,50.758011,11733.469], "neri", 300] execVM "town\run.sqf";
-[[5090.6196,51.980221,11291.823], "panochori", 300] execVM "town\run.sqf";
-[[3623.449,14.027572,10236.824], "athanos", 150] execVM "town\run.sqf";
-[[7609.3882,23.609335,11957.831], "kavirida", 100] execVM "town\run.sqf";
-[[6224.3115,29.139727,15014.378], "unknown1", 200] execVM "town\run.sqf";
-[[9710.2861,2.5830152,22293.967], "kyra_nara", 100] execVM "town\run.sqf";
-[[16636.842,5.2053103,20461.217], "agia_triada", 100] execVM "town\run.sqf";
-[[17835.605,1.9724804,18153.076], "kalithea", 100] execVM "town\run.sqf";
-[[20248.082,5.501555,19590.797], "pefkas", 200] execVM "town\run.sqf";
-[[27154.283,21.930038,24319.717], "molos_airport", 300] execVM "town\run.sqf";
-[[21319.045,19.301767,10977.916], "d1_31_6", 150] execVM "town\run.sqf";
-[[17098.766,24.272749,9985.2334], "ekali", 500] execVM "town\run.sqf";
-[[10459.193,87.191353,17297.729], "orino", 150] execVM "town\run.sqf";
-[[11749.59,53.603653,18288.439], "koroni", 150] execVM "town\run.sqf";
-[[3003.6492,30.866613,18463.707], "fotia", 100] execVM "town\run.sqf";
-[[23932.377,14.941278,20180.598], "delfinaki", 100] execVM "town\run.sqf";
-[[26712.611,15.412568,21219.732], "gatolia", 100] execVM "town\run.sqf";
-[[7396.1499,55.842396,15396.025], "topolia", 100] execVM "town\run.sqf";
-[[3965.728,21.571842,17341.057], "agios_konstantinos_nord", 200] execVM "town\run.sqf";
+	private["_townCenter"];
+	_townCenter = getPos _x;
+	private["_townRadius"];
+	_townRadius = _x getVariable "townRadius";
+	private["_townName"];
+	_townName = _x getVariable "townName";
+	
+	[_townCenter, _townRadius, _townName] execVM "town\run.sqf";
+//} foreach pixTowns;

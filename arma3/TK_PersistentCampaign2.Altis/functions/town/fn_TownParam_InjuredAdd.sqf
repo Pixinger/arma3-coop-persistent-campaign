@@ -1,5 +1,5 @@
 /* 
-Ändert eine Zustandsvariable einer Stadt
+Addiert die Zustandsvariable einer Stadt mit einem bestimmten Wert.
 
 Parameter:
 	_townName: Der Stadtname
@@ -16,5 +16,7 @@ _value = [_this, 1, 0, [2000]] call BIS_fnc_param;
 
 if (_townName != "") then
 {
-	missionNamespace setVariable ["TownVar_TotalCivilians_" + _townName,3]; 	
+	private["_varname"];
+	_varname = format["TownVarInjured%1", _townName];
+	missionNamespace setVariable [_varname, (missionNamespace getVariable [_varname, 0]) + _value];
 };

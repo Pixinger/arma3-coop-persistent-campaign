@@ -40,6 +40,14 @@ pixTown_ConfigWarlordClassnames = [
 	"I_G_Soldier_TL_F",
 	"I_G_Soldier_lite_F"];
 	
+// Klassenname für Stromoversorgung
+pixTown_ConfigPowerClassnames = ["Land_PowerGenerator_F", "Land_spp_Panel_F", "Land_Portable_generator_F"];
+pixTown_ConfigPowerValues = [100,100,10];
+// Klassenname für Wasserversorgung	
+pixTown_ConfigWaterClassname = "Land_WaterTank_F";
+// Klassenname für Nahrungsversorgung
+pixTown_ConfigFoodClassname = "Land_Sacks_heap_F";
+	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
 pixTown_ConfigRedGrowRatePPH = 0.04;            // Zuwachs in PPH.
 pixTown_ConfigRedGrowPerBluKill = 0;            // Zuwachs pro Blu-Kill-
@@ -55,6 +63,8 @@ pixTown_ConfigCivGrowFactorMinimum = 0.0;
 pixTown_ConfigFoodConsumptionPPH = 1;             // Nahrungsverbrauch in PPH.
 pixTown_ConfigWaterConsumptionPPH = 1;            // Wasserverbrauch in PPH.
 pixTown_ConfigPowerConsumptionPPH = 1;            // Stromverbrauch in PPH.
+
+pixTown_ConfigInjuredGrowFactorPPH = 0;		  // Zuwachs an verletzten in PPH.
 
 // Conversion Factors
 pixTown_ConfigMaxCiv2RedConversionPPH = 0.05;     // Maximale Konvertierungen von Civ zu Red in PPH

@@ -25,6 +25,8 @@ private["_side"];
 _side = _this select 4;
 private["_fsm"];
 _fsm = _this select 5;
+private["_externData1"];
+_externData1 = _this select 6;
 
 private["_result"];
 _result = 0;
@@ -52,6 +54,7 @@ for "_i" from 1 to _count do
 			_unit setDir (floor(random 360));
 			_unit setpos _unitPosition;
 			_unit setSpeedmode "FULL";
+			_unit setVariable ["townExternData1", _externData1];
 			_unit doFSM [_fsm, _unitPosition, _unit];
 			
 			_room set [2, _unit];

@@ -17,7 +17,7 @@ class Mission
 		"A3_Structures_F_Mil_Flags",
 		"A3_Modules_F",
 		"A3_Structures_F_Walls",
-		"A3_Misc_F_Helpers"
+		"A3_Structures_F_Bootcamp_Items_Electronics"
 	};
 	addOnsAuto[]=
 	{
@@ -27,6 +27,7 @@ class Mission
 		"A3_Characters_F_Civil",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Structures_F_Walls",
+		"A3_Structures_F_Bootcamp_Items_Electronics",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
@@ -53,7 +54,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=34;
+		items=35;
 		class Item0
 		{
 			side="LOGIC";
@@ -752,26 +753,44 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={20783.971,41.778168,6677.4517};
+					position[]={20791.27,40.100365,6696.5698};
 					id=33;
 					side="CIV";
 					vehicle="C_man_polo_1_F_euro";
+					leader=1;
+					skill=0.60000002;
+					init="this addAction[""test"",""test.sqf""];this addAction[""fsmNix"",""fsmNix.sqf""];this addAction[""fsmCiv2"",""fsmciv2.sqf""];this addAction[""fsmCiv3"",""fsmciv3.sqf""];this addAction[""beam"",""admin\beam.sqf""];this addAction[""town/run"",""town\init.sqf""];";
+				};
+			};
+		};
+		class Item34
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={20784.705,42.152512,6666.0039};
+					id=34;
+					side="WEST";
+					vehicle="B_medic_F";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
-					init="this addAction[""test"",""test.sqf""];this addAction[""beam"",""admin\beam.sqf""];this addAction[""town/run"",""town\init.sqf""];";
+					init="this addAction[""test"",""test.sqf""];this addAction[""fsmNix"",""fsmNix.sqf""];this addAction[""fsmCiv2"",""fsmciv2.sqf""];this addAction[""fsmCiv3"",""fsmciv3.sqf""];this addAction[""beam"",""admin\beam.sqf""];this addAction[""town/run"",""town\init.sqf""];";
 				};
 			};
 		};
 	};
 	class Vehicles
 	{
-		items=27;
+		items=33;
 		class Item0
 		{
 			position[]={20792.234,27.891956,7270.2822};
 			azimut=135.86714;
-			id=34;
+			id=35;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
@@ -781,7 +800,7 @@ class Mission
 		{
 			position[]={20753.73,28.680471,7243.5933};
 			azimut=-33.826935;
-			id=35;
+			id=36;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -790,7 +809,7 @@ class Mission
 		{
 			position[]={20757.639,28.463844,7246.2114};
 			azimut=-33.826935;
-			id=36;
+			id=37;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -799,7 +818,7 @@ class Mission
 		{
 			position[]={20761.516,28.434168,7248.8628};
 			azimut=-33.826935;
-			id=37;
+			id=38;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -808,7 +827,7 @@ class Mission
 		{
 			position[]={20765.426,28.36491,7251.481};
 			azimut=-33.826935;
-			id=38;
+			id=39;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -817,7 +836,7 @@ class Mission
 		{
 			position[]={20769.334,28.298784,7254.0298};
 			azimut=-33.826935;
-			id=39;
+			id=40;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -826,7 +845,7 @@ class Mission
 		{
 			position[]={20773.246,28.257225,7256.6484};
 			azimut=-33.826935;
-			id=40;
+			id=41;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -835,7 +854,7 @@ class Mission
 		{
 			position[]={20777.156,28.202776,7259.1973};
 			azimut=-33.826935;
-			id=41;
+			id=42;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -844,7 +863,7 @@ class Mission
 		{
 			position[]={20780.994,28.148178,7261.814};
 			azimut=-33.826935;
-			id=42;
+			id=43;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -853,7 +872,7 @@ class Mission
 		{
 			position[]={20784.871,28.046127,7264.4321};
 			azimut=-33.826935;
-			id=43;
+			id=44;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -862,7 +881,7 @@ class Mission
 		{
 			position[]={20788.781,27.983931,7267.0508};
 			azimut=-33.826935;
-			id=44;
+			id=45;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -871,7 +890,7 @@ class Mission
 		{
 			position[]={20792.654,27.896997,7269.6689};
 			azimut=-33.826935;
-			id=45;
+			id=46;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -880,7 +899,7 @@ class Mission
 		{
 			position[]={20796.564,27.789186,7272.2876};
 			azimut=-33.826935;
-			id=46;
+			id=47;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -889,7 +908,7 @@ class Mission
 		{
 			position[]={20800.441,27.703135,7274.9058};
 			azimut=-33.826935;
-			id=47;
+			id=48;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -898,7 +917,7 @@ class Mission
 		{
 			position[]={20750.795,28.586351,7244.1519};
 			azimut=54.138046;
-			id=48;
+			id=49;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -907,7 +926,7 @@ class Mission
 		{
 			position[]={20804.314,27.660374,7277.4893};
 			azimut=-33.826935;
-			id=49;
+			id=50;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -916,7 +935,7 @@ class Mission
 		{
 			position[]={20808.227,27.691547,7280.0381};
 			azimut=-33.826935;
-			id=50;
+			id=51;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -925,7 +944,7 @@ class Mission
 		{
 			position[]={20812.102,27.592236,7282.5869};
 			azimut=-33.826935;
-			id=51;
+			id=52;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -934,7 +953,7 @@ class Mission
 		{
 			position[]={20816.012,27.547857,7285.1006};
 			azimut=-33.826935;
-			id=52;
+			id=53;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -943,7 +962,7 @@ class Mission
 		{
 			position[]={20819.887,27.52821,7287.6494};
 			azimut=-33.826935;
-			id=53;
+			id=54;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -952,7 +971,7 @@ class Mission
 		{
 			position[]={20823.725,27.415962,7290.125};
 			azimut=-33.826935;
-			id=54;
+			id=55;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -961,7 +980,7 @@ class Mission
 		{
 			position[]={20827.6,27.302458,7292.6738};
 			azimut=-33.826935;
-			id=55;
+			id=56;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -970,7 +989,7 @@ class Mission
 		{
 			position[]={20831.545,27.066528,7295.2227};
 			azimut=-33.826935;
-			id=56;
+			id=57;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -979,7 +998,7 @@ class Mission
 		{
 			position[]={20835.383,26.750029,7297.6982};
 			azimut=-33.826935;
-			id=57;
+			id=58;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -988,7 +1007,7 @@ class Mission
 		{
 			position[]={20839.258,26.651737,7300.2471};
 			azimut=-33.826935;
-			id=58;
+			id=59;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -997,7 +1016,7 @@ class Mission
 		{
 			position[]={20839.43,26.611862,7302.5151};
 			azimut=-125.91875;
-			id=59;
+			id=60;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
@@ -1006,15 +1025,69 @@ class Mission
 		{
 			position[]={20837.545,26.661316,7305.2026};
 			azimut=-125.91875;
-			id=60;
+			id=61;
 			side="EMPTY";
 			vehicle="Land_CncBarrier_stripes_F";
 			skill=0.60000002;
 		};
+		class Item27
+		{
+			position[]={20800.66,37.932369,6718.457};
+			id=62;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Selakano""];this setVariable[""townRadius"", 200];";
+		};
+		class Item28
+		{
+			position[]={21703.465,15.057669,7568.374};
+			id=63;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Feres""];this setVariable[""townRadius"", 200];";
+		};
+		class Item29
+		{
+			position[]={20443.131,35.416779,8843.5918};
+			id=64;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Panagia""];this setVariable[""townRadius"", 300];";
+		};
+		class Item30
+		{
+			position[]={20236.416,52.623142,11679.517};
+			id=65;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Chalkeia""];this setVariable[""townRadius"", 250];";
+		};
+		class Item31
+		{
+			position[]={16832.184,24,12673.825};
+			id=66;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Pyrgos""];this setVariable[""townRadius"", 300];";
+		};
+		class Item32
+		{
+			position[]={19382.549,38.387821,13252.43};
+			id=67;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Dorida""];this setVariable[""townRadius"", 200];";
+		};
 	};
 	class Markers
 	{
-		items=59;
+		items=6;
 		class Item0
 		{
 			position[]={20811.047,28.522015,7241.8008};
@@ -1024,384 +1097,6 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={21676.881,14.874914,7598.5049};
-			name="marker_feres";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item2
-		{
-			position[]={20790.801,36.471306,6742.562};
-			name="marker_selakano";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item3
-		{
-			position[]={20430.268,37.85265,8890.6699};
-			name="marker_panagia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item4
-		{
-			position[]={20232.738,49.02486,11695.642};
-			name="marker_chalkeia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item5
-		{
-			position[]={16786.92,23.406158,12669.358};
-			name="marker_pyrgos";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=400;
-			b=400;
-		};
-		class Item6
-		{
-			position[]={19393.65,37.910461,13284.248};
-			name="marker_dorida";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=250;
-			b=250;
-		};
-		class Item7
-		{
-			position[]={21380.527,19.496462,16341.766};
-			name="marker_kalochori";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=250;
-			b=250;
-		};
-		class Item8
-		{
-			position[]={18140.055,23.639704,15199.738};
-			name="marker_charkia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item9
-		{
-			position[]={18763.869,32.685013,16629.277};
-			name="marker_rudopoli";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item10
-		{
-			position[]={20949.76,42.449608,16980.455};
-			name="marker_paros";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item11
-		{
-			position[]={21824.367,22.714151,20978.064};
-			name="marker_iraklia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item12
-		{
-			position[]={25662.889,20.584803,21350.881};
-			name="marker_sofia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item13
-		{
-			position[]={27019.863,20.763437,23200.527};
-			name="marker_molos";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=250;
-			b=250;
-		};
-		class Item14
-		{
-			position[]={23207.209,14.184982,19982.463};
-			name="marker_ioannina";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item15
-		{
-			position[]={19216.059,34.31152,17569.848};
-			name="marker_agios_petros";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item16
-		{
-			position[]={16662.879,17.81694,16133.304};
-			name="marker_anthrakia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item17
-		{
-			position[]={16380.988,23.826666,17231.918};
-			name="marker_telos";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item18
-		{
-			position[]={14475.329,20.025312,17683.6};
-			name="marker_gravia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=250;
-			b=250;
-		};
-		class Item19
-		{
-			position[]={14039.785,27.505493,18699.727};
-			name="marker_athira";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item20
-		{
-			position[]={12933.29,28.996099,15030.778};
-			name="marker_stavros";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item21
-		{
-			position[]={12420.61,21.181002,15723.06};
-			name="marker_lakka";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item22
-		{
-			position[]={12500.576,11.261793,14331.268};
-			name="marker_neochori";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item23
-		{
-			position[]={11134.581,41.681816,14568.208};
-			name="marker_alikampos";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=150;
-			b=150;
-		};
-		class Item24
-		{
-			position[]={11761.775,12.930122,13695.714};
-			name="marker_katalaki";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item25
-		{
-			position[]={10966.04,28.364828,13429.938};
-			name="marker_poliakko";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item26
-		{
-			position[]={10614.653,15.218024,12286.955};
-			name="marker_therisa";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item27
-		{
-			position[]={9137.3076,16.866776,11914.701};
-			name="marker_zaros";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=400;
-			b=400;
-		};
-		class Item28
-		{
-			position[]={9349.6699,118.04185,15909.916};
-			name="marker_agios_dionysios";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item29
-		{
-			position[]={10326.041,127.72449,19078.711};
-			name="marker_galati";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item30
-		{
-			position[]={12819.188,45.320744,19670.891};
-			name="marker_ifestonia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=100;
-			b=100;
-		};
-		class Item31
-		{
-			position[]={14649.98,45.779514,20755.457};
-			name="marker_frini";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item32
-		{
-			position[]={9423.0986,118.75603,20236.379};
-			name="marker_abdera";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item33
-		{
-			position[]={4596.7344,299.46637,21395.242};
-			name="marker_oreokastro";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=150;
-			b=150;
-		};
-		class Item34
-		{
-			position[]={8596.2344,178.8943,18290.721};
-			name="marker_syrta";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item35
-		{
-			position[]={7126.9531,126.70584,16508.367};
-			name="marker_kore";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item36
-		{
-			position[]={4927.3667,68.373413,16191.026};
-			name="marker_negades";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item37
-		{
-			position[]={4241.1602,14.949646,16911.309};
-			name="marker_agios_konstantinos_sued";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item38
-		{
-			position[]={3802.8958,18.355747,13749.457};
-			name="marker_aggelochori";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=400;
-			b=400;
-		};
-		class Item39
-		{
-			position[]={3567.355,9.6666775,12988.393};
-			name="marker_kavala";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=400;
-			b=400;
-		};
-		class Item40
-		{
-			position[]={4116.5435,50.758011,11733.469};
-			name="marker_neri";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item41
-		{
-			position[]={5090.6196,51.980221,11291.823};
-			name="marker_panochori";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item42
-		{
-			position[]={3623.449,14.027572,10236.824};
-			name="marker_athanos";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=150;
-			b=150;
-		};
-		class Item43
-		{
 			position[]={7609.3882,23.609335,11957.831};
 			name="marker_kavirida";
 			markerType="ELLIPSE";
@@ -1409,25 +1104,7 @@ class Mission
 			a=100;
 			b=100;
 		};
-		class Item44
-		{
-			position[]={6224.3115,29.139727,15014.378};
-			name="marker_unknown1";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item45
-		{
-			position[]={9710.2861,2.5830152,22293.967};
-			name="marker_kyra_nara";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=100;
-			b=100;
-		};
-		class Item46
+		class Item2
 		{
 			position[]={16636.842,5.2053103,20461.217};
 			name="marker_agia_triada";
@@ -1436,7 +1113,7 @@ class Mission
 			a=100;
 			b=100;
 		};
-		class Item47
+		class Item3
 		{
 			position[]={17835.605,1.9724804,18153.076};
 			name="marker_kalithea";
@@ -1445,61 +1122,7 @@ class Mission
 			a=100;
 			b=100;
 		};
-		class Item48
-		{
-			position[]={20248.082,5.501555,19590.797};
-			name="marker_pefkas";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
-		};
-		class Item49
-		{
-			position[]={27154.283,21.930038,24319.717};
-			name="marker_molos_airport";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=300;
-			b=300;
-		};
-		class Item50
-		{
-			position[]={21319.045,19.301767,10977.916};
-			name="d1_31_6";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=150;
-			b=150;
-		};
-		class Item51
-		{
-			position[]={17098.766,24.272749,9985.2334};
-			name="marker_ekali";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=500;
-			b=500;
-		};
-		class Item52
-		{
-			position[]={10459.193,87.191353,17297.729};
-			name="marker_orino";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=150;
-			b=150;
-		};
-		class Item53
-		{
-			position[]={11749.59,53.603653,18288.439};
-			name="marker_koroni";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=150;
-			b=150;
-		};
-		class Item54
+		class Item4
 		{
 			position[]={3003.6492,30.866613,18463.707};
 			name="marker_fotia";
@@ -1508,25 +1131,7 @@ class Mission
 			a=100;
 			b=100;
 		};
-		class Item55
-		{
-			position[]={23932.377,14.941278,20180.598};
-			name="marker_delfinaki";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=100;
-			b=100;
-		};
-		class Item56
-		{
-			position[]={26712.611,15.412568,21219.732};
-			name="marker_gatolia";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=100;
-			b=100;
-		};
-		class Item57
+		class Item5
 		{
 			position[]={7396.1499,55.842396,15396.025};
 			name="marker_topolia";
@@ -1534,15 +1139,6 @@ class Mission
 			type="Empty";
 			a=100;
 			b=100;
-		};
-		class Item58
-		{
-			position[]={3965.728,21.571842,17341.057};
-			name="marker_agios_konstantinos_nord";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=200;
-			b=200;
 		};
 	};
 };
