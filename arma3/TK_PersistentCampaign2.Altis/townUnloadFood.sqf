@@ -1,7 +1,7 @@
  // _this variable is: [target, caller, ID, arguments]
  private["_target"];
  _target = _this select 0; 
- _position = (getPos _target) findEmptyPosition [5, 40, pixTown_ConfigWaterClassname]; 
+ _position = (getPos _target) findEmptyPosition [0, 40, pixTown_ConfigWaterClassname]; 
 if (count _position > 0) then
 {
 	private["_item"];

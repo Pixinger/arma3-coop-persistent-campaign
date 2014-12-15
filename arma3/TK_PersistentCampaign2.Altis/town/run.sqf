@@ -135,7 +135,7 @@ if (isServer) then
 		if (pixDebug) then { _deltaHours = 0.1; };
 		
 diag_log "-------------------------------------------------------------------------------";
-diag_log format["_deltaHours=%1 time=%2 serverTime=%3", _deltaHours, time, serverTime];
+diag_log format["_townName=%4 _deltaHours=%1 time=%2 serverTime=%3", _deltaHours, time, serverTime, _townName];
 
 		// -----------------------------------
 		// Power simulieren
@@ -313,7 +313,7 @@ diag_log format["L _townCivCount=%1  _townRedCount=%2", _townCivCount, _townRedC
 		//TODO: Radiuus abhängig von der Anzahl der Feineinheiten machen
 		if ([_townCenter, 1000] call PC_fnc_IsAnyPlayerNear) then
 		{
-player sidechat "online";
+player sidechat format["online: %1 C%2,R%3/%4", _townName, _townCivCount, _townRedCount, _townMaxPopulation];
 		
 			// Einmalig eine Anzahl berechnen
 			if (_civSOLL == 0) then

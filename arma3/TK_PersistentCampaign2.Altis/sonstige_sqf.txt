@@ -1,0 +1,27 @@
+init.sqs 		Executed when mission is started (before briefing screen) 			[]
+
+init.sqf 		Executed when mission is started (before briefing screen) 			[]
+
+initIntro.sqf 		Executed when intro, outro win or outro lose is started. 			[]
+
+exit.sqs 		Executed when mission is finished (before debriefing screen). 			[endType:String]
+			In Arma 3, "ended" mission event handler has the same functionality. 	
+
+onFlare.sqs 		Executed when a flare is lit after being fired from grenade launcher. 		[colorRGB:Array, shooter:Object]
+
+initServer.sqf 		Executed only on server when mission is started. See initialization 		[]
+			order for details about when the script is exactly executed. 		
+
+initPlayerServer.sqf 	Executed only on server when a player joins mission (includes both 		[]
+			mission start and JIP). See initialization order for details about 
+			when the script is exactly executed. 	[player:Object, didJIP:Boolean]
+
+initPlayerLocal.sqf 	Executed locally when player joins mission (includes both mission start 	[player:Object, didJIP:Boolean]
+			and JIP). See initialization order for details about when the script is 
+			exactly executed. 								
+
+onPlayerKilled.sqf 	Executed when player is killed in singleplayer or in multiplayer mission. 	[<oldUnit>, <killer>, <respawn>, <respawnDelay>]
+
+onPlayerRespawn.sqf 	Executed locally when player respawns in a multiplayer mission. This will 	[<newUnit>, <oldUnit>, <respawn>, <respawnDelay>]
+			also fire at the beginning of a mission, you can use isNull on the oldUnit
+			to check if it is the beginning of the mission. 				

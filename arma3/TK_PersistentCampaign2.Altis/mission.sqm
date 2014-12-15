@@ -40,7 +40,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.02";
+		overviewText="www.teamkommando.de | V0.03";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -767,7 +767,6 @@ class Mission
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
-					init="this addAction[""test"",""test.sqf""];this addAction[""beam"",""admin\beam.sqf""];";
 				};
 			};
 		};

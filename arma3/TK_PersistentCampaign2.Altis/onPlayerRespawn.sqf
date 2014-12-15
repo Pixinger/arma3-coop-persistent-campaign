@@ -1,0 +1,2 @@
+// Executed locally when player respawns in a multiplayer mission. This will also fire at the beginning of a mission, you can use isNull on the oldUnit to check if it is the beginning of the mission. 
+// [<newUnit>, <oldUnit>, <respawn>, <respawnDelay>]

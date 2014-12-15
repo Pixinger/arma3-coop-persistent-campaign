@@ -1,0 +1,2 @@
+removeAllMissionEventHandlers "HandleDisconnect";
+removeAllMissionEventHandlers "Ended";
