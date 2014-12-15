@@ -47,6 +47,7 @@ pixTown_ConfigPowerValues = [100,100,10];
 pixTown_ConfigWaterClassname = "Land_WaterTank_F";
 // Klassenname für Nahrungsversorgung
 pixTown_ConfigFoodClassname = "Land_Sacks_heap_F";
+pixTown_ConfigSaniClassname = "C_Van_01_box_F";//"B_Truck_01_medical_F"
 	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
 pixTown_ConfigRedGrowRatePPH = 0.04;            // Zuwachs in PPH.
@@ -60,9 +61,12 @@ pixTown_ConfigCivGrowFactorFood = 0.3;
 pixTown_ConfigCivGrowFactorPower = 0.3;
 pixTown_ConfigCivGrowFactorMinimum = 0.0;
 
-pixTown_ConfigFoodConsumptionPPH = 1;             // Nahrungsverbrauch in PPH.
-pixTown_ConfigWaterConsumptionPPH = 1;            // Wasserverbrauch in PPH.
-pixTown_ConfigPowerConsumptionPPH = 1;            // Stromverbrauch in PPH.
+pixTown_ConfigFoodConsumptionPPH = 0.2;             // Nahrungsverbrauch in PPH.
+if (pixDebug) then { pixTown_ConfigFoodConsumptionPPH = 0.05; };
+pixTown_ConfigWaterConsumptionPPH = 0.2;            // Wasserverbrauch in PPH.
+if (pixDebug) then { pixTown_ConfigWaterConsumptionPPH = 0.05; };
+pixTown_ConfigPowerConsumptionPPH = 0.2;            // Stromverbrauch in PPH.
+if (pixDebug) then { pixTown_ConfigPowerConsumptionPPH = 0.05; };
 
 pixTown_ConfigInjuredGrowFactorPPH = 0;		  // Zuwachs an verletzten in PPH.
 
@@ -85,6 +89,9 @@ pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
 
 // Grenzen ab wann Bewegungen in der Stadt beginnen
 pixTown_ConfigRedLeaveTown = 10;  
+
+pixTown_ConfigMainLoopSleep = 30;
+if (pixDebug) then { pixTown_ConfigMainLoopSleep = 10; };
 
 
 // ------------------------------------------------------------

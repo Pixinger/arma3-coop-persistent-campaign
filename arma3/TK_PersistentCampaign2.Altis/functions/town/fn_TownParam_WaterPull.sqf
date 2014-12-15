@@ -16,5 +16,4 @@ private["_varname"];
 _varname = format["TownVarWater%1", _townName];
 _result = missionNamespace getVariable [_varname, 0];		
 missionNamespace setVariable [_varname, 0];
-
 _result;

@@ -12,7 +12,7 @@ Return:
 private["_townName"];
 _townName = [_this, 0, "", [""]] call BIS_fnc_param;
 private["_value"];
-_value = [_this, 1, 0, [2000]] call BIS_fnc_param;
+_value = [_this, 1, 0, [0]] call BIS_fnc_param;
 
 if (_townName != "") then
 {

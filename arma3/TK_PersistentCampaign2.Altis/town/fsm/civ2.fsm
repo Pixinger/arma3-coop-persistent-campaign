@@ -1,70 +1,97 @@
 /*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, civ2">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start",0,250,-24.471828,-187.864349,65.528168,-137.864349,0.000000,"Start"};
-item1[] = {"isServer",4,218,-24.471794,-266.944031,65.528183,-216.944031,0.000000,"isServer"};
-item2[] = {"__isServer",4,218,-136.539307,-267.034973,-46.539360,-217.034882,0.000000,"!isServer"};
-item3[] = {"Ende1",1,250,-263.067017,-267.035034,-173.067322,-217.035095,0.000000,"Ende1"};
+item0[] = {"Start",0,250,-25.908817,-8.121918,64.091179,41.878082,0.000000,"Start"};
+item1[] = {"isServer",4,218,-25.908783,-87.201599,64.091194,-37.201599,0.000000,"isServer"};
+item2[] = {"__isServer",4,218,-137.976273,-87.292542,-47.976353,-37.292450,0.000000,"!isServer"};
+item3[] = {"Ende1",1,250,-264.504028,-87.292603,-174.504288,-37.292664,0.000000,"Ende1"};
 item4[] = {"nachdenken",2,250,-26.502886,-827.857239,63.497139,-777.856567,0.000000,"nachdenken"};
-item5[] = {"___5",4,218,-421.273285,-934.232605,-371.849457,-891.254761,100.000000,"0.5"};
-item6[] = {"___7",4,218,-263.658600,-934.022888,-214.328125,-893.060242,90.000000,"0.7"};
-item7[] = {"warten",2,250,-24.511734,-344.535553,65.488235,-294.535553,0.000000,"warten"};
-item8[] = {"Zeit",4,218,2.711161,-392.974091,37.809196,-366.883698,0.000000,"Zeit"};
-item9[] = {"__",4,218,336.860413,-923.576477,365.967041,-892.604126,0.000000,"1"};
-item10[] = {"Supplies_suchen",2,250,-282.510559,-998.984985,-192.510620,-948.984985,0.000000,"Supplies" \n "suchen"};
-item11[] = {"JA",4,218,-260.333160,-1061.842285,-213.145996,-1019.223816,100.000000,"JA"};
-item12[] = {"NO",4,218,-317.934052,-1063.232178,-274.182678,-1017.779297,0.000000,"NO"};
-item13[] = {"hingehen",2,250,-282.723694,-1136.400146,-192.723694,-1086.400146,0.000000,"hingehen"};
-item14[] = {"OK",4,218,-259.458282,-1212.555420,-216.240234,-1171.767334,0.000000,"OK"};
-item15[] = {"ER",4,218,-347.307129,-1209.229004,-301.148834,-1170.087891,0.000000,"ER"};
-item16[] = {"Aufnehmen",2,250,-284.291138,-1288.368408,-194.291138,-1238.368408,0.000000,"Aufnehmen"};
-item17[] = {"time",4,218,-259.956543,-1353.918091,-218.288345,-1319.301880,0.000000,"time"};
-item18[] = {"Entfernung__100m",2,250,-26.604120,-998.695740,63.395973,-948.695740,0.000000,"Entfernung" \n ">100m"};
-item19[] = {"JA",4,218,-4.895334,-1069.592773,35.082542,-1032.919434,100.000000,"JA"};
-item20[] = {"___9",4,218,152.555267,-922.598755,184.492554,-892.237488,70.000000,"0.9"};
+item5[] = {"___1",4,218,-450.307587,-827.618530,-360.307678,-777.618530,100.000000,"0.1"};
+item6[] = {"___7",4,218,-449.137238,-934.022888,-359.137360,-884.022888,90.000000,"0.7"};
+item7[] = {"warten",2,250,-25.948723,-164.793091,64.051247,-114.793121,0.000000,"warten"};
+item8[] = {"Zeit",4,218,-25.990097,-238.982422,64.009933,-188.982452,0.000000,"Zeit"};
+item9[] = {"__",8,218,305.382111,-917.580627,395.382111,-867.580627,0.000000,"1"};
+item10[] = {"Supplies_suchen",2,250,-447.371429,-998.984985,-357.371490,-948.984985,0.000000,"Supplies" \n "suchen"};
+item11[] = {"JA",4,218,-448.200928,-1067.896729,-358.200928,-1017.896729,100.000000,"JA"};
+item12[] = {"NO",8,218,-541.988220,-1067.617432,-451.988342,-1017.617310,0.000000,"NO"};
+item13[] = {"hingehen",2,250,-451.403503,-1320.067993,-361.403503,-1270.067993,0.000000,"hingehen"};
+item14[] = {"OK",4,218,-453.249817,-1402.202271,-363.249817,-1352.202271,0.000000,"OK"};
+item15[] = {"ER",4,218,-547.906738,-1403.551758,-457.906921,-1353.551758,0.000000,"ER"};
+item16[] = {"Aufnehmen",2,250,-494.711304,-1655.114380,-404.711334,-1605.114380,0.000000,"Aufnehmen"};
+item17[] = {"time",4,218,-494.835052,-1733.733521,-404.835144,-1683.733521,0.000000,"time"};
+item18[] = {"Entfernung__100m",2,4346,-26.604120,-998.695740,63.395973,-948.695740,0.000000,"Entfernung" \n ">100m"};
+item19[] = {"JA",4,218,-28.705202,-1075.765747,61.294758,-1025.765747,100.000000,"JA"};
+item20[] = {"___9",4,218,122.865509,-925.072876,212.865509,-875.072876,70.000000,"0.9"};
 item21[] = {"herumlaufen",2,250,123.114578,-997.664368,213.113953,-947.664795,0.000000,"herumlaufen"};
-item22[] = {"___8",4,218,-0.678507,-924.256165,37.235832,-891.333496,80.000000,"0.8"};
-item23[] = {"nach_Hause",2,250,-30.054653,-1516.852661,59.945370,-1466.852661,0.000000,"nach Hause"};
-item24[] = {"failed",4,218,-34.323997,-1591.992554,13.836795,-1548.823608,0.000000,"failed"};
-item25[] = {"OK",4,218,16.053944,-1591.138794,60.799126,-1547.969604,0.000000,"OK"};
-item26[] = {"Ende",1,250,-28.346905,-1678.232544,61.653126,-1628.232544,0.000000,"Ende"};
-item27[] = {"NO",4,218,-73.598465,-1070.830811,-32.793739,-1030.670166,0.000000,"NO"};
-item28[] = {"ER",4,218,207.431091,-1064.958496,246.455597,-1025.699951,0.000000,"ER"};
-item29[] = {"OK",4,218,147.270233,-1065.444092,186.106659,-1026.248291,0.000000,"OK"};
-item30[] = {"nix",2,250,306.480225,-997.340576,396.480316,-947.340515,0.000000,"nix"};
-item31[] = {"_",4,218,407.020477,-1039.727783,435.204773,-1016.102478,0.000000,""};
-item32[] = {"Medic_suchen",2,250,-53.771450,-572.872070,3.323000,-533.824341,0.000000,"Medic" \n "suchen"};
-item33[] = {"",7,210,-328.007477,-323.791168,-320.007477,-315.791168,0.000000,""};
-item34[] = {"",7,210,-119.504013,-323.783112,-111.504021,-315.783142,0.000000,""};
-item35[] = {"",7,210,-299.807220,-323.642334,-291.807251,-315.642334,0.000000,""};
-item36[] = {"",7,210,264.064056,-323.638947,272.064056,-315.638947,0.000000,""};
-item37[] = {"",7,210,223.168243,-324.068085,231.168243,-316.068085,0.000000,""};
-item38[] = {"verletzt_",2,250,-11.231905,-448.703705,51.631866,-419.055908,0.000000,"verletzt?"};
-item39[] = {"No",4,218,0.340105,-511.607910,37.066338,-476.811493,0.000000,"No"};
-item40[] = {"JA",4,218,-36.356148,-511.242218,-0.628633,-478.202362,100.000000,"JA"};
-item41[] = {"",7,210,-401.084412,-323.414368,-393.084381,-315.414307,0.000000,""};
-item42[] = {"No",4,218,-24.937904,-614.300903,6.357029,-586.855286,0.000000,"No"};
-item43[] = {"Ja",4,218,-70.945175,-615.247253,-40.882442,-587.935486,100.000000,"Ja"};
-item44[] = {"zum_medic_gehen",2,4346,-576.061951,-733.343628,-486.061890,-683.343628,0.000000,"zum medic" \n "gehen"};
-item45[] = {"",7,210,-119.064346,-1055.005859,-111.064346,-1047.005859,0.000000,""};
-item46[] = {"ER",4,218,-615.136780,-843.186951,-568.399231,-801.685303,0.000000,"ER"};
-item47[] = {"OK",4,218,-557.454407,-844.936462,-504.371307,-797.397644,0.000000,"OK"};
-item48[] = {"fnc",2,250,-553.456055,-1214.136597,-510.055847,-1184.640503,0.000000,"fnc"};
-item49[] = {"",7,210,163.619324,-1103.328613,171.619324,-1095.328613,0.000000,""};
-item50[] = {"",7,210,261.058533,-1103.357178,269.058533,-1095.357178,0.000000,""};
-item51[] = {"",7,210,416.808075,-323.682495,424.808075,-315.682495,0.000000,""};
-item52[] = {"",7,210,-596.832458,-322.591675,-588.832458,-314.591675,0.000000,""};
-item53[] = {"warten_1",2,250,-577.464661,-942.129395,-487.464722,-892.129395,0.000000,"warten"};
-item54[] = {"Zeit",4,218,-550.241760,-990.567993,-515.143738,-964.477539,0.000000,"Zeit"};
-item55[] = {"verletzt__1",2,250,-564.184875,-1046.297607,-501.321106,-1016.649780,0.000000,"verletzt?"};
-item56[] = {"No",4,218,-550.561035,-1114.331299,-513.834839,-1079.534912,0.000000,"No"};
-item57[] = {"JA",4,218,-587.257324,-1113.965576,-551.529785,-1080.925781,100.000000,"JA"};
-item58[] = {"",7,210,-640.271606,-556.808411,-632.271606,-548.808411,0.000000,""};
-item59[] = {"",7,210,-639.245728,-1101.056396,-631.245728,-1093.056152,0.000000,""};
-item60[] = {"aktiv_",2,250,-79.640846,-679.868774,-30.329689,-652.182068,0.000000,"aktiv?"};
-item61[] = {"JA",4,218,-97.140305,-721.401367,-61.610893,-695.683411,100.000000,"JA"};
-item62[] = {"No",4,218,-43.969803,-725.348572,-12.674864,-697.902954,0.000000,"No"};
-item63[] = {"_",4,218,-546.541321,-1505.065308,-517.120850,-1479.297241,0.000000,""};
+item22[] = {"___8",4,218,-26.244678,-925.905579,63.755333,-875.905579,80.000000,"0.8"};
+item23[] = {"nach_Hause",2,250,-30.054651,-1775.161499,59.945374,-1725.161499,0.000000,"nach Hause"};
+item24[] = {"ER",4,218,-81.969612,-1860.336304,8.030397,-1810.336304,0.000000,"ER"};
+item25[] = {"OK",4,218,21.891464,-1860.746704,111.891449,-1810.746704,0.000000,"OK"};
+item26[] = {"Ende",1,250,-32.545654,-2113.938721,57.454384,-2063.938721,0.000000,"Ende"};
+item27[] = {"NO",8,218,-120.336441,-1076.121826,-30.336361,-1026.121826,0.000000,"NO"};
+item28[] = {"ER",4,218,180.189682,-1077.582520,270.189636,-1027.582520,0.000000,"ER"};
+item29[] = {"OK",4,218,86.143196,-1078.068115,176.143173,-1028.068115,0.000000,"OK"};
+item30[] = {"Nachbar_suchen",2,250,306.480225,-997.340576,396.480225,-947.340576,0.000000,"Nachbar" \n "suchen"};
+item31[] = {"ER",4,218,403.008301,-1072.375977,493.008301,-1022.375977,0.000000,"ER"};
+item32[] = {"Medic_suchen",2,250,-75.071159,-486.697998,14.928863,-436.697998,0.000000,"Medic" \n "suchen"};
+item33[] = {"",7,210,-619.308044,-143.814636,-611.308044,-135.814651,0.000000,""};
+item34[] = {"",7,210,-284.974976,-143.759079,-276.974976,-135.759125,0.000000,""};
+item35[] = {"",7,210,-501.503204,-143.252945,-493.503296,-135.252930,0.000000,""};
+item36[] = {"",7,210,275.505890,-143.896500,283.505890,-135.896515,0.000000,""};
+item37[] = {"",7,210,222.126038,-143.930878,230.126038,-135.930893,0.000000,""};
+item38[] = {"verletzt_",2,250,-25.910698,-322.756042,64.089317,-272.756042,0.000000,"verletzt?"};
+item39[] = {"No",4,218,19.740116,-401.128052,109.740097,-351.127991,0.000000,"No"};
+item40[] = {"JA",4,218,-74.586937,-400.877319,15.413081,-350.877380,100.000000,"JA"};
+item41[] = {"",7,210,-408.185150,-143.905731,-400.185150,-135.905640,0.000000,""};
+item42[] = {"No",8,218,-74.695213,-560.063354,15.304822,-510.063354,0.000000,"No"};
+item43[] = {"Ja",4,218,-166.809677,-559.189697,-76.809914,-509.189697,100.000000,"Ja"};
+item44[] = {"zum_medic_gehen",2,250,-838.673218,-728.723145,-748.673218,-678.723145,0.000000,"zum medic" \n "gehen"};
+item45[] = {"",7,210,-284.510712,-1055.005859,-276.510712,-1047.005859,0.000000,""};
+item46[] = {"ER",4,218,-931.812744,-824.859924,-841.812744,-774.859924,0.000000,"ER"};
+item47[] = {"OK",4,218,-838.392700,-823.860352,-748.392700,-773.860352,0.000000,"OK"};
+item48[] = {"fnc",2,250,-839.090332,-1232.842773,-749.090210,-1182.842773,0.000000,"fnc"};
+item49[] = {"",7,210,127.075974,-1103.328613,135.075974,-1095.328613,0.000000,""};
+item50[] = {"",7,210,273.134918,-1103.357178,281.134918,-1095.357178,0.000000,""};
+item51[] = {"",7,210,442.073303,-143.928558,450.073303,-135.928543,0.000000,""};
+item52[] = {"",7,210,-891.540283,-144.070587,-883.540283,-136.070602,0.000000,""};
+item53[] = {"warten_1",2,250,-838.243286,-917.387939,-748.243286,-867.387939,0.000000,"warten"};
+item54[] = {"Zeit",4,218,-840.343628,-985.986267,-750.343506,-935.986267,0.000000,"Zeit"};
+item55[] = {"verletzt__1",2,250,-826.796143,-1046.297852,-763.932373,-1016.649780,0.000000,"verletzt?"};
+item56[] = {"No",4,218,-840.662842,-1130.825684,-750.662842,-1080.825684,0.000000,"No"};
+item57[] = {"JA",4,218,-936.005493,-1131.376465,-846.005493,-1081.376465,100.000000,"JA"};
+item58[] = {"",7,210,-975.580750,-467.478699,-967.580750,-459.478668,0.000000,""};
+item59[] = {"",7,210,-973.332397,-1110.220215,-965.332397,-1102.219971,0.000000,""};
+item60[] = {"aktiv_",2,250,-167.977066,-635.902954,-77.977150,-585.902954,0.000000,"aktiv?"};
+item61[] = {"JA",4,218,-261.366394,-727.479126,-171.366623,-677.479126,100.000000,"JA"};
+item62[] = {"No",8,218,-166.751984,-727.821777,-76.752045,-677.821777,0.000000,"No"};
+item63[] = {"_",8,218,-839.971313,-1327.432617,-749.971313,-1277.432617,0.000000,""};
+item64[] = {"OK",4,218,305.973663,-1073.320068,395.973663,-1023.320129,100.000000,"OK"};
+item65[] = {"hingehen_1",2,250,307.827332,-1145.302734,397.827332,-1095.302734,0.000000,"hingehen"};
+item66[] = {"ER",4,218,355.474579,-1230.035522,445.474579,-1180.035522,0.000000,"ER"};
+item67[] = {"OK",4,218,258.146271,-1230.390625,348.146271,-1180.390625,0.000000,"OK"};
+item68[] = {"failed",2,250,478.811615,-1228.338745,568.811646,-1178.338745,0.000000,"failed"};
+item69[] = {"_",8,218,478.163177,-1110.677490,568.163147,-1060.677368,0.000000,""};
+item70[] = {"completed",2,250,257.363068,-1310.977173,347.363098,-1260.977173,0.000000,"completed"};
+item71[] = {"_",8,218,559.116638,-1310.785278,649.116638,-1260.785278,0.000000,""};
+item72[] = {"",7,210,599.305908,-143.977005,607.305908,-135.977020,0.000000,""};
+item73[] = {"",7,210,518.494751,-143.991837,526.494751,-135.991852,0.000000,""};
+item74[] = {"failed_1",2,250,-81.338028,-1945.186768,8.662016,-1895.186768,0.000000,"failed"};
+item75[] = {"completed_1",2,250,21.139885,-1945.186890,111.139938,-1895.186890,0.000000,"completed"};
+item76[] = {"_",8,218,-82.313538,-2017.881592,7.686443,-1967.881592,0.000000,""};
+item77[] = {"_",8,218,20.555908,-2019.980957,110.556061,-1969.980957,0.000000,""};
+item78[] = {"noch_vorhanden_",2,250,-451.245911,-1483.689575,-361.245789,-1433.689575,0.000000,"noch" \n "vorhanden?"};
+item79[] = {"JA",4,218,-494.946289,-1570.240356,-404.946075,-1520.240356,100.000000,"JA"};
+item80[] = {"NO",8,218,-400.061127,-1571.084351,-310.061127,-1521.084351,0.000000,"NO"};
+item81[] = {"alle_weg",2,250,-341.414642,-1482.198120,-251.414551,-1432.198120,0.000000,"alle" \n "weg"};
+item82[] = {"_",8,218,-340.734772,-1155.417114,-250.734711,-1105.417114,0.000000,""};
+item83[] = {"Entfernung__100m_1",2,250,-449.363464,-1161.926636,-359.363342,-1111.926636,0.000000,"Entfernung" \n ">100m"};
+item84[] = {"JA",4,218,-450.886597,-1229.267822,-360.886597,-1179.267822,100.000000,"JA"};
+item85[] = {"NO",8,218,-543.219849,-1230.134399,-453.219818,-1180.134399,0.000000,"NO"};
+item86[] = {"",7,210,-616.772278,-1380.675537,-608.772278,-1372.675537,0.000000,""};
+item87[] = {"",7,210,-798.085205,-1754.048584,-790.085205,-1746.048584,0.000000,""};
+item88[] = {"leider_zu_nah",2,250,-599.471130,-1163.282715,-509.471130,-1113.282715,0.000000,"leider" \n "zu nah"};
+item89[] = {"",7,210,-559.086304,-144.892960,-551.086304,-136.892944,0.000000,""};
+item90[] = {"_",8,218,-599.628601,-1022.663086,-509.628601,-972.663391,0.000000,""};
 link0[] = {0,1};
 link1[] = {0,2};
 link2[] = {1,7};
@@ -81,12 +108,12 @@ link12[] = {8,38};
 link13[] = {9,30};
 link14[] = {10,11};
 link15[] = {10,12};
-link16[] = {11,13};
+link16[] = {11,83};
 link17[] = {12,35};
 link18[] = {13,14};
 link19[] = {13,15};
-link20[] = {14,16};
-link21[] = {15,33};
+link20[] = {14,78};
+link21[] = {15,86};
 link22[] = {16,17};
 link23[] = {17,23};
 link24[] = {18,19};
@@ -98,52 +125,83 @@ link29[] = {21,29};
 link30[] = {22,18};
 link31[] = {23,24};
 link32[] = {23,25};
-link33[] = {24,26};
-link34[] = {25,26};
+link33[] = {24,74};
+link34[] = {25,75};
 link35[] = {27,45};
 link36[] = {28,37};
 link37[] = {29,49};
 link38[] = {30,31};
-link39[] = {31,51};
-link40[] = {32,42};
-link41[] = {32,43};
-link42[] = {33,7};
-link43[] = {34,7};
-link44[] = {35,7};
-link45[] = {36,7};
-link46[] = {37,7};
-link47[] = {38,39};
-link48[] = {38,40};
-link49[] = {39,4};
-link50[] = {40,32};
-link51[] = {41,7};
-link52[] = {42,4};
-link53[] = {43,60};
-link54[] = {44,46};
-link55[] = {44,47};
-link56[] = {45,34};
-link57[] = {46,52};
-link58[] = {47,53};
-link59[] = {48,63};
-link60[] = {49,50};
-link61[] = {50,36};
-link62[] = {51,7};
-link63[] = {52,7};
-link64[] = {53,54};
-link65[] = {54,55};
-link66[] = {55,56};
-link67[] = {55,57};
-link68[] = {56,48};
-link69[] = {57,59};
-link70[] = {58,32};
-link71[] = {59,58};
-link72[] = {60,61};
-link73[] = {60,62};
-link74[] = {61,44};
-link75[] = {62,4};
-link76[] = {63,23};
-globals[] = {0.000000,0,0,0,0,640,480,1,98,6316128,1,-972.677002,1079.920288,-210.104538,-1776.983154,1403,1071,1};
-window[] = {2,-1,-1,-1,-1,1155,275,1715,275,3,1421};
+link39[] = {30,64};
+link40[] = {31,51};
+link41[] = {32,42};
+link42[] = {32,43};
+link43[] = {33,7};
+link44[] = {34,7};
+link45[] = {35,7};
+link46[] = {36,7};
+link47[] = {37,7};
+link48[] = {38,39};
+link49[] = {38,40};
+link50[] = {39,4};
+link51[] = {40,32};
+link52[] = {41,7};
+link53[] = {42,4};
+link54[] = {43,60};
+link55[] = {44,46};
+link56[] = {44,47};
+link57[] = {45,34};
+link58[] = {46,52};
+link59[] = {47,53};
+link60[] = {48,63};
+link61[] = {49,50};
+link62[] = {50,36};
+link63[] = {51,7};
+link64[] = {52,7};
+link65[] = {53,54};
+link66[] = {54,55};
+link67[] = {55,56};
+link68[] = {55,57};
+link69[] = {56,48};
+link70[] = {57,59};
+link71[] = {58,32};
+link72[] = {59,58};
+link73[] = {60,61};
+link74[] = {60,62};
+link75[] = {61,44};
+link76[] = {62,4};
+link77[] = {63,87};
+link78[] = {64,65};
+link79[] = {65,66};
+link80[] = {65,67};
+link81[] = {66,68};
+link82[] = {67,70};
+link83[] = {68,69};
+link84[] = {69,73};
+link85[] = {70,71};
+link86[] = {71,72};
+link87[] = {72,7};
+link88[] = {73,7};
+link89[] = {74,76};
+link90[] = {75,77};
+link91[] = {76,26};
+link92[] = {77,26};
+link93[] = {78,79};
+link94[] = {78,80};
+link95[] = {79,16};
+link96[] = {80,81};
+link97[] = {81,82};
+link98[] = {82,10};
+link99[] = {83,84};
+link100[] = {83,85};
+link101[] = {84,13};
+link102[] = {85,88};
+link103[] = {86,33};
+link104[] = {87,23};
+link105[] = {88,90};
+link106[] = {89,7};
+link107[] = {90,89};
+globals[] = {0.000000,0,0,0,0,640,480,1,126,6316128,1,-1230.167725,469.517151,-197.257477,-1494.737427,1403,1071,1};
+window[] = {2,-1,-1,-1,-1,980,100,1540,100,3,1421};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -159,7 +217,7 @@ class FSM
        "_townRadius = _leader getVariable ""townRadius"";" \n
        "_home = _leader getVariable ""townHome"";" \n
        "" \n
-       "diag_log format[""FSM: start %1 %2 %3 %4"", _townName, _townCenter, _townRadius, _home];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: start %1 C%2 R%3 H%4"", _townName, _townCenter, _townRadius, _home];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -190,7 +248,7 @@ class FSM
     class Ende1
     {
       name = "Ende1";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""FSM: Ende"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 Ende"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -202,12 +260,12 @@ class FSM
     {
       name = "nachdenken";
       init = /*%FSM<STATEINIT""">*/"_decision = random 1;" \n
-       "diag_log format[""FSM: nachdenken %1"", _decision];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %2 nachdenken %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "___5">*/
-        class ___5
+        /*%FSM<LINK "___1">*/
+        class ___1
         {
           priority = 100.000000;
           to="warten";
@@ -250,9 +308,9 @@ class FSM
         class __
         {
           priority = 0.000000;
-          to="nix";
+          to="Nachbar_suchen";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_decision <= 1"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -264,7 +322,7 @@ class FSM
     {
       name = "warten";
       init = /*%FSM<STATEINIT""">*/"_decision = time + 3;" \n
-       "diag_log ""FSM: warten (main)"";"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %5 warten %1 C%2 R%3 H%4"", _townName, _townCenter, _townRadius, _home, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -285,8 +343,9 @@ class FSM
     class Supplies_suchen
     {
       name = "Supplies_suchen";
-      init = /*%FSM<STATEINIT""">*/"_supplies = nearestObjects[(getPos _leader), [""Land_WaterTank_F"",""Land_Sacks_heap_F""], 300];" \n
-       "diag_log format[""FSM: Supplies gesucht: %1"", count _supplies];" \n
+      init = /*%FSM<STATEINIT""">*/"_supplies = nearestObjects[(getPos _leader), [pixTown_ConfigWaterClassname, pixTown_ConfigFoodClassname], 300];" \n
+       "if (count _supplies > 0) then { _supplies = _supplies select (floor(random( count _supplies))); diag_log format[""FSM: %2 Supplies gesucht: %1"", _supplies, _leader];} else {_supplies = nil; diag_log format[""FSM: %1 Keine supplies in der stadt gefunden"",_leader];};" \n
+       "" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -295,9 +354,9 @@ class FSM
         class JA
         {
           priority = 100.000000;
-          to="hingehen";
+          to="Entfernung__100m_1";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(count _supplies) > 0"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""_supplies"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -318,9 +377,8 @@ class FSM
     class hingehen
     {
       name = "hingehen";
-      init = /*%FSM<STATEINIT""">*/"_supplies = _supplies select (floor(random( count _supplies)));" \n
-       "_leader moveTo (getPos _supplies);" \n
-       "diag_log ""FSM: Gehe zu supplies"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_leader moveTo (getPos _supplies);" \n
+       "diag_log format[""FSM: %1 Gehe zu supplies"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -338,7 +396,7 @@ class FSM
         class OK
         {
           priority = 0.000000;
-          to="Aufnehmen";
+          to="noch_vorhanden_";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"moveToCompleted _leader"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -351,17 +409,19 @@ class FSM
     class Aufnehmen
     {
       name = "Aufnehmen";
-      init = /*%FSM<STATEINIT""">*/"private[""_content""];" \n
+      init = /*%FSM<STATEINIT""">*/"if (_supplies isKindOf pixTown_ConfigWaterClassname) then { [_townName, 1] call PC_fnc_TownParam_WaterAdd;};" \n
+       "if (_supplies isKindOf pixTown_ConfigFoodClassname) then { [_townName, 1] call PC_fnc_TownParam_FoodAdd;};" \n
+       "" \n
+       "private[""_content""];" \n
        "_content = _supplies getVariable ""content"";" \n
        "if (isNil ""_content"") then { _content = 2;};" \n
        "_content = _content - 1;" \n
        "if (_content <= 0) then { deleteVehicle _supplies;} else {_supplies setVariable [""content"", _content];};" \n
        "" \n
        "_decision = time + 2;" \n
-       "diag_log format[""FSM: Nehme Waren auf. Rest: %1. %2"", _content, _supplies];" \n
        "" \n
-       "if (_supplies isKindOf ""Land_WaterTank_F"") then { [_townName, 1] call PC_fnc_TownParam_WaterAdd;};" \n
-       "if (_supplies isKindOf ""Land_Sacks_heap_F"") then { [_townName, 1] call PC_fnc_TownParam_FoodAdd;};"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %3 Nehme Waren auf. Rest: %1. %2"", _content, _supplies, _leader];" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -383,7 +443,7 @@ class FSM
     {
       name = "Entfernung__100m";
       init = /*%FSM<STATEINIT""">*/"_decision = (getPos _leader) distance _home;" \n
-       "diag_log format[""FSM: Entfernung nach Hause: %1"", _decision];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %2 Entfernung nach Hause: %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -403,7 +463,7 @@ class FSM
           priority = 0.000000;
           to="warten";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -414,8 +474,8 @@ class FSM
     class herumlaufen
     {
       name = "herumlaufen";
-      init = /*%FSM<STATEINIT""">*/"_leader moveTo [((getPos _leader) select 0) + (random 300), ((getPos _leader) select 1) + (random 300), 0];" \n
-       "diag_log ""FSM: herumlaufen"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_leader moveTo [(_townCenter select 0) + (random _townRadius), (_townCenter select 1) + (random _townRadius), 0];" \n
+       "diag_log format[""FSM: %1 herumlaufen"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -447,7 +507,7 @@ class FSM
     {
       name = "nach_Hause";
       init = /*%FSM<STATEINIT""">*/"_leader moveTo _home;" \n
-       "diag_log format[""FSM: Gehe nach Hause: %1"", _home];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %2 Gehe nach Hause: %1"", _home, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -455,20 +515,20 @@ class FSM
         class OK
         {
           priority = 0.000000;
-          to="Ende";
-          precondition = /*%FSM<CONDPRECONDITION""">*/"moveToCompleted _leader"/*%FSM</CONDPRECONDITION""">*/;
+          to="completed_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"moveToCompleted _leader"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log ""moveToCompleted"";"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "failed">*/
-        class failed
+        /*%FSM<LINK "ER">*/
+        class ER
         {
           priority = 0.000000;
-          to="Ende";
-          precondition = /*%FSM<CONDPRECONDITION""">*/"moveToFailed _leader"/*%FSM</CONDPRECONDITION""">*/;
+          to="failed_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"moveToFailed _leader"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log ""moveToFailed"";"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -486,16 +546,29 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "nix">*/
-    class nix
+    /*%FSM<STATE "Nachbar_suchen">*/
+    class Nachbar_suchen
     {
-      name = "nix";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""FSM: nic zu tun"";"/*%FSM</STATEINIT""">*/;
+      name = "Nachbar_suchen";
+      init = /*%FSM<STATEINIT""">*/"private[""_decision""];" \n
+       "_decision = nearestBuilding [(_townCenter select 0) + (random _townRadius), (_townCenter select 1) + (random _townRadius), 0];" \n
+       "_decision = _decision buildingPos (([_decision] call PC_fnc_GetMaxBuildingPositions) - 1);" \n
+       "diag_log format[""FSM: %1 zum Nachbarn laufen"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "_">*/
-        class _
+        /*%FSM<LINK "OK">*/
+        class OK
+        {
+          priority = 100.000000;
+          to="hingehen_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _decision == 3)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ER">*/
+        class ER
         {
           priority = 0.000000;
           to="warten";
@@ -511,9 +584,15 @@ class FSM
     class Medic_suchen
     {
       name = "Medic_suchen";
-      init = /*%FSM<STATEINIT""">*/"_medic = nearestObjects[(getPos _leader), [""B_Truck_01_medical_F""], 300];" \n
-       "if (count _medic > 0) then { _medic = _medic select 0;} else {_medic = nil;};" \n
-       "diag_log format[""FSM: Medic gesucht: %1"", _medic];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_medic = nearestObjects[(getPos _leader), [pixTown_ConfigSaniClassname], 300];" \n
+       "if (count _medic > 0) then { " \n
+       "_medic = _medic select 0;" \n
+       "diag_log format[""FSM: %2 Medic gesucht: %1"", _medic, _leader];" \n
+       "} else {" \n
+       "_medic = nil;" \n
+       "diag_log format[""FSM: %1"", _leader];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -545,7 +624,7 @@ class FSM
     {
       name = "verletzt_";
       init = /*%FSM<STATEINIT""">*/"_decision = getDammage _leader;" \n
-       "diag_log format[""FSM: verletzt %1"", _decision];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %2 verletzt %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -577,7 +656,7 @@ class FSM
     {
       name = "zum_medic_gehen";
       init = /*%FSM<STATEINIT""">*/"_leader moveTo (getPos _medic);" \n
-       "diag_log format[""FSM: gehe zum Medic %1"", (getPos _medic)];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM:%2  gehe zum Medic %1"", (getPos _medic), _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -609,7 +688,7 @@ class FSM
     {
       name = "fnc";
       init = /*%FSM<STATEINIT""">*/"[_townName, -1] call PC_fnc_TownParam_InjuredAdd;" \n
-       "diag_log ""FSM: Verringere Stadt Injured Parameter"";"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %1 Verringere Stadt Injured Parameter"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -630,8 +709,8 @@ class FSM
     class warten_1
     {
       name = "warten_1";
-      init = /*%FSM<STATEINIT""">*/"_decision = time + 3;" \n
-       "diag_log ""FSM: Warte auf Heilung"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_decision = time + 20;" \n
+       "diag_log format[""FSM: %1 Warte auf Heilung"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -653,7 +732,7 @@ class FSM
     {
       name = "verletzt__1";
       init = /*%FSM<STATEINIT""">*/"_decision = getDammage _leader;" \n
-       "diag_log format[""FSM: Noch verletzt? %1"", _decision];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %2 Noch verletzt? %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -685,7 +764,7 @@ class FSM
     {
       name = "aktiv_";
       init = /*%FSM<STATEINIT""">*/"_active = _medic getVariable [""active"", false];" \n
-       "diag_log format[""FSM: medic active: %1"", _active];"/*%FSM</STATEINIT""">*/;
+       "diag_log format[""FSM: %2 medic active: %1"", _active, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -705,7 +784,229 @@ class FSM
           priority = 0.000000;
           to="nachdenken";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!_active"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "hingehen_1">*/
+    class hingehen_1
+    {
+      name = "hingehen_1";
+      init = /*%FSM<STATEINIT""">*/"_leader moveTo _decision;" \n
+       "diag_log format[""FSM: %3 Gehe zum Nachbarn: %2 => %1"", _decision, getPos _leader, _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "OK">*/
+        class OK
+        {
+          priority = 0.000000;
+          to="completed";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _leader"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ER">*/
+        class ER
+        {
+          priority = 0.000000;
+          to="failed";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _leader"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "failed">*/
+    class failed
+    {
+      name = "failed";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 moveToFailed"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "completed">*/
+    class completed
+    {
+      name = "completed";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 moveToCompleted"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "failed_1">*/
+    class failed_1
+    {
+      name = "failed_1";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 moveToFailed (home)"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Ende";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "completed_1">*/
+    class completed_1
+    {
+      name = "completed_1";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 moveToCompleted(home)"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Ende";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "noch_vorhanden_">*/
+    class noch_vorhanden_
+    {
+      name = "noch_vorhanden_";
+      init = /*%FSM<STATEINIT""">*/"_decision = (!isNull _supplies);" \n
+       "diag_log format[""FSM: %2 Supplies noch vorhanden: %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "JA">*/
+        class JA
+        {
+          priority = 100.000000;
+          to="Aufnehmen";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decision"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "NO">*/
+        class NO
+        {
+          priority = 0.000000;
+          to="alle_weg";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "alle_weg">*/
+    class alle_weg
+    {
+      name = "alle_weg";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 keine Supplies mehr gefunden"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Supplies_suchen";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Entfernung__100m_1">*/
+    class Entfernung__100m_1
+    {
+      name = "Entfernung__100m_1";
+      init = /*%FSM<STATEINIT""">*/"_decision = (_home) distance (getPos _supplies);" \n
+       "diag_log format[""FSM: %2 Entfernung nach Hause (supplies): %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "JA">*/
+        class JA
+        {
+          priority = 100.000000;
+          to="hingehen";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decision > 100"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "NO">*/
+        class NO
+        {
+          priority = 0.000000;
+          to="leider_zu_nah";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "leider_zu_nah">*/
+    class leider_zu_nah
+    {
+      name = "leider_zu_nah";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 leider home zu nah am supply"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

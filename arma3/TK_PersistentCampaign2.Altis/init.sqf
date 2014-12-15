@@ -8,7 +8,7 @@ enableSaving [false, false];
 
 /*-----------------------------------------------*/
 /* Parameter (0): Debug */
-pixDebug = true;
+pixDebug = false;
 if (isServer && !isDedicated) then { pixDebug = true; };
 /* Parameter (0): TFR-Muted while dead */
 pixParamTFARMutedOnDeath = (paramsArray select 0); //0=aus 1=an 
@@ -20,7 +20,7 @@ TF_terrain_interception_coefficient = pixParamTFARTerrainInterceptionCoefficient
 
 /*-----------------------------------------------*/
 cutText ["Initialization...\n[TK]Persistenct Campaign 2", "BLACK FADED",1];
-//call compile preprocessFileLineNumbers "town\init.sqf";
+call compile preprocessFileLineNumbers "town\init.sqf";
 
 /* Warten bis das Briefing beendet wurde */
 Sleep .1;

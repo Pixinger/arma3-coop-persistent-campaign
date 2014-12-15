@@ -13,8 +13,7 @@ _townName = [_this, 0, "", [""]] call BIS_fnc_param;
 private["_result"];
 
 private["_varname"];
-_varname = format["TownVarFoodd%1", _townName];
+_varname = format["TownVarFood%1", _townName];
 _result = missionNamespace getVariable [_varname, 0];		
 missionNamespace setVariable [_varname, 0];
-
 _result;
