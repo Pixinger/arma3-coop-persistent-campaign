@@ -56,9 +56,9 @@ if (isServer) then
 	private["_townMood"];
 	_townMood = 0;//DB			// Die Stimmung in der Stadt: -1 Red < 0 < Blu +1.
 	private["_townCivCount"];
-	_townCivCount = 100;//DB		// Die Anzahl der Zivilisten in der Stadt (virtuell).
+	_townCivCount = 200;//DB		// Die Anzahl der Zivilisten in der Stadt (virtuell).
 	private["_townRedCount"];
-	_townRedCount = 10;//DB		// Die Anzahl der Feinde in der Stadt (virtuell).
+	_townRedCount = 100;//DB		// Die Anzahl der Feinde in der Stadt (virtuell).
 	private["_townWeaponCount"];
 	_townWeaponCount = 0;//DB		// Die Anzahl der Waffen in der Stadt (virtuell).
 	private["_townWarlordCount"];
@@ -350,7 +350,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 					if (count _unitPosition > 0) then
 					{
 						private ["_unitGroup"];
-						_unitGroup = createGroup east;
+						_unitGroup = createGroup independent;
 						
 						private["_unit"];
 						_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
@@ -408,7 +408,7 @@ diag_log format["%2: created red: %1", _unit, _townName];
 					if (count _unitPosition > 0) then
 					{
 						private ["_unitGroup"];
-						_unitGroup = createGroup independent;
+						_unitGroup = createGroup civilian;
 						
 						private["_unit"];
 						_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
@@ -442,7 +442,6 @@ diag_log format["%2: created civ: %1", _unit, _townName];
 			[_civActives] call PC_fnc_TownHome_Units_DeactivateFinished;
 			_civActivesCount = count _civActives;		
 diag_log format["%2: _civActivesCount=%1", _civActivesCount, _townName];
-
 		}
 		else
 		{

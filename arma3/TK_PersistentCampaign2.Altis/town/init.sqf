@@ -1,7 +1,11 @@
 call compile preprocessFileLineNumbers "town\config.sqf";
 
-pixTowns = entities pixTown_ConfigObjectClassname;
-//_x = pixTowns select 0;
+if (isServer) then
 {
-	[_x] execVM "town\run.sqf";
-} foreach pixTowns;
+	private["_towns"];
+	_towns = entities pixTown_ConfigObjectClassname;
+	_x = _towns select 0;
+	//{
+		[_x] execVM "town\run.sqf";
+	//} foreach _towns;
+};

@@ -26,6 +26,7 @@ call compile preprocessFileLineNumbers "town\init.sqf";
 Sleep .1;
 
 player setvariable ["BIS_nocoreconversations",true];
+[] execVM "admin\gps.sqf";
 
 /* Module initialisieren */
 
