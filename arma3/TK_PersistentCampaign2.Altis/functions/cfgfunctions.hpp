@@ -39,6 +39,8 @@ class PC
 		class TownParam_FoodPull {description = "";};
 		class TownParam_MoodAdd {description = "";};
 		class TownParam_MoodPull {description = "";};
+		class TownParam_BluKillAdd {description = "";};
+		class TownParam_BluKillPull {description = "";};
 		
 		class TownParam_SetTotalCivilians {description = "";};
 		class TownParam_GetTotalCivilians {description = "";};

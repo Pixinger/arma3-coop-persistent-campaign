@@ -1,3 +1,5 @@
+// Klassenname das Town-Objektes im Editor.
+pixTown_ConfigObjectClassname = "Land_VRGoggles_01_F";
 
 // Klassennamen der bewohnbaren Häuser
 pixTown_ConfigHomeClassnames = [ 
@@ -28,17 +30,70 @@ pixTown_ConfigHomeClassnames = [
 // Klassennamen der zivilien Einheiten
 pixTown_ConfigCivClassnames = [
 	"C_man_1_1_F",
-	"C_man_1_1_F"];
+	"C_man_1_2_F",
+	"C_man_1_3_F",
+	"C_man_polo_1_F_afro",
+	"C_man_polo_1_F_euro",
+	"C_man_polo_1_F_asia",
+	"C_man_polo_2_F_afro",
+	"C_man_polo_2_F_euro",
+	"C_man_polo_2_F_asia",
+	"C_man_polo_3_F_afro",
+	"C_man_polo_3_F_euro",
+	"C_man_polo_3_F_asia",
+	"C_man_polo_4_F_afro",
+	"C_man_polo_4_F_euro",
+	"C_man_polo_4_F_asia",
+	"C_man_polo_5_F_afro",
+	"C_man_polo_5_F_euro",
+	"C_man_polo_5_F_asia",
+	"C_man_polo_6_F_afro",
+	"C_man_polo_6_F_euro",
+	"C_man_polo_6_F_asia",
+	"C_man_p_fugitive_F_afro",
+	"C_man_p_fugitive_F_euro",
+	"C_MAN_P_FUGITIVE_F_ASIA",
+	"C_man_w_worker_F",
+	"C_man_hunter_1_F",
+	"C_man_p_shorts_1_F_afro",
+	"C_man_p_shorts_1_F_euro",
+	"C_man_p_shorts_1_F_asia",
+	"C_man_p_shorts_2_F_afro",
+	"C_man_p_shorts_2_F_euro",
+	"C_man_p_shorts_2_F_asia",
+	"C_man_p_shorts_3_F_afro",
+	"C_man_p_shorts_3_F_euro",
+	"C_man_p_shorts_3_F_asia",
+	"C_man_p_shorts_4_F_afro",
+	"C_man_p_shorts_4_F_euro",
+	"C_man_p_shorts_4_F_asia",
+	"C_journalist_F",
+	"C_Orestes",
+	"C_Nikos",
+	"C_Nikos_aged"];
 	
 // Klassennamen der feindlichen Einheiten
 pixTown_ConfigRedClassnames = [
+	"I_G_Soldier_F",
+	"I_G_Soldier_lite_F",
+	"I_G_Soldier_SL_F",
 	"I_G_Soldier_TL_F",
-	"I_G_Soldier_lite_F"];
+	"I_G_Soldier_AR_F",
+	"I_G_medic_F",
+	"I_G_engineer_F",
+	"I_G_Soldier_exp_F",
+	"I_G_Soldier_GL_F",
+	"I_G_Soldier_M_F",
+	"I_G_Soldier_LAT_F",
+	"I_G_Soldier_A_F",
+	"I_G_officer_F",
+	"i_g_soldier_unarmed_f",
+	"i_g_survivor_F"];
 
 // Klassennamen der Warlords	
 pixTown_ConfigWarlordClassnames = [
-	"I_G_Soldier_TL_F",
-	"I_G_Soldier_lite_F"];
+	"I_officer_F",
+	"I_Story_Colonel_F"];
 	
 // Klassenname für Stromoversorgung
 pixTown_ConfigPowerClassnames = ["Land_PowerGenerator_F", "Land_spp_Panel_F", "Land_Portable_generator_F"];
