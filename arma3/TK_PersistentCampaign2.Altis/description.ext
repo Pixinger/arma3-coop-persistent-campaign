@@ -76,3 +76,4 @@ class Header
 
 
 #include "dialogDefines.hpp"
+#include "dialog\classes.hpp"
