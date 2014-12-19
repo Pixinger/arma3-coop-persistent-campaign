@@ -7,7 +7,7 @@ if (isServer) then
 	_townObjects = player nearEntities [pixTown_ConfigObjectClassname, 2000];
 	{
 		private["_townName"];
-		_townName = _townObject getVariable ["townName", ""];
+		_townName = _x getVariable ["townName", ""];
 		if (_townName != "") then
 		{
 			player sidechat format["Unit %1 died near by %2", (_this select 0), _townName];

@@ -6,9 +6,9 @@ pixTown_ConfigHomeClassnames = [
 	"Land_i_house_big_01_v1_f",
 	"Land_i_house_big_01_v2_f",
 	"Land_i_house_big_01_v3_f",
-	"Land_i_house_big_02_v1_f",
-	"Land_i_house_big_02_v2_f",
-	"Land_i_house_big_02_v3_f",
+	"Land_i_House_Big_02_V1_F",
+	"Land_i_House_Big_02_V2_F",
+	"Land_i_House_Big_02_V3_F",
 	"Land_i_addon_02_v1_f",
 	"Land_i_stone_shed_v1_f",
 	"Land_i_stone_shed_v2_f",
@@ -102,7 +102,8 @@ pixTown_ConfigPowerValues = [100,100,10];
 pixTown_ConfigWaterClassname = "Land_WaterTank_F";
 // Klassenname für Nahrungsversorgung
 pixTown_ConfigFoodClassname = "Land_Sacks_heap_F";
-pixTown_ConfigSaniClassname = "C_Van_01_box_F";//"B_Truck_01_medical_F"
+pixTown_ConfigSaniClassname = "B_Truck_01_medical_F";//"B_Truck_01_medical_F" "C_Van_01_box_F"
+pixTown_ConfigReSupplyClassnames = ["C_Boat_Civil_04_F"];
 	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
 pixTown_ConfigRedGrowRatePPH = 0.04;            // Zuwachs in PPH.

@@ -2,3 +2,5 @@
 // [player:Object, didJIP:Boolean]
 player addAction["beam","admin\beam.sqf"];
 player addAction["test - finger weg, sonst ab","test.sqf"];
+call compile preprocessFileLineNumbers "dialog\init.sqf";
+[] execVM "admin\gps.sqf";

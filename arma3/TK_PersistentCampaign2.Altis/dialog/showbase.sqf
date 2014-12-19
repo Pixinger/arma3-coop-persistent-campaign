@@ -47,7 +47,6 @@ if (count _this == count _idcs) then
 		ctrlSetText [_x, (_button select 0)];
 		ctrlEnable [_x, (_button select 1)];
 		ctrlShow [_x, (_button select 2)];	
-		player globalchat format["t: %1", (ctrlText _x)];
 	} foreach _idcs;
 
 	waitUntil { !dialog };
@@ -55,9 +54,9 @@ if (count _this == count _idcs) then
 	if (maindialog_action > -1) then
 	{
 		_button = (_this select maindialog_action);
-		hint format["action: %1", (_button select 3)];
 		[] execVM (_button select 3);
 	};	
+	pixDialogActionKeyPressed = false;
 }
 else
 {

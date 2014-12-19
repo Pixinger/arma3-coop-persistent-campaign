@@ -118,7 +118,6 @@ if (isServer) then
 	_townAttacked = false;
 	private["_townPopulation"];
 	_townPopulation = 0;
-
 	
 	Sleep (1);
 	// -----------------------------------
@@ -145,7 +144,7 @@ diag_log format["_townName=%4 _deltaHours=%1 time=%2 serverTime=%3", _deltaHours
 		// Power simulieren
 		// -----------------------------------
 		//if (serverTime > _heavyLoadTick) then
-		if (true) then
+		/*if (true) then
 		{
 			private["_powers"];
 			_powers = nearestObjects [_townCenter, ["Land_PowerGenerator_F"], _townRadius];		
@@ -160,7 +159,8 @@ diag_log format["_townName=%4 _deltaHours=%1 time=%2 serverTime=%3", _deltaHours
 				};
 			} foreach _powers;
 		};
-diag_log format["_townStockPower=%1", _townStockPower];
+diag_log format["_townStockPower=%1", _townStockPower];*/
+		_townStockPower = 0;
 		
 		// -----------------------------------
 		// Mood simulieren
@@ -286,11 +286,12 @@ diag_log format["_townCivCount=%1", _townCivCount];
 		_townInjuredCount = _townInjuredCount + ([_townName] call PC_fnc_TownParam_InjuredPull);		
 		if (_townInjuredCount < 0) then { _townInjuredCount = 0; };
 diag_log format["_townInjuredCount=%1", _townInjuredCount];	
-
 		
-		
-		
-		
+		// ----------------------------------------------------------------------
+		// Die Werte für die Öffentlichkeit zwischenspeichern
+		// ----------------------------------------------------------------------
+		[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater, _townStockPower] call PC_fnc_TownHome_StatusUpdate;
+	
 		
 		
 		
@@ -328,6 +329,9 @@ diag_log format["_townInjuredCount=%1", _townInjuredCount];
 			_redSOLL = _tmpTotalSOLL - _civSOLL;
 diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
+
+//_civSOLL = 1;
+_redSOLL = 0;
 			
 			// RED Einheiten AKTIVIEREN / DEAKTIVEREN
 			if (_redSOLL > _redActivesCount) then
@@ -350,20 +354,21 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 					if (count _unitPosition > 0) then
 					{
 						private ["_unitGroup"];
-						_unitGroup = createGroup independent;
+						_unitGroup = createGroup east;//independent;
 						
 						private["_unit"];
 						_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
 						waitUntil {!isNil "_unit"};
 						_unit setDir (floor(random 360));
 						_unit setpos _unitPosition;
-						if (_townInjuredCount > 1) then 
+						//if (_townInjuredCount > 1) then 
+						if (false) then 
 						{
 							if (random 1 < 0.2) then
 							{
 diag_log "injured red";
 								_townInjuredCount = _townInjuredCount - 1;
-								_unit setDamage 0.5;	
+								_unit setVariable ["injured", 1];
 					
 								//TODO: noch prüfen
 								removeAllWeapons _unit;								
@@ -417,15 +422,16 @@ diag_log format["%2: created red: %1", _unit, _townName];
 						_unit setpos _unitPosition;
 						if (_townInjuredCount > 1) then 
 						{
+							//if (true) then
 							if (random 1 < 0.5) then
 							{
 diag_log "injured civ";
 								_townInjuredCount = _townInjuredCount - 1;
-								_unit setDamage 0.5;									
+								_unit setVariable ["injured", 1];
 							};
 						};
-						//_unit setBehaviour "CARELESS";
-						//_unit setSpeedmode "FULL";
+						_unit setBehaviour "CARELESS";
+						_unit setSpeedmode "FULL";
 						_unit setVariable ["townName", _townName];
 						_unit setVariable ["townCenter", _townCenter];
 						_unit setVariable ["townRadius", _townRadius];

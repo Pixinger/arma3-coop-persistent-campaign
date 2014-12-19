@@ -12,6 +12,7 @@ class PC
 		class RandomElement {description = "";};
 		class NearestResidentialLocation {description = "";};
 		class testinit {description = "";preInit = 1;postInit = 1;};
+		class SetAsLeader {description = "";};
 	};
 	class Town
 	{
@@ -26,6 +27,10 @@ class PC
 		class TownHome_MaxPopulation {description = "";};
 		class TownHome_GetInactiveRoom {description = "";};
 		class TownHome_GetInactiveRooms {description = "";};
+		class TownHome_SearchBuilding {description = "";};
+		class TownHome_StatusRequest {description = "";};
+		class TownHome_StatusResponse {description = "";};
+		class TownHome_StatusUpdate {description = "";};
 
 		class TownHome_Units_Activate {description = "";};
 		class TownHome_Units_DeactivateAll {description = "";};
