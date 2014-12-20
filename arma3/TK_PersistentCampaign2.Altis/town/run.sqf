@@ -427,7 +427,7 @@ diag_log format["%2: created red: %1", _unit, _townName];
 							{
 diag_log "injured civ";
 								_townInjuredCount = _townInjuredCount - 1;
-								_unit setVariable ["injured", 1];
+								_unit setVariable ["injured", 1, true];
 							};
 						};
 						_unit setBehaviour "CARELESS";
