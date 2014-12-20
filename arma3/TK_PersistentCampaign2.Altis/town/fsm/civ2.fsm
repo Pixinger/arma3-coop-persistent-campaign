@@ -21,7 +21,7 @@ item16[] = {"Aufnehmen",2,250,-494.711304,-1655.114380,-404.711334,-1605.114380,
 item17[] = {"time",4,218,-494.835052,-1733.733521,-404.835144,-1683.733521,0.000000,"time"};
 item18[] = {"___75",4,218,122.865509,-925.072876,212.865509,-875.072876,70.000000,"0.75"};
 item19[] = {"herumlaufen",2,250,123.114578,-997.664368,213.113953,-947.664795,0.000000,"herumlaufen"};
-item20[] = {"nach_Hause",2,4346,-30.054651,-1775.161499,59.945374,-1725.161499,0.000000,"nach Hause"};
+item20[] = {"nach_Hause",2,250,-30.054651,-1775.161499,59.945374,-1725.161499,0.000000,"nach Hause"};
 item21[] = {"ER",4,218,-81.969612,-1860.336304,8.030397,-1810.336304,0.000000,"ER"};
 item22[] = {"OK",4,218,21.891464,-1860.746704,111.891449,-1810.746704,0.000000,"OK"};
 item23[] = {"Ende",1,250,-32.545654,-2113.938721,57.454384,-2063.938721,0.000000,"Ende"};
@@ -37,7 +37,7 @@ item32[] = {"JA",4,218,-74.586937,-400.877319,15.413081,-350.877380,100.000000,"
 item33[] = {"",7,210,-409.820221,-143.669510,-401.820221,-135.669418,0.000000,""};
 item34[] = {"No",8,218,-74.695213,-560.063354,15.304822,-510.063354,0.000000,"No"};
 item35[] = {"Ja",4,218,-166.809677,-559.189697,-76.809914,-509.189697,100.000000,"Ja"};
-item36[] = {"zum_medic_gehen",2,250,-838.673218,-728.723145,-748.673218,-678.723145,0.000000,"zum medic" \n "gehen"};
+item36[] = {"zum_medic_gehen",2,4346,-838.673218,-728.723145,-748.673218,-678.723145,0.000000,"zum medic" \n "gehen"};
 item37[] = {"ER",4,218,-743.489441,-823.365295,-653.489441,-773.365295,0.000000,"ER"};
 item38[] = {"OK",4,218,-838.392700,-823.860352,-748.392700,-773.860352,0.000000,"OK"};
 item39[] = {"fnc",2,250,-839.090332,-1232.842773,-749.090210,-1182.842773,0.000000,"fnc"};
@@ -427,7 +427,7 @@ class FSM
     {
       name = "herumlaufen";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 120];" \n
-       "_leader moveTo [(_townCenter select 0) + (random _townRadius), (_townCenter select 1) + (random _townRadius), 0];" \n
+       "_leader moveTo [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];" \n
        "diag_log format[""FSM: %1 herumlaufen"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -505,7 +505,7 @@ class FSM
     {
       name = "Nachbar_suchen";
       init = /*%FSM<STATEINIT""">*/"private[""_decision""];" \n
-       "_decision = nearestBuilding [(_townCenter select 0) + (random _townRadius), (_townCenter select 1) + (random _townRadius), 0];" \n
+       "_decision = nearestBuilding [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];" \n
        "_decision = _decision buildingPos (([_decision] call PC_fnc_GetMaxBuildingPositions) - 1);" \n
        "diag_log format[""FSM: %1 zum Nachbarn laufen"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

@@ -124,12 +124,12 @@ if (isServer) then
 	// Dauerschleife beginnen
 	// -----------------------------------
 	private["_lastServerTime"];
-	_lastServerTime = serverTime;
+	_lastServerTime = time;
 	while { true } do 
 	{
 		private["_deltaHours"];
-		_deltaHours = (serverTime - _lastServerTime) / 3600.0;      
-		_lastServerTime = serverTime;
+		_deltaHours = (time - _lastServerTime) / 3600.0;      
+		_lastServerTime = time;
 		if (pixDebug) then { _deltaHours = 0.1; };
 		
 diag_log "-------------------------------------------------------------------------------";

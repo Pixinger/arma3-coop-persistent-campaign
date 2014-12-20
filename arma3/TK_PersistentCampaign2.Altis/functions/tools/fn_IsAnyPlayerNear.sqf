@@ -23,6 +23,7 @@ if (count _players == 0) then { _players = [player]; };
 
 private["_maxDistance"];
 _maxDistance = [_position, [_position select 0, (_position select 1) + _distance]] call BIS_fnc_distance2Dsqr;
+//TODO: Einfacher berechnen: _maxDistance
 {
 	if (_maxDistance >= [_position, _x] call BIS_fnc_distance2Dsqr) exitWith { _result = true; };
 } foreach _players;
