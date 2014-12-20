@@ -185,7 +185,7 @@ diag_log format["_townCivCount=%1  _townRedCount=%2", _townCivCount, _townRedCou
 		_simulatedCivCount = _townCivCount;
 
 		// Konvertierung berechnen
-		if (_townMood < 0) then
+		if (_townMood < -0.1) then
 		{
 			private["_conversion"];
 			_conversion = (pixTown_ConfigMaxRed2CivConversionPPH * _simulatedCivCount * _deltaHours) * (_townMood * -1);
@@ -210,7 +210,7 @@ diag_log format["RED _conversion=%1", _conversion];
 		// CIV simulieren (_simulatedCivCount)
 		// -----------------------------------
 		// Konvertierung berechnen
-		if (_townMood > 0) then
+		if (_townMood > 0.1) then
 		{
 			private["_conversion"];
 			_conversion = (pixTown_ConfigMaxCiv2RedConversionPPH * _simulatedRedCount * _deltaHours) * _townMood;
@@ -241,6 +241,7 @@ diag_log format["_townStockFood=%1", _townStockFood];
 		// Wachstum berechnen und hinzufügen
 		_simulatedCivCount = _simulatedCivCount + (pixTown_ConfigCivGrowRatePPH * _simulatedCivCount * _deltaHours * _factor);
 		if (_townPopulation > _townMaxPopulation) then { _simulatedCivCount = _townMaxPopulation - _townRedCount - _townWarlordCount; };
+diag_log format["_simulatedCivCount=%1  _simulatedRedCount=%2", _simulatedCivCount, _simulatedRedCount];
 
 		// ----------------------------------------------------------------------
 		// _simulatedRedCount in Homes/_townRedCount übertragen (RED)
@@ -258,7 +259,6 @@ diag_log format["_townStockFood=%1", _townStockFood];
 		{
 			_townRedCount = _simulatedRedCount;
 		};
-diag_log format["_townRedCount=%1", _townCivCount];
 
 		// ----------------------------------------------------------------------
 		// _simulatedCivCount in Homes/_townCivCount übertragen (CIV)
@@ -266,8 +266,8 @@ diag_log format["_townRedCount=%1", _townCivCount];
 		private["_count"];		
 		_count = _simulatedCivCount - _townCivCount;
 		if (_count < 0) then { _count = ceil(_count); }	else { _count = floor(_count);	};
-		private["_result"];
 diag_log format["_simulatedCivCount=%1 =>%2", _simulatedCivCount, _count];
+		private["_result"];
 		_result = [_homes, pixTown_ConfigCivClassnames, _count] call PC_fnc_TownHome_SettleRooms;
 		if (_count != _result) then
 		{
@@ -277,7 +277,7 @@ diag_log format["_simulatedCivCount=%1 =>%2", _simulatedCivCount, _count];
 		{
 			_townCivCount = _simulatedCivCount;
 		};
-diag_log format["_townCivCount=%1", _townCivCount];
+diag_log format["_townCivCount=%1  _townRedCount=%2", _townCivCount, _townRedCount];
 		
 		// -----------------------------------
 		// Injured simulieren
@@ -330,7 +330,7 @@ diag_log format["_townInjuredCount=%1", _townInjuredCount];
 diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 
-//_civSOLL = 1;
+_civSOLL = 1;
 _redSOLL = 0;
 			
 			// RED Einheiten AKTIVIEREN / DEAKTIVEREN
@@ -448,6 +448,8 @@ diag_log format["%2: created civ: %1", _unit, _townName];
 			[_civActives] call PC_fnc_TownHome_Units_DeactivateFinished;
 			_civActivesCount = count _civActives;		
 diag_log format["%2: _civActivesCount=%1", _civActivesCount, _townName];
+			// FSM überwachen und evtl. neustarten
+			[_civActives] call PC_fnc_TownHome_Units_ValidateFSM;
 		}
 		else
 		{

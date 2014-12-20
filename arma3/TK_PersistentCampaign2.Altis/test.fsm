@@ -1,0 +1,222 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Test">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-25.908817,-8.121918,64.091179,41.878082,0.000000,"Start"};
+item1[] = {"isServer",4,218,-25.908783,-87.201599,64.091194,-37.201599,0.000000,"isServer"};
+item2[] = {"__isServer",4,218,-137.976273,-87.292542,-47.976353,-37.292450,0.000000,"!isServer"};
+item3[] = {"Ende1",1,250,-264.504028,-87.292603,-174.504288,-37.292664,0.000000,"Ende1"};
+item4[] = {"warten",2,250,-25.948723,-164.793091,64.051247,-114.793121,0.000000,"warten"};
+item5[] = {"Zeit",4,218,-25.990097,-238.982422,64.009933,-188.982452,0.000000,"Zeit"};
+item6[] = {"_",2,250,-22.073807,-336.347961,67.926208,-286.347961,0.000000,""};
+item7[] = {"AW",4,218,-138.243912,-387.118622,-48.243912,-337.118622,2.000000,"AW"};
+item8[] = {"__1",2,250,-133.080780,-307.090393,-43.080765,-257.090332,0.000000,""};
+item9[] = {"_",4,218,88.072678,-389.700226,178.072662,-339.700226,1.000000,""};
+item10[] = {"__2",2,250,88.072685,-310.532471,178.072754,-260.532410,0.000000,""};
+item11[] = {"_",8,218,-128.778198,-239.109314,-38.778191,-189.109314,0.000000,""};
+item12[] = {"_",8,218,80.327957,-241.690842,170.327957,-191.690842,0.000000,""};
+item13[] = {"__1",8,218,-120.172997,-459.402252,-30.173004,-409.402252,0.000000,""};
+item14[] = {"__3",2,250,-255.274490,-448.215515,-165.274506,-398.215515,0.000000,""};
+item15[] = {"_",4,218,-255.274384,-233.085709,-165.274521,-183.085663,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,2};
+link2[] = {1,4};
+link3[] = {2,3};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {6,7};
+link7[] = {6,9};
+link8[] = {6,13};
+link9[] = {7,8};
+link10[] = {8,11};
+link11[] = {9,10};
+link12[] = {10,12};
+link13[] = {11,4};
+link14[] = {12,4};
+link15[] = {13,14};
+link16[] = {14,15};
+link17[] = {15,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,150,6316128,1,-650.860413,556.448181,399.440887,-522.175232,1403,1071,1};
+window[] = {2,-1,-1,-1,-1,1030,150,1590,150,3,1421};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Test";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_leader setBehaviour ""careless"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__isServer">*/
+        class __isServer
+        {
+          priority = 0.000000;
+          to="Ende1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isServer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "isServer">*/
+        class isServer
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isServer"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Ende1">*/
+    class Ende1
+    {
+      name = "Ende1";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 Ende"", _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "warten">*/
+    class warten
+    {
+      name = "warten";
+      init = /*%FSM<STATEINIT""">*/"_decision = time + 3;" \n
+       "player sidechat format[""%1, b:%2"", time, behaviour _leader];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Zeit">*/
+        class Zeit
+        {
+          priority = 0.000000;
+          to="_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_decision < time)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "_">*/
+    class _
+    {
+      name = "_";
+      init = /*%FSM<STATEINIT""">*/"_decision = behaviour _leader;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "AW">*/
+        class AW
+        {
+          priority = 2.000000;
+          to="__1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decision == ""AWARE"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 1.000000;
+          to="__2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decision == ""COMBAT"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "__1">*/
+        class __1
+        {
+          priority = 0.000000;
+          to="__3";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__1">*/
+    class __1
+    {
+      name = "__1";
+      init = /*%FSM<STATEINIT""">*/"player sidechat ""aware"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__2">*/
+    class __2
+    {
+      name = "__2";
+      init = /*%FSM<STATEINIT""">*/"player sidechat ""combat"";" \n
+       "_leader setBehaviour ""AWARE"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__3">*/
+    class __3
+    {
+      name = "__3";
+      init = /*%FSM<STATEINIT""">*/"player sidechat format[""other: %1"", _decision]"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="warten";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Ende1",
+  };
+};
+/*%FSM</COMPILE>*/

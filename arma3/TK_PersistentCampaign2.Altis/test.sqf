@@ -14,4 +14,7 @@ _jeep setVariable["active", true];
 */
 
 
-[] execVM "dialog\show.sqf";
+//[] execVM "dialog\show.sqf";
+
+
+z1 doFsm ["test.fsm", getPos player, player];

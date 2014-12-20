@@ -35,6 +35,7 @@ class PC
 		class TownHome_Units_Activate {description = "";};
 		class TownHome_Units_DeactivateAll {description = "";};
 		class TownHome_Units_DeactivateFinished {description = "";};
+		class TownHome_Units_ValidateFSM {description = "";};
 
 		class TownParam_InjuredAdd {description = "";};
 		class TownParam_InjuredPull {description = "";};

@@ -22,6 +22,8 @@ while { (_index < count _unitsActive) } do
 {
 	if (isNull ((_unitsActive select _index) select 0)) then 
 	{
+		//diag_log format["Unit deactivated: %1", (_unitsActive select _index)];
+		//player sidechat format["Unit deactivated: %1", (_unitsActive select _index)];
 		deleteGroup ((_unitsActive select _index) select 1); // gruppe löschen
 		((_unitsActive select _index) select 2) resize 2; // room inaktivieren
 		_unitsActive deleteAt _index; // Aus der Liste nehmen		

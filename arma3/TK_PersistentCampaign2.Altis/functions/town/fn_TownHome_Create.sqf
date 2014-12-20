@@ -35,12 +35,28 @@ _buildingsAvailable = nearestObjects [_townCenter, pixTown_ConfigHomeClassnames,
 	_buildingPos = _x buildingPos _maxIndex;
 	while { str(_buildingPos) != "[0,0,0]" } do 
 	{
-		_rooms set [count _rooms, [_buildingPos]];		
+		private["_pos1"];
+		_pos1 = ATLtoASL _buildingPos;
+		_pos1 set [2, (_pos1 select 2) + 0.5];
+		private["_pos2"];
+		_pos2 = ATLtoASL _buildingPos;
+		_pos2 set [2, (_pos2 select 2) + 4];
+		
+		//TODO: Welches ist der schnellste Weg?
+		//if (count lineintersectsobjs [_pos1, _pos2, objnull, objnull, false, 4] > 0) then
+		//if (lineIntersects [_pos1, _pos2]) then
+		if (count lineIntersectsWith [_pos1, _pos2] > 0) then
+		{		
+			private["_sign"];
+			_sign = "Sign_Arrow_Large_F" createVehicle _buildingPos;
+			_sign setPos _buildingPos;		
+			_rooms pushBack [_buildingPos];
+		};
 		_maxIndex = _maxIndex + 1;
-		_buildingPos = _x buildingPos _maxIndex;
+		_buildingPos = _x buildingPos _maxIndex;		
 	};
 	
-	_homes set [count _homes, [_x, _rooms]];
+	_homes pushBack [_x, _rooms];
 } foreach _buildingsAvailable;
 
 _homes;
