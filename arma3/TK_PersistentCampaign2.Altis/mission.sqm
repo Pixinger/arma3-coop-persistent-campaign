@@ -23,8 +23,7 @@ class Mission
 		"A3_Characters_F_Gamma",
 		"A3_Characters_F_INDEP",
 		"A3_Armor_F_AMV",
-		"A3_Boat_F_Trawler",
-		"A3_Misc_F_Helpers"
+		"A3_Boat_F_Trawler"
 	};
 	addOnsAuto[]=
 	{
@@ -42,7 +41,6 @@ class Mission
 		"A3_Air_F_Beta_Heli_Transport_01",
 		"A3_Armor_F_AMV",
 		"A3_Boat_F_Trawler",
-		"A3_Misc_F_Helpers",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
@@ -850,7 +848,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=40;
+		items=39;
 		class Item0
 		{
 			position[]={19718.957,53.668392,7698.9922};
@@ -1202,14 +1200,6 @@ class Mission
 			id=76;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
-			skill=0.60000002;
-		};
-		class Item39
-		{
-			position[]={19730.814,53.41333,7702.7236};
-			id=77;
-			side="EMPTY";
-			vehicle="Sign_Arrow_Large_F";
 			skill=0.60000002;
 		};
 	};

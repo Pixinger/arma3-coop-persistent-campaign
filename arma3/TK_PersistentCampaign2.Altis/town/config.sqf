@@ -106,16 +106,17 @@ pixTown_ConfigSaniClassname = "B_Truck_01_medical_F";//"B_Truck_01_medical_F" "C
 pixTown_ConfigReSupplyClassnames = ["C_Boat_Civil_04_F"];
 	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
-pixTown_ConfigRedGrowRatePPH = 0.04;            // Zuwachs in PPH.
+pixTown_ConfigRedGrowRatePPH = 0.04;            // Mindest Zuwachs in PPH.
+pixTown_ConfigRedGrowRateMoodLimit = 0.01;		// GrowRatePPH (siehe oben) wird nur angewand, wenn (_townMood < GrowRateMoodLimit) ist.
 pixTown_ConfigRedGrowPerBluKill = 0;            // Zuwachs pro Blu-Kill-
-pixTown_ConfigRedGrowFactorPerWarlord = 1.5;     // Zuwachsfaktor für jeden Warlord.
+pixTown_ConfigRedGrowFactorPerWarlord = 0.5;     // Zuwachsfaktor für jeden Warlord, berechnet: _factor = 1 + (pixTown_ConfigRedGrowFactorPerWarlord * warlordCount) 
 
-// (Water + Food + Power + Uninfluenced) muss 1 ergeben. Andernfalls werden die Parameter automatisch korrigiert.
-pixTown_ConfigCivGrowRatePPH = 0.05;             // Zuwachs in PPH.
-pixTown_ConfigCivGrowFactorWater = 0.4;
-pixTown_ConfigCivGrowFactorFood = 0.3;
-pixTown_ConfigCivGrowFactorPower = 0.3;
-pixTown_ConfigCivGrowFactorMinimum = 0.0;
+pixTown_ConfigCivGrowRatePPH = 0.05;            // Maximaler Zuwachs in PPH. (wird von den GrowFactoren beeinflust. Sind alle optimal (=1), dann wird das hier angegebene Wachstum erreicht.
+pixTown_ConfigCivGrowFactorWater = 0.5;			// Anteil der Wasserversorgung am Gesamtwachstum
+pixTown_ConfigCivGrowFactorFood = 0.5;			// Anteil der Nahrungsversorgung am Gesamtwachstum
+pixTown_ConfigCivGrowFactorPower = 0.0;			// Anteil der Stromversorgung am Gesamtwachstum
+pixTown_ConfigCivGrowFactorMinimum = 0.0;		// Anteil des minimalen Wachstums (also immer vorliegend).
+// (Water + Food + Power + Minimum) muss 1 ergeben. Andernfalls werden die Parameter automatisch korrigiert.
 
 pixTown_ConfigFoodConsumptionPPH = 0.2;             // Nahrungsverbrauch in PPH.
 if (pixDebug) then { pixTown_ConfigFoodConsumptionPPH = 0.05; };

@@ -8,10 +8,8 @@ _position = (getPos MobileSpawn) findEmptyPosition [5, 50, (typeof player)];
 if (count _position > 0) then
 {
 	player setPos _position;
-	player sidechat "Near by";
 }
 else
 {
 	player setPos (getPos MobileSpawn);
-	player sidechat "directly on it";
 };
