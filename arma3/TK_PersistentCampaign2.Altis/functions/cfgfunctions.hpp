@@ -27,7 +27,6 @@ class PC
 		class TownHome_MaxPopulation {description = "";};
 		class TownHome_GetInactiveRoom {description = "";};
 		class TownHome_GetInactiveRooms {description = "";};
-		class TownHome_SearchBuilding {description = "";};
 		class TownHome_StatusRequest {description = "";};
 		class TownHome_StatusResponse {description = "";};
 		class TownHome_StatusUpdate {description = "";};
@@ -47,6 +46,9 @@ class PC
 		class TownParam_MoodPull {description = "";};
 		class TownParam_BluKillAdd {description = "";};
 		class TownParam_BluKillPull {description = "";};
+		class TownParam_SearchBuildingAdd {description = "";};
+		class TownParam_SearchBuildingPull {description = "";};
+		class TownParam_SearchBuildingInit {description = "";};
 		
 		class TownParam_SetTotalCivilians {description = "";};
 		class TownParam_GetTotalCivilians {description = "";};

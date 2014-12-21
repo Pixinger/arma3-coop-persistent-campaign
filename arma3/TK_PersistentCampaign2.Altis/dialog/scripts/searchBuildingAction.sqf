@@ -14,5 +14,26 @@ if ((_building distance player) < 10) then
 	//    Group - function will be executed only on clients where the player is in the specified group 
 	// IsPersistent
 	// IsCall 
-	[_building, "PC_fnc_TownHome_SearchBuilding", false] call BIS_fnc_MP;
+	
+	private["_townObjects"];
+	_townObjects = player nearEntities [pixTown_ConfigObjectClassname, 1000];
+	if (count _townObjects > 0) then
+	{
+		private["_townName"];
+		_townName = (_townObjects select 0) getVariable ["townName", ""];
+		if (_townName != "") then
+		{
+			player sidechat format["Reqesting SearchBuilding: %1, %2", _townName, _building];
+			diag_log format["Unit %1 died near by %2", (_this select 0), _townName];
+			[[_townName, _building], "PC_fnc_TownParam_SearchBuildingAdd", false] call BIS_fnc_MP;
+		}
+		else
+		{
+			player sidechat "WARN: Dieser Stadt wurde kein Name zugewiesen";
+		};
+	}
+	else
+	{
+		player sidechat "WARN: Das Gebäude konnte keiner Stadt zugeordnet werden";
+	};
 };

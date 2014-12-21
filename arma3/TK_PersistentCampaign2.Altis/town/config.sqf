@@ -147,8 +147,8 @@ pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
 // Grenzen ab wann Bewegungen in der Stadt beginnen
 pixTown_ConfigRedLeaveTown = 10;  
 
-pixTown_ConfigMainLoopSleep = 30;
-if (pixDebug) then { pixTown_ConfigMainLoopSleep = 10; };
+pixTown_ConfigMainLoopSleep = 5;
+if (pixDebug) then { pixTown_ConfigMainLoopSleep = 5; };
 
 
 // ------------------------------------------------------------

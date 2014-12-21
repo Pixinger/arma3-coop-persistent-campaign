@@ -7,7 +7,4 @@ if ((_building distance player) < 10) then
 {
 	_button set [1, true];
 };
-
-
 _button;
-
