@@ -344,6 +344,16 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 _civSOLL = 1;
 _redSOLL = 0;
 			
+			// "Fertige" CIV/RED Einheiten DEAKTIVIEREN
+			[_redActives] call PC_fnc_TownHome_Units_DeactivateFinished;
+			_redActivesCount = count _redActives; // Zähler aktualisieren
+diag_log format["%2: _redActivesCount=%1 (PC_fnc_TownHome_Units_DeactivateFinished)", _redActivesCount, _townName];
+			[_civActives] call PC_fnc_TownHome_Units_DeactivateFinished;
+			_civActivesCount = count _civActives;		
+diag_log format["%2: _civActivesCount=%1 (PC_fnc_TownHome_Units_DeactivateFinished)", _civActivesCount, _townName];
+			// FSM überwachen und evtl. neustarten
+			[_civActives] call PC_fnc_TownHome_Units_ValidateFSM;
+
 			// RED Einheiten AKTIVIEREN / DEAKTIVEREN
 			if (_redSOLL > _redActivesCount) then
 			{
@@ -398,10 +408,6 @@ diag_log format["%2: created red: %1", _unit, _townName];
 					};
 				};				
 			};			
-			// "Fertige" RED Einheiten DEAKTIVIEREN
-			[_redActives] call PC_fnc_TownHome_Units_DeactivateFinished;
-			_redActivesCount = count _redActives; // Zähler aktualisieren
-
 
 			// CIV Einheiten AKTIVIEREN / DEAKTIVEREN
 			if (_civSOLL > _civActivesCount) then
@@ -455,13 +461,6 @@ diag_log format["%2: created civ: %1", _unit, _townName];
 					};
 				};
 			};			
-			
-			// "Fertige" CIV Einheiten DEAKTIVIEREN
-			[_civActives] call PC_fnc_TownHome_Units_DeactivateFinished;
-			_civActivesCount = count _civActives;		
-diag_log format["%2: _civActivesCount=%1", _civActivesCount, _townName];
-			// FSM überwachen und evtl. neustarten
-			[_civActives] call PC_fnc_TownHome_Units_ValidateFSM;
 		}
 		else
 		{
