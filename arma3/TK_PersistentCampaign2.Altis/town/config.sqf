@@ -111,18 +111,18 @@ pixTown_ConfigRedGrowRateMoodLimit = 0.01;		// GrowRatePPH (siehe oben) wird nur
 pixTown_ConfigRedGrowPerBluKill = 0;            // Zuwachs pro Blu-Kill-
 pixTown_ConfigRedGrowFactorPerWarlord = 0.5;     // Zuwachsfaktor für jeden Warlord, berechnet: _factor = 1 + (pixTown_ConfigRedGrowFactorPerWarlord * warlordCount) 
 
-pixTown_ConfigCivGrowRatePPH = 0.05;            // Maximaler Zuwachs in PPH. (wird von den GrowFactoren beeinflust. Sind alle optimal (=1), dann wird das hier angegebene Wachstum erreicht.
+pixTown_ConfigCivGrowRatePPH = 0.2;            // Maximaler Zuwachs in PPH. (wird von den GrowFactoren beeinflust. Sind alle optimal (=1), dann wird das hier angegebene Wachstum erreicht.
 pixTown_ConfigCivGrowFactorWater = 0.5;			// Anteil der Wasserversorgung am Gesamtwachstum
 pixTown_ConfigCivGrowFactorFood = 0.5;			// Anteil der Nahrungsversorgung am Gesamtwachstum
 pixTown_ConfigCivGrowFactorPower = 0.0;			// Anteil der Stromversorgung am Gesamtwachstum
 pixTown_ConfigCivGrowFactorMinimum = 0.0;		// Anteil des minimalen Wachstums (also immer vorliegend).
 // (Water + Food + Power + Minimum) muss 1 ergeben. Andernfalls werden die Parameter automatisch korrigiert.
 
-pixTown_ConfigFoodConsumptionPPH = 0.2;             // Nahrungsverbrauch in PPH.
+pixTown_ConfigFoodConsumptionPPH = 0.02;             // Nahrungsverbrauch in PPH.
 if (pixDebug) then { pixTown_ConfigFoodConsumptionPPH = 0.05; };
-pixTown_ConfigWaterConsumptionPPH = 0.2;            // Wasserverbrauch in PPH.
+pixTown_ConfigWaterConsumptionPPH = 0.02;            // Wasserverbrauch in PPH.
 if (pixDebug) then { pixTown_ConfigWaterConsumptionPPH = 0.05; };
-pixTown_ConfigPowerConsumptionPPH = 0.2;            // Stromverbrauch in PPH.
+pixTown_ConfigPowerConsumptionPPH = 0.02;            // Stromverbrauch in PPH.
 if (pixDebug) then { pixTown_ConfigPowerConsumptionPPH = 0.05; };
 
 pixTown_ConfigInjuredGrowFactorPPH = 0;		  // Zuwachs an verletzten in PPH.
@@ -132,14 +132,14 @@ pixTown_ConfigMaxCiv2RedConversionPPH = 0.05;     // Maximale Konvertierungen vo
 pixTown_ConfigMaxRed2CivConversionPPH = 0.05;     // Maximale Konvertierungen von Red zu Civ in PPH
 
 // Angaben wie die Stimmung bei bestimmten Events beinflusst wird.
-pixTown_ConfigMoodPerCivWater = 0.01;
-pixTown_ConfigMoodPerCivFood = 0.01;
+pixTown_ConfigMoodPerCivWater = 0.1;
+pixTown_ConfigMoodPerCivFood = 0.1;
 pixTown_ConfigMoodPerCivPower = 0.5;
 pixTown_ConfigMoodPerCivKill = -0.2;
-pixTown_ConfigMoodPerRedKill = 0.01;
-pixTown_ConfigMoodPerRedArrest = 0.1;
+pixTown_ConfigMoodPerRedKill = 0.1;
+pixTown_ConfigMoodPerRedArrest = 0.2;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
-pixTown_ConfigMoodPerHouseSearchRed = 0.05;
+pixTown_ConfigMoodPerHouseSearchRed = 0.1;
 
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
