@@ -6,7 +6,7 @@ if ((_vehicle isKindOf pixTown_ConfigSaniClassname) && ((_vehicle distance playe
 	{
 		if (_vehicle getVariable["content", 0] < 3) then
 		{
-			_vehicle setVariable["content", 3];
+			_vehicle setVariable["content", 3, true];
 			hint "Die Hilfsgüter wurden aufgeladen. Der LKW ist jetzt voll.";
 		}
 		else

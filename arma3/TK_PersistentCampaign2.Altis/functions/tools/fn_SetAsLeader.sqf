@@ -1,7 +1,7 @@
 if (local group player) then
 {
 	player sidechat "New leader selected";
-	group player selectLeader (_this select 0);
+	group player selectLeader _this;
 }
 else
 {
