@@ -53,6 +53,7 @@ if (count _this == count _idcs) then
 	
 	if (maindialog_action > -1) then
 	{
+		player sidechat format["%1", maindialog_action];
 		_button = (_this select maindialog_action);
 		[] execVM (_button select 3);
 	};	

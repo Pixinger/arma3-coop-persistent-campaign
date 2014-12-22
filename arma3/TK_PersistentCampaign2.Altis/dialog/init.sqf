@@ -7,6 +7,7 @@
 		private["_tmp"];
 		//_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "player globalChat format['key: %1',_this select 1];"];
 		pixDialogActionKeyPressed = false;
-		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if ((!pixDialogActionKeyPressed ) && (_this select 1 == 15)) then { pixDialogActionKeyPressed  = true; _tmp = [] execVM 'dialog\show.sqf';}"];
+		//_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if ((!pixDialogActionKeyPressed ) && (_this select 1 == 15)) then { pixDialogActionKeyPressed  = true; _tmp = [] execVM 'dialog\show.sqf';}"];
+		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if (!dialog ) then { if ((_this select 1 == 220) || (_this select 1 == 86)) then { _tmp = [] execVM 'dialog\show.sqf';};};"];
 	};
 };

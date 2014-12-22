@@ -1,4 +1,4 @@
-if (cursorTarget isKindOf "WeaponHolder") then  
+if (cursorTarget isKindOf "GroundWeaponHolder") then  
 { 
 	deleteVehicle cursorTarget;
 	hint "Die Waffen wurden konfisziert.";

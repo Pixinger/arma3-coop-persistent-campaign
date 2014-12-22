@@ -9,6 +9,7 @@ class MAINDIALOG
 	onUnLoad="uiNamespace setVariable ['MAINDIALOG_ID', nil]";	
 	objects[] = {};
 	controlsBackground[] = {};	
+
 	controls[]=
 	{
 		ButtonCenter1,
@@ -39,7 +40,7 @@ class MAINDIALOG
 		ButtonHeader5
 	};
 	////////////////////////////////////////////////////////
-	// GUI EDITOR OUTPUT START (by [TK]Pix, v1.063, #Rowoty)
+	// GUI EDITOR OUTPUT START (by [TK]Pix, v1.063, #Qufema)
 	////////////////////////////////////////////////////////
 
 	class ButtonCenter1: RscButton
@@ -56,19 +57,19 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONCENTER2;
 		text = "Center2"; //--- ToDo: Localize;
-		x = 0.465625 * safezoneW + safezoneX;
-		y = 0.401 * safezoneH + safezoneY;
-		w = 0.06875 * safezoneW;
-		h = 0.033 * safezoneH;
+		x = 0.436979 * safezoneW + safezoneX;
+		y = 0.39 * safezoneH + safezoneY;
+		w = 0.126042 * safezoneW;
+		h = 0.044 * safezoneH;
 		action = "maindialog_action = 1; closedialog 0;";
 	};
 	class ButtonCenter3: RscButton
 	{
 		idc = IDC_MAINDIALOG_BUTTONCENTER3;
 		text = "Center3"; //--- ToDo: Localize;
-		x = 0.454167 * safezoneW + safezoneX;
+		x = 0.43125 * safezoneW + safezoneX;
 		y = 0.445 * safezoneH + safezoneY;
-		w = 0.0916667 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.044 * safezoneH;
 		action = "maindialog_action = 2; closedialog 0;";
 	};
@@ -76,9 +77,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONCENTER4;
 		text = "Center4"; //--- ToDo: Localize;
-		x = 0.454167 * safezoneW + safezoneX;
+		x = 0.43125 * safezoneW + safezoneX;
 		y = 0.5 * safezoneH + safezoneY;
-		w = 0.0916667 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.044 * safezoneH;
 		action = "maindialog_action = 3; closedialog 0;";
 	};
@@ -86,10 +87,10 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONCENTER5;
 		text = "Center5"; //--- ToDo: Localize;
-		x = 0.465625 * safezoneW + safezoneX;
+		x = 0.436979 * safezoneW + safezoneX;
 		y = 0.555 * safezoneH + safezoneY;
-		w = 0.06875 * safezoneW;
-		h = 0.033 * safezoneH;
+		w = 0.126042 * safezoneW;
+		h = 0.044 * safezoneH;
 		action = "maindialog_action = 4; closedialog 0;";
 	};
 	class ButtonCenter6: RscButton
@@ -106,9 +107,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONRIGHT1;
 		text = "Right1"; //--- ToDo: Localize;
-		x = 0.557292 * safezoneW + safezoneX;
+		x = 0.574479 * safezoneW + safezoneX;
 		y = 0.39 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 6; closedialog 0;";
 	};
@@ -118,7 +119,7 @@ class MAINDIALOG
 		text = "Right2"; //--- ToDo: Localize;
 		x = 0.580208 * safezoneW + safezoneX;
 		y = 0.434 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 7; closedialog 0;";
 	};
@@ -126,9 +127,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONRIGHT3;
 		text = "Right3"; //--- ToDo: Localize;
-		x = 0.591667 * safezoneW + safezoneX;
+		x = 0.580208 * safezoneW + safezoneX;
 		y = 0.478 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 8; closedialog 0;";
 	};
@@ -138,7 +139,7 @@ class MAINDIALOG
 		text = "Right4"; //--- ToDo: Localize;
 		x = 0.580208 * safezoneW + safezoneX;
 		y = 0.522 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 9; closedialog 0;";
 	};
@@ -146,9 +147,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONRIGHT5;
 		text = "Right5"; //--- ToDo: Localize;
-		x = 0.557292 * safezoneW + safezoneX;
+		x = 0.574479 * safezoneW + safezoneX;
 		y = 0.566 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 10; closedialog 0;";
 	};
@@ -156,9 +157,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONLEFT1;
 		text = "Left1"; //--- ToDo: Localize;
-		x = 0.328125 * safezoneW + safezoneX;
+		x = 0.288021 * safezoneW + safezoneX;
 		y = 0.39 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 11; closedialog 0;";
 	};
@@ -166,9 +167,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONLEFT2;
 		text = "Left2"; //--- ToDo: Localize;
-		x = 0.305208 * safezoneW + safezoneX;
+		x = 0.282292 * safezoneW + safezoneX;
 		y = 0.434 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 12; closedialog 0;";
 	};
@@ -176,9 +177,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONLEFT3;
 		text = "Left3"; //--- ToDo: Localize;
-		x = 0.29375 * safezoneW + safezoneX;
+		x = 0.282292 * safezoneW + safezoneX;
 		y = 0.478 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 13; closedialog 0;";
 	};
@@ -186,9 +187,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONLEFT4;
 		text = "Left4"; //--- ToDo: Localize;
-		x = 0.305208 * safezoneW + safezoneX;
+		x = 0.282292 * safezoneW + safezoneX;
 		y = 0.522 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 14; closedialog 0;";
 	};
@@ -196,9 +197,9 @@ class MAINDIALOG
 	{
 		idc = IDC_MAINDIALOG_BUTTONLEFT5;
 		text = "Left5"; //--- ToDo: Localize;
-		x = 0.328125 * safezoneW + safezoneX;
+		x = 0.288021 * safezoneW + safezoneX;
 		y = 0.566 * safezoneH + safezoneY;
-		w = 0.114583 * safezoneW;
+		w = 0.1375 * safezoneW;
 		h = 0.033 * safezoneH;
 		action = "maindialog_action = 15; closedialog 0;";
 	};
@@ -270,7 +271,7 @@ class MAINDIALOG
 		y = 0.247 * safezoneH + safezoneY;
 		w = 0.0802083 * safezoneW;
 		h = 0.033 * safezoneH;
-		action = "maindialog_action = 22; closedialog 0;";
+		action = "maindialog_action = 221; closedialog 0;";
 	};
 	class ButtonHeader3: RscButton
 	{
@@ -305,5 +306,4 @@ class MAINDIALOG
 	////////////////////////////////////////////////////////
 	// GUI EDITOR OUTPUT END
 	////////////////////////////////////////////////////////
-
 };

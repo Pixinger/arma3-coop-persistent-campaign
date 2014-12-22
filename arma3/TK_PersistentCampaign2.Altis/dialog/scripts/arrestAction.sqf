@@ -24,7 +24,7 @@ if ((cursorTarget isKindOf "SoldierGB") && (cursorTarget distance player < 5))	t
 			//    Group - function will be executed only on clients where the player is in the specified group 
 			// IsPersistent
 			// IsCall 
-			[[_townName, 0.1], "PC_fnc_TownParam_MoodAdd", false] call BIS_fnc_MP;
+			[[_townName, pixTown_ConfigMoodPerRedArrest], "PC_fnc_TownParam_MoodAdd", false] call BIS_fnc_MP;
 		};
 	} foreach _townObjects;
 

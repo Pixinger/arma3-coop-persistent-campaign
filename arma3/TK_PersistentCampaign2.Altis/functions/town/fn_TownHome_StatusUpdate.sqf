@@ -10,7 +10,6 @@ Parameter:
 	_townMood = _this select 4;
 	_townStockFood = _this select 5;
 	_townStockWater = _this select 6;
-	_townStockPower = _this select 7;
 
 Return: 
 	nix

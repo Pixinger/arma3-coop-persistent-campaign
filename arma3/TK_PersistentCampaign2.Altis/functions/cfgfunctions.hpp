@@ -24,6 +24,7 @@ class PC
 		class TownHome_SettleAllResidents {description = "";};
 		class TownHome_SettleRooms {description = "";};
 		class TownHome_GetUnoccupiedRoom {description = "";};
+		class TownHome_GetHouse {description = "";};
 		class TownHome_MaxPopulation {description = "";};
 		class TownHome_GetInactiveRoom {description = "";};
 		class TownHome_GetInactiveRooms {description = "";};

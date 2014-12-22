@@ -1,7 +1,7 @@
 private["_button"]; 
-_button = if (cursorTarget isKindOf "WeaponHolder") then 
+_button = if (cursorTarget isKindOf "GroundWeaponHolder") then //WeaponHolder
 {
-	["Waffen beschlagnahmen", false, true,"dialog\scripts\weaponConfiscateAction.sqf"]  
+	["Waffen beschlagnahmen", true, true,"dialog\scripts\weaponConfiscateAction.sqf"]  
 } 
 else
 {

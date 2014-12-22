@@ -47,9 +47,9 @@ _buildingsAvailable = nearestObjects [_townCenter, pixTown_ConfigHomeClassnames,
 		//if (lineIntersects [_pos1, _pos2]) then
 		if (count lineIntersectsWith [_pos1, _pos2] > 0) then
 		{		
-			private["_sign"];
-			_sign = "Sign_Arrow_Large_F" createVehicle _buildingPos;
-			_sign setPos _buildingPos;		
+			//private["_sign"];
+			//_sign = "Sign_Arrow_Large_F" createVehicle _buildingPos;
+			//_sign setPos _buildingPos;		
 			_rooms pushBack [_buildingPos];
 		};
 		_maxIndex = _maxIndex + 1;

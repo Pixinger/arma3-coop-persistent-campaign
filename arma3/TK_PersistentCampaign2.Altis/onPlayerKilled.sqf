@@ -13,6 +13,7 @@ if (isServer) then
 			player sidechat format["Unit %1 died near by %2", (_this select 0), _townName];
 			diag_log format["Unit %1 died near by %2", (_this select 0), _townName];
 			[_townName] call PC_fnc_Townparam_BluKillAdd;
+			[_townName, -0.02] call PC_fnc_Townparam_MoodAdd;
 		};
 	} foreach _townObjects;
 };

@@ -13,9 +13,9 @@ private["_requestingPlayer"];
 _requestingPlayer = _this select 1;
 
 
-// [name, civ, red, injured, mood, food, water, power]
+// [name, civ, red, injured, mood, food, water]
 private["_status"];
-_status = missionNamespace getVariable [format["TownStatus%1", _townName], ["unknown", 0,0,0,0,0,0,0]];
+_status = missionNamespace getVariable [format["TownStatus%1", _townName], ["unknown", 0,0,0,0,0,0]];
 
 // Param
 // Code/Function
