@@ -20,10 +20,10 @@ item15[] = {"Aufnehmen",2,250,-494.711304,-1655.114380,-404.711334,-1605.114380,
 item16[] = {"time",4,218,-494.835052,-1733.733521,-404.835144,-1683.733521,0.000000,"time"};
 item17[] = {"___5",4,218,-24.683914,-1079.540527,65.316086,-1029.540283,70.000000,"0.5"};
 item18[] = {"herumlaufen",2,250,-23.261559,-1247.192505,66.737823,-1197.192871,0.000000,"herumlaufen"};
-item19[] = {"nach_Hause",2,250,-30.054651,-1775.161499,59.945374,-1725.161499,0.000000,"nach Hause"};
+item19[] = {"nach_Hause",2,4346,-30.054651,-1775.161499,59.945374,-1725.161499,0.000000,"nach Hause"};
 item20[] = {"ER",4,218,-81.969612,-1860.336304,8.030397,-1810.336304,0.000000,"ER"};
 item21[] = {"OK",4,218,21.891464,-1860.746704,111.891449,-1810.746704,0.000000,"OK"};
-item22[] = {"Ende",1,4346,-34.656471,-2484.399902,55.343536,-2434.399902,0.000000,"Ende"};
+item22[] = {"Ende",1,250,-32.425987,-2158.749512,57.574020,-2108.749512,0.000000,"Ende"};
 item23[] = {"ER",4,218,33.813522,-1327.110596,123.813477,-1277.110596,0.000000,"ER"};
 item24[] = {"OK",4,218,-60.232941,-1327.596191,29.767033,-1277.596191,0.000000,"OK"};
 item25[] = {"Nachbar_suchen",2,250,337.248596,-1168.108765,427.248596,-1118.108765,0.000000,"Nachbar" \n "suchen"};
@@ -85,13 +85,6 @@ item80[] = {"",7,210,-603.101257,-1464.988770,-595.101257,-1456.988770,0.000000,
 item81[] = {"",7,210,-603.101318,-1754.710815,-595.101318,-1746.710815,0.000000,""};
 item82[] = {"nachdenken2",2,250,-24.269556,-989.584839,65.730476,-939.584167,0.000000,"nachdenken2"};
 item83[] = {"__",8,218,-25.612009,-911.801880,64.387993,-861.801880,0.000000,"1"};
-item84[] = {"alive",2,4346,-38.780964,-2124.108154,51.219051,-2074.108154,0.000000,"alive"};
-item85[] = {"JA",4,4314,-79.943367,-2216.988525,10.056633,-2166.988525,100.000000,"JA"};
-item86[] = {"NO",8,4314,11.880302,-2215.933105,101.880287,-2165.933105,0.000000,"NO"};
-item87[] = {"_",2,4346,32.989193,-2308.812500,122.989128,-2258.812500,0.000000,""};
-item88[] = {"OK",8,4314,13.991203,-2380.582275,103.991203,-2330.582275,0.000000,"OK"};
-item89[] = {"__1",2,4346,-98.941696,-2307.766357,-8.941692,-2257.766357,0.000000,""};
-item90[] = {"OK",8,4314,-86.276367,-2380.591553,3.723633,-2330.591553,0.000000,"OK"};
 link0[] = {0,1};
 link1[] = {0,2};
 link2[] = {1,28};
@@ -160,8 +153,8 @@ link64[] = {53,78};
 link65[] = {54,56};
 link66[] = {55,57};
 link67[] = {55,69};
-link68[] = {56,84};
-link69[] = {57,84};
+link68[] = {56,22};
+link69[] = {57,22};
 link70[] = {58,59};
 link71[] = {58,60};
 link72[] = {59,15};
@@ -193,16 +186,8 @@ link97[] = {81,19};
 link98[] = {82,8};
 link99[] = {82,17};
 link100[] = {83,82};
-link101[] = {84,85};
-link102[] = {84,86};
-link103[] = {85,89};
-link104[] = {86,87};
-link105[] = {87,88};
-link106[] = {88,22};
-link107[] = {89,90};
-link108[] = {90,22};
-globals[] = {0.000000,0,0,0,0,640,480,1,154,6316128,1,-1015.561707,722.975342,-1420.246216,-2747.383301,1403,1071,1};
-window[] = {2,-1,-1,-1,-1,930,50,1490,50,3,1421};
+globals[] = {0.000000,0,0,0,0,640,480,1,154,6316128,1,-928.634827,636.048523,-1486.603149,-2681.026367,1403,1071,1};
+window[] = {2,-1,-1,-1,-1,1080,200,1640,200,3,1421};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -491,7 +476,8 @@ class FSM
     class Ende
     {
       name = "Ende";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""FSM: ENDE"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"diag_log ""FSM: ENDE"";" \n
+       "_leader setVariable [""AA"", 1];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -834,7 +820,7 @@ class FSM
         class OK
         {
           priority = 0.000000;
-          to="alive";
+          to="Ende";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -865,7 +851,7 @@ class FSM
         class OK
         {
           priority = 0.000000;
-          to="alive";
+          to="Ende";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1069,82 +1055,6 @@ class FSM
         {
           priority = 0.000000;
           to="Nachbar_suchen";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "alive">*/
-    class alive
-    {
-      name = "alive";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "JA">*/
-        class JA
-        {
-          priority = 100.000000;
-          to="__1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"alive _leader"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "NO">*/
-        class NO
-        {
-          priority = 0.000000;
-          to="_";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "_">*/
-    class _
-    {
-      name = "_";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 Unit NOT deleted"", _leader];" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "OK">*/
-        class OK
-        {
-          priority = 0.000000;
-          to="Ende";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "__1">*/
-    class __1
-    {
-      name = "__1";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 Unit deleted"", _leader];" \n
-       "deleteVehicle _leader;" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "OK">*/
-        class OK
-        {
-          priority = 0.000000;
-          to="Ende";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;

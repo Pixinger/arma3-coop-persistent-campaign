@@ -8,7 +8,7 @@ _shells = [];
 	_shells pushBack _shell;
 } foreach (_this select 0);
 
-Sleep (5);
+Sleep (3);
 
 {
 	deleteVehicle _x;

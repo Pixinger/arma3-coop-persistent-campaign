@@ -1,5 +1,6 @@
 // Sllep Dauer der Hauptschleife
 pixTown_ConfigMainLoopSleep = 5;
+if (pixDebug) then {pixTown_ConfigMainLoopSleep = 1;};
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
 	
@@ -36,7 +37,9 @@ pixTown_ConfigMoodPerCivWater = 0.1;
 pixTown_ConfigMoodPerCivFood = 0.1;
 pixTown_ConfigMoodPerCivInjured = 0.1;
 pixTown_ConfigMoodPerCivKill = -0.2;
+pixTown_ConfigMoodPerCivUnsearched = -0.2;
 pixTown_ConfigMoodPerRedKill = 0.1;
+pixTown_ConfigMoodPerRedUnsearched = -0.2;
 pixTown_ConfigMoodPerRedArrest = 0.2;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
 pixTown_ConfigMoodPerHouseSearchRed = 0.1;
@@ -103,13 +106,13 @@ pixTown_ConfigCivClassnames = [
 	"C_man_p_shorts_1_F_asia",
 	"C_man_p_shorts_2_F_afro",
 	"C_man_p_shorts_2_F_euro",
-	"C_man_p_shorts_2_F_asia",
+	//"C_man_p_shorts_2_F_asia",
 	"C_man_p_shorts_3_F_afro",
 	//"C_man_p_shorts_3_F_euro",C_man_p_shorts_3_F_euro
 	"C_man_p_shorts_3_F_asia",
 	"C_man_p_shorts_4_F_afro",
 	"C_man_p_shorts_4_F_euro",
-	"C_man_p_shorts_4_F_asia",
+	//"C_man_p_shorts_4_F_asia",
 	"C_journalist_F",
 	"C_Orestes",
 	"C_Nikos",
@@ -128,10 +131,10 @@ pixTown_ConfigRedClassnames = [
 	"I_G_Soldier_GL_F",
 	"I_G_Soldier_M_F",
 	"I_G_Soldier_LAT_F",
-	"I_G_Soldier_A_F",
-	"I_G_officer_F",
-	"i_g_soldier_unarmed_f",
-	"i_g_survivor_F"];
+	"I_G_Soldier_A_F"];
+	//"I_G_officer_F"
+	//"i_g_soldier_unarmed_f",
+	//"i_g_survivor_F"];
 
 // Klassennamen der Warlords	
 pixTown_ConfigWarlordClassnames = [

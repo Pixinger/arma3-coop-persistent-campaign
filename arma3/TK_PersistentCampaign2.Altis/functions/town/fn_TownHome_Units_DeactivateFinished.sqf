@@ -1,6 +1,5 @@
 /*
-Überprüft eine Liste mit aktiven Einheiten, ob darin Einheiten enthalten sind, die DEAKTIVIERT werden müssen.
-Die Einheiten werden deaktiviert, wenn sie NULL sind.
+Überprüft eine Liste mit aktiven Einheiten, ob darin Einheiten enthalten sind, die DEAKTIVIERT oder ENTFERNT werden müssen.
 
 Parameter:
 	_unitsActive: Das zu prüfende Array.
@@ -16,48 +15,87 @@ _unitsActive = _this select 0;
 private["_townName"];
 _townName = _this select 1;
 
+//diag_log format["_unitsActive: %1", _unitsActive];
+
 private["_result"];
 _result = 0;
 
+private["_room"];
+private["_unit"];
+private["_status"];
 private["_index"];
 _index = 0;
 while { (_index < count _unitsActive) } do
 {
-	private["_room"];
 	_room = (_unitsActive select _index);
-	if (isNull (_room select 0)) then 
+	_unit = _room select 0;
+	_status = _unit getVariable "AA"; // 0=Aktiv, 1=FSM-Finished, 2=Arrested
+	if (alive _unit) then
 	{
-		// Die Einheit wurde erfolgreich despawnt. 
-		//diag_log format["Unit deactivated: %1", (_unitsActive select _index)];
-		//player sidechat format["Unit deactivated: %1", (_unitsActive select _index)];
-		deleteGroup (_room select 1); // gruppe löschen
-		(_room select 2) resize 2; // room inaktivieren
-		_unitsActive deleteAt _index; // Aus der Liste nehmen		
-		_result = _result + 1;
+		if (_status == 0) then // 0==Aktiv
+		{
+			_index = _index + 1;
+		}
+		else
+		{			
+			//_status == 1: FSM-Finished
+			if (_status == 1) then
+			{
+				deleteGroup (_room select 1); 	// Die Gruppe löschen
+				(_room select 2) resize 2; 	// Dem ROOM "deaktivieren".
+				_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
+				deleteVehicle _unit;			// Einheit löschen
+				_result = _result + 1;
+			}
+			else
+			{			
+				//_status == 2: Arrested
+				if (_status == 2) then
+				{
+					(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
+					_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
+					_result = _result + 1;					
+					[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
+					
+					// Nach einiger Zeit die Einheit entfernen
+					[_unit] spawn {
+						Sleep 15;
+						deleteVehicle (_this select 0);
+					};
+				}
+				else
+				{
+					_index = _index + 1;
+				};
+			};
+		};
 	}
 	else
 	{
-		// Die Einheit ist entweder noch aktiv, oder tot.
-		if (! (alive (_room select 0))) then
+		// Tote Einheiten werden aus der "_unitsActive" Liste entfernt, damit neue Einheiten nachspawnen können.
+		// Außerdem muss der ROOM "geräumt" werden, da dort ja jetzt keiner mehr drin wohnt.
+		// Die Einheit selbst wird aber nicht mit "deleteVehicle" gelöscht! Das passiert durch den Spieler mit der
+		// "durchsuchen" Taste, oder aber durch "fn_TownHome_Units_DeactivateAll.sqf". Das gibt dann aber Strafpunkte 
+		// für jede gefundene tote Einheit die nicht "durchsucht/begraben" wurde.
+		deleteGroup (_room select 1); 	// Die Gruppe löschen
+		(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
+		_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
+		_result = _result + 1;
+		
+		// Mood Änderungen durchführen
+		if (_unit isKindOf "Civilian_F") then
 		{
-			// RED Mood Änderungen werden beim durchuschen zugewiesen.
-			if (_room select 0 isKindOf "Civilian_F") then
-			{
-diag_log "CIV getötet";
-player sidechat "CIV getötet";
-				[_townName, pixTown_ConfigMoodPerCivKill] call PC_fnc_TownParam_MoodAdd;
-			};
-
-			//deleteVehicle (_room select 0); // Einheit löschen
-			deleteGroup (_room select 1); // gruppe löschen
-			(_room select 2) resize 1; // room freigeben (ausziehen)
-			_unitsActive deleteAt _index; // Aus der Liste nehmen		
-			_result = _result + 1;
+diag_log "fn_TownHome_Units_DeactivateFinished.sqf: CIV getötet";
+			[_townName, pixTown_ConfigMoodPerCivKill] call PC_fnc_TownParam_MoodAdd;
 		}
 		else
 		{
-			_index = _index + 1;
-		};	
+			if (_unit isKindOf "SoldierGB") then
+			{
+diag_log "fn_TownHome_Units_DeactivateFinished.sqf: RED getötet";
+				[_townName, pixTown_ConfigMoodPerRedKill] call PC_fnc_TownParam_MoodAdd;
+			};
+		};
 	};
 };
 

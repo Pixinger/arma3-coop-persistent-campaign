@@ -96,6 +96,51 @@
 ///////////////////////////////////////////////////////////////////////////
 /// Base Classes
 ///////////////////////////////////////////////////////////////////////////
+class RscTitle
+{
+	access = 0;
+	type = CT_STATIC;
+	idc = -1;
+	colorBackground[] = 
+	{
+		"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])",
+		1
+	};
+	colorBackground2[] = 
+	{
+		1,
+		1,
+		1,
+		1
+	};
+	colorText[] = 
+	{
+		1,
+		1,
+		1,
+		0.5
+	};
+	text = "";
+	fixedWidth = 0;
+	x = 0;
+	y = 0;
+	h = 0.037;
+	w = 0.3;
+	style = 0;
+	shadow = 1;
+	colorShadow[] = 
+	{
+		0,
+		0,
+		0,
+		0.5
+	};
+	font = "PuristaMedium";
+	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	linespacing = 1;
+};
 class RscText
 {
 	deletable = 0;
