@@ -5,6 +5,7 @@ class PC
 	class Tools
 	{
 		file = "functions\Tools";
+		class Arrest {description = "";};
 		class IsAnyPlayerNear {description = "";};
 		class GetNearestPlayers {description = "";};
 		class GetMaxBuildingPositions {description = "";};

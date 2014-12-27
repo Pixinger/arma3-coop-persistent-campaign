@@ -29,9 +29,9 @@ while { (_index < count _unitsActive) } do
 {
 	_room = (_unitsActive select _index);
 	_unit = _room select 0;
-	_status = _unit getVariable "AA"; // 0=Aktiv, 1=FSM-Finished, 2=Arrested
 	if (alive _unit) then
 	{
+		_status = _unit getVariable ["AA", 0]; // 0=Aktiv, 1=FSM-Finished, 2=Arrested
 		if (_status == 0) then // 0==Aktiv
 		{
 			_index = _index + 1;

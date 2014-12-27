@@ -410,7 +410,7 @@ diag_log format["%2: _civActivesCount=%1 (PC_fnc_TownHome_Units_DeactivateFinish
 										removeAllWeapons _unit;								
 									};
 								};
-								_unit setBehaviour "CARELESS";
+								//_unit setBehaviour "CARELESS";
 								//_unit setSpeedmode "FULL";
 								_unit setVariable ["townName", _townName];
 								_unit setVariable ["townCenter", _townCenter];
@@ -545,10 +545,23 @@ diag_log format["Durchsuchen von Gebäude %1 wurde angefragt. %2", _x, getPos _x
 				private["_forcedRed"];
 				_forcedRed = 0;
 
+				// Feindlich Einheiten in der Nähe benachrichtigen
+				private["_hostiles"];
+				player sidechat format["g: %1", _house];
+				_hostiles = (_house select 0) nearEntities ["SoldierWB", 100];
+				for "_r" from 0 to (count _redActives -1) do
+				{
+					for "_h" from 0 to (count _hostiles -1) do
+					{
+						((_redActives select _r) select 0) reveal [_hostiles select _h, 1.5];
+						player sidechat format["verraten: %1 an %2", ((_redActives select _r) select 0), _hostiles select _h];
+					};
+				};
+
 				private["_rooms"];
 				_rooms = _house select 1;
 				{
-					// Wenn die hier Wohnende Einheit inaktiv ist, wird Sie nun erstellt.
+					// Wenn die hier wohnende Einheit inaktiv ist, wird Sie nun erstellt.
 					if (count _x == 2) then
 					{
 						private["_unitPosition"];
@@ -573,12 +586,10 @@ diag_log format["Durchsuchen von Gebäude %1 wurde angefragt. %2", _x, getPos _x
 							}
 							else
 							{
-								private["_hostiles"];
-								_hostiles = _unitPosition nearEntities ["SoldierWB", 100];
 								{
 									_unit reveal [_x, 1.5];
 								} foreach _hostiles;								 
-								_unit setBehaviour "AWARE";								
+								_unit setBehaviour "COMBAT";								
 							};
 							//_unit setVariable ["townName", _townName];
 							//_unit setVariable ["townCenter", _townCenter];
@@ -613,7 +624,6 @@ diag_log format["%2: created searched red: %1", _unit, _townName];
 							_forcedCiv = _forcedCiv + 1;
 							_civActivesCount = count _civActives;		
 diag_log format["_civActives search: %1", _civActives];
-diag_log format["%2: created searched civ: %1", _unit, _townName];	
 						};
 					};
 				} foreach _rooms;

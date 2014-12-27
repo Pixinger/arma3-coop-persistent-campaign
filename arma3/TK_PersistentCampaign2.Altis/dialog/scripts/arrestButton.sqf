@@ -1,7 +1,9 @@
 private["_button"]; 
 _button = ["Festnehmen", false, true,"dialog\scripts\arrestAction.sqf"];
 
-if ((cursorTarget isKindOf "SoldierGB") && (cursorTarget distance player < 5))	then
+private["_unit"];
+_unit = cursorTarget;
+if ((_unit isKindOf "SoldierGB") && (_unit distance player < 5) && (alive _unit)) then
 {
 	_button set [1, true];
 };
