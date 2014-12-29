@@ -6,7 +6,7 @@ Parameter:
 	_townName: Der Name der Stadt. Dieser werden evtl. Strafpunkte zugefügt.
 
 Return: 
-	Die Anzahl der deaktivierten Einheiten
+	Die Anzahl der Einheiten die "ausgezigen" sind, weil gestorben oder gefangen
 	
 */
 
@@ -17,8 +17,8 @@ _townName = _this select 1;
 
 //diag_log format["_unitsActive: %1", _unitsActive];
 
-private["_result"];
-_result = 0;
+private["_countRemoved"];
+_countRemoved = 0;
 
 private["_room"];
 private["_unit"];
@@ -45,7 +45,7 @@ while { (_index < count _unitsActive) } do
 				(_room select 2) resize 2; 	// Dem ROOM "deaktivieren".
 				_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
 				deleteVehicle _unit;			// Einheit löschen
-				_result = _result + 1;
+				//_countRemoved = _countRemoved + 1; nicht erhöhen, da je nur deaktiviert!
 			}
 			else
 			{			
@@ -54,7 +54,7 @@ while { (_index < count _unitsActive) } do
 				{
 					(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
 					_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
-					_result = _result + 1;					
+					_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 					[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
 					
 					// Nach einiger Zeit die Einheit entfernen
@@ -80,7 +80,7 @@ while { (_index < count _unitsActive) } do
 		deleteGroup (_room select 1); 	// Die Gruppe löschen
 		(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
 		_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
-		_result = _result + 1;
+		_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 		
 		// Mood Änderungen durchführen
 		if (_unit isKindOf "Civilian_F") then
@@ -99,4 +99,4 @@ diag_log "fn_TownHome_Units_DeactivateFinished.sqf: RED getötet";
 	};
 };
 
-_result;
+_countRemoved;

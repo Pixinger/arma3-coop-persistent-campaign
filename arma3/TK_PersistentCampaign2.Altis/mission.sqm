@@ -4,7 +4,6 @@ class Mission
 	addOns[]=
 	{
 		"a3_map_altis",
-		"A3_Characters_F_OPFOR",
 		"a3_characters_f_beta",
 		"A3_Characters_F_BLUFOR",
 		"A3_Structures_F_Mil_Helipads",
@@ -20,23 +19,24 @@ class Mission
 		"A3_Soft_F_HEMTT",
 		"A3_Air_F_Beta_Heli_Transport_01",
 		"A3_Characters_F_Civil",
-		"A3_Characters_F_Gamma",
 		"A3_Characters_F_INDEP",
 		"A3_Armor_F_AMV",
 		"A3_Boat_F_Trawler",
 		"A3_Structures_F_Walls",
 		"A3_Structures_F_Mil_Shelters",
-		"A3_Air_F_Heli_Light_01"
+		"A3_Air_F_Heli_Light_01",
+		"task_force_radio_items",
+		"A3_Data_F_Curator_Characters"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Modules_F",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f",
-		"A3_Characters_F_OPFOR",
-		"A3_Characters_F_Gamma",
 		"A3_Characters_F_Civil",
 		"A3_Characters_F_INDEP",
+		"task_force_radio_items",
+		"A3_Data_F_Curator_Characters",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Structures_F_Bootcamp_Items_Electronics",
 		"A3_Soft_F_Gamma_HEMTT",
@@ -787,56 +787,26 @@ class Mission
 		};
 		class Item34
 		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={18085.883,13.689865,8677.7803};
-					id=34;
-					side="EAST";
-					vehicle="O_officer_F";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
-		};
-		class Item35
-		{
-			side="WEST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={17789.16,17.225843,8988.4717};
-					id=35;
-					side="WEST";
-					vehicle="B_G_Soldier_F";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
-		};
-		class Item36
-		{
 			side="CIV";
 			class Vehicles
 			{
 				items=1;
 				class Item0
 				{
-					position[]={17370.248,81.9842,9121.124};
-					id=36;
+					position[]={1.3825815,0,1002.6201};
+					id=34;
 					side="CIV";
 					vehicle="C_man_1";
 					leader=1;
-					skill=0.60000002;
+					skill=0.2;
+					health=0.035591844;
+					fuel=0;
+					ammo=0;
+					init="this setBehaviour ""CARELESS"";";
 				};
 			};
 		};
-		class Item37
+		class Item35
 		{
 			side="GUER";
 			class Vehicles
@@ -844,12 +814,101 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={16979.268,85.620804,9159.5254};
-					id=37;
+					position[]={1003.0961,0,3.31604};
+					id=35;
 					side="GUER";
 					vehicle="I_soldier_F";
 					leader=1;
+					skill=0.2;
+					health=0.014151604;
+					fuel=0;
+					ammo=0;
+					init="this setBehaviour ""CARELESS"";";
+				};
+			};
+		};
+		class Item36
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={16920.895,-0.012265867,13555.128};
+					class args
+					{
+						items=7;
+						class Item0
+						{
+							value="0";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="TeamLeaderRadio";
+						};
+						class Item1
+						{
+							value="1";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="RiflemanRadio";
+						};
+						class Item2
+						{
+							value="1";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="terrain_interception_coefficient";
+						};
+						class Item3
+						{
+							value="TaskForceRadio";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="radio_channel_name";
+						};
+						class Item4
+						{
+							value="123";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="radio_channel_password";
+						};
+						class Item5
+						{
+							value="1";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="same_sw_frequencies_for_side";
+						};
+						class Item6
+						{
+							value="1";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="same_lr_frequencies_for_side";
+						};
+					};
+					id=36;
+					side="LOGIC";
+					vehicle="tfar_ModuleTaskForceRadioEnforceUsage";
+					leader=1;
+					lock="UNLOCKED";
 					skill=0.60000002;
+				};
+			};
+		};
+		class Item37
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2000.2604,0,2.543335};
+					id=37;
+					side="EAST";
+					vehicle="o_survivor_F";
+					leader=1;
+					skill=0.2;
+					health=0.078473449;
+					fuel=0;
+					ammo=0;
+					init="this setBehaviour ""CARELESS"";";
 				};
 			};
 		};

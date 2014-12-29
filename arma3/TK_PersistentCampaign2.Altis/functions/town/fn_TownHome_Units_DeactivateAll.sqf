@@ -6,7 +6,7 @@ Parameter:
 	_townObject: Das Stadtobjekt.
 
 Return: 
-	nix
+	Die Anzahl der Einheiten die "ausgezigen" sind, weil gestorben oder gefangen
 	
 */
 
@@ -22,6 +22,9 @@ _townRadius = _townObject getVariable "townRadius";
 private["_townName"];
 _townName = _townObject getVariable "townName";
 
+private["_countRemoved"];
+_countRemoved = 0;
+
 private["_room"];
 private["_unit"];
 private["_status"];
@@ -35,6 +38,7 @@ private["_status"];
 		{
 			(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
 			[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
+			_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 		}
 		else // 0,1==Aktiv,FSM-Finished
 		{
@@ -46,6 +50,7 @@ private["_status"];
 	else
 	{
 		(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
+		_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 
 		// Mood Änderungen durchführen
 		if (_unit isKindOf "Civilian_F") then
@@ -100,4 +105,4 @@ if (_penalty > 0) then
 
 // Fertig
 _unitsActive = [];
-true;
+_countRemoved;

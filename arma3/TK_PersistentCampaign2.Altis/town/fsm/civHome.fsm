@@ -4,11 +4,11 @@
 item0[] = {"Start",0,250,-25.908817,-8.121918,64.091179,41.878082,0.000000,"Start"};
 item1[] = {"isServer",4,218,-25.908783,-87.201599,64.091194,-37.201599,0.000000,"isServer"};
 item2[] = {"__isServer",4,218,-137.976273,-87.292542,-47.976353,-37.292450,0.000000,"!isServer"};
-item3[] = {"Ende1",1,4346,-264.504028,-87.292603,-174.504288,-37.292664,0.000000,"Ende1"};
+item3[] = {"Ende1",1,250,-264.504028,-87.292603,-174.504288,-37.292664,0.000000,"Ende1"};
 item4[] = {"nach_Hause",2,250,-25.527023,-229.720032,64.473007,-179.720032,0.000000,"nach Hause"};
 item5[] = {"ER",4,218,-77.441956,-314.894836,12.558025,-264.894836,0.000000,"ER"};
 item6[] = {"OK",4,218,26.419094,-315.305237,116.419098,-265.305237,0.000000,"OK"};
-item7[] = {"Ende",1,250,-28.018034,-568.497314,61.982025,-518.497192,0.000000,"Ende"};
+item7[] = {"Ende",1,4346,-28.018034,-568.497314,61.982025,-518.497192,0.000000,"Ende"};
 item8[] = {"failed",2,250,-76.810394,-399.745544,13.189640,-349.745483,0.000000,"failed"};
 item9[] = {"completed",2,250,25.667515,-399.745544,115.667572,-349.745483,0.000000,"completed"};
 item10[] = {"_",8,218,-77.785889,-472.440308,12.214069,-422.440369,0.000000,""};
@@ -29,7 +29,7 @@ link11[] = {10,7};
 link12[] = {11,7};
 link13[] = {12,4};
 globals[] = {0.000000,0,0,0,0,640,480,1,143,6316128,1,-497.996826,484.685181,131.706818,-618.437317,1403,1071,1};
-window[] = {2,-1,-1,-1,-1,1080,200,1640,200,3,1421};
+window[] = {2,-1,-1,-1,-1,1030,150,1590,150,3,1421};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -45,7 +45,7 @@ class FSM
        "_townRadius = _leader getVariable ""townRadius"";" \n
        "_home = _leader getVariable ""townHome"";" \n
        "" \n
-       "diag_log format[""FSMHOME: start %1 C%2 R%3 H%4"", _townName, _townCenter, _townRadius, _home];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSMHOME: start %1 C%2 R%3 H%4"", _townName, _townCenter, _townRadius, _home];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -76,7 +76,7 @@ class FSM
     class Ende1
     {
       name = "Ende1";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSMHOME: %1 Ende"", _leader];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -91,7 +91,7 @@ class FSM
        "_leader moveTo _home;" \n
        "_leader setBehaviour ""CARELESS"";" \n
        "_leader setSpeedmode ""FULL"";" \n
-       "diag_log format[""FSMHOME: %2 Gehe nach Hause: %1"", _home, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSMHOME: %2 Gehe nach Hause: %1"", _home, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -123,7 +123,7 @@ class FSM
     {
       name = "Ende";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable [""AA"", 1];" \n
-       "diag_log ""FSMHOME: ENDE"";"/*%FSM</STATEINIT""">*/;
+       "//diag_log ""FSMHOME: ENDE"";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -134,7 +134,7 @@ class FSM
     class failed
     {
       name = "failed";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSMHOME: %1 moveToFailed (home)"", _leader];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"//diag_log format[""FSMHOME: %1 moveToFailed (home)"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -155,7 +155,7 @@ class FSM
     class completed
     {
       name = "completed";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSMHOME: %1 moveToCompleted(home)"", _leader];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"//diag_log format[""FSMHOME: %1 moveToCompleted(home)"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

@@ -43,24 +43,27 @@ if (!isServer || !isDedicated) then
 			private["_unit"];
 			_unit = _units select _i;
 			_markerName setMarkerPosLocal (getPos _unit);
-			if (side _unit == Independent) then 
+			if (_unit isKindOf "SoldierGB") then 
 			{ 
-				_markerName setMarkerColorLocal "ColorOrange"; 
+				_markerName setMarkerColorLocal "ColorRed";//ColorOrange
 			};
-			if (side _unit == OPFOR) then 
+			if (_unit isKindOf "SoldierWB") then 
 			{ 
-				_markerName setMarkerColorLocal "ColorRed"; 
+				_markerName setMarkerColorLocal "ColorBlue";
 			};
-			if (side _unit == BLUFOR) then 
+			if (_unit isKindOf "Civilian_F") then 
 			{ 
-				_markerName setMarkerColorLocal "ColorBlue"; 
-			};
-			if (side _unit == Civilian) then 
-			{ 
-				_markerName setMarkerColorLocal "ColorGreen"; 
+				_markerName setMarkerColorLocal "ColorGreen";
 			};
 			
-			_markerName setMarkerAlphaLocal 0.8;
+			if (alive _unit) then 
+			{
+				_markerName setMarkerAlphaLocal 0.8; 
+			}
+			else 
+			{ 
+				_markerName setMarkerAlphaLocal 0.4; 
+			};			
 		};
 		
 		Sleep 2;
