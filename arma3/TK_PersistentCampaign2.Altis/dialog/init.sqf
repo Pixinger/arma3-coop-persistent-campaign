@@ -1,3 +1,5 @@
+call compile preprocessFileLineNumbers "dialog\config.sqf";
+
 // Das Spawn ist nicht zwingend notwendig, aber verhindert dass die Initialisierung bockiert wird.
 [] spawn {
 	if (!isServer || !isDedicated) then

@@ -10,8 +10,7 @@ if (isServer) then
 		_townName = _x getVariable ["townName", ""];
 		if (_townName != "") then
 		{
-			player sidechat format["Unit %1 died near by %2", (_this select 0), _townName];
-			diag_log format["Unit %1 died near by %2", (_this select 0), _townName];
+			diag_log format["Player-Unit died near by %2 (oldUnit, killer, respawn, respawnDelay): %1", _this, _townName];
 			[_townName] call PC_fnc_Townparam_BluKillAdd;
 			[_townName, -0.02] call PC_fnc_Townparam_MoodAdd;
 		};

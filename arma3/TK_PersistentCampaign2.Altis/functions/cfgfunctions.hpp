@@ -7,6 +7,7 @@ class PC
 		file = "functions\Tools";
 		class Arrest {description = "";};
 		class IsAnyPlayerNear {description = "";};
+		class GetPlayerCount {description = "";};
 		class GetNearestPlayers {description = "";};
 		class GetMaxBuildingPositions {description = "";};
 		class GetMaxBuildingsPositions {description = "";};
@@ -18,6 +19,8 @@ class PC
 	class Town
 	{
 		file = "functions\Town";
+		class TownDb_SaveAll {description = "";};
+
 		class TownHome_Create {description = "";};
 		class TownHome_DebugHomes {description = "";};
 		class TownHome_DebugHomesActive {description = "";};
@@ -63,8 +66,12 @@ class PC
 		class TownParam_SetWeapons {description = "";};
 		class TownParam_GetWeapons {description = "";};
 	};
+	class Vehicles
+	{
+		file = "functions\Vehicles";
+		class CreateCorrectedVehicle {description = "";};
+		class VehicleDb_SaveAll {description = "";};
+		class VehicleDb_Add {description = "";};
+		class VehicleDb_Remove {description = "";};
+	};
 };
-
-
-
-

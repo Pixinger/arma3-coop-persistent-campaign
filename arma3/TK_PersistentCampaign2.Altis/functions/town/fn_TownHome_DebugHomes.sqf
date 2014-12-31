@@ -13,6 +13,7 @@ _homes = _this select 0;
 diag_log "-------------------";
 diag_log "---HOMES---BEGIN---";
 diag_log format["%1 @%2", _townCenter, _townRadius];
+//diag_log format["_homes: %1", _homes];
 
 private["_homeCount"];
 _homeCount = count _homes;

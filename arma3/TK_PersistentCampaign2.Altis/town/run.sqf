@@ -34,27 +34,6 @@ if (isServer) then
 	private["_homes"];
 	_homes = [_townCenter, _townRadius] call PC_fnc_TownHome_Create;
 
-	// ----------------------------------------------------------------------
-	// Stadtparameter auslesen (aus der Datenbank)
-	// ----------------------------------------------------------------------
-	private["_townStockWater"];	// Der Lagerbestand an Wasser
-	_townStockWater = 0;//DB
-	private["_townStockFood"];     // Der Lagerbestand an Nahrungsmitteln
-	_townStockFood = 0;//DB
-	private["_townMood"];
-	_townMood = 0;//DB			// Die Stimmung in der Stadt: -1 Red < 0 < Blu +1.
-	private["_townCivCount"];
-	_townCivCount = 100;//DB		// Die Anzahl der Zivilisten in der Stadt (virtuell).
-	private["_townRedCount"];
-	_townRedCount = 100;//DB		// Die Anzahl der Feinde in der Stadt (virtuell).
-	private["_townWeaponCount"];
-	_townWeaponCount = 0;//DB		// Die Anzahl der Waffen in der Stadt (virtuell).
-	private["_townWarlordCount"];
-	_townWarlordCount = 0;//DB		// Die Anzahl der Warlords in der Stadt (virtuell).
-	private["_townInjuredCount"];
-	_townInjuredCount = 10;//DB		// Die Anzahl der verletzten in der Stadt (virtuell). Das können CIV und RED sein!
-
-	
 	// -----------------------------------
 	// Marker erstellen
 	// -----------------------------------
@@ -63,21 +42,62 @@ if (isServer) then
 	_townMarker setMarkerShape "ELLIPSE";
 	_townMarker setMarkerSize [_townRadius, _townRadius];
 	_townMarker setMarkerAlpha 0.7;
-	if (_townCivCount / _townRedCount < 0.1) then 
+
+	// ----------------------------------------------------------------------
+	// Stadtparameter auslesen (aus der Datenbank)
+	// ----------------------------------------------------------------------
+	private["_townStockWater"];
+	private["_townStockFood"];     
+	private["_townMood"];
+	private["_townCivCount"];
+	private["_townRedCount"];
+	private["_townWeaponCount"];
+	private["_townWarlordCount"];
+	private["_townInjuredCount"];
+	private["_dbResult"];	
+	_dbResult = "Arma2NET" callExtension format["PC town,load,%1", _townName];
+	if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] == "OK") then
 	{
-		_townMarker setMarkerColor "ColorRed";
-	}
-	else
-	{
-		if (_townCivCount / _townRedCount > 10) then 
+		_dbResult = call compile _dbResult;
+		_townStockWater = _dbResult select 1;		// Der Lagerbestand an Wasser
+		_townStockFood = _dbResult select 2;		// Der Lagerbestand an Nahrungsmitteln
+		_townMood = _dbResult select 3;			// Die Stimmung in der Stadt: -1 Red < 0 < Blu +1.
+		_townCivCount = _dbResult select 4;			// Die Anzahl der Zivilisten in der Stadt (virtuell).
+		_townRedCount = _dbResult select 5;			// Die Anzahl der Feinde in der Stadt (virtuell).
+		_townWeaponCount = _dbResult select 6;		// Die Anzahl der Waffen in der Stadt (virtuell).
+		_townWarlordCount = _dbResult select 7;		// Die Anzahl der Warlords in der Stadt (virtuell).
+		_townInjuredCount = _dbResult select 8;		// Die Anzahl der verletzten in der Stadt (virtuell). Das können CIV und RED sein!
+
+		if (_townRedCount / 10 > _townCivCount) then 
 		{
-			_townMarker setMarkerColor "ColorGreen";
+			_townMarker setMarkerColor "ColorRed";
 		}
 		else
 		{
-			_townMarker setMarkerColor "ColorBlack";
+			if (_townCivCount / 10 < _townRedCount) then 
+			{
+				_townMarker setMarkerColor "ColorGreen";
+			}
+			else
+			{
+				_townMarker setMarkerColor "ColorBlack";
+			};
 		};
+	}
+	else
+	{
+		_townStockWater = 0;
+		_townStockFood = 0;
+		_townMood = 0;
+		_townCivCount = 100;
+		_townRedCount = 100;
+		_townWeaponCount = 0;
+		_townWarlordCount = 0;
+		_townInjuredCount = 0;
+		_townMarker setMarkerColor "ColorOrange";
+		diag_log format["ERROR: %1 konnte Daten aus Datenbank nicht laden: %2", _townName, _dbResult];
 	};
+	
 
 	// -----------------------------------
 	// In die Wohnungen einziehen
@@ -86,7 +106,9 @@ if (isServer) then
 	_result = [_homes, _townRedCount, _townCivCount] call PC_fnc_TownHome_SettleAllResidents;
 	private["_townMaxPopulation"];
 	_townMaxPopulation = _result select 2; // Die maximal mögliche Bevölkerung (abhängig von den Wohneinheiten).
-	player globalchat format["_result: %1(Red, Civ, Max)", _result];
+//player globalchat format["_result: %1(Red, Civ, Max)", _result];
+//[_homes] call PC_fnc_TownHome_DebugHomes;
+//[_homes] call PC_fnc_TownHome_DebugHomesInactive;
 	_result = nil;
 
 	// -----------------------------------
@@ -134,6 +156,8 @@ if (isServer) then
 	
 	private["_townSimulationCounter"];
 	_townSimulationCounter = 0;
+	private["_townSimulationSaveCounter"];
+	_townSimulationSaveCounter = 20;
 	private["_townOnlineOfflineCounter"];
 	_townOnlineOfflineCounter = 0;
 	
@@ -162,157 +186,180 @@ if (isServer) then
 			_deltaHours = (time - _lastServerTime) / 3600.0;      
 			_lastServerTime = time;
 			if (pixDebug) then { _deltaHours = 0.1; };
+//[_homes] call PC_fnc_TownHome_DebugHomesInactive;
+//[_homes] call PC_fnc_TownHome_DebugHomesActive;
+//diag_log format["_civActives: %1", _civActives];
 			
 //diag_log "-------------------------------------------------------------------------------";
 //diag_log format["_townName=%4 _deltaHours=%1 time=%2 serverTime=%3 _townMaxPopulation=%5", _deltaHours, time, serverTime, _townName, _townMaxPopulation];
 
-			// ----------------------------------------------------------------------
-			// Gesamtbevölkerung berechnen (wird immer wieder mal benötigt)
-			// ----------------------------------------------------------------------
-			_townPopulation = _townCivCount + _townRedCount + _townWarlordCount;
-
-				
-			// -----------------------------------
-			// Mood simulieren
-			// -----------------------------------
-			if (_townMood > 0) then
+			if (call PC_fnc_GetPlayerCount >= pixTown_ConfigMinPlayerCountForSimulation) then
 			{
-				_townMood = _townMood - (pixTown_ConfigMoodSlabLevelPH * _deltaHours);
-				if (_townMood < 0) then { _townMood = 0; };
-			};
-			_townMood = _townMood + ([_townName] call PC_fnc_Townparam_MoodPull);
-			if (_townMood > 1) then { _townMood = 1; };
-			if (_townMood < -1) then { _townMood = -1; };
+				// ----------------------------------------------------------------------
+				// Gesamtbevölkerung berechnen (wird immer wieder mal benötigt)
+				// ----------------------------------------------------------------------
+				_townPopulation = _townCivCount + _townRedCount + _townWarlordCount;
+
+					
+				// -----------------------------------
+				// Mood simulieren
+				// -----------------------------------
+				if (_townMood > 0) then
+				{
+					_townMood = _townMood - (pixTown_ConfigMoodSlabLevelPH * _deltaHours);
+					if (_townMood < 0) then { _townMood = 0; };
+				};
+				_townMood = _townMood + ([_townName] call PC_fnc_Townparam_MoodPull);
+				if (_townMood > 1) then { _townMood = 1; };
+				if (_townMood < -1) then { _townMood = -1; };
 //diag_log format["_townMood=%1", _townMood];
-			
-			// -----------------------------------
-			// RED simulieren (_simulatedRedCount)
-			// -----------------------------------
+				
+				// -----------------------------------
+				// RED simulieren (_simulatedRedCount)
+				// -----------------------------------
 //diag_log format["_townCivCount=%1  _townRedCount=%2 (Vorgabe)", _townCivCount, _townRedCount];
-			private["_simulatedRedCount"];
-			_simulatedRedCount = _townRedCount;
-			private["_simulatedCivCount"];
-			_simulatedCivCount = _townCivCount;
+				private["_simulatedRedCount"];
+				_simulatedRedCount = _townRedCount;
+				private["_simulatedCivCount"];
+				_simulatedCivCount = _townCivCount;
 
-			// Konvertierung berechnen
-			if (_townMood < -0.1) then
-			{
-				private["_conversion"];
-				_conversion = (pixTown_ConfigMaxRed2CivConversionPPH * _simulatedCivCount * _deltaHours) * (_townMood * -1);
+				// Konvertierung berechnen
+				if (_townMood < -0.1) then
+				{
+					private["_conversion"];
+					_conversion = (pixTown_ConfigMaxRed2CivConversionPPH * _simulatedCivCount * _deltaHours) * (_townMood * -1);
 //diag_log format["RED _conversion=%1", _conversion];
-				_simulatedRedCount = _simulatedRedCount + _conversion;
-				_simulatedCivCount = _simulatedCivCount - _conversion;
-				if (_simulatedCivCount < 0) then { _simulatedCivCount = 0; };
-			};
+					_simulatedRedCount = _simulatedRedCount + _conversion;
+					_simulatedCivCount = _simulatedCivCount - _conversion;
+					if (_simulatedCivCount < 0) then { _simulatedCivCount = 0; };
+				};
 
-			// Blu-Force kills fördern das Wachstum
-			_simulatedRedCount = _simulatedRedCount + (pixTown_ConfigRedGrowPerBluKill * ([_townName] call PC_fnc_Townparam_BluKillPull));
+				// Blu-Force kills fördern das Wachstum
+				_simulatedRedCount = _simulatedRedCount + (pixTown_ConfigRedGrowPerBluKill * ([_townName] call PC_fnc_Townparam_BluKillPull));
 
-			// Ein Warlord fördert das Wachstum
-			private["_factor"];
-			_factor = 1;
-			if (_townWarlordCount > 0) then { _factor = _factor + (pixTown_ConfigRedGrowFactorPerWarlord * _townWarlordCount); };
+				// Ein Warlord fördert das Wachstum
+				private["_factor"];
+				_factor = 1;
+				if (_townWarlordCount > 0) then { _factor = _factor + (pixTown_ConfigRedGrowFactorPerWarlord * _townWarlordCount); };
 
-			// Wachstum berechnen und hinzufügen (nur wenn die Stimmung schlecht ist, gibt es ein Grundwachstum.)
-			if (_townMood < pixTown_ConfigRedGrowRateMoodLimit) then 
-			{
-				_simulatedRedCount = _simulatedRedCount + ((pixTown_ConfigRedGrowRatePPH * _simulatedRedCount * _deltaHours) * _factor);
-			};
+				// Wachstum berechnen und hinzufügen (nur wenn die Stimmung schlecht ist, gibt es ein Grundwachstum.)
+				if (_townMood < pixTown_ConfigRedGrowRateMoodLimit) then 
+				{
+					_simulatedRedCount = _simulatedRedCount + ((pixTown_ConfigRedGrowRatePPH * _simulatedRedCount * _deltaHours) * _factor);
+				};
 
-			// -----------------------------------
-			// CIV simulieren (_simulatedCivCount)
-			// -----------------------------------
-			// Konvertierung berechnen
-			if (_townMood > 0.1) then
-			{
-				private["_conversion"];
-				_conversion = (pixTown_ConfigMaxCiv2RedConversionPPH * _simulatedRedCount * _deltaHours) * _townMood;
+				// -----------------------------------
+				// CIV simulieren (_simulatedCivCount)
+				// -----------------------------------
+				// Konvertierung berechnen
+				if (_townMood > 0.1) then
+				{
+					private["_conversion"];
+					_conversion = (pixTown_ConfigMaxCiv2RedConversionPPH * _simulatedRedCount * _deltaHours) * _townMood;
 //diag_log format["CIV _conversion=%1", _conversion];
-				_simulatedCivCount = _simulatedCivCount + _conversion;
-				_simulatedRedCount = _simulatedRedCount - _conversion;
-				if (_simulatedRedCount < 0) then { _simulatedRedCount = 0; };
-			};
+					_simulatedCivCount = _simulatedCivCount + _conversion;
+					_simulatedRedCount = _simulatedRedCount - _conversion;
+					if (_simulatedRedCount < 0) then { _simulatedRedCount = 0; };
+				};
 
-			// _Stock Veränderungen berechnen
-			_townStockWater = _townStockWater - ((pixTown_ConfigWaterConsumptionPPH * _townPopulation) * _deltaHours);
-			if (_townStockWater < 0) then { _townStockWater = 0; };
-			_townStockWater = _townStockWater + ([_townName] call PC_fnc_Townparam_WaterPull);
+				// _Stock Veränderungen berechnen
+				_townStockWater = _townStockWater - ((pixTown_ConfigWaterConsumptionPPH * _townPopulation) * _deltaHours);
+				if (_townStockWater < 0) then { _townStockWater = 0; };
+				_townStockWater = _townStockWater + ([_townName] call PC_fnc_Townparam_WaterPull);
 //diag_log format["_townStockWater=%1", _townStockWater];
 
-			_townStockFood = _townStockFood - ((pixTown_ConfigFoodConsumptionPPH * _townPopulation) * _deltaHours);
-			if (_townStockFood < 0) then { _townStockFood = 0; };
-			_townStockFood = _townStockFood + ([_townName] call PC_fnc_Townparam_FoodPull);
+				_townStockFood = _townStockFood - ((pixTown_ConfigFoodConsumptionPPH * _townPopulation) * _deltaHours);
+				if (_townStockFood < 0) then { _townStockFood = 0; };
+				_townStockFood = _townStockFood + ([_townName] call PC_fnc_Townparam_FoodPull);
 //diag_log format["_townStockFood=%1", _townStockFood];
 
-			// Berechnen wie sich das Lager auf das Wachstum auswirkt.
-			private["_factor"];
-			_factor = pixTown_ConfigCivGrowFactorMinimum;
-			if (_townStockWater > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorWater; };
-			if (_townStockFood > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorFood; };
+				// Berechnen wie sich das Lager auf das Wachstum auswirkt.
+				private["_factor"];
+				_factor = pixTown_ConfigCivGrowFactorMinimum;
+				if (_townStockWater > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorWater; };
+				if (_townStockFood > 0) then { _factor = _factor + pixTown_ConfigCivGrowFactorFood; };
 
-			// Wachstum berechnen und hinzufügen
-			_simulatedCivCount = _simulatedCivCount + (pixTown_ConfigCivGrowRatePPH * _simulatedCivCount * _deltaHours * _factor);
+				// Wachstum berechnen und hinzufügen
+				_simulatedCivCount = _simulatedCivCount + (pixTown_ConfigCivGrowRatePPH * _simulatedCivCount * _deltaHours * _factor);
 //diag_log format["_simulatedCivCount=%1  _simulatedRedCount=%2 (reine Kalkulation)+", _simulatedCivCount, _simulatedRedCount];
 
-			// ----------------------------------------------------------------------
-			// Wachstum auf Stadtgrenzen limitieren
-			// ----------------------------------------------------------------------
-			if (_simulatedCivCount > _townMaxPopulation) then { _simulatedCivCount = _townMaxPopulation; };
-			if (_simulatedCivCount + _simulatedRedCount > _townMaxPopulation) then { _simulatedRedCount = _townMaxPopulation - _simulatedCivCount; };
-			if (_simulatedCivCount + _simulatedRedCount + _townWarlordCount > _townMaxPopulation) then { _townWarlordCount = _townMaxPopulation - (_simulatedCivCount + _simulatedRedCount); };
+				// ----------------------------------------------------------------------
+				// Wachstum auf Stadtgrenzen limitieren
+				// ----------------------------------------------------------------------
+				if (_simulatedCivCount > _townMaxPopulation) then { _simulatedCivCount = _townMaxPopulation; };
+				if (_simulatedCivCount + _simulatedRedCount > _townMaxPopulation) then { _simulatedRedCount = _townMaxPopulation - _simulatedCivCount; };
+				if (_simulatedCivCount + _simulatedRedCount + _townWarlordCount > _townMaxPopulation) then { _townWarlordCount = _townMaxPopulation - (_simulatedCivCount + _simulatedRedCount); };
 //diag_log format["_simulatedCivCount=%1  _simulatedRedCount=%2 _townWarlordCount=%3 (MaxPopLimited)", _simulatedCivCount, _simulatedRedCount, _townWarlordCount];
 
-			// ----------------------------------------------------------------------
-			// _simulatedRedCount in Homes/_townRedCount übertragen (RED)
-			// ----------------------------------------------------------------------
-			private["_count"];		
-			_count = floor(_simulatedRedCount) - floor(_townRedCount);
+				// ----------------------------------------------------------------------
+				// _simulatedRedCount in Homes/_townRedCount übertragen (RED)
+				// ----------------------------------------------------------------------
+				private["_count"];		
+				_count = floor(_simulatedRedCount) - floor(_townRedCount);
 //diag_log format["_simulatedRedCount=%1 => neue Bewohner: %2", _simulatedRedCount, _count];
-			private["_result"];
-			_result = [_homes, pixTown_ConfigRedClassnames, _count] call PC_fnc_TownHome_SettleRooms;
-			if (_count != _result) then
-			{
-				_townRedCount = floor(_townRedCount) + _result; //TODO: noch prüfen ob die RED auch korrekt verringert werden!
+				private["_result"];
+				_result = [_homes, pixTown_ConfigRedClassnames, _count] call PC_fnc_TownHome_SettleRooms;
+				if (_count != _result) then
+				{
+					_townRedCount = floor(_townRedCount) + _result; //TODO: noch prüfen ob die RED auch korrekt verringert werden!
 //diag_log format["WARN: Es konnten nur %1 von %2 RED-Wohneinheiten geändert werden.", _result, _count];
-			}
-			else
-			{
-				_townRedCount = _simulatedRedCount;
-			};
+				}
+				else
+				{
+					_townRedCount = _simulatedRedCount;
+				};
 
-			// ----------------------------------------------------------------------
-			// _simulatedCivCount in Homes/_townCivCount übertragen (CIV)
-			// ----------------------------------------------------------------------
-			private["_count"];		
-			_count = floor(_simulatedCivCount) - floor(_townCivCount);
+				// ----------------------------------------------------------------------
+				// _simulatedCivCount in Homes/_townCivCount übertragen (CIV)
+				// ----------------------------------------------------------------------
+				private["_count"];		
+				_count = floor(_simulatedCivCount) - floor(_townCivCount);
 //diag_log format["_simulatedCivCount=%1 => neue Bewohner: %2", _simulatedCivCount, _count];
-			private["_result"];
-			_result = [_homes, pixTown_ConfigCivClassnames, _count] call PC_fnc_TownHome_SettleRooms;
-			if (_count != _result) then
-			{
-				_townCivCount = floor(_townCivCount) + _result; //TODO: noch prüfen ob die CIV auch korrekt verringert werden!
+				private["_result"];
+				_result = [_homes, pixTown_ConfigCivClassnames, _count] call PC_fnc_TownHome_SettleRooms;
+				if (_count != _result) then
+				{
+					_townCivCount = floor(_townCivCount) + _result; //TODO: noch prüfen ob die CIV auch korrekt verringert werden!
 //diag_log format["WARN: Es konnten nur %1 von %2 CIV-Wohneinheiten geändert werden.", _result, _count];
-			}
-			else
-			{
-				_townCivCount = _simulatedCivCount;
-			};
+				}
+				else
+				{
+					_townCivCount = _simulatedCivCount;
+				};
 //diag_log format["_townCivCount=%1 _townRedCount=%2 (Endergebnis)", _townCivCount, _townRedCount];
-			
-			// -----------------------------------
-			// Injured simulieren
-			// -----------------------------------
-			_townInjuredCount = _townInjuredCount + (pixTown_ConfigInjuredGrowFactorPPH * (_townRedCount + _townCivCount) * _deltaHours);
-			_townInjuredCount = _townInjuredCount + ([_townName] call PC_fnc_TownParam_InjuredPull);		
-			if (_townInjuredCount < 0) then { _townInjuredCount = 0; };
+				
+				// -----------------------------------
+				// Injured simulieren
+				// -----------------------------------
+				_townInjuredCount = _townInjuredCount + (pixTown_ConfigInjuredGrowFactorPPH * (_townRedCount + _townCivCount) * _deltaHours);
+				_townInjuredCount = _townInjuredCount + ([_townName] call PC_fnc_TownParam_InjuredPull);		
+				if (_townInjuredCount < 0) then { _townInjuredCount = 0; };
 //diag_log format["_townInjuredCount=%1", _townInjuredCount];	
+				
+				// ----------------------------------------------------------------------
+				// Die Werte für die Öffentlichkeit zwischenspeichern
+				// ----------------------------------------------------------------------
+				[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater] call PC_fnc_TownHome_StatusUpdate;
 			
-			// ----------------------------------------------------------------------
-			// Die Werte für die öffentlichkeit zwischenspeichern
-			// ----------------------------------------------------------------------
-			[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater] call PC_fnc_TownHome_StatusUpdate;
-		
 			
+				// ----------------------------------------------------------------------
+				// Die Werte in der Datenbank speichern
+				// ----------------------------------------------------------------------
+				if (_townSimulationSaveCounter < 0) then
+				{
+					_townSimulationSaveCounter = 20;
+					private["_dbResult"];	
+					_dbResult = "Arma2NET" callExtension format["PC town,update,%1,%2,%3,%4,%5,%6,%7,%8,%9", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townWarlordCount, _townInjuredCount];
+					if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] != "OK") then
+					{
+						diag_log format["ERROR: Town.Update failed: %1", _dbResult];
+					}
+					else
+					{
+diag_log format["Town %1 updated database", _townName];
+					};
+				};			
+			};
 		};
 		
 		// -----------------------------------------------------------------------------------
@@ -347,8 +394,8 @@ if (isServer) then
 //diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 //player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 
-	//_civSOLL = 2;
-	//_redSOLL = 2;
+//_civSOLL = 1;
+//_redSOLL = 0;
 				
 				// -----------------------------------
 				// "Fertige" CIV/RED Einheiten DEAKTIVIEREN

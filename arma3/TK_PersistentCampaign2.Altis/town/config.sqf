@@ -1,6 +1,8 @@
-// Sllep Dauer der Hauptschleife
+// Sleep Dauer der Hauptschleife
 pixTown_ConfigMainLoopSleep = 5;
 if (pixDebug) then {pixTown_ConfigMainLoopSleep = 1;};
+// Mindest Spieleranzahl bis Städte simulierten Wachstum haben.
+pixTown_ConfigMinPlayerCountForSimulation = 5;
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
 	

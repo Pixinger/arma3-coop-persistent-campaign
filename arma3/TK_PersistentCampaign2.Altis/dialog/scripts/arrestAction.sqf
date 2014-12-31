@@ -8,7 +8,7 @@ if ((_unit isKindOf "SoldierGB") && (_unit distance player < 5) && (alive _unit)
 	_unit setBehaviour "CARELESS";
 	_unit setVariable["AA", 2, true]; // 0==Aktiv 1==FSM-Finished 2==Arrested
 	
-		// Param
+	// Param
 	// Code/Function
 	// Target
 	//    Object - function will be executed only where unit is local [default: everyone] 

@@ -11,7 +11,7 @@ private["_homes"];
 _homes = _this select 0;
 
 diag_log "---HOMES---ACTIVE---BEGIN---";
-diag_log format["%1 @%2", _townCenter, _townRadius];
+diag_log format["Pos: %1 Radius: @%2", _townCenter, _townRadius];
 
 private["_homeCount"];
 _homeCount = count _homes;
@@ -40,4 +40,4 @@ while { (_homeIndex < _homeCount) } do
 	_homeIndex = _homeIndex + 1;
 };
 
-diag_log "---HOMES---ACTIVE---END---";
+diag_log "---END---";

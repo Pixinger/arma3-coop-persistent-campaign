@@ -1,5 +1,5 @@
-if (player == vehicle player) then
-{
+//if (player == vehicle player) then
+//{
 	// [Text, Enabled, Visible, SQF-Datei]
 	private["_buttons"];
 	
@@ -25,11 +25,11 @@ if (player == vehicle player) then
 		["9", true, false, ""], //footer3
 		["0", true, false, ""], //footer4
 		["1", true, false, ""], //footer5
-		["2", true, false, ""], //header1
-		["3", true, false, ""], //header2
+		call compile preprocessFileLineNumbers "dialog\scripts\adminSaveTownsButton.sqf", //header1
+		call compile preprocessFileLineNumbers "dialog\scripts\adminSaveVehiclesButton.sqf", //header2
 		["4", true, false, ""], //header3
 		["5", true, false, ""], //header4
 		["6", true, false, ""]]; //header5
 
 	_buttons execVM "dialog\showbase.sqf";
-};
+//};

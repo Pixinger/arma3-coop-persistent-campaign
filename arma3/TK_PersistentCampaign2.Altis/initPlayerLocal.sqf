@@ -2,8 +2,7 @@
 // [player:Object, didJIP:Boolean]
 if (local player) then
 {
-	player addAction["beam","admin\beam.sqf"];
-	player addAction["test - finger weg, sonst ab","test.sqf"];
-	call compile preprocessFileLineNumbers "dialog\init.sqf";
+	//player addAction["beam","admin\beam.sqf"];
+	//player addAction["test - finger weg, sonst ab","test.sqf"];
 	[] execVM "admin\gps.sqf";
 };

@@ -1,0 +1,1 @@
+adminPlayerUIDs = ["123", "456"];
