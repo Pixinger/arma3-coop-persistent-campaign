@@ -26,9 +26,9 @@
 		["0", true, false, ""], //footer4
 		["1", true, false, ""], //footer5
 		call compile preprocessFileLineNumbers "dialog\scripts\adminSaveTownsButton.sqf", //header1
-		call compile preprocessFileLineNumbers "dialog\scripts\adminSaveVehiclesButton.sqf", //header2
-		["4", true, false, ""], //header3
-		["5", true, false, ""], //header4
+		call compile preprocessFileLineNumbers "dialog\scripts\adminVehiclesSaveButton.sqf", //header2
+		call compile preprocessFileLineNumbers "dialog\scripts\adminVehiclesAddButton.sqf", //header3
+		call compile preprocessFileLineNumbers "dialog\scripts\adminVehiclesRemoveButton.sqf", //header4
 		["6", true, false, ""]]; //header5
 
 	_buttons execVM "dialog\showbase.sqf";
