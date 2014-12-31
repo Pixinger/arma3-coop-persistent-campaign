@@ -10,7 +10,7 @@ Return:
 	[_setteledRed, _setteledCiv, _maxPopulation]	
 */
 
-diag_log "Settling residents";
+//diag_log "Settling residents";
 private["_homes"];
 _homes = _this select 0;
 private["_totalRed"];
@@ -31,7 +31,7 @@ for "_x" from 1 to _totalRed do
 	
 	_setteledRed = _setteledRed + 1;
 	_room set [1, [pixTown_ConfigRedClassnames] call PC_fnc_RandomElement];
-	diag_log format["room-red: %1", _room];
+//	diag_log format["room-red: %1", _room];
 };
 
 private["_setteledCiv"];
@@ -43,9 +43,9 @@ for "_x" from 1 to _totalCiv do
 	if (count _room == 0) exitWith {};
 	_setteledCiv = _setteledCiv + 1;
 	_room set [1, [pixTown_ConfigCivClassnames] call PC_fnc_RandomElement];
-	diag_log format["room-civ: %1", _room];
+//	diag_log format["room-civ: %1", _room];
 };
 
-diag_log "Settled residents";
+//diag_log "Settled residents";
 
 [_setteledRed, _setteledCiv, _maxPopulation];

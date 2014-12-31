@@ -1,5 +1,5 @@
 private["_button"]; 
-_button = ["Fahrzeug entfernen", false, false,"dialog\scripts\adminVehiclesRemoveAction.sqf"];
+_button = ["Fzg.entfernen", false, false,"dialog\scripts\adminVehiclesRemoveAction.sqf"];
 
 if ((getPlayerUID player) in adminPlayerUIDs) then 
 { 

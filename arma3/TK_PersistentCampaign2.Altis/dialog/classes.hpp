@@ -286,7 +286,6 @@ class MAINDIALOG
 	class ButtonHeader4: RscButton
 	{
 		idc = IDC_MAINDIALOG_BUTTONHEADER4;
-		size = 3;
 		text = "Header4"; //--- ToDo: Localize;
 		x = 0.545833 * safezoneW + safezoneX;
 		y = 0.247 * safezoneH + safezoneY;

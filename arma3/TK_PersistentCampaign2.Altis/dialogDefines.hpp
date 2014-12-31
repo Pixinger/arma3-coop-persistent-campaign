@@ -138,7 +138,7 @@ class RscTitle
 		0.5
 	};
 	font = "PuristaMedium";
-	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	linespacing = 1;
 };
 class RscText
@@ -178,7 +178,7 @@ class RscText
 		0.5
 	};
 	font = "PuristaMedium";
-	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	linespacing = 1;
 	tooltipColorText[] = 
 	{
@@ -330,7 +330,7 @@ class RscEdit
 	style = "0x00 + 0x40";
 	font = "PuristaMedium";
 	shadow = 2;
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	canModify = 1;
 	tooltipColorText[] = 
 	{
@@ -461,7 +461,7 @@ class RscCombo
 	};
 	style = "0x10 + 0x200";
 	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	shadow = 0;
 	x = 0;
 	y = 0;
@@ -630,7 +630,7 @@ class RscListBox
 	};
 	style = 16;
 	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	shadow = 0;
 	colorShadow[] = 
 	{
@@ -743,7 +743,7 @@ class RscButton
 	h = 0.039216;
 	shadow = 2;
 	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	offsetX = 0;
 	offsetY = 0;
 	offsetPressedX = 0;
@@ -879,7 +879,7 @@ class RscShortcutButton
 	period = 0.4;
 	font = "PuristaMedium";
 	size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	text = "";
 	action = "";
 	class AttributesImage
@@ -1257,7 +1257,7 @@ class RscTextCheckBox
 		0.65
 	};
 	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	rows = 1;
 	columns = 1;
 	strings[] = 
@@ -1354,7 +1354,7 @@ class RscButtonMenu
 	periodFocus = 1.2;
 	periodOver = 1.2;
 	size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
 	tooltipColorText[] = 
 	{
 		1,

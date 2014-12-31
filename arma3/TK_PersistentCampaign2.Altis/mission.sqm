@@ -15,16 +15,11 @@ class Mission
 		"A3_Structures_F_Mil_Flags",
 		"A3_Modules_F",
 		"A3_Structures_F_Bootcamp_Items_Electronics",
-		"A3_Soft_F_Gamma_HEMTT",
-		"A3_Soft_F_HEMTT",
-		"A3_Air_F_Beta_Heli_Transport_01",
 		"A3_Characters_F_Civil",
 		"A3_Characters_F_INDEP",
-		"A3_Armor_F_AMV",
 		"A3_Boat_F_Trawler",
 		"A3_Structures_F_Walls",
 		"A3_Structures_F_Mil_Shelters",
-		"A3_Air_F_Heli_Light_01",
 		"A3_Data_F_Curator_Characters"
 	};
 	addOnsAuto[]=
@@ -37,22 +32,17 @@ class Mission
 		"A3_Data_F_Curator_Characters",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Structures_F_Bootcamp_Items_Electronics",
-		"A3_Soft_F_Gamma_HEMTT",
-		"A3_Soft_F_HEMTT",
-		"A3_Air_F_Beta_Heli_Transport_01",
-		"A3_Armor_F_AMV",
 		"A3_Boat_F_Trawler",
 		"A3_Structures_F_Mil_Helipads",
 		"A3_Structures_F_Walls",
 		"A3_Structures_F_Mil_Shelters",
-		"A3_Air_F_Heli_Light_01",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.07";
+		overviewText="www.teamkommando.de | V0.08";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -60,9 +50,9 @@ class Mission
 		forecastWeather=0;
 		forecastWind=0;
 		forecastWaves=0;
-		year=2035;
-		month=7;
-		day=5;
+		year=2014;
+		month=12;
+		day=31;
 		hour=10;
 		minute=0;
 		startFogBase=0.001;
@@ -849,7 +839,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=52;
+		items=73;
 		class Item0
 		{
 			position[]={17410.816,13.642724,13200.286};
@@ -916,117 +906,116 @@ class Mission
 		};
 		class Item7
 		{
-			position[]={17328.488,13.926841,13245.578};
-			azimut=410.18906;
-			id=44;
-			side="EMPTY";
-			vehicle="B_Truck_01_medical_F";
-			skill=0.60000002;
-		};
-		class Item8
-		{
 			position[]={18118.936,23.7078,15223.275};
-			id=45;
+			id=44;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Charkia""];this setVariable[""townRadius"", 200];";
 		};
-		class Item9
+		class Item8
 		{
 			position[]={21378.18,19.849974,16355.083};
-			id=46;
+			id=45;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Kalochori""];this setVariable[""townRadius"", 200];";
 		};
-		class Item10
+		class Item9
 		{
 			position[]={20927.734,44.804985,16936.523};
-			id=47;
+			id=46;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Paros""];this setVariable[""townRadius"", 200];";
 		};
-		class Item11
+		class Item10
 		{
 			position[]={18812.063,31.042528,16609.672};
-			id=48;
+			id=47;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Rodopoli""];this setVariable[""townRadius"", 200];";
 		};
-		class Item12
+		class Item11
 		{
 			position[]={16363.499,24.276096,17243.859};
-			id=49;
+			id=48;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Telos""];this setVariable[""townRadius"", 200];";
 		};
-		class Item13
+		class Item12
 		{
 			position[]={16648.637,17.152342,16109.799};
-			id=50;
+			id=49;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Anthrakia""];this setVariable[""townRadius"", 200];";
 		};
-		class Item14
+		class Item13
 		{
 			position[]={25692.803,20.367167,21345.453};
-			id=51;
+			id=50;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Sofia""];this setVariable[""townRadius"", 200];";
 		};
-		class Item15
+		class Item14
 		{
 			position[]={27005.67,20.105757,23226.928};
-			id=52;
+			id=51;
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
 			init="this setVariable[""townName"", ""Molos""];this setVariable[""townRadius"", 200];";
 		};
+		class Item15
+		{
+			position[]={21929.211,0,5962.5142};
+			azimut=-239.88278;
+			id=52;
+			side="EMPTY";
+			vehicle="C_Boat_Civil_04_F";
+			skill=0.60000002;
+		};
 		class Item16
 		{
-			position[]={17335.002,13.967763,13237.395};
-			azimut=50.497189;
+			position[]={16362.208,0,12488.175};
+			azimut=-88.101448;
 			id=53;
 			side="EMPTY";
-			vehicle="B_Truck_01_transport_F";
+			vehicle="C_Boat_Civil_04_F";
 			skill=0.60000002;
 		};
 		class Item17
 		{
-			position[]={17552.178,13.039737,13242.172};
-			azimut=46.29739;
+			position[]={14286.187,0,13116.496};
+			azimut=-185.15123;
 			id=54;
 			side="EMPTY";
-			vehicle="B_Heli_Transport_01_F";
+			vehicle="C_Boat_Civil_04_F";
 			skill=0.60000002;
 		};
 		class Item18
 		{
-			position[]={17330.656,13.952768,13240.743};
-			azimut=48.729973;
+			position[]={15425.945,0,15767.671};
+			azimut=-187.23152;
 			id=55;
 			side="EMPTY";
-			vehicle="B_APC_Wheeled_01_cannon_F";
+			vehicle="C_Boat_Civil_04_F";
 			skill=0.60000002;
-			text="MobileSpawn";
 		};
 		class Item19
 		{
-			position[]={21929.211,0,5962.5142};
-			azimut=-239.88278;
+			position[]={21834.117,0,10883.109};
+			azimut=-449.89053;
 			id=56;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1034,8 +1023,8 @@ class Mission
 		};
 		class Item20
 		{
-			position[]={16362.208,0,12488.175};
-			azimut=-88.101448;
+			position[]={22746.617,0,13859.228};
+			azimut=-230.83717;
 			id=57;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1043,8 +1032,8 @@ class Mission
 		};
 		class Item21
 		{
-			position[]={14286.187,0,13116.496};
-			azimut=-185.15123;
+			position[]={27697.752,0,24483.266};
+			azimut=-291.73822;
 			id=58;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1052,8 +1041,8 @@ class Mission
 		};
 		class Item22
 		{
-			position[]={15425.945,0,15767.671};
-			azimut=-187.23152;
+			position[]={23262.545,0,24182.168};
+			azimut=-262.68439;
 			id=59;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1061,8 +1050,8 @@ class Mission
 		};
 		class Item23
 		{
-			position[]={21834.117,0,10883.109};
-			azimut=-449.89053;
+			position[]={17795.209,0,18232.48};
+			azimut=-408.69382;
 			id=60;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1070,8 +1059,8 @@ class Mission
 		};
 		class Item24
 		{
-			position[]={22746.617,0,13859.228};
-			azimut=-230.83717;
+			position[]={3232.5276,0,12867.796};
+			azimut=-171.63882;
 			id=61;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1079,8 +1068,8 @@ class Mission
 		};
 		class Item25
 		{
-			position[]={27697.752,0,24483.266};
-			azimut=-291.73822;
+			position[]={3585.5037,0,10934.989};
+			azimut=-223.12323;
 			id=62;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1088,8 +1077,8 @@ class Mission
 		};
 		class Item26
 		{
-			position[]={23262.545,0,24182.168};
-			azimut=-262.68439;
+			position[]={16776.33,-2.7542603e-005,20519.424};
+			azimut=-315.84579;
 			id=63;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1097,8 +1086,8 @@ class Mission
 		};
 		class Item27
 		{
-			position[]={17795.209,0,18232.48};
-			azimut=-408.69382;
+			position[]={5004.7354,-0.0029338957,9891.9531};
+			azimut=30.066053;
 			id=64;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1106,8 +1095,8 @@ class Mission
 		};
 		class Item28
 		{
-			position[]={3232.5276,0,12867.796};
-			azimut=-171.63882;
+			position[]={9309.9111,8.2287494e-005,10848.357};
+			azimut=-239.88278;
 			id=65;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1115,8 +1104,8 @@ class Mission
 		};
 		class Item29
 		{
-			position[]={3585.5037,0,10934.989};
-			azimut=-223.12323;
+			position[]={13366.085,0.0010193769,14435.458};
+			azimut=-293.99683;
 			id=66;
 			side="EMPTY";
 			vehicle="C_Boat_Civil_04_F";
@@ -1124,79 +1113,91 @@ class Mission
 		};
 		class Item30
 		{
-			position[]={16776.33,-2.7542603e-005,20519.424};
-			azimut=-315.84579;
-			id=67;
-			side="EMPTY";
-			vehicle="C_Boat_Civil_04_F";
-			skill=0.60000002;
-		};
-		class Item31
-		{
-			position[]={5004.7354,-0.0029338957,9891.9531};
-			azimut=30.066053;
-			id=68;
-			side="EMPTY";
-			vehicle="C_Boat_Civil_04_F";
-			skill=0.60000002;
-		};
-		class Item32
-		{
-			position[]={9309.9111,8.2287494e-005,10848.357};
-			azimut=-239.88278;
-			id=69;
-			side="EMPTY";
-			vehicle="C_Boat_Civil_04_F";
-			skill=0.60000002;
-		};
-		class Item33
-		{
-			position[]={13366.085,0.0010193769,14435.458};
-			azimut=-293.99683;
-			id=70;
-			side="EMPTY";
-			vehicle="C_Boat_Civil_04_F";
-			skill=0.60000002;
-		};
-		class Item34
-		{
 			position[]={17505.984,12.708629,13268.646};
 			azimut=-41.44059;
 			special="NONE";
-			id=71;
+			id=67;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
+			leader=1;
+			skill=0.60000002;
+			description="Zeus";
+		};
+		class Item31
+		{
+			position[]={17480.301,12.866319,13282.908};
+			azimut=-41.44059;
+			special="NONE";
+			id=68;
+			side="EMPTY";
+			vehicle="Land_HelipadSquare_F";
+			leader=1;
+			skill=0.60000002;
+			description="Zeus";
+		};
+		class Item32
+		{
+			position[]={17467.76,12.66977,13308.857};
+			azimut=-41.44059;
+			special="NONE";
+			id=69;
+			side="EMPTY";
+			vehicle="Land_HelipadSquare_F";
+			leader=1;
+			skill=0.60000002;
+			description="Zeus";
+		};
+		class Item33
+		{
+			position[]={17438.813,13.695457,13184.536};
+			azimut=-221.75296;
+			special="NONE";
+			id=70;
+			side="EMPTY";
+			vehicle="Land_Crash_barrier_F";
+			leader=1;
+			skill=0.60000002;
+			description="Zeus";
+		};
+		class Item34
+		{
+			position[]={17432.709,13.67352,13188.656};
+			azimut=-495.43097;
+			special="NONE";
+			id=71;
+			side="EMPTY";
+			vehicle="Land_Crash_barrier_F";
 			leader=1;
 			skill=0.60000002;
 			description="Zeus";
 		};
 		class Item35
 		{
-			position[]={17487.645,12.821097,13287.869};
-			azimut=-41.44059;
+			position[]={17426.904,13.615993,13194.255};
+			azimut=-495.43097;
 			special="NONE";
 			id=72;
 			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
+			vehicle="Land_Crash_barrier_F";
 			leader=1;
 			skill=0.60000002;
 			description="Zeus";
 		};
 		class Item36
 		{
-			position[]={17467.979,12.673598,13308.194};
-			azimut=-41.44059;
+			position[]={17405.588,13.908998,13194.651};
+			azimut=-499.88422;
 			special="NONE";
 			id=73;
 			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
+			vehicle="Land_Crash_barrier_F";
 			leader=1;
 			skill=0.60000002;
 			description="Zeus";
 		};
 		class Item37
 		{
-			position[]={17438.813,13.695457,13184.536};
+			position[]={17420.547,13.68355,13189.187};
 			azimut=-221.75296;
 			special="NONE";
 			id=74;
@@ -1208,8 +1209,8 @@ class Mission
 		};
 		class Item38
 		{
-			position[]={17432.709,13.67352,13188.656};
-			azimut=-495.43097;
+			position[]={17399.193,13.943022,13200.136};
+			azimut=-499.88422;
 			special="NONE";
 			id=75;
 			side="EMPTY";
@@ -1220,8 +1221,8 @@ class Mission
 		};
 		class Item39
 		{
-			position[]={17426.904,13.615993,13194.255};
-			azimut=-495.43097;
+			position[]={17392.779,13.950362,13205.472};
+			azimut=-499.88422;
 			special="NONE";
 			id=76;
 			side="EMPTY";
@@ -1232,130 +1233,307 @@ class Mission
 		};
 		class Item40
 		{
-			position[]={17405.588,13.908998,13194.651};
-			azimut=-499.88422;
-			special="NONE";
-			id=77;
-			side="EMPTY";
-			vehicle="Land_Crash_barrier_F";
-			leader=1;
-			skill=0.60000002;
-			description="Zeus";
-		};
-		class Item41
-		{
-			position[]={17420.547,13.68355,13189.187};
-			azimut=-221.75296;
-			special="NONE";
-			id=78;
-			side="EMPTY";
-			vehicle="Land_Crash_barrier_F";
-			leader=1;
-			skill=0.60000002;
-			description="Zeus";
-		};
-		class Item42
-		{
-			position[]={17399.193,13.943022,13200.136};
-			azimut=-499.88422;
-			special="NONE";
-			id=79;
-			side="EMPTY";
-			vehicle="Land_Crash_barrier_F";
-			leader=1;
-			skill=0.60000002;
-			description="Zeus";
-		};
-		class Item43
-		{
-			position[]={17392.779,13.950362,13205.472};
-			azimut=-499.88422;
-			special="NONE";
-			id=80;
-			side="EMPTY";
-			vehicle="Land_Crash_barrier_F";
-			leader=1;
-			skill=0.60000002;
-			description="Zeus";
-		};
-		class Item44
-		{
 			position[]={17411.006,13.639074,13200.27};
 			azimut=-183.95908;
 			special="NONE";
-			id=81;
+			id=77;
 			side="EMPTY";
 			vehicle="CamoNet_BLUFOR_F";
 			leader=1;
 			skill=0.60000002;
 			description="Zeus";
 		};
-		class Item45
+		class Item41
 		{
 			position[]={17511.99,13.785474,13157.409};
 			azimut=135.867;
-			id=82;
+			id=78;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
 			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];";
 		};
-		class Item46
+		class Item42
 		{
 			position[]={17451.518,13.3096,13203.636};
 			azimut=135.867;
-			id=83;
+			id=79;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
 			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];";
 		};
-		class Item47
+		class Item43
 		{
 			position[]={17368.551,14.402738,13199.559};
 			azimut=135.867;
-			id=84;
+			id=80;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
 			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];";
 		};
-		class Item48
+		class Item44
 		{
 			position[]={17544.293,13.861143,13207.862};
 			azimut=135.867;
-			id=85;
+			id=81;
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
 			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];";
 		};
+		class Item45
+		{
+			position[]={14010.025,26.232115,18674.508};
+			id=82;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Athira""];this setVariable[""townRadius"", 300];";
+		};
+		class Item46
+		{
+			position[]={14595.372,45.675861,20767.092};
+			id=83;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Frini""];this setVariable[""townRadius"", 150];";
+		};
+		class Item47
+		{
+			position[]={12819.013,43.696846,19651.881};
+			id=84;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Ifestonia""];this setVariable[""townRadius"", 150];";
+		};
+		class Item48
+		{
+			position[]={12356.617,24.234621,15663.477};
+			id=85;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Lakka""];this setVariable[""townRadius"", 250];";
+		};
 		class Item49
 		{
-			position[]={17505.344,12.713745,13268.328};
-			azimut=46.297401;
+			position[]={12956.369,27.439285,15031.098};
 			id=86;
 			side="EMPTY";
-			vehicle="B_Heli_Light_01_F";
+			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
+			init="this setVariable[""townName"", ""Stavros""];this setVariable[""townRadius"", 200];";
 		};
 		class Item50
 		{
-			position[]={17487.656,12.821444,13287.51};
-			azimut=46.297401;
+			position[]={12501.942,11.377932,14332.218};
 			id=87;
 			side="EMPTY";
-			vehicle="B_Heli_Light_01_armed_F";
+			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
+			init="this setVariable[""townName"", ""Neochori""];this setVariable[""townRadius"", 250];";
 		};
 		class Item51
 		{
-			position[]={17467.477,12.671391,13308.187};
-			azimut=46.297401;
+			position[]={11727.391,12.78409,13704.857};
 			id=88;
 			side="EMPTY";
-			vehicle="B_Heli_Light_01_F";
+			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
+			init="this setVariable[""townName"", ""Katalaki""];this setVariable[""townRadius"", 150];";
+		};
+		class Item52
+		{
+			position[]={10954.25,29.279875,13426.188};
+			id=89;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Poliakko""];this setVariable[""townRadius"", 200];";
+		};
+		class Item53
+		{
+			position[]={10644.422,16.077902,12278.671};
+			id=90;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Therisa""];this setVariable[""townRadius"", 200];";
+		};
+		class Item54
+		{
+			position[]={9102.1631,19.915457,11981.714};
+			id=91;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Zaros""];this setVariable[""townRadius"", 350];";
+		};
+		class Item55
+		{
+			position[]={5090.1392,50.417187,11262.607};
+			id=92;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Panochori""];this setVariable[""townRadius"", 250];";
+		};
+		class Item56
+		{
+			position[]={3612.5242,14.714438,10239.962};
+			id=93;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Athanos""];this setVariable[""townRadius"", 150];";
+		};
+		class Item57
+		{
+			position[]={4168.5093,53.201511,11770.545};
+			id=94;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Neri""];this setVariable[""townRadius"", 200];";
+		};
+		class Item58
+		{
+			position[]={4911.5918,75.160637,16179.354};
+			id=95;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Negades""];this setVariable[""townRadius"", 150];";
+		};
+		class Item59
+		{
+			position[]={4232.6016,17.145849,16881.051};
+			id=96;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""AgiosKonstantinosSued""];this setVariable[""townRadius"", 150];";
+		};
+		class Item60
+		{
+			position[]={3953.9692,17.227112,17328.965};
+			id=97;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""AgiosKonstantinosNord""];this setVariable[""townRadius"", 200];";
+		};
+		class Item61
+		{
+			position[]={4586.1753,299.5881,21384.609};
+			id=98;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Oreokastro""];this setVariable[""townRadius"", 150];";
+		};
+		class Item62
+		{
+			position[]={8623.2617,180.24979,18288.531};
+			id=99;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Syrta""];this setVariable[""townRadius"", 200];";
+		};
+		class Item63
+		{
+			position[]={7159.5107,120.73537,16471.633};
+			id=100;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Kore""];this setVariable[""townRadius"", 200];";
+		};
+		class Item64
+		{
+			position[]={9344.1787,119.8046,15882.236};
+			id=101;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""AgiosDionysios""];this setVariable[""townRadius"", 400];";
+		};
+		class Item65
+		{
+			position[]={11121.657,41.877239,14567.696};
+			id=102;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Alikampos""];this setVariable[""townRadius"", 150];";
+		};
+		class Item66
+		{
+			position[]={10461.489,83.586395,17230.4};
+			id=103;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Orino""];this setVariable[""townRadius"", 100];";
+		};
+		class Item67
+		{
+			position[]={10324.271,126.10605,19058.727};
+			id=104;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Galati""];this setVariable[""townRadius"", 150];";
+		};
+		class Item68
+		{
+			position[]={9435.9043,125.5955,20264.287};
+			id=105;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Abdera""];this setVariable[""townRadius"", 150];";
+		};
+		class Item69
+		{
+			position[]={9699.7822,3.239182,22275.262};
+			id=106;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Kyra""];this setVariable[""townRadius"", 10];";
+		};
+		class Item70
+		{
+			position[]={17831.432,2.0012159,18124.479};
+			id=107;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Kalitea""];this setVariable[""townRadius"", 150];";
+		};
+		class Item71
+		{
+			position[]={21823.908,30.650185,21024.865};
+			id=108;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Iraklia""];this setVariable[""townRadius"", 200];";
+		};
+		class Item72
+		{
+			position[]={23199.213,14.227149,19983.396};
+			id=109;
+			side="EMPTY";
+			vehicle="Land_VRGoggles_01_F";
+			skill=0.60000002;
+			init="this setVariable[""townName"", ""Ioannia""];this setVariable[""townRadius"", 200];";
 		};
 	};
 	class Markers

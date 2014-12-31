@@ -1,5 +1,5 @@
 private["_button"]; 
-_button = ["Fahrzeug hinzufügen", false, false,"dialog\scripts\adminVehiclesAddAction.sqf"];
+_button = ["Fzg.hinzufügen", false, false,"dialog\scripts\adminVehiclesAddAction.sqf"];
 
 if ((getPlayerUID player) in adminPlayerUIDs) then 
 { 

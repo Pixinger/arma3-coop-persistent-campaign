@@ -55,7 +55,7 @@ if (isServer) then
 	private["_townWarlordCount"];
 	private["_townInjuredCount"];
 	private["_dbResult"];	
-	_dbResult = "Arma2NET" callExtension format["PC town|load,%1", _townName];
+	_dbResult = "Arma2NET" callExtension format["PC town|load|%1", _townName];
 	if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] == "OK") then
 	{
 		_dbResult = call compile _dbResult;
@@ -74,7 +74,7 @@ if (isServer) then
 		}
 		else
 		{
-			if (_townCivCount / 10 < _townRedCount) then 
+			if (_townCivCount / 10 > _townRedCount) then 
 			{
 				_townMarker setMarkerColor "ColorGreen";
 			}
