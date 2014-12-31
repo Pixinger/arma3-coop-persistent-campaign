@@ -151,3 +151,6 @@ pixTown_ConfigWarlordClassnames = [
 if (pixTown_ConfigCivGrowFactorWater > 1.0) then { pixTown_ConfigCivGrowFactorWater = 1.0; };
 if (pixTown_ConfigCivGrowFactorWater + pixTown_ConfigCivGrowFactorFood > 1.0) then { pixTown_ConfigCivGrowFactorFood = 1.0 - pixTown_ConfigCivGrowFactorWater; };
 pixTown_ConfigCivGrowFactorMinimum = 1.0 - (pixTown_ConfigCivGrowFactorWater + pixTown_ConfigCivGrowFactorFood);
+
+pixTown_TotalRooms = 0;
+pixTown_TotalPopulation = 0;

@@ -10,6 +10,6 @@ Return:
 /*-------------------------------------------------------------------*/
 
 private["_currentPlayerCount"];
-_currentPlayerCount = 10;
+_currentPlayerCount = 10;//TODO: Optimieren
 if (isDedicated) then { _currentPlayerCount = count playableUnits;};
 _currentPlayerCount;

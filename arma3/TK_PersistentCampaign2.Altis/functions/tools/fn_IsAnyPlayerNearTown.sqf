@@ -1,5 +1,6 @@
 /* 
 Prüft ob sich irgendein Spieler in der Nähe der angegebenen Koordinate befindet.
+Diese Funktion ist speziell auf die Aktvierung der Städte zugeschnitten.
 
 Parameter:
 	_position: Die zu überprüfende Position
@@ -21,10 +22,12 @@ private["_players"];
 _players = playableUnits;
 if (count _players == 0) then { _players = [player]; };
 
+
 private["_maxDistance"];
 _maxDistance = (_distance)^2; //optimierter Ausdruck für: _maxDistance = [_position, [_position select 0, (_position select 1) + _distance]] call BIS_fnc_distance2Dsqr;
+
 {
-	if (_maxDistance >= [_position, _x] call BIS_fnc_distance2Dsqr) exitWith { _result = true; };
+	if ( (([_position, _x] call BIS_fnc_distance2Dsqr) < _maxDistance) && { (speed _x < 55) } ) exitWith { _result = true; };
 } foreach _players;
 
 _result;

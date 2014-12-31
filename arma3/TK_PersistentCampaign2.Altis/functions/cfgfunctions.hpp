@@ -7,6 +7,7 @@ class PC
 		file = "functions\Tools";
 		class Arrest {description = "";};
 		class IsAnyPlayerNear {description = "";};
+		class IsAnyPlayerNearTown {description = "";};
 		class GetPlayerCount {description = "";};
 		class GetNearestPlayers {description = "";};
 		class GetMaxBuildingPositions {description = "";};
@@ -15,6 +16,7 @@ class PC
 		class NearestResidentialLocation {description = "";};
 		class testinit {description = "";preInit = 1;postInit = 1;};
 		class SetAsLeader {description = "";};
+		class testA {description = "";};
 	};
 	class Town
 	{

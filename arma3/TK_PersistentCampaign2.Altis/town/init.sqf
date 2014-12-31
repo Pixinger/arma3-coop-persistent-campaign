@@ -14,6 +14,12 @@ if (isServer) then
 
 	townInitialized = true;
 	publicVariable "townInitialized";
+	
+	[] spawn {
+		Sleep 10;
+		diag_log format["Total town statistic: rooms=%1 population=%2", pixTown_TotalRooms, pixTown_TotalPopulation];
+		player sidechat format["Total town statistic: rooms=%1 population=%2", pixTown_TotalRooms, pixTown_TotalPopulation];
+	};
 };
 
 if (!isServer || !isDedicated) then

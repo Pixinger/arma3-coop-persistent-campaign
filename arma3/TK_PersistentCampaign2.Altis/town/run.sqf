@@ -108,6 +108,8 @@ if (isServer) then
 	_result = [_homes, _townRedCount, _townCivCount] call PC_fnc_TownHome_SettleAllResidents;
 	private["_townMaxPopulation"];
 	_townMaxPopulation = _result select 2; // Die maximal mögliche Bevölkerung (abhängig von den Wohneinheiten).
+	pixTown_TotalRooms = pixTown_TotalRooms + _townMaxPopulation;
+	pixTown_TotalPopulation = pixTown_TotalPopulation + _townCivCount + _townRedCount;
 //player globalchat format["_result: %1(Red, Civ, Max)", _result];
 //[_homes] call PC_fnc_TownHome_DebugHomes;
 //[_homes] call PC_fnc_TownHome_DebugHomesInactive;
@@ -372,7 +374,7 @@ diag_log format["Town %1 updated database", _townName];
 		if (_townOnlineOfflineCounter < 0) then
 		{
 			_townOnlineOfflineCounter = 6;		//TODO: Radiuus abhängig von der Anzahl der Feineinheiten machen
-			if ([_townCenter, 1000 + _townRedCount] call PC_fnc_IsAnyPlayerNear) then
+			if ([_townCenter, 1000 + _townRedCount] call PC_fnc_IsAnyPlayerNearTown) then
 			{
 			
 				// _civSOLL und _redSOLL berechnen
@@ -394,7 +396,7 @@ diag_log format["Town %1 updated database", _townName];
 				_civSOLL = ceil((_tmpTotalSOLL / (_tmpCivCount + _tmpRedCount)) * _tmpCivCount);
 				_redSOLL = _tmpTotalSOLL - _civSOLL;
 //diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
-//player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
+player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 
 //_civSOLL = 1;
 //_redSOLL = 0;
