@@ -22,7 +22,7 @@
 		call compile preprocessFileLineNumbers "dialog\scripts\weaponConfiscateButton.sqf", //left5
 		["", false, false, ""], //footer1
 		call compile preprocessFileLineNumbers "dialog\scripts\adminGpsButton.sqf", //footer2
-		["", false, false, ""], //footer3
+		call compile preprocessFileLineNumbers "dialog\scripts\hqTeleportButton.sqf", //footer3
 		call compile preprocessFileLineNumbers "dialog\scripts\adminTeleportButton.sqf", //footer4
 		["", false, false, ""], //footer5
 		call compile preprocessFileLineNumbers "dialog\scripts\adminTownsSaveButton.sqf", //header1
