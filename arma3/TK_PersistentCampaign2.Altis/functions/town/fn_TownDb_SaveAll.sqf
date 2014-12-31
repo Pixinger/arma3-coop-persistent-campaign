@@ -14,8 +14,8 @@ if (isServer) then
 {
 
 	private["_dbResult"];	
-	_dbResult = "Arma2NET" callExtension format["PC town,save,%1", _townName];
-	if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] != "OK") then
+	_dbResult = "Arma2NET" callExtension "PC town|save";
+	if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then
 	{
 		diag_log format["ERROR: Town.Save failed: %1", _dbResult];
 	}
@@ -35,7 +35,7 @@ if (isServer) then
 		//    Group - function will be executed only on clients where the player is in the specified group 
 		// IsPersistent
 		// IsCall 
-		[[], "hint 'Town-Datenbank gespeichert'", true] call BIS_fnc_MP;
+		["Town-Datenbank gespeichert", "hint", true] call BIS_fnc_MP;
 	};
 };
 

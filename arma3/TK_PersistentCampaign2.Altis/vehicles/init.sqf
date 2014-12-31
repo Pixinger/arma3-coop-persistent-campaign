@@ -11,8 +11,8 @@ if (isServer) then
 	_index = 0;
 	
 	private["_dbResult"];	
-	_dbResult = "Arma2NET" callExtension format["PC vehicle,read,%1", _index];
-	while { ("Arma2NET" callExtension format["PC isok,%1", _dbResult] == "OK") } do
+	_dbResult = "Arma2NET" callExtension format["PC vehicle|read|%1", _index];
+	while { ("Arma2NET" callExtension format["PC isok|%1", _dbResult] == "OK") } do
 	{	
 		// String in Array umwandeln 
 		_dbResult = call compile _dbResult;
@@ -66,19 +66,21 @@ if (isServer) then
 			/* In die Überwachungsliste aufnehmen */
 			/*------------------------------------*/
 			vehiclesDbItems pushBack _item;	
+			diag_log format["Vehicle loaded from DB: %1", _classname];
 		};
 			
 		// Nächstes Datenset laden 
-		_dbResult = "Arma2NET" callExtension format["PC vehicle,read,%1", _index];
+		_index = _index + 1;
+		_dbResult = "Arma2NET" callExtension format["PC vehicle|read|%1", _index];
 	};	
 	
 	vehiclesInitialized = true;
 	publicVariable "vehiclesInitialized";
-}
-else
+};
+
+if (!isServer || !isDedicated) then
 {
 	player sidechat "Warte auf Fahrzeuge";
 	waitUntil { !(isNil "vehiclesInitialized") };
 	waitUntil { vehiclesInitialized };
-	player sidechat "Fahrzeuge fertig";
 };

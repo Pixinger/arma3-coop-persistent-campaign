@@ -25,11 +25,11 @@
 		["9", true, false, ""], //footer3
 		["0", true, false, ""], //footer4
 		["1", true, false, ""], //footer5
-		call compile preprocessFileLineNumbers "dialog\scripts\adminSaveTownsButton.sqf", //header1
+		call compile preprocessFileLineNumbers "dialog\scripts\adminTownsSaveButton.sqf", //header1
 		call compile preprocessFileLineNumbers "dialog\scripts\adminVehiclesSaveButton.sqf", //header2
 		call compile preprocessFileLineNumbers "dialog\scripts\adminVehiclesAddButton.sqf", //header3
 		call compile preprocessFileLineNumbers "dialog\scripts\adminVehiclesRemoveButton.sqf", //header4
-		["6", true, false, ""]]; //header5
+		call compile preprocessFileLineNumbers "dialog\scripts\adminGpsButton.sqf"]; //header5
 
 	_buttons execVM "dialog\showbase.sqf";
 //};

@@ -4,6 +4,7 @@ call compile preprocessFileLineNumbers "dialog\config.sqf";
 [] spawn {
 	if (!isServer || !isDedicated) then
 	{
+		Sleep 2;
 		// 20=T, 22=U, 86=<, 24=O, 21=Z, 220=rwin, 221=rapp, 37=K, 15=TAB, 57=SPACE 
 		waituntil {!(IsNull (findDisplay 46))};
 		private["_tmp"];

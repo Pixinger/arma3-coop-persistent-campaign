@@ -271,7 +271,7 @@ class MAINDIALOG
 		y = 0.247 * safezoneH + safezoneY;
 		w = 0.0802083 * safezoneW;
 		h = 0.033 * safezoneH;
-		action = "maindialog_action = 221; closedialog 0;";
+		action = "maindialog_action = 22; closedialog 0;";
 	};
 	class ButtonHeader3: RscButton
 	{
@@ -286,6 +286,7 @@ class MAINDIALOG
 	class ButtonHeader4: RscButton
 	{
 		idc = IDC_MAINDIALOG_BUTTONHEADER4;
+		size = 3;
 		text = "Header4"; //--- ToDo: Localize;
 		x = 0.545833 * safezoneW + safezoneX;
 		y = 0.247 * safezoneH + safezoneY;

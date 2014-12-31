@@ -24,23 +24,22 @@ cutText ["Initialization...\n[TK]Persistenct Campaign 2", "BLACK FADED",1];
 if (isServer) then
 {
 	// Datenbank initialisieren
-	pixDbInitStatus = 0;
 	private["_result"];
 	_result = "Arma2NET" callExtension "PC reloadall";
 	if (_result != "OK") then
 	{
 		diag_log format["ERROR: PC reloadall failed: %1", _result];
-		pixDbInitStatus = 100;
 	}
 	else
 	{
-		pixDbInitStatus = 1;
+		diag_log "PC reloadall OK";
 	};
 };
 
 call compile preprocessFileLineNumbers "vehicles\init.sqf";
 call compile preprocessFileLineNumbers "town\init.sqf";
 call compile preprocessFileLineNumbers "dialog\init.sqf";
+call compile preprocessFileLineNumbers "gps\init.sqf";
 
 
 /* Warten bis das Briefing beendet wurde */

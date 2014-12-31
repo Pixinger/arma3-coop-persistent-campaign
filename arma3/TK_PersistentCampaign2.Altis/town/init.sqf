@@ -11,11 +11,15 @@ if (isServer) then
 	//{
 		[_x] execVM "town\run.sqf";
 	//} foreach _towns;
-}
-else
+
+	townInitialized = true;
+	publicVariable "townInitialized";
+};
+
+if (!isServer || !isDedicated) then
 {
 	player sidechat "Warte auf Städte";
 	waitUntil { !(isNil "townInitialized") };
 	waitUntil { townInitialized };
 	player sidechat "Städte fertig";
-};};
+};

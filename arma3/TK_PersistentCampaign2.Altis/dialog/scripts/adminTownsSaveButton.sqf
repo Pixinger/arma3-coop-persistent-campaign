@@ -1,5 +1,5 @@
 private["_button"]; 
-_button = ["Fahrzeuge speichern", false, false,"dialog\scripts\adminVehiclesSaveAction.sqf"];
+_button = ["Städte speichern", false, false,"dialog\scripts\adminTownsSaveAction.sqf"];
 
 if ((getPlayerUID player) in adminPlayerUIDs) then 
 { 

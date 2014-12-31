@@ -9,4 +9,4 @@
 //    Group - function will be executed only on clients where the player is in the specified group 
 // IsPersistent
 // IsCall 
-[[cursorTarget], "PC_fnc_VehicleDb_SaveAll", false] call BIS_fnc_MP;
+[[], "PC_fnc_VehicleDb_SaveAll", false] call BIS_fnc_MP;

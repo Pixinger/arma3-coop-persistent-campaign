@@ -13,8 +13,8 @@ _result = false;
 if (isServer) then
 {
 	private["_dbResult"];	
-	_dbResult = "Arma2NET" callExtension "PC vehicle,beginwrite";
-	if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] == "OK") then
+	_dbResult = "Arma2NET" callExtension "PC vehicle|beginwrite";
+	if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] == "OK") then
 	{
 		{
 			private["_content"];
@@ -22,15 +22,19 @@ if (isServer) then
 			if (isNil "_content") then { _content = []; };
 			if (str(_content) == "") then { _content = []; };
 			
-			_dbResult = "Arma2NET" callExtension format["PC vehicle,write,%1,%2,%3,%4,%5", typeof _x, getPos _x, getDir _x, getDammage _x, _content];
-			if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] != "OK") then
+			_dbResult = "Arma2NET" callExtension format["PC vehicle|write|%1|%2|%3|%4|%5", typeof _x, getPos _x, getDir _x, getDammage _x, _content];
+			if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then
 			{
-				diag_log format["ERROR: Unable to write vehicle: %1: %2", _vehicle, _dbResult];
+				diag_log format["ERROR: Unable to write vehicle: %1: %2", _x, _dbResult];
+			}
+			else
+			{
+				diag_log format["Vehicle save to db: %1", _x];
 			};
 		} foreach vehiclesDbItems;
 		
-		_dbResult = "Arma2NET" callExtension "PC vehicle,endwrite";
-		if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] == "OK") then
+		_dbResult = "Arma2NET" callExtension "PC vehicle|endwrite";
+		if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] == "OK") then
 		{
 			// Param
 			// Code/Function
@@ -43,7 +47,7 @@ if (isServer) then
 			//    Group - function will be executed only on clients where the player is in the specified group 
 			// IsPersistent
 			// IsCall 
-			[[], "hint 'Vehicle-Datenbank gespeichert'", true] call BIS_fnc_MP;
+			["Vehicle-Datenbank gespeichert", "hint", true] call BIS_fnc_MP;
 			diag_log "Vehicle.SaveAll successfull";
 			_result = true;
 		};

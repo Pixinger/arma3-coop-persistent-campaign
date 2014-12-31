@@ -55,8 +55,8 @@ if (isServer) then
 	private["_townWarlordCount"];
 	private["_townInjuredCount"];
 	private["_dbResult"];	
-	_dbResult = "Arma2NET" callExtension format["PC town,load,%1", _townName];
-	if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] == "OK") then
+	_dbResult = "Arma2NET" callExtension format["PC town|load,%1", _townName];
+	if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] == "OK") then
 	{
 		_dbResult = call compile _dbResult;
 		_townStockWater = _dbResult select 1;		// Der Lagerbestand an Wasser
@@ -83,6 +83,8 @@ if (isServer) then
 				_townMarker setMarkerColor "ColorBlack";
 			};
 		};
+		
+		diag_log format["Town loaded from DB: %1", _dbResult];
 	}
 	else
 	{
@@ -349,8 +351,8 @@ if (isServer) then
 				{
 					_townSimulationSaveCounter = 20;
 					private["_dbResult"];	
-					_dbResult = "Arma2NET" callExtension format["PC town,update,%1,%2,%3,%4,%5,%6,%7,%8,%9", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townWarlordCount, _townInjuredCount];
-					if ("Arma2NET" callExtension format["PC isok,%1", _dbResult] != "OK") then
+					_dbResult = "Arma2NET" callExtension format["PC town|update|%1|%2|%3|%4|%5|%6|%7|%8|%9", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townWarlordCount, _townInjuredCount];
+					if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then
 					{
 						diag_log format["ERROR: Town.Update failed: %1", _dbResult];
 					}

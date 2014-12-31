@@ -16,7 +16,7 @@ if (isServer) then
 	private["_vehicle"];
 	_vehicle = _this select 0;
 
-	if (_vehicle isKindOf "Land") then
+	if ((_vehicle isKindOf "LandVehicle") || (_vehicle isKindOf "Air") || (_vehicle isKindOf "Ship")) then
 	{
 		vehiclesDbItems pushBack _vehicle;
 
@@ -31,7 +31,7 @@ if (isServer) then
 		//    Group - function will be executed only on clients where the player is in the specified group 
 		// IsPersistent
 		// IsCall 
-		[[], format["hint 'Fahrzeug %1 hinzugefügt'", typeof _vehicle], true] call BIS_fnc_MP;
+		[format["Fahrzeug %1 hinzugefügt", typeof _vehicle], "hint", true] call BIS_fnc_MP;
 	};
 
 };

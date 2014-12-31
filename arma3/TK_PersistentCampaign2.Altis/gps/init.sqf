@@ -8,13 +8,13 @@ if (!isServer || !isDedicated) then
 	while {true} do
 	{	
 		private["_units"];
-		_units = entities "CAManBase";
+		_units = playableUnits;
 		
 		if (count _units != _lastMarkerCount) then
 		{
 			/* Alte Marker löschen */
 			for "_i" from 0 to (_lastMarkerCount - 1) do
-			{-
+			{
 				deleteMarkerLocal format["GpsMarker%1", _i];
 			};
 			
@@ -26,10 +26,10 @@ if (!isServer || !isDedicated) then
 				private["_markerName"];
 				_markerName = createMarkerLocal [format["GpsMarker%1", _i], [0,0,0]];
 				_markerName setMarkerAlphaLocal 0;
-				_markerName setMarkerColorLocal "ColorBlack";
+				_markerName setMarkerColorLocal "ColorBlue";
 				_markerName setMarkerShapeLocal "ICON";
 				_markerName setMarkerTypeLocal "o_inf";
-				_markerName setMarkerSizeLocal [0.3, 0.3];
+				_markerName setMarkerSizeLocal [0.5, 0.5];
 			};
 		};
 		
@@ -43,27 +43,9 @@ if (!isServer || !isDedicated) then
 			private["_unit"];
 			_unit = _units select _i;
 			_markerName setMarkerPosLocal (getPos _unit);
-			if (_unit isKindOf "SoldierGB") then 
-			{ 
-				_markerName setMarkerColorLocal "ColorRed";//ColorOrange
-			};
-			if (_unit isKindOf "SoldierWB") then 
-			{ 
-				_markerName setMarkerColorLocal "ColorBlue";
-			};
-			if (_unit isKindOf "Civilian_F") then 
-			{ 
-				_markerName setMarkerColorLocal "ColorGreen";
-			};
-			
-			if (alive _unit) then 
-			{
-				_markerName setMarkerAlphaLocal 0.8; 
-			}
-			else 
-			{ 
-				_markerName setMarkerAlphaLocal 0.4; 
-			};			
+			_markerName setMarkerColorLocal "ColorBlue";
+			_markerName setMarkerAlphaLocal 0.7;
+			_markerName setMarkerTextLocal (name _unit);
 		};
 		
 		Sleep 2;

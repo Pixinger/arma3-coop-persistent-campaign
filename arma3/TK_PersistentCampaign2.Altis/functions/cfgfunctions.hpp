@@ -66,9 +66,9 @@ class PC
 		class TownParam_SetWeapons {description = "";};
 		class TownParam_GetWeapons {description = "";};
 	};
-	class Vehicles
+	class Vehicle
 	{
-		file = "functions\Vehicles";
+		file = "functions\Vehicle";
 		class CreateCorrectedVehicle {description = "";};
 		class VehicleDb_SaveAll {description = "";};
 		class VehicleDb_Add {description = "";};

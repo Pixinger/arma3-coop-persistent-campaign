@@ -1,1 +1,1 @@
-adminPlayerUIDs = ["123", "456"];
+adminPlayerUIDs = ["_SP_PLAYER_","76561197990435624"];
