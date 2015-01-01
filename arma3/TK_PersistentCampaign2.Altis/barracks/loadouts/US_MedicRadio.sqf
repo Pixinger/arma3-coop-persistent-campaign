@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -68,16 +68,7 @@ _result = [
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
+			"30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
 		["FirstAidKit","FirstAidKit"]
@@ -94,9 +85,6 @@ _result = [
 		],
 		/* Backpack-Items */
 		[
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
 			"FirstAidKit",
 			"FirstAidKit",
 			"FirstAidKit",

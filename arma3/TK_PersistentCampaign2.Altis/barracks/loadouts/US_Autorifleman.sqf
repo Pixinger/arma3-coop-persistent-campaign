@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -65,11 +65,8 @@ _result = [
 		[], 
 		/* Vest-Magazines */
 		[
-			"100Rnd_65x39_caseless_mag",
-			"100Rnd_65x39_caseless_mag",
-			"100Rnd_65x39_caseless_mag",
-			"100Rnd_65x39_caseless_mag",
-			"100Rnd_65x39_caseless_mag",
+			"100Rnd_65x39_caseless_mag_Tracer",
+			"100Rnd_65x39_caseless_mag_Tracer",
 			"100Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
@@ -83,16 +80,9 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"100Rnd_65x39_caseless_mag",
-			"100Rnd_65x39_caseless_mag_Tracer",
-			"100Rnd_65x39_caseless_mag_Tracer",
-			"100Rnd_65x39_caseless_mag_Tracer",
-			"100Rnd_65x39_caseless_mag_Tracer",
-			"100Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"optic_DMS"
 		]
 	]
 ];

@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -85,15 +85,6 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"7Rnd_408_Mag",
-			"11Rnd_45ACP_Mag",
-			"11Rnd_45ACP_Mag"
 		],
 		/* Backpack-Items */
 		[

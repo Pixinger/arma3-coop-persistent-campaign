@@ -68,10 +68,6 @@ _result = [
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
@@ -85,15 +81,6 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"SmokeShell",
-			"SmokeShell",
-			"SmokeShell",
-			"SmokeShell",
-			"SmokeShellPurple",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"11Rnd_45ACP_Mag",
-			"11Rnd_45ACP_Mag"
 		],
 		/* Backpack-Items */
 		[

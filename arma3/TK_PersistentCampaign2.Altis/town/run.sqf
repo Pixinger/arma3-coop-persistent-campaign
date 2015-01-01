@@ -602,17 +602,26 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 				private["_forcedRed"];
 				_forcedRed = 0;
 
-				// Feindlich Einheiten in der Nähe benachrichtigen
-				private["_hostiles"];
-				player sidechat format["g: %1", _house];
-				_hostiles = (_house select 0) nearEntities ["SoldierWB", 100];
-				for "_r" from 0 to (count _redActives -1) do
-				{
-					for "_h" from 0 to (count _hostiles -1) do
-					{
-						((_redActives select _r) select 0) reveal [_hostiles select _h, 1.5];
-						player sidechat format["verraten: %1 an %2", ((_redActives select _r) select 0), _hostiles select _h];
-					};
+				// RedForce Kräfte in der Nähe der Durchsuchung alarmieren.
+				private["_bluFor"];
+				_bluFor = (_house select 0) nearEntities ["SoldierWB", 50];
+				if (count _bluFor > 0) then
+				{				
+					private["_redFor"];
+					_redFor = (_house select 0) nearEntities ["SoldierGB", 20 + (random 130)];
+					{ 
+						if (random 1 < 0.5) then 
+						{ 
+							private["_target"];
+							_target = _bluFor select (floor (random (count _bluFor)));							
+							_x setBehaviour "COMBAT";
+							_x setSpeedmode "FULL";
+							_x reveal [_target, 1];
+							_x doTarget _target;
+							_x doMove (getPos _target);
+//player sidechat "RED Unterstützung unterwegs";
+						}; 
+					} foreach _redFor;
 				};
 
 				private["_rooms"];
@@ -643,7 +652,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 							}
 							else
 							{
-								{ _unit reveal [_x, 1.5]; } foreach _hostiles;								 
+								{ _unit reveal [_x, 1.5]; } foreach _bluFor;								 
 								
 								private["_random"];
 								_random = (random 1);

@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -66,7 +66,6 @@ _result = [
 		/* Vest-Magazines */
 		[
 			"200Rnd_65x39_cased_Box",
-			"200Rnd_65x39_cased_Box",
 			"200Rnd_65x39_cased_Box"
 		],
 		/* Vest-Items */
@@ -80,13 +79,9 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"200Rnd_65x39_cased_Box",
-			"200Rnd_65x39_cased_Box_Tracer",
-			"200Rnd_65x39_cased_Box_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"optic_DMS"
 		]
 	]
 ];

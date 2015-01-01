@@ -68,21 +68,11 @@ _result = [
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
+			"30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
 		[
-		"optic_Nightstalker"
+			"optic_Nightstalker"
 		]
 	],
 	
@@ -98,13 +88,6 @@ _result = [
 			"3Rnd_HE_Grenade_shell",
 			"3Rnd_HE_Grenade_shell",
 			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell"
 		],

@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -68,12 +68,6 @@ _result = [
 			"20Rnd_762x51_Mag",
 			"20Rnd_762x51_Mag",
 			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
 			"20Rnd_762x51_Mag"
 		],
 		/* Vest-Items */
@@ -88,7 +82,6 @@ _result = [
 		/* Backpack-Magazines */
 		[	
 			"SatchelCharge_Remote_Mag",
-			"DemoCharge_Remote_Mag",
 			"DemoCharge_Remote_Mag"
 		],
 		/* Backpack-Items */

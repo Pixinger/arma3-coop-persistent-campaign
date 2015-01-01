@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -68,18 +68,7 @@ _result = [
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer",
-			"30Rnd_65x39_caseless_mag_Tracer"
+			"30Rnd_65x39_caseless_mag"			
 		],
 		/* Vest-Items */
 		[
@@ -93,19 +82,6 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"NLAW_F"
 		],
