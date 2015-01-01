@@ -42,6 +42,7 @@ _loadouts = [
 	["Titan AT","US_Titan.sqf"],
 	["Titan AA","US_TitanAA.sqf"],
 	["UAV","US_UAV.sqf"],
+	["UAV(Raven)","US_Raven.sqf"],
 	["Taucher", "Diver.sqf"],
 	["Helipilot", "HeliPilot.sqf"],
 	["Pilot", "Pilot.sqf"],
