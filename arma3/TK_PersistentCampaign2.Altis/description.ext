@@ -7,7 +7,7 @@ onLoadIntroTime = false;   /* Mit diesem Eintrag könnt ihr durch die Variablen 
 loadScreen = ""; /*Mit LoadScreen wird ein Bild während des Ladens der init.sqf eingeblendet. Die Bilddatei muss im Missionsordner (bzw. einem Unterordner) vorhanden sein. "pfad\zum\bild.paa"*/
 briefing = 0; /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
 debriefing = 0;   /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
-disabledAI = true;
+disabledAI = false;
 showCompass = 1;
 showGPS = 1;
 showMap = 1;
@@ -16,7 +16,7 @@ showRadio = 1;
 showWatch = 1;
 enableDebugConsole = 1;
 respawnDelay = 5;
-respawnDialog = 1; 			/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
+respawnDialog = 0; 			/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
 enableItemsDropping = 0; 	/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre Ausrüstung verliert oder nicht. Mögliche Werte sind 0 (= Einheit verliert keine Ausrüstung) und 1 (= Einheit verliert ihre Ausrüstung).*/
 joinUnassigned = 0; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
 allowFunctionsRecompile = 1;
@@ -29,7 +29,7 @@ allowFunctionsLog=1;
 4 / "GROUP" - Respawn in eine (noch lebende) KI Einheit der eigenen Gruppe
 5 / "SIDE" - Respawn in eine (noch lebende) KI Einheit der eigenen Seite
 */
-respawn = BASE;
+respawn = INSTANT;
 
 /*
 0 = Global
@@ -76,6 +76,6 @@ class Header
 
 
 #include "dialogDefines.hpp"
-#include "dialog\classes.hpp"
+#include "maindialog_classes.hpp"
 #include "barracks\classes.hpp"
 #include "hqTeleport\classes.hpp"

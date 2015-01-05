@@ -1,6 +1,5 @@
 // Executed when player is killed in singleplayer or in multiplayer mission. 
 // [<oldUnit>, <killer>, <respawn>, <respawnDelay>]
-
 if (isServer) then
 {
 	private["_townObjects"];
@@ -15,4 +14,6 @@ if (isServer) then
 			[_townName, -0.02] call PC_fnc_Townparam_MoodAdd;
 		};
 	} foreach _townObjects;
+	
+	
 };

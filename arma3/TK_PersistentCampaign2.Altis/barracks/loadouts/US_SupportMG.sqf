@@ -7,7 +7,7 @@ _result = [
 	"H_HelmetB",
 	
 	/* Binoculars */
-	"",
+	"Rangefinder",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -31,9 +31,9 @@ _result = [
 	
 	/* Secondary Weapon */
 	[
-		"launch_B_Titan_short_F",
+		"",
 		/* Secondary weapon Magazine */
-		"Titan_AT",
+		"",
 		/* Secondary Weapon Items */
 		[]
 	],
@@ -68,20 +68,23 @@ _result = [
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
+			"30Rnd_65x39_caseless_mag"			
 		],
 		/* Vest-Items */
-		[]
+		[
+		]
 	],
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_sgg", 
+		"B_Bergen_sgg", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"Titan_AT"
+			"200Rnd_65x39_cased_Box",
+			"200Rnd_65x39_cased_Box",
+			"200Rnd_65x39_cased_Box"
 		],
 		/* Backpack-Items */
 		[

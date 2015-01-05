@@ -7,7 +7,7 @@ _result = [
 	"H_HelmetB",
 
 	/* Binoculars */
-	"Laserdesignator",
+	"Rangefinder",
 
 	/* Nightvision */
 	"NVGoggles",
@@ -26,7 +26,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["optic_DMS","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
 	],
 
 	/* Secondary Weapon */
@@ -40,11 +40,11 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[""]
 	],
 
 	/* Uniform */
@@ -73,9 +73,7 @@ _result = [
 			"HandGrenade"
 		],
 		/* Vest-Items */
-		[
-		"optic_Arco"
-		]
+		[]
 	],
 
 	/* Backpack */

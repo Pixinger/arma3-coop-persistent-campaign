@@ -585,10 +585,11 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 		private["_searchBuildings"];
 		_searchBuildings = [_townName] call PC_fnc_TownParam_SearchBuildingPull;
 		{
-//diag_log format["Durchsuchen von Gebäude %1 wurde angefragt. %2", _x, getPos _x];
+diag_log format["Durchsuchen von Gebäude %1 wurde angefragt. %2", _x, getPos _x];
 				
 			private["_house"];
 			_house = [_homes, _x] call PC_fnc_TownHome_GetHouse;
+diag_log format["_house: %1", _house];
 			if (count _house > 0) then
 			{
 				//-----------------------------------------------------------------------------------------------------------------------
@@ -605,10 +606,12 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 				// RedForce Kräfte in der Nähe der Durchsuchung alarmieren.
 				private["_bluFor"];
 				_bluFor = (_house select 0) nearEntities ["SoldierWB", 50];
+diag_log format["_bluFor: %1", _bluFor];
 				if (count _bluFor > 0) then
 				{				
 					private["_redFor"];
 					_redFor = (_house select 0) nearEntities ["SoldierGB", 20 + (random 130)];
+diag_log format["_redFor: %1", _redFor];
 					{ 
 						if (random 1 < 0.5) then 
 						{ 
@@ -626,6 +629,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 
 				private["_rooms"];
 				_rooms = _house select 1;
+diag_log format["_rooms: %1", _rooms];
 				{
 					// Wenn die hier wohnende Einheit inaktiv ist, wird Sie nun erstellt.
 					if (count _x == 2) then
@@ -637,6 +641,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 						
 						if ((_classname in pixTown_ConfigRedClassnames) || (_classname in pixTown_ConfigWarlordClassnames)) then
 						{
+diag_log "create RED";
 							private ["_unitGroup"];
 							_unitGroup = createGroup east;//independent;
 							
@@ -667,10 +672,11 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 							_redActives pushBack [_unit, _unitGroup, _x];
 							_forcedRed = _forcedRed + 1;
 							_redActivesCount = count _redActives;		
-//diag_log format["%2: created searched red: %1", _unit, _townName];						
+diag_log format["%2: created searched red: %1", _unit, _townName];						
 						}
 						else
 						{
+diag_log "create CIV";
 							private ["_unitGroup"];
 							_unitGroup = createGroup civilian;							
 							private["_unit"];
@@ -686,12 +692,13 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 							_unit setVariable ["townRadius", _townRadius];
 							_unit setVariable ["townHome", _unitPosition];
 							_unit setVariable ["fsmtick", (time + 60)];
+							_unit setVariable ["AA", 0];
 							_unit doFSM ["town\fsm\civSearched.fsm", _unitPosition, _unit];							
 							_x pushBack _unit;
 							_civActives pushBack [_unit, _unitGroup, _x];	
 							_forcedCiv = _forcedCiv + 1;
 							_civActivesCount = count _civActives;		
-//diag_log format["_civActives search: %1", _civActives];
+-diag_log format["_civActives search: %1", _civActives];
 						};
 					};
 				} foreach _rooms;

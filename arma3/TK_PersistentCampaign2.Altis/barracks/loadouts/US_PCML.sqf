@@ -6,8 +6,8 @@ _result = [
 	/* Headgear */
 	"H_HelmetB",
 	
-	/* Binoculars */
-	"Laserdesignator",
+	/* Binoculars (Binocular,Rangefinder,Laserdesignator)*/
+	"",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -40,11 +40,11 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[""]
 	],
 	
 	/* Uniform */
@@ -53,9 +53,9 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		["SmokeShell","SmokeShell","HandGrenade"],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
+		["ItemRadio","FirstAidKit"]
 	],
 	
 	/* Vest */
@@ -67,7 +67,6 @@ _result = [
 		[
 			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
 			"30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
@@ -76,12 +75,11 @@ _result = [
 	
 	/* Backpack */
 	[
-		"B_Bergen_sgg", 
+		"B_AssaultPack_sgg", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"NLAW_F",
 			"NLAW_F"
 		],
 		/* Backpack-Items */
