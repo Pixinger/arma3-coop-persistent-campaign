@@ -5,7 +5,7 @@ item0[] = {"Start",0,250,-25.908817,-8.121918,64.091179,41.878082,0.000000,"Star
 item1[] = {"isServer",4,218,-25.908783,-87.201599,64.091194,-37.201599,0.000000,"isServer"};
 item2[] = {"__isServer",4,218,-137.976273,-87.292542,-47.976353,-37.292450,0.000000,"!isServer"};
 item3[] = {"Ende1",1,250,-264.504028,-87.292603,-174.504288,-37.292664,0.000000,"Ende1"};
-item4[] = {"nachdenken",2,250,-26.502886,-827.857239,63.497139,-777.856567,0.000000,"nachdenken"};
+item4[] = {"nachdenken",2,4346,-26.502886,-827.857239,63.497139,-777.856567,0.000000,"nachdenken"};
 item5[] = {"___2",4,218,-450.307587,-827.618530,-360.307678,-777.618530,100.000000,"0.2"};
 item6[] = {"warten",2,250,-25.948723,-164.793091,64.051247,-114.793121,0.000000,"warten"};
 item7[] = {"Zeit",4,218,-25.990097,-238.982422,64.009933,-188.982452,0.000000,"Zeit"};
@@ -64,7 +64,7 @@ item59[] = {"completed",2,250,257.363068,-1310.977173,347.363098,-1260.977173,0.
 item60[] = {"_",8,218,559.116638,-1310.785278,649.116638,-1260.785278,0.000000,""};
 item61[] = {"",7,210,599.305908,-143.977005,607.305908,-135.977020,0.000000,""};
 item62[] = {"",7,210,518.494751,-143.991837,526.494751,-135.991852,0.000000,""};
-item63[] = {"failed_1",2,4346,-81.338028,-1945.186768,8.662016,-1895.186768,0.000000,"failed"};
+item63[] = {"failed_1",2,250,-81.338028,-1945.186768,8.662016,-1895.186768,0.000000,"failed"};
 item64[] = {"completed_1",2,250,21.139885,-1945.186890,111.139938,-1895.186890,0.000000,"completed"};
 item65[] = {"_",8,218,-82.313538,-2017.881592,7.686443,-1967.881592,0.000000,""};
 item66[] = {"_",8,218,20.555908,-2019.980957,110.556061,-1969.980957,0.000000,""};
@@ -152,8 +152,8 @@ link78[] = {65,17};
 link79[] = {66,17};
 link80[] = {67,14};
 link81[] = {68,14};
-globals[] = {0.000000,0,0,0,0,640,480,1,128,6316128,1,-1216.055786,1493.011475,-167.536011,-2235.543457,1403,1071,1};
-window[] = {2,-1,-1,-1,-1,930,50,1490,50,3,1421};
+globals[] = {0.000000,0,0,0,0,640,480,1,128,6316128,1,-1246.065552,1026.458130,200.691864,-1534.070923,1403,1071,1};
+window[] = {2,-1,-1,-1,-1,980,100,1540,100,3,1421};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -466,7 +466,7 @@ class FSM
     class verletzt_
     {
       name = "verletzt_";
-      init = /*%FSM<STATEINIT""">*/"_decision = getDammage _leader;" \n
+      init = /*%FSM<STATEINIT""">*/"_decision = _leader getVariable [""TI"", 0];" \n
        "//diag_log format[""FSMRED: %2 verletzt %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -575,7 +575,7 @@ class FSM
     class verletzt__1
     {
       name = "verletzt__1";
-      init = /*%FSM<STATEINIT""">*/"_decision = getDammage _leader;" \n
+      init = /*%FSM<STATEINIT""">*/"_decision = _leader getVariable [""TI"", 0];" \n
        "//diag_log format[""FSMRED: %2 Noch verletzt? %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -607,7 +607,7 @@ class FSM
     class aktiv_
     {
       name = "aktiv_";
-      init = /*%FSM<STATEINIT""">*/"_active = _medic getVariable [""active"", false];" \n
+      init = /*%FSM<STATEINIT""">*/"_active = _medic getVariable [""TA"", false];" \n
        "//diag_log format[""FSMRED: %2 medic active: %1"", _active, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

@@ -743,7 +743,8 @@ class RscButton
 	h = 0.039216;
 	shadow = 2;
 	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
+	//sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.85)";
+    sizeEx = "0.6 / 40 / (getResolution select 5)";	
 	offsetX = 0;
 	offsetY = 0;
 	offsetPressedX = 0;

@@ -1,59 +1,63 @@
 #include "maindialog_defines.hpp";
 
 private["_idcs"];
-_idcs = [IDC_MAINDIALOG_BUTTONCENTER1,
-	IDC_MAINDIALOG_BUTTONCENTER2,
-	IDC_MAINDIALOG_BUTTONCENTER3,
-	IDC_MAINDIALOG_BUTTONCENTER4,
-	IDC_MAINDIALOG_BUTTONCENTER5,
-	IDC_MAINDIALOG_BUTTONCENTER6,
-	IDC_MAINDIALOG_BUTTONRIGHT1,
-	IDC_MAINDIALOG_BUTTONRIGHT2,
-	IDC_MAINDIALOG_BUTTONRIGHT3,
-	IDC_MAINDIALOG_BUTTONRIGHT4,
-	IDC_MAINDIALOG_BUTTONRIGHT5,
-	IDC_MAINDIALOG_BUTTONLEFT1,
-	IDC_MAINDIALOG_BUTTONLEFT2,
-	IDC_MAINDIALOG_BUTTONLEFT3,
-	IDC_MAINDIALOG_BUTTONLEFT4,
-	IDC_MAINDIALOG_BUTTONLEFT5,
-	IDC_MAINDIALOG_BUTTONFOOTER1,
-	IDC_MAINDIALOG_BUTTONFOOTER2,
-	IDC_MAINDIALOG_BUTTONFOOTER3,
-	IDC_MAINDIALOG_BUTTONFOOTER4,
-	IDC_MAINDIALOG_BUTTONFOOTER5,
-	IDC_MAINDIALOG_BUTTONHEADER1,
-	IDC_MAINDIALOG_BUTTONHEADER2,
-	IDC_MAINDIALOG_BUTTONHEADER3,
-	IDC_MAINDIALOG_BUTTONHEADER4,
-	IDC_MAINDIALOG_BUTTONHEADER5];
+_idcs = [
+	IDC_MAINMENU_BUTTON1,
+	IDC_MAINMENU_BUTTON2,
+	IDC_MAINMENU_BUTTON3,
+	IDC_MAINMENU_BUTTON4,
+	IDC_MAINMENU_BUTTON5,
+	IDC_MAINMENU_BUTTON6,
+	IDC_MAINMENU_BUTTON7,
+	IDC_MAINMENU_BUTTON8,
+	IDC_MAINMENU_BUTTON9,
+	IDC_MAINMENU_BUTTON10,
+	IDC_MAINMENU_BUTTON11];
+	
+private["_buttons"];
+_buttons = _this select 0;
+private["_name"];
+_name = _this select 1;
 
-if (count _this == count _idcs) then
+if (count _buttons > 0) then
 {
 	maindialog_action = -1;
 	createDialog "MAINDIALOG"; 	
 
-	private["_button"];
+	ctrlSetText [IDC_MAINMENU_TEXTNAME, _name];
+
+	// Alle Tasten ausblenden
+	{ ctrlShow [_x, false]; } foreach _idcs;
+
+	// Skripte vorbereiten
+	private["_scripts"];
+	_scripts = [];
+	
 	private["_i"];
 	_i = 0;
 	{
-		_button = (_this select _i);
-		_i = _i + 1;
-		ctrlSetText [_x, (_button select 0)];
-		ctrlEnable [_x, (_button select 1)];
-		ctrlShow [_x, (_button select 2)];	
-	} foreach _idcs;
+		if ((_x select 2) || {(_x select 1)}) then
+		{
+			if (_i < 11) then
+			{
+				private["_idc"];
+				_idc = _idcs select _i;
+				_i = _i + 1;
+				
+				ctrlSetText [_idc, (_x select 0)];
+				ctrlEnable [_idc, (_x select 1)];
+				ctrlShow [_idc, true];
+				
+				_scripts pushBack (_x select 3);
+			};
+		};
+	} foreach _buttons;
 
 	waitUntil { !dialog };
 	
 	if (maindialog_action > -1) then
 	{
 		player sidechat format["%1", maindialog_action];
-		_button = (_this select maindialog_action);
-		[] execVM (_button select 3);
+		call (_scripts select maindialog_action);
 	};	
-}
-else
-{
-	player globalchat "ERROR: maindialog_showtemplate.sqf: count array";
 };

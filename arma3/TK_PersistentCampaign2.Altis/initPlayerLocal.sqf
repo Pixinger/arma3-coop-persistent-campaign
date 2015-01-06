@@ -4,5 +4,4 @@ if (local player) then
 {
 	//player addAction["beam","admin\beam.sqf"];
 	//player addAction["test - finger weg, sonst ab","test.sqf"];
-	
 };

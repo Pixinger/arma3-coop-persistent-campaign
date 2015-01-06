@@ -1,4 +1,4 @@
-// Das Spawn ist nicht zwingend notwendig, aber verhindert dass die Initialisierung bockiert wird.
+/*// Das Spawn ist nicht zwingend notwendig, aber verhindert dass die Initialisierung bockiert wird.
 if (!isServer || !isDedicated) then
 {
 	[] spawn {
@@ -13,3 +13,4 @@ if (!isServer || !isDedicated) then
 		player sidechat "Dialogsystem fertig";
 	};
 };
+*/

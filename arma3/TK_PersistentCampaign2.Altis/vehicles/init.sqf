@@ -1,11 +1,12 @@
 call compile preprocessFileLineNumbers "vehicles\config.sqf";
+call compile preprocessFileLineNumbers "vehicles\functions\_compile.sqf";
 
 if (isServer) then
 {
 	vehiclesInitialized = false;
 	publicVariable "vehiclesInitialized";
 	
-	vehiclesDbItems = []; /* Überwachte Items */
+	vehiclesDbItems = []; /* Ãœberwachte Items */
 
 	private["_index"];
 	_index = 0;
@@ -17,7 +18,7 @@ if (isServer) then
 		// String in Array umwandeln 
 		_dbResult = call compile _dbResult;
 
-		// Aufdröseln 
+		// AufdrÃ¶seln 
 		private["_classname"];
 		_classname = _dbResult select 0;
 		private["_pos"];
@@ -44,7 +45,7 @@ if (isServer) then
 		{
 			// Vehicle erzeugen
 			private["_item"];
-			_item = [_classname, _pos] call PC_fnc_CreateCorrectedVehicle; // Kapselt z.B. Änderungen an der Ladung
+			_item = [_classname, _pos] call PC_fnc_CreateCorrectedVehicle; // Kapselt z.B. Ã„nderungen an der Ladung
 			
 			// Details setzen
 			_item setDir _dir;
@@ -62,14 +63,27 @@ if (isServer) then
 				_item setDamage _damage;
 			};
 			
+			if (_item isKindOf pixTown_ConfigSaniClassname) then
+			{
+				_tmp = [_item, "HilfsgÃ¼ter aufladen", 5, {call fnc_Town_SupportLoadCond;}, {call fnc_Town_SupportLoadScript;}, false] call AGM_Interaction_fnc_addInteraction;
+				_tmp = [_item, "Nahrung entladen", 5, {call fnc_Town_SupportFoodCond;}, {call fnc_Town_SupportFoodScript;}, false] call AGM_Interaction_fnc_addInteraction;
+				_tmp = [_item, "Wasser entladen", 5, {call fnc_Town_SupportWaterCond;}, {call fnc_Town_SupportWaterScript;}, false] call AGM_Interaction_fnc_addInteraction;
+				_tmp = [_item, "Hilfsaktion starten", 5, {call fnc_Town_SupportHelpStartCond;}, {call fnc_Town_SupportHelpStartScript;}, false] call AGM_Interaction_fnc_addInteraction;
+				_tmp = [_item, "Hilfsaktion beenden", 5, {call fnc_Town_SupportHelpStopCond;}, {call fnc_Town_SupportHelpStopScript;}, false] call AGM_Interaction_fnc_addInteraction;
+			};
+			if (_item isKindOf admin_ConfigHQClassname) then
+			{
+				_tmp = [_item, "Rallypoint verlegen", 5, {call fnc_Admin_RalleyTeleportCond;}, {call fnc_Admin_RalleyTeleportScript;}, false] call AGM_Interaction_fnc_addInteraction;
+			};
+
 			/*------------------------------------*/
-			/* In die Überwachungsliste aufnehmen */
+			/* In die Ãœerwachungsliste aufnehmen */
 			/*------------------------------------*/
 			vehiclesDbItems pushBack _item;	
 			diag_log format["Vehicle loaded from DB: %1", _classname];
 		};
 			
-		// Nächstes Datenset laden 
+		// NÃ¤chstes Datenset laden 
 		_index = _index + 1;
 		_dbResult = "Arma2NET" callExtension format["PC vehicle|read|%1", _index];
 	};	

@@ -8,5 +8,5 @@ _room (aktviert)   = [[x,y,z], classname, isEnemy, unit-obj]
 
 
 
-AA = UnitStatus: 0=aktiv, 1=FSM-Finished, 
+AA = UnitStatus: 0=aktiv, 1=FSM-Finished, 2=Arrested
 AB = content:
