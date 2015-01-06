@@ -4,13 +4,13 @@ if (call fnc_Town_SupportWaterCond) then
 	_vehicle = cursorTarget;
 
 	private["_content"];
-	_content = _vehicle getVariable ["TG", 0];
+	_content = _vehicle getVariable ["TC", 0];
 
 	private["_position"];
 	_position = (getPos _vehicle) findEmptyPosition [0, 40, pixTown_ConfigWaterClassname]; 
 	if (count _position > 0) then
 	{
-		_vehicle setVariable["TG", _content - 1, true];
+		_vehicle setVariable["TC", _content - 1, true];
 
 		private["_item"];
 		_item = pixTown_ConfigWaterClassname createVehicle _position;

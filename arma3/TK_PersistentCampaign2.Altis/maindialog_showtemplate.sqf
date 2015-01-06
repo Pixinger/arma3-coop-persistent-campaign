@@ -53,7 +53,15 @@ if (count _buttons > 0) then
 		};
 	} foreach _buttons;
 
-	waitUntil { !dialog };
+	if (_i == 0) then
+	{
+		hint "keine Optionen";
+		CloseDialog 0;
+	}
+	else
+	{
+		waitUntil { !dialog };
+	};
 	
 	if (maindialog_action > -1) then
 	{

@@ -63,19 +63,6 @@ if (isServer) then
 				_item setDamage _damage;
 			};
 			
-			if (_item isKindOf pixTown_ConfigSaniClassname) then
-			{
-				_tmp = [_item, "Hilfsgüter aufladen", 5, {call fnc_Town_SupportLoadCond;}, {call fnc_Town_SupportLoadScript;}, false] call AGM_Interaction_fnc_addInteraction;
-				_tmp = [_item, "Nahrung entladen", 5, {call fnc_Town_SupportFoodCond;}, {call fnc_Town_SupportFoodScript;}, false] call AGM_Interaction_fnc_addInteraction;
-				_tmp = [_item, "Wasser entladen", 5, {call fnc_Town_SupportWaterCond;}, {call fnc_Town_SupportWaterScript;}, false] call AGM_Interaction_fnc_addInteraction;
-				_tmp = [_item, "Hilfsaktion starten", 5, {call fnc_Town_SupportHelpStartCond;}, {call fnc_Town_SupportHelpStartScript;}, false] call AGM_Interaction_fnc_addInteraction;
-				_tmp = [_item, "Hilfsaktion beenden", 5, {call fnc_Town_SupportHelpStopCond;}, {call fnc_Town_SupportHelpStopScript;}, false] call AGM_Interaction_fnc_addInteraction;
-			};
-			if (_item isKindOf admin_ConfigHQClassname) then
-			{
-				_tmp = [_item, "Rallypoint verlegen", 5, {call fnc_Admin_RalleyTeleportCond;}, {call fnc_Admin_RalleyTeleportScript;}, false] call AGM_Interaction_fnc_addInteraction;
-			};
-
 			/*------------------------------------*/
 			/* In die Üerwachungsliste aufnehmen */
 			/*------------------------------------*/

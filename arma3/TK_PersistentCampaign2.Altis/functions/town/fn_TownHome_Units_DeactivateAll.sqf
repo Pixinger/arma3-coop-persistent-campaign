@@ -31,9 +31,10 @@ private["_status"];
 {
 	_room = _x;
 	_unit = _room select 0;
-	_status = _unit getVariable "AA"; // 0=Aktiv, 1=FSM-Finished, 2=Arrested
+	_status = _unit getVariable "TS"; // 0=Aktiv, 1=FSM-Finished, 2=Arrested
 	if (alive _unit) then
 	{
+	//r = [cusorTarget] call AGM_Core_fnc_getCaptivityStatus
 		if (_status == 2) then // 2==Arrested
 		{
 			(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".

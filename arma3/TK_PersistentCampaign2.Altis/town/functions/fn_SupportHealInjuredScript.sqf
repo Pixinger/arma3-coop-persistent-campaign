@@ -1,10 +1,13 @@
-if (call fnc_Town_HealInjuredCond) then
+if (call fnc_Town_SupportHealInjuredCond) then
 {
 	private["_units"];
-	_units = (position player) nearObjects ["CAManBase", 2];
-	if (count _units > 0) then
+	_units = (position player) nearObjects ["Civilian_F", 2];
 	{	
-		(_units select 0) setVariable ["TI", 0, true];
-		player sidechat format["%1 wurde medizinisch versorgt.", (_units select 0)];
-	};
+		if (alive _x) then
+		{
+			_x setVariable ["TI", 0, true];
+		};
+	} foreach _units;	
+
+	player sidechat format["%1 wurde(n) medizinisch versorgt.", _units];
 };

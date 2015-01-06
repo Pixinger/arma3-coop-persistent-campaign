@@ -17,12 +17,14 @@ private["_timeoutTick"];
 _timeoutTick = time;
 
 {
-	if (!isNull (_x select 0)) then 
+	private["_unit"];
+	_unit = _x select 0;
+	if (!isNull _unit) then 
 	{
-		if ((_x select 0) getVariable ["fsmtick", 0] < _timeoutTick) then
+		if (_unit getVariable ["fsmtick", 0] < _timeoutTick) then
 		{	
-			diag_log format["fsmtick timed out. FSM restart for unit: %1", _x select 0];
-			(_x select 0) doFSM ["town\fsm\civHome.fsm", [0,0,0], (_x select 0)];			
+			diag_log format["fsmtick timed out. doFSM civHome.fsm for unit: %1", _unit];
+			_unit doFSM ["town\fsm\civHome.fsm", [0,0,0], _unit];
 		};
 	};
 } foreach _unitsActive;

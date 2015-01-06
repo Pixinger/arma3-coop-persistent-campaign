@@ -1,7 +1,13 @@
-if (call fnc_Town_SearchBuildingCond) then
+//private["_building"];
+//_building = nearestBuilding player; 
+
+private["_buildings"];
+_buildings = nearestObjects[player, pixTown_ConfigHomeClassnames, 10];
+if (count _buildings > 0) then
 {
-	_building = nearestBuilding player; 
-	
+	private["_building"];
+	_building = _buildings select 0;
+
 	private["_townObjects"];
 	_townObjects = player nearEntities [pixTown_ConfigObjectClassname, 1000];
 	if (count _townObjects > 0) then
@@ -33,4 +39,8 @@ if (call fnc_Town_SearchBuildingCond) then
 	{
 		player sidechat "WARN: Das Gebäude konnte keiner Stadt zugeordnet werden";
 	};
+}
+else
+{
+	player sidechat "Es konnte an der aktuellen Position kein bewohntes Gebäude gefunden werden.";
 };

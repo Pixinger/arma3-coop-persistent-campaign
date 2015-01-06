@@ -2,10 +2,15 @@ private["_result"];
 _result = false;
 
 private["_units"];
-_units = (position player) nearObjects ["CAManBase", 2];
+_units = nearestObjects [player, ["SoldierGB","SoldierWB","Civilian_F"], 5];
+player sidechat format["uni: %1", _units];
 
 {
-	if (!alive _x) exitWith { _result = true; };
+	if (!alive _x) exitWith 
+	{ 
+		player sidechat "dead";
+		_result = true; 
+	};
 } foreach _units;
 
 _result;

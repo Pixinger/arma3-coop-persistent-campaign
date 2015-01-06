@@ -1,7 +1,7 @@
 fnc_Town_SearchBodyCond = compile preprocessFileLineNumbers "town\functions\fn_SearchBodyCond.sqf";
 fnc_Town_SearchBodyScript = compile preprocessFileLineNumbers "town\functions\fn_SearchBodyScript.sqf";
-fnc_Town_SearchBuildingCond = compile preprocessFileLineNumbers "town\functions\fn_SearchBodyCond.sqf";
-fnc_Town_SearchBuildingScript = compile preprocessFileLineNumbers "town\functions\fn_SearchBodyScript.sqf";
+fnc_Town_SearchBuildingCond = compile preprocessFileLineNumbers "town\functions\fn_SearchBuildingCond.sqf";
+fnc_Town_SearchBuildingScript = compile preprocessFileLineNumbers "town\functions\fn_SearchBuildingScript.sqf";
 fnc_Town_SupportFoodCond = compile preprocessFileLineNumbers "town\functions\fn_SupportFoodCond.sqf";
 fnc_Town_SupportFoodScript = compile preprocessFileLineNumbers "town\functions\fn_SupportFoodScript.sqf";
 fnc_Town_SupportHealInjuredCond = compile preprocessFileLineNumbers "town\functions\fn_SupportHealInjuredCond.sqf";

@@ -398,8 +398,8 @@ diag_log format["Town %1 updated database", _townName];
 //diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 
-//_civSOLL = 1;
-//_redSOLL = 0;
+//_civSOLL = 2;
+//_redSOLL = 1;
 				
 				// -----------------------------------
 				// "Fertige" CIV/RED Einheiten DEAKTIVIEREN
@@ -453,14 +453,12 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 								//if (_townInjuredCount > 1) then 
 								if (false) then 
 								{
-									if (random 1 < 0.2) then
+									if (random 1 < 0.1) then
 									{
 	//diag_log "injured red";
+										_unit setBehaviour "CARELESS";
 										_townInjuredCount = _townInjuredCount - 1;
 										_unit setVariable ["TI", 1, true];
-										[_unit, "Medizinisch versorgen", 5, {call fnc_Town_SearchBodyCond;}, {call fnc_Town_SearchBodyScript;}, false] call AGM_Interaction_fnc_addInteraction;
-							
-										//TODO: noch prüfen
 										removeAllWeapons _unit;								
 									};
 								};
@@ -471,9 +469,8 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 								_unit setVariable ["townRadius", _townRadius];
 								_unit setVariable ["townHome", _unitPosition];
 								_unit setVariable ["TS", 0];
-										removeAllWeapons _unit;								
+//removeAllWeapons _unit;								
 								_unit doFSM ["town\fsm\red2.fsm", _unitPosition, _unit];							
-								[_unit, "Durchsuchen", 5, {call fnc_Town_SearchBodyCond;}, {call fnc_Town_SearchBodyScript;}, false] call AGM_Interaction_fnc_addInteraction;
 								_room pushBack _unit;
 								_redActives pushBack [_unit, _unitGroup, _room];
 	//diag_log format["%2: created red: %1", _unit, _townName];
@@ -523,13 +520,12 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 								_unit setskill 0.01;
 								if (_townInjuredCount > 1) then 
 								{
-									//if (true) then
-									if (random 1 < 0.5) then
+									//if (false) then
+									if (random 1 < 0.4) then
 									{
 	//diag_log "injured civ";
 										_townInjuredCount = _townInjuredCount - 1;
 										_unit setVariable ["TI", 1, true];
-										[_unit, "Medizinisch versorgen", 5, {call fnc_Town_SearchBodyCond;}, {call fnc_Town_SearchBodyScript;}, false] call AGM_Interaction_fnc_addInteraction;
 									};
 								};
 								_unit setBehaviour "CARELESS";
@@ -541,7 +537,6 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 								_unit setVariable ["fsmtick", (time + 60)];
 								_unit setVariable ["TS", 0];
 								_unit doFSM ["town\fsm\civ2.fsm", _unitPosition, _unit];							
-								[_unit, "Durchsuchen", 5, {call fnc_Town_SearchBodyCond;}, {call fnc_Town_SearchBodyScript;}, false] call AGM_Interaction_fnc_addInteraction;
 								_room pushBack _unit;
 								_civActives pushBack [_unit, _unitGroup, _room];	
 //diag_log format["%2: created civ: %1", _unit, _townName];
@@ -655,7 +650,7 @@ diag_log "create RED";
 							waitUntil {!isNil "_unit"};
 							_unit setDir (random 360);
 							_unit setpos _unitPosition;
-							if ((random 1) < 0.90) then 
+							if ((random 1) < 0.10) then 
 							{ 
 								removeAllWeapons _unit; 
 								_unit setBehaviour "CARELESS";
@@ -673,7 +668,6 @@ diag_log "create RED";
 							//_unit setVariable ["townRadius", _townRadius];
 							//_unit setVariable ["townHome", _unitPosition];
 							//_unit doFSM ["town\fsm\red2.fsm", _unitPosition, _unit];							
-							[_unit, "Durchsuchen", 5, {call fnc_Town_SearchBodyCond;}, {call fnc_Town_SearchBodyScript;}, false] call AGM_Interaction_fnc_addInteraction;
 							_x pushBack _unit;
 							_redActives pushBack [_unit, _unitGroup, _x];
 							_forcedRed = _forcedRed + 1;
@@ -700,7 +694,6 @@ diag_log "create CIV";
 							_unit setVariable ["fsmtick", (time + 60)];
 							_unit setVariable ["TS", 0];
 							_unit doFSM ["town\fsm\civSearched.fsm", _unitPosition, _unit];							
-							[_unit, "Durchsuchen", 5, {call fnc_Town_SearchBodyCond;}, {call fnc_Town_SearchBodyScript;}, false] call AGM_Interaction_fnc_addInteraction;
 							_x pushBack _unit;
 							_civActives pushBack [_unit, _unitGroup, _x];	
 							_forcedCiv = _forcedCiv + 1;
