@@ -52,7 +52,7 @@ while { (_homeIndex < _countHomes) } do
 				}
 				else
 				{
-					diag_log format["found inactive room (but player is close): %1", _room];
+					//diag_log format["found inactive room (but player is close): %1", _room];
 				};
 			};
 		};

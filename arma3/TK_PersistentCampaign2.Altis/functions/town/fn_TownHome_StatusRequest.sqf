@@ -18,7 +18,7 @@ private["_varname"];
 _varname = format["TownStatus%1", _townName];
 private["_status"];
 _status = missionNamespace getVariable [format["TownStatus%1", _townName], ["unknown", 0,0,0,0,0,0]];
-diag_log format["fn_TpwnHome_StatusRequest: _varname: %1 / _status: %2", _varname, _status];
+//diag_log format["fn_TpwnHome_StatusRequest: _varname: %1 / _status: %2", _varname, _status];
 
 // Param
 // Code/Function

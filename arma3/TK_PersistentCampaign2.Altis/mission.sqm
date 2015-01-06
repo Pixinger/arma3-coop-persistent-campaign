@@ -60,7 +60,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.16";
+		overviewText="www.teamkommando.de | V0.17";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -1971,7 +1971,7 @@ class Mission
 		};
 		class Item72
 		{
-			position[]={16671.793,14.193091,13589.194};
+			position[]={17523.637,12.919778,13246.329};
 			id=118;
 			side="EMPTY";
 			vehicle="AGM_RallypointExit_West";

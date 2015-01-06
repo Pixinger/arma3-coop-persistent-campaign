@@ -450,8 +450,8 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 							{							
 								_unit setDir (floor(random 360));
 								_unit setpos _unitPosition;
-								//if (_townInjuredCount > 1) then 
-								if (false) then 
+								//if (false) then 
+								if (_townInjuredCount > 1) then 
 								{
 									if (random 1 < 0.1) then
 									{
@@ -523,7 +523,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 									//if (false) then
 									if (random 1 < 0.4) then
 									{
-	//diag_log "injured civ";
+//diag_log "injured civ";
 										_townInjuredCount = _townInjuredCount - 1;
 										_unit setVariable ["TI", 1, true];
 									};
@@ -669,6 +669,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 							//_unit setVariable ["townHome", _unitPosition];
 							//_unit doFSM ["town\fsm\red2.fsm", _unitPosition, _unit];							
 							_x pushBack _unit;
+//removeAllWeapons _unit; 
 							_redActives pushBack [_unit, _unitGroup, _x];
 							_forcedRed = _forcedRed + 1;
 							_redActivesCount = count _redActives;		

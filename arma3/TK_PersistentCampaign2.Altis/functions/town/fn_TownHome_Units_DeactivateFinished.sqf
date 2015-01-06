@@ -32,6 +32,7 @@ while { (_index < count _unitsActive) } do
 	if (alive _unit) then
 	{
 		_status = _unit getVariable ["TS", 0]; // 0=Aktiv, 1=FSM-Finished, 2=Arrested
+		if ("AGM_Handcuffed" in ([_unit] call AGM_Core_fnc_getCaptivityStatus)) then { _status = 2; player sidechat "arrested";};		
 		if (_status == 0) then // 0==Aktiv
 		{
 			_index = _index + 1;

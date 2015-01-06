@@ -8,11 +8,12 @@ _shells = [];
 	_shells pushBack _shell;
 } foreach (_this select 0);
 
-Sleep (2.5);
+Sleep (2.2);
 
 {
 	deleteVehicle _x;
 } foreach _shells;
+
 _shells = nil;
 /*
 ARTY_SmokeShellWhite
