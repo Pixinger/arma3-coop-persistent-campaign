@@ -7,7 +7,7 @@ onLoadIntroTime = false;   /* Mit diesem Eintrag könnt ihr durch die Variablen 
 loadScreen = ""; /*Mit LoadScreen wird ein Bild während des Ladens der init.sqf eingeblendet. Die Bilddatei muss im Missionsordner (bzw. einem Unterordner) vorhanden sein. "pfad\zum\bild.paa"*/
 briefing = 0; /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
 debriefing = 0;   /* Mit diesen Einträgen kann eingestellt werden, ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
-disabledAI = false;
+disabledAI = true;
 showCompass = 1;
 showGPS = 1;
 showMap = 1;

@@ -29,7 +29,7 @@ item24[] = {"OK",4,218,-60.232941,-1327.596191,29.767033,-1277.596191,0.000000,"
 item25[] = {"Nachbar_suchen",2,250,337.248596,-1168.108765,427.248596,-1118.108765,0.000000,"Nachbar" \n "suchen"};
 item26[] = {"ER",4,218,246.491699,-1246.116821,336.491699,-1196.117065,0.000000,"ER"};
 item27[] = {"Medic_suchen",2,250,-75.071159,-486.697998,14.928863,-436.697998,0.000000,"Medic" \n "suchen"};
-item28[] = {"verletzt_",2,4346,-25.910698,-164.981308,64.089317,-114.981323,0.000000,"verletzt?"};
+item28[] = {"verletzt_",2,250,-25.910698,-164.981308,64.089317,-114.981323,0.000000,"verletzt?"};
 item29[] = {"No",8,218,19.740116,-401.128052,109.740112,-351.128052,0.000000,"No"};
 item30[] = {"JA",4,218,-74.586937,-400.877319,15.413081,-350.877380,100.000000,"JA"};
 item31[] = {"No",8,218,-74.695213,-560.063354,15.304822,-510.063354,0.000000,"No"};
@@ -44,8 +44,8 @@ item39[] = {"Zeit",4,218,-840.343628,-985.986267,-750.343506,-935.986267,0.00000
 item40[] = {"verletzt__1",2,250,-826.796143,-1046.297852,-763.932373,-1016.649780,0.000000,"verletzt?"};
 item41[] = {"No",8,218,-840.662842,-1130.825684,-750.662842,-1080.825684,0.000000,"No"};
 item42[] = {"JA",4,218,-939.871094,-1130.410034,-849.871216,-1080.410034,100.000000,"JA"};
-item43[] = {"",7,210,-1203.383179,-1753.996704,-1195.383179,-1745.996704,0.000000,""};
-item44[] = {"aktiv_",2,250,-167.977066,-635.902954,-77.977150,-585.902954,0.000000,"aktiv?"};
+item43[] = {"",7,210,-898.475891,-466.646851,-890.475891,-458.646851,0.000000,""};
+item44[] = {"aktiv_",2,4346,-167.977066,-635.902954,-77.977150,-585.902954,0.000000,"aktiv?"};
 item45[] = {"JA",4,218,-261.366394,-727.479126,-171.366623,-677.479126,100.000000,"JA"};
 item46[] = {"No",8,218,-166.751984,-727.821777,-76.752045,-677.821777,0.000000,"No"};
 item47[] = {"_",8,218,-839.971313,-1327.432617,-749.971313,-1277.432617,0.000000,""};
@@ -66,19 +66,11 @@ item61[] = {"alle_weg",2,250,-302.258057,-1334.974487,-212.257965,-1284.974487,0
 item62[] = {"_",8,218,-305.905212,-1085.076782,-215.905151,-1035.076782,0.000000,""};
 item63[] = {"",7,210,-798.085205,-1754.048584,-790.085205,-1746.048584,0.000000,""};
 item64[] = {"dist___10m",4,218,131.342407,-1861.376465,221.342484,-1811.376465,100.000000,"dist > 10m"};
-item65[] = {"Medic_nah_",2,250,-1079.289185,-1231.117798,-989.289124,-1181.117798,0.000000,"Medic nah?"};
-item66[] = {"JA",4,218,-1128.788818,-1311.601440,-1038.788696,-1261.601440,100.000000,"JA"};
-item67[] = {"NO",8,218,-1033.592163,-1311.421875,-943.592041,-1261.421875,0.000000,"NO"};
-item68[] = {"",7,210,-1203.956909,-896.728943,-1195.956909,-888.728943,0.000000,""};
-item69[] = {"aktiv__1",2,250,-1244.658081,-1447.824463,-1154.658203,-1397.824463,0.000000,"aktiv?"};
-item70[] = {"JA",4,218,-1245.201050,-1359.530884,-1155.201416,-1309.530884,100.000000,"JA"};
-item71[] = {"No",8,218,-1244.881104,-1560.154053,-1154.881226,-1510.154053,0.000000,"No"};
-item72[] = {"",7,210,-992.640625,-1753.996826,-984.640625,-1745.996826,0.000000,""};
-item73[] = {"_",8,218,289.123535,-1588.121216,379.123535,-1538.121216,0.000000,""};
-item74[] = {"_",8,218,388.940216,-1589.369019,478.940216,-1539.369019,0.000000,""};
-item75[] = {"",7,210,-598.774170,-1313.543335,-590.774170,-1305.543335,0.000000,""};
-item76[] = {"",7,210,-598.774353,-1753.629028,-590.774353,-1745.629028,0.000000,""};
-item77[] = {"nachdenken2",2,250,-24.269556,-989.584839,65.730476,-939.584167,0.000000,"nachdenken2"};
+item65[] = {"_",8,218,289.123535,-1588.121216,379.123535,-1538.121216,0.000000,""};
+item66[] = {"_",8,218,388.940216,-1589.369019,478.940216,-1539.369019,0.000000,""};
+item67[] = {"",7,210,-598.774170,-1313.543335,-590.774170,-1305.543335,0.000000,""};
+item68[] = {"",7,210,-598.774353,-1753.629028,-590.774353,-1745.629028,0.000000,""};
+item69[] = {"nachdenken2",2,250,-24.269556,-989.584839,65.730476,-939.584167,0.000000,"nachdenken2"};
 link0[] = {0,1};
 link1[] = {0,2};
 link2[] = {1,28};
@@ -91,11 +83,11 @@ link8[] = {8,25};
 link9[] = {9,10};
 link10[] = {9,11};
 link11[] = {10,12};
-link12[] = {11,77};
+link12[] = {11,69};
 link13[] = {12,13};
 link14[] = {12,14};
 link15[] = {13,58};
-link16[] = {14,75};
+link16[] = {14,67};
 link17[] = {15,16};
 link18[] = {16,19};
 link19[] = {17,18};
@@ -129,8 +121,8 @@ link46[] = {39,40};
 link47[] = {40,41};
 link48[] = {40,42};
 link49[] = {41,36};
-link50[] = {42,65};
-link51[] = {43,19};
+link50[] = {42,43};
+link51[] = {43,27};
 link52[] = {44,45};
 link53[] = {44,46};
 link54[] = {45,33};
@@ -141,8 +133,8 @@ link58[] = {49,50};
 link59[] = {49,51};
 link60[] = {50,52};
 link61[] = {51,53};
-link62[] = {52,74};
-link63[] = {53,73};
+link62[] = {52,66};
+link63[] = {53,65};
 link64[] = {54,56};
 link65[] = {55,57};
 link66[] = {55,64};
@@ -156,24 +148,14 @@ link73[] = {61,62};
 link74[] = {62,9};
 link75[] = {63,19};
 link76[] = {64,19};
-link77[] = {65,66};
-link78[] = {65,67};
-link79[] = {66,69};
-link80[] = {67,72};
-link81[] = {68,38};
-link82[] = {69,70};
-link83[] = {69,71};
-link84[] = {70,68};
-link85[] = {71,43};
-link86[] = {72,19};
-link87[] = {73,6};
-link88[] = {74,6};
-link89[] = {75,76};
-link90[] = {76,19};
-link91[] = {77,8};
-link92[] = {77,17};
-globals[] = {0.000000,0,0,0,0,640,480,1,155,6316128,1,-1070.831665,446.869995,68.108795,-1090.447021,1403,1071,1};
-window[] = {2,-1,-1,-1,-1,1055,175,1615,175,3,1421};
+link77[] = {65,6};
+link78[] = {66,6};
+link79[] = {67,68};
+link80[] = {68,19};
+link81[] = {69,8};
+link82[] = {69,17};
+globals[] = {0.000000,0,0,0,0,640,480,1,156,6316128,1,-1501.350342,823.130554,166.842270,-1607.583252,1403,1071,1};
+window[] = {2,-1,-1,-1,-1,1030,150,1590,150,3,1421};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -279,7 +261,7 @@ class FSM
     {
       name = "Supplies_suchen";
       init = /*%FSM<STATEINIT""">*/"_supplies = nearestObjects[(getPos _leader), [pixTown_ConfigWaterClassname, pixTown_ConfigFoodClassname], 300];" \n
-       "diag_log format[""FSM: %1 Supplies: %2"", _leader, _supplies];" \n
+       "//diag_log format[""FSM: %1 Supplies: %2"", _leader, _supplies];" \n
        "if (count _supplies > 0) then " \n
        "{ " \n
        "_supplies = _supplies select (floor(random( count _supplies)));" \n
@@ -320,7 +302,7 @@ class FSM
       name = "hingehen";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 60];" \n
        "_leader moveTo (getPos _supplies);" \n
-       "diag_log format[""FSM: %1 Gehe zu supplies"", _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %1 Gehe zu supplies"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -394,7 +376,7 @@ class FSM
       name = "herumlaufen";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 120];" \n
        "_leader moveTo [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];" \n
-       "diag_log format[""FSM: %1 herumlaufen"", _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %1 herumlaufen"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -427,7 +409,7 @@ class FSM
       name = "nach_Hause";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 120];" \n
        "_leader moveTo _home;" \n
-       "diag_log format[""FSM: %2 Gehe nach Hause: %1"", _home, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %2 Gehe nach Hause: %1"", _home, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -458,7 +440,7 @@ class FSM
     class Ende
     {
       name = "Ende";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""FSM: %1 ENDE"", _leader];" \n
+      init = /*%FSM<STATEINIT""">*/"//diag_log format[""FSM: %1 ENDE"", _leader];" \n
        "_leader setVariable [""TS"", 1];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -507,10 +489,10 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_medic = nearestObjects[(getPos _leader), [pixTown_ConfigSaniClassname], 300];" \n
        "if (count _medic > 0) then { " \n
        "_medic = _medic select 0;" \n
-       "diag_log format[""FSM: %2 Medic gesucht: %1"", _medic, _leader];" \n
+       "//diag_log format[""FSM: %2 Medic gesucht: %1"", _medic, _leader];" \n
        "} else {" \n
        "_medic = nil;" \n
-       "diag_log format[""FSM: %1 kein Medic"", _leader];" \n
+       "//diag_log format[""FSM: %1 kein Medic"", _leader];" \n
        "};" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -544,7 +526,7 @@ class FSM
     {
       name = "verletzt_";
       init = /*%FSM<STATEINIT""">*/"_decision = _leader getVariable [""TI"", 0];" \n
-       "diag_log format[""FSM: %2 verletzt %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %2 verletzt %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -610,7 +592,7 @@ class FSM
       name = "fnc";
       init = /*%FSM<STATEINIT""">*/"[_townName, -1] call PC_fnc_TownParam_InjuredAdd;" \n
        "[_townName, pixTown_ConfigMoodPerCivInjured] call PC_fnc_TownParam_MoodAdd;" \n
-       "diag_log format[""FSM: %1 Verringere Stadt Injured Parameter"", _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %1 Verringere Stadt Injured Parameter"", _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -656,7 +638,7 @@ class FSM
       name = "verletzt__1";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 60];" \n
        "_decision = _leader getVariable [""TI"", 0];" \n
-       "diag_log format[""FSM: %2 Noch verletzt? %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %2 Noch verletzt? %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -664,7 +646,7 @@ class FSM
         class JA
         {
           priority = 100.000000;
-          to="Medic_nah_";
+          to="Medic_suchen";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(_decision != 0)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -688,7 +670,7 @@ class FSM
     {
       name = "aktiv_";
       init = /*%FSM<STATEINIT""">*/"_active = _medic getVariable [""TA"", false];" \n
-       "diag_log format[""FSM: %2 medic active: %1"", _active, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %2 medic active: %1"", _active, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -721,7 +703,7 @@ class FSM
       name = "hingehen_1";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 120];" \n
        "_leader moveTo _decision;" \n
-       "diag_log format[""FSM: %3 Gehe zum Nachbarn: %2 => %1"", _decision, getPos _leader, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %3 Gehe zum Nachbarn: %2 => %1"", _decision, getPos _leader, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -896,76 +878,13 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "Medic_nah_">*/
-    class Medic_nah_
-    {
-      name = "Medic_nah_";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "JA">*/
-        class JA
-        {
-          priority = 100.000000;
-          to="aktiv__1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((getPos _leader) distance (getPos _medic) < 30)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "NO">*/
-        class NO
-        {
-          priority = 0.000000;
-          to="nach_Hause";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "aktiv__1">*/
-    class aktiv__1
-    {
-      name = "aktiv__1";
-      init = /*%FSM<STATEINIT""">*/"_active = _medic getVariable [""TA"", false];" \n
-       "//diag_log format[""FSM: %2 medic active: %1"", _active, _leader];"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "JA">*/
-        class JA
-        {
-          priority = 100.000000;
-          to="warten_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_active"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "No">*/
-        class No
-        {
-          priority = 0.000000;
-          to="nach_Hause";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
     /*%FSM<STATE "nachdenken2">*/
     class nachdenken2
     {
       name = "nachdenken2";
       init = /*%FSM<STATEINIT""">*/"_leader setVariable[""fsmtick"", time + 60];" \n
        "_decision = random 1;" \n
-       "diag_log format[""FSM: %2 nachdenken2 %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
+       "//diag_log format[""FSM: %2 nachdenken2 %1"", _decision, _leader];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
