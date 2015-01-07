@@ -82,7 +82,12 @@ _result = [
 		/* Backpack-Magazines */
 		[	
 			"SatchelCharge_Remote_Mag",
-			"DemoCharge_Remote_Mag"
+			"DemoCharge_Remote_Mag",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
@@ -91,8 +96,8 @@ _result = [
 		]
 	],
 	
-	/* unit classname */
-	"B_engineer_F"
+	/* Code */
+	"_unit setVariable ['AGM_IsEOD', true];"
 ];
 
 _result;

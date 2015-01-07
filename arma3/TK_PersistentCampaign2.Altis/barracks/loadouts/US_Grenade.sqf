@@ -95,12 +95,20 @@ _result = [
 			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell",
 			"3Rnd_Smoke_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell"
+			"3Rnd_Smoke_Grenade_shell",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[			
 		]
-	]
+	],
+	
+	/* Code */
+	""
 ];
 
 _result;

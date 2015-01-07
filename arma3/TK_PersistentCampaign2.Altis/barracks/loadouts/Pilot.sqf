@@ -83,8 +83,8 @@ _result = [
 		]
 	],
 	
-	/* unit classname */
-	"B_Pilot_F"
+	/* Code */
+	""
 ];
 
 _result;

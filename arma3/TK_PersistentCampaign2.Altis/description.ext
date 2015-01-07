@@ -29,7 +29,7 @@ allowFunctionsLog=1;
 4 / "GROUP" - Respawn in eine (noch lebende) KI Einheit der eigenen Gruppe
 5 / "SIDE" - Respawn in eine (noch lebende) KI Einheit der eigenen Seite
 */
-respawn = INSTANT;
+respawn = BASE;
 
 /*
 0 = Global

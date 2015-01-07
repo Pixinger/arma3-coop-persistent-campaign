@@ -2,6 +2,5 @@
 // [player:Object, didJIP:Boolean]
 if (local player) then
 {
-	//player addAction["beam","admin\beam.sqf"];
-	//player addAction["test - finger weg, sonst ab","test.sqf"];
+	[player, "default.sqf"] call compile preprocessFileLineNumbers "barracks\applyLoadOut.sqf";
 };

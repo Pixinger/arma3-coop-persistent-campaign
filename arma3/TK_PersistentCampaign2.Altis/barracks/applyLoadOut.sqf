@@ -86,8 +86,8 @@ _backpackMagazines = _backpack select 2;
 private["_backpackItems"];
 _backpackItems = _backpack select 3;
 
-private["_unitClassname"];
-if (count _result > 11) then { _unitClassname = _result select 11; } else { _unitClassname = "B_Soldier_F"; };
+private["_code"];
+if (count _result > 11) then { _code = _result select 11; } else { _code = ""; };
 
 
 /* Switch Unit durführen */
@@ -198,11 +198,7 @@ if (_nightVisionClassname != "") then
 	_unit linkItem _nightVisionClassname;
 };
 
-///* Bei den Piloten muss nun das Lift Menu neu gestartet werden */
-//if (_unitClassname in pixLogisticLiftPilots) then
-//{
-//	call compile preprocessFileLineNumbers "pixLogistic\lift\run.sqf";
-//};
-
-///* Dafür sorgen, dass das TFR-Radio auch aktiv in den Slot gezogen wird. */
-//[] spawn PC_fnc_ActivateTFRRadio;
+if (_code != "") then
+{
+	call compile _code;
+};

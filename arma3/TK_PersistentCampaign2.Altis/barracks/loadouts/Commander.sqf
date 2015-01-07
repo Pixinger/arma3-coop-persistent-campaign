@@ -82,13 +82,21 @@ _result = [
 			"30Rnd_45ACP_Mag_SMG_01",
 			"30Rnd_45ACP_Mag_SMG_01",
 			"30Rnd_45ACP_Mag_SMG_01",
-			"30Rnd_45ACP_Mag_SMG_01"
+			"30Rnd_45ACP_Mag_SMG_01",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
 			"optic_Nightstalker"
 		]
-	]
+	],
+	
+	/* Code */
+	""
 ];
 
 _result;

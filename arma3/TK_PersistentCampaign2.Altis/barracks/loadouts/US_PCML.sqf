@@ -80,12 +80,20 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"NLAW_F"
+			"NLAW_F",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
 		]
-	]
+	],
+	
+	/* Code */
+	""
 ];
 
 _result;

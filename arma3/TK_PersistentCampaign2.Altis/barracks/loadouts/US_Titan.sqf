@@ -81,12 +81,20 @@ _result = [
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"Titan_AT"
+			"Titan_AT",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
 		]
-	]
+	],
+	
+	/* Code */
+	""
 ];
 
 _result;

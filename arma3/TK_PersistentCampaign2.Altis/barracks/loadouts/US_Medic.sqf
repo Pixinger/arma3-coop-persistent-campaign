@@ -83,7 +83,12 @@ _result = [
 		[	
 			"SmokeShellPurple",
 			"SmokeShellPurple",
-			"SmokeShellPurple"
+			"SmokeShellPurple",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
@@ -97,8 +102,8 @@ _result = [
 		]
 	],
 	
-	/* unit classname */
-	"B_medic_F"
+	/* Code */
+	"_unit setVariable ['AGM_IsMedic', true];"
 ];
 
 _result;

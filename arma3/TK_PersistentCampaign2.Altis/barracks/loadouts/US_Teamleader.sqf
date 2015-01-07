@@ -95,7 +95,6 @@ _result = [
 			"AGM_CableTie",
 			"AGM_CableTie",
 			"AGM_CableTie",
-			"AGM_CableTie",
 			"AGM_CableTie"
 		],
 		/* Backpack-Items */
@@ -103,8 +102,8 @@ _result = [
 		]
 	],
 	
-	/* unit classname */
-	"B_Soldier_SL_F"
+	/* Code */
+	""
 ];
 
 _result;

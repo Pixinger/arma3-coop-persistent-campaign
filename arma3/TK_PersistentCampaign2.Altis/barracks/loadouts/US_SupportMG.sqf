@@ -84,12 +84,20 @@ _result = [
 		[	
 			"200Rnd_65x39_cased_Box",
 			"200Rnd_65x39_cased_Box",
-			"200Rnd_65x39_cased_Box"
+			"200Rnd_65x39_cased_Box",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie",
+			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
 		]
-	]
+	],
+	
+	/* Code */
+	""
 ];
 
 _result;
