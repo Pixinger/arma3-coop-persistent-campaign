@@ -165,8 +165,8 @@ if (isServer) then
 	private["_townOnlineOfflineCounter"];
 	_townOnlineOfflineCounter = 0;
 	
-	// Erst nach dem Briefing beginnen
-	Sleep (0.1); 
+	// Erst nach dem Briefing beginnen, alle Städte zu einer etwas anderen Zeit
+	Sleep (0.1 + (random pixTown_ConfigMainLoopSleep));
 	
 	// -----------------------------------
 	// Dauerschleife beginnen
