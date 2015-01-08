@@ -99,7 +99,7 @@ if (isServer) then
 		_townMarker setMarkerColor "ColorOrange";
 		diag_log format["ERROR: %1 konnte Daten aus Datenbank nicht laden: %2", _townName, _dbResult];
 	};
-	
+
 
 	// -----------------------------------
 	// In die Wohnungen einziehen
@@ -108,11 +108,6 @@ if (isServer) then
 	_result = [_homes, _townRedCount, _townCivCount] call PC_fnc_TownHome_SettleAllResidents;
 	private["_townMaxPopulation"];
 	_townMaxPopulation = _result select 2; // Die maximal mögliche Bevölkerung (abhängig von den Wohneinheiten).
-	pixTown_TotalRooms = pixTown_TotalRooms + _townMaxPopulation;
-	pixTown_TotalPopulation = pixTown_TotalPopulation + _townCivCount + _townRedCount;
-//player globalchat format["_result: %1(Red, Civ, Max)", _result];
-//[_homes] call PC_fnc_TownHome_DebugHomes;
-//[_homes] call PC_fnc_TownHome_DebugHomesInactive;
 	_result = nil;
 
 	// -----------------------------------
@@ -127,7 +122,12 @@ if (isServer) then
 	if (_townMood < -1) then { _townMood = -1; };
 	if (_townStockFood < 0) then { _townStockFood = 0; };
 	if (_townStockWater < 0) then { _townStockWater = 0; };
-
+	pixTown_TotalRooms = pixTown_TotalRooms + _townMaxPopulation;
+	pixTown_TotalPopulation = pixTown_TotalPopulation + _townCivCount + _townRedCount;
+//player globalchat format["_result: %1(Red, Civ, Max)", _result];
+//[_homes] call PC_fnc_TownHome_DebugHomes;
+//[_homes] call PC_fnc_TownHome_DebugHomesInactive;
+	
 	// -----------------------------------
 	// Globale Parameter initialisieren
 	// -----------------------------------
@@ -360,7 +360,7 @@ if (isServer) then
 					}
 					else
 					{
-//-diag_log format["Town %1 updated database", _townName];
+						//diag_log format["Town %1 updated database", _townName];
 					};
 				};			
 			};
