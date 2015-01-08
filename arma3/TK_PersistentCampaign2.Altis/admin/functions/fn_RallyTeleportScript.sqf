@@ -1,4 +1,4 @@
-if (call fnc_Vehicles_RalleyTeleportCond) then
+if (call fnc_Admin_RallyTeleportCond) then
 {
 	private["_vehicle"];
 	_vehicle = cursorTarget;

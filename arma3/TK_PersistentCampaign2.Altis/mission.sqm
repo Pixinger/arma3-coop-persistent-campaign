@@ -52,7 +52,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.21";
+		overviewText="www.teamkommando.de | V0.22";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
