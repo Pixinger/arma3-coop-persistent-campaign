@@ -127,6 +127,8 @@ if (isServer) then
 //player globalchat format["_result: %1(Red, Civ, Max)", _result];
 //[_homes] call PC_fnc_TownHome_DebugHomes;
 //[_homes] call PC_fnc_TownHome_DebugHomesInactive;
+	[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater] call PC_fnc_TownHome_StatusUpdate; // Einmal vorab initialisieren
+
 	
 	// -----------------------------------
 	// Globale Parameter initialisieren
@@ -162,6 +164,7 @@ if (isServer) then
 	_townSimulationCounter = 0;
 	private["_townSimulationSaveCounter"];
 	_townSimulationSaveCounter = 20;
+	if (pixDebug) then { _townSimulationSaveCounter = -1; };
 	private["_townOnlineOfflineCounter"];
 	_townOnlineOfflineCounter = 0;
 	
@@ -353,7 +356,7 @@ if (isServer) then
 				{
 					_townSimulationSaveCounter = 20;
 					private["_dbResult"];	
-					_dbResult = "Arma2NET" callExtension format["PC town|update|%1|%2|%3|%4|%5|%6|%7|%8|%9", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townWarlordCount, _townInjuredCount];
+					_dbResult = "Arma2NET" callExtension format["PC town|update|%1|%2|%3|%4|%5|%6|%7|%8|%9|%10", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townWarlordCount, _townInjuredCount, _townMaxPopulation];
 					if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then
 					{
 						diag_log format["ERROR: Town.Update failed: %1", _dbResult];
@@ -362,7 +365,11 @@ if (isServer) then
 					{
 						//diag_log format["Town %1 updated database", _townName];
 					};
-				};			
+				}
+				else
+				{
+					_townSimulationSaveCounter = _townSimulationSaveCounter - 1;
+				};
 			};
 		};
 		

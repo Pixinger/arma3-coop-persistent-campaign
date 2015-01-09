@@ -15,9 +15,9 @@ _requestingPlayer = _this select 1;
 
 // [name, civ, red, injured, mood, food, water]
 private["_varname"];
-_varname = format["TownStatus%1", _townName];
+_varname = format["T1_%1", _townName];
 private["_status"];
-_status = missionNamespace getVariable [format["TownStatus%1", _townName], ["unknown", 0,0,0,0,0,0]];
+_status = missionNamespace getVariable [_varname, ["unknown", 0,0,0,0,0,0]];
 //diag_log format["fn_TpwnHome_StatusRequest: _varname: %1 / _status: %2", _varname, _status];
 
 // Param

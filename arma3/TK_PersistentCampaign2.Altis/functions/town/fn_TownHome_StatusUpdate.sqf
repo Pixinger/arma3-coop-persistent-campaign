@@ -15,8 +15,11 @@ Return:
 	nix
 */
 
+private["_townName"];
+_townName = _this select 0;
+
 private["_varname"];
-_varname = format["TownStatus%1", _townName];
+_varname = format["T1_%1", _townName];
 missionNamespace setVariable [_varname, _this];
 //diag_log format["fn_TownHome_StatusUpdate: _this:%1, _varname:%2", _this, _varname];
 

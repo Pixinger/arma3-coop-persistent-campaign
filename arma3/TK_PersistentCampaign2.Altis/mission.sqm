@@ -52,7 +52,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.22";
+		overviewText="www.teamkommando.de | V0.24";
 		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0;
@@ -1007,7 +1007,7 @@ class Mission
 						};
 						class Item6
 						{
-							value="1";
+							value="0";
 							parentCls="AGM_ModuleMedical";
 							typeName="RequireDiagnosis";
 						};
