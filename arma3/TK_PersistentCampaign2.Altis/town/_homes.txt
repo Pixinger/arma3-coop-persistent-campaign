@@ -1,0 +1,12 @@
+----------------------------------------------------------------------------------------------------------------
+_homes: 
+---------------------------------------------------------------------------------------------------------------
+_homes = [  [building-obj, [_room, _room, ...]],     [building-obj, [_room, _room, ...]],    ...   ]
+_room (frei)       = [[x,y,z]]
+_room (deaktviert) = [[x,y,z], classname, isEnemy]
+_room (aktviert)   = [[x,y,z], classname, isEnemy, unit-obj]
+
+
+
+AA = UnitStatus: 0=aktiv, 1=FSM-Finished, 2=Arrested
+AB = content:
