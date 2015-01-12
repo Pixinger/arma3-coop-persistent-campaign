@@ -46,6 +46,9 @@ pixTown_ConfigMoodPerRedArrest = 0.2;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
 pixTown_ConfigMoodPerHouseSearchRed = 0.1;
 
+//pixTown_ConfigImmigrantPercent = 80;
+pixTown_ConfigEmigrantPercent = 80 / 100;
+
 // Klassenname das Town-Objektes im Editor.
 pixTown_ConfigObjectClassname = "Land_VRGoggles_01_F";
 

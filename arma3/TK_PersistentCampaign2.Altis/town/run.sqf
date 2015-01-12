@@ -159,6 +159,8 @@ if (isServer) then
 	_townAttacked = false;
 	private["_townPopulation"];
 	_townPopulation = 0;
+	private["_nextEmigrantTime"];
+	_nextEmigrantTime = time + random (60 * 30);
 	
 	private["_townSimulationCounter"];
 	_townSimulationCounter = 0;
@@ -289,6 +291,37 @@ if (isServer) then
 				// Wachstum berechnen und hinzufügen
 				_simulatedCivCount = _simulatedCivCount + (pixTown_ConfigCivGrowRatePPH * _simulatedCivCount * _deltaHours * _factor);
 //diag_log format["_simulatedCivCount=%1  _simulatedRedCount=%2 (reine Kalkulation)+", _simulatedCivCount, _simulatedRedCount];
+
+				
+				// ----------------------------------------------------------------------
+				// Auswanderer berücksichtigen				
+				// ----------------------------------------------------------------------
+				/*if (time > _nextEmigrantTime) then
+				{
+					_nextEmigrantTime = time + random (60 * 30);
+					
+					if (_townPopulation / _townMaxPopulation > pixTown_ConfigEmigrantPercent) then
+					{
+						private["_targetTownName"];
+						_targetTownName = [_townCenter] call fnc_TownHome_EmigrantFindDestination;
+						if (_targetTownName != "") then
+						{
+							[_targetTownName, 0,0,0,0] call fnc_TownHome_ImmigrantAdd;
+						};
+					};
+				};	*/			
+
+				// ----------------------------------------------------------------------
+				// Einwanderer berücksichtigen
+				// ----------------------------------------------------------------------
+				/*
+				private["_immigrants"];
+				_immigrants = _townName call fnc_TownHome_ImmigrantsPull;
+				_simulatedCivCount = _simulatedCivCount + (_immigrants select 0);
+				_simulatedRedCount = _simulatedRedCount + (_immigrants select 1);
+				_townWarlordCount = _townWarlordCount  + (_immigrants select 2);
+				_townWeaponCount = _townWeaponCount  + (_immigrants select 3);
+				*/
 
 				// ----------------------------------------------------------------------
 				// Wachstum auf Stadtgrenzen limitieren
