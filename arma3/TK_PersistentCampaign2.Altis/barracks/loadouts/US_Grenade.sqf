@@ -1,13 +1,13 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"",
 	
 	/* Headgear */
 	"H_HelmetB",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"AGM_Vector",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -40,11 +40,11 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[]
 	],
 	
 	/* Uniform */
@@ -53,59 +53,50 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		[],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
-	],
-	
-	/* Vest */
-	[	
-		"V_PlateCarrier3_rgr", 
-		/* Vest-Weapons */
-		[], 
-		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
-		],
-		/* Vest-Items */
-		[
-		"optic_Nightstalker"
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
 		]
 	],
 	
+	/* Vest */
+	[
+		"V_PlateCarrier2_rgr",
+		/* Vest-Weapons */
+		[
+			"SmokeShell","SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellGreen","SmokeShellGreen"
+		], 
+		/* Vest-Magazines */
+		[
+			"30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
+		],
+		/* Vest-Items */
+		[
+		]
+	],	
+	
 	/* Backpack */
 	[
-		"B_Bergen_sgg", 
+		"B_AssaultPack_mcamo", 
 		/* Backpack-Weapons */
-		[], 
+		[
+		], 
 		/* Backpack-Magazines */
-		[	
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_HE_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
-			"3Rnd_Smoke_Grenade_shell",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
+		[
+			"3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell"
 		],
 		/* Backpack-Items */
 		[			
 		]
 	],
+
 	
 	/* Code */
 	""

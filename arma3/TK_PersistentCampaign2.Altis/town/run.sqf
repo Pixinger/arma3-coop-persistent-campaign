@@ -127,7 +127,7 @@ if (isServer) then
 //player globalchat format["_result: %1(Red, Civ, Max)", _result];
 //[_homes] call PC_fnc_TownHome_DebugHomes;
 //[_homes] call PC_fnc_TownHome_DebugHomesInactive;
-	[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater] call PC_fnc_TownHome_StatusUpdate; // Einmal vorab initialisieren
+	[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater, _townMaxPopulation] call PC_fnc_TownHome_StatusUpdate; // Einmal vorab initialisieren
 
 	
 	// -----------------------------------
@@ -379,7 +379,7 @@ if (isServer) then
 				// ----------------------------------------------------------------------
 				// Die Werte für die Öffentlichkeit zwischenspeichern
 				// ----------------------------------------------------------------------
-				[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater] call PC_fnc_TownHome_StatusUpdate;
+				[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater, _townMaxPopulation] call PC_fnc_TownHome_StatusUpdate;
 			
 			
 				// ----------------------------------------------------------------------

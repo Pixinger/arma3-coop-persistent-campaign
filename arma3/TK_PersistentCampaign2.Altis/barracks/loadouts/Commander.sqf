@@ -7,7 +7,7 @@ _result = [
 	"H_Cap_headphones",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"AGM_Vector",
 	
 	/* Nightvision */
 	"NVGoggles",

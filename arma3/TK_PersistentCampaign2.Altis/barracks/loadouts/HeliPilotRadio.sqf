@@ -1,34 +1,34 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
-
+	"G_Sport_BlackWhite",
+	
 	/* Headgear */
-	"H_HelmetB",
-
+	"H_PilotHelmetHeli_B",
+	
 	/* Binoculars */
-	"Laserdesignator",
-
+	"AGM_Vector",
+	
 	/* Nightvision */
 	"NVGoggles",
-
+	
 	/* Linked Items */
 	[
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"ItemGps"
+		"B_UavTerminal"
 	],
-
+	
 	/* Primary Weapon */
 	[
-		"arifle_MXM_F",
+		"SMG_01_Holo_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_45ACP_Mag_SMG_01",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["acc_pointer_IR", "muzzle_snds_acp"]
 	],
-
+	
 	/* Secondary Weapon */
 	[
 		"",
@@ -37,58 +37,57 @@ _result = [
 		/* Secondary Weapon Items */
 		[]
 	],
-
+	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[]
 	],
-
+	
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam",
+		"U_B_CombatUniform_mcam_vest", 
 		/* Uniform-Weapons */
-		[],
+		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell"],
-		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
-	],
-
-	/* Vest */
-	[
-		"V_PlateCarrier3_rgr",
-		/* Vest-Weapons */
 		[],
-		/* Vest-Magazines */
+		/* Uniform-Items */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
-		],
-		/* Vest-Items */
-		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
 		]
 	],
-
+	
+	/* Vest */
+	[	
+		"", 
+		/* Vest-Weapons */
+		[], 
+		/* Vest-Magazines */
+		[			
+		],
+		/* Vest-Items */
+		[]
+	],
+	
 	/* Backpack */
 	[
-		"B_MAV_B_BACKPACK",
+		"tf_rt1523g_rhs", 
 		/* Backpack-Weapons */
-		[],
+		[], 
 		/* Backpack-Magazines */
 		[
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
+			"30Rnd_45ACP_Mag_SMG_01","30Rnd_45ACP_Mag_SMG_01","30Rnd_45ACP_Mag_SMG_01"
 		],
 		/* Backpack-Items */
-		[]
+		[
+		]
 	],
 	
 	/* Code */

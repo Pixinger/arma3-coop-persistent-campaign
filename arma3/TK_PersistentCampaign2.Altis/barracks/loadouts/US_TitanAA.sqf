@@ -1,7 +1,7 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"G_Tactical_Clear",
 	
 	/* Headgear */
 	"H_HelmetB",
@@ -44,7 +44,7 @@ _result = [
 		/* Handgun Weapon Magazine */
 		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		[""]
+		[]
 	],
 	
 	/* Uniform */
@@ -53,40 +53,42 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		[],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
+		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
+		]
 	],
 	
 	/* Vest */
-	[	
-		"V_PlateCarrier3_rgr", 
+	[
+		"V_PlateCarrier1_rgr",
 		/* Vest-Weapons */
-		[], 
+		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellGreen"
+		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
+			"30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
-		[]
-	],
+		[
+		]
+	],	
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_sgg",
+		"B_Kitbag_mcamo",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[
-			"Titan_AA",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
+			"Titan_AA"
 		],
 		/* Backpack-Items */
 		[

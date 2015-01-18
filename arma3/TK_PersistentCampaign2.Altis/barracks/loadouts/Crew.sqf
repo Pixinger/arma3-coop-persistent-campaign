@@ -7,7 +7,7 @@ _result = [
 	"H_HelmetCrew_B",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"AGM_Vector",
 	
 	/* Nightvision */
 	"NVGoggles",

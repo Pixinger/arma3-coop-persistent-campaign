@@ -1,12 +1,12 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"",
 	
 	/* Headgear */
-	"H_HelmetB",
+	"H_HelmetB_Light",
 	
-	/* Binoculars (Binocular,Rangefinder,Laserdesignator)*/
+	/* Binoculars (Binocular,AGM_Vector,AGM_Vector)*/
 	"",
 	
 	/* Nightvision */
@@ -26,7 +26,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Arco","muzzle_snds_H"]
 	],
 	
 	/* Secondary Weapon */
@@ -44,7 +44,7 @@ _result = [
 		/* Handgun Weapon Magazine */
 		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		[""]
+		[]
 	],
 	
 	/* Uniform */
@@ -53,39 +53,43 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade"],
+		[],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit"]
+		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
+		]
 	],
 	
 	/* Vest */
-	[	
-		"V_PlateCarrier3_rgr", 
+	[
+		"V_PlateCarrier1_rgr",
 		/* Vest-Weapons */
-		[], 
+		[
+			"SmokeShell","SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellGreen","SmokeShellGreen"
+		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
+			"30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
-		[]
+		[
+		]
 	],
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_sgg", 
+		"B_Kitbag_mcamo", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"NLAW_F",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
+			"NLAW_F"
 		],
 		/* Backpack-Items */
 		[

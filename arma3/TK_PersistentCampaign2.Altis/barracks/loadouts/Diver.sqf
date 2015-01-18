@@ -7,7 +7,7 @@ _result = [
 	"",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"AGM_Vector",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -40,11 +40,11 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[""]
 	],
 	
 	/* Uniform */

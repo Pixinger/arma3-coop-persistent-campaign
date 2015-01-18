@@ -1,13 +1,13 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"G_Tactical_Clear",
 	
 	/* Headgear */
-	"H_HelmetB",
+	"H_HelmetB_light",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"ItemGps"
+		""
 	],
 	
 	/* Primary Weapon */
@@ -26,25 +26,25 @@ _result = [
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Arco","muzzle_snds_H"]
 	],
 	
 	/* Secondary Weapon */
 	[
-		"",
+		"launch_B_Titan_short_F",
 		/* Secondary weapon Magazine */
-		"",
+		"Titan_AT",
 		/* Secondary Weapon Items */
 		[]
 	],
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[]
 	],
 	
 	/* Uniform */
@@ -53,57 +53,50 @@ _result = [
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		[],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps"]
+		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
+		]
 	],
 	
 	/* Vest */
-	[	
-		"V_PlateCarrier3_rgr", 
+	[
+		"V_PlateCarrier1_rgr",
 		/* Vest-Weapons */
-		[], 
+		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellGreen"
+		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
+			"30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag"
 		],
 		/* Vest-Items */
-		["FirstAidKit","FirstAidKit"]
-	],
+		[
+		]
+	],	
 	
 	/* Backpack */
 	[
-		"B_Bergen_sgg", 
+		"B_Kitbag_mcamo", 
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"SmokeShellPurple",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
+			"Titan_AT"
 		],
 		/* Backpack-Items */
 		[
-			"Medikit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit"
 		]
 	],
 	
 	/* Code */
-	"_unit setVariable ['AGM_IsMedic', true];"
+	""
 ];
 
 _result;

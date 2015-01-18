@@ -1,13 +1,13 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"",//G_Tactical_Clear
 	
 	/* Headgear */
-	"H_HelmetB",
+	"H_HelmetB_light",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"AGM_Vector",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_MX_F",
+		"arifle_MXC_ACO_pointer_snds_F",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_H"]
+		["optic_Arco"]
 	],
 	
 	/* Secondary Weapon */
@@ -40,60 +40,92 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_snds_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[]
 	],
 	
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam", 
+		"U_B_CombatUniform_mcam_tshirt", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		[
+		],
 		/* Uniform-Items */
-		["ItemRadio","ItemGps"]
+		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
+		]
 	],
 	
 	/* Vest */
-	[	
-		"V_PlateCarrier3_rgr", 
+	[
+		"V_Chestrig_rgr", //V_PlateCarrier1_rgr
 		/* Vest-Weapons */
-		[], 
+		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellPurple","SmokeShellPurple",
+			"SmokeShellGreen","SmokeShellGreen"
+		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag"
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"MiniGrenade","MiniGrenade","MiniGrenade","MiniGrenade",
+			"30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
-		["FirstAidKit","FirstAidKit"]
+		[
+		]
 	],
 	
 	/* Backpack */
 	[
-		"tf_rt1523g", 
+		"tf_rt1523g_big", //tf_rt1523g_rhs
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[	
-			"SmokeShellPurple",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
 		],
 		/* Backpack-Items */
 		[
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit",
-			"FirstAidKit"
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Bandage",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Morphine",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Epipen",
+			"AGM_Bloodbag",
+			"AGM_Bloodbag",
+			"AGM_Bloodbag",
+			"AGM_Bloodbag",
+			"AGM_Bloodbag",
+			"AGM_Bloodbag"
 		]
 	],
 	

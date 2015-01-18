@@ -17,7 +17,7 @@ _requestingPlayer = _this select 1;
 private["_varname"];
 _varname = format["T1_%1", _townName];
 private["_status"];
-_status = missionNamespace getVariable [_varname, ["unknown", 0,0,0,0,0,0]];
+_status = missionNamespace getVariable [_varname, ["unknown", 0,0,0,0,0,0,0]];
 //diag_log format["fn_TpwnHome_StatusRequest: _varname: %1 / _status: %2", _varname, _status];
 
 // Param

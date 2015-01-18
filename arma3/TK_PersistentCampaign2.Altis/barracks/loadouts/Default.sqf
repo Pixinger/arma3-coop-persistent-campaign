@@ -16,8 +16,7 @@ _result = [
 	[
 		"ItemMap",
 		"ItemWatch",
-		"ItemCompass",
-		"B_UavTerminal"
+		"ItemCompass"
 	],
 	
 	/* Primary Weapon */
@@ -49,18 +48,18 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_B_CTRG_1", 
+		"U_B_CombatUniform_mcam_tshirt", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
 		[],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
+		["ItemRadio"]
 	],
 	
 	/* Vest */
 	[	
-		"V_PlateCarrierH_CTRG", 
+		"V_Chestrig_rgr", 
 		/* Vest-Weapons */
 		[], 
 		/* Vest-Magazines */

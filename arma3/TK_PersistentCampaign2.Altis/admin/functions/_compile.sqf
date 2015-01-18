@@ -8,3 +8,5 @@ fnc_Admin_VehicleRemoveScript = compile preprocessFileLineNumbers "admin\functio
 fnc_Admin_VehicleAddScript = compile preprocessFileLineNumbers "admin\functions\fn_VehicleAddScript.sqf";
 fnc_Admin_VehiclesSaveScript = compile preprocessFileLineNumbers "admin\functions\fn_VehiclesSaveScript.sqf";
 fnc_Admin_TownsSaveScript = compile preprocessFileLineNumbers "admin\functions\fn_TownsSaveScript.sqf";
+fnc_Admin_TownStatusScript = compile preprocessFileLineNumbers "admin\functions\fn_TownStatusScript.sqf";
+fnc_Admin_TownStatusScript2 = compile preprocessFileLineNumbers "admin\functions\fn_TownStatusScript2.sqf";

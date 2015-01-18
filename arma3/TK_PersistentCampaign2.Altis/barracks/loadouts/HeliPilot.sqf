@@ -7,7 +7,7 @@ _result = [
 	"H_PilotHelmetHeli_B",
 	
 	/* Binoculars */
-	"Laserdesignator",
+	"AGM_Vector",
 	
 	/* Nightvision */
 	"NVGoggles",
@@ -40,22 +40,28 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_MRD_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["muzzle_snds_acp"]
+		[]
 	],
 	
 	/* Uniform */
 	[
-		"U_B_HeliPilotCoveralls", 
+		"U_B_CombatUniform_mcam_vest", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","HandGrenade","30Rnd_45ACP_Mag_SMG_01","30Rnd_45ACP_Mag_SMG_01"],
+		[],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","acc_pointer_IR"]
+		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
+		]
 	],
 	
 	/* Vest */

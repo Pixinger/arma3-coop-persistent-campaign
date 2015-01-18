@@ -1,13 +1,13 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Sport_Greenblack",
+	"G_Tactical_Clear",
 
 	/* Headgear */
 	"H_HelmetB",
 
 	/* Binoculars */
-	"Rangefinder",
+	"AGM_Vector",
 
 	/* Nightvision */
 	"NVGoggles",
@@ -44,7 +44,7 @@ _result = [
 		/* Handgun Weapon Magazine */
 		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		[""]
+		[]
 	],
 
 	/* Uniform */
