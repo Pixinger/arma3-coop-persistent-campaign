@@ -7,6 +7,7 @@ Parameter:
 
 Return: 
 	Die Anzahl der Einheiten die "ausgezigen" sind, weil gestorben oder gefangen
+	[_countRemoved, _weaponsReturned]	
 	
 */
 
@@ -19,6 +20,8 @@ _townName = _this select 1;
 
 private["_countRemoved"];
 _countRemoved = 0;
+private["_weaponsReturned"];
+_weaponsReturned = 0;
 
 private["_room"];
 private["_unit"];
@@ -42,10 +45,11 @@ while { (_index < count _unitsActive) } do
 			//_status == 1: FSM-Finished
 			if (_status == 1) then
 			{
+				if (primaryWeapon _unit != "") then { _weaponsReturned = _weaponsReturned + 1; };
 				deleteGroup (_room select 1); 	// Die Gruppe löschen
 				(_room select 2) resize 2; 	// Dem ROOM "deaktivieren".
 				_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
-				deleteVehicle _unit;			// Einheit löschen
+				deleteVehicle _unit;			// Einheit löschen				
 				//_countRemoved = _countRemoved + 1; nicht erhöhen, da je nur deaktiviert!
 			}
 			else
@@ -100,4 +104,4 @@ diag_log "fn_TownHome_Units_DeactivateFinished.sqf: RED getötet";
 	};
 };
 
-_countRemoved;
+[_countRemoved, _weaponsReturned];

@@ -14,9 +14,6 @@ class PC
 		class GetMaxBuildingsPositions {description = "";};
 		class RandomElement {description = "";};
 		class NearestResidentialLocation {description = "";};
-		class testinit {description = "";preInit = 1;postInit = 1;};
-		class SetAsLeader {description = "";};
-		class testA {description = "";};
 	};
 	class Town
 	{
@@ -38,7 +35,6 @@ class PC
 		class TownHome_StatusResponse {description = "";};
 		class TownHome_StatusUpdate {description = "";};
 
-		class TownHome_Units_Activate {description = "";};
 		class TownHome_Units_DeactivateAll {description = "";};
 		class TownHome_Units_DeactivateFinished {description = "";};
 		class TownHome_Units_ValidateFSM {description = "";};
@@ -55,18 +51,7 @@ class PC
 		class TownParam_BluKillPull {description = "";};
 		class TownParam_SearchBuildingAdd {description = "";};
 		class TownParam_SearchBuildingPull {description = "";};
-		class TownParam_SearchBuildingInit {description = "";};
-		
-		class TownParam_SetTotalCivilians {description = "";};
-		class TownParam_GetTotalCivilians {description = "";};
-		class TownParam_SetTotalEnemies {description = "";};
-		class TownParam_GetTotalEnemies {description = "";};
-		class TownParam_SetElectricity {description = "";};
-		class TownParam_GetElectricity {description = "";};
-		class TownParam_SetPreacher {description = "";};
-		class TownParam_GetPreacher {description = "";};
-		class TownParam_SetWeapons {description = "";};
-		class TownParam_GetWeapons {description = "";};
+		class TownParam_SearchBuildingInit {description = "";};	
 	};
 	class Vehicle
 	{

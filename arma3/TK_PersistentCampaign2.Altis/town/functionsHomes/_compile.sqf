@@ -1,0 +1,1 @@
+//fnc_TownHomes_CleanupWeapons = compile preprocessFileLineNumbers "town\functionsHomes\fn_CleanupWeapons.sqf";

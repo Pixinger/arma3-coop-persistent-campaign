@@ -1,5 +1,6 @@
 call compile preprocessFileLineNumbers "town\config.sqf";
 call compile preprocessFileLineNumbers "town\functions\_compile.sqf";
+call compile preprocessFileLineNumbers "town\functionsHomes\_compile.sqf";
 
 if (isServer) then
 {

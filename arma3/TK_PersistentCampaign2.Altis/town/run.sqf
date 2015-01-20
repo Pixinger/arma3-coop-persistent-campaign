@@ -169,6 +169,8 @@ if (isServer) then
 	if (pixDebug) then { _townSimulationSaveCounter = -1; };
 	private["_townOnlineOfflineCounter"];
 	_townOnlineOfflineCounter = 0;
+	private["_townIsVirtual"];
+	_townIsVirtual = true;
 	
 	// Erst nach dem Briefing beginnen, alle Städte zu einer etwas anderen Zeit
 	Sleep (0.1 + (random pixTown_ConfigMainLoopSleep));
@@ -411,11 +413,13 @@ if (isServer) then
 		// Online/Offline: Einheiten laufen auf der Karte herum
 		// -----------------------------------------------------------------------------------
 		_townOnlineOfflineCounter = _townOnlineOfflineCounter - 1;
+		
 		if (_townOnlineOfflineCounter < 0) then
 		{
 			_townOnlineOfflineCounter = 6;		//TODO: Radiuus abhängig von der Anzahl der Feineinheiten machen
-			if ([_townCenter, 1000 + _townRedCount] call PC_fnc_IsAnyPlayerNearTown) then
+			if ([_townCenter, 1000] call PC_fnc_IsAnyPlayerNearTown) then
 			{
+				_townIsVirtual = false;
 			
 				// _civSOLL und _redSOLL berechnen
 				private["_tmpCivCount"];
@@ -436,7 +440,7 @@ if (isServer) then
 				_civSOLL = ceil((_tmpTotalSOLL / (_tmpCivCount + _tmpRedCount)) * _tmpCivCount);
 				_redSOLL = _tmpTotalSOLL - _civSOLL;
 //diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
-player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
+//player globalChat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 
 //_civSOLL = 2;
 //_redSOLL = 1;
@@ -444,13 +448,18 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 				// -----------------------------------
 				// "Fertige" CIV/RED Einheiten DEAKTIVIEREN
 				// -----------------------------------
-				private["_countRemoved"];
-				_countRemoved = [_redActives, _townName] call PC_fnc_TownHome_Units_DeactivateFinished;
-				_townRedCount = _townRedCount - _countRemoved;
+				private["_deactivationResult"];
+				_deactivationResult = [_redActives, _townName] call PC_fnc_TownHome_Units_DeactivateFinished;
+				_townRedCount = _townRedCount - (_deactivationResult select 0);
+				_townWeaponCount = _townWeaponCount + (_deactivationResult select 1);
 				_redActivesCount = count _redActives; // Wichtig!
 
-				_countRemoved = [_civActives, _townName] call PC_fnc_TownHome_Units_DeactivateFinished;
-				_townCivCount = _townCivCount - _countRemoved;
+				private["_deactivationResult"];
+				_deactivationResult = [_civActives, _townName] call PC_fnc_TownHome_Units_DeactivateFinished;
+				_townCivCount = _townCivCount - (_deactivationResult select 0);
+				_civActivesCount = count _civActives; // Wichtig!
+
+				_redActivesCount = count _redActives; // Wichtig!
 				_civActivesCount = count _civActives; // Wichtig!
 
 				// -----------------------------------
@@ -501,6 +510,18 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 										_unit setVariable ["TI", 1, true];
 										removeAllWeapons _unit;								
 									};
+								}
+								else
+								{
+									if (((random _townRedCount) + 1) > _townWeaponCount) then
+									{
+										_unit setBehaviour "CARELESS";
+										removeAllWeapons _unit;								
+									}
+									else
+									{
+										_townWeaponCount = _townWeaponCount - 1;
+									};
 								};
 								//_unit setBehaviour "CARELESS";
 								//_unit setSpeedmode "FULL";
@@ -509,7 +530,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 								_unit setVariable ["townRadius", _townRadius];
 								_unit setVariable ["townHome", _unitPosition];
 								_unit setVariable ["TS", 0];
-//removeAllWeapons _unit;								
+								//removeAllWeapons _unit;								
 								_unit doFSM ["town\fsm\red2.fsm", _unitPosition, _unit];							
 								_room pushBack _unit;
 								_redActives pushBack [_unit, _unitGroup, _room];
@@ -596,25 +617,33 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 			else
 			{
 //diag_log "town virtual. no player close engough.";
-				// Alle Einheiten DEAKTIVIEREN
-				if (_redActivesCount > 0) then
+//player globalChat format["town virtual. no player close engough: %1 / %2", _redActivesCount, _civActivesCount];
+				
+				if (!_townIsVirtual) then
 				{
-					private["_countRemoved"];
-					_countRemoved = [_redActives, _townObject] call PC_fnc_TownHome_Units_DeactivateAll;
-					_redSOLL = 0;
-					_redActives = [];
-					_redActivesCount = 0;
-					_townRedCount = _townRedCount - _countRemoved;
-				};
-				if (_civActivesCount > 0) then
-				{
-					private["_countRemoved"];
-					_countRemoved = [_civActives, _townObject] call PC_fnc_TownHome_Units_DeactivateAll;
-					_civSOLL = 0;
-					_civActives = [];
-					_civActivesCount = 0;
-					_townCivCount = _townCivCount - _countRemoved;
-				};
+					_townIsVirtual = true;
+					// Alle Einheiten DEAKTIVIEREN
+					if (_redActivesCount > 0) then
+					{
+						private["_deactivationResult"];
+						_deactivationResult = [_redActives, _townObject] call PC_fnc_TownHome_Units_DeactivateAll;
+						_redSOLL = 0;
+						_redActives = [];
+						_redActivesCount = 0;
+						_townRedCount = _townRedCount - (_deactivationResult select 0);
+						_townWeaponCount = _townWeaponCount + (_deactivationResult select 1);						
+//player globalChat format["deactivated %1 with %2 weapons", (_deactivationResult select 0),(_deactivationResult select 1)];
+					};
+					if (_civActivesCount > 0) then
+					{
+						private["_deactivationResult"];
+						_deactivationResult = [_civActives, _townObject] call PC_fnc_TownHome_Units_DeactivateAll;
+						_civSOLL = 0;
+						_civActives = [];
+						_civActivesCount = 0;
+						_townCivCount = _townCivCount - (_deactivationResult select 0);
+					};					
+				};				
 			};
 		};
 		
@@ -662,7 +691,7 @@ player sidechat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townN
 							_x reveal [_target, 1];
 							_x doTarget _target;
 							_x doMove (getPos _target);
-//player sidechat "RED Unterstützung unterwegs";
+//player globalChat "RED Unterstützung unterwegs";
 						}; 
 					} foreach _redFor;
 				};

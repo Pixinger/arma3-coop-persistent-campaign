@@ -6,8 +6,8 @@ Parameter:
 	_townObject: Das Stadtobjekt.
 
 Return: 
-	Die Anzahl der Einheiten die "ausgezigen" sind, weil gestorben oder gefangen
-	
+	Die Anzahl der Einheiten die "ausgezigen" sind, weil gestorben oder gefangen 
+	[_countRemoved, _weaponsReturned]	
 */
 
 private["_unitsActive"];
@@ -24,6 +24,8 @@ _townName = _townObject getVariable "townName";
 
 private["_countRemoved"];
 _countRemoved = 0;
+private["_weaponsReturned"];
+_weaponsReturned = 0;
 
 private["_room"];
 private["_unit"];
@@ -44,6 +46,7 @@ private["_status"];
 		}
 		else // 0,1==Aktiv,FSM-Finished
 		{
+			if (primaryWeapon _unit != "") then { _weaponsReturned = _weaponsReturned + 1; };
 			(_room select 2) resize 2; 	// Dem ROOM "deaktivieren".
 		};
 		deleteVehicle _unit;			// Einheit löschen
@@ -73,6 +76,7 @@ diag_log "fn_TownHome_Units_DeactivateAll.sqf: RED getötet";
 	
 } foreach _unitsActive;
 
+//
 // Abschließende Suche nach undurchsuchten/unbegrabenen Einheiten
 private["_list"];
 _list = _townCenter nearObjects ["SoldierGB", _townRadius];
@@ -81,6 +85,7 @@ _penalty = 0;
 { 
 	if (!alive _x) then
 	{
+		_weaponsReturned = _weaponsReturned + 1;
 		deleteVehicle _x;
 		_penalty = _penalty + 1;
 	};
@@ -105,6 +110,14 @@ if (_penalty > 0) then
 	diag_log format["%2,: Found %1 unsearched CIV", _penalty, _townName];
 };
 
+//
+// Und nocheinmal nach rumliegenden Waffen suchen
+_list = nearestObjects [_townCenter, ["GroundWeaponHolder","WeaponHolder"], _townRadius];
+{
+	_weaponsReturned = _weaponsReturned + 1;
+	deleteVehicle _x;
+} foreach _list;
+
 // Fertig
 _unitsActive = [];
-_countRemoved;
+[_countRemoved, _weaponsReturned];

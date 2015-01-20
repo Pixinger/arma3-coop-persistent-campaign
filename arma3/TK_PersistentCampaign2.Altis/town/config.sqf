@@ -21,30 +21,30 @@ pixTown_ConfigRedGrowRateMoodLimit = 0.01;		// GrowRatePPH (siehe oben) wird nur
 pixTown_ConfigRedGrowPerBluKill = 0;            // Zuwachs pro Blu-Kill-
 pixTown_ConfigRedGrowFactorPerWarlord = 0.5;     // Zuwachsfaktor für jeden Warlord, berechnet: _factor = 1 + (pixTown_ConfigRedGrowFactorPerWarlord * warlordCount) 
 
-pixTown_ConfigCivGrowRatePPH = 0.2;            // Maximaler Zuwachs in PPH. (wird von den GrowFactoren beeinflust. Sind alle optimal (=1), dann wird das hier angegebene Wachstum erreicht.
+pixTown_ConfigCivGrowRatePPH = 0.5;            // Maximaler Zuwachs in PPH. (wird von den GrowFactoren beeinflust. Sind alle optimal (=1), dann wird das hier angegebene Wachstum erreicht.
 pixTown_ConfigCivGrowFactorWater = 0.5;			// Anteil der Wasserversorgung am Gesamtwachstum
 pixTown_ConfigCivGrowFactorFood = 0.5;			// Anteil der Nahrungsversorgung am Gesamtwachstum
 pixTown_ConfigCivGrowFactorMinimum = 0.0;		// Anteil des minimalen Wachstums (also immer vorliegend).
 // (Water + Food + Minimum) muss 1 ergeben. Andernfalls werden die Parameter automatisch korrigiert.
 
-pixTown_ConfigFoodConsumptionPPH = 0.02;     	// Nahrungsverbrauch in PPH.
-pixTown_ConfigWaterConsumptionPPH = 0.02;       // Wasserverbrauch in PPH.
+pixTown_ConfigFoodConsumptionPPH = 0.01;     	// Nahrungsverbrauch in PPH.
+pixTown_ConfigWaterConsumptionPPH = 0.01;       // Wasserverbrauch in PPH.
 
 // Conversion Factors
 pixTown_ConfigMaxCiv2RedConversionPPH = 0.05;     // Maximale Konvertierungen von Civ zu Red in PPH
 pixTown_ConfigMaxRed2CivConversionPPH = 0.05;     // Maximale Konvertierungen von Red zu Civ in PPH
 
 // Angaben wie die Stimmung bei bestimmten Events beinflusst wird.
-pixTown_ConfigMoodPerCivWater = 0.1;
-pixTown_ConfigMoodPerCivFood = 0.1;
-pixTown_ConfigMoodPerCivInjured = 0.1;
+pixTown_ConfigMoodPerCivWater = 0.05;
+pixTown_ConfigMoodPerCivFood = 0.05;
+pixTown_ConfigMoodPerCivInjured = 0.05;
 pixTown_ConfigMoodPerCivKill = -0.2;
 pixTown_ConfigMoodPerCivUnsearched = -0.2;
-pixTown_ConfigMoodPerRedKill = 0.1;
+pixTown_ConfigMoodPerRedKill = 0.01;
 pixTown_ConfigMoodPerRedUnsearched = -0.2;
-pixTown_ConfigMoodPerRedArrest = 0.2;
+pixTown_ConfigMoodPerRedArrest = 0.05;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
-pixTown_ConfigMoodPerHouseSearchRed = 0.1;
+pixTown_ConfigMoodPerHouseSearchRed = 0.05;
 
 //pixTown_ConfigImmigrantPercent = 80;
 pixTown_ConfigEmigrantPercent = 80 / 100;
