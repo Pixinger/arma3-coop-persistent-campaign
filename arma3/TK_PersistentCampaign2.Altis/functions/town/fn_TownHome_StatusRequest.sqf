@@ -1,10 +1,4 @@
 /*
-Diese Funktion durchsucht ein bestimmtes Haus in einem Home-Array.
- 
-Parameter:
-	_house: Das zu durchuschende Haus
-
-Return: 
 */
 
 private["_townName"];
@@ -13,7 +7,7 @@ private["_requestingPlayer"];
 _requestingPlayer = _this select 1;
 
 
-// [name, civ, red, injured, mood, food, water]
+// [name, civ, red, injured, mood, food, water, maxpeople]
 private["_varname"];
 _varname = format["T1_%1", _townName];
 private["_status"];

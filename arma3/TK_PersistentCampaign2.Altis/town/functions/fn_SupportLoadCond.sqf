@@ -8,10 +8,10 @@ if (_vehicle isKindOf pixTown_ConfigSaniClassname) then
 {
 	if ((_vehicle distance player) < 10) then 
 	{
-		//if ((count nearestObjects[(getPos _vehicle), pixTown_ConfigReSupplyClassnames, 100]) > 0) then
-		//{
+		if ((count nearestObjects[(getPos _vehicle), pixTown_ConfigReSupplyClassnames, 100]) > 0) then
+		{
 			_result = true;
-		//};	
+		};	
 	};
 };
 
