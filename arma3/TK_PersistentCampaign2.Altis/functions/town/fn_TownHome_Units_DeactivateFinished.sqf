@@ -46,7 +46,7 @@ while { (_index < count _unitsActive) } do
 			if (_status == 1) then
 			{
 				if (primaryWeapon _unit != "") then { _weaponsReturned = _weaponsReturned + 1; };
-				deleteGroup (_room select 1); 	// Die Gruppe löschen
+				//deleteGroup (_room select 1); 	// Die Gruppe löschen
 				(_room select 2) resize 2; 	// Dem ROOM "deaktivieren".
 				_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
 				deleteVehicle _unit;			// Einheit löschen				
@@ -82,20 +82,20 @@ while { (_index < count _unitsActive) } do
 		// Die Einheit selbst wird aber nicht mit "deleteVehicle" gelöscht! Das passiert durch den Spieler mit der
 		// "durchsuchen" Taste, oder aber durch "fn_TownHome_Units_DeactivateAll.sqf". Das gibt dann aber Strafpunkte 
 		// für jede gefundene tote Einheit die nicht "durchsucht/begraben" wurde.
-		deleteGroup (_room select 1); 	// Die Gruppe löschen
+		//deleteGroup (_room select 1); 	// Die Gruppe löschen
 		(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
 		_unitsActive deleteAt _index; 	// Aus der "_unitsActive" Liste nehmen.
 		_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 		
 		// Mood Änderungen durchführen
-		if (_unit isKindOf "Civilian_F") then
+		if (_unit isKindOf pixTown_ConfigBaseClassCiv) then
 		{
 diag_log "fn_TownHome_Units_DeactivateFinished.sqf: CIV getötet";
 			[_townName, pixTown_ConfigMoodPerCivKill] call PC_fnc_TownParam_MoodAdd;
 		}
 		else
 		{
-			if (_unit isKindOf "SoldierGB") then
+			if (_unit isKindOf pixTown_ConfigBaseClassRed) then
 			{
 diag_log "fn_TownHome_Units_DeactivateFinished.sqf: RED getötet";
 				[_townName, pixTown_ConfigMoodPerRedKill] call PC_fnc_TownParam_MoodAdd;

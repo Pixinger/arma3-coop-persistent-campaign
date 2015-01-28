@@ -411,7 +411,7 @@ class FSM
     class BLU_nah_
     {
       name = "BLU_nah_";
-      init = /*%FSM<STATEINIT""">*/"_decision = _leader nearEntities [""SoldierWB"", 30];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_decision = _leader nearEntities ["pixTown_ConfigBaseClassBlu", 30];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

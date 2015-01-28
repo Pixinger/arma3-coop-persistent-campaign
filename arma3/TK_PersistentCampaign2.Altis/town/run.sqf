@@ -161,6 +161,11 @@ if (isServer) then
 	_townPopulation = 0;
 	private["_nextEmigrantTime"];
 	_nextEmigrantTime = time + random (60 * 30);
+
+	private["_townGroupCiv"];
+	_townGroupCiv = createGroup pixTown_ConfigSideCiv;
+	private["_townGroupRed"];
+	_townGroupRed = createGroup pixTown_ConfigSideRed;
 	
 	private["_townSimulationCounter"];
 	_townSimulationCounter = 0;
@@ -490,7 +495,8 @@ if (isServer) then
 						if (count _unitPosition > 0) then
 						{
 							private ["_unitGroup"];
-							_unitGroup = createGroup east;//independent;
+							//_unitGroup = createGroup east;//independent;
+							_unitGroup = _townGroupRed;
 							
 							private["_unit"];
 							_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
@@ -524,7 +530,7 @@ if (isServer) then
 									};
 								};
 								//_unit setBehaviour "CARELESS";
-								//_unit setSpeedmode "FULL";
+								if (random 1 < 0.5) then { _unit setSpeedmode "FULL"; } else { _unit setSpeedmode "LIMITED"; };
 								_unit setVariable ["townName", _townName];
 								_unit setVariable ["townCenter", _townCenter];
 								_unit setVariable ["townRadius", _townRadius];
@@ -569,7 +575,8 @@ if (isServer) then
 						if (count _unitPosition > 0) then
 						{
 							private ["_unitGroup"];
-							_unitGroup = createGroup civilian;
+							//_unitGroup = createGroup civilian;
+							_unitGroup = _townGroupCiv;
 							
 							private["_unit"];
 							_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
@@ -590,7 +597,7 @@ if (isServer) then
 									};
 								};
 								_unit setBehaviour "CARELESS";
-								_unit setSpeedmode "FULL";
+								if (random 1 < 0.5) then { _unit setSpeedmode "FULL"; } else { _unit setSpeedmode "LIMITED"; };
 								_unit setVariable ["townName", _townName];
 								_unit setVariable ["townCenter", _townCenter];
 								_unit setVariable ["townRadius", _townRadius];
@@ -674,12 +681,12 @@ if (isServer) then
 
 				// RedForce Kräfte in der Nähe der Durchsuchung alarmieren.
 				private["_bluFor"];
-				_bluFor = (_house select 0) nearEntities ["SoldierWB", 50];
+				_bluFor = (_house select 0) nearEntities [pixTown_ConfigBaseClassBlu, 50];
 //diag_log format["_bluFor: %1", _bluFor];
 				if (count _bluFor > 0) then
 				{				
 					private["_redFor"];
-					_redFor = (_house select 0) nearEntities ["SoldierGB", 20 + (random 130)];
+					_redFor = (_house select 0) nearEntities [pixTown_ConfigBaseClassRed, 20 + (random 130)];
 //diag_log format["_redFor: %1", _redFor];
 					{ 
 						if (random 1 < 0.5) then 
@@ -712,7 +719,8 @@ if (isServer) then
 						{
 //diag_log "create RED";
 							private ["_unitGroup"];
-							_unitGroup = createGroup east;//independent;
+							//_unitGroup = createGroup east;//independent;
+							_unitGroup = _townGroupRed;
 							
 							private["_unit"];
 							_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
@@ -748,7 +756,8 @@ if (isServer) then
 						{
 //diag_log "create CIV";
 							private ["_unitGroup"];
-							_unitGroup = createGroup civilian;							
+							//_unitGroup = createGroup civilian;							
+							_unitGroup = _townGroupCiv;
 							private["_unit"];
 							_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];
 							waitUntil {!isNil "_unit"};

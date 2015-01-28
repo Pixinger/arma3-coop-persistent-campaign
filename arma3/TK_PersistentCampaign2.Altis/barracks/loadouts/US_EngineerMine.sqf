@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Tactical_Clear",
+	"",//G_Tactical_Clear
 	
 	/* Headgear */
-	"H_HelmetB",
+	"H_HelmetB_light",
 	
 	/* Binoculars */
 	"AGM_Vector",
@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"srifle_EBR_ARCO_pointer_F", //TODO
+		"arifle_MXC_ACO_pointer_snds_F",
 		/* Primary weapon Magazine */
-		"20Rnd_762x51_Mag",
+		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
-		["optic_Arco","acc_pointer_IR","muzzle_snds_B"]
+		["optic_Arco"]
 	],
 	
 	/* Secondary Weapon */
@@ -40,54 +40,62 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_P07_F",
+		"hgun_P07_snds_F",
 		/* Handgun Weapon Magazine */
 		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		[""]
+		[]
 	],
 	
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam", 
+		"U_B_CombatUniform_mcam_tshirt", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
-		["SmokeShell","SmokeShell","HandGrenade","HandGrenade"],
+		[
+		],
 		/* Uniform-Items */
-		["ItemRadio","FirstAidKit","FirstAidKit"]
+		[
+			"ItemRadio",
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine",			
+			"AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie","AGM_CableTie"			
+		]
 	],
 	
 	/* Vest */
-	[	
-		"V_PlateCarrier3_rgr", 
+	[
+		"V_Chestrig_rgr", //V_PlateCarrier1_rgr
 		/* Vest-Weapons */
-		[], 
+		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellPurple","SmokeShellPurple",
+			"SmokeShellGreen","SmokeShellGreen"
+		], 
 		/* Vest-Magazines */
 		[
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag",
-			"20Rnd_762x51_Mag"
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"MiniGrenade","MiniGrenade","MiniGrenade","MiniGrenade",
+			"30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag","30Rnd_65x39_caseless_mag",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
-		[]
+		[
+		]
 	],
 	
 	/* Backpack */
 	[
-		"B_Bergen_sgg", 
+		"B_Bergen_sgg", //tf_rt1523g_rhs
 		/* Backpack-Weapons */
-		[], 
+		[
+		], 
 		/* Backpack-Magazines */
-		[	
+		[
 			"SatchelCharge_Remote_Mag",
-			"DemoCharge_Remote_Mag",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie",
-			"AGM_CableTie"
+			"DemoCharge_Remote_Mag"
 		],
 		/* Backpack-Items */
 		[

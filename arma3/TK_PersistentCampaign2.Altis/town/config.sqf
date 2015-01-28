@@ -77,7 +77,15 @@ pixTown_ConfigHomeClassnames = [
 	"Land_i_house_small_02_v1_f",
 	"Land_i_house_small_02_v2_f",
 	"Land_i_house_small_02_v3_f"];
-	
+
+// Basisnamen	
+pixTown_ConfigBaseClassCiv = "Civilian_F";
+pixTown_ConfigBaseClassRed = "SoldierGB";
+pixTown_ConfigBaseClassBlu = "SoldierWB";
+pixTown_ConfigSideCiv = civilian;
+pixTown_ConfigSideRed = east;
+pixTown_ConfigSideBlu = west;
+
 // Klassennamen der zivilien Einheiten
 pixTown_ConfigCivClassnames = [
 	"C_man_1_1_F",
@@ -122,29 +130,30 @@ pixTown_ConfigCivClassnames = [
 	"C_Orestes",
 	"C_Nikos",
 	"C_Nikos_aged"];
-	
+
+//pixTown_ConfigCivClassnames = ["C_man_1_1_F"];
 // Klassennamen der feindlichen Einheiten
 pixTown_ConfigRedClassnames = [
-	"I_G_Soldier_F",
-	"I_G_Soldier_lite_F",
-	"I_G_Soldier_SL_F",
-	"I_G_Soldier_TL_F",
-	"I_G_Soldier_AR_F",
-	"I_G_medic_F",
-	"I_G_engineer_F",
-	"I_G_Soldier_exp_F",
-	"I_G_Soldier_GL_F",
-	"I_G_Soldier_M_F",
-	"I_G_Soldier_LAT_F",
-	"I_G_Soldier_A_F"];
-	//"I_G_officer_F"
-	//"i_g_soldier_unarmed_f",
-	//"i_g_survivor_F"];
+	"PC2_O_G_engineer_F",
+	"PC2_O_G_medic_F",
+	"PC2_O_G_Soldier_A_F",
+	"PC2_O_G_Soldier_AR_F",
+	"PC2_O_G_Soldier_exp_F",
+	"PC2_O_G_Soldier_F",
+	"PC2_O_G_Soldier_GL_F",
+	"PC2_O_G_Soldier_LAT_F",
+	"PC2_O_G_Soldier_AT_F",
+	"PC2_O_G_Soldier_AA_F",
+	"PC2_O_G_Soldier_lite_F",
+	"PC2_O_G_Soldier_M_F",
+	"PC2_O_G_Soldier_SL_F",
+	"PC2_O_G_Soldier_TL_F"
+];
 
 // Klassennamen der Warlords	
 pixTown_ConfigWarlordClassnames = [
-	"I_officer_F",
-	"I_Story_Colonel_F"];
+	"PC2_O_G_officer_F",
+	"PC2_O_G_Story_Colonel_F"];
 
 
 

@@ -1,6 +1,6 @@
 private["_unit"];
 _unit = cursorTarget;
-if ((_unit isKindOf "SoldierGB") && (_unit distance player < 5) && (alive _unit)) then
+if ((_unit isKindOf pixTown_ConfigBaseClassRed) && (_unit distance player < 5) && (alive _unit)) then
 {
 	removeAllWeapons _unit;
 	//player action ["Surrender", _unit];

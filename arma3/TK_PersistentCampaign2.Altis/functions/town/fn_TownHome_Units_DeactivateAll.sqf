@@ -50,7 +50,8 @@ private["_status"];
 			(_room select 2) resize 2; 	// Dem ROOM "deaktivieren".
 		};
 		deleteVehicle _unit;			// Einheit löschen
-		deleteGroup (_room select 1); 	// Die Gruppe löschen
+		//deleteGroup (_room select 1); 	// Die Gruppe löschen
+		
 	}
 	else
 	{
@@ -58,20 +59,21 @@ private["_status"];
 		_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 
 		// Mood Änderungen durchführen
-		if (_unit isKindOf "Civilian_F") then
+		if (_unit isKindOf pixTown_ConfigBaseClassCiv) then
 		{
 diag_log "fn_TownHome_Units_DeactivateAll.sqf: CIV getötet";
 			[_townName, pixTown_ConfigMoodPerCivKill] call PC_fnc_TownParam_MoodAdd;
 		}
 		else
 		{
-			if (_unit isKindOf "SoldierGB") then
+			if (_unit isKindOf pixTown_ConfigBaseClassRed) then
 			{
 diag_log "fn_TownHome_Units_DeactivateAll.sqf: RED getötet";
 				[_townName, pixTown_ConfigMoodPerRedKill] call PC_fnc_TownParam_MoodAdd;
 			};
 		};
-		deleteGroup (_room select 1); 	// Die Gruppe löschen
+		
+		//deleteGroup (_room select 1); 	// Die Gruppe löschen
 	};
 	
 } foreach _unitsActive;
@@ -79,7 +81,7 @@ diag_log "fn_TownHome_Units_DeactivateAll.sqf: RED getötet";
 //
 // Abschließende Suche nach undurchsuchten/unbegrabenen Einheiten
 private["_list"];
-_list = _townCenter nearObjects ["SoldierGB", _townRadius];
+_list = _townCenter nearObjects [pixTown_ConfigBaseClassRed, _townRadius];
 private["_penalty"];
 _penalty = 0;
 { 
@@ -95,7 +97,7 @@ if (_penalty > 0) then
 	[_townName, pixTown_ConfigMoodPerRedUnsearched * _penalty] call PC_fnc_TownParam_MoodAdd;
 	diag_log format["%2,: Found %1 unsearched RED", _penalty, _townName];
 };
-_list = _townCenter nearObjects ["Civilian_F", _townRadius];
+_list = _townCenter nearObjects [pixTown_ConfigBaseClassCiv, _townRadius];
 _penalty = 0;
 { 
 	if (!alive _x) then
