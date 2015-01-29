@@ -16,14 +16,25 @@ if (isServer) then
 		private["_distance"];
 		_distance = _this select 2;
 		
-		for "_i" from 1 to _count do
+		Sleep (random 5);
+		
+		private["_i"];
+		_i = 0;
+		while { _i < _count } do 
 		{
+			private["_spawnpos"];
+			_spawnpos = (getPos _rootObject) findEmptyPosition [0,100,(typeof _rootObject)];
+			/* Fahrzeug erstellen */
 			private["_object"];
-			_object = [typeof _rootObject, getPos _rootObject] call PC_fnc_CreateCorrectedVehicle;
-			//_object setPos (getPos _rootObject);
+			_object = (typeof _rootObject) createVehicle _spawnpos;
+			_object allowDamage false;
+			waitUntil {!isNil "_object"};		
 			Sleep .2;
 			_object setDir (getDir _rootObject);
-			_object setPos [((getPos _rootObject) select 0), ((getPos _rootObject) select 1), ((getPos _rootObject) select 2) + (_i * _distance)];
+			_object setPos [((getPos _rootObject) select 0), ((getPos _rootObject) select 1), 2];
+			Sleep (random 5);
+			_object allowDamage true;
+			_i = _i + 1;
 		};
 	};
 };
