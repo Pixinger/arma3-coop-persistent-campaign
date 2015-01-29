@@ -14,6 +14,7 @@ class PC
 		class GetMaxBuildingsPositions {description = "";};
 		class RandomElement {description = "";};
 		class NearestResidentialLocation {description = "";};
+		class CreateBoxStack {description = "";};
 	};
 	class Town
 	{
