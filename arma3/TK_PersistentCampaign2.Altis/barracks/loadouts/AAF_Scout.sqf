@@ -4,10 +4,10 @@ _result = [
 	"", //G_Tactical_Clear
 	
 	/* Headgear */
-	"H_HelmetIA_camo",
+	"H_MilCap_dgtl",
 	
 	/* Binoculars */
-	"",
+	"LaserDesignator",
 	
 	/* Nightvision */
 	"NVGoggles_INDEP",
@@ -17,7 +17,7 @@ _result = [
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"I_UavTerminal"
+		"ItemGps"
 	],
 	
 	/* Primary Weapon */
@@ -66,15 +66,16 @@ _result = [
 		
 	/* Vest */
 	[
-		"V_PlateCarrierIA2_dgtl",
+		"V_Chestrig_oli",
 		/* Vest-Weapons */
 		[
-			"SmokeShell","SmokeShell","SmokeShell",
+			"SmokeShell","SmokeShell",
+			"SmokeShellRed","SmokeShellRed",
 			"SmokeShellGreen","SmokeShellGreen"
 		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
 		],
 		/* Vest-Items */
 		[
@@ -83,13 +84,16 @@ _result = [
 	
 	/* Backpack */
 	[
-		"I_UAV_01_backpack_F",
+		"B_AssaultPack_dgtl",
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
 		[],
 		/* Backpack-Items */
 		[			
+			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
+			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine"
 		]
 	],
 	
