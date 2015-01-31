@@ -6,13 +6,6 @@ pixTown_ConfigMinPlayerCountForSimulation = 2;
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
 	
-// Klassenname für Wasserversorgung	
-pixTown_ConfigWaterClassname = "Land_WaterTank_F";
-// Klassenname für Nahrungsversorgung
-pixTown_ConfigFoodClassname = "Land_Sacks_heap_F";
-pixTown_ConfigSaniClassname = "B_Truck_01_medical_F";//"B_Truck_01_medical_F" "C_Van_01_box_F"
-pixTown_ConfigReSupplyClassnames = ["C_Boat_Civil_04_F"];
-	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
 pixTown_ConfigInjuredGrowFactorPPH = 0;		  	// Zuwachs an Verletzten in PPH.
 
@@ -49,6 +42,13 @@ pixTown_ConfigMoodPerHouseSearchRed = 0.05;
 //pixTown_ConfigImmigrantPercent = 80;
 pixTown_ConfigEmigrantPercent = 80 / 100;
 
+// Klassenname für Wasserversorgung	
+pixTown_ConfigWaterClassname = "Land_WaterTank_F";
+// Klassenname für Nahrungsversorgung
+pixTown_ConfigFoodClassname = "Land_Sacks_heap_F";
+pixTown_ConfigSaniClassname = "I_Truck_02_medical_F";
+pixTown_ConfigReSupplyClassnames = ["C_Boat_Civil_04_F"]; 
+
 // Klassenname das Town-Objektes im Editor.
 pixTown_ConfigObjectClassname = "Land_VRGoggles_01_F";
 
@@ -80,8 +80,8 @@ pixTown_ConfigHomeClassnames = [
 
 // Basisnamen	
 pixTown_ConfigBaseClassCiv = "Civilian_F";
-pixTown_ConfigBaseClassRed = "SoldierGB";
-pixTown_ConfigBaseClassBlu = "SoldierWB";
+pixTown_ConfigBaseClassRed = "SoldierEB";
+pixTown_ConfigBaseClassBlu = "SoldierGB";
 pixTown_ConfigSideCiv = civilian;
 pixTown_ConfigSideRed = east;
 pixTown_ConfigSideBlu = west;
@@ -117,7 +117,7 @@ pixTown_ConfigCivClassnames = [
 	"C_man_p_shorts_1_F_afro",
 	//"C_man_p_shorts_1_F_euro",
 	//"C_man_p_shorts_1_F_asia",
-	"C_man_p_shorts_2_F_afro",
+	"C_man_p_shorts_2_F_afro"
 	//"C_man_p_shorts_2_F_euro",
 	//"C_man_p_shorts_2_F_asia",
 	//"C_man_p_shorts_3_F_afro",
@@ -126,10 +126,11 @@ pixTown_ConfigCivClassnames = [
 	//"C_man_p_shorts_4_F_afro",
 	//"C_man_p_shorts_4_F_euro",
 	//"C_man_p_shorts_4_F_asia",
-	"C_journalist_F",
-	"C_Orestes",
-	"C_Nikos",
-	"C_Nikos_aged"];
+	//"C_journalist_F",
+	//"C_Orestes",
+	//"C_Nikos",
+	//"C_Nikos_aged"
+	];
 
 //pixTown_ConfigCivClassnames = ["C_man_1_1_F"];
 // Klassennamen der feindlichen Einheiten

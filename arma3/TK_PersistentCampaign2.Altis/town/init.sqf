@@ -6,6 +6,8 @@ if (isServer) then
 {
 	townInitialized = false;
 	publicVariable "townInitialized";
+	townInfos = 0;
+	publicVariable "townInfos";
 
 	private["_towns"];
 	_towns = entities pixTown_ConfigObjectClassname;
@@ -22,6 +24,7 @@ if (isServer) then
 		diag_log format["Total town statistic: rooms=%1 population=%2", pixTown_TotalRooms, pixTown_TotalPopulation];
 		player sidechat format["Total town statistic: rooms=%1 population=%2", pixTown_TotalRooms, pixTown_TotalPopulation];
 	};
+	
 };
 
 if (!isServer || !isDedicated) then
@@ -30,4 +33,6 @@ if (!isServer || !isDedicated) then
 	waitUntil { !(isNil "townInitialized") };
 	waitUntil { townInitialized };
 	player sidechat "Städte fertig";
+	
+	"townInfos" addPublicVariableEventHandler { hint format [ "Informationen wurden gesichert und an das HQ gesendet (%1).", _this select 1 ] };	
 };

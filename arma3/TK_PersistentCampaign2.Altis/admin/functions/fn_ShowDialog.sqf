@@ -8,7 +8,8 @@ _buttons = [
 	["Fahrzeug entfernen", true, true, fnc_Admin_VehicleRemoveScript],
 	["Fahrzeuge speichern", true, true, fnc_Admin_VehiclesSaveScript],
 	["Städte speichern", true, true, fnc_Admin_TownsSaveScript],
-	["Stadt Status abfragen", true, true, fnc_Admin_TownStatusScript]
+	["Stadt Status abfragen", true, true, fnc_Admin_TownStatusScript],
+	["Informations Status abfragen", true, true, fnc_Admin_InfoStatusScript]
 ];
 
 [_buttons, "Administrator"] execVM "maindialog_showtemplate.sqf";

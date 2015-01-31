@@ -20,6 +20,7 @@ _loadouts = [
 	["Sprengstoffexperte","AAF_EngineerMine.sqf"],
 	["Reparaturexperte","AAF_EngineerRepair.sqf"],
 	["UAV","AAF_UAV.sqf"],
+	["Aufklärer","AAF_Scout.sqf"],
 	["Gruppenführer","AAF_Teamleader.sqf"],
 	["Gruppenführer (Funk)","AAF_TeamleaderRadio.sqf"],
 	["Crew","AAF_Crew.sqf"],

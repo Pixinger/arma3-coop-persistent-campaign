@@ -1281,6 +1281,7 @@ class RscButtonMenu
 	y = 0;
 	w = 0.095589;
 	h = 0.039216;
+	font = "PuristaMedium";
 	animTextureNormal = "#(argb,8,8,3)color(1,1,1,1)";
 	animTextureDisabled = "#(argb,8,8,3)color(1,1,1,1)";
 	animTextureOver = "#(argb,8,8,3)color(1,1,1,1)";
