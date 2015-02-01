@@ -71,7 +71,7 @@ class Header
 {
   gameType = COOP;            
   minPlayers = 1;             
-  maxPlayers = 30;            
+  maxPlayers = 45;            
   playerCountMultipleOf = 1;  
 };
 

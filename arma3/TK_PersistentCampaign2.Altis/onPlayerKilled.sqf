@@ -1,6 +1,6 @@
 // Executed when player is killed in singleplayer or in multiplayer mission. 
 // [<oldUnit>, <killer>, <respawn>, <respawnDelay>]
-if (isServer) then
+if (ExecuteHeadlessCode) then
 {
 	private["_townObjects"];
 	_townObjects = player nearEntities [pixTown_ConfigObjectClassname, 2000];
@@ -13,7 +13,5 @@ if (isServer) then
 			[_townName] call PC_fnc_Townparam_BluKillAdd;
 			[_townName, -0.02] call PC_fnc_Townparam_MoodAdd;
 		};
-	} foreach _townObjects;
-	
-	
+	} foreach _townObjects;	
 };

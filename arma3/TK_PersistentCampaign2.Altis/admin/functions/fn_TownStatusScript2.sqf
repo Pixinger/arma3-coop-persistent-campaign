@@ -25,7 +25,11 @@ if (count _townObjects > 0) then
 		//    Group - function will be executed only on clients where the player is in the specified group 
 		// IsPersistent
 		// IsCall 
-		[[_townName, player], "PC_fnc_TownHome_StatusRequest", false] call BIS_fnc_MP;		
+		if (!HeadlessClientAvailable) then {
+			[[_townName, player], "PC_fnc_TownHome_StatusRequest", false] call BIS_fnc_MP;		
+		} else {
+			[[_townName, player], "PC_fnc_TownHome_StatusRequest", HeadlessUnit] call BIS_fnc_MP;		
+		};
 	};
 }
 else

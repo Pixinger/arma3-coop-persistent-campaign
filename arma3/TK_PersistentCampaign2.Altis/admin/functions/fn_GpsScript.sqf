@@ -1,4 +1,4 @@
-if (!isServer || !isDedicated) then
+if (hasInterface) then
 {
 	[] spawn {
 		if (isNil "adminGps") then {adminGps = false;};

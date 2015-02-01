@@ -75,7 +75,7 @@ _result = [
 		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
 		],
 		/* Vest-Items */
 		[
@@ -93,7 +93,11 @@ _result = [
 		[			
 			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
 			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
-			"AGM_Morphine","AGM_Morphine","AGM_Morphine"
+			"AGM_Morphine","AGM_Morphine","AGM_Morphine",
+			"SmokeShell","SmokeShell",
+			"SmokeShellRed","SmokeShellRed",
+			"SmokeShellGreen","SmokeShellGreen",
+			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"			
 		]
 	],
 	

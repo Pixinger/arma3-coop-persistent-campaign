@@ -1,7 +1,9 @@
 call compile preprocessFileLineNumbers "vehicles\config.sqf";
 call compile preprocessFileLineNumbers "vehicles\functions\_compile.sqf";
 
-if (isServer) then
+// if (isServer) then
+//if ((!hasInterface) || ((!HeadlessClientAvailable) && (isServer))) then 
+if (ExecuteHeadlessCode) then
 {
 	vehiclesInitialized = false;
 	publicVariable "vehiclesInitialized";
@@ -45,7 +47,7 @@ if (isServer) then
 		{
 			// Vehicle erzeugen
 			private["_item"];
-			_item = [_classname, _pos] call PC_fnc_CreateCorrectedVehicle; // Kapselt z.B. Änderungen an der Ladung
+			_item = [_classname, _pos] call fnc_Vehicle_CreateCorrected; // Kapselt z.B. Änderungen an der Ladung
 			
 			// Details setzen
 			_item setDir _dir;
@@ -79,7 +81,8 @@ if (isServer) then
 	publicVariable "vehiclesInitialized";
 };
 
-if (!isServer || !isDedicated) then
+// if (!isServer || !isDedicated) then
+if (hasInterface) then
 {
 	player sidechat "Warte auf Fahrzeuge";
 	waitUntil { !(isNil "vehiclesInitialized") };

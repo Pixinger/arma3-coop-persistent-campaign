@@ -2,5 +2,8 @@
 // [player:Object, didJIP:Boolean]
 if (local player) then
 {
-	[player, "AAF_default.sqf"] call compile preprocessFileLineNumbers "barracks\applyLoadOut.sqf";
+	if (hasInterface) then 
+	{
+		[player, "AAF_default.sqf"] call compile preprocessFileLineNumbers "barracks\applyLoadOut.sqf";
+	};
 };

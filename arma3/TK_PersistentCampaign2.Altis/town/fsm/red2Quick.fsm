@@ -2,12 +2,12 @@
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start",0,250,-25.908817,-8.121918,64.091179,41.878082,0.000000,"Start"};
-item1[] = {"isServer",4,218,-25.908783,-87.201599,64.091194,-37.201599,0.000000,"isServer"};
+item1[] = {"_",8,4314,-16.927147,-76.101295,73.072853,-26.101295,0.000000,""};
 item2[] = {"Ende",1,250,-17.157600,-159.655670,72.842430,-109.655670,0.000000,"Ende"};
 link0[] = {0,1};
 link1[] = {1,2};
-globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-596.444824,305.922150,279.487915,-409.346771,1403,1071,1};
-window[] = {2,-1,-1,-1,-1,905,25,1465,25,3,1421};
+globals[] = {0.000000,0,0,0,0,640,480,1,130,6316128,1,-596.444824,305.922150,279.487915,-409.346771,1403,1071,1};
+window[] = {2,-1,-1,-1,-1,1055,175,1615,175,3,1421};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -27,13 +27,13 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "isServer">*/
-        class isServer
+        /*%FSM<LINK "_">*/
+        class _
         {
           priority = 0.000000;
           to="Ende";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"isServer"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

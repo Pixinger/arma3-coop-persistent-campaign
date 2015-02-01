@@ -28,7 +28,11 @@ if (count _buildings > 0) then
 			//    Group - function will be executed only on clients where the player is in the specified group 
 			// IsPersistent
 			// IsCall 
-			[[_townName, _building], "PC_fnc_TownParam_SearchBuildingAdd", false] call BIS_fnc_MP;
+			if (!HeadlessClientAvailable) then {
+				[[_townName, _building], "PC_fnc_TownParam_SearchBuildingAdd", false] call BIS_fnc_MP;
+			} else {
+				[[_townName, _building], "PC_fnc_TownParam_SearchBuildingAdd", HeadlessUnit] call BIS_fnc_MP;
+			};
 		}
 		else
 		{

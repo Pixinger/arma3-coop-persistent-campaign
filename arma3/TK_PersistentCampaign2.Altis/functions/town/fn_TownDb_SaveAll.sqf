@@ -10,7 +10,7 @@ Return:
 private["_result"];
 _result = false;
 
-if (isServer) then
+if (ExecuteHeadlessCode) then
 {
 
 	private["_dbResult"];	

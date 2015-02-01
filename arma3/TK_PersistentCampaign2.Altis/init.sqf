@@ -3,13 +3,12 @@ setObjectViewDistance 1000;
 /*setTerrainGrid 3.125;*/
 
 waituntil {!isnil "bis_fnc_init"};
-if (!isServer) then { waitUntil {!isNull player};};
+if (hasInterface) then { waitUntil {!isNull player};};
 enableSaving [false, false];
 
 /*-----------------------------------------------*/
 /* Parameter (0): Debug */
 pixDebug = false;
-if (isServer && !isDedicated) then { pixDebug = true; };
 /* Parameter (0): TFR-Muted while dead */
 pixParamTFARMutedOnDeath = (paramsArray select 0); //0=aus 1=an 
 diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
@@ -18,10 +17,29 @@ pixParamTFARTerrainInterceptionCoefficient = (paramsArray select 1); //0,1,2,3,4
 diag_log format["INFO: pixParamTFARTerrainInterceptionCoefficient: %1", pixParamTFARTerrainInterceptionCoefficient];
 TF_terrain_interception_coefficient = pixParamTFARTerrainInterceptionCoefficient;
 
+/* Warten bis das Briefing beendet wurde */
+/* Erst dann sind die PublicVariablen auch initialisiert. */
+Sleep .1;
+
+/* Prüfen ob ein HeadlessClient erkannt wurde */
+if (isNil "HeadlessClientAvailable") then 
+{	
+	HeadlessClientAvailable = false;
+	diag_log "No headless-client detected";
+} else {
+	diag_log "Headless-client detected";
+	HeadlessClientAvailable = true;
+};
+
+// Lokal für jeden Rechner prüfen, ob hier (auf dieser Maschine) Headless Code ausgeführt werden soll, oder nicht.
+ExecuteHeadlessCode = false;
+if ((HeadlessClientAvailable && !hasInterface && !isServer) || (!HeadlessClientAvailable && isServer)) then {	ExecuteHeadlessCode = true; };
+diag_log format["ExecuteHeadlessCode: %1", ExecuteHeadlessCode];
+
 /*-----------------------------------------------*/
 cutText ["Initialization...\n[TK]Persistenct Campaign 2", "BLACK FADED",1];
 
-if (isServer) then
+if (ExecuteHeadlessCode) then
 {
 	// Datenbank initialisieren
 	private["_result"];
@@ -34,6 +52,8 @@ if (isServer) then
 	{
 		diag_log "PC reloadall OK";
 	};
+} else {
+	diag_log "PC reloadall not needed on this process.";
 };
 
 call compile preprocessFileLineNumbers "maindialog_init.sqf";
@@ -41,11 +61,6 @@ call compile preprocessFileLineNumbers "admin\init.sqf";
 call compile preprocessFileLineNumbers "town\init.sqf";
 call compile preprocessFileLineNumbers "mainmenu\init.sqf";
 call compile preprocessFileLineNumbers "vehicles\init.sqf";
-//call compile preprocessFileLineNumbers "mainmenu\init.sqf";
-
-
-/* Warten bis das Briefing beendet wurde */
-Sleep .1;
 
 player setvariable ["BIS_nocoreconversations",true];
 

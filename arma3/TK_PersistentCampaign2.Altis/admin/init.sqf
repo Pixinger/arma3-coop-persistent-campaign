@@ -2,7 +2,8 @@ call compile preprocessFileLineNumbers "admin\config.sqf";
 call compile preprocessFileLineNumbers "admin\functions\_compile.sqf";
 
 [] spawn {
-	if (!isServer || !isDedicated) then
+	//if (!isServer || !isDedicated) then
+	if (hasInterface) then
 	{
 		waitUntil { !isNull player };
 

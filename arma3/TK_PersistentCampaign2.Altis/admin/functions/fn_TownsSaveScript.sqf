@@ -9,4 +9,8 @@
 //    Group - function will be executed only on clients where the player is in the specified group 
 // IsPersistent
 // IsCall 
-[[], "PC_fnc_TownDb_SaveAll", false] call BIS_fnc_MP;
+if (!HeadlessClientAvailable) then {
+	[[], "PC_fnc_TownDb_SaveAll", false] call BIS_fnc_MP;
+} else {
+	[[], "PC_fnc_TownDb_SaveAll", HeadlessUnit] call BIS_fnc_MP;
+};

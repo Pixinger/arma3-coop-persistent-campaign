@@ -15,6 +15,7 @@ class PC
 		class RandomElement {description = "";};
 		class NearestResidentialLocation {description = "";};
 		class CreateBoxStack {description = "";};
+		class HeadlessClientInit  { postInit = 1; };
 	};
 	class Town
 	{
@@ -53,13 +54,5 @@ class PC
 		class TownParam_SearchBuildingAdd {description = "";};
 		class TownParam_SearchBuildingPull {description = "";};
 		class TownParam_SearchBuildingInit {description = "";};	
-	};
-	class Vehicle
-	{
-		file = "functions\Vehicle";
-		class CreateCorrectedVehicle {description = "";};
-		class VehicleDb_SaveAll {description = "";};
-		class VehicleDb_Add {description = "";};
-		class VehicleDb_Remove {description = "";};
 	};
 };
