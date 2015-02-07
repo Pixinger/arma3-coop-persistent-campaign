@@ -100,6 +100,8 @@ if (ExecuteHeadlessCode) then
 		diag_log format["ERROR: %1 konnte Daten aus Datenbank nicht laden: %2", _townName, _dbResult];
 	};
 
+	// Vorab schon das Skript beenden?!
+	if (_townObject getVariable ["offline", false]) exitWith { 0; };
 
 	// -----------------------------------
 	// In die Wohnungen einziehen

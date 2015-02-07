@@ -9,6 +9,7 @@ _buttons = [
 	["Fahrzeuge speichern", true, true, fnc_Admin_VehiclesSaveScript],
 	["Städte speichern", true, true, fnc_Admin_TownsSaveScript],
 	["Stadt Status abfragen", true, true, fnc_Admin_TownStatusScript],
+	//["Switch Zeus", true, true, fnc_Admin_SwitchZeusScript],
 	["Informations Status abfragen", true, true, fnc_Admin_InfoStatusScript]
 ];
 

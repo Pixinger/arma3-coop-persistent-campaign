@@ -13,19 +13,19 @@ if (ExecuteHeadlessCode) then
 
 	private["_towns"];
 	_towns = entities pixTown_ConfigObjectClassname;
+	private["_imax"];
+	_imax = 555;
 	//_x = _towns select 0;	
 	{
-		[_x] execVM "town\run.sqf";
+		if (_imax > 0) then
+		{
+			[_x] execVM "town\run.sqf";
+		};
+		_imax = _imax - 1;
 	} foreach _towns;
 
 	townInitialized = true;
 	publicVariable "townInitialized";
-	
-	[] spawn {
-		Sleep 10;
-		diag_log format["Total town statistic: rooms=%1 population=%2", pixTown_TotalRooms, pixTown_TotalPopulation];
-		player sidechat format["Total town statistic: rooms=%1 population=%2", pixTown_TotalRooms, pixTown_TotalPopulation];
-	};	
 };
 
 //if (!isServer || !isDedicated) then
