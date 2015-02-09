@@ -62,6 +62,10 @@ while { (_index < count _unitsActive) } do
 					_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 					[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
 					
+					// Bekanntgeben
+					townArrested = townArrested + 1;
+					publicVariable "townArrested";
+					
 					// Nach einiger Zeit die Einheit entfernen
 					[_unit] spawn {
 						Sleep 15;

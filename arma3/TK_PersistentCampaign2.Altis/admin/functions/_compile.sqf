@@ -12,3 +12,4 @@ fnc_Admin_TownsSaveScript = compile preprocessFileLineNumbers "admin\functions\f
 fnc_Admin_TownStatusScript = compile preprocessFileLineNumbers "admin\functions\fn_TownStatusScript.sqf";
 fnc_Admin_TownStatusScript2 = compile preprocessFileLineNumbers "admin\functions\fn_TownStatusScript2.sqf"; // wird von fnc_Admin_TownStatusScript verwendet
 fnc_Admin_InfoStatusScript = compile preprocessFileLineNumbers "admin\functions\fn_InfoStatusScript.sqf";
+fnc_Admin_ArrestStatusScript = compile preprocessFileLineNumbers "admin\functions\fn_ArrestStatusScript.sqf";

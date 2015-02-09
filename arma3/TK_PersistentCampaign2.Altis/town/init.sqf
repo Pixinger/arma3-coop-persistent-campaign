@@ -10,6 +10,8 @@ if (ExecuteHeadlessCode) then
 	publicVariable "townInitialized";
 	townInfos = 0;
 	publicVariable "townInfos";
+	townArrested = 0;
+	publicVariable "townArrested";
 
 	private["_towns"];
 	_towns = entities pixTown_ConfigObjectClassname;
@@ -37,4 +39,5 @@ if (hasInterface) then
 	player sidechat "Städte fertig";
 	
 	"townInfos" addPublicVariableEventHandler { hint format [ "Informationen wurden gesichert und an das HQ gesendet (%1).", _this select 1 ] };	
+	"townArrested" addPublicVariableEventHandler { hint format [ "Es wurden insgesamt %1 Einheiten festgenommen.", _this select 1 ] };	
 };

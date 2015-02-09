@@ -69,7 +69,7 @@ class Params
 
 class Header
 {
-  gameType = COOP;            
+  gameType = TVT;            
   minPlayers = 1;             
   maxPlayers = 45;            
   playerCountMultipleOf = 1;  

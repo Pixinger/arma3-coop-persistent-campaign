@@ -43,6 +43,10 @@ private["_status"];
 			(_room select 2) resize 1; 	// Aus dem ROOM "ausziehen".
 			[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
 			_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
+			
+			// Bekanntgeben
+			townArrested = townArrested + 1;
+			publicVariable "townArrested";
 		}
 		else // 0,1==Aktiv,FSM-Finished
 		{
