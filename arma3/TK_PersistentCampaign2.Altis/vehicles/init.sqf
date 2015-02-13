@@ -47,18 +47,13 @@ if (ExecuteHeadlessCode) then
 		{
 			// Vehicle erzeugen
 			private["_item"];
-			_item = [_classname, _pos] call fnc_Vehicle_CreateCorrected; // Kapselt z.B. Änderungen an der Ladung
+			_item = [_classname, _pos, _dir] call fnc_Vehicle_CreateCorrected; // Kapselt z.B. Änderungen an der Ladung
 			
 			// Details setzen
-			_item setDir _dir;
-			_item setPosATL [_pos select 0, _pos select 1, 0];
 			//_item setVariable ["content", _content, true]; 
 			if (_damage >= 0.9) then
 			{
-				_item enableSimulationGlobal false;
-				_item setdamage 1; 
 				_item setdamage 0.9;
-				_item allowDamage false;
 			}
 			else
 			{
@@ -76,6 +71,13 @@ if (ExecuteHeadlessCode) then
 		_index = _index + 1;
 		_dbResult = "Arma2NET" callExtension format["PC vehicle|read|%1", _index];
 	};	
+		
+	Sleep 1;
+	
+	// Alles wieder verwundbar machen
+	{
+		_x allowDamage true;
+	} foreach vehiclesDbItems;
 	
 	vehiclesInitialized = true;
 	publicVariable "vehiclesInitialized";

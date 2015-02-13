@@ -2,7 +2,7 @@
 // [player:Object, didJIP:Boolean]
 if (local player) then
 {
-	if (hasInterface) then 
+	if ((hasInterface) and (side player != east)) then 
 	{
 		[player, "AAF_default.sqf"] call compile preprocessFileLineNumbers "barracks\applyLoadOut.sqf";
 	};

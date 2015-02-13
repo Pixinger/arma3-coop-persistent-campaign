@@ -1,5 +1,5 @@
 ﻿TI: Town-Injured
-TS: Town-Unit-Status (ehemals "AA")
+TS: Town-Unit-Status (ehemals "AA") 0=aktiv, 1=FSM-Finished, 2=Arrested
 TA: Town-Sanvehicle-Active (ehemals "active"). Signalisiert einem KI das er an einem Fahrzeug geheilt werden kann.
 TC: Town-Sanvehicle-Content (ehemals "content"). Gibt an wieviele Hilfsgüter im Fahrzeug geladen sind.
 TG: Town-Support-Güter (ehemals "content"). Gibt an wieviele Einheiten Material in einem Wasserfass, Palette sind.

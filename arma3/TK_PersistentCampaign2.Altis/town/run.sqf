@@ -441,7 +441,7 @@ if (ExecuteHeadlessCode) then
 				private["_tmpTotalSOLL"];
 				_tmpTotalSOLL = (_tmpCivCount + _tmpRedCount) / 20; 
 				if (_tmpTotalSOLL > 30) then { _tmpTotalSOLL = 30; }; // Deckeln
-				if (!_townAttacked) then { if ((daytime > 22) || (daytime < 7)) then { _tmpTotalSOLL = _tmpTotalSOLL * 0.5 }; }; // Wenn kein Angriff, dann in der Nacht generell weniger Einheiten
+				//if (!_townAttacked) then { if ((daytime > 22) || (daytime < 7)) then { _tmpTotalSOLL = _tmpTotalSOLL * 0.5 }; }; // Wenn kein Angriff, dann in der Nacht generell weniger Einheiten
 				
 				_tmpTotalSOLL = ceil(_tmpTotalSOLL);
 				_civSOLL = ceil((_tmpTotalSOLL / (_tmpCivCount + _tmpRedCount)) * _tmpCivCount);
@@ -473,6 +473,7 @@ if (ExecuteHeadlessCode) then
 				// FSM überwachen und evtl. neustarten
 				// -----------------------------------
 				[_civActives] call PC_fnc_TownHome_Units_ValidateFSM;
+				[_redActives] call PC_fnc_TownHome_Units_ValidateFSM;
 
 				// -----------------------------------
 				// RED Einheiten AKTIVIEREN / DEAKTIVEREN
@@ -604,7 +605,6 @@ if (ExecuteHeadlessCode) then
 								_unit setVariable ["townCenter", _townCenter];
 								_unit setVariable ["townRadius", _townRadius];
 								_unit setVariable ["townHome", _unitPosition];
-								_unit setVariable ["fsmtick", (time + 60)];
 								_unit setVariable ["TS", 0];
 								_unit doFSM ["town\fsm\civ2.fsm", _unitPosition, _unit];							
 								_room pushBack _unit;
@@ -772,7 +772,6 @@ if (ExecuteHeadlessCode) then
 							_unit setVariable ["townCenter", _townCenter];
 							_unit setVariable ["townRadius", _townRadius];
 							_unit setVariable ["townHome", _unitPosition];
-							_unit setVariable ["fsmtick", (time + 60)];
 							_unit setVariable ["TS", 0];
 							_unit doFSM ["town\fsm\civSearched.fsm", _unitPosition, _unit];							
 							_x pushBack _unit;

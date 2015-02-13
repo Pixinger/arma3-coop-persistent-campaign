@@ -3,40 +3,16 @@ private["_classname"];
 _classname = _this select 0;
 private["_position"];
 _position = _this select 1;
+private["_direction"];
+_direction = _this select 2;
 
 /* Fahrzeug erstellen */
 private["_object"];
-_object = _classname createVehicle _position;
+_object = _classname createVehicle (getPos SpawnDbVehicle);
 waitUntil {!isNil "_object"};
+_object allowDamage false;
+_object setDir _direction;
+Sleep 0.2;
+_object setPosATL [_position select 0, _position select 1, 0];
 
 _object;
-
-//AGM_IR_Strobe_Item
-//AGM_CableTie
-
-// added in 0.93
-//AGM_Clacker
-//AGM_DefusalKit
-
-// added in 0.94
-//AGM_M26_Clacker
-//AGM_DeadManSwitch
-// added in 0.93
-//AGM_HandFlare_Green
-//AGM_HandFlare_Red
-//AGM_HandFlare_White
-//AGM_HandFlare_Yellow
-
-// added in 0.94
-//AGM_M84
-
-//AGM_UAVBattery
-
-// added in 0.93
-//AGM_JerryCan
-//AGM_SpareTrack
-//AGM_SpareWheel
-
-// added in 0.94
-//AGM_SandbagBarrier_Crate
-//AGM_RazorWire_Crate

@@ -21,10 +21,13 @@ _timeoutTick = time;
 	_unit = _x select 0;
 	if (!isNull _unit) then 
 	{
-		if (_unit getVariable ["fsmtick", 0] < _timeoutTick) then
-		{	
-			diag_log format["fsmtick timed out. doFSM civHome.fsm for unit: %1", _unit];
-			_unit doFSM ["town\fsm\civHome.fsm", [0,0,0], _unit];
+		if ((behaviour _unit) == "CARELESS") then
+		{
+			if (_unit getVariable ["fsmtick", 0] < _timeoutTick) then
+			{	
+				diag_log format["fsmtick timed out. doFSM civHome.fsm for unit: %1", _unit];
+				_unit doFSM ["town\fsm\civHome.fsm", [0,0,0], _unit];
+			};
 		};
 	};
 } foreach _unitsActive;
