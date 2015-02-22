@@ -182,6 +182,7 @@ if (ExecuteHeadlessCode) then
 	// Erst nach dem Briefing beginnen, alle Städte zu einer etwas anderen Zeit
 	Sleep (0.1 + (random pixTown_ConfigMainLoopSleep));
 
+
 	// -----------------------------------
 	// Dauerschleife beginnen
 	// -----------------------------------
@@ -498,7 +499,6 @@ if (ExecuteHeadlessCode) then
 						if (count _unitPosition > 0) then
 						{
 							private ["_unitGroup"];
-							//_unitGroup = createGroup east;//independent;
 							_unitGroup = _townGroupRed;
 							
 							private["_unit"];
@@ -508,29 +508,14 @@ if (ExecuteHeadlessCode) then
 							{							
 								_unit setDir (floor(random 360));
 								_unit setpos _unitPosition;
-								//if (false) then 
-								if (_townInjuredCount > 1) then 
+								if (((random _townRedCount) + 1) > _townWeaponCount) then
 								{
-									if (random 1 < 0.1) then
-									{
-	//diag_log "injured red";
-										_unit setBehaviour "CARELESS";
-										_townInjuredCount = _townInjuredCount - 1;
-										_unit setVariable ["TI", 1, true];
-										removeAllWeapons _unit;								
-									};
+									_unit setBehaviour "CARELESS";
+									removeAllWeapons _unit;	
 								}
 								else
 								{
-									if (((random _townRedCount) + 1) > _townWeaponCount) then
-									{
-										_unit setBehaviour "CARELESS";
-										removeAllWeapons _unit;								
-									}
-									else
-									{
-										_townWeaponCount = _townWeaponCount - 1;
-									};
+									_townWeaponCount = _townWeaponCount - 1;
 								};
 								//_unit setBehaviour "CARELESS";
 								if (random 1 < 0.5) then { _unit setSpeedmode "FULL"; } else { _unit setSpeedmode "LIMITED"; };
@@ -729,26 +714,13 @@ if (ExecuteHeadlessCode) then
 							waitUntil {!isNil "_unit"};
 							_unit setDir (random 360);
 							_unit setpos _unitPosition;
-							if ((random 1) < 0.10) then 
-							{ 
-								removeAllWeapons _unit; 
-								_unit setBehaviour "CARELESS";
-							}
-							else
-							{
-								{ _unit reveal [_x, 1.5]; } foreach _bluFor;								 
-								
-								private["_random"];
-								_random = (random 1);
-								if (_random < 0.5) then {_unit setBehaviour "AWARE";} else { if (_random < 0.90) then {_unit setBehaviour "COMBAT";} else {_unit setBehaviour "CARELESS";};};
-							};
-							//_unit setVariable ["townName", _townName];
-							//_unit setVariable ["townCenter", _townCenter];
-							//_unit setVariable ["townRadius", _townRadius];
-							//_unit setVariable ["townHome", _unitPosition];
-							//_unit doFSM ["town\fsm\red2.fsm", _unitPosition, _unit];							
+							{ _unit reveal [_x, 1.5]; } foreach _bluFor;								 
+							
+							private["_random"];
+							_random = (random 1);
+							if (_random < 0.5) then {_unit setBehaviour "AWARE";} else { if (_random < 0.90) then {_unit setBehaviour "COMBAT";} else {_unit setBehaviour "CARELESS";};};
 							_x pushBack _unit;
-	//removeAllWeapons _unit; 
+							//removeAllWeapons _unit; 
 							_redActives pushBack [_unit, _unitGroup, _x];
 							_forcedRed = _forcedRed + 1;
 							_redActivesCount = count _redActives;		
@@ -758,7 +730,6 @@ if (ExecuteHeadlessCode) then
 						{
 	//diag_log "create CIV";
 							private ["_unitGroup"];
-							//_unitGroup = createGroup civilian;							
 							_unitGroup = _townGroupCiv;
 							private["_unit"];
 							_unit = _unitGroup createUnit [_classname, _unitPosition, [], 0, "FORM"];

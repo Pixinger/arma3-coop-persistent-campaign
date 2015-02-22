@@ -28,13 +28,13 @@ pixTown_ConfigMaxCiv2RedConversionPPH = 0.05;     // Maximale Konvertierungen vo
 pixTown_ConfigMaxRed2CivConversionPPH = 0.05;     // Maximale Konvertierungen von Red zu Civ in PPH
 
 // Angaben wie die Stimmung bei bestimmten Events beinflusst wird.
-pixTown_ConfigMoodPerCivWater = 0.05;
-pixTown_ConfigMoodPerCivFood = 0.05;
+pixTown_ConfigMoodPerCivWater = 0.06;
+pixTown_ConfigMoodPerCivFood = 0.06;
 pixTown_ConfigMoodPerCivInjured = 0.05;
-pixTown_ConfigMoodPerCivKill = -0.2;
-pixTown_ConfigMoodPerCivUnsearched = -0.2;
+pixTown_ConfigMoodPerCivKill = -0.1;
+pixTown_ConfigMoodPerCivUnsearched = -0.1;
 pixTown_ConfigMoodPerRedKill = 0.01;
-pixTown_ConfigMoodPerRedUnsearched = -0.2;
+pixTown_ConfigMoodPerRedUnsearched = -0.1;
 pixTown_ConfigMoodPerRedArrest = 0.05;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
 pixTown_ConfigMoodPerHouseSearchRed = 0.05;
