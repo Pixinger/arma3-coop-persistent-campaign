@@ -52,7 +52,6 @@ if (ExecuteHeadlessCode) then
 	private["_townCivCount"];
 	private["_townRedCount"];
 	private["_townWeaponCount"];
-	private["_townWarlordCount"];
 	private["_townInjuredCount"];
 	private["_dbResult"];	
 	_dbResult = "Arma2NET" callExtension format["PC town|load|%1", _townName];
@@ -65,24 +64,8 @@ if (ExecuteHeadlessCode) then
 		_townCivCount = _dbResult select 4;			// Die Anzahl der Zivilisten in der Stadt (virtuell).
 		_townRedCount = _dbResult select 5;			// Die Anzahl der Feinde in der Stadt (virtuell).
 		_townWeaponCount = _dbResult select 6;		// Die Anzahl der Waffen in der Stadt (virtuell).
-		_townWarlordCount = _dbResult select 7;		// Die Anzahl der Warlords in der Stadt (virtuell).
+		_townObject setVariable ["sideMission", _dbResult select 7];	// Die Id oder der Status der Sidemission der Stadt (virtuell).
 		_townInjuredCount = _dbResult select 8;		// Die Anzahl der verletzten in der Stadt (virtuell). Das können CIV und RED sein!
-
-		if (_townRedCount / 10 > _townCivCount) then 
-		{
-			_townMarker setMarkerColor "ColorRed";
-		}
-		else
-		{
-			if (_townCivCount / 10 > _townRedCount) then 
-			{
-				_townMarker setMarkerColor "ColorGreen";
-			}
-			else
-			{
-				_townMarker setMarkerColor "ColorBlack";
-			};
-		};
 		
 		diag_log format["Town loaded from DB: %1", _dbResult];
 	}
@@ -94,10 +77,53 @@ if (ExecuteHeadlessCode) then
 		_townCivCount = 100;
 		_townRedCount = 100;
 		_townWeaponCount = 0;
-		_townWarlordCount = 0;
+		_townObject setVariable ["sideMission", 0];
 		_townInjuredCount = 0;
-		_townMarker setMarkerColor "ColorOrange";
 		diag_log format["ERROR: %1 konnte Daten aus Datenbank nicht laden: %2", _townName, _dbResult];
+	};
+
+	// -----------------------------------
+	// Side-Missions
+	// -----------------------------------
+	if (_townObject getVariable "sideMission" == 11) then 
+	{
+		// Warlord hat überlebt. Auswirkungen werden hier festgelegt
+		_townMood = _townMood - 1;
+		if (_townMood < -1) then { _townMood = -1; };
+
+		private["_increase"];
+		_increase = round(_townCivCount / 2);
+		_townCivCount = _townCivCount - _increase;
+		_townRedCount = _townRedCount + _increase;
+		_townWeaponCount = _increase * 4;
+		_townObject setVariable ["sideMission", 0];
+	};
+	if (_townObject getVariable "sideMission" == 10) then 
+	{
+		// Warlord Mission starten
+		_townObject setVariable ["sideMission", 11];
+		_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+		private["_tmp"];
+		_tmp = [_townObject] execVM "town\smWarlord\run.sqf";
+	};
+
+	// -----------------------------------
+	// Townmarker erstellen
+	// -----------------------------------
+	if (_townRedCount / 10 > _townCivCount) then 
+	{
+		_townMarker setMarkerColor "ColorRed";
+	}
+	else
+	{
+		if (_townCivCount / 10 > _townRedCount) then 
+		{
+			_townMarker setMarkerColor "ColorGreen";
+		}
+		else
+		{
+			_townMarker setMarkerColor "ColorBlack";
+		};
 	};
 
 	// Vorab schon das Skript beenden?!
@@ -117,7 +143,6 @@ if (ExecuteHeadlessCode) then
 	// -----------------------------------
 	if (_townCivCount > _townMaxPopulation) then { _townCivCount = _townMaxPopulation; };
 	if (_townCivCount + _townRedCount > _townMaxPopulation) then { _townRedCount = _townMaxPopulation - _townCivCount; };
-	if (_townCivCount + _townRedCount + _townWarlordCount > _townMaxPopulation) then { _townWarlordCount = _townMaxPopulation - (_townCivCount + _townRedCount); };
 	if (_townInjuredCount < 0) then { _townInjuredCount = 0; };
 	if (_townWeaponCount < 0) then { _townWeaponCount = 0; };
 	if (_townMood > 1) then { _townMood = 1; };
@@ -126,9 +151,6 @@ if (ExecuteHeadlessCode) then
 	if (_townStockWater < 0) then { _townStockWater = 0; };
 	pixTown_TotalRooms = pixTown_TotalRooms + _townMaxPopulation;
 	pixTown_TotalPopulation = pixTown_TotalPopulation + _townCivCount + _townRedCount;
-	//player globalchat format["_result: %1(Red, Civ, Max)", _result];
-	//[_homes] call PC_fnc_TownHome_DebugHomes;
-	//[_homes] call PC_fnc_TownHome_DebugHomesInactive;
 	[_townName, _townCivCount, _townRedCount, _townInjuredCount, _townMood, _townStockFood, _townStockWater, _townMaxPopulation] call PC_fnc_TownHome_StatusUpdate; // Einmal vorab initialisieren
 
 
@@ -157,12 +179,8 @@ if (ExecuteHeadlessCode) then
 	_redActives = [];
 	private["_redActivesCount"];
 	_redActivesCount = 0;
-	private["_townAttacked"];
-	_townAttacked = false;
 	private["_townPopulation"];
 	_townPopulation = 0;
-	private["_nextEmigrantTime"];
-	_nextEmigrantTime = time + random (60 * 30);
 
 	private["_townGroupCiv"];
 	_townGroupCiv = createGroup pixTown_ConfigSideCiv;
@@ -171,9 +189,6 @@ if (ExecuteHeadlessCode) then
 
 	private["_townSimulationCounter"];
 	_townSimulationCounter = 0;
-	private["_townSimulationSaveCounter"];
-	_townSimulationSaveCounter = 20;
-	if (pixDebug) then { _townSimulationSaveCounter = -1; };
 	private["_townOnlineOfflineCounter"];
 	_townOnlineOfflineCounter = 0;
 	private["_townIsVirtual"];
@@ -200,24 +215,18 @@ if (ExecuteHeadlessCode) then
 		_townSimulationCounter = _townSimulationCounter - 1;
 		if (_townSimulationCounter < 0) then
 		{
-			_townSimulationCounter = 6;
+			_townSimulationCounter = 12;
 			private["_deltaHours"];
 			_deltaHours = (time - _lastServerTime) / 3600.0;      
 			_lastServerTime = time;
 			if (pixDebug) then { _deltaHours = 0.1; };
-	//[_homes] call PC_fnc_TownHome_DebugHomesInactive;
-	//[_homes] call PC_fnc_TownHome_DebugHomesActive;
-	//diag_log format["_civActives: %1", _civActives];
-			
-	//diag_log "-------------------------------------------------------------------------------";
-	//diag_log format["_townName=%4 _deltaHours=%1 time=%2 serverTime=%3 _townMaxPopulation=%5", _deltaHours, time, serverTime, _townName, _townMaxPopulation];
 
 			if (call PC_fnc_GetPlayerCount >= pixTown_ConfigMinPlayerCountForSimulation) then
 			{
 				// ----------------------------------------------------------------------
 				// Gesamtbevölkerung berechnen (wird immer wieder mal benötigt)
 				// ----------------------------------------------------------------------
-				_townPopulation = _townCivCount + _townRedCount + _townWarlordCount;
+				_townPopulation = _townCivCount + _townRedCount;
 
 					
 				// -----------------------------------
@@ -231,12 +240,10 @@ if (ExecuteHeadlessCode) then
 				_townMood = _townMood + ([_townName] call PC_fnc_Townparam_MoodPull);
 				if (_townMood > 1) then { _townMood = 1; };
 				if (_townMood < -1) then { _townMood = -1; };
-	//diag_log format["_townMood=%1", _townMood];
 				
 				// -----------------------------------
 				// RED simulieren (_simulatedRedCount)
 				// -----------------------------------
-	//diag_log format["_townCivCount=%1  _townRedCount=%2 (Vorgabe)", _townCivCount, _townRedCount];
 				private["_simulatedRedCount"];
 				_simulatedRedCount = _townRedCount;
 				private["_simulatedCivCount"];
@@ -247,7 +254,6 @@ if (ExecuteHeadlessCode) then
 				{
 					private["_conversion"];
 					_conversion = (pixTown_ConfigMaxRed2CivConversionPPH * _simulatedCivCount * _deltaHours) * (_townMood * -1);
-	//diag_log format["RED _conversion=%1", _conversion];
 					_simulatedRedCount = _simulatedRedCount + _conversion;
 					_simulatedCivCount = _simulatedCivCount - _conversion;
 					if (_simulatedCivCount < 0) then { _simulatedCivCount = 0; };
@@ -256,15 +262,10 @@ if (ExecuteHeadlessCode) then
 				// Blu-Force kills fördern das Wachstum
 				_simulatedRedCount = _simulatedRedCount + (pixTown_ConfigRedGrowPerBluKill * ([_townName] call PC_fnc_Townparam_BluKillPull));
 
-				// Ein Warlord fördert das Wachstum
-				private["_factor"];
-				_factor = 1;
-				if (_townWarlordCount > 0) then { _factor = _factor + (pixTown_ConfigRedGrowFactorPerWarlord * _townWarlordCount); };
-
 				// Wachstum berechnen und hinzufügen (nur wenn die Stimmung schlecht ist, gibt es ein Grundwachstum.)
 				if (_townMood < pixTown_ConfigRedGrowRateMoodLimit) then 
 				{
-					_simulatedRedCount = _simulatedRedCount + ((pixTown_ConfigRedGrowRatePPH * _simulatedRedCount * _deltaHours) * _factor);
+					_simulatedRedCount = _simulatedRedCount + (pixTown_ConfigRedGrowRatePPH * _simulatedRedCount * _deltaHours);
 				};
 
 				// -----------------------------------
@@ -275,7 +276,6 @@ if (ExecuteHeadlessCode) then
 				{
 					private["_conversion"];
 					_conversion = (pixTown_ConfigMaxCiv2RedConversionPPH * _simulatedRedCount * _deltaHours) * _townMood;
-	//diag_log format["CIV _conversion=%1", _conversion];
 					_simulatedCivCount = _simulatedCivCount + _conversion;
 					_simulatedRedCount = _simulatedRedCount - _conversion;
 					if (_simulatedRedCount < 0) then { _simulatedRedCount = 0; };
@@ -285,12 +285,10 @@ if (ExecuteHeadlessCode) then
 				_townStockWater = _townStockWater - ((pixTown_ConfigWaterConsumptionPPH * _townPopulation) * _deltaHours);
 				if (_townStockWater < 0) then { _townStockWater = 0; };
 				_townStockWater = _townStockWater + ([_townName] call PC_fnc_Townparam_WaterPull);
-	//diag_log format["_townStockWater=%1", _townStockWater];
 
 				_townStockFood = _townStockFood - ((pixTown_ConfigFoodConsumptionPPH * _townPopulation) * _deltaHours);
 				if (_townStockFood < 0) then { _townStockFood = 0; };
 				_townStockFood = _townStockFood + ([_townName] call PC_fnc_Townparam_FoodPull);
-	//diag_log format["_townStockFood=%1", _townStockFood];
 
 				// Berechnen wie sich das Lager auf das Wachstum auswirkt.
 				private["_factor"];
@@ -300,59 +298,23 @@ if (ExecuteHeadlessCode) then
 
 				// Wachstum berechnen und hinzufügen
 				_simulatedCivCount = _simulatedCivCount + (pixTown_ConfigCivGrowRatePPH * _simulatedCivCount * _deltaHours * _factor);
-	//diag_log format["_simulatedCivCount=%1  _simulatedRedCount=%2 (reine Kalkulation)+", _simulatedCivCount, _simulatedRedCount];
-
-				
-				// ----------------------------------------------------------------------
-				// Auswanderer berücksichtigen				
-				// ----------------------------------------------------------------------
-				/*if (time > _nextEmigrantTime) then
-				{
-					_nextEmigrantTime = time + random (60 * 30);
-					
-					if (_townPopulation / _townMaxPopulation > pixTown_ConfigEmigrantPercent) then
-					{
-						private["_targetTownName"];
-						_targetTownName = [_townCenter] call fnc_TownHome_EmigrantFindDestination;
-						if (_targetTownName != "") then
-						{
-							[_targetTownName, 0,0,0,0] call fnc_TownHome_ImmigrantAdd;
-						};
-					};
-				};	*/			
-
-				// ----------------------------------------------------------------------
-				// Einwanderer berücksichtigen
-				// ----------------------------------------------------------------------
-				/*
-				private["_immigrants"];
-				_immigrants = _townName call fnc_TownHome_ImmigrantsPull;
-				_simulatedCivCount = _simulatedCivCount + (_immigrants select 0);
-				_simulatedRedCount = _simulatedRedCount + (_immigrants select 1);
-				_townWarlordCount = _townWarlordCount  + (_immigrants select 2);
-				_townWeaponCount = _townWeaponCount  + (_immigrants select 3);
-				*/
 
 				// ----------------------------------------------------------------------
 				// Wachstum auf Stadtgrenzen limitieren
 				// ----------------------------------------------------------------------
 				if (_simulatedCivCount > _townMaxPopulation) then { _simulatedCivCount = _townMaxPopulation; };
 				if (_simulatedCivCount + _simulatedRedCount > _townMaxPopulation) then { _simulatedRedCount = _townMaxPopulation - _simulatedCivCount; };
-				if (_simulatedCivCount + _simulatedRedCount + _townWarlordCount > _townMaxPopulation) then { _townWarlordCount = _townMaxPopulation - (_simulatedCivCount + _simulatedRedCount); };
-	//diag_log format["_simulatedCivCount=%1  _simulatedRedCount=%2 _townWarlordCount=%3 (MaxPopLimited)", _simulatedCivCount, _simulatedRedCount, _townWarlordCount];
 
 				// ----------------------------------------------------------------------
 				// _simulatedRedCount in Homes/_townRedCount übertragen (RED)
 				// ----------------------------------------------------------------------
 				private["_count"];		
 				_count = floor(_simulatedRedCount) - floor(_townRedCount);
-	//diag_log format["_simulatedRedCount=%1 => neue Bewohner: %2", _simulatedRedCount, _count];
 				private["_result"];
 				_result = [_homes, pixTown_ConfigRedClassnames, _count] call PC_fnc_TownHome_SettleRooms;
 				if (_count != _result) then
 				{
 					_townRedCount = floor(_townRedCount) + _result; //TODO: noch prüfen ob die RED auch korrekt verringert werden!
-	//diag_log format["WARN: Es konnten nur %1 von %2 RED-Wohneinheiten geändert werden.", _result, _count];
 				}
 				else
 				{
@@ -364,19 +326,16 @@ if (ExecuteHeadlessCode) then
 				// ----------------------------------------------------------------------
 				private["_count"];		
 				_count = floor(_simulatedCivCount) - floor(_townCivCount);
-	//diag_log format["_simulatedCivCount=%1 => neue Bewohner: %2", _simulatedCivCount, _count];
 				private["_result"];
 				_result = [_homes, pixTown_ConfigCivClassnames, _count] call PC_fnc_TownHome_SettleRooms;
 				if (_count != _result) then
 				{
 					_townCivCount = floor(_townCivCount) + _result; //TODO: noch prüfen ob die CIV auch korrekt verringert werden!
-	//diag_log format["WARN: Es konnten nur %1 von %2 CIV-Wohneinheiten geändert werden.", _result, _count];
 				}
 				else
 				{
 					_townCivCount = _simulatedCivCount;
 				};
-	//diag_log format["_townCivCount=%1 _townRedCount=%2 (Endergebnis)", _townCivCount, _townRedCount];
 				
 				// -----------------------------------
 				// Injured simulieren
@@ -384,7 +343,6 @@ if (ExecuteHeadlessCode) then
 				_townInjuredCount = _townInjuredCount + (pixTown_ConfigInjuredGrowFactorPPH * (_townRedCount + _townCivCount) * _deltaHours);
 				_townInjuredCount = _townInjuredCount + ([_townName] call PC_fnc_TownParam_InjuredPull);		
 				if (_townInjuredCount < 0) then { _townInjuredCount = 0; };
-	//diag_log format["_townInjuredCount=%1", _townInjuredCount];	
 				
 				// ----------------------------------------------------------------------
 				// Die Werte für die Öffentlichkeit zwischenspeichern
@@ -395,23 +353,11 @@ if (ExecuteHeadlessCode) then
 				// ----------------------------------------------------------------------
 				// Die Werte in der Datenbank speichern
 				// ----------------------------------------------------------------------
-				if (_townSimulationSaveCounter < 0) then
+				private["_dbResult"];	
+				_dbResult = "Arma2NET" callExtension format["PC town|update|%1|%2|%3|%4|%5|%6|%7|%8|%9|%10", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townObject getVariable["sideMission", 0], _townInjuredCount, _townMaxPopulation];
+				if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then
 				{
-					_townSimulationSaveCounter = 20;
-					private["_dbResult"];	
-					_dbResult = "Arma2NET" callExtension format["PC town|update|%1|%2|%3|%4|%5|%6|%7|%8|%9|%10", _townName, _townStockWater, _townStockFood, _townMood, _townCivCount, _townRedCount, _townWeaponCount, _townWarlordCount, _townInjuredCount, _townMaxPopulation];
-					if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then
-					{
-						diag_log format["ERROR: Town.Update failed: %1", _dbResult];
-					}
-					else
-					{
-						//diag_log format["Town %1 updated database", _townName];
-					};
-				}
-				else
-				{
-					_townSimulationSaveCounter = _townSimulationSaveCounter - 1;
+					diag_log format["ERROR: Town.Update failed: %1", _dbResult];
 				};
 			};
 		};
@@ -420,12 +366,11 @@ if (ExecuteHeadlessCode) then
 		// -----------------------------------------------------------------------------------
 		// Online/Offline: Einheiten laufen auf der Karte herum
 		// -----------------------------------------------------------------------------------
-		_townOnlineOfflineCounter = _townOnlineOfflineCounter - 1;
-		
+		_townOnlineOfflineCounter = _townOnlineOfflineCounter - 1;		
 		if (_townOnlineOfflineCounter < 0) then
 		{
-			_townOnlineOfflineCounter = 6;		//TODO: Radiuus abhängig von der Anzahl der Feineinheiten machen
-			if ([_townCenter, 1000] call PC_fnc_IsAnyPlayerNearTown) then
+			_townOnlineOfflineCounter = 6;		
+			if ([_townCenter, 1000] call PC_fnc_IsAnyPlayerNearTown) then //TODO: Radius abhängig von der Anzahl der Feineinheiten machen
 			{
 				_townIsVirtual = false;
 			
@@ -434,21 +379,13 @@ if (ExecuteHeadlessCode) then
 				_tmpCivCount = _townCivCount; 
 				private["_tmpRedCount"];
 				_tmpRedCount = _townRedCount; 
-				if (_townAttacked) then // Angriff verschiebt die Aktivitäten in Richtung RED
-				{
-					_tmpCivCount = _tmpCivCount * 0.3;
-					_tmpRedCount = _tmpRedCount + (_townCivCount - _tmpCivCount);
-				};
 				private["_tmpTotalSOLL"];
 				_tmpTotalSOLL = (_tmpCivCount + _tmpRedCount) / 20; 
 				if (_tmpTotalSOLL > 30) then { _tmpTotalSOLL = 30; }; // Deckeln
-				//if (!_townAttacked) then { if ((daytime > 22) || (daytime < 7)) then { _tmpTotalSOLL = _tmpTotalSOLL * 0.5 }; }; // Wenn kein Angriff, dann in der Nacht generell weniger Einheiten
 				
 				_tmpTotalSOLL = ceil(_tmpTotalSOLL);
 				_civSOLL = ceil((_tmpTotalSOLL / (_tmpCivCount + _tmpRedCount)) * _tmpCivCount);
 				_redSOLL = _tmpTotalSOLL - _civSOLL;
-	//diag_log format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
-	//player globalChat format["%1 online: tC=%2,tR=%3,max=%4,sollC=%5,sollR=%6", _townName, _townCivCount, _townRedCount, _townMaxPopulation,_civSOLL, _redSOLL];
 
 	//_civSOLL = 2;
 	//_redSOLL = 1;
@@ -465,9 +402,6 @@ if (ExecuteHeadlessCode) then
 				private["_deactivationResult"];
 				_deactivationResult = [_civActives, _townName] call PC_fnc_TownHome_Units_DeactivateFinished;
 				_townCivCount = _townCivCount - (_deactivationResult select 0);
-				_civActivesCount = count _civActives; // Wichtig!
-
-				_redActivesCount = count _redActives; // Wichtig!
 				_civActivesCount = count _civActives; // Wichtig!
 
 				// -----------------------------------
@@ -528,7 +462,6 @@ if (ExecuteHeadlessCode) then
 								_unit doFSM ["town\fsm\red2.fsm", _unitPosition, _unit];							
 								_room pushBack _unit;
 								_redActives pushBack [_unit, _unitGroup, _room];
-	//diag_log format["%2: created red: %1", _unit, _townName];
 							}
 							else
 							{
@@ -563,7 +496,6 @@ if (ExecuteHeadlessCode) then
 						if (count _unitPosition > 0) then
 						{
 							private ["_unitGroup"];
-							//_unitGroup = createGroup civilian;
 							_unitGroup = _townGroupCiv;
 							
 							private["_unit"];
@@ -576,10 +508,8 @@ if (ExecuteHeadlessCode) then
 								_unit setskill 0.01;
 								if (_townInjuredCount > 1) then 
 								{
-									//if (false) then
 									if (random 1 < 0.4) then
 									{
-	//diag_log "injured civ";
 										_townInjuredCount = _townInjuredCount - 1;
 										_unit setVariable ["TI", 1, true];
 									};
@@ -594,7 +524,6 @@ if (ExecuteHeadlessCode) then
 								_unit doFSM ["town\fsm\civ2.fsm", _unitPosition, _unit];							
 								_room pushBack _unit;
 								_civActives pushBack [_unit, _unitGroup, _room];	
-	//diag_log format["%2: created civ: %1", _unit, _townName];
 							}
 							else
 							{
@@ -605,14 +534,9 @@ if (ExecuteHeadlessCode) then
 
 					_civActivesCount = count _civActives;		
 				};			
-				
-	//diag_log format["_civActives loop: %1", _civActives];
 			}
 			else
 			{
-	//diag_log "town virtual. no player close engough.";
-	//player globalChat format["town virtual. no player close engough: %1 / %2", _redActivesCount, _civActivesCount];
-				
 				if (!_townIsVirtual) then
 				{
 					_townIsVirtual = true;
@@ -626,7 +550,6 @@ if (ExecuteHeadlessCode) then
 						_redActivesCount = 0;
 						_townRedCount = _townRedCount - (_deactivationResult select 0);
 						_townWeaponCount = _townWeaponCount + (_deactivationResult select 1);						
-	//player globalChat format["deactivated %1 with %2 weapons", (_deactivationResult select 0),(_deactivationResult select 1)];
 					};
 					if (_civActivesCount > 0) then
 					{
@@ -648,11 +571,8 @@ if (ExecuteHeadlessCode) then
 		private["_searchBuildings"];
 		_searchBuildings = [_townName] call PC_fnc_TownParam_SearchBuildingPull;
 		{
-	//diag_log format["Durchsuchen von Gebäude %1 wurde angefragt. %2", _x, getPos _x];
-				
 			private["_house"];
 			_house = [_homes, _x] call PC_fnc_TownHome_GetHouse;
-	//diag_log format["_house: %1", _house];
 			if (count _house > 0) then
 			{
 				//-----------------------------------------------------------------------------------------------------------------------
@@ -669,12 +589,10 @@ if (ExecuteHeadlessCode) then
 				// RedForce Kräfte in der Nähe der Durchsuchung alarmieren.
 				private["_bluFor"];
 				_bluFor = (_house select 0) nearEntities [pixTown_ConfigBaseClassBlu, 50];
-	//diag_log format["_bluFor: %1", _bluFor];
 				if (count _bluFor > 0) then
 				{				
 					private["_redFor"];
 					_redFor = (_house select 0) nearEntities [pixTown_ConfigBaseClassRed, 20 + (random 130)];
-	//diag_log format["_redFor: %1", _redFor];
 					{ 
 						if (random 1 < 0.5) then 
 						{ 
@@ -685,14 +603,12 @@ if (ExecuteHeadlessCode) then
 							_x reveal [_target, 1];
 							_x doTarget _target;
 							_x doMove (getPos _target);
-	//player globalChat "RED Unterstützung unterwegs";
 						}; 
 					} foreach _redFor;
 				};
 
 				private["_rooms"];
 				_rooms = _house select 1;
-	//diag_log format["_rooms: %1", _rooms];
 				{
 					// Wenn die hier wohnende Einheit inaktiv ist, wird Sie nun erstellt.
 					if (count _x == 2) then
@@ -702,11 +618,9 @@ if (ExecuteHeadlessCode) then
 						private["_classname"];
 						_classname = _x select 1;
 						
-						if ((_classname in pixTown_ConfigRedClassnames) || (_classname in pixTown_ConfigWarlordClassnames)) then
+						if (_classname in pixTown_ConfigRedClassnames) then
 						{
-	//diag_log "create RED";
 							private ["_unitGroup"];
-							//_unitGroup = createGroup east;//independent;
 							_unitGroup = _townGroupRed;
 							
 							private["_unit"];
@@ -724,11 +638,9 @@ if (ExecuteHeadlessCode) then
 							_redActives pushBack [_unit, _unitGroup, _x];
 							_forcedRed = _forcedRed + 1;
 							_redActivesCount = count _redActives;		
-	//diag_log format["%2: created searched red: %1", _unit, _townName];						
 						}
 						else
 						{
-	//diag_log "create CIV";
 							private ["_unitGroup"];
 							_unitGroup = _townGroupCiv;
 							private["_unit"];
@@ -749,7 +661,6 @@ if (ExecuteHeadlessCode) then
 							_civActives pushBack [_unit, _unitGroup, _x];	
 							_forcedCiv = _forcedCiv + 1;
 							_civActivesCount = count _civActives;		
-	//diag_log format["_civActives search: %1", _civActives];
 						};
 					};
 				} foreach _rooms;

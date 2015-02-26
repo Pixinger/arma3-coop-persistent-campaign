@@ -2,7 +2,7 @@
 pixTown_ConfigMainLoopSleep = 5;
 if (pixDebug) then {pixTown_ConfigMainLoopSleep = 1;};
 // Mindest Spieleranzahl bis Städte simulierten Wachstum haben.
-pixTown_ConfigMinPlayerCountForSimulation = 2;
+pixTown_ConfigMinPlayerCountForSimulation = 5;
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
 	
@@ -12,7 +12,6 @@ pixTown_ConfigInjuredGrowFactorPPH = 0;		  	// Zuwachs an Verletzten in PPH.
 pixTown_ConfigRedGrowRatePPH = 0.04;            // Mindest Zuwachs in PPH.
 pixTown_ConfigRedGrowRateMoodLimit = 0.01;		// GrowRatePPH (siehe oben) wird nur angewand, wenn (_townMood < GrowRateMoodLimit) ist.
 pixTown_ConfigRedGrowPerBluKill = 0;            // Zuwachs pro Blu-Kill-
-pixTown_ConfigRedGrowFactorPerWarlord = 0.5;     // Zuwachsfaktor für jeden Warlord, berechnet: _factor = 1 + (pixTown_ConfigRedGrowFactorPerWarlord * warlordCount) 
 
 pixTown_ConfigCivGrowRatePPH = 0.5;            // Maximaler Zuwachs in PPH. (wird von den GrowFactoren beeinflust. Sind alle optimal (=1), dann wird das hier angegebene Wachstum erreicht.
 pixTown_ConfigCivGrowFactorWater = 0.5;			// Anteil der Wasserversorgung am Gesamtwachstum
@@ -28,19 +27,16 @@ pixTown_ConfigMaxCiv2RedConversionPPH = 0.05;     // Maximale Konvertierungen vo
 pixTown_ConfigMaxRed2CivConversionPPH = 0.05;     // Maximale Konvertierungen von Red zu Civ in PPH
 
 // Angaben wie die Stimmung bei bestimmten Events beinflusst wird.
-pixTown_ConfigMoodPerCivWater = 0.06;
-pixTown_ConfigMoodPerCivFood = 0.06;
-pixTown_ConfigMoodPerCivInjured = 0.05;
+pixTown_ConfigMoodPerCivWater = 0.08;
+pixTown_ConfigMoodPerCivFood = 0.08;
+pixTown_ConfigMoodPerCivInjured = 0.08;
 pixTown_ConfigMoodPerCivKill = -0.1;
-pixTown_ConfigMoodPerCivUnsearched = -0.1;
+pixTown_ConfigMoodPerCivUnsearched = -0.05;
 pixTown_ConfigMoodPerRedKill = 0.01;
 pixTown_ConfigMoodPerRedUnsearched = -0.1;
 pixTown_ConfigMoodPerRedArrest = 0.05;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
 pixTown_ConfigMoodPerHouseSearchRed = 0.05;
-
-//pixTown_ConfigImmigrantPercent = 80;
-pixTown_ConfigEmigrantPercent = 80 / 100;
 
 // Klassenname für Wasserversorgung	
 pixTown_ConfigWaterClassname = "Land_WaterTank_F";
@@ -99,7 +95,7 @@ pixTown_ConfigCivClassnames = [
 	"C_man_polo_2_F_asia",
 	"C_man_polo_3_F_afro",
 	"C_man_polo_3_F_euro",
-	//"C_man_polo_3_F_asia",
+	"C_man_polo_3_F_asia",
 	"C_man_polo_4_F_afro",
 	"C_man_polo_4_F_euro",
 	"C_man_polo_4_F_asia",
@@ -109,23 +105,23 @@ pixTown_ConfigCivClassnames = [
 	"C_man_polo_6_F_afro",
 	"C_man_polo_6_F_euro",
 	"C_man_polo_6_F_asia",
-	//"C_man_p_fugitive_F_afro",
+	"C_man_p_fugitive_F_afro",
 	"C_man_p_fugitive_F_euro",
 	"C_MAN_P_FUGITIVE_F_ASIA",
 	"C_man_w_worker_F",
 	"C_man_hunter_1_F",
 	"C_man_p_shorts_1_F_afro",
-	//"C_man_p_shorts_1_F_euro",
-	//"C_man_p_shorts_1_F_asia",
-	"C_man_p_shorts_2_F_afro"
-	//"C_man_p_shorts_2_F_euro",
-	//"C_man_p_shorts_2_F_asia",
-	//"C_man_p_shorts_3_F_afro",
-	//"C_man_p_shorts_3_F_euro",C_man_p_shorts_3_F_euro
-	//"C_man_p_shorts_3_F_asia",
-	//"C_man_p_shorts_4_F_afro",
-	//"C_man_p_shorts_4_F_euro",
-	//"C_man_p_shorts_4_F_asia",
+	"C_man_p_shorts_1_F_euro",
+	"C_man_p_shorts_1_F_asia",
+	"C_man_p_shorts_2_F_afro",
+	"C_man_p_shorts_2_F_euro",
+	"C_man_p_shorts_2_F_asia",
+	"C_man_p_shorts_3_F_afro",
+	"C_man_p_shorts_3_F_euro",	
+	"C_man_p_shorts_3_F_asia",
+	"C_man_p_shorts_4_F_afro",
+	"C_man_p_shorts_4_F_euro",
+	"C_man_p_shorts_4_F_asia"
 	//"C_journalist_F",
 	//"C_Orestes",
 	//"C_Nikos",
@@ -150,12 +146,6 @@ pixTown_ConfigRedClassnames = [
 	"PC2_O_G_Soldier_SL_F",
 	"PC2_O_G_Soldier_TL_F"
 ];
-
-// Klassennamen der Warlords	
-pixTown_ConfigWarlordClassnames = [
-	"PC2_O_G_officer_F",
-	"PC2_O_G_Story_Colonel_F"];
-
 
 
 // ------------------------------------------------------------

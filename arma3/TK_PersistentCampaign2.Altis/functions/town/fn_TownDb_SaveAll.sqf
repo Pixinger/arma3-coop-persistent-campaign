@@ -12,7 +12,6 @@ _result = false;
 
 if (ExecuteHeadlessCode) then
 {
-
 	private["_dbResult"];	
 	_dbResult = "Arma2NET" callExtension "PC town|save";
 	if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] != "OK") then

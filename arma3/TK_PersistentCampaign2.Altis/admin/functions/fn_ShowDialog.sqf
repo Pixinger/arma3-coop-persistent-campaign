@@ -10,8 +10,7 @@ _buttons = [
 	["Städte speichern", true, true, fnc_Admin_TownsSaveScript],
 	["Stadt Status abfragen", true, true, fnc_Admin_TownStatusScript],
 	//["Switch Zeus", true, true, fnc_Admin_SwitchZeusScript],
-	["Informations Status abfragen", true, true, fnc_Admin_InfoStatusScript],
-	["Arrest Status abfragen", true, true, fnc_Admin_ArrestStatusScript]
+	["Informations Status abfragen", true, true, fnc_Admin_InfoStatusScript]
 ];
 
 [_buttons, "Administrator"] execVM "maindialog_showtemplate.sqf";

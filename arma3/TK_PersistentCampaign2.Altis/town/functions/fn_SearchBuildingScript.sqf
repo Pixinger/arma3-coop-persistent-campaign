@@ -9,7 +9,7 @@ if (count _buildings > 0) then
 	_building = _buildings select 0;
 
 	private["_townObjects"];
-	_townObjects = player nearEntities [pixTown_ConfigObjectClassname, 1000];
+	_townObjects = player nearEntities [pixTown_ConfigObjectClassname, 1000]; //Land_VRGoggles_01_F
 	if (count _townObjects > 0) then
 	{
 		private["_townName"];
