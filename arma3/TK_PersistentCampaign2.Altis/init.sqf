@@ -1,6 +1,6 @@
 setviewdistance 1000;
 setObjectViewDistance 1000;
-/*setTerrainGrid 3.125;*/
+setTerrainGrid 50;
 
 waituntil {!isnil "bis_fnc_init"};
 if (hasInterface) then { waitUntil {!isNull player};};
