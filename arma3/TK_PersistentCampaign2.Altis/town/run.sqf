@@ -98,6 +98,18 @@ if (ExecuteHeadlessCode) then
 		_townWeaponCount = _increase * 4;
 		_townObject setVariable ["sideMission", 0];
 	};
+	if (_townObject getVariable "sideMission" == 12) then 
+	{
+		// Warlord hat nicht überlebt. Auswirkungen werden hier festgelegt
+		_townMood = _townMood + 1;
+		if (_townMood > 1) then { _townMood = 1; };
+
+		private["_increase"];
+		_increase = round(_townCivCount / 2);
+		_townCivCount = _townCivCount + _increase;
+		_townRedCount = _townRedCount - _increase;
+		_townObject setVariable ["sideMission", 0];
+	};
 	if (_townObject getVariable "sideMission" == 10) then 
 	{
 		// Warlord Mission starten

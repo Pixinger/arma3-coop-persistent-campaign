@@ -34,15 +34,47 @@ if (ExecuteHeadlessCode) then
 		//removeAllWeapons _unit;		
 
 		while { alive _unit } do
-		{
-			Sleep 10;
+		{			
+			if (random 1 < 0.5) then
+			{
+				private["_building"];
+				_building = nearestBuilding [(_townCenter select 0) - _townRadius + (random (_townRadius * 2)), (_townCenter select 1) - _townRadius + (random (_townRadius * 2)), 0];
+				private["_buildingPos"];
+				_buildingPos = _building buildingPos (([_building] call PC_fnc_GetMaxBuildingPositions) - 1);
+				_unit moveTo _buildingPos;
+
+				private["_doneHere"];
+				_doneHere = false;
+				while { !_doneHere } do
+				{
+					Sleep 10;
+					if (moveToFailed _unit) then { _doneHere = true; };
+					if (moveToCompleted _unit) then
+					{ 
+						Sleep (10 * 60);
+						_doneHere = true; 
+					};
+				};
+			}
+			else
+			{
+				_unit moveTo [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];			
+				private["_doneHere"];
+				_doneHere = false;
+				while { !_doneHere } do
+				{
+					Sleep 10;
+					if (moveToFailed _unit) then { _doneHere = true; };
+					if (moveToCompleted _unit) then { _doneHere = true; };
+				};				
+			};		
 		};
 	}
 	else
 	{
 		diag_log "ERROR: Unable to create sidemission unit 'PC2_O_G_Story_Colonel_F'";
 	};
-	
+
 	_townObject setVariable ["sideMission", 0];
 	deleteMarker _townMarker;
 };
