@@ -60,7 +60,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2 AGM";
-		overviewText="www.teamkommando.de | V0.50";
+		overviewText="www.teamkommando.de | V0.50.1";
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0;
@@ -1328,7 +1328,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Paros""];this setVariable[""townRadius"", 200];this setVariable[""offline"", false];";
+			init="this setVariable[""townName"", ""Paros""];this setVariable[""townRadius"", 300];this setVariable[""offline"", false];";
 		};
 		class Item7
 		{
