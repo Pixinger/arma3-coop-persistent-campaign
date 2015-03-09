@@ -7,7 +7,7 @@ if (ExecuteHeadlessCode) then
 	if (count _towns > 0) then
 	{
 		private["_limit"];
-		_limit = 20;
+		_limit = 100;
 		
 		while { _limit > 0 } do 
 		{

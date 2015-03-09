@@ -1,6 +1,6 @@
 call compile preprocessFileLineNumbers "town\config.sqf";
 call compile preprocessFileLineNumbers "town\functions\_compile.sqf";
-call compile preprocessFileLineNumbers "town\functionsHomes\_compile.sqf";
+call compile preprocessFileLineNumbers "town\sideMissions\functions\_compile.sqf";
 
 if (ExecuteHeadlessCode) then
 {
@@ -29,7 +29,7 @@ if (ExecuteHeadlessCode) then
 		diag_log format [ "Informationen wurden gesichert und an das HQ gesendet (%1).", _this select 1 ];
 		if ((_this select 1) % 10 == 0) then
 		{
-			[] call fnc_TownHome_AssignSideMission;
+			[] call fnc_TownSM_AssignSideMission;
 		};
 	};	
 	
