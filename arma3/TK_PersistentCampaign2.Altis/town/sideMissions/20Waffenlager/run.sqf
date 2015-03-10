@@ -9,6 +9,12 @@ if (ExecuteHeadlessCode) then
 	private["_townName"];
 	_townName = _townObject getVariable "townName";
 	
+	// Auswirkungen:
+	// 20: Mission Start
+	// 21: Mission fehlgeschlagen
+	// 22: Mission erfolgreich		
+	_townObject setVariable ["sideMission", 21];	
+	
 	// -----------------------------------
 	// Marker erstellen
 	// -----------------------------------
@@ -17,7 +23,7 @@ if (ExecuteHeadlessCode) then
 	_townMarker setMarkerShape "ICON";
 	_townMarker setMarkerSize [10, 10];
 	_townMarker setMarkerType "mil_destroy";
-	_townMarker setMarkerText "Weaponcache";
+	_townMarker setMarkerText "Waffenlager";
 	_townMarker setMarkerAlpha 1;	
 	_townMarker setMarkerColor "ColorRed";
 	
@@ -26,12 +32,6 @@ if (ExecuteHeadlessCode) then
 	_missionPosition = [_townCenter, _townRadius * 2] call fnc_TownSM_GetRandomPositionField;
 	if (str(_missionPosition) != "[[0,0,0],0]") then
 	{
-		private["_groups"];
-		_groups = [];
-		private["_vehicles"];
-		_vehicles = [];
-		private["_buildings"];
-		_buildings = [];
 		private["_buildingClassnames"];
 		_buildingClassnames = ["Box_East_WpsSpecial_F"];
 
@@ -40,56 +40,38 @@ if (ExecuteHeadlessCode) then
 		_ammobox1 setdir random 360;
 		_ammobox1 setVectorUp surfaceNormal (position _ammobox1);
 		_ammobox1 allowDamage false;
-		_buildings = _buildings + [_ammobox1];
 
 		private["_ammobox2"];
 		_ammobox2 = _buildingClassname createVehicle _missionPosition;
 		_ammobox2 setdir random 360;
 		_ammobox2 setVectorUp surfaceNormal (position _ammobox2);
 		_ammobox2 allowDamage false;
-		_buildings = _buildings + [_ammobox2];	
-
-		private["_patrolCount"];
-		_patrolCount = floor random (4);
-
-		//-------------------------
-		// Patroullierende Truppen 
-		//-------------------------
-		for "_i" from 0 to _patrolCount do 
-		{
-			private["_groupInfos"];
-			_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT"], _zoneIndex, _missionPosition, 600, 25] call PC_fnc_SpawnGroupPatrolObject;		
-			if (count _groupInfos > 0) then
-			{
-				_groups = _groups + [(_groupInfos select 0)];
-				_vehicles = _vehicles + (_groupInfos select 1);
-			};
-		};
 
 		//-------------------------
 		// Verteidigungs Truppe 
 		//-------------------------
-		private["_groupInfos"];
-		_groupInfos = [["OIA_InfSquad","OIA_InfTeam","OIA_InfTeam_AT","OIA_MotInf_Team","OIA_MotInf_AT","OIA_InfSentry"], _missionPosition] call PC_fnc_SpawnGroupGuardObject;
-		if (count _groupInfos > 0) then
-		{
-			_groups = _groups + [(_groupInfos select 0)];
-			_vehicles = _vehicles + (_groupInfos select 1);
-		};
-		
+		private ["_groupDefend"];
+		_groupDefend = createGroup pixTown_ConfigSideRed;		
+		private["_unitsDefend"];
+		_unitsDefend = [_groupDefend, _missionPosition, pixTown_ConfigRedClassnames, 5] call fnc_TownSM_CreateGroup;		
+		[_groupDefend, _missionPosition] call bis_fnc_taskDefend;
+
 		//-------------------------
-		// Minenfelder 
+		// Patrol Truppe 
+		//-------------------------
+		private ["_groupPatrol"];
+		_groupPatrol = createGroup pixTown_ConfigSideRed;		
+		private["_unitsPatrol"];
+		_unitsPatrol = [_groupPatrol, _missionPosition, pixTown_ConfigRedClassnames, 5] call fnc_TownSM_CreateGroup;		
+		[_groupPatrol, _missionPosition] call bis_fnc_taskDefend;
+
+		//-------------------------
+		// Minenfeld
 		//-------------------------
 		if (random (1) < 0.5) then
 		{
-			private["_mineFieldCount"];
-			_mineFieldCount = 1 + floor(random 3);
-			for "_i" from 0 to _mineFieldCount do 
-			{
-				[_missionPosition, ["APERSTripMine"]] call fnc_TownSM_CreateMineFieldRandom;
-			};
+			[_missionPosition, ["APERSTripMine"]] call fnc_TownSM_CreateMineFieldRandom;
 		};
-		
 
 		//-------------------------
 		// Mission Loop
@@ -98,16 +80,21 @@ if (ExecuteHeadlessCode) then
 		{			
 			Sleep 10;
 		};
-			
-		
-		[_groups, _vehicles, _buildings, true] call PC_fnc_CleanupMission;
-		
+
+		_townObject setVariable ["sideMission", 22]; // erfolgreich
+		deleteMarker _townMarker;
+		Sleep 5*60;
+
+		// Löschen und freigeben
+		{ deleteVehicle _x; } foreach _unitsDefend;
+		deleteGroup _groupDefend;
+		{ deleteVehicle _x; } foreach _unitsPatrol;
+		deleteGroup _groupPatrol;
 	}
 	else
 	{
-		diag_log "ERROR: Unable to create sidemission 'AmmoBox'.";
-	};
-
-	_townObject setVariable ["sideMission", 0];
-	deleteMarker _townMarker;
+		_townObject setVariable ["sideMission", 22]; // erfolgreich
+		deleteMarker _townMarker;
+		diag_log "ERROR: Unable to create sidemission 'Waffenlager'.";
+	};		
 };

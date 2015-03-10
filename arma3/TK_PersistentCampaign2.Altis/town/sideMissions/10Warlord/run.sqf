@@ -9,6 +9,12 @@ if (ExecuteHeadlessCode) then
 	private["_townName"];
 	_townName = _townObject getVariable "townName";
 	
+	// Auswirkungen:
+	// 10: Mission Start
+	// 11: Mission fehlgeschlagen
+	// 12: Mission erfolgreich		
+	_townObject setVariable ["sideMission", 11];	
+	
 	// -----------------------------------
 	// Marker erstellen
 	// -----------------------------------
@@ -72,9 +78,9 @@ if (ExecuteHeadlessCode) then
 	}
 	else
 	{
-		diag_log "ERROR: Unable to create sidemission unit 'PC2_O_G_Story_Colonel_F'";
+		diag_log "ERROR: Unable to create sidemission 'Warlord'";
 	};
 
-	_townObject setVariable ["sideMission", 0];
+	_townObject setVariable ["sideMission", 12]; //erfolgreich
 	deleteMarker _townMarker;
 };

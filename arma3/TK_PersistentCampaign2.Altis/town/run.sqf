@@ -85,39 +85,108 @@ if (ExecuteHeadlessCode) then
 	// -----------------------------------
 	// Side-Missions
 	// -----------------------------------
-	// if (_townObject getVariable "sideMission" == 11) then 
-	// {
-		// // Warlord hat überlebt. Auswirkungen werden hier festgelegt
-		// _townMood = _townMood - 1;
-		// if (_townMood < -1) then { _townMood = -1; };
+	if (_townObject getVariable "sideMission" != 0) then
+	{
+		private["_sideMission"];
+		_sideMission = _townObject getVariable "sideMission";
 
-		// private["_increase"];
-		// _increase = round(_townCivCount / 2);
-		// _townCivCount = _townCivCount - _increase;
-		// _townRedCount = _townRedCount + _increase;
-		// _townWeaponCount = _increase * 4;
-		// _townObject setVariable ["sideMission", 0];
-	// };
-	// if (_townObject getVariable "sideMission" == 12) then 
-	// {
-		// // Warlord hat nicht überlebt. Auswirkungen werden hier festgelegt
-		// _townMood = _townMood + 1;
-		// if (_townMood > 1) then { _townMood = 1; };
+		// Warlord
+		if ((_sideMission >= 10) && (_sideMission <= 19)) then
+		{
+			if (_sideMission == 11) then // Fehlgeschlagen
+			{
+				_townMood = _townMood - 1;
+				if (_townMood < -1) then { _townMood = -1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 2);
+				_townCivCount = _townCivCount - _increase;
+				_townRedCount = _townRedCount + _increase;
+				_townWeaponCount = _increase * 4;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 12) then // Erfolgreich
+			{
+				_townMood = _townMood + 1;
+				if (_townMood > 1) then { _townMood = 1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 2);
+				_townCivCount = _townCivCount + _increase;
+				_townRedCount = _townRedCount - _increase;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 10) then // Starten
+			{
+				private["_tmp"];
+				_tmp = [_townObject] execVM "town\sideMissions\10Warlord\run.sqf";
+				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+			};
+		};
 
-		// private["_increase"];
-		// _increase = round(_townCivCount / 2);
-		// _townCivCount = _townCivCount + _increase;
-		// _townRedCount = _townRedCount - _increase;
-		// _townObject setVariable ["sideMission", 0];
-	// };
-	// if (_townObject getVariable "sideMission" == 10) then 
-	// {
-		// // Warlord Mission starten
-		// _townObject setVariable ["sideMission", 11];
-		// _townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
-		// private["_tmp"];
-		// _tmp = [_townObject] execVM "town\smWarlord\run.sqf";
-	// };
+		// Waffenlager
+		if ((_sideMission >= 20) && (_sideMission <= 29)) then
+		{
+			if (_sideMission == 21) then // Fehlgeschlagen
+			{
+				_townMood = _townMood - 1;
+				if (_townMood < -1) then { _townMood = -1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 2);
+				_townCivCount = _townCivCount - _increase;
+				_townRedCount = _townRedCount + _increase;
+				_townWeaponCount = _increase * 4;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 22) then // Erfolgreich
+			{
+				_townMood = _townMood + 1;
+				if (_townMood > 1) then { _townMood = 1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 2);
+				_townCivCount = _townCivCount + _increase;
+				_townRedCount = _townRedCount - _increase;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 20) then // Starten
+			{
+				private["_tmp"];
+				_tmp = [_townObject] execVM "town\sideMissions\20Waffenlager\run.sqf";
+				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+			};
+		};
+
+		// Checkpoint
+		if ((_sideMission >= 30) && (_sideMission <= 39)) then
+		{
+			if (_sideMission == 31) then // Fehlgeschlagen
+			{
+				_townMood = _townMood - 1;
+				if (_townMood < -1) then { _townMood = -1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 4);
+				_townCivCount = _townCivCount - _increase;
+				_townRedCount = _townRedCount + _increase;
+				_townStockFood = 0;
+				_townStockWater = 0;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 32) then // Erfolgreich
+			{
+				_townMood = _townMood + 1;
+				if (_townMood > 1) then { _townMood = 1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 6);
+				_townCivCount = _townCivCount + _increase;
+				_townRedCount = _townRedCount - _increase;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 30) then // Starten
+			{
+				private["_tmp"];
+				_tmp = [_townObject] execVM "town\sideMissions\30Checkpoint\run.sqf";
+				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+			};
+		};
+	};
 
 	// -----------------------------------
 	// Townmarker erstellen

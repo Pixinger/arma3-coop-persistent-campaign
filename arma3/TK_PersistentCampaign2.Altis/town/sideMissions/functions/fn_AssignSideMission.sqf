@@ -18,7 +18,9 @@ if (ExecuteHeadlessCode) then
 			_sideMission = _town getVariable ["sideMission", 0];		
 			if (_sideMission == 0) then
 			{
-				_town setVariable ["sideMission", 10, false]; // Warlord			
+				private["_missionID"];
+				_missionID = ((floor random (3)) + 1) * 10;
+				_town setVariable ["sideMission", _missionID, false]; // 10, 20, 30, ...
 				_limit = 0;
 			};
 		};
