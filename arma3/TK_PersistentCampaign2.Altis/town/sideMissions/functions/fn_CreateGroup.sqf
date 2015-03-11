@@ -13,26 +13,24 @@ Return:
 /*-------------------------------------------------------------------*/
 
 private["_unitGroup"];
-_unitGroup = [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
-
-private["_unitClassnames"];
-_unitClassnames = [_this, 1, [], [[]]] call BIS_fnc_param;
+_unitGroup = _this select 0;
 
 private["_unitPosition"];
-_unitPosition = [_this, 2, [0,0,0], [[3]]] call BIS_fnc_param;
+_unitPosition = _this select 1;
+
+private["_unitClassnames"];
+_unitClassnames = _this select 2;
 
 private["_unitCount"];
-_unitCount = [_this, 3, 1, [1]] call BIS_fnc_param;
+_unitCount = _this select 3;
 
 private["_units"];
 _units = [];
-
 for "_i" from 1 to _unitCount do
 {
 	private["_unit"];
 	_unit = _unitGroup createUnit [_unitClassnames select (floor(random(count _unitClassnames))), _unitPosition, [], 0, "FORM"];
-	waitUntil {Sleep 0.2; !isNil "_unit"};
+	Sleep 0.5;
 	_units pushBack _unit;
 };
-
 _units;

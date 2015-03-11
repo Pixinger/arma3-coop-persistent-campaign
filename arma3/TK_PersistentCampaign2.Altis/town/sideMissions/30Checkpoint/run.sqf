@@ -21,7 +21,7 @@ if (ExecuteHeadlessCode) then
 	private["_townMarker"];
 	_townMarker = createMarker[format["markerTownSideMission%1", _townName], _townCenter];
 	_townMarker setMarkerShape "ICON";
-	_townMarker setMarkerSize [10, 10];
+	_townMarker setMarkerSize [1, 1];
 	_townMarker setMarkerType "mil_destroy";
 	_townMarker setMarkerText "Strassensperre";
 	_townMarker setMarkerAlpha 1;	
@@ -29,7 +29,7 @@ if (ExecuteHeadlessCode) then
 	
 	
 	private["_missionPosition"];
-	_missionPosition = [_townCenter, _townRadius * 2] call fnc_TownSM_GetRandomPositionRoad;
+	_missionPosition = [_townCenter, _townRadius * 2] call fnc_TownSM_GetRandomPositionCircleRoad;
 	if (str(_missionPosition) != "[[0,0,0],0]") then
 	{
 		private["_missionDirection"];
@@ -38,44 +38,46 @@ if (ExecuteHeadlessCode) then
 		_missionPosition set [2,0];
 
 		// Als erstes die Schranke erstellen, da sich alles um diese Schranke dreht. 
-		private["_bargate"];
-		_bargate = createVehicle ["Land_BarGate_F", _missionPosition, [], 0, "NONE"];
+		private["_bargate1"];
+		_bargate1 = createVehicle ["Land_CncBarrier_F", _missionPosition, [], 0, "NONE"];
 		Sleep .2;
-		_bargate setDir _missionDirection;	 
-		_bargate setPos _missionPosition;
-		private["_tmp"];
-		_tmp = _bargate addEventHandler ["HandleDamage", {false}];
-		// Position korrigieren, da die Schranke nicht mittig steht 
-		_missionPosition = _bargate modelToWorld [7,0,0]; 
-		_bargate setPos _missionPosition;
-		
-		// Bunker1 erstellen
-		private["_bunkerPos"];
-		_bunkerPos = _bargate modelToWorld [6.5,-2,-2];
-		_bunkerPos set [2, 0];
-		private["_bunker1"];
-		_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "NONE"];
+		_bargate1 setDir _missionDirection;	 
+		_bargate1 setPos _missionPosition;
+
+		private["_tmpPos"];
+		_tmpPos = _bargate1 modelToWorld [3,0,0];
+		_tmpPos set [2, 0];
+		private["_bargate2"];
+		_bargate2 = createVehicle ["Land_CncBarrier_F", _tmpPos, [], 0, "NONE"];
 		Sleep .2;
-		_bunker1 setDir _missionDirection;
-		
-		// Bunker2 erstellen
-		_bunkerPos = _bargate modelToWorld [-8,-2,-2],;
-		_bunkerPos set [2, 0];
-		private["_bunker2"];
-		_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "NONE"];
+		_bargate2 setDir _missionDirection;	 
+		_bargate2 setPos _tmpPos;
+
+		_tmpPos = _bargate1 modelToWorld [-3,0,0];
+		_tmpPos set [2, 0];
+		private["_bargate3"];
+		_bargate3 = createVehicle ["Land_CncBarrier_F", _tmpPos, [], 0, "NONE"];
 		Sleep .2;
-		_bunker2 setDir _missionDirection;
+		_bargate3 setDir _missionDirection;	 
+		_bargate3 setPos _tmpPos;
 		
 		// MG1 erstellen
+		_tmpPos = _bargate1 modelToWorld [0,6,0];
+		_tmpPos set [2, 0];
 		private["_mg1"];
-		_mg1 = createVehicle ["I_HMG_01_high_F", getPos _bunker1, [], 0, "CAN_COLLIDE"];
+		_mg1 = createVehicle ["I_HMG_01_high_F", _tmpPos, [], 0, "CAN_COLLIDE"];
 		Sleep .2;
 		_mg1 setDir (_missionDirection-180);
+		
 		// MG2 erstellen
+		_tmpPos = _bargate1 modelToWorld [0,-6,0],;
+		_tmpPos set [2, 0];
 		private["_mg2"];
-		_mg2 = createVehicle ["I_HMG_01_high_F", getPos _bunker2, [], 0, "CAN_COLLIDE"];
+		_mg2 = createVehicle ["I_HMG_01_high_F", _tmpPos, [], 0, "CAN_COLLIDE"];
 		Sleep .2;
 		_mg2 setDir (_missionDirection-180);
+		
+		Sleep 2;
 		
 		//-------------------------
 		// Verteidigungs Truppe 
@@ -83,9 +85,11 @@ if (ExecuteHeadlessCode) then
 		private ["_groupDefend"];
 		_groupDefend = createGroup pixTown_ConfigSideRed;		
 		private["_unitsDefend"];
-		_unitsDefend = [_groupDefend, _missionPosition, pixTown_ConfigRedClassnames, 10] call fnc_TownSM_CreateGroup;		
+		_unitsDefend = [_groupDefend, _missionPosition, pixTown_ConfigRedClassnames, 5] call fnc_TownSM_CreateGroup;		
 		[_groupDefend, _missionPosition] call bis_fnc_taskDefend;
 
+		Sleep 2;
+		
 		//-------------------------
 		// Patrol Truppe 
 		//-------------------------
@@ -93,7 +97,7 @@ if (ExecuteHeadlessCode) then
 		_groupPatrol = createGroup pixTown_ConfigSideRed;		
 		private["_unitsPatrol"];
 		_unitsPatrol = [_groupPatrol, _missionPosition, pixTown_ConfigRedClassnames, 5] call fnc_TownSM_CreateGroup;		
-		[_groupPatrol, _missionPosition] call bis_fnc_taskDefend;
+		[_groupPatrol, _missionPosition, 300] call bis_fnc_taskPatrol;
 
 		//-------------------------
 		// Mission Loop
@@ -116,9 +120,9 @@ if (ExecuteHeadlessCode) then
 		Sleep 5*60;		
 
 		// Löschen und freigeben
-		deleteVehicle _bargate;
-		deleteVehicle _bunker1;
-		deleteVehicle _bunker2;
+		deleteVehicle _bargate1;
+		deleteVehicle _bargate2;
+		deleteVehicle _bargate3;
 		deleteVehicle _mg1;
 		deleteVehicle _mg2;
 		

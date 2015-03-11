@@ -7,8 +7,6 @@ class Mission
 		"a3_characters_f_beta",
 		"A3_Structures_F_Mil_Helipads",
 		"A3_Structures_F_Mil_Cargo",
-		"A3_Modules_F_Curator_Curator",
-		"A3_Missions_F_Curator",
 		"a3_characters_f",
 		"A3_Structures_F_Items_Vessels",
 		"A3_Structures_F_Mil_Flags",
@@ -20,7 +18,6 @@ class Mission
 		"A3_Structures_F_Walls",
 		"A3_Data_F_Curator_Characters",
 		"task_force_radio_items",
-		"A3_Characters_F_OPFOR",
 		"agm_core",
 		"agm_respawn",
 		"agm_medical",
@@ -59,7 +56,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.52 | +AGM -Zeus";
+		overviewText="www.teamkommando.de | V0.52.2 | +AGM -Zeus";
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0;

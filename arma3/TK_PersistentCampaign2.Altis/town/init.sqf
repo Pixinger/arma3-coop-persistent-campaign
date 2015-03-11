@@ -27,7 +27,7 @@ if (ExecuteHeadlessCode) then
 	
 	"townInfos" addPublicVariableEventHandler { 
 		diag_log format [ "Informationen wurden gesichert und an das HQ gesendet (%1).", _this select 1 ];
-		if ((_this select 1) % 10 == 0) then
+		if ((_this select 1) % 20 == 0) then
 		{
 			[] call fnc_TownSM_AssignSideMission;
 		};

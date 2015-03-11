@@ -21,19 +21,20 @@ if (ExecuteHeadlessCode) then
 	private["_townMarker"];
 	_townMarker = createMarker[format["markerTownSideMission%1", _townName], _townCenter];
 	_townMarker setMarkerShape "ICON";
-	_townMarker setMarkerSize [10, 10];
+	_townMarker setMarkerSize [1, 1];
 	_townMarker setMarkerType "mil_destroy";
 	_townMarker setMarkerText "Waffenlager";
 	_townMarker setMarkerAlpha 1;	
-	_townMarker setMarkerColor "ColorRed";
-	
+	_townMarker setMarkerColor "ColorRed";	
 	
 	private["_missionPosition"];
-	_missionPosition = [_townCenter, _townRadius * 2] call fnc_TownSM_GetRandomPositionField;
+	_missionPosition = [_townCenter, _townRadius * 2] call fnc_TownSM_GetRandomPositionCircleField;
 	if (str(_missionPosition) != "[[0,0,0],0]") then
 	{
+		_missionPosition = _missionPosition select 0;
+		if (pixDebug) then { _townMarker setMarkerPos _missionPosition;};
 		private["_buildingClassnames"];
-		_buildingClassnames = ["Box_East_WpsSpecial_F"];
+		_buildingClassname = "Box_East_WpsSpecial_F";
 
 		private["_ammobox1"];
 		_ammobox1 = _buildingClassname createVehicle _missionPosition;
@@ -63,7 +64,7 @@ if (ExecuteHeadlessCode) then
 		_groupPatrol = createGroup pixTown_ConfigSideRed;		
 		private["_unitsPatrol"];
 		_unitsPatrol = [_groupPatrol, _missionPosition, pixTown_ConfigRedClassnames, 5] call fnc_TownSM_CreateGroup;		
-		[_groupPatrol, _missionPosition] call bis_fnc_taskDefend;
+		[_groupPatrol, _missionPosition, 300] call bis_fnc_taskPatrol;
 
 		//-------------------------
 		// Minenfeld
@@ -73,13 +74,17 @@ if (ExecuteHeadlessCode) then
 			[_missionPosition, ["APERSTripMine"]] call fnc_TownSM_CreateMineFieldRandom;
 		};
 
+		
 		//-------------------------
 		// Mission Loop
 		//-------------------------
-		while { ((alive _ammobox1) && (alive _ammobox2)) } do
-		{			
-			Sleep 10;
-		};
+		private["_ammobox1PosX"];
+		_ammobox1PosX = (getPos _ammobox1) select 0;
+		private["_ammobox2PosX"];
+		_ammobox2PosX = (getPos _ammobox2) select 0;
+
+		while { (_ammobox1PosX == (getPos _ammobox1) select 0) } do {	Sleep 10;};
+		while { (_ammobox2PosX == (getPos _ammobox2) select 0) } do {	Sleep 10;};
 
 		_townObject setVariable ["sideMission", 22]; // erfolgreich
 		deleteMarker _townMarker;
@@ -93,7 +98,7 @@ if (ExecuteHeadlessCode) then
 	}
 	else
 	{
-		_townObject setVariable ["sideMission", 22]; // erfolgreich
+		_townObject setVariable ["sideMission", 0]; // erfolgreich
 		deleteMarker _townMarker;
 		diag_log "ERROR: Unable to create sidemission 'Waffenlager'.";
 	};		

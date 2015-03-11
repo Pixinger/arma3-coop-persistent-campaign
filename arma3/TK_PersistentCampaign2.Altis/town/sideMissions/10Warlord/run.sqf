@@ -21,7 +21,7 @@ if (ExecuteHeadlessCode) then
 	private["_townMarker"];
 	_townMarker = createMarker[format["markerTownSideMission%1", _townName], _townCenter];
 	_townMarker setMarkerShape "ICON";
-	_townMarker setMarkerSize [10, 10];
+	_townMarker setMarkerSize [1, 1];
 	_townMarker setMarkerType "mil_destroy";
 	_townMarker setMarkerText "Warlord";
 	_townMarker setMarkerAlpha 1;	
@@ -41,7 +41,9 @@ if (ExecuteHeadlessCode) then
 
 		while { alive _unit } do
 		{			
-			if (random 1 < 0.5) then
+			private["_zufall"];
+			_zufall = random 1;
+			if (_zufall < 0.5) then
 			{
 				private["_building"];
 				_building = nearestBuilding [(_townCenter select 0) - _townRadius + (random (_townRadius * 2)), (_townCenter select 1) - _townRadius + (random (_townRadius * 2)), 0];
@@ -54,11 +56,23 @@ if (ExecuteHeadlessCode) then
 				while { !_doneHere } do
 				{
 					Sleep 10;
-					if (moveToFailed _unit) then { _doneHere = true; };
-					if (moveToCompleted _unit) then
-					{ 
-						Sleep (10 * 60);
+					if (!alive _unit) then 
+					{
 						_doneHere = true; 
+					}
+					else
+					{
+						if (moveToFailed _unit) then { _doneHere = true; };
+						if (moveToCompleted _unit) then
+						{ 
+							private["_warten"];
+							_warten = time + (600);
+							while { (alive _unit) && (_warten > time) } do
+							{
+								Sleep 10;
+							};
+							_doneHere = true; 
+						};
 					};
 				};
 			}
