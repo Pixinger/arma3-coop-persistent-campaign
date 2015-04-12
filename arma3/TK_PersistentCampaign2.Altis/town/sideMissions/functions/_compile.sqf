@@ -9,6 +9,7 @@ fnc_TownSM_GetRandomPositionCircle = compile preprocessFileLineNumbers "town\sid
 fnc_TownSM_GetRandomPositionCircleWater = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_GetRandomPositionCircleWater.sqf";
 fnc_TownSM_GetRandomPositionCircleRoad = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_GetRandomPositionCircleRoad.sqf";
 fnc_TownSM_GetRandomPositionCircleHouse = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_GetRandomPositionCircleHouse.sqf";
+fnc_TownSM_GetRandomPositionCircleHousePos = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_GetRandomPositionCircleHousePos.sqf";
 fnc_TownSM_GetRandomPositionCircleField = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_GetRandomPositionCircleField.sqf";
 fnc_TownSM_GetRandomPositionCircleCity = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_GetRandomPositionCircleCity.sqf";
 fnc_TownSM_ObfuscatePosition = compile preprocessFileLineNumbers "town\sideMissions\functions\fn_ObfuscatePosition.sqf";

@@ -28,71 +28,84 @@ if (ExecuteHeadlessCode) then
 	_townMarker setMarkerColor "ColorRed";
 	
 	
-	private ["_unitGroup"];
-	_unitGroup = createGroup pixTown_ConfigSideRed;		
-	private["_unit"];
-	_unit = _unitGroup createUnit ["PC2_O_G_Story_Colonel_F", _townCenter, [], 0, "FORM"];
-	waitUntil {!isNil "_unit"};
-	if (!isNull _unit) then
-	{							
-		//_unit setBehaviour "CARELESS";
-		if (random 1 < 0.5) then { _unit setSpeedmode "FULL"; } else { _unit setSpeedmode "LIMITED"; };
-		//removeAllWeapons _unit;		
+	private["_unitPos"];
+	_unitPos = [_townCenter, _townRadius] call fnc_TownSM_GetRandomPositionCircleHousePos;
+	if (str(_unitPos) != "[[0,0,0],0]") then
+	{			
+		private ["_unitGroup"];
+		_unitGroup = createGroup pixTown_ConfigSideRed;		
+		private["_unit"];
+		_unit = _unitGroup createUnit ["PC2_O_G_Story_Colonel_F", _unitPos select 0, [], 0, "FORM"];
+		waitUntil {!isNil "_unit"};
+		if (!isNull _unit) then
+		{							
+			//_unit setBehaviour "CARELESS";
+			if (random 1 < 0.5) then { _unit setSpeedmode "FULL"; } else { _unit setSpeedmode "LIMITED"; };
+			//removeAllWeapons _unit;		
 
-		while { alive _unit } do
-		{			
-			private["_zufall"];
-			_zufall = random 1;
-			if (_zufall < 0.5) then
-			{
-				private["_building"];
-				_building = nearestBuilding [(_townCenter select 0) - _townRadius + (random (_townRadius * 2)), (_townCenter select 1) - _townRadius + (random (_townRadius * 2)), 0];
-				private["_buildingPos"];
-				_buildingPos = _building buildingPos (([_building] call PC_fnc_GetMaxBuildingPositions) - 1);
-				_unit moveTo _buildingPos;
-
-				private["_doneHere"];
-				_doneHere = false;
-				while { !_doneHere } do
+			while { alive _unit } do
+			{			
+				private["_zufall"];
+				_zufall = random 1;
+				if (_zufall < 0.5) then
 				{
-					Sleep 10;
-					if (!alive _unit) then 
+					_unitPos = [_townCenter, _townRadius] call fnc_TownSM_GetRandomPositionCircleHousePos;
+					if (str(_unitPos) != "[[0,0,0],0]") then
 					{
-						_doneHere = true; 
+						_unit moveTo (_unitPos select 0);
+
+						private["_doneHere"];
+						_doneHere = false;
+						while { !_doneHere } do
+						{
+							Sleep 10;
+							if (!alive _unit) then 
+							{
+								_doneHere = true; 
+							}
+							else
+							{
+								if (moveToFailed _unit) then { _doneHere = true; };
+								if (moveToCompleted _unit) then
+								{ 
+									private["_warten"];
+									_warten = time + (600);
+									while { (alive _unit) && (_warten > time) } do
+									{
+										Sleep 10;
+									};
+									_doneHere = true; 
+								};
+							};
+						};
 					}
 					else
 					{
-						if (moveToFailed _unit) then { _doneHere = true; };
-						if (moveToCompleted _unit) then
-						{ 
-							private["_warten"];
-							_warten = time + (600);
-							while { (alive _unit) && (_warten > time) } do
-							{
-								Sleep 10;
-							};
-							_doneHere = true; 
-						};
+						Sleep 10;
 					};
-				};
-			}
-			else
-			{
-				_unit moveTo [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];			
-				private["_doneHere"];
-				_doneHere = false;
-				while { !_doneHere } do
+				}
+				else
 				{
-					Sleep 10;
-					if (moveToFailed _unit) then { _doneHere = true; };
-					if (moveToCompleted _unit) then { _doneHere = true; };
-				};				
-			};		
+					_unit moveTo [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];			
+					private["_doneHere"];
+					_doneHere = false;
+					while { !_doneHere } do
+					{
+						Sleep 10;
+						if (moveToFailed _unit) then { _doneHere = true; };
+						if (moveToCompleted _unit) then { _doneHere = true; };
+					};				
+				};		
+			};
+		}
+		else
+		{
+			diag_log "ERROR: Unable to create sidemission 'Warlord'";
 		};
 	}
 	else
 	{
-		diag_log "ERROR: Unable to create sidemission 'Warlord'";
+		diag_log "ERROR: Unable to find initial position 'Warlord'";
 	};
 
 	_townObject setVariable ["sideMission", 12]; //erfolgreich
