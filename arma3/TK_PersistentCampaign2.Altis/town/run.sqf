@@ -462,7 +462,7 @@ if (ExecuteHeadlessCode) then
 				_tmpRedCount = _townRedCount; 
 				private["_tmpTotalSOLL"];
 				_tmpTotalSOLL = (_tmpCivCount + _tmpRedCount) / 20; 
-				if (_tmpTotalSOLL > 30) then { _tmpTotalSOLL = 30; }; // Deckeln
+				if (_tmpTotalSOLL > pixTown_ConfigTotalSOLLLimit) then { _tmpTotalSOLL = pixTown_ConfigTotalSOLLLimit; }; // Deckeln
 				
 				_tmpTotalSOLL = ceil(_tmpTotalSOLL);
 				_civSOLL = ceil((_tmpTotalSOLL / (_tmpCivCount + _tmpRedCount)) * _tmpCivCount);

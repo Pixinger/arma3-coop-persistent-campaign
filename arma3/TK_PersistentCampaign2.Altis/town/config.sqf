@@ -5,6 +5,7 @@ if (pixDebug) then {pixTown_ConfigMainLoopSleep = 1;};
 pixTown_ConfigMinPlayerCountForSimulation = 5;
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
+pixTown_ConfigTotalSOLLLimit = 20;
 	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
 pixTown_ConfigInjuredGrowFactorPPH = 0;		  	// Zuwachs an Verletzten in PPH.
@@ -68,6 +69,8 @@ pixTown_ConfigHomeClassnames = [
 	"Land_i_stone_housesmall_v1_f",
 	"Land_i_stone_housebig_v1_f",
 	"Land_i_Shop_01_V2_F",
+	"Land_GH_House_1_f",
+	"Land_GH_House_2_f",
 	"Land_i_house_small_01_v1_f",
 	"Land_i_house_small_01_v2_f",
 	"Land_i_house_small_02_v1_f",

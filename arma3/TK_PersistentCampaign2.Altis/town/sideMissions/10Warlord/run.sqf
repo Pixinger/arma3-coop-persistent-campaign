@@ -45,6 +45,7 @@ if (ExecuteHeadlessCode) then
 
 			while { alive _unit } do
 			{			
+				// Neues Bewegungsziel beauftragen
 				private["_zufall"];
 				_zufall = random 1;
 				if (_zufall < 0.5) then
@@ -52,50 +53,41 @@ if (ExecuteHeadlessCode) then
 					_unitPos = [_townCenter, _townRadius] call fnc_TownSM_GetRandomPositionCircleHousePos;
 					if (str(_unitPos) != "[[0,0,0],0]") then
 					{
-						_unit moveTo (_unitPos select 0);
-
-						private["_doneHere"];
-						_doneHere = false;
-						while { !_doneHere } do
-						{
-							Sleep 10;
-							if (!alive _unit) then 
-							{
-								_doneHere = true; 
-							}
-							else
-							{
-								if (moveToFailed _unit) then { _doneHere = true; };
-								if (moveToCompleted _unit) then
-								{ 
-									private["_warten"];
-									_warten = time + (600);
-									while { (alive _unit) && (_warten > time) } do
-									{
-										Sleep 10;
-									};
-									_doneHere = true; 
-								};
-							};
-						};
+						_unit doMove (_unitPos select 0);
 					}
 					else
 					{
-						Sleep 10;
 					};
 				}
 				else
 				{
-					_unit moveTo [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];			
-					private["_doneHere"];
-					_doneHere = false;
-					while { !_doneHere } do
+					_unit doMove [(_townCenter select 0) - _townRadius + (random (_townRadius*2)), (_townCenter select 1) - _townRadius + (random (_townRadius*2)), 0];			
+				};
+
+				// Warten bis angekommen, oder blockiert
+				private["_oldPos"];
+				_oldPos = [0,0,0];
+				private["_doneHere"];
+				_doneHere = false;
+				while { (alive _unit) and (!_doneHere) } do
+				{
+					Sleep 10;
+					if (_oldPos distanceSqr _unit < 1) then
 					{
-						Sleep 10;
-						if (moveToFailed _unit) then { _doneHere = true; };
-						if (moveToCompleted _unit) then { _doneHere = true; };
-					};				
-				};		
+						// Warten wir hier ein wenig, danach geht es dann weiter
+						private["_warten"];
+						_warten = time + (300);
+						while { (alive _unit) && (_warten > time) } do
+						{
+							Sleep 10;
+						};
+						_doneHere = true; 						
+					}
+					else
+					{
+						_oldPos = getPos _unit;
+					};
+				};
 			};
 		}
 		else
