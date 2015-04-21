@@ -11,6 +11,6 @@ if (call fnc_Admin_RallyTeleportCond) then
 	}
 	else
 	{
-		player sidechat "Kein Platz für die Flagge gefunden!";
+		player globalchat "Kein Platz für die Flagge gefunden!";
 	};
 };

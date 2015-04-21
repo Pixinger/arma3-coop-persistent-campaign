@@ -5,7 +5,7 @@ if (pixDebug) then {pixTown_ConfigMainLoopSleep = 1;};
 pixTown_ConfigMinPlayerCountForSimulation = 5;
 // PH = PerHour = pro Stunde
 pixTown_ConfigMoodSlabLevelPH = (1.0 / 15.0); // 15 Stunden
-pixTown_ConfigTotalSOLLLimit = 20;
+pixTown_ConfigTotalSOLLLimit = 23; // Maximale Anzahl an Gegnern in einer Stadt
 	
 // PPH = PerPeopleHour = pro Bürger in einer Stunde.
 pixTown_ConfigInjuredGrowFactorPPH = 0;		  	// Zuwachs an Verletzten in PPH.
@@ -34,7 +34,7 @@ pixTown_ConfigMoodPerCivInjured = 0.08;
 pixTown_ConfigMoodPerCivKill = -0.1;
 pixTown_ConfigMoodPerCivUnsearched = -0.05;
 pixTown_ConfigMoodPerRedKill = 0.01;
-pixTown_ConfigMoodPerRedUnsearched = -0.1;
+pixTown_ConfigMoodPerRedUnsearched = -0.005;
 pixTown_ConfigMoodPerRedArrest = 0.05;
 pixTown_ConfigMoodPerHouseSearchCiv = -0.1;
 pixTown_ConfigMoodPerHouseSearchRed = 0.05;

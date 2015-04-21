@@ -15,4 +15,10 @@ _object setDir _direction;
 Sleep 0.2;
 _object setPosATL [_position select 0, _position select 1, 0];
 
+/* Bei einem UAV/UGV autmatisch die Crew erstellen */
+if ((_object isKindOf "UAV") || (_object isKindOf "UAV_01_base_F") || (_object isKindOf "UGV_01_base_F")) then 
+{
+	createVehicleCrew _object; 
+};
+
 _object;

@@ -13,7 +13,7 @@ pixDebug = false;
 pixParamTFARMutedOnDeath = (paramsArray select 0); //0=aus 1=an 
 diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
 /* Parameter (1): TFR-Terrain Coefficient */
-pixParamTFARTerrainInterceptionCoefficient = (paramsArray select 1); //0,1,2,3,4,5,6,7,8,9,10
+pixParamTFARTerrainInterceptionCoefficient = (paramsArray select 1); //0,0.5,1,2,3,4,5,6,7,8,9,10
 diag_log format["INFO: pixParamTFARTerrainInterceptionCoefficient: %1", pixParamTFARTerrainInterceptionCoefficient];
 TF_terrain_interception_coefficient = pixParamTFARTerrainInterceptionCoefficient;
 
