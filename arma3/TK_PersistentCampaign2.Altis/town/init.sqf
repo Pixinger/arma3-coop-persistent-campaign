@@ -29,6 +29,7 @@ if (ExecuteHeadlessCode) then
 		diag_log format [ "Informationen wurden gesichert und an das HQ gesendet (%1).", _this select 1 ];
 		if ((_this select 1) % 20 == 0) then
 		{
+			diag_log "call fnc_TownSM_AssignSideMission SideMission";
 			[] call fnc_TownSM_AssignSideMission;
 		};
 	};	

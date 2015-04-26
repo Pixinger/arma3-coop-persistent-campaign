@@ -186,6 +186,34 @@ if (ExecuteHeadlessCode) then
 				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
 			};
 		};
+
+		// AntiAir
+		if ((_sideMission >= 40) && (_sideMission <= 49)) then
+		{
+			if (_sideMission == 41) then // Fehlgeschlagen
+			{
+				_townMood = _townMood - 1;
+				if (_townMood < -1) then { _townMood = -1; };
+				_townWeaponCount = _townWeaponCount + 100;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 42) then // Erfolgreich
+			{
+				_townMood = _townMood + 1;
+				if (_townMood > 1) then { _townMood = 1; };
+				private["_increase"];
+				_increase = round(_townCivCount / 6);
+				_townCivCount = _townCivCount + _increase;
+				_townRedCount = _townRedCount - _increase;
+				_townObject setVariable ["sideMission", 0];
+			};
+			if (_sideMission == 40) then // Starten
+			{
+				private["_tmp"];
+				_tmp = [_townObject] execVM "town\sideMissions\40Antiair\run.sqf";
+				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+			};
+		};
 	};
 
 	// -----------------------------------
