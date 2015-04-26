@@ -26,7 +26,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"200Rnd_65x39_cased_Box",
 		/* Primary Weapon Items */
-		["optic_MRCO","muzzle_snds_H_MG"]
+		["optic_MRCO","muzzle_snds_H_MG","bipod_03_F_blk"]
 	],
 	
 	/* Secondary Weapon */

@@ -7,7 +7,7 @@ _result = [
 	"H_HelmetIA",
 	
 	/* Binoculars */
-	"",
+	"Rangefinder",
 	
 	/* Nightvision */
 	"NVGoggles_INDEP",

@@ -31,3 +31,16 @@ _maxDistance = (_distance)^2; //optimierter Ausdruck für: _maxDistance = [_posit
 } foreach _players;
 
 _result;
+/*
+
+//private["_units"];
+_distance = _position nearEntities ["I_Soldier_base_F", _distance];
+//[0,0,0] nearEntities ["I_Soldier_base_F", 1000];
+
+/*{
+	if (speed _x < 55) exitWith { true };
+} foreach _units;
+_result;
+
+//false
+*/

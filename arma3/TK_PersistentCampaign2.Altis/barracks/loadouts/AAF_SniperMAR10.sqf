@@ -22,11 +22,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_Mk20_MRCO_pointer_F",
+		"srifle_GM6_SOS_F",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"5Rnd_127x108_Mag",
 		/* Primary Weapon Items */
-		["muzzle_snds_M"]
+		[]
 	],
 	
 	/* Secondary Weapon */
@@ -49,7 +49,7 @@ _result = [
 	
 	/* Uniform */
 	[
-		"U_I_GhillieSuit", 
+		"U_I_FullGhillie_lsh", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
@@ -75,7 +75,7 @@ _result = [
 		], 
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+			"5Rnd_127x108_Mag","5Rnd_127x108_Mag","5Rnd_127x108_Mag","5Rnd_127x108_Mag","5Rnd_127x108_Mag"
 		],
 		/* Vest-Items */
 		[
@@ -88,7 +88,9 @@ _result = [
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[],
+		[
+			"5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag"
+		],
 		/* Backpack-Items */
 		[			
 			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
@@ -96,8 +98,7 @@ _result = [
 			"AGM_Morphine","AGM_Morphine","AGM_Morphine",
 			"SmokeShell","SmokeShell",
 			"SmokeShellRed","SmokeShellRed",
-			"SmokeShellGreen","SmokeShellGreen",
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"			
+			"SmokeShellGreen","SmokeShellGreen"			
 		]
 	],
 	

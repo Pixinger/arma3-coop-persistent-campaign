@@ -61,6 +61,7 @@ call compile preprocessFileLineNumbers "admin\init.sqf";
 call compile preprocessFileLineNumbers "town\init.sqf";
 call compile preprocessFileLineNumbers "mainmenu\init.sqf";
 call compile preprocessFileLineNumbers "vehicles\init.sqf";
+call compile preprocessFileLineNumbers "ied\init.sqf";
 
 player setvariable ["BIS_nocoreconversations",true];
 
