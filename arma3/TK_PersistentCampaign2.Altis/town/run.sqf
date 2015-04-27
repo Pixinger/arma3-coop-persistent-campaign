@@ -118,7 +118,7 @@ if (ExecuteHeadlessCode) then
 			{
 				private["_tmp"];
 				_tmp = [_townObject] execVM "town\sideMissions\10Warlord\run.sqf";
-				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+				_townObject setVariable ["offline", false, true]; // Stadt in den Online Modus zwingen.		
 			};
 		};
 
@@ -150,7 +150,7 @@ if (ExecuteHeadlessCode) then
 			{
 				private["_tmp"];
 				_tmp = [_townObject] execVM "town\sideMissions\20Waffenlager\run.sqf";
-				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+				_townObject setVariable ["offline", false, true]; // Stadt in den Online Modus zwingen.		
 			};
 		};
 
@@ -183,7 +183,7 @@ if (ExecuteHeadlessCode) then
 			{
 				private["_tmp"];
 				_tmp = [_townObject] execVM "town\sideMissions\30Checkpoint\run.sqf";
-				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+				_townObject setVariable ["offline", false, true]; // Stadt in den Online Modus zwingen.		
 			};
 		};
 
@@ -211,7 +211,7 @@ if (ExecuteHeadlessCode) then
 			{
 				private["_tmp"];
 				_tmp = [_townObject] execVM "town\sideMissions\40Antiair\run.sqf";
-				_townObject setVariable ["offline", false]; // Stadt in den Online Modus zwingen.		
+				_townObject setVariable ["offline", false, true]; // Stadt in den Online Modus zwingen.		
 			};
 		};
 	};
@@ -239,9 +239,14 @@ if (ExecuteHeadlessCode) then
 	if (_townObject getVariable ["offline", false]) exitWith { 0; };
 
 	// -----------------------------------
-	// In die Wohnungen einziehen
+	// IEDs erstellen
 	// -----------------------------------
 	private["_result"];
+	_result = [_townCenter, _townRadius] execVM "town\ied\createIEDs.sqf";
+
+	// -----------------------------------
+	// In die Wohnungen einziehen
+	// -----------------------------------
 	_result = [_homes, _townRedCount, _townCivCount] call PC_fnc_TownHome_SettleAllResidents;
 	private["_townMaxPopulation"];
 	_townMaxPopulation = _result select 2; // Die maximal mögliche Bevölkerung (abhängig von den Wohneinheiten).

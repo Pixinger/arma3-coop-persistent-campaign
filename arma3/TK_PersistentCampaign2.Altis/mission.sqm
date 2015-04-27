@@ -29,8 +29,7 @@ class Mission
 		"A3_Signs_F",
 		"PC2_Pack",
 		"AGM_Logistics",
-		"A3_Modules_F_Curator_Curator",
-		"A3_Modules_F_Curator_Mines"
+		"A3_Modules_F_Curator_Curator"
 	};
 	addOnsAuto[]=
 	{
@@ -55,14 +54,13 @@ class Mission
 		"A3_Structures_F_Mil_Fortification",
 		"A3_Signs_F",
 		"AGM_Logistics",
-		"A3_Modules_F_Curator_Mines",
 		"a3_map_altis"
 	};
 	randomSeed=14739900;
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.63.1 | +AGM +Zeus";
+		overviewText="www.teamkommando.de | V0.63.5 | +AGM +Zeus";
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0;
@@ -332,7 +330,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={17411.348,13.56667,13203.142};
+					position[]={17411.271,13.532555,13204.719};
 					azimut=174.903;
 					id=5;
 					side="GUER";
@@ -770,7 +768,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=316;
+		items=310;
 		class Item0
 		{
 			position[]={20800.66,37.932369,6718.457};
@@ -859,7 +857,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Molos""];this setVariable[""townRadius"", 200];this setVariable[""offline"", false];";
+			init="this setVariable[""townName"", ""Molos""];this setVariable[""townRadius"", 200];";
 		};
 		class Item10
 		{
@@ -1272,7 +1270,7 @@ class Mission
 		};
 		class Item52
 		{
-			position[]={17523.979,12.922751,13246.348};
+			position[]={23615.77,102.21056,21078.479};
 			id=79;
 			side="EMPTY";
 			vehicle="AGM_RallypointExit_Independent";
@@ -4191,68 +4189,16 @@ class Mission
 			vehicle="AGM_SpareWheel";
 			skill=0.60000002;
 		};
-		class Item310
-		{
-			position[]={17320.363,15.592181,13144.605};
-			id=337;
-			side="EMPTY";
-			vehicle="IEDLandBig_F";
-			skill=0.60000002;
-		};
-		class Item311
-		{
-			position[]={17329.232,15.687924,13138.271};
-			id=338;
-			side="EMPTY";
-			vehicle="IEDUrbanBig_F";
-			skill=0.60000002;
-		};
-		class Item312
-		{
-			position[]={17334.615,15.735422,13130.985};
-			id=339;
-			side="EMPTY";
-			vehicle="IEDLandSmall_F";
-			skill=0.60000002;
-		};
-		class Item313
-		{
-			position[]={17341.582,15.803366,13124.969};
-			id=340;
-			side="EMPTY";
-			vehicle="IEDUrbanSmall_F";
-			skill=0.60000002;
-		};
-		class Item314
-		{
-			position[]={17347.6,15.781428,13119.586};
-			id=341;
-			side="EMPTY";
-			vehicle="DemoCharge_F";
-			skill=0.60000002;
-		};
-		class Item315
-		{
-			position[]={17417.957,13.601067,13196.32};
-			azimut=-193.078;
-			special="NONE";
-			id=342;
-			side="EMPTY";
-			vehicle="Box_FIA_Support_F";
-			leader=1;
-			skill=0.60000002;
-			init="tmp = [this] execVM ""barracks\marksmandlc.sqf"";";
-		};
 	};
 	class Markers
 	{
-		items=25;
+		items=27;
 		class Item0
 		{
 			position[]={17441.379,13.058533,13232.489};
 			name="respawn_west";
-			type="respawn_unknown";
-			angle=-50.098106;
+			type="Empty";
+			angle=-50.098099;
 		};
 		class Item1
 		{
@@ -4405,8 +4351,22 @@ class Mission
 		};
 		class Item24
 		{
-			position[]={14258.082,24.805405,18583.205};
+			position[]={17439.883,13.060054,13231.171};
 			name="respawn_east";
+			type="Empty";
+			angle=-50.098099;
+		};
+		class Item25
+		{
+			position[]={17442.953,13.06414,13231.174};
+			name="respawn_guer";
+			type="Empty";
+			angle=-50.098099;
+		};
+		class Item26
+		{
+			position[]={17441.301,13.064929,13230.052};
+			name="respawn_civilian";
 			type="Empty";
 			angle=-50.098099;
 		};

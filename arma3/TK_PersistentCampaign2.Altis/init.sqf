@@ -9,6 +9,7 @@ enableSaving [false, false];
 /*-----------------------------------------------*/
 /* Parameter (0): Debug */
 pixDebug = false;
+if (isServer && !isDedicated) then { pixDebug = true; };
 /* Parameter (0): TFR-Muted while dead */
 pixParamTFARMutedOnDeath = (paramsArray select 0); //0=aus 1=an 
 diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
