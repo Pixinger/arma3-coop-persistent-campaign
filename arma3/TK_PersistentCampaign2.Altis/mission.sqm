@@ -60,7 +60,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.63.5 | +AGM +Zeus";
+		overviewText="www.teamkommando.de | V0.63.6 | +AGM +Zeus";
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0;
@@ -1276,6 +1276,7 @@ class Mission
 			vehicle="AGM_RallypointExit_Independent";
 			skill=0.60000002;
 			text="ralleypoint";
+			init="this addAction[""Ausrüstung"",""barracks\showModal.sqf""];";
 		};
 		class Item53
 		{
