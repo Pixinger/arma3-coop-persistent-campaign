@@ -41,6 +41,7 @@ if (isServer) then
 		_iedClassnames = ["ModuleExplosive_IEDUrbanSmall_F", "ModuleExplosive_IEDLandSmall_F", "ModuleExplosive_IEDUrbanBig_F", "ModuleExplosive_IEDLandBig_F"];
 		private["_ied"];
 		_ied = _iedClassnames select floor(random(count _iedClassnames)) createVehicle [_roadX, _roadY, 0]; 		
+		//_ied = "ModuleExplosive_IEDUrbanSmall_F" createVehicle getpos player; 		
 		Sleep 0.5;
 		_ied setDir (random 360);
 		

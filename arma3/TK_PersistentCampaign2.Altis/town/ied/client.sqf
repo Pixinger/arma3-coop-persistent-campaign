@@ -8,33 +8,28 @@ if (hasInterface) then
 	
 	while { true } do
 	{
-		if (!(player getVariable ['AGM_IsEOD', false])) then
+		private["_ieds"];
+		_ieds = (getPos player) nearEntities [_iedClassnames, 30];
+		if (count _ieds > 0) then
 		{
-			private["_ieds"];
-			_ieds = (getPos player) nearEntities [_iedClassnames, 50];
-			if (count _ieds > 0) then
 			{
-				{
-					if (_x distance (getPos player) < 5) then
-					{
-						//tankyied = createVehicle ["ARTY_R_120mm_HE_Rocket", [_iedxpos, _iedypos], [], 0, "NONE"];
-						//tankyied = createVehicle ["Sh_85_AP", [_iedxpos, _iedypos], [], 0, "NONE"];//NOISE (camel is silent)
-						//tankyied = createVehicle ["G_Camel_HE", [_iedxpos, _iedypos], [], 0, "NONE"];//SPLODE 
-						//tankyied = createVehicle ["M_CRV7_FAT", [_iedxpos, _iedypos], [], 0, "NONE"];
+				if (_x distance (getPos player) < 5) then
+				{						
+					if ((stance player != "PRONE") || {(count ((getPos _x) nearEntities ["SoldierEB", 50]) > 0)}) then
+					{			
 						private["_ied"];
-						_ied = createVehicle ["Bo_GBU12_LGB", (getPos _x), [], 0, "NONE"];
+						_ied = createVehicle ["Bo_GBU12_LGB", (getPos _x), [], 0, "NONE"]; // Bo_GBU12_LGB: 5000;1100
 						deleteVehicle _x;
 					};
-				} foreach _ieds;				
-				
-				_delay = 1;
-			};
-
-			Sleep _delay;
+				};
+			} foreach _ieds;
+			_delay = 1;
 		}
 		else
 		{
-			Sleep 30;
+			_delay = 5;
 		};
+
+		Sleep _delay;
 	};
 };
