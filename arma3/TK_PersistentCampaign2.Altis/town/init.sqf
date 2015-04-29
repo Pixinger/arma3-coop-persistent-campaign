@@ -40,4 +40,7 @@ if (hasInterface) then
 	player sidechat "Städte fertig";
 	
 	"townInfos" addPublicVariableEventHandler { hint format [ "Informationen wurden gesichert und an das HQ gesendet (%1).", _this select 1 ]; };
+	
+	private["_tmp"];
+	_tmp = [] execVM "town\ied\client.sqf";
 };

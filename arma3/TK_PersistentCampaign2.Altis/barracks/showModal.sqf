@@ -11,7 +11,7 @@ _loadouts = [
 	["Freizeit", "AAF_Default.sqf"]	,
 	["Soldat","AAF_Soldier.sqf"],
 	["Grenadier","AAF_Grenade.sqf"],
-	["Automatikschütze (Zafir)","AAF_Belt_AutoriflemanZafir.sqf"],
+	["Automatikschütze (Mk200)","AAF_Belt_AutoriflemanMk200.sqf"],
 	["Automatikschütze (Navid 9.3mm) DLC","AAF_Belt_AutoriflemanNavid.sqf"],
 	["Automatikschütze (SPMG .338) DLC","AAF_Belt_AutoriflemanSPMG.sqf"],
 	["Gruppenscharfschütze (Rahim)","AAF_GroupSniperRahim.sqf"],

@@ -90,7 +90,7 @@ _result = [
 		], 
 		/* Backpack-Magazines */
 		[	
-			"200Rnd_65x39_cased_Box","200Rnd_65x39_cased_Box"
+			"150Rnd_93x64_Mag","150Rnd_93x64_Mag"
 		],
 		/* Backpack-Items */
 		[

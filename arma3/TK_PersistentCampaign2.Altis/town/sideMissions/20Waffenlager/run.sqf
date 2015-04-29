@@ -64,7 +64,7 @@ if (ExecuteHeadlessCode) then
 		_groupPatrol = createGroup pixTown_ConfigSideRed;		
 		private["_unitsPatrol"];
 		_unitsPatrol = [_groupPatrol, _missionPosition, pixTown_ConfigRedClassnames, 5] call fnc_TownSM_CreateGroup;		
-		[_groupPatrol, _missionPosition, 300] call bis_fnc_taskPatrol;
+		[_groupPatrol, _missionPosition, 75] call bis_fnc_taskPatrol;
 
 		//-------------------------
 		// Minenfeld
