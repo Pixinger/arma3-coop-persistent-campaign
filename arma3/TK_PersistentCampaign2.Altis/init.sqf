@@ -17,6 +17,8 @@ diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
 pixParamTFARTerrainInterceptionCoefficient = (paramsArray select 1); //0,0.5,1,2,3,4,5,6,7,8,9,10
 diag_log format["INFO: pixParamTFARTerrainInterceptionCoefficient: %1", pixParamTFARTerrainInterceptionCoefficient];
 TF_terrain_interception_coefficient = pixParamTFARTerrainInterceptionCoefficient;
+/* Parameter (2): Town Active Unit Limit */
+pixParamTownActiveUnit = (paramsArray select 2); 
 
 /* Warten bis das Briefing beendet wurde */
 /* Erst dann sind die PublicVariablen auch initialisiert. */

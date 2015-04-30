@@ -37,10 +37,10 @@ if (ExecuteHeadlessCode) then
 		_ignore = false;
 		if (_damage > 0.9) then
 		{
-			if (_classname in vehiclesDeleteDamagedItems) then
-			{
+			//if (_classname in vehiclesDeleteDamagedItems) then
+			//{
 				_ignore = true;
-			};
+			//};
 		};		
 		
 		if (!_ignore) then

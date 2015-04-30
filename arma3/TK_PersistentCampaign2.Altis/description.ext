@@ -1,4 +1,4 @@
-author = "[TK]Pix";  /* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben, so erscheint Unknown Author. */
+author = "[TK]Pix";  /* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben"," so erscheint Unknown Author. */
 onLoadName = "[TK]Persistent Campaign 2"; /* Mission Name*/
 onLoadMission = ""; /* Beschreibung*/
 OnLoadIntro = "by [TK]Pix";
@@ -64,6 +64,13 @@ class Params
 	    values[] = {0, 0.5, 1, 3, 4, 5, 6, 7, 8, 9, 10};
 	    texts[] = {"0","0.5","1","2","3","4","5","6","7","8","9","10"};
 	    default = 0.5;
+	};
+	class TownActiveUnits /* paramsArray[2]*/
+	{		
+	    title = "TFAR terrain interception coefficient";
+	    values[] = {10, 15, 20, 23, 25, 28, 30, 33, 35, 38, 40, 45, 50, 75, 100};
+	    texts[] = {"10","15","20","23","25","28","30","33","35","38","40","45","50","75","100"};
+	    default = 23;
 	};
 };
 
