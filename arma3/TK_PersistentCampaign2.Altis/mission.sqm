@@ -60,7 +60,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.64.5 | +AGM +Zeus";
+		overviewText="www.teamkommando.de | V0.64.6 | +AGM +Zeus";
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0;
@@ -218,7 +218,7 @@ class Mission
 						items=16;
 						class Item0
 						{
-							value="0.7";
+							value="0.5";
 							parentCls="AGM_ModuleMedical";
 							typeName="CoefDamage";
 						};
@@ -242,7 +242,7 @@ class Mission
 						};
 						class Item4
 						{
-							value="-1";
+							value="300";
 							parentCls="AGM_ModuleMedical";
 							typeName="MaxUnconsciousnessTime";
 						};
