@@ -60,13 +60,24 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.64.6 | +AGM +Zeus";
+		overviewText="www.teamkommando.de | V0.65.1 | +AGM +Zeus";
 		timeOfChanges=28800;
-		startWeather=0;
-		startWind=0;
-		forecastWeather=0;
-		forecastWind=0;
-		forecastWaves=0;
+		startWeather=0.84999996;
+		startWind=0.59999996;
+		startRain=0.79999995;
+		startLightnings=0.79999995;
+		startWaves=0.79999995;
+		startGust=0.29999998;
+		forecastWeather=0.84999996;
+		forecastWind=0.59999996;
+		forecastWaves=0.79999995;
+		forecastRain=0.79999995;
+		forecastLightnings=0.79999995;
+		forecastGust=0.29999998;
+		rainForced=1;
+		lightningsForced=1;
+		wavesForced=1;
+		windForced=1;
 		year=2014;
 		month=12;
 		day=31;
