@@ -6,7 +6,7 @@ _units = nearestObjects [player, [pixTown_ConfigBaseClassRed,pixTown_ConfigBaseC
 	{ 
 		deleteVehicle _x; 
 
-		if (random 1 < 0.25) then
+		if (random 5 < 1) then
 		{
 			townInfos = townInfos + 1;
 			publicVariable "townInfos";

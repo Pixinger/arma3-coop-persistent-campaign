@@ -9,8 +9,12 @@ if (ExecuteHeadlessCode) then
 		private["_limit"];
 		_limit = 100;
 		
+		private["_missionID"];
+		_missionID = ((floor(random (SIDE_MISSION_COUNT))) + 1) * 10;  // 10, 20, 30, ...
 		while { _limit > 0 } do 
 		{
+			_limit = _limit - 1;
+			
 			private["_town"];
 			_town = (_towns select (floor ( random (count _towns))));
 
@@ -18,12 +22,15 @@ if (ExecuteHeadlessCode) then
 			_sideMission = _town getVariable ["sideMission", 0];		
 			if (_sideMission == 0) then
 			{
-				private["_missionID"];
-				_missionID = ((floor(random (SIDE_MISSION_COUNT))) + 1) * 10;
-				_town setVariable ["sideMission", _missionID, false]; // 10, 20, 30, ...
+				_town setVariable ["sideMission", _missionID, true]; // true ist glaube ich nicht wirklich notwendig.
 				diag_log format["OK: fn_AssignSideMission assigned mission %1 to town at %2", _missionID, getpos _town];
-				_limit = 0;
+				_limit = -10;
 			};
+		};
+		
+		if (_limit != -10) then
+		{
+			diag_log format["WARN: fn_AssignSideMission failed. Es konnte keine Stadt mit freier SideMission gefunden werden.", _missionID];
 		};
 	}
 	else

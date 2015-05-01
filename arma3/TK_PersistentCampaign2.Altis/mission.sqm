@@ -224,7 +224,7 @@ class Mission
 						};
 						class Item1
 						{
-							value="0.3";
+							value="0.5";
 							parentCls="AGM_ModuleMedical";
 							typeName="CoefBleeding";
 						};
@@ -242,7 +242,7 @@ class Mission
 						};
 						class Item4
 						{
-							value="300";
+							value="600";
 							parentCls="AGM_ModuleMedical";
 							typeName="MaxUnconsciousnessTime";
 						};

@@ -63,8 +63,11 @@ while { (_index < count _unitsActive) } do
 					[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
 					
 					// Bekanntgeben
-					townInfos = townInfos + 1;
-					publicVariable "townInfos";
+					if (random 5 < 2) then
+					{					
+						townInfos = townInfos + 1;
+						publicVariable "townInfos";
+					};
 					
 					// Nach einiger Zeit die Einheit entfernen
 					[_unit] spawn {

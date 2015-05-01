@@ -45,8 +45,11 @@ private["_status"];
 			_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 			
 			// Bekanntgeben
-			townInfos = townInfos + 1;
-			publicVariable "townInfos";
+			if (random 5 < 2) then
+			{					
+				townInfos = townInfos + 1;
+				publicVariable "townInfos";
+			};
 		}
 		else // 0,1==Aktiv,FSM-Finished
 		{
