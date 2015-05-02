@@ -5,7 +5,7 @@ if (isServer) then
 	private["_townRadius"];
 	_townRadius = _this select 1;
 	private["_iedCount"];
-	_iedCount = round( (pi * (_townRadius*_townRadius)) / 31500); // => 4 pro 200m Radius
+	_iedCount = round( (pi * (_townRadius*_townRadius)) / (31500*2)); // => 2 pro 200m Radius
 	
 	// IED erstellen
 	for "_i" from 1 to _iedCount do
@@ -37,25 +37,6 @@ if (isServer) then
 			};			
 		};
 		
-		private["_iedClassnames"];
-		_iedClassnames = ["ModuleExplosive_IEDUrbanSmall_F", "ModuleExplosive_IEDLandSmall_F", "ModuleExplosive_IEDUrbanBig_F", "ModuleExplosive_IEDLandBig_F"];
-		private["_ied"];
-		_ied = _iedClassnames select floor(random(count _iedClassnames)) createVehicle [_roadX, _roadY, 0]; 		
-		//_ied = "ModuleExplosive_IEDUrbanSmall_F" createVehicle getpos player; 		
-		Sleep 0.5;
-		_ied setDir (random 360);
-		
-		if (pixDebug) then
-		{
-			_markername = [] call fnc_TownSM_GetUniqueMarkerName;
-			createMarkerLocal [_markerName,  getPos _ied];
-			_markerName setMarkerDirLocal (getDir _ied);
-			_markerName setMarkerShapeLocal "ICON";
-			_markerName setMarkerTypeLocal "mil_dot";
-			_markerName setMarkerSizeLocal [.5, .5];
-			_markerName setMarkerAlphaLocal 1;
-			_markerName setMarkerColorLocal "ColorRed";
-			_markerName setMarkerTextLocal "";
-		};		
+		[_roadX, _roadY] spawn compile preprocessFileLineNumbers "ied\createIED.sqf";
 	};		
 };

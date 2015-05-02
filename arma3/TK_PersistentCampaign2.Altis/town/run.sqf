@@ -53,6 +53,7 @@ if (ExecuteHeadlessCode) then
 	private["_townRedCount"];
 	private["_townWeaponCount"];
 	private["_townInjuredCount"];
+	private["_townMaxPopulation"];
 	private["_dbResult"];	
 	_dbResult = "Arma2NET" callExtension format["PC town|load|%1", _townName];
 	if ("Arma2NET" callExtension format["PC isok|%1", _dbResult] == "OK") then
@@ -66,7 +67,7 @@ if (ExecuteHeadlessCode) then
 		_townWeaponCount = _dbResult select 6;		// Die Anzahl der Waffen in der Stadt (virtuell).
 		_townObject setVariable ["sideMission", _dbResult select 7];	// Die Id oder der Status der Sidemission der Stadt (virtuell).
 		_townInjuredCount = _dbResult select 8;		// Die Anzahl der verletzten in der Stadt (virtuell). Das können CIV und RED sein!
-		
+		_townMaxPopulation = _dbResult select 9;	// maximale Anzahl an Wohnungen. Wird später im Code erneut berechnet, falls sich die Häuser geändert haben
 		diag_log format["Town loaded from DB: %1", _dbResult];
 	}
 	else
@@ -79,6 +80,7 @@ if (ExecuteHeadlessCode) then
 		_townWeaponCount = 0;
 		_townObject setVariable ["sideMission", 0];
 		_townInjuredCount = 0;
+		_townMaxPopulation = 0;				// maximale Anzahl an Wohnungen. Wird später im Code erneut berechnet, falls sich die Häuser geändert haben
 		diag_log format["ERROR: %1 konnte Daten aus Datenbank nicht laden: %2", _townName, _dbResult];
 	};
 
@@ -239,7 +241,7 @@ if (ExecuteHeadlessCode) then
 	// IEDs erstellen
 	// -----------------------------------
 	private["_result"];
-	_result = [_townCenter, _townRadius] execVM "town\ied\createIEDs.sqf";
+	_result = [_townCenter, _townRadius] execVM "ied\createTownIEDs.sqf";
 
 	if (_townObject getVariable ["offline", false]) then
 	{
@@ -276,7 +278,6 @@ if (ExecuteHeadlessCode) then
 		// In die Wohnungen einziehen
 		// -----------------------------------
 		_result = [_homes, _townRedCount, _townCivCount] call PC_fnc_TownHome_SettleAllResidents;
-		private["_townMaxPopulation"];
 		_townMaxPopulation = _result select 2; // Die maximal mögliche Bevölkerung (abhängig von den Wohneinheiten).
 		_result = nil;
 

@@ -60,7 +60,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.65.1 | +AGM +Zeus";
+		overviewText="www.teamkommando.de | V0.65.2 | +AGM +Zeus";
 		timeOfChanges=28800;
 		startWeather=0.84999996;
 		startWind=0.59999996;
@@ -832,7 +832,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Charkia""];this setVariable[""townRadius"", 200];this setVariable[""offline"", true];";
+			init="this setVariable[""townName"", ""Charkia""];this setVariable[""townRadius"", 200];";
 		};
 		class Item6
 		{
@@ -841,7 +841,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Paros""];this setVariable[""townRadius"", 300];this setVariable[""offline"", false];this setVariable[""offline"", true];";
+			init="this setVariable[""townName"", ""Paros""];this setVariable[""townRadius"", 300];this setVariable[""offline"", false];";
 		};
 		class Item7
 		{
@@ -850,7 +850,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Telos""];this setVariable[""townRadius"", 200];this setVariable[""offline"", true];";
+			init="this setVariable[""townName"", ""Telos""];this setVariable[""townRadius"", 200];";
 		};
 		class Item8
 		{
@@ -1842,7 +1842,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Anthrakia""];this setVariable[""townRadius"", 200];this setVariable[""offline"", true];";
+			init="this setVariable[""townName"", ""Anthrakia""];this setVariable[""townRadius"", 200];";
 		};
 		class Item101
 		{
@@ -1851,7 +1851,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_VRGoggles_01_F";
 			skill=0.60000002;
-			init="this setVariable[""townName"", ""Rudopoli""];this setVariable[""townRadius"", 350];this setVariable[""offline"", true];";
+			init="this setVariable[""townName"", ""Rudopoli""];this setVariable[""townRadius"", 350];";
 		};
 		class Item102
 		{
