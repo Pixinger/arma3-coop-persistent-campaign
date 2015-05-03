@@ -14,12 +14,37 @@ if (hasInterface) then
 		{
 			{
 				if (_x distance (getPos player) < 5) then
-				{						
+				{					
 					if ((stance player != "PRONE") || {(count ((getPos _x) nearEntities ["SoldierEB", 50]) > 0)}) then
 					{			
-						private["_ied"];
-						_ied = createVehicle ["Bo_GBU12_LGB", (getPos _x), [], 0, "NONE"]; // Bo_GBU12_LGB: 5000;1100
+						if (_x isKindOf "ModuleExplosive_IEDUrbanSmall_F") then
+						{
+							private["_bomb"];
+							_bomb = createVehicle ["IEDUrbanSmall_Remote_Ammo", (getPos _x), [], 0, "NONE"];
+							_bomb setDammage 1;
+						};
+						if (_x isKindOf "ModuleExplosive_IEDLandSmall_F") then
+						{
+							private["_bomb"];
+							_bomb = createVehicle ["IEDLandSmall_Remote_Ammo", (getPos _x), [], 0, "NONE"];
+							_bomb setDammage 1;
+						};
+						if (_x isKindOf "ModuleExplosive_IEDUrbanBig_F") then
+						{
+							private["_bomb"];
+							_bomb = createVehicle ["IEDUrbanBig_Remote_Ammo", (getPos _x), [], 0, "NONE"];
+							_bomb setDammage 1;
+						};
+						if (_x isKindOf "ModuleExplosive_IEDLandBig_F") then
+						{
+							private["_bomb"];
+							_bomb = createVehicle ["IEDLandBig_Remote_Ammo", (getPos _x), [], 0, "NONE"];
+							_bomb setDammage 1;
+						};
 						
+						// Bo_Mk82_MI08					"hit"=>5000, "indirecthit"=>1100, 	"indirecthitrange"=>12
+						// R_80mm_HE						"hit"=>210, 	"indirecthit"=>55, 	"indirecthitrange"=>15
+
 						// Smoke_120mm_AMOS_White
 						// ATMine_Range_Ammo:				"hit"=>2000, 	"indirecthit"=>2000, 	"indirecthitrange"=>5
 						// Bo_GBU12_LGB: 					"hit"=>5000, 	"indirecthit"=>1100, 	"indirecthitrange"=>12

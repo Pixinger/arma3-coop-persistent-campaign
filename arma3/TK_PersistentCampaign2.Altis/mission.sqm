@@ -60,7 +60,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign 2";
-		overviewText="www.teamkommando.de | V0.65.2 | +AGM +Zeus";
+		overviewText="www.teamkommando.de | V0.65.6 | +AGM +Zeus";
 		timeOfChanges=28800;
 		startWeather=0.84999996;
 		startWind=0.59999996;

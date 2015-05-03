@@ -82,7 +82,6 @@ class Header
   playerCountMultipleOf = 1;  
 };
 
-
 #include "dialogDefines.hpp"
 #include "maindialog_classes.hpp"
 #include "barracks\classes.hpp"

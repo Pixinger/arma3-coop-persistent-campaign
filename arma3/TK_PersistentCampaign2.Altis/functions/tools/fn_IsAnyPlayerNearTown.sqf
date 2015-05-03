@@ -9,15 +9,13 @@ Parameter:
 Return: 
 	TRUE wenn sich mindestens ein Spieler in der Nähe befindet, sonst FALSE.
 */
-
+/*
 private["_position"];
 _position = _this select 0;
 private["_distance"];
 _distance = _this select 1;
-
-private["_result"];
-_result = false;
-
+*/
+/*
 private["_players"];
 _players = playableUnits;
 if (count _players == 0) then { _players = [player]; };
@@ -30,17 +28,17 @@ _maxDistance = (_distance)^2; //optimierter Ausdruck für: _maxDistance = [_posit
 	if ( (([_position, _x] call BIS_fnc_distance2Dsqr) < _maxDistance) && { (speed _x < 55) } ) exitWith { _result = true; };
 } foreach _players;
 
-_result;
-/*
+_result;*/
 
-//private["_units"];
-_distance = _position nearEntities ["I_Soldier_base_F", _distance];
-//[0,0,0] nearEntities ["I_Soldier_base_F", 1000];
 
-/*{
-	if (speed _x < 55) exitWith { true };
+private["_units"];
+_units = (_this select 0) nearEntities ["SoldierGB", (_this select 1)];
+
+private["_result"];
+_result = false;
+
+{
+	if (speed _x < 55) exitWith { _result = true };
 } foreach _units;
-_result;
 
-//false
-*/
+_result;

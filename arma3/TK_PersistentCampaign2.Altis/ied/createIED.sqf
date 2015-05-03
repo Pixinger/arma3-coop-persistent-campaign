@@ -2,9 +2,8 @@ private["_roadX"];
 _roadX = _this select 0;
 private["_roadY"];
 _roadY = _this select 1;
-
 private["_iedClassnames"];
-_iedClassnames = ["ModuleExplosive_IEDUrbanSmall_F", "ModuleExplosive_IEDLandSmall_F", "ModuleExplosive_IEDUrbanBig_F", "ModuleExplosive_IEDLandBig_F"];
+_iedClassnames = _this select 2; //["ModuleExplosive_IEDUrbanSmall_F", "ModuleExplosive_IEDLandSmall_F", "ModuleExplosive_IEDUrbanBig_F", "ModuleExplosive_IEDLandBig_F"];
 private["_ied"];
 _ied = _iedClassnames select floor(random(count _iedClassnames)) createVehicle [_roadX, _roadY, 0]; 		
 

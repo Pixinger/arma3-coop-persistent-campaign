@@ -63,7 +63,7 @@ while { (_index < count _unitsActive) } do
 					[_townName, pixTown_ConfigMoodPerRedArrest] call PC_fnc_TownParam_MoodAdd;
 					
 					// Bekanntgeben
-					if (random 5 < 2) then
+					if (random 5 < 1) then
 					{					
 						townInfos = townInfos + 1;
 						publicVariable "townInfos";

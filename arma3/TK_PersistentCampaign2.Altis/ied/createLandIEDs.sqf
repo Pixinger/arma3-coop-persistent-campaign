@@ -29,7 +29,6 @@ if (isServer) then
 		if (count _roads > 0) then 
 		{
 			_road = _roads select floor(random(count _roads));
-			player setpos (getpos _road);
 			_limit = -10; 
 		};
 	};
@@ -57,7 +56,7 @@ if (isServer) then
 			};			
 		};
 
-		[_roadX, _roadY] spawn compile preprocessFileLineNumbers "ied\createIED.sqf";
+		[_roadX, _roadY, ["ModuleExplosive_IEDLandSmall_F", "ModuleExplosive_IEDLandBig_F"]] spawn compile preprocessFileLineNumbers "ied\createIED.sqf";
 	} 
 	else
 	{

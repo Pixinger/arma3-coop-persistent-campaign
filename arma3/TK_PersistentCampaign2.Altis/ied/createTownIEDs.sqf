@@ -37,6 +37,6 @@ if (isServer) then
 			};			
 		};
 		
-		[_roadX, _roadY] spawn compile preprocessFileLineNumbers "ied\createIED.sqf";
+		[_roadX, _roadY, ["ModuleExplosive_IEDUrbanSmall_F", "ModuleExplosive_IEDUrbanBig_F"]] spawn compile preprocessFileLineNumbers "ied\createIED.sqf";
 	};		
 };
