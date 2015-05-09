@@ -1,13 +1,13 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"", //G_Tactical_Clear
+	"G_Lowprofile",
 	
 	/* Headgear */
-	"H_MilCap_dgtl",
+	"H_CrewHelmetHeli_I",
 	
 	/* Binoculars */
-	"LaserDesignator",
+	"Rangefinder",
 	
 	/* Nightvision */
 	"NVGoggles_INDEP",
@@ -18,15 +18,15 @@ _result = [
 		"ItemWatch",
 		"ItemCompass",
 		"ItemGps"
-	],
+	],	
 	
 	/* Primary Weapon */
 	[
-		"srifle_DMR_02_SOS_F",
+		"arifle_Mk20_GL_F",
 		/* Primary weapon Magazine */
-		"5Rnd_127x108_Mag",
+		"30Rnd_556x45_Stanag",
 		/* Primary Weapon Items */
-		[]
+		["muzzle_snds_M","acc_pointer_IR","optic_Hamr"]
 	],
 	
 	/* Secondary Weapon */
@@ -40,16 +40,16 @@ _result = [
 	
 	/* Handgun Weapon */
 	[
-		"hgun_ACPC2_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"9Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
 		[]
 	],
 	
 	/* Uniform */
 	[
-		"U_I_FullGhillie_lsh", 
+		"U_I_CombatUniform", 
 		/* Uniform-Weapons */
 		[], 
 		/* Uniform-Magazines */
@@ -66,16 +66,16 @@ _result = [
 		
 	/* Vest */
 	[
-		"V_Chestrig_oli",
+		"V_TacVest_oli",
 		/* Vest-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellRed","SmokeShellRed",
+			"SmokeShell","SmokeShell","SmokeShell",
 			"SmokeShellGreen","SmokeShellGreen"
 		], 
 		/* Vest-Magazines */
 		[
-			"5Rnd_127x108_Mag","5Rnd_127x108_Mag","5Rnd_127x108_Mag","5Rnd_127x108_Mag","5Rnd_127x108_Mag"
+			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag",
+			"1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell"
 		],
 		/* Vest-Items */
 		[
@@ -84,21 +84,13 @@ _result = [
 	
 	/* Backpack */
 	[
-		"B_AssaultPack_dgtl",
+		"B_Parachute",
 		/* Backpack-Weapons */
 		[], 
 		/* Backpack-Magazines */
-		[
-			"5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag","5Rnd_127x108_APDS_Mag"
-		],
+		[],
 		/* Backpack-Items */
 		[			
-			"AGM_Epipen","AGM_Epipen","AGM_Epipen",
-			"AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
-			"AGM_Morphine","AGM_Morphine","AGM_Morphine",
-			"SmokeShell","SmokeShell",
-			"SmokeShellRed","SmokeShellRed",
-			"SmokeShellGreen","SmokeShellGreen"			
 		]
 	],
 	

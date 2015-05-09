@@ -38,14 +38,12 @@ if (ExecuteHeadlessCode) then
 		_antiair1 = "O_APC_Tracked_02_AA_F" createVehicle _missionPosition;
 		_antiair1 setdir random 360;
 		_antiair1 setVectorUp surfaceNormal (position _antiair1);
-		_antiair1 allowDamage false;
 		createVehicleCrew _antiair1; 
 
 		private["_antiair2"];
 		_antiair2 = "O_APC_Tracked_02_AA_F" createVehicle _missionPosition;
 		_antiair2 setdir random 360;
 		_antiair2 setVectorUp surfaceNormal (position _antiair2);
-		_antiair2 allowDamage false;
 		createVehicleCrew _antiair2; 
 
 		//-------------------------

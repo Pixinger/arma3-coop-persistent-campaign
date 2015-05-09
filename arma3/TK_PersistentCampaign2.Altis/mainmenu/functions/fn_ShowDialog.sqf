@@ -11,7 +11,8 @@ _buttons = [
 	["Wasser entladen", call fnc_Town_SupportWaterCond, false, fnc_Town_SupportWaterScript],
 	["Bewohner befragen", call fnc_Town_TalkCivilianCond, false, fnc_Town_TalkCivilianScript],
 	["Waffen beschlagnahmen", call fnc_Town_WeaponConfiscateCond, false, fnc_Town_WeaponConfiscateScript],
-	["Spieler Gewicht/Ausdauer", true, false, fnc_MainMenu_ShowPlayerLoad]
+	["Spieler Gewicht/Ausdauer", true, false, fnc_MainMenu_ShowPlayerLoad],
+	["Spieler teleportieren", true, false, fnc_MainMenu_TeleportPlayer]
 ];
 
 [_buttons, "Hauptmenu"] execVM "maindialog_showtemplate.sqf";

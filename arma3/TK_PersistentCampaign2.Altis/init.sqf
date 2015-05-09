@@ -61,6 +61,7 @@ if (ExecuteHeadlessCode) then
 
 call compile preprocessFileLineNumbers "maindialog_init.sqf";
 call compile preprocessFileLineNumbers "admin\init.sqf";
+call compile preprocessFileLineNumbers "barracks\init.sqf";
 call compile preprocessFileLineNumbers "town\init.sqf";
 call compile preprocessFileLineNumbers "mainmenu\init.sqf";
 call compile preprocessFileLineNumbers "vehicles\init.sqf";

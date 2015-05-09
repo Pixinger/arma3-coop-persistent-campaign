@@ -4,8 +4,11 @@ if (isServer) then
 	_townCenter = _this select 0;
 	private["_townRadius"];
 	_townRadius = _this select 1;
+	
+#define RADIUS_BASIS	200
+#define COUNT_PER_RADIUS_BASIS	1.5
 	private["_iedCount"];
-	_iedCount = round( (pi * (_townRadius*_townRadius)) / (31500*2)); // => 2 pro 200m Radius
+	_iedCount = round( (pi * (_townRadius*_townRadius)) / ((pi * (RADIUS_BASIS*RADIUS_BASIS))*COUNT_PER_RADIUS_BASIS)); 
 	
 	// IED erstellen
 	for "_i" from 1 to _iedCount do

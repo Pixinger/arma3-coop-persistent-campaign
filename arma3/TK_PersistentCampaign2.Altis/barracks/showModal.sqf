@@ -31,7 +31,9 @@ _loadouts = [
 	["Gruppenführer (Funk)","AAF_TeamleaderRadio.sqf"],
 	["Crew","AAF_Crew.sqf"],
 	["Helipilot", "AAF_HeliPilot.sqf"],
-	["Helipilot (Radio)", "AAF_HeliPilotRadio.sqf"]
+	["Helipilot (Radio)", "AAF_HeliPilotRadio.sqf"],
+	["HALO", "AAF_Halo.sqf"],
+	["HALO (AT)", "AAF_HaloTitanAT.sqf"]
 	//["Automatikschütze","US_Autorifleman.sqf"],
 	//["Sanitäter (Aufklärer)","US_MedicRecon.sqf"],
 	//["Sanitäter (Funker)","US_MedicRadio.sqf"],

@@ -21,7 +21,7 @@ enableItemsDropping = 0; 	/* Mit diesem Eintrag kann eingestellt werden, ob eine
 joinUnassigned = 0; 		/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
 allowFunctionsRecompile = 1;
 allowFunctionsLog=1;
-forceRotorLibSimulation = 1;
+forceRotorLibSimulation = 0;
 /*
 0 / "NONE" - Kein Respawn
 1 / "BIRD" - Respawn als Möwe / Krähe
@@ -78,7 +78,7 @@ class Header
 {
   gameType = Coop;            
   minPlayers = 8;             
-  maxPlayers = 18;            
+  maxPlayers = 20;            
   playerCountMultipleOf = 1;  
 };
 

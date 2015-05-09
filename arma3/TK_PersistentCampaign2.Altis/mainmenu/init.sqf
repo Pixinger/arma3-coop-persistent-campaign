@@ -9,3 +9,9 @@ call compile preprocessFileLineNumbers "mainmenu\functions\_compile.sqf";
 		["Persistent Campaign", {true}, {call fnc_MainMenu_ShowDialog}, false] call AGM_Interaction_fnc_addInteractionSelf;
 	};
 };
+
+if (isServer) then
+{
+	pvPlayerTeleport = false;
+	publicVariable "pvPlayerTeleport";
+};
