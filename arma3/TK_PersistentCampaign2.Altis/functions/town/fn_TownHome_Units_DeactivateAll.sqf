@@ -45,7 +45,7 @@ private["_status"];
 			_countRemoved = _countRemoved + 1;	// Da die Einheit nun ausgezogen ist, muss sie auch gezhält werden. Dieser Wert wird dann später an _townRedCount, _townCicCount übergeben.
 			
 			// Bekanntgeben
-			if (random 5 < 1) then
+			if (random 10 < 1) then
 			{					
 				townInfos = townInfos + 1;
 				publicVariable "townInfos";

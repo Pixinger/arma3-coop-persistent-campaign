@@ -588,6 +588,7 @@ if (ExecuteHeadlessCode) then
 									if (((random _townRedCount) + 1) > _townWeaponCount) then
 									{
 										_unit setBehaviour "CARELESS";
+										_unit setCaptive true;
 										removeAllWeapons _unit;	
 									}
 									else
@@ -745,7 +746,7 @@ if (ExecuteHeadlessCode) then
 								_x setSpeedmode "FULL";
 								_x reveal [_target, 1];
 								_x doTarget _target;
-								_x doMove (getPos _target);
+								_x doMove (getPos _target);-
 							}; 
 						} foreach _redFor;
 					};
@@ -772,9 +773,20 @@ if (ExecuteHeadlessCode) then
 								_unit setDir (random 360);
 								_unit setpos _unitPosition;
 								if ((random 1) < 0.3) then { _unit setUnitPos "DOWN"; } else { _unit setUnitPos "MIDDLE"; };							
+								
 								private["_random"];
 								_random = (random 1);
-								if (_random < 0.5) then {_unit setBehaviour "AWARE";} else { if (_random < 0.90) then {_unit setBehaviour "COMBAT";} else {_unit setBehaviour "CARELESS";};};
+								if (_random < 0.5) then {
+									_unit setBehaviour "AWARE";
+								} else { 
+									if (_random < 0.90) then {
+										_unit setBehaviour "COMBAT";
+									} else {
+										_unit setBehaviour "CARELESS";
+										_unit setCaptive true;
+									};
+								};
+								
 								{ _unit reveal [_x, 1.5]; } foreach _bluFor;								 
 								
 								_x pushBack _unit;

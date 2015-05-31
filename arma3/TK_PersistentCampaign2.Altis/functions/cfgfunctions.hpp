@@ -9,7 +9,7 @@ class PC
 		class IsAnyPlayerNear {description = "";};
 		class IsAnyPlayerNearTown {description = "";};
 		class GetPlayerCount {description = "";};
-		class GetNearestPlayers {description = "";};
+		class GetNearestPlayers {description = "Obsolete?!";};
 		class GetMaxBuildingPositions {description = "";};
 		class GetMaxBuildingsPositions {description = "";};
 		class RandomElement {description = "";};
