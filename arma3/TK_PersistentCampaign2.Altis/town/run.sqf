@@ -746,7 +746,7 @@ if (ExecuteHeadlessCode) then
 								_x setSpeedmode "FULL";
 								_x reveal [_target, 1];
 								_x doTarget _target;
-								_x doMove (getPos _target);-
+								_x doMove (getPos _target);
 							}; 
 						} foreach _redFor;
 					};

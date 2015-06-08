@@ -1,6 +1,6 @@
 if (isServer) then
 {
-	for "_i" from 1 to 30 do
+	for "_i" from 1 to 80 do//30
 	{
 		[] spawn compile preprocessFileLineNumbers "ied\createLandIEDs.sqf";	
 	};

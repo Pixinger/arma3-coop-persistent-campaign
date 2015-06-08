@@ -9,6 +9,7 @@ if (isServer) then
 #define COUNT_PER_RADIUS_BASIS	1.5
 	private["_iedCount"];
 	_iedCount = round( (pi * (_townRadius*_townRadius)) / ((pi * (RADIUS_BASIS*RADIUS_BASIS))*COUNT_PER_RADIUS_BASIS)); 
+	_iedCount = _iedCount * 2;
 	
 	// IED erstellen
 	for "_i" from 1 to _iedCount do

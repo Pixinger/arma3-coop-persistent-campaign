@@ -11,6 +11,29 @@ if (hasInterface) then
 		{	
 			adminGps = true;
 			
+			private["_iedClassnames"];
+			_iedClassnames = ["ModuleExplosive_IEDUrbanSmall_F", "ModuleExplosive_IEDLandSmall_F", "ModuleExplosive_IEDUrbanBig_F", "ModuleExplosive_IEDLandBig_F"];
+			private["_ieds"];
+			_ieds = (getPos MapCenter) nearEntities [_iedClassnames, 15000];
+			private["_lastIEDMarkerCount"];
+			_lastIEDMarkerCount = count _ieds;
+
+			if (_lastIEDMarkerCount > 0) then
+			{
+				/* Neue Marker erstellen */
+				private ["_i", "_markerName"];
+				for "_i" from 0 to (_lastIEDMarkerCount - 1) do
+				{
+					private["_markerName"];
+					_markerName = createMarkerLocal [format["GpsIedMarkerA%1", _i], (getPos (_ieds select _i))];
+					_markerName setMarkerAlphaLocal 1;
+					_markerName setMarkerColorLocal "ColorRed";
+					_markerName setMarkerShapeLocal "ICON";
+					_markerName setMarkerTypeLocal "hd_warning";
+					_markerName setMarkerSizeLocal [0.5, 0.5];
+				};			
+			};
+		
 			private["_lastMarkerCount"];
 			_lastMarkerCount = 0;
 			while { adminGps } do
@@ -81,6 +104,14 @@ if (hasInterface) then
 			{
 				deleteMarkerLocal format["GpsMarkerA%1", _i];
 			};
+			
+			if (_lastIEDMarkerCount > 0) then
+			{
+				for "_i" from 0 to (_lastIEDMarkerCount - 1) do
+				{
+					deleteMarkerLocal format["GpsIedMarkerA%1", _i];
+				};			
+			};			
 		};
 	};
 };

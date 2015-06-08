@@ -97,7 +97,7 @@ _result = [
 		],
 		/* Backpack-Items */
 		[
-			"AGM_DefusalKit"
+			"AGM_DefusalKit","AGM_M26_Clacker","AGM_Clacker"
 		]
 	],
 	
