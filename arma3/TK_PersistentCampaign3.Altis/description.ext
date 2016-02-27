@@ -37,3 +37,6 @@ class Header
   maxPlayers = 80;            
   playerCountMultipleOf = 1;  
 };
+
+#include "dialogDefines.hpp"
+#include "maindialog_classes.hpp"
