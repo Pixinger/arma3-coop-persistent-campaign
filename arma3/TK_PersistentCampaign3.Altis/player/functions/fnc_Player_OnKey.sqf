@@ -5,4 +5,4 @@ _buttons = [
 	["Teleport", adminPlayerTeleport, true, fnc_Player_Teleport]
 ];
 
-[_buttons, "Administrator"] execVM "maindialog_showtemplate.sqf";
+[_buttons, "Spieler Menü"] execVM "maindialog_showtemplate.sqf";

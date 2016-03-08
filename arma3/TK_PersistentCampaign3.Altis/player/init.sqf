@@ -1,3 +1,5 @@
+call compile preprocessFileLineNumbers "player\admin\init.sqf";
+
 if (hasInterface) then
 {
 	[] spawn {

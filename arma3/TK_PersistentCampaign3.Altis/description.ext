@@ -14,6 +14,7 @@ showNotepad = 0;
 showRadio = 1;
 showWatch = 1;
 enableDebugConsole = 1;
+enableTeamSwitch = 0;
 respawn = "BASE";
 respawnDelay = 60;
 respawnDialog = 0; 							/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
@@ -40,3 +41,5 @@ class Header
 
 #include "dialogDefines.hpp"
 #include "maindialog_classes.hpp"
+
+#include "logistic\classes.hpp"

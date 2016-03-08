@@ -1,0 +1,1 @@
+#include "dialogStore\classes.hpp"

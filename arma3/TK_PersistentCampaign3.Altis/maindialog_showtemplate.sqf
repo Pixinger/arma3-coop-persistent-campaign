@@ -15,7 +15,7 @@ _idcs = [
 	IDC_MAINMENU_BUTTON11];
 	
 private["_buttons"];
-_buttons = _this select 0;
+_buttons = _this select 0; // ["Name", Enabled, Visible, function, (optional: call/spawn (true/false))];
 private["_name"];
 _name = _this select 1;
 
@@ -32,6 +32,8 @@ if (count _buttons > 0) then
 	// Skripte vorbereiten
 	private["_scripts"];
 	_scripts = [];
+	private["_call"];
+	_call = [];
 	
 	private["_i"];
 	_i = 0;
@@ -49,6 +51,11 @@ if (count _buttons > 0) then
 				ctrlShow [_idc, true];
 				
 				_scripts pushBack (_x select 3);
+				if (count _x >= 5) then {
+					_call pushBack (_x select 4);
+				} else {
+					_call pushBack true;
+				}
 			};
 		};
 	} foreach _buttons;
@@ -65,6 +72,7 @@ if (count _buttons > 0) then
 	
 	if (maindialog_action > -1) then
 	{
+		
 		[] call (_scripts select maindialog_action);
 	};	
 };
