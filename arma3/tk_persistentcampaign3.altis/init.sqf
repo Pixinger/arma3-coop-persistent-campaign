@@ -4,6 +4,7 @@ setTerrainGrid 50;
 
 waituntil {!isnil "bis_fnc_init"};
 enableSaving [false, false];
+enableTeamSwitch false;
 
 //-----------------------------------------------
 // Debug
@@ -29,20 +30,8 @@ diag_log format["ExecuteHeadlessCode: %1", ExecuteHeadlessCode];
 
 myvehicles = [];
 
-//-----------------------------------------------
-// Server only
-if (isServer) then  
-{
-	call compile preprocessFileLineNumbers "db\init.sqf";
-};
-
-//-----------------------------------------------
-// Client only (Player lokal)
-if (hasInterface) then
-{
-	call compile preprocessFileLineNumbers "sub_config.sqf";
-	call compile preprocessFileLineNumbers "sub_compile.sqf";
-	call compile preprocessFileLineNumbers "sub_init.sqf";
-};
+call compile preprocessFileLineNumbers "sub_config.sqf";
+call compile preprocessFileLineNumbers "sub_compile.sqf";
+call compile preprocessFileLineNumbers "sub_init.sqf";
 
 // call compile preprocessFileLineNumbers "test.sqf";

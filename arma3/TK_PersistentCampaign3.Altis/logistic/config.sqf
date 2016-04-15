@@ -20,6 +20,46 @@ logisticStoreObjects = [
 	["Land_IronPipes_F", 40]	
 ];
 
+logisticObjectsTransportable = [
+	"Land_CratesWooden_F",
+	"Land_PaperBox_closed_F",
+	"Land_Sacks_goods_F",
+	"Land_Bricks_V1_F",
+	"Land_IronPipes_F"	
+];
+
+logisticObjectsMoveable = [
+	"Land_CratesWooden_F",
+	"Land_PaperBox_closed_F",
+	"Land_Sacks_goods_F",
+	"Land_Bricks_V1_F",
+	"Land_IronPipes_F"	
+];
+
+logisticObjectsTransformable = [
+	"Land_CratesWooden_F",
+	"Land_PaperBox_closed_F",
+	"Land_Sacks_goods_F",
+	"Land_Bricks_V1_F",
+	"Land_IronPipes_F"	
+];
+
+logisticTransporters = [
+	"B_G_Van_01_transport_F",
+	"B_G_Offroad_01_F",
+	"B_Truck_01_box_F",
+	"B_Truck_01_transport_F",
+	"B_Truck_01_covered_F"
+];
+
+logisticTransporterConfig = [
+	["B_G_Van_01_transport_F", 2, 0], // [classname, ladeplatzanzahl-Links, ladeplpatzanzahl-Rechts]
+	["B_G_Offroad_01_F", 1, 0],
+	["B_Truck_01_box_F", 4, 4],
+	["B_Truck_01_transport_F", 4, 0],
+	["B_Truck_01_covered_F", 4, 0]
+];
+
 	
 // Land_CratesWooden_F: Sonstige Güter
 // Land_Pipes_small_F: Kleine Rohre auf Metall. Wie Wäaschespinne

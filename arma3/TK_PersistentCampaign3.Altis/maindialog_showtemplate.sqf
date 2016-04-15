@@ -15,7 +15,7 @@ _idcs = [
 	IDC_MAINMENU_BUTTON11];
 	
 private["_buttons"];
-_buttons = _this select 0; // ["Name", Enabled, Visible, function, (optional: call/spawn (true/false))];
+_buttons = _this select 0; // ["Name", Enabled, Visible, function, function parameter, (optional: call/spawn (true/false))];
 private["_name"];
 _name = _this select 1;
 
@@ -32,8 +32,10 @@ if (count _buttons > 0) then
 	// Skripte vorbereiten
 	private["_scripts"];
 	_scripts = [];
-	private["_call"];
-	_call = [];
+	private["_scriptParams"];
+	_scriptParams = [];
+	private["_calls"];
+	_calls = [];
 	
 	private["_i"];
 	_i = 0;
@@ -51,10 +53,15 @@ if (count _buttons > 0) then
 				ctrlShow [_idc, true];
 				
 				_scripts pushBack (_x select 3);
-				if (count _x >= 5) then {
-					_call pushBack (_x select 4);
+				if (count _x >= 4) then {
+					_scriptParams pushBack (_x select 4);
 				} else {
-					_call pushBack true;
+					_scriptParams pushBack [];
+				};
+				if (count _x >= 5) then {
+					_calls pushBack (_x select 5);
+				} else {
+					_calls pushBack true;
 				}
 			};
 		};
@@ -72,7 +79,10 @@ if (count _buttons > 0) then
 	
 	if (maindialog_action > -1) then
 	{
-		
-		[] call (_scripts select maindialog_action);
+		if (_calls select maindialog_action) then {
+			(_scriptParams select maindialog_action) call (_scripts select maindialog_action);
+		} else {
+			(_scriptParams select maindialog_action) spawn (_scripts select maindialog_action);
+		};
 	};	
 };
