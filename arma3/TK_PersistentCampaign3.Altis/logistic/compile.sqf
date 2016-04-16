@@ -11,8 +11,3 @@ fnc_Logistic_Object_Unload = compile preprocessFileLineNumbers "logistic\functio
 fnc_Logistic_Object_UnloadDialog = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Object_UnloadDialog.sqf";
 fnc_Logistic_Object_Move = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Object_Move.sqf";
 fnc_Logistic_Object_Transform = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Object_Transform.sqf";
-
-fnc_Logistic_Transporter_GetConfig = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Transporter_GetConfig.sqf";
-fnc_Logistic_Transporter_GetEmptySlot = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Transporter_GetEmptySlot.sqf";
-
-

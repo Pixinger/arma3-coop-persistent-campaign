@@ -1,5 +1,3 @@
-
-
 /* Objekte die Bewegt und in Container/Fahrzeuge geladen werden können */
 logisticMovableObjects = [
 	"Land_CncWall1_F",
@@ -20,14 +18,6 @@ logisticStoreObjects = [
 	["Land_IronPipes_F", 40]	
 ];
 
-logisticObjectsTransportable = [
-	"Land_CratesWooden_F",
-	"Land_PaperBox_closed_F",
-	"Land_Sacks_goods_F",
-	"Land_Bricks_V1_F",
-	"Land_IronPipes_F"	
-];
-
 logisticObjectsMoveable = [
 	"Land_CratesWooden_F",
 	"Land_PaperBox_closed_F",
@@ -44,22 +34,45 @@ logisticObjectsTransformable = [
 	"Land_IronPipes_F"	
 ];
 
+logisticObjectsTransportable = [
+	"Land_CratesWooden_F",
+	"Land_PaperBox_closed_F",
+	"Land_Sacks_goods_F",
+	"Land_Bricks_V2_F",
+	"B_CargoNet_01_ammo_F",
+	"CargoNet_01_box_F",
+	"CargoNet_01_barrels_F",
+	"Land_Pipes_large_F",
+	"Land_Pipes_small_F"	
+];
+
+// [grösse,[attach-offset],attach-rotation]
+logisticObjectsTransportableConfig = [
+	[1,[0,  0,  0],0], 		//"Land_CratesWooden_F",
+	[1,[0,  0,  0],0], 		//"Land_PaperBox_closed_F",
+	[1,[0,  0,  0],0], 		//"Land_Sacks_goods_F",
+	[1,[0,  0,-.5],0], 		//"Land_Bricks_V1_F",
+	[1,[0,  0, .3],0], 		//"B_CargoNet_01_ammo_F",
+	[1,[0,  0, .1],0], 		//"CargoNet_01_box_F",
+	[1,[0,  0, .1],0], 		//"CargoNet_01_barrels_F",
+	[3,[0, -2,-.5],90], 	//"Land_Pipes_large_F"	
+	[2,[0,-.8,-.5],90]  	//"Land_Pipes_small_F"	
+];
+
 logisticTransporters = [
-	"B_G_Van_01_transport_F",
-	"B_G_Offroad_01_F",
+	"C_Van_01_box_F",
+	"C_Van_01_transport_F",
 	"B_Truck_01_box_F",
 	"B_Truck_01_transport_F",
 	"B_Truck_01_covered_F"
 ];
-
-logisticTransporterConfig = [
-	["B_G_Van_01_transport_F", 2, 0], // [classname, ladeplatzanzahl-Links, ladeplpatzanzahl-Rechts]
-	["B_G_Offroad_01_F", 1, 0],
-	["B_Truck_01_box_F", 4, 4],
-	["B_Truck_01_transport_F", 4, 0],
-	["B_Truck_01_covered_F", 4, 0]
+logisticTransporterAttachPoints = [
+	[[0,-1],[0,-2.5]],									//"C_Van_01_box_F",
+	[[0,-1],[0,-2.5]],									//"C_Van_01_transport_F",
+	[[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4]],	//"B_Truck_01_box_F",
+	[[0,0],[0,-1.5],[0,-3]],							//"B_Truck_01_transport_F",
+	[[0,0],[0,-1.5],[0,-3]]								//"B_Truck_01_covered_F"
 ];
-
 	
 // Land_CratesWooden_F: Sonstige Güter
 // Land_Pipes_small_F: Kleine Rohre auf Metall. Wie Wäaschespinne
