@@ -50,17 +50,20 @@ if (count _buttons > 0) then
 				
 				ctrlSetText [_idc, (_x select 0)];
 				ctrlEnable [_idc, (_x select 1)];
-				ctrlShow [_idc, true];
-				
+				ctrlShow [_idc, (_x select 2)];				
 				_scripts pushBack (_x select 3);
-				if (count _x >= 4) then {
+				if (count _x > 4) then {
+					diag_log format["_scriptParams: %1", (_x select 4)];
 					_scriptParams pushBack (_x select 4);
 				} else {
+					diag_log format["_scriptParams: %1 (default)", []];
 					_scriptParams pushBack [];
 				};
-				if (count _x >= 5) then {
+				if (count _x > 5) then {
+					diag_log format["_calls: %1", (_x select 5)];
 					_calls pushBack (_x select 5);
 				} else {
+					diag_log format["_calls: %1 (default)", true];
 					_calls pushBack true;
 				}
 			};

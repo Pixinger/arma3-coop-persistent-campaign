@@ -3,42 +3,46 @@ _cursorTarget = cursorTarget;
 private["_cursorTargetType"];
 _cursorTargetType = typeof _cursorTarget;
 
-
-/*--------------------------------------------------------------------*/
-/* Jetzt fangen wir an das Objekt zu bewegen*/
-_object attachTo [player, [
-	0,
-	10,
-	0]
-];
-
-private["_actionMenu"];
-_actionMenu = player addAction [("<t color=""#dddd00"">Ablegen</t>"), "pixLogistic\clientReleaseObject.sqf", nil, 5, true, true];
-
-
-/*--------------------------------------------------------------------*/
-/* Verschiedene Überwachungen*/
-while {!(isNull pixlogisticMovingObject) && (alive player)} do
+if (_cursorTargetType in logisticObjectsMoveable) then 
 {
-	if (vehicle player != player) then
+	// Objekt Konfiguration auslesen
+	private["_objectIndex"];
+	_objectIndex = logisticObjectsMoveable find _cursorTargetType;
+	private["_objectConfig"];
+	_objectConfig = logisticObjectsMoveableConfig select _objectIndex;
+	private["_objectAttachPoint"];
+	_objectAttachPoint = _objectConfig select 0;
+
+	/*--------------------------------------------------------------------*/
+	/* Jetzt fangen wir an das Objekt zu bewegen*/
+	_cursorTarget attachTo [player, _objectAttachPoint];
+
+	private["_actionMenu"];
+	_actionMenu = player addAction [("<t color=""#dddd00"">Ablegen</t>"), { logisticMoveObject = objNull; }, nil, 5, true, true];
+
+	/*--------------------------------------------------------------------*/
+	/* Verschiedene Überwachungen*/
+	logisticMoveObject = _cursorTarget;
+	while {!(isNull logisticMoveObject) && (alive player)} do
 	{
-		player action ["eject", vehicle player];
-		sleep 1;
+		if (vehicle player != player) then
+		{
+			player action ["eject", vehicle player];
+			sleep 1;
+		};
+
+		sleep 0.25;
 	};
 
-	sleep 0.25;
+	player removeAction _actionMenu;
+	logisticMoveObject = objNull;
+
+	/*--------------------------------------------------------------------*/
+	/* Das Object soll abgelegt werden oder der Spieler ist tot*/
+	if (!isNull _cursorTarget) then
+	{
+		detach _cursorTarget;
+		_cursorTarget setPos [getPos _cursorTarget select 0, getPos _cursorTarget select 1, 0];
+		_cursorTarget setVelocity [0, 0, 0];				
+	};	
 };
-
-
-player removeAction _actionMenu;
-pixlogisticMovingObject = objNull;
-
-/*--------------------------------------------------------------------*/
-/* Das Object soll abgelegt werden oder der Spieler ist tot*/
-if (!isNull _object) then
-{
-	detach _object;
-	_object setPos [getPos _object select 0, getPos _object select 1, 0];
-	_object setVelocity [0, 0, 0];				
-	_object setVariable ["pixlogisticIsMoving", objNull, true];
-};	
