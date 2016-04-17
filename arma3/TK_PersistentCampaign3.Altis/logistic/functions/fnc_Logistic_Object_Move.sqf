@@ -3,13 +3,13 @@ _cursorTarget = cursorTarget;
 private["_cursorTargetType"];
 _cursorTargetType = typeof _cursorTarget;
 
-if (_cursorTargetType in logisticObjectsMoveable) then 
+if (_cursorTargetType in logisticObjectsMoveables) then 
 {
 	// Objekt Konfiguration auslesen
 	private["_objectIndex"];
-	_objectIndex = logisticObjectsMoveable find _cursorTargetType;
+	_objectIndex = logisticObjectsMoveables find _cursorTargetType;
 	private["_objectConfig"];
-	_objectConfig = logisticObjectsMoveableConfig select _objectIndex;
+	_objectConfig = logisticObjectsMoveableConfigs select _objectIndex;
 	private["_objectAttachPoint"];
 	_objectAttachPoint = _objectConfig select 0;
 
@@ -35,14 +35,11 @@ if (_cursorTargetType in logisticObjectsMoveable) then
 	};
 
 	player removeAction _actionMenu;
-	logisticMoveObject = objNull;
+	logisticMoveObject = nil;
 
 	/*--------------------------------------------------------------------*/
 	/* Das Object soll abgelegt werden oder der Spieler ist tot*/
-	if (!isNull _cursorTarget) then
-	{
-		detach _cursorTarget;
-		_cursorTarget setPos [getPos _cursorTarget select 0, getPos _cursorTarget select 1, 0];
-		_cursorTarget setVelocity [0, 0, 0];				
-	};	
+	detach _cursorTarget;
+	_cursorTarget setPos [getPos _cursorTarget select 0, getPos _cursorTarget select 1, 0];
+	_cursorTarget setVelocity [0, 0, 0];				
 };

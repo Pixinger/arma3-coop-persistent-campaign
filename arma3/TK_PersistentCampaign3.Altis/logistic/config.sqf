@@ -1,4 +1,4 @@
-logisticObjectsMoveable = [
+logisticObjectsMoveables = [
 	"Land_CratesWooden_F",
 	"Land_PaperBox_closed_F",
 	"Land_Sacks_goods_F",
@@ -9,8 +9,7 @@ logisticObjectsMoveable = [
 	"Land_Pipes_large_F",
 	"Land_Pipes_small_F"	
 ];
-// [attachPoint]
-logisticObjectsMoveableConfig = [
+logisticObjectsMoveableConfigs = [
 	[[0, 5, 1]], //"Land_CratesWooden_F",
 	[[0, 5, 1]], //"Land_PaperBox_closed_F",
 	[[0, 5, 1]], //"Land_Sacks_goods_F",
@@ -22,7 +21,7 @@ logisticObjectsMoveableConfig = [
 	[[0, 5, 1]] //"Land_Pipes_small_F"	
 ];
 
-logisticObjectsTransportable = [
+logisticObjectsTransportables = [
 	"Land_CratesWooden_F",
 	"Land_PaperBox_closed_F",
 	"Land_Sacks_goods_F",
@@ -33,9 +32,8 @@ logisticObjectsTransportable = [
 	"Land_Pipes_large_F",
 	"Land_Pipes_small_F"	
 ];
-
-// [grösse,[attach-offset],attach-rotation]
-logisticObjectsTransportableConfig = [
+// [grÃ¶sse,[attach-offset],attach-rotation]
+logisticObjectsTransportablesConfig = [
 	[1,[0,  0,  0],0], 		//"Land_CratesWooden_F",
 	[1,[0,  0,  0],0], 		//"Land_PaperBox_closed_F",
 	[1,[0,  0,  0],0], 		//"Land_Sacks_goods_F",
@@ -54,7 +52,7 @@ logisticTransporters = [
 	"B_Truck_01_transport_F",
 	"B_Truck_01_covered_F"
 ];
-logisticTransporterAttachPoints = [
+logisticTransporterConfigs = [
 	[[0,-1],[0,-2.5]],													//"C_Van_01_box_F",
 	[[0,-1],[0,-2.5]],													//"C_Van_01_transport_F",
 	[[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4]],	//"B_Truck_01_box_F",
@@ -62,61 +60,13 @@ logisticTransporterAttachPoints = [
 	[[0,0],[0,-1.5],[0,-3]]												//"B_Truck_01_covered_F"
 ];
 
-logisticBuildableObjects = [
-	["Land_CncWall1_F", [0,0,0], 0, ["Land_Bricks_V1_F", ]
-];
-	
-/*
-	"Land_CratesWooden_F",
-	"Land_PaperBox_closed_F",
-	"Land_Sacks_goods_F",
-	"Land_Bricks_V1_F",
-	"Land_IronPipes_F"	
-*/// Land_CratesWooden_F: Sonstige Güter
-// Land_Pipes_small_F: Kleine Rohre auf Metall. Wie Wäaschespinne
-// Land_Pipes_large_F: Wie große Fahne oder Abwasserrohre
-// Land_IronPipes_F: Riesige Abwasserrohre
-// Land_PaperBox_closed_F: TAP Essenskiste
-// Land_Pallet_F: Leere Palette
-// Land_CinderBlocks_F: YTong Steine
-// Land_Bricks_V1_F,3,4: Steinstapel
-// Land_Sack_F: Einzelner Sack
-// Land_Sacks_goods_F: Mehrere Säcke mit Früchten und Körnern
-// Land_Sacks_heap_F: Sackstapel (evtl. mit Körnern) ohne Palette
-
-// Land_CargoBox_V1_F Kleiner Quadratischer Kontainer
-// Land_Cargo20_grey_F 20 Fuss Kontainer
-// Land_Cargo40_white_F 40 Fuss Kontainer
-
-	
-//[gettext (configFile >> "CfgVehicles" >> "Land_Bricks_V1_F" >> "displayName"), 4000, 0, "Land_Bricks_V1_F", gettext (configFile >> "CfgVehicles" >> "Land_Bricks_V1_F" >> "icon"), []]	
-
-//logisticResources = [ /* Bezeichnung, Kosten, SpawnTyp (>=0:hafen / 1>=:airport), Classname, Image, Content-Array */
-//		[gettext (configFile >> "CfgVehicles" >> "Land_Bricks_V1_F" >> "displayName"), 0, 0, "Land_Bricks_V1_F", "", []],
-//		[gettext (configFile >> "CfgVehicles" >> "Land_CinderBlocks_F" >> "displayName"), 0, 0, "Land_CinderBlocks_F", "", []],
-//		[gettext (configFile >> "CfgVehicles" >> "Land_Pipes_large_F" >> "displayName"), 0, 0, "Land_Pipes_large_F", "", []]
-//	];
-	
-/*
-logisticStores = [
-	[[8304.81,10055.3,0.00144196], "MyStore", []],
-	[[100,100,0], "Name", ["Land_PaperBox_closed_F","Land_CratesWooden_F"]]
-];
-
-logisticMovableObjects = [
+logisticBuildables = [
 	"Land_CncWall1_F",
 	"Land_CncWall4_F"
-	];
-	
-logisticMovableObjectsSize = [
-	10, //"Land_CncWall1_F",
-	40 	//"Land_CncWall4_F",
-	];
-	
-logisticStoreObjects = [
-	["Land_CratesWooden_F", 40],
-	["Land_PaperBox_closed_F", 40],
-	["Land_Sacks_goods_F", 40],
-	["Land_Bricks_V1_F", 40],
-	["Land_IronPipes_F", 40]	
-];*/
+];
+// [attachpoint, attachrotation, detachheight, buildspeed, requiredResources]
+// requiredResources = [[classname1, quantity1], [classname2, quantity2], ...];
+logisticBuildableConfigs = [
+	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 25], ["Land_Pipes_large_F", 10]] ],		//"Land_CncWall1_F",
+	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 100], ["Land_Pipes_large_F", 40]] ]		//"Land_CncWall4_F"
+];

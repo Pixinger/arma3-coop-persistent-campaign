@@ -1,6 +1,3 @@
-//private["_object"];
-//_object = _this select 0;
-
 private["_cursorTarget"];
 _cursorTarget = cursorTarget;
 private["_cursorTargetType"];
@@ -33,9 +30,9 @@ if (count _attachedObjects > 0) then
 
 	// Objekt Konfiguration auslesen
 	private["_objectIndex"];
-	_objectIndex = logisticObjectsTransportable find (typeof _object);
+	_objectIndex = logisticObjectsTransportables find (typeof _object);
 	private["_objectConfig"];
-	_objectConfig = logisticObjectsTransportableConfig select _objectIndex;
+	_objectConfig = logisticObjectsTransportablesConfig select _objectIndex;
 	private["_objectSize"];
 	_objectSize = _objectConfig select 0;
 	

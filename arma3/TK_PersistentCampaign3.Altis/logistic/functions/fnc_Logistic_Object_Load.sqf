@@ -4,7 +4,7 @@ private["_cursorTargetType"];
 _cursorTargetType = typeof _cursorTarget;
 
 private["_objectIndex"];
-_objectIndex = logisticObjectsTransportable find _cursorTargetType;
+_objectIndex = logisticObjectsTransportables find _cursorTargetType;
 if (_objectIndex >= 0) then 
 {
 	private["_vehicles"];
@@ -19,11 +19,11 @@ if (_objectIndex >= 0) then
 
 		// Attach-Punkte des Fahrzeugs auslesen
 		private["_attachPoints"];
-		_attachPoints = logisticTransporterAttachPoints	select _vehicleIndex;
+		_attachPoints = logisticTransporterConfigs	select _vehicleIndex;
 		
 		// Objekt Konfiguration auslesen
 		private["_objectConfig"];
-		_objectConfig = logisticObjectsTransportableConfig select _objectIndex;
+		_objectConfig = logisticObjectsTransportablesConfig select _objectIndex;
 		private["_objectSize"];
 		_objectSize = _objectConfig select 0;
 
