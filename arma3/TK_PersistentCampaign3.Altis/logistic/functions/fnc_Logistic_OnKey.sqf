@@ -22,7 +22,7 @@ if (_cursorTarget distance player < 20) then {
 		_buttons pushBack ["Aufladen", true, true, fnc_Logistic_Object_Load];
 	};
 	if (_cursorTargetType in logisticTransporters) then {
-		_buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_UnloadDialog];
+		_buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_Unload];
 	};
 
 	if (_cursorTargetType in logisticObjectsMoveable) then {
