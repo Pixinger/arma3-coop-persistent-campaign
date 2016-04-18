@@ -47,7 +47,12 @@ if (_objectIndex >= 0) then
 			_finalAttachPoint = [(_attachPoint select 0) + (_objectAttachOffset select 0), (_attachPoint select 1) + (_objectAttachOffset select 1), (_objectAttachOffset select 2)];
 
 			_cursorTarget attachTo [_vehicle, _finalAttachPoint];		
-			_cursorTarget setVectorDirAndUp [[1,0,0],[0,0,1]];
+			
+			if (_objectAttachRotation != 0) then 
+			{
+				[_cursorTarget, [[1,0,0],[0,0,1]]]  remoteExec ["setVectorDirAndUp", _cursorTarget];
+				//_cursorTarget setVectorDirAndUp [1,0,0],[0,0,1]];
+			};
 	
 			_load = _load + _objectSize;
 			_vehicle setVariable ["pixLoad", _load, true];

@@ -79,6 +79,7 @@ while {(logisticBuild) && (alive player) && (player distance2D _object < 5) } do
 			};	
 		};
 	};
+	player sidechat format["height: %1", _position select 2];
 	_object setPosATL _position;
 };
 

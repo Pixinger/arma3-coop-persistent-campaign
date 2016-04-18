@@ -60,6 +60,8 @@ logisticTransporterConfigs = [
 	[[0,0],[0,-1.5],[0,-3]]												//"B_Truck_01_covered_F"
 ];
 
+//"Land_PortableLight_double_F"
+
 logisticBuildables = [
 	"Land_HBarrier_1_F",
 	"Land_HBarrier_3_F",
@@ -79,18 +81,18 @@ logisticBuildables = [
 // [attachpoint, attachrotation, detachheight, buildspeed, requiredResources]
 // requiredResources = [[classname1, quantity1], [classname2, quantity2], ...];
 logisticBuildableConfigs = [
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_HBarrier_1_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_HBarrier_3_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_HBarrier_5_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_HBarrier_Big_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_HBarrierTower_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_CncBarrier_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_CncBarrier_stripes_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_CncBarrierMedium_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_CncBarrierMedium4_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_Mil_WallBig_4m_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_Mil_WallBig_Corner_F",
-	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]] ],		//"Land_BagFence_Long_F",
+	[[0,4,1], 0, -1.4, 3, [["CraterLong", 25]] ],		//"Land_HBarrier_1_F",
+	[[0,4,1], 0, -1.4, 3, [["CraterLong", 75]] ],		//"Land_HBarrier_3_F",
+	[[0,4,1], 0, -1.4, 3, [["CraterLong", 125]] ],		//"Land_HBarrier_5_F",
+	[[0,4,1], 0, -1.4, 3, [["CraterLong", 100]] ],		//"Land_HBarrier_Big_F",
+	[[0,5,1], 0, -2.0, 3, [["CraterLong", 200]] ],		//"Land_HBarrierTower_F",
+	[[0,5,1], 0, -.5, 3, [["Land_Bricks_V2_F", 25]] ],		//"Land_CncBarrier_F",
+	[[0,5,1], 0, -.5, 3, [["Land_Bricks_V2_F", 25]] ],		//"Land_CncBarrier_stripes_F",
+	[[0,5,1], 0, -.5, 3, [["Land_Bricks_V2_F", 50]] ],		//"Land_CncBarrierMedium_F",
+	[[0,5,1], 0, -.5, 3, [["Land_Bricks_V2_F", 50]] ],		//"Land_CncBarrierMedium4_F",
+	[[0,5,1], 0, -.5, 3, [["Land_Bricks_V2_F", 150], ["Land_Pipes_large_F", 10]] ],		//"Land_Mil_WallBig_4m_F",
+	[[0,5,1], 0, -.5, 3, [["Land_Bricks_V2_F", 150], ["Land_Pipes_large_F", 10]] ],		//"Land_Mil_WallBig_Corner_F",
+	[[0,5,1], 0, -.9, 3, [["CraterLong", 5]] ],		//"Land_BagFence_Long_F",
 	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 25], ["Land_Pipes_large_F", 10]] ],		//"Land_CncWall1_F",
 	[[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 100], ["Land_Pipes_large_F", 40]] ]		//"Land_CncWall4_F"
 ];
