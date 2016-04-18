@@ -8,5 +8,24 @@ if (hasInterface) then
 		// 20=T, 22=U, 86=<, 24=O, 21=Z, 220=rwin, 221=rapp, 37=K, 15=TAB, 57=SPACE 
 		//_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "player globalChat format['key: %1',_this select 1];"];
 		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if (!dialog ) then { if (_this select 1 == 22) then { _tmp = [] spawn fnc_Logistic_OnKey;};};"];
+
+		private["_number"]; 
+		_number = player createDiarySubject ["buildables", "Baupläne"];
+
+		{
+		
+				
+				private["_config"];
+				_config = logisticBuildableConfigs select _foreachIndex;  // [[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]], [["Land_Bricks_V1_F", 1]] ]
+				private["_displayname"];
+				_displayname = gettext(configFile >> "CfgVehicles" >> _x >> "displayName");
+				private["_text"];
+				_text = format["%1<br/><br/>Benötigte Rohstoffe:<br/>", _displayname];
+				{
+					_text = _text + format["- (%2%3) %1<br/>", gettext(configFile >> "CfgVehicles" >> (_x select 0) >> "displayName"), (_x select 1), "%"];
+				} foreach (_config select 4);
+
+			player createDiaryRecord ["buildables", [_displayname, _text]]; 
+		} foreach logisticBuildables;
 	};
 }; 
