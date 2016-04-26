@@ -18,11 +18,16 @@ if (hasInterface) then
 				private["_config"];
 				_config = logisticBuildableConfigs select _foreachIndex;  // [[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]], [["Land_Bricks_V1_F", 1]] ]
 				private["_displayname"];
-				_displayname = gettext(configFile >> "CfgVehicles" >> _x >> "displayName");
+				_displayname = "";
+				if (_x == "CraterLong_small") then {_displayname = "Erdhaufen";} 
+				else {_displayname = gettext(configFile >> "CfgVehicles" >> _x >> "displayName");};
 				private["_text"];
 				_text = format["%1<br/><br/>Benötigte Rohstoffe:<br/>", _displayname];
 				{
-					_text = _text + format["- (%2%3) %1<br/>", gettext(configFile >> "CfgVehicles" >> (_x select 0) >> "displayName"), (_x select 1), "%"];
+					private["_subtext"];
+					if ((_x select 0) == "CraterLong_small") then {_subtext = "Erdhaufen";} 
+					else {_subtext = gettext(configFile >> "CfgVehicles" >> (_x select 0) >> "displayName");};
+					_text = _text + format["- (%2%3) %1<br/>", _subtext, (_x select 1), "%"];
 				} foreach (_config select 4);
 
 			player createDiaryRecord ["buildables", [_displayname, _text]]; 

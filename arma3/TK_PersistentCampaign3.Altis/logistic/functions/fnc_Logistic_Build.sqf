@@ -19,7 +19,6 @@ if (count _config > 0) then
 	private["_object"];
 	_object = _classname createVehicleLocal _position;
 	waitUntil {!isNil "_object"};
-	_object allowDamage false;
 	
 	// Jetzt fangen wir an das Objekt zu bewegen
 	_object attachTo [player, _config select ATTACHPOINT_INDEX];
@@ -57,7 +56,7 @@ if (count _config > 0) then
 		private["_object"];
 		_object = _classname createVehicle _position;
 		waitUntil {!isNil "_object"};
-		_object setPos _position;
+		_object setPosATL _position;
 		_object setDir _direction;
 	
 		// Mit dem Bauen beginnen

@@ -87,7 +87,6 @@ if (_configIndex != -1) then
 				if (_requiredQuantity <= 0) exitWith { };
 			} foreach _objects;						
 		} foreach _requiredResources;		
-
 	};
 };
 

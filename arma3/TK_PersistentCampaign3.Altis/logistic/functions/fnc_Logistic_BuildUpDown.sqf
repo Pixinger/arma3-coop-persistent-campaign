@@ -57,9 +57,8 @@ else
 logisticBuild = true;
 while {(logisticBuild) && (alive player) && (player distance2D _object < 5) } do
 {
-	Sleep 1;
 	_position = getPosATL _object;
-	_position = [_position select 0, _position select 1, (_position select 2) + ((_buildSpeed / 60) * _direction)];
+	_position = [_position select 0, _position select 1, (_position select 2) + ((_buildSpeed / (60/7)) * _direction)];
 	if (_autoStop) then
 	{
 		if (_direction > 0) then
@@ -81,6 +80,10 @@ while {(logisticBuild) && (alive player) && (player distance2D _object < 5) } do
 	};
 	player sidechat format["height: %1", _position select 2];
 	_object setPosATL _position;
+
+	// Erst am Ende Warten, sonst wird bei Abbruch noch einmal zuviel ausgebaut.
+	call fnc_Logistic_WorkAnimation;
+	Sleep 7;
 };
 
 player removeAction _actionMenu;

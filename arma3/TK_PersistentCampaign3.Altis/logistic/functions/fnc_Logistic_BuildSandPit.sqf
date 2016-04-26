@@ -12,10 +12,10 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 	
 	// Objekt erstellen
 	private["_object"];
-	_object = "CraterLong" createVehicleLocal (position player); //CraterLong_small
+	_object = "CraterLong_small" createVehicle (position player); //CraterLong_small
 	waitUntil {!isNil "_object"};	
 	_object setDir (floor random (360));
-	_object setPos (position player);
+	_object setPosATL (position player);
 	
 	// Autodelete
 	_object spawn {
