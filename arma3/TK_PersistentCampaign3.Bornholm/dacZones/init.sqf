@@ -16,7 +16,7 @@
 		_maxZoneY = 11;
 		
 		// Zum Testen weniger
-		if (isServer && !isDedicated) then 
+		if (pixDebug) then 
 		{
 			_maxZoneX = 4;
 			_maxZoneY = 4;
@@ -33,7 +33,7 @@
 				if (!isNil _triggerName) then
 				{
 					_zoneId = _zoneId + 1;
-					if (isServer && !isDedicated) then 
+					if (pixDebug) then 
 					{
 						[	_triggerName,									// Triggername
 							[_zoneId,1,0,0],								//[ZoneID, ZoneDisabled, ZoneEvents, NoMasterWaypoints]
