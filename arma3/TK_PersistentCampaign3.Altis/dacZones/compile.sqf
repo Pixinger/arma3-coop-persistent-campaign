@@ -1,3 +1,5 @@
-fnc_dacZones_Activate = compile preprocessFileLineNumbers "dacZones\functions\fnc_dacZones_Activate.sqf";
-fnc_dacZones_Deactivate = compile preprocessFileLineNumbers "dacZones\functions\fnc_dacZones_Deactivate.sqf";
-diag_log "dacZones compiled";
+diag_log "compile: dacZones";
+
+// Hauptfunktionen
+fnc_dacZones_Start = compile preprocessFileLineNumbers "dacZones\functions\fnc_dacZones_Start.sqf";
+fnc_dacZones_Stop = compile preprocessFileLineNumbers "dacZones\functions\fnc_dacZones_Stop.sqf";

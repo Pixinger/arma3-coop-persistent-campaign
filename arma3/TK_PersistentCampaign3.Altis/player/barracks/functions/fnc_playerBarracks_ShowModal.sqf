@@ -1,1 +1,0 @@
-[] execVM "player\barracks\showModal.sqf";

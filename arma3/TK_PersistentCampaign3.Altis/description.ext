@@ -42,5 +42,4 @@ class Header
 #include "dialogDefines.hpp"
 #include "maindialog_classes.hpp"
 
-#include "player\classes.hpp"
-//#include "logistic\classes.hpp"
+#include "logistic\classes.hpp"
