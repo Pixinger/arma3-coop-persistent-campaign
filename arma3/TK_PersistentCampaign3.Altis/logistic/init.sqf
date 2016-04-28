@@ -12,9 +12,7 @@ if (hasInterface) then
 		private["_number"]; 
 		_number = player createDiarySubject ["buildables", "Baupläne"];
 
-		{
-		
-				
+		{				
 				private["_config"];
 				_config = logisticBuildableConfigs select _foreachIndex;  // [[0,5,2], 0, -3.5, 3, [["Land_Bricks_V2_F", 1]], [["Land_Bricks_V1_F", 1]] ]
 				private["_displayname"];

@@ -1,4 +1,5 @@
 call compile preprocessFileLineNumbers "player\admin\init.sqf";
+call compile preprocessFileLineNumbers "player\barracks\init.sqf";
 
 if (hasInterface) then
 {

@@ -47,9 +47,9 @@ logisticObjectsTransportableDefinitions = [
 	["Land_PaperBox_closed_F",	[1,	[0,  0,  0],	0] ],
 	["Land_Bricks_V1_F",		[1,	[0,  0,-.5],	0] ],
 	["Land_Pipes_large_F",		[3,	[0, -2,-.5],	90] ],
-	["Land_Pipes_small_F",		[2,	[0,-.8,-.5],	90] ]
+	["Land_Pipes_small_F",		[2,	[0,-.8,-.5],	90] ],
 	["CargoNet_01_box_F",		[1,	[0,  0, .1],	0] ],
-	["CargoNet_01_barrels_F",	[1,	[0,  0, .1],	0] ],
+	["CargoNet_01_barrels_F",	[1,	[0,  0, .1],	0] ]
 //	["Land_Sacks_goods_F",		[1,	[0,  0,  0],	0] ],
 ];
 //----------------------------------------------------------------------------------------------------
