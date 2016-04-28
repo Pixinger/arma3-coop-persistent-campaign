@@ -1,5 +1,5 @@
-setviewdistance 1000;
-setObjectViewDistance 1000;
+setviewdistance 1500;
+setObjectViewDistance 1500;
 setTerrainGrid 50;
 
 waituntil {!isnil "bis_fnc_init"};
@@ -28,10 +28,6 @@ ExecuteHeadlessCode = false;
 if ((HeadlessClientAvailable && !hasInterface && !isServer) || (!HeadlessClientAvailable && isServer)) then { ExecuteHeadlessCode = true; };
 diag_log format["ExecuteHeadlessCode: %1", ExecuteHeadlessCode];
 
-myvehicles = [];
-
 call compile preprocessFileLineNumbers "sub_config.sqf";
 call compile preprocessFileLineNumbers "sub_compile.sqf";
 call compile preprocessFileLineNumbers "sub_init.sqf";
-
-// call compile preprocessFileLineNumbers "test.sqf";
