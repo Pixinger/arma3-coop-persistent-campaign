@@ -41,7 +41,7 @@
 							[],												//[WHL_COUNT, WHL_GROUP_SIZE, WHL_WAYPOINTS_TOTAL, WHL_WAYPOINTS_GROUP],
 							[],												//[TRK_COUNT, TRK_GROUP_SIZE, TRK_WAYPOINTS_TOTAL, TRK_WAYPOINTS_GROUP],
 							[1,1,75,0,100,10,[zx1y1]], 	//[CAMP_COUNT, CAMP_GROUP_SIZE, CAMP_RADIUS, CAMP_VEHICLETYPE, CAMP_PERCENT, CAMP_RESPAWNS, CAMP_LINK],	
-							[0,0,0,1,1] 									//[CFG_SIDE_ZONE, CFG_UNIT, CFG_BEHAVIOUR, CFG_CAMP, CFG_WAYPOINT]
+							[0,0,0,3,1] 									//[CFG_SIDE_ZONE, CFG_UNIT, CFG_BEHAVIOUR, CFG_CAMP, CFG_WAYPOINT]
 						] spawn DAC_Zone;
 					
 						_markerName = createMarkerLocal [format["markername%1", _triggerName], getPos call compile _triggerName];

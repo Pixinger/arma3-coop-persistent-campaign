@@ -16,7 +16,7 @@ showWatch = 1;
 enableDebugConsole = 1;
 enableTeamSwitch = 0;
 respawn = "BASE";
-respawnDelay = 60;
+respawnDelay = 10;
 respawnDialog = 0; 							/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
 enableItemsDropping = 0; 					/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre Ausrüstung verliert oder nicht. Mögliche Werte sind 0 (= Einheit verliert keine Ausrüstung) und 1 (= Einheit verliert ihre Ausrüstung).*/
 joinUnassigned = 0; 						/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/

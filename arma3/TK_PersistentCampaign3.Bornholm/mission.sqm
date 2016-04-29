@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=125;
+		nextID=126;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={7764.2603,140.64734,9949.3945};
+		pos[]={6194.7505,111.69652,9961.1768};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,0};
@@ -90,7 +90,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=71;
+		items=72;
 		class Item0
 		{
 			dataType="Group";
@@ -1532,6 +1532,25 @@ class Mission
 			{
 			};
 			id=122;
+		};
+		class Item71
+		{
+			dataType="Trigger";
+			position[]={2000,23.352737,8528};
+			class Attributes
+			{
+				name="zx1y7";
+				onActivation="[1,7] call fnc_dacZones_Activate;";
+				onDeactivation="[1,7] call fnc_dacZones_Deactivate;";
+				sizeA=1000;
+				sizeB=1000;
+				repeatable=1;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=125;
+			type="EmptyDetector";
+			atlOffset=-1.9073486e-006;
 		};
 	};
 };
