@@ -8,15 +8,15 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=127;
+		nextID=193;
 	};
 	class MarkerIDProvider
 	{
-		nextID=10;
+		nextID=11;
 	};
 	class Camera
 	{
-		pos[]={1987.7859,53.513855,8757.0928};
+		pos[]={4961.7876,119.51304,10337.199};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,0};
@@ -27,9 +27,7 @@ addons[]=
 {
 	"A3_Characters_F_BLUFOR",
 	"a3_characters_f",
-	"A3_Modules_F",
-	"A3_Modules_F_Curator_Curator",
-	"dac_source"
+	"A3_Modules_F_Curator_Curator"
 };
 randomSeed=2271399;
 class ScenarioData
@@ -90,7 +88,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=73;
+		items=71;
 		class Item0
 		{
 			dataType="Group";
@@ -158,35 +156,11 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1282.4166,-11.915,9717.5029};
-				angles[]={0,0,0.016359426};
-			};
-			init="DAC_Marker = 1";
-			id=6;
-			type="Logic";
-		};
-		class Item3
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1282.8033,-12.461578,9835.0264};
-				angles[]={0.0072752428,0,0.019996032};
-			};
-			init="DAC_Com_Values = [1,2,0,0]";
-			id=7;
-			type="Logic";
-			atlOffset=0.0098190308;
-		};
-		class Item4
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={2031.767,27.129999,8844.5508};
+				position[]={503.20435,0,10019.303};
 			};
 			id=10;
 			type="ModuleCurator_F";
+			atlOffset=15.403056;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -287,374 +261,10 @@ class Mission
 				nAttributes=5;
 			};
 		};
-		class Item5
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1280.854,-10.921577,9944.7646};
-				angles[]={6.2722769,0,0.020001473};
-			};
-			id=11;
-			type="DAC_Source_Extern";
-			atlOffset=0.042999268;
-		};
-		class Item6
+		class Item3
 		{
 			dataType="Trigger";
-			position[]={2000,10.963642,10528};
-			class Attributes
-			{
-				name="zx1y6";
-				onActivation="[1,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=34;
-			type="EmptyDetector";
-		};
-		class Item7
-		{
-			dataType="Trigger";
-			position[]={4000,59.772732,10528};
-			class Attributes
-			{
-				name="zx2y6";
-				onActivation="[2,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=37;
-			type="EmptyDetector";
-			atlOffset=0.099998474;
-		};
-		class Item8
-		{
-			dataType="Trigger";
-			position[]={6000,97.434555,10528};
-			class Attributes
-			{
-				name="zx3y6";
-				onActivation="[3,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=38;
-			type="EmptyDetector";
-		};
-		class Item9
-		{
-			dataType="Trigger";
-			position[]={2000,24.724649,12528};
-			class Attributes
-			{
-				name="zx1y5";
-				onActivation="[1,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=39;
-			type="EmptyDetector";
-			atlOffset=0.061002731;
-		};
-		class Item10
-		{
-			dataType="Trigger";
-			position[]={4000,88.770279,12528};
-			class Attributes
-			{
-				name="zx2y5";
-				onActivation="[2,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=40;
-			type="EmptyDetector";
-			atlOffset=0.26299286;
-		};
-		class Item11
-		{
-			dataType="Trigger";
-			position[]={6000,96.624405,12528};
-			class Attributes
-			{
-				name="zx3y5";
-				onActivation="[3,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=41;
-			type="EmptyDetector";
-			atlOffset=0.11799622;
-		};
-		class Item12
-		{
-			dataType="Trigger";
-			position[]={2000,72.219109,14528};
-			class Attributes
-			{
-				name="zx1y4";
-				onActivation="[1,4] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,4] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=42;
-			type="EmptyDetector";
-		};
-		class Item13
-		{
-			dataType="Trigger";
-			position[]={4000,89.382713,14528};
-			class Attributes
-			{
-				name="zx2y4";
-				onActivation="[2,4] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,4] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=43;
-			type="EmptyDetector";
-		};
-		class Item14
-		{
-			dataType="Trigger";
-			position[]={6000,98.904541,14528};
-			class Attributes
-			{
-				name="zx3y4";
-				onActivation="[3,4] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,4] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=44;
-			type="EmptyDetector";
-			atlOffset=-7.6293945e-006;
-		};
-		class Item15
-		{
-			dataType="Trigger";
-			position[]={4000,60.817245,8528};
-			class Attributes
-			{
-				name="zx2y7";
-				onActivation="[2,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=45;
-			type="EmptyDetector";
-			atlOffset=0.16999817;
-		};
-		class Item16
-		{
-			dataType="Trigger";
-			position[]={6000,80.759018,8528};
-			class Attributes
-			{
-				name="zx3y7";
-				onActivation="[3,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=46;
-			type="EmptyDetector";
-			atlOffset=-0.011001587;
-		};
-		class Item17
-		{
-			dataType="Trigger";
-			position[]={2000,17.054546,6528};
-			class Attributes
-			{
-				name="zx1y8";
-				onActivation="[1,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=47;
-			type="EmptyDetector";
-		};
-		class Item18
-		{
-			dataType="Trigger";
-			position[]={4000,57.632004,6528};
-			class Attributes
-			{
-				name="zx2y8";
-				onActivation="[2,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=48;
-			type="EmptyDetector";
-			atlOffset=0.081996918;
-		};
-		class Item19
-		{
-			dataType="Trigger";
-			position[]={6000,76.133774,6528};
-			class Attributes
-			{
-				name="zx3y8";
-				onActivation="[3,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=49;
-			type="EmptyDetector";
-			atlOffset=0.041007996;
-		};
-		class Item20
-		{
-			dataType="Trigger";
-			position[]={2000,-5.3818259,16528};
-			class Attributes
-			{
-				name="zx1y3";
-				onActivation="[1,3] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,3] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=52;
-			type="EmptyDetector";
-		};
-		class Item21
-		{
-			dataType="Trigger";
-			position[]={4000,78.547203,16528};
-			class Attributes
-			{
-				name="zx2y3";
-				onActivation="[2,3] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,3] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=53;
-			type="EmptyDetector";
-		};
-		class Item22
-		{
-			dataType="Trigger";
-			position[]={6000,75.395432,16528};
-			class Attributes
-			{
-				name="zx3y3";
-				onActivation="[3,3] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,3] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=54;
-			type="EmptyDetector";
-		};
-		class Item23
-		{
-			dataType="Trigger";
-			position[]={3000,-12.204528,18528};
-			class Attributes
-			{
-				name="zx1y2";
-				onActivation="[1,2] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,2] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=55;
-			type="EmptyDetector";
-			atlOffset=9.5367432e-007;
-		};
-		class Item24
-		{
-			dataType="Trigger";
-			position[]={5000,53.283615,18528};
-			class Attributes
-			{
-				name="zx2y2";
-				onActivation="[2,2] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,2] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=57;
-			type="EmptyDetector";
-		};
-		class Item25
-		{
-			dataType="Trigger";
-			position[]={4000,31.549887,20528};
+			position[]={12031.838,0,19533.959};
 			class Attributes
 			{
 				name="zx1y1";
@@ -668,778 +278,9 @@ class Mission
 			};
 			id=58;
 			type="EmptyDetector";
+			atlOffset=70.098648;
 		};
-		class Item26
-		{
-			dataType="Trigger";
-			position[]={4000,13.486366,4528};
-			class Attributes
-			{
-				name="zx2y9";
-				onActivation="[2,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[2,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=61;
-			type="EmptyDetector";
-		};
-		class Item27
-		{
-			dataType="Trigger";
-			position[]={6000,34.082733,4528};
-			class Attributes
-			{
-				name="zx3y9";
-				onActivation="[3,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[3,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=63;
-			type="EmptyDetector";
-			atlOffset=-3.8146973e-006;
-		};
-		class Item28
-		{
-			dataType="Trigger";
-			position[]={8000,-6.2673626,16528};
-			class Attributes
-			{
-				name="zx4y3";
-				onActivation="[4,3] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,3] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=66;
-			type="EmptyDetector";
-		};
-		class Item29
-		{
-			dataType="Trigger";
-			position[]={8000,118.13174,14528};
-			class Attributes
-			{
-				name="zx4y4";
-				onActivation="[4,4] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,4] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=67;
-			type="EmptyDetector";
-			atlOffset=-1.5258789e-005;
-		};
-		class Item30
-		{
-			dataType="Trigger";
-			position[]={8000,103.16545,12528};
-			class Attributes
-			{
-				name="zx4y5";
-				onActivation="[4,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=68;
-			type="EmptyDetector";
-			atlOffset=7.6293945e-006;
-		};
-		class Item31
-		{
-			dataType="Trigger";
-			position[]={8000,106.78084,10528};
-			class Attributes
-			{
-				name="zx4y6";
-				onActivation="[4,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=69;
-			type="EmptyDetector";
-		};
-		class Item32
-		{
-			dataType="Trigger";
-			position[]={8000,144.77545,8528};
-			class Attributes
-			{
-				name="zx4y7";
-				onActivation="[4,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=70;
-			type="EmptyDetector";
-			atlOffset=1.5258789e-005;
-		};
-		class Item33
-		{
-			dataType="Trigger";
-			position[]={8000,77.203682,6528};
-			class Attributes
-			{
-				name="zx4y8";
-				onActivation="[4,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=71;
-			type="EmptyDetector";
-		};
-		class Item34
-		{
-			dataType="Trigger";
-			position[]={8000,45.02092,4528};
-			class Attributes
-			{
-				name="zx4y9";
-				onActivation="[4,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=72;
-			type="EmptyDetector";
-		};
-		class Item35
-		{
-			dataType="Trigger";
-			position[]={10000,74.069984,14528};
-			class Attributes
-			{
-				name="zx5y4";
-				onActivation="[5,4] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,4] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=73;
-			type="EmptyDetector";
-		};
-		class Item36
-		{
-			dataType="Trigger";
-			position[]={10000,97.073662,12528};
-			class Attributes
-			{
-				name="zx5y5";
-				onActivation="[5,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=75;
-			type="EmptyDetector";
-		};
-		class Item37
-		{
-			dataType="Trigger";
-			position[]={10000,120.5209,10528};
-			class Attributes
-			{
-				name="zx5y6";
-				onActivation="[5,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=76;
-			type="EmptyDetector";
-		};
-		class Item38
-		{
-			dataType="Trigger";
-			position[]={10000,111.2782,8528};
-			class Attributes
-			{
-				name="zx5y7";
-				onActivation="[5,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=77;
-			type="EmptyDetector";
-		};
-		class Item39
-		{
-			dataType="Trigger";
-			position[]={10000,77.253685,6528};
-			class Attributes
-			{
-				name="zx5y8";
-				onActivation="[5,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=78;
-			type="EmptyDetector";
-		};
-		class Item40
-		{
-			dataType="Trigger";
-			position[]={10000,58.384541,4528};
-			class Attributes
-			{
-				name="zx5y9";
-				onActivation="[5,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=79;
-			type="EmptyDetector";
-		};
-		class Item41
-		{
-			dataType="Trigger";
-			position[]={10000,24.380035,2528};
-			class Attributes
-			{
-				name="zx5y10";
-				onActivation="[5,10] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[5,10] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=80;
-			type="EmptyDetector";
-		};
-		class Item42
-		{
-			dataType="Trigger";
-			position[]={8000,-7.1254473,2528};
-			class Attributes
-			{
-				name="zx4y10";
-				onActivation="[4,10] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[4,10] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=81;
-			type="EmptyDetector";
-			atlOffset=-4.7683716e-007;
-		};
-		class Item43
-		{
-			dataType="Trigger";
-			position[]={12000,84.213516,12528};
-			class Attributes
-			{
-				name="zx6y5";
-				onActivation="[6,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=82;
-			type="EmptyDetector";
-		};
-		class Item44
-		{
-			dataType="Trigger";
-			position[]={12000,-3.8181789,14528};
-			class Attributes
-			{
-				name="zx6y4";
-				onActivation="[6,4] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,4] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=83;
-			type="EmptyDetector";
-			atlOffset=-2.3841858e-007;
-		};
-		class Item45
-		{
-			dataType="Trigger";
-			position[]={12000,108.95266,10528};
-			class Attributes
-			{
-				name="zx6y6";
-				onActivation="[6,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=84;
-			type="EmptyDetector";
-			atlOffset=-7.6293945e-006;
-		};
-		class Item46
-		{
-			dataType="Trigger";
-			position[]={12000,111.17728,8528};
-			class Attributes
-			{
-				name="zx6y7";
-				onActivation="[6,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=85;
-			type="EmptyDetector";
-			atlOffset=-7.6293945e-006;
-		};
-		class Item47
-		{
-			dataType="Trigger";
-			position[]={12000,126.2453,6528};
-			class Attributes
-			{
-				name="zx6y8";
-				onActivation="[6,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=86;
-			type="EmptyDetector";
-			atlOffset=1.5258789e-005;
-		};
-		class Item48
-		{
-			dataType="Trigger";
-			position[]={12000,52.255444,4528};
-			class Attributes
-			{
-				name="zx6y9";
-				onActivation="[6,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=87;
-			type="EmptyDetector";
-			atlOffset=3.8146973e-006;
-		};
-		class Item49
-		{
-			dataType="Trigger";
-			position[]={12000,31.300064,2528};
-			class Attributes
-			{
-				name="zx6y10";
-				onActivation="[6,10] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,10] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=88;
-			type="EmptyDetector";
-			atlOffset=1.9073486e-006;
-		};
-		class Item50
-		{
-			dataType="Trigger";
-			position[]={12000,-10.937285,528};
-			class Attributes
-			{
-				name="zx6y11";
-				onActivation="[6,11] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[6,11] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=89;
-			type="EmptyDetector";
-		};
-		class Item51
-		{
-			dataType="Trigger";
-			position[]={14000,84.34639,10528};
-			class Attributes
-			{
-				name="zx7y6";
-				onActivation="[7,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=91;
-			type="EmptyDetector";
-		};
-		class Item52
-		{
-			dataType="Trigger";
-			position[]={14000,-17.342787,12528};
-			class Attributes
-			{
-				name="zx7y5";
-				onActivation="[7,5] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,5] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=92;
-			type="EmptyDetector";
-		};
-		class Item53
-		{
-			dataType="Trigger";
-			position[]={14000,102.83999,8528};
-			class Attributes
-			{
-				name="zx7y7";
-				onActivation="[7,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=93;
-			type="EmptyDetector";
-		};
-		class Item54
-		{
-			dataType="Trigger";
-			position[]={14000,92.930916,6528};
-			class Attributes
-			{
-				name="zx7y8";
-				onActivation="[7,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=94;
-			type="EmptyDetector";
-		};
-		class Item55
-		{
-			dataType="Trigger";
-			position[]={14000,48.939095,4528};
-			class Attributes
-			{
-				name="zx7y9";
-				onActivation="[7,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=95;
-			type="EmptyDetector";
-		};
-		class Item56
-		{
-			dataType="Trigger";
-			position[]={14000,26.639997,2528};
-			class Attributes
-			{
-				name="zx7y10";
-				onActivation="[7,10] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,10] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=96;
-			type="EmptyDetector";
-			atlOffset=-1.9073486e-006;
-		};
-		class Item57
-		{
-			dataType="Trigger";
-			position[]={14000,-3.3236377,528};
-			class Attributes
-			{
-				name="zx7y11";
-				onActivation="[7,11] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[7,11] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=97;
-			type="EmptyDetector";
-		};
-		class Item58
-		{
-			dataType="Trigger";
-			position[]={16000,58.69286,8528};
-			class Attributes
-			{
-				name="zx8y7";
-				onActivation="[8,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[8,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=100;
-			type="EmptyDetector";
-		};
-		class Item59
-		{
-			dataType="Trigger";
-			position[]={16000,42.215385,10528};
-			class Attributes
-			{
-				name="zx8y6";
-				onActivation="[8,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[8,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=101;
-			type="EmptyDetector";
-		};
-		class Item60
-		{
-			dataType="Trigger";
-			position[]={16000,97.078293,6528};
-			class Attributes
-			{
-				name="zx8y8";
-				onActivation="[8,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[8,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=102;
-			type="EmptyDetector";
-			atlOffset=-7.6293945e-006;
-		};
-		class Item61
-		{
-			dataType="Trigger";
-			position[]={16000,25.019995,4528};
-			class Attributes
-			{
-				name="zx8y9";
-				onActivation="[8,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[8,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=103;
-			type="EmptyDetector";
-		};
-		class Item62
-		{
-			dataType="Trigger";
-			position[]={16000,10.65457,2528};
-			class Attributes
-			{
-				name="zx8y10";
-				onActivation="[8,10] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[8,10] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=104;
-			type="EmptyDetector";
-		};
-		class Item63
-		{
-			dataType="Trigger";
-			position[]={16000,-1.6736425,528};
-			class Attributes
-			{
-				name="zx8y11";
-				onActivation="[8,11] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[8,11] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=105;
-			type="EmptyDetector";
-		};
-		class Item64
-		{
-			dataType="Trigger";
-			position[]={18000,7.1890917,8528};
-			class Attributes
-			{
-				name="zx9y7";
-				onActivation="[9,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[9,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=109;
-			type="EmptyDetector";
-		};
-		class Item65
-		{
-			dataType="Trigger";
-			position[]={18000,-26.589096,10528};
-			class Attributes
-			{
-				name="zx9y6";
-				onActivation="[9,6] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[9,6] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=110;
-			type="EmptyDetector";
-		};
-		class Item66
-		{
-			dataType="Trigger";
-			position[]={18000,33.026363,6528};
-			class Attributes
-			{
-				name="zx9y8";
-				onActivation="[9,8] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[9,8] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=111;
-			type="EmptyDetector";
-		};
-		class Item67
-		{
-			dataType="Trigger";
-			position[]={18000,-7.3990941,4528};
-			class Attributes
-			{
-				name="zx9y9";
-				onActivation="[9,9] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[9,9] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=112;
-			type="EmptyDetector";
-			atlOffset=4.7683716e-007;
-		};
-		class Item68
+		class Item4
 		{
 			dataType="Group";
 			side="West";
@@ -1471,7 +312,7 @@ class Mission
 			id=118;
 			atlOffset=0.019001007;
 		};
-		class Item69
+		class Item5
 		{
 			dataType="Group";
 			side="West";
@@ -1503,7 +344,7 @@ class Mission
 			id=120;
 			atlOffset=0.00099754333;
 		};
-		class Item70
+		class Item6
 		{
 			dataType="Group";
 			side="West";
@@ -1533,42 +374,722 @@ class Mission
 			};
 			id=122;
 		};
-		class Item71
+		class Item7
 		{
-			dataType="Trigger";
-			position[]={2000,23.352737,8528};
-			class Attributes
-			{
-				name="zx1y7";
-				onActivation="[1,7] call fnc_dacZones_OnTriggerActivated;";
-				onDeactivation="[1,7] call fnc_dacZones_OnTriggerDeactivated;";
-				sizeA=1000;
-				sizeB=1000;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=125;
-			type="EmptyDetector";
-			atlOffset=-1.9073486e-006;
+			dataType="Marker";
+			position[]={4000,0,20528};
+			name="markerAizX0Y0";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=127;
 		};
-		class Item72
+		class Item8
 		{
-			dataType="Trigger";
-			position[]={16117.113,12.961679,1864.464};
-			class Attributes
-			{
-				name="zinit";
-				condition="time > 1";
-				onActivation="tmp = [""zinit"",[999,0,0,0],[1,1,1,1],[],[],[],[0,0,0,0,1]] spawn DAC_Zone;";
-				sizeA=100;
-				sizeB=100;
-				repeatable=1;
-				activationBy="LOGIC";
-				isRectangle=1;
-			};
-			id=126;
-			type="EmptyDetector";
+			dataType="Marker";
+			position[]={3000,0,18528};
+			name="markerAizX0Y1";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=128;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={5000,0,18528};
+			name="markerAizX1Y1";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=129;
+		};
+		class Item10
+		{
+			dataType="Marker";
+			position[]={2000,0,16528};
+			name="markerAizX0Y2";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=130;
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={4000,0,16528};
+			name="markerAizX1Y2";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=131;
+			atlOffset=-0.063705444;
+		};
+		class Item12
+		{
+			dataType="Marker";
+			position[]={6000,0,16528};
+			name="markerAizX2Y2";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=132;
+			atlOffset=0.032737732;
+		};
+		class Item13
+		{
+			dataType="Marker";
+			position[]={8000,0,16528};
+			name="markerAizX3Y2";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=133;
+			atlOffset=-0.062896729;
+		};
+		class Item14
+		{
+			dataType="Marker";
+			position[]={2000,0,14528};
+			name="markerAizX0Y3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=134;
+			atlOffset=0.050071716;
+		};
+		class Item15
+		{
+			dataType="Marker";
+			position[]={4000,0,14528};
+			name="markerAizX1Y3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=135;
+		};
+		class Item16
+		{
+			dataType="Marker";
+			position[]={6000,0,14528};
+			name="markerAizX2Y3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=136;
+			atlOffset=0.12371063;
+		};
+		class Item17
+		{
+			dataType="Marker";
+			position[]={8000,0,14528};
+			name="markerAizX3Y3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=137;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={10000,0,14528};
+			name="markerAizX4Y3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=138;
+			atlOffset=-7.5130997;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={12000,0,14528};
+			name="markerAizX5Y3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=140;
+			atlOffset=-7.5312185;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={2000,0,12528};
+			name="markerAizX0Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=141;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={4000,0,12528};
+			name="markerAizX1Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=142;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={6000,0,12528};
+			name="markerAizX2Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=143;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={8000,0,12528};
+			name="markerAizX3Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=144;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={10000,0,12528};
+			name="markerAizX4Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=145;
+			atlOffset=-20.2369;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={12000,0,12528};
+			name="markerAizX5Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=146;
+			atlOffset=-7.6293945e-006;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={14000,0,12528};
+			name="markerAizX6Y4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=147;
+			atlOffset=3.8146973e-005;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={2000,0,10528};
+			name="markerAizX0Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=148;
+			atlOffset=0.0026693344;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={4000,0,10528};
+			name="markerAizX1Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=149;
+			atlOffset=0.046333313;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={6000,0,10528};
+			name="markerAizX2Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=150;
+			atlOffset=-7.6293945e-006;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={8000,0,10528};
+			name="markerAizX3Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=151;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={10000,0,10528};
+			name="markerAizX4Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=152;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={12000,0,10528};
+			name="markerAizX5Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=153;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={14000,0,10528};
+			name="markerAizX6Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=154;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={16000,0,10528};
+			name="markerAizX7Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=155;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={18000,0,10528};
+			name="markerAizX8Y5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=156;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={2000,0,8528};
+			name="markerAizX0Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=157;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={4000,0,8528};
+			name="markerAizX1Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=158;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={6000,0,8528};
+			name="markerAizX2Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=159;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={8000,0,8528};
+			name="markerAizX3Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=160;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={10000,0,8528};
+			name="markerAizX4Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=161;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={12000,0,8528};
+			name="markerAizX5Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=162;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={14000,0,8528};
+			name="markerAizX6Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=163;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={16000,0,8528};
+			name="markerAizX7Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=164;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={18000,0,8528};
+			name="markerAizX8Y6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=165;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={4000,0,6528};
+			name="markerAizX1Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=166;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={6000,0,6528};
+			name="markerAizX2Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=167;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={8000,0,6528};
+			name="markerAizX3Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=168;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={10000,0,6528};
+			name="markerAizX4Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=169;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={12000,0,6528};
+			name="markerAizX5Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=170;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={14000,0,6528};
+			name="markerAizX6Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=171;
+		};
+		class Item51
+		{
+			dataType="Marker";
+			position[]={16000,0,6528};
+			name="markerAizX7Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=172;
+		};
+		class Item52
+		{
+			dataType="Marker";
+			position[]={18000,0,6528};
+			name="markerAizX8Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=173;
+		};
+		class Item53
+		{
+			dataType="Marker";
+			position[]={2000,0,6528};
+			name="markerAizX0Y7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=174;
+		};
+		class Item54
+		{
+			dataType="Marker";
+			position[]={4000,0,4528};
+			name="markerAizX1Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=175;
+		};
+		class Item55
+		{
+			dataType="Marker";
+			position[]={6000,0,4528};
+			name="markerAizX2Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=176;
+		};
+		class Item56
+		{
+			dataType="Marker";
+			position[]={8000,0,4528};
+			name="markerAizX3Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=177;
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={10000,0,4528};
+			name="markerAizX4Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=178;
+		};
+		class Item58
+		{
+			dataType="Marker";
+			position[]={12000,0,4528};
+			name="markerAizX5Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=179;
+		};
+		class Item59
+		{
+			dataType="Marker";
+			position[]={14000,0,4528};
+			name="markerAizX6Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=180;
+		};
+		class Item60
+		{
+			dataType="Marker";
+			position[]={16000,0,4528};
+			name="markerAizX7Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=181;
+		};
+		class Item61
+		{
+			dataType="Marker";
+			position[]={18000,0,4528};
+			name="markerAizX8Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=182;
+		};
+		class Item62
+		{
+			dataType="Marker";
+			position[]={2000,0,4528};
+			name="markerAizX0Y8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=183;
+		};
+		class Item63
+		{
+			dataType="Marker";
+			position[]={8000,0,2528};
+			name="markerAizX3Y9";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=184;
+		};
+		class Item64
+		{
+			dataType="Marker";
+			position[]={10000,0,2528};
+			name="markerAizX4Y9";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=185;
+		};
+		class Item65
+		{
+			dataType="Marker";
+			position[]={12000,0,2528};
+			name="markerAizX5Y9";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=186;
+		};
+		class Item66
+		{
+			dataType="Marker";
+			position[]={14000,0,2528};
+			name="markerAizX6Y9";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=187;
+		};
+		class Item67
+		{
+			dataType="Marker";
+			position[]={16000,0,2528};
+			name="markerAizX7Y9";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=188;
+		};
+		class Item68
+		{
+			dataType="Marker";
+			position[]={12000,0,528};
+			name="markerAizX5Y10";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=190;
+		};
+		class Item69
+		{
+			dataType="Marker";
+			position[]={14000,0,528};
+			name="markerAizX6Y10";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=191;
+		};
+		class Item70
+		{
+			dataType="Marker";
+			position[]={16000,0,528};
+			name="markerAizX7Y10";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=1000;
+			b=1000;
+			id=192;
 		};
 	};
 };
