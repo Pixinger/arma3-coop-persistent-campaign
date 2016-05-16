@@ -12,16 +12,15 @@ Return:
 /*-------------------------------------------------------------------*/
 
 private["_position"];
-_position = [_this, 0, [0,0,0], [[]],[2,3]] call BIS_fnc_param;
+_position = _this select 0;
 
 private["_areaSize"];
-_areaSize = [_this, 1, 20, [0]] call BIS_fnc_param;
-if (_areaSize < 0) then { _areaSize = 0; };
+_areaSize = _this select 1;
 
 private["_areaMaxHeight"];
-_areaMaxHeight = [_this, 2, 2, [0]] call BIS_fnc_param;
+_areaMaxHeight = _this select 2;
 
-/*-------------------------------------------------------------------*/
+//-------------------------------------------------------------------
 
 private["_heightRef"];
 _heightRef = getTerrainHeightASL _position; 
