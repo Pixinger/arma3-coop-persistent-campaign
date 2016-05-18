@@ -21,6 +21,7 @@ if (isServer) then
 	fnc_aiz_NearestResidentialLocation = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_NearestResidentialLocation.sqf";
 	fnc_aiz_RandomElement = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RandomElement.sqf";
 
+	fnc_aiz_RunGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup.sqf";
 	fnc_aiz_ZoneInit = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneInit.sqf";
 	fnc_aiz_ZoneResume = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneResume.sqf";
 	fnc_aiz_ZonePause = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZonePause.sqf";

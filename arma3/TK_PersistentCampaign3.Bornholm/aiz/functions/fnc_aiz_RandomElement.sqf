@@ -8,9 +8,4 @@ Return:
 	_element: Ein zufälliges Element aus dem Array
 */
 
-private["_array"];
-_array = _this select 0;
-
-private["_result"];
-_result = _array select (floor(random count _array));
-_result;
+_this select (floor(random count _this))

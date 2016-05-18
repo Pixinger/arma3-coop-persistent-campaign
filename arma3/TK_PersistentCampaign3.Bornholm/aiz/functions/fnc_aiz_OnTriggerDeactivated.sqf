@@ -1,11 +1,7 @@
 if (isServer) then
 {
+player sidechat "off";
 	diag_log format["fnc_dacZones_OnTriggerDeactivated: _this = %1", _this];
 
-	private["_ix"];
-	_ix = (_this select 0);
-	private["_iy"];
-	_iy = (_this select 1);
-	
-	format["markerAizX%1Y%2", _ix, _iy] setMarkerColor "ColorGreen";
+	[(_this select 0)] spawn fnc_aiz_ZonePause;
 };

@@ -1,4 +1,3 @@
-
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_zoneParameters"];
@@ -9,7 +8,7 @@ if  (count _this >= 2) then { _zoneParameters = _this select 1; };
 //==========================================================================================
 private["_markerName"];
 _markerName = format["markerAiz%1", _zoneIndex];
-if (markerType _markerName == "") exitWith { diag_log format["ERROR: Marker for zoneIndex %1 not found. Markername should be %2", _zoneIndex, _markerName]; false; }; // ERROR
+if (markerType _markerName == "") exitWith { [format["Marker for zoneIndex %1 not found. Markername should be %2", _zoneIndex, _markerName]] call BIS_fnc_error; false; };
 
 private["_markerPos"];
 _markerPos = markerPos _markerName;
@@ -30,12 +29,12 @@ private["_campTown"];
 private["_campField"];
 private["_campRespawns"];
 private["_checkpoints"];
-private["_waypoints"];
+private["_waypointPool"];
 private["_groupCount"];
 _campsTown = [];		// [[house, housePosIndex], respawns]
 _campsField = [];		// [position, respawns]
 _checkpoints = [];		// [position, direction]
-_waypoints = [];		// [position]
+_waypointPool = [];		// [position]
 _groupCount = 0;
 
 //==========================================================================================
@@ -75,26 +74,35 @@ if (count _zoneParameters == 0) then
 	//------------------------------------------------------------------------------------------
 	// Nach Wegpunkten für diese Zone suchen
 	//------------------------------------------------------------------------------------------
-	// for "_i" from 1 to 20 do
-	// {
-		// _randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition;
-		// if (_randomPosition select 0 != 0) then
-		// {
-			// _waypoints pushBack _randomPosition;
-		// };
-	// };
+	for "_i" from 1 to 20 do
+	{
+		_randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition;
+		if (count _randomPosition > 0) then
+		{
+			_waypointPool pushBack _randomPosition;
+				
+			private["_markerName"];
+			_markerName = createMarkerLocal [format["markerWP%1_%2", _zoneIndex, random 999999], _randomPosition];
+			_markerName setMarkerShapeLocal "ICON";
+			_markerName setMarkerTypeLocal "o_inf";
+			_markerName setMarkerSizeLocal [0.2, 0.2];
+			_markerName setMarkerColorLocal "ColorBlack"; 
+			_markerName setMarkerAlphaLocal 0.5;
+				
+		};
+	};
 	
 	//------------------------------------------------------------------------------------------
 	// Festlegen wieviele Gruppen es geben soll
 	//------------------------------------------------------------------------------------------
-	_groupCount = floor (count _waypoints / 5);
+	_groupCount = floor (count _waypointPool / 5);
 } 
 else
 {
 	_campsTown  = _zoneParameters select 0;
 	_campsField = _zoneParameters select 1;
 	_checkpoints = _zoneParameters select 2;	
-	_waypoints = _zoneParameters select 3;
+	_waypointPool = _zoneParameters select 3;
 	_groupCount = _zoneParameters select 4;	
 };
 
@@ -108,7 +116,7 @@ private _triggerRequired = false;
 //==========================================================================================
 {
 	_triggerRequired = true;	
-	[_zoneIndex, _x] call fnc_aiz_BuildCampTown;
+	[_zoneIndex, _x] spawn fnc_aiz_BuildCampTown;
 } foreach _campsTown;
 
 //==========================================================================================
@@ -116,7 +124,7 @@ private _triggerRequired = false;
 //==========================================================================================
 {
 	_triggerRequired = true;
-	[_zoneIndex, _x] call fnc_aiz_BuildCampField;
+	[_zoneIndex, _x] spawn fnc_aiz_BuildCampField;
 } foreach _campsField;
 
 //==========================================================================================
@@ -124,7 +132,7 @@ private _triggerRequired = false;
 //==========================================================================================
 {
 	_triggerRequired = true;
-	[_zoneIndex, _x] call fnc_aiz_BuildCheckpoint;
+	[_zoneIndex, _x] spawn fnc_aiz_BuildCheckpoint;
 } foreach _checkpoints;
 
 //==========================================================================================
@@ -139,7 +147,9 @@ if (_groupCount > 0) then
 // Trigger erstellen
 //==========================================================================================
 if (_triggerRequired) then
-{
+{	
+	call compile format["aizWaypointPoolZone%1 = _waypointPool;", _zoneIndex];
+
 	private["_trigger"];
 	_trigger = createTrigger ["EmptyDetector", _markerPos, true];				
 	_trigger setTriggerType "NONE";
