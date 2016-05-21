@@ -3,6 +3,7 @@ _zoneIndex = _this select 0;
 private["_zoneParameters"];
 _zoneParameters = [];
 if  (count _this >= 2) then { _zoneParameters = _this select 1; };
+
 //==========================================================================================
 // Marker auslesen
 //==========================================================================================
@@ -111,6 +112,9 @@ else
 //==========================================================================================
 private _triggerRequired = false;
 
+if  (_zoneIndex != 29) then
+{
+
 //==========================================================================================
 // Camps-Town initialisieren
 //==========================================================================================
@@ -142,6 +146,7 @@ if (_groupCount > 0) then
 {
 	_triggerRequired = true;
 };
+};
 
 //==========================================================================================
 // Trigger erstellen
@@ -149,6 +154,7 @@ if (_groupCount > 0) then
 if (_triggerRequired) then
 {	
 	call compile format["aizWaypointPoolZone%1 = _waypointPool;", _zoneIndex];
+	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount];", _zoneIndex];
 
 	private["_trigger"];
 	_trigger = createTrigger ["EmptyDetector", _markerPos, true];				

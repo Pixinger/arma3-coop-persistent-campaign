@@ -1,48 +1,32 @@
+diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
 waitUntil { aizLoaded };
 
-private["_zoneIndex"];
-_zoneIndex = _this select 0;
-
-
-call compile format["private _runtimeData = aizRuntimeData%1", _zoneIndex];
-
-// _runtimeData = [_campTown, _campField, _checkpoints, _waypoints, _groupCount]
+private _zoneIndex = _this select 0;		
+private _camp = _this select 1;		// z.B.: [_positionArray, _respawns]
 
 
 
-//==========================================================================================
-// Marker auslesen
-//==========================================================================================
-private["_markerName"];
-_markerName = format["markerAiz%1", _zoneIndex];
-if (markerType _markerName == "") exitWith { diag_log format["ERROR: Marker for zoneIndex %1 not found. Markername should be %2", _zoneIndex, _markerName]; false; }; // ERROR
+//================================================================================
+// Einheiten erstellen
+//================================================================================
+private _group = [_camp select 0, EAST, 5] call BIS_fnc_spawnGroup;
 
-private["_markerPos"];
-_markerPos = markerPos _markerName;
-private["_markerSize"];
-_markerSize = markerSize _markerName;
-private["_markerDir"];
-_markerDir = markerDir _markerName;
-private["_markerIsRectangle"];
-if (markerShape _markerName == "rectangle") then { _markerIsRectangle = true; } else { _markerIsRectangle = false; };
+[_group, _camp select 0] spawn bis_fnc_taskDefend;
 
 
-//==========================================================================================
-// Variablen definieren
-//==========================================================================================
-private _geoInfo = [_markerName, 0];
+//================================================================================
+// Warten bis inaktiv
+//================================================================================
+while { true } do
+{
+	Sleep 5;
+	if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 1";diag_log format["%1 %2", aizZoneActive select _zoneIndex, aizZoneActive];};
+};
 
-private["_campTown"];
-private["_campField"];
-private["_campRespawns"];
-private["_checkpoints"];
-private["_waypoints"];
-private["_groupCount"];
-_campsTown = [];		// [[house, housePosIndex], respawns]
-_campsField = [];		// [position, respawns]
-_checkpoints = [];		// [position, direction]
-_waypoints = [];		// [position]
-_groupCount = 0;
-
-
-	format["markerAiz%1", _zoneIndex, _iy] setMarkerColor "ColorRed";
+//================================================================================
+// Gruppe auflösen
+//================================================================================
+{ deleteVehicle _x; } foreach (units _group);
+{ deleteWaypoint _x; } foreach (waypoints _group);
+deleteGroup _group;
+diag_log format["RunGroupCheckpoint%1: Gruppe aufgeloest: %2", _zoneIndex, _group];

@@ -1,18 +1,14 @@
 diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
 waitUntil { aizLoaded };
 
-private _zoneIndex = _this select 0;
-private _waypointCount = 5; // _this select 0;
-private _unitClassnames = ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"];
+private _zoneIndex = _this select 0;		
+private _waypointPool = _this select 1;		// z.B.: [....]
+private _waypointCount = _this select 2;	// z.B.: 5
+private _unitClassnames = _this select 3;	// z.B.: ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"];
 
 //================================================================================
 // Startbedingungen prüfen
 //================================================================================
-if (isNil format["aizWaypointPoolZone%1", _zoneIndex]) exitWith	{ [format["No waypoints for zoneIndex %1 found.", _zoneIndex]] call BIS_fnc_error; false; };
-diag_log "waypoints OK";
-
-private "_waypointPool";
-call compile format["_waypointPool = aizWaypointPoolZone%1", _zoneIndex];
 if (count _waypointPool < 3) exitWith { [format["Not enough waypoints for zoneIndex %1 found.", _zoneIndex]] call BIS_fnc_error; false; };
 if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypointPool; };
 
@@ -48,12 +44,12 @@ _waypoint setWaypointType "CYCLE";
 _waypoint setWaypointCompletionRadius 20;
 
 private["_markerName"];
-_markerName = createMarkerLocal [format["markerUT%1_%2", _zoneIndex, random 999999], (getPos (leader _group))];
-_markerName setMarkerShapeLocal "ICON";
-_markerName setMarkerTypeLocal "o_inf";
-_markerName setMarkerSizeLocal [0.3, 0.3];
-_markerName setMarkerColorLocal "ColorRed"; 
-_markerName setMarkerAlphaLocal 0.4;
+_markerName = createMarker [format["markerUT%1_%2", _zoneIndex, random 999999], (getPos (leader _group))];
+_markerName setMarkerShape "ICON";
+_markerName setMarkerType "o_inf";
+_markerName setMarkerSize [0.4, 0.4];
+_markerName setMarkerColor "ColorRed"; 
+_markerName setMarkerAlpha 1;
 //================================================================================
 // Überwachung der Gruppe beginnen
 //================================================================================
@@ -63,50 +59,57 @@ while { true } do
 	while { true } do 
 	{
 		Sleep 5;
-		_markerName setMarkerPosLocal (getPos (leader _group));
+		_markerName setMarkerPos (getPos (leader _group));
 		if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 1";diag_log format["%1 %2", aizZoneActive select _zoneIndex, aizZoneActive];};
 		if (count ((getPos (leader _group)) nearEntities ["SoldierWB", 600]) > 0 ) exitWith {diag_log "enemy near";};
-diag_log "RunGroup: ist reduziert";
+//diag_log format["RunGroup%1: ist reduziert",_zoneIndex];
 	};
 
 	if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 2";};
-diag_log "RunGroup: wird erweitert";
+diag_log format["RunGroup%1: wird erweitert",_zoneIndex];
 	
 	// expand group
 	for "_i" from 1 to (count _unitClassnames)-1 do
 	{
 		_unit = _group createUnit [_unitClassnames select _i, (getPos (leader _group)), [], 0, "FORM"];
+		_unit setDir (getDir (leader _group));
 		_unit setUnitAbility (random 1);	
-diag_log format["RunGroup: Einheit erweitert: %1", _unit];
 	};
 
 	// Zustand "expanded"	
 	while { true } do
 	{
 		Sleep 5;
-		_markerName setMarkerPosLocal (getPos (leader _group));
-		if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 3";};
+diag_log format["RunGroup%1: ist erweitert units: %2",_zoneIndex, count (units _group)];
+		_markerName setMarkerPos (getPos (leader _group));
+		if (!(aizZoneActive select _zoneIndex) || (count (units _group) == 0)) exitWith {diag_log "inactive 3";};
 		if (count ((getPos (leader _group)) nearEntities ["SoldierWB", 600]) == 0) exitWith {diag_log "enemy near";};
-diag_log "RunGroup: ist erweitert";
+//diag_log format["RunGroup%1: ist erweitert",_zoneIndex];
 	};
 	
-	if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 4";};
-diag_log "RunGroup: wird reduziert";
+	if (!(aizZoneActive select _zoneIndex) || (count (units _group) == 0)) exitWith {diag_log "inactive 4";};
+diag_log format["RunGroup%1: wird reduziert",_zoneIndex];
 
 	// reduce group
 	while { (count units _group > 1) } do
 	{
 		_unit = (units _group) select (count (units _group)-1);		
-diag_log format["RunGroup: Einheit reduziert: %1", _unit];
 		deleteVehicle _unit;		
 	};	
 };
 
-diag_log format["RunGroup: Gruppe wird aufgelöst: %1", _group];
+//================================================================================
+// Nachschub anfordern
+//================================================================================
+if (count (units _group) == 0) then
+{
+};
+
 //================================================================================
 // Gruppe auflösen
 //================================================================================
+{ deleteVehicle _x; } foreach (units _group);
 { deleteWaypoint _x; } foreach (waypoints _group);
-{ deleteVehicle _unit; } foreach (units _group);
 deleteGroup _group;
-diag_log "RunGroup: ist aufgelöst";
+diag_log format["RunGroup%1: aufgeloest", _zoneIndex];
+deleteMarker _markerName;

@@ -1,6 +1,7 @@
 if (isServer) then
 {
 	fnc_aiz_IsInGeoInfo = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsInGeoInfo.sqf";
+	fnc_aiz_IsBlueNear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsBlueNear.sqf";
 
 	fnc_aiz_GetRandomPosition = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPosition.sqf";
 	fnc_aiz_GetRandomPositionRoad = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPositionRoad.sqf";
@@ -22,6 +23,9 @@ if (isServer) then
 	fnc_aiz_RandomElement = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RandomElement.sqf";
 
 	fnc_aiz_RunGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup.sqf";
+	fnc_aiz_RunGroupCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCheckpoint.sqf";
+	fnc_aiz_RunGroupCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampTown.sqf";
+	fnc_aiz_RunGroupCampField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampField.sqf";
 	fnc_aiz_ZoneInit = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneInit.sqf";
 	fnc_aiz_ZoneResume = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneResume.sqf";
 	fnc_aiz_ZonePause = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZonePause.sqf";
@@ -30,4 +34,4 @@ if (isServer) then
 	fnc_aiz_OnTriggerDeactivated = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_OnTriggerDeactivated.sqf";
 };
 
-diag_log "aiz compiled";
+diag_log "compile: aiz";
