@@ -1,7 +1,7 @@
 #define REDUCE_DISTANCE 	650
 #define EXPAND_DISTANCE 	600
 
-waitUntil { aizLoaded };
+waitUntil { aizZoneInitCompleted };
 diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
 
 if ((count _this) < 4) exitWith { [format["Invalid parameter count. _this=%1", _this]] call BIS_fnc_error; false;};
@@ -120,18 +120,29 @@ while { _run } do
 		case STATE_FLEE:
 		{ 
 			_markerName setMarkerText "flee";
+			// Da sich die Gruppe nun aufgelöst hat, suchen wir nach Verstärkung
 			private _laptop = [getPos (leader _group), 2000] call fnc_aiz_FindCampLaptop;
 			if (!isNull _laptop) then
 			{
-				[_zoneIndex, _waypointPool, _waypointCount, ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"], getPos _laptop] spawn fnc_aiz_RunGroup;
+				// .. Verstärkung aus der Stadt holen
+				[_zoneIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
 			}
 			else
 			{
 				private _tent = [getPos (leader _group), 2000] call fnc_aiz_FindCampTent;
 				if (!isNull _tent) then
 				{
-					[_zoneIndex, _waypointPool, _waypointCount, ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"], getPos _tent] spawn fnc_aiz_RunGroup;
+					// .. Verstärkung aus dem Feld holen => Zelt löschen
+					[_zoneIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
 					deleteVehicle _tent;
+				}
+				else
+				{
+					// Keine Verstärkung gefunden. Den GruppenCount für diese Zone verringern.
+					private "_zoneData";
+					call compile format["_zoneData = aizZoneData%1;", _zoneIndex];
+					private _groupCount = _zoneData select 4;
+					_zoneData set [4, _groupCount - 1];					
 				};
 			};
 			

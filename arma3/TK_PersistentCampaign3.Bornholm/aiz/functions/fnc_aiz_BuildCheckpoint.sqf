@@ -6,7 +6,7 @@ _checkpoint params ["_position", "_direction"];
 
 private _markerName = createMarkerLocal [format["markercheckpoint%1", random 999999], _position];
 _markerName setMarkerShapeLocal "ICON";
-_markerName setMarkerTypeLocal "o_inf";
+_markerName setMarkerTypeLocal "hd_ambush";
 _markerName setMarkerDirLocal _direction;
 _markerName setMarkerSizeLocal [0.5, 0.5];
 _markerName setMarkerTextLocal "c";

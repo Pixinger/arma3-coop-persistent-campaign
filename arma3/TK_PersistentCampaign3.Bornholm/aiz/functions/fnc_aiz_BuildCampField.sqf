@@ -12,7 +12,7 @@ _respawns = _camp select 1;
 private["_markerName"];
 _markerName = createMarkerLocal [format["markerCamp%1", random 999999], _position];
 _markerName setMarkerShapeLocal "ICON";
-_markerName setMarkerTypeLocal "o_inf";
+_markerName setMarkerTypeLocal "o_support";
 _markerName setMarkerSizeLocal [0.5, 0.5];
 _markerName setMarkerTextLocal format["f %1", _respawns];
 _markerName setMarkerColorLocal "ColorBlue"; 

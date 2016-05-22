@@ -1,7 +1,7 @@
 #define REDUCE_DISTANCE 	1000
 #define EXPAND_DISTANCE 	800
 
-waitUntil { aizLoaded };
+waitUntil { aizZoneInitCompleted };
 diag_log format["fnc_aiz_RunGroupCheckpoint: _this = %1", _this];
 
 if ((count _this) < 3) exitWith { [format["Invalid parameter count. _this=%1", _this]] call BIS_fnc_error; false;};

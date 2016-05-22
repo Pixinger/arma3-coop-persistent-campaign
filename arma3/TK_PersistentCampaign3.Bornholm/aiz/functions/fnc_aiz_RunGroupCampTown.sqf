@@ -1,17 +1,16 @@
 diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
-waitUntil { aizLoaded };
+waitUntil { aizZoneInitCompleted };
 #define REDUCE_DISTANCE 	1000
 #define EXPAND_DISTANCE 	800
 
-waitUntil { aizLoaded };
+waitUntil { aizZoneInitCompleted };
 diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
 
 //================================================================================
 // _THIS
 //================================================================================
 params ["_zoneIndex", "_camp", "_unitClassnames"];
-_camp params ["_campHouseInfo", "_campRespawns"]; // [[house, housePosIndex], respawns]
-_campHouseInfo params ["_house", "_housePosIndex"]; 
+_camp params ["_house", "_housePosIndex"]; 
 
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)

@@ -74,7 +74,7 @@ while { _loopLimit > 0 } do
 				{
 					private _maxIndex = 0;
 					while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
-					if ((_maxIndex < 8) && (_maxIndex > 2)) then
+					if ((_maxIndex < 8) && (_maxIndex > 3)) then
 					{
 						if (_randomPositionInHouse) then { _maxIndex = floor(random(_maxIndex)); };
 						_result = [_house, _maxIndex];

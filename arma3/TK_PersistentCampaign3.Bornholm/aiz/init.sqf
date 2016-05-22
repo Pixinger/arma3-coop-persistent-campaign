@@ -2,7 +2,7 @@
 
 if (isServer) then
 {
-	aizLoaded = false;
+	aizZoneInitCompleted = false;
 	aizZoneActive = [];
 	for "_i" from 0 to 63 do 
 	{
@@ -11,5 +11,5 @@ if (isServer) then
 	};
 	diag_log "init.sqf: isLoaded";
 
-	aizLoaded = true;
+	aizZoneInitCompleted = true;
 };

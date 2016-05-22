@@ -12,6 +12,7 @@ if (isServer) then
 	fnc_aiz_FindCampLaptop = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampLaptop.sqf";
 	
 
+	fnc_aiz_GetRandomInfClassnames = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomInfClassnames.sqf";
 	fnc_aiz_GetRandomPosition = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPosition.sqf";
 	fnc_aiz_GetRandomPositionRoad = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPositionRoad.sqf";
 	fnc_aiz_GetRandomPositionField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPositionField.sqf";

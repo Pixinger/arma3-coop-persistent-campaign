@@ -1,71 +1,55 @@
-private["_zoneIndex"];
-_zoneIndex = _this select 0;
-private["_zoneParameters"];
-_zoneParameters = [];
-if  (count _this >= 2) then { _zoneParameters = _this select 1; };
+private _zoneIndex = _this select 0;
 
 //==========================================================================================
 // Marker auslesen
 //==========================================================================================
-private["_markerName"];
-_markerName = format["markerAiz%1", _zoneIndex];
+private _markerName = format["markerAiz%1", _zoneIndex];
 if (markerType _markerName == "") exitWith { [format["Marker for zoneIndex %1 not found. Markername should be %2", _zoneIndex, _markerName]] call BIS_fnc_error; false; };
 
-private["_markerPos"];
-_markerPos = markerPos _markerName;
-private["_markerSize"];
-_markerSize = markerSize _markerName;
-private["_markerDir"];
-_markerDir = markerDir _markerName;
-private["_markerIsRectangle"];
-if (markerShape _markerName == "rectangle") then { _markerIsRectangle = true; } else { _markerIsRectangle = false; };
-
+private _markerPos = markerPos _markerName;
+private _markerSize = markerSize _markerName;
+private _markerDir = markerDir _markerName;
+private _markerIsRectangle = if (markerShape _markerName == "rectangle") then { true; } else { false; };
 
 //==========================================================================================
 // Variablen definieren
 //==========================================================================================
-private _geoInfo = [_markerName, 0];
+private _campsTown = [];		// [[house, housePosIndex], respawns]
+private _campsField = [];		// [position, respawns]
+private _checkpoints = [];		// [position, direction]
+private _waypointPool = [];		// [position]
+private _groupCount = 0;
 
-private["_campTown"];
-private["_campField"];
-private["_campRespawns"];
-private["_checkpoints"];
-private["_waypointPool"];
-private["_groupCount"];
-_campsTown = [];		// [[house, housePosIndex], respawns]
-_campsField = [];		// [position, respawns]
-_checkpoints = [];		// [position, direction]
-_waypointPool = [];		// [position]
-_groupCount = 0;
+private _geoInfo = [_markerName, 0];
 
 //==========================================================================================
 // Waypoints generieren oder aus DB übernehmen
 //==========================================================================================
-if (count _zoneParameters == 0) then
+if (true) then
 {
 	//------------------------------------------------------------------------------------------
 	// Nach einer Position für CAMP-TOWN suchen
 	//------------------------------------------------------------------------------------------
-	private _randomPosition = [_geoInfo, [true, [20, 100]]] call fnc_aiz_GetRandomPositionHouse;
+	private _randomPosition = [_geoInfo, [true, [20, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
 	if (count _randomPosition > 0) then
 	{		
-		_campsTown pushBack [_randomPosition, 10]; 
+		_campsTown pushBack _randomPosition;
 	};
 	
 	
 	//------------------------------------------------------------------------------------------
 	// Nach einer Position für CAMP-FIELD suchen
 	//------------------------------------------------------------------------------------------
-	_randomPosition = [_geoInfo, [5]] call fnc_aiz_GetRandomPositionField;
+	_randomPosition = [_geoInfo, [5]] call fnc_aiz_GetRandomPositionField; // [position]
 	if (count _randomPosition > 0) then
 	{			
-		_campsField pushBack [_randomPosition, 20]; 
+		_campsField pushBack [_randomPosition, 6 + (random 6)];
 	};
 	
 	//------------------------------------------------------------------------------------------
 	// Nach Checkpoints für diese Zone suchen
 	//------------------------------------------------------------------------------------------
-	_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad;
+	_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position]
 	if (count _randomPosition > 0) then
 	{
 		_checkpoints pushBack _randomPosition;
@@ -77,18 +61,18 @@ if (count _zoneParameters == 0) then
 	//------------------------------------------------------------------------------------------
 	for "_i" from 1 to 20 do
 	{
-		_randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition;
+		_randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition; // [position]
 		if (count _randomPosition > 0) then
 		{
 			_waypointPool pushBack _randomPosition;
 				
-			private["_markerName"];
-			_markerName = createMarkerLocal [format["markerWP%1_%2", _zoneIndex, random 999999], _randomPosition];
-			_markerName setMarkerShapeLocal "ICON";
-			_markerName setMarkerTypeLocal "o_inf";
-			_markerName setMarkerSizeLocal [0.2, 0.2];
-			_markerName setMarkerColorLocal "ColorBlack"; 
-			_markerName setMarkerAlphaLocal 0.5;
+			private["_markerNameWp"];
+			_markerNameWp = createMarker [format["markerWP%1_%2", _zoneIndex, floor(random 999999)], _randomPosition];
+			_markerNameWp setMarkerShape "ICON";
+			_markerNameWp setMarkerType "Waypoint";
+			_markerNameWp setMarkerSize [0.2, 0.2];
+			_markerNameWp setMarkerColor "ColorBlack"; 
+			_markerNameWp setMarkerAlpha 0.5;
 				
 		};
 	};
@@ -100,11 +84,11 @@ if (count _zoneParameters == 0) then
 } 
 else
 {
-	_campsTown  = _zoneParameters select 0;
-	_campsField = _zoneParameters select 1;
-	_checkpoints = _zoneParameters select 2;	
-	_waypointPool = _zoneParameters select 3;
-	_groupCount = _zoneParameters select 4;	
+	// _campsTown  = _zoneParameters select 0;
+	// _campsField = _zoneParameters select 1;
+	// _checkpoints = _zoneParameters select 2;	
+	// _waypointPool = _zoneParameters select 3;
+	// _groupCount = _zoneParameters select 4;	
 };
 
 //==========================================================================================
@@ -114,38 +98,37 @@ private _triggerRequired = false;
 
 if  (_zoneIndex != 29) then
 {
+	//==========================================================================================
+	// Camps-Town initialisieren
+	//==========================================================================================
+	{
+		_triggerRequired = true;	
+		[_zoneIndex, _x] spawn fnc_aiz_BuildCampTown;
+	} foreach _campsTown;
 
-//==========================================================================================
-// Camps-Town initialisieren
-//==========================================================================================
-{
-	_triggerRequired = true;	
-	[_zoneIndex, _x] spawn fnc_aiz_BuildCampTown;
-} foreach _campsTown;
+	//==========================================================================================
+	// Camps-Field initialisieren
+	//==========================================================================================
+	{
+		_triggerRequired = true;
+		[_zoneIndex, _x] spawn fnc_aiz_BuildCampField;
+	} foreach _campsField;
 
-//==========================================================================================
-// Camps-Field initialisieren
-//==========================================================================================
-{
-	_triggerRequired = true;
-	[_zoneIndex, _x] spawn fnc_aiz_BuildCampField;
-} foreach _campsField;
+	//==========================================================================================
+	// Checkpoints initialisieren
+	//==========================================================================================
+	{
+		_triggerRequired = true;
+		[_zoneIndex, _x] spawn fnc_aiz_BuildCheckpoint;
+	} foreach _checkpoints;
 
-//==========================================================================================
-// Checkpoints initialisieren
-//==========================================================================================
-{
-	_triggerRequired = true;
-	[_zoneIndex, _x] spawn fnc_aiz_BuildCheckpoint;
-} foreach _checkpoints;
-
-//==========================================================================================
-// Gruppen initialisieren
-//==========================================================================================
-if (_groupCount > 0) then
-{
-	_triggerRequired = true;
-};
+	//==========================================================================================
+	// Gruppen initialisieren
+	//==========================================================================================
+	if (_groupCount > 0) then
+	{
+		_triggerRequired = true;
+	};
 };
 
 //==========================================================================================
@@ -153,7 +136,6 @@ if (_groupCount > 0) then
 //==========================================================================================
 if (_triggerRequired) then
 {	
-	call compile format["aizWaypointPoolZone%1 = _waypointPool;", _zoneIndex];
 	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount];", _zoneIndex];
 
 	private["_trigger"];
@@ -163,10 +145,11 @@ if (_triggerRequired) then
 	_trigger setTriggerActivation ["WEST", "PRESENT", true];
 	_trigger setTriggerStatements ["this", format["[%1] call fnc_aiz_OnTriggerActivated;", _zoneIndex], format["[%1] call fnc_aiz_OnTriggerDeactivated;", _zoneIndex]];
 
-	_markerName setMarkerAlphaLocal 0;
+	_markerName setMarkerAlpha 0;
 	_markerName SetMarkerColor "ColorRed";
 }
 else
 {
+	_markerName setMarkerAlpha 0.2;
 	_markerName SetMarkerColor "ColorGreen";
 };
