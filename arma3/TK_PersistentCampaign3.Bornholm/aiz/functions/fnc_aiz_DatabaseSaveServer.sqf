@@ -19,7 +19,7 @@ if (isServer) then
 			{				
 				if (count (nearestObjects[((_x select 0) buildingPos (_x select 1)), aizCampTownClassnames, 5]) > 0) then 
 				{ 
-					_dataSetCampsTown pushBack _x;
+					_dataSetCampsTown pushBack [getPos (_x select 0), (_x select 1)]; //=[_housePosition, buildingPosIndex]
 				};
 			} foreach _campsTown; //_x=[_houseObjekt, buildingPosIndex]
 
@@ -73,28 +73,7 @@ if (isServer) then
 
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben
-	"AIZ-Database saved" remoteExec ["hint"];
-	/*if (isServer && !isDedicated) then
-	{
-		hint "AIZ-Database saved";
-	}
-	else
-	{
-		// Param
-		// Code/Function
-		// Target
-		//    Object - function will be executed only where unit is local [default: everyone] 
-		//    Array - array of objects 
-		//    Boolean - true to execute on each machine (including the one where the function was called from), false to execute it on server only 
-		//    Number - function will be executed only on client with the given owner ID 
-		//    Side - function will be executed only on clients where the player is on the specified side 
-		//    Group - function will be executed only on clients where the player is in the specified group 
-		// IsPersistent
-		// IsCall 
-		["AIZ-Database saved", "hint", false] call BIS_fnc_MP;
-		
-		//"AIZ-Database saved" remoteExec ["hint", 0];
-	};	*/
+	"AIZ-Database saved" remoteExec ["hint"];	
 
 	// ------------------------------------------------------------------------------
 	// Nachbereiten

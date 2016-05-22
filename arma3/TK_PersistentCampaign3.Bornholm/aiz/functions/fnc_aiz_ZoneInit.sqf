@@ -87,23 +87,29 @@ else
 	//diag_log format["AIZ Init-Zone %1 (database)", _zoneIndex];
 	
 	if (count _zoneDataSet >= 1) then
-	{
-		_campsTown  = (_zoneDataSet select 0); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+	{		 
+		{
+			private _house = nearestObject [_x select 0, "House"];
+			if (!isNull _house) then
+			{
+				_campsTown pushBack [_house, _x select 1]; // [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+			};		
+		} forEach (_zoneDataSet select 0); // [[housePosition, buildingPosIndex], ..., [housePosition, buildingPosIndex]];		
 	};
 	
 	if (count _zoneDataSet >= 2) then
 	{
-		_campsField  = (_zoneDataSet select 1); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+		_campsField  = (_zoneDataSet select 1); 		// [[position, respawns], ..., [position, respawns]];
 	};
 	
 	if (count _zoneDataSet >= 3) then
 	{
-		_checkpoints  = (_zoneDataSet select 2); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+		_checkpoints  = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
 	};
 	
 	if (count _zoneDataSet >= 4) then
 	{
-		_groupCount  = (_zoneDataSet select 3); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+		_groupCount  = (_zoneDataSet select 3); 		
 	};
 };
 
