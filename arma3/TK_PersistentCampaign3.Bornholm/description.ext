@@ -39,14 +39,14 @@ class Header
   playerCountMultipleOf = 1;  
 };
 
-//class CfgRemoteExec
-//{        
-//	class Commands
-//	{
-//		class fnc_aiz_DatabaseClear { allowedTargets=2; jip=0; } // can target anyone, sending jip is turned off (overrides settings in the Commands class)
-//		class fnc_aiz_DatabaseSave { allowedTargets=2; jip=0; } // can target anyone, sending jip is turned off (overrides settings in the Commands class)
-//	};
-//};
+class CfgRemoteExec
+{        
+	class Commands
+    {
+		  /*your commands here*/
+		  class hint { allowedTargets=0; jip=0; }
+	};
+};
 
 #include "dialogDefines.hpp"
 #include "maindialog_classes.hpp"

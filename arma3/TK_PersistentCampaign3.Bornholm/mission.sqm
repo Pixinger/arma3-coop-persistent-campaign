@@ -67,7 +67,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v0.1";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.4";
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
 		startWind=0.1;

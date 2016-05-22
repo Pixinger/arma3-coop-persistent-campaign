@@ -13,7 +13,8 @@ if (isServer) then
 
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben
-	if (isServer && !isDedicated) then
+	"AIZ-Database cleared" remoteExec ["hint"];
+	/*if (isServer && !isDedicated) then
 	{
 		hint "AIZ-Database cleared";
 	}
@@ -33,7 +34,7 @@ if (isServer) then
 		["AIZ-Database cleared", "hint", false] call BIS_fnc_MP;
 		
 		//"AIZ-Database cleared" remoteExec ["hint", 0];
-	};	
+	};*/	
 
 	// ------------------------------------------------------------------------------
 	// Nachbereiten

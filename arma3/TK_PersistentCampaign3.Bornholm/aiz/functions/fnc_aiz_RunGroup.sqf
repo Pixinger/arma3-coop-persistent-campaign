@@ -22,6 +22,8 @@ if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypoin
 //================================================================================
 private _group = [_startPosition, EAST, _unitClassnames] call BIS_fnc_spawnGroup;
 _group setBehaviour "SAFE";
+_group setSpeedMode "LIMITED";
+_group setFormation "STAG COLUMN";
 //_group setUnitAbility (random 1);	//[_unit,6] call bis_fnc_setRank; //["PRIVATE","CORPORAL","SERGEANT","LIEUTENANT","CAPTAIN","MAJOR","COLONEL"];
 
 //================================================================================

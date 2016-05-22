@@ -1,4 +1,4 @@
-remoteExec ["fnc_aiz_DatabaseSaveServer", 2];
+remoteExec ["fnc_aiz_DatabaseSaveServer", 2]; // 2= only server
 
 /*
 if (isServer && !isDedicated) then

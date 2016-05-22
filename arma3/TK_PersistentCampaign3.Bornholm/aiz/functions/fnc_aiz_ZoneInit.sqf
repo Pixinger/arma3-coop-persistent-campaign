@@ -154,10 +154,11 @@ if (_triggerRequired) then
 {	
 	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount];", _zoneIndex];
 
+	private _radiusExtension = if (pixDebug) then { 0 } else { 1000 };
 	private["_trigger"];
 	_trigger = createTrigger ["EmptyDetector", _markerPos, true];				
 	_trigger setTriggerType "NONE";
-	_trigger setTriggerArea [_markerSize select 0, _markerSize select 1, _markerDir, _markerIsRectangle];
+	_trigger setTriggerArea [(_markerSize select 0) + _radiusExtension, (_markerSize select 1) + _radiusExtension, _markerDir, _markerIsRectangle];
 	_trigger setTriggerActivation ["WEST", "PRESENT", true];
 	_trigger setTriggerStatements ["this", format["[%1] call fnc_aiz_OnTriggerActivated;", _zoneIndex], format["[%1] call fnc_aiz_OnTriggerDeactivated;", _zoneIndex]];
 

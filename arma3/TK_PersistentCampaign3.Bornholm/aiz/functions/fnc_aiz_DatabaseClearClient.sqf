@@ -1,4 +1,6 @@
-if (isServer && !isDedicated) then
+remoteExec ["fnc_aiz_DatabaseClearServer", 2]; // 2= only server
+
+/*if (isServer && !isDedicated) then
 {
 	call fnc_aiz_DatabaseClearServer;
 }
@@ -19,3 +21,4 @@ else
 	
 	//remoteExec ["fnc_aiz_DatabaseClearServer", 2];
 };
+*/
