@@ -1,10 +1,15 @@
-diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
-waitUntil { aizLoaded };
+#define REDUCE_DISTANCE 	650
+#define EXPAND_DISTANCE 	600
 
-private _zoneIndex = _this select 0;		
-private _waypointPool = _this select 1;		// z.B.: [....]
-private _waypointCount = _this select 2;	// z.B.: 5
-private _unitClassnames = _this select 3;	// z.B.: ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"];
+waitUntil { aizLoaded };
+diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
+
+if ((count _this) < 4) exitWith { [format["Invalid parameter count. _this=%1", _this]] call BIS_fnc_error; false;};
+//================================================================================
+// _THIS
+//================================================================================
+params ["_zoneIndex", "_waypointPool", "_waypointCount","_unitClassnames"];
+private _startPosition = if ((count _this) >= 5) then { _this select 4; } else { _waypointPool call fnc_aiz_RandomElement; };
 
 //================================================================================
 // Startbedingungen prüfen
@@ -13,11 +18,11 @@ if (count _waypointPool < 3) exitWith { [format["Not enough waypoints for zoneIn
 if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypointPool; };
 
 //================================================================================
-// Haupteinheit erstellen
+// Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
-private _group = createGroup east;
-private _unit = _group createUnit [_unitClassnames select 0, _waypointPool call fnc_aiz_RandomElement, [], 0, "FORM"];
-_unit setUnitAbility (random 1);	//[_unit,6] call bis_fnc_setRank; //["PRIVATE","CORPORAL","SERGEANT","LIEUTENANT","CAPTAIN","MAJOR","COLONEL"];
+private _group = [_startPosition, EAST, _unitClassnames] call BIS_fnc_spawnGroup;
+_group setBehaviour "SAFE";
+//_group setUnitAbility (random 1);	//[_unit,6] call bis_fnc_setRank; //["PRIVATE","CORPORAL","SERGEANT","LIEUTENANT","CAPTAIN","MAJOR","COLONEL"];
 
 //================================================================================
 // Wegunkte erstellen
@@ -43,73 +48,145 @@ private _waypoint = _group addWaypoint [_waypointPool call fnc_aiz_RandomElement
 _waypoint setWaypointType "CYCLE";
 _waypoint setWaypointCompletionRadius 20;
 
+//================================================================================
+// Marker erstellen
+//================================================================================
 private["_markerName"];
-_markerName = createMarker [format["markerUT%1_%2", _zoneIndex, random 999999], (getPos (leader _group))];
+_markerName = createMarker [format["markerUT%1_%2", _zoneIndex, floor(random 999999)], (getPos (leader _group))];
 _markerName setMarkerShape "ICON";
 _markerName setMarkerType "o_inf";
 _markerName setMarkerSize [0.4, 0.4];
 _markerName setMarkerColor "ColorRed"; 
 _markerName setMarkerAlpha 1;
+
 //================================================================================
-// Überwachung der Gruppe beginnen
+// State Machine starten
 //================================================================================
-while { true } do
+#define STATE_REDUCED	1
+#define STATE_EXPANDED	2
+#define STATE_FLEE		3
+#define STATE_EXIT		4
+private _state = STATE_EXPANDED;
+private _unitInfos = [];
+private _run = true;
+while { _run } do 
 {
-	// Zustand "reduced"	
-	while { true } do 
+	switch (_state) do 
 	{
-		Sleep 5;
-		_markerName setMarkerPos (getPos (leader _group));
-		if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 1";diag_log format["%1 %2", aizZoneActive select _zoneIndex, aizZoneActive];};
-		if (count ((getPos (leader _group)) nearEntities ["SoldierWB", 600]) > 0 ) exitWith {diag_log "enemy near";};
-//diag_log format["RunGroup%1: ist reduziert",_zoneIndex];
-	};
+		case STATE_EXPANDED: 
+		{ 
+			diag_log "STATE_EXPANDED";
+			_markerName setMarkerText "exp";
+			while { true } do
+			{
+				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				{
+					_state = STATE_EXIT;
+				};
+				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
+				{ 
+					_unitInfos = [_group] call fnc_aiz_GroupReduce;
+					_state = STATE_REDUCED;
+				};
+				if ([_group] call fnc_aiz_GroupAliveCount < 2) exitWith
+				{
+					_state = STATE_FLEE;
+				};
+				
+				_markerName setMarkerPos (getPos (leader _group));
+				Sleep 10;				
+			};
+		};
+		case STATE_REDUCED: 
+		{ 
+			diag_log "STATE_REDUCED";
+			_markerName setMarkerText "red";
+			while { true } do
+			{
+				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				{
+					_state = STATE_EXIT;
+				};
+				if ([getPos (leader _group), EXPAND_DISTANCE] call fnc_aiz_IsBlueNear) exitWith 
+				{ 
+					[_group, _unitInfos] call fnc_aiz_GroupExpand;
+					_state = STATE_EXPANDED;
+				};
+				
+				_markerName setMarkerPos (getPos (leader _group));
+				Sleep 5;
+			};
+		};	
+		case STATE_FLEE:
+		{ 
+			_markerName setMarkerText "flee";
+			private _laptop = [getPos (leader _group), 2000] call fnc_aiz_FindCampLaptop;
+			if (!isNull _laptop) then
+			{
+				[_zoneIndex, _waypointPool, _waypointCount, ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"], getPos _laptop] spawn fnc_aiz_RunGroup;
+			}
+			else
+			{
+				private _tent = [getPos (leader _group), 2000] call fnc_aiz_FindCampTent;
+				if (!isNull _tent) then
+				{
+					[_zoneIndex, _waypointPool, _waypointCount, ["O_recon_TL_F", "O_soldierU_AT_F", "O_support_MG_F", "O_spotter_F", "O_diver_F"], getPos _tent] spawn fnc_aiz_RunGroup;
+					deleteVehicle _tent;
+				};
+			};
+			
+			// Hier sollte der Flucht Code rein. 
+			// Da mir noch Zeit fehlt, begehen die Einheiten einfach Selbstmord.
+			{
+				_x setDamage 1;
+			} foreach units _group;
 
-	if (!(aizZoneActive select _zoneIndex)) exitWith {diag_log "inactive 2";};
-diag_log format["RunGroup%1: wird erweitert",_zoneIndex];
-	
-	// expand group
-	for "_i" from 1 to (count _unitClassnames)-1 do
-	{
-		_unit = _group createUnit [_unitClassnames select _i, (getPos (leader _group)), [], 0, "FORM"];
-		_unit setDir (getDir (leader _group));
-		_unit setUnitAbility (random 1);	
+			// Warten und prüfen
+			while { true } do
+			{
+				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				{
+					_state = STATE_EXIT;
+				};
+				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
+				{ 
+					_state = STATE_EXIT;
+				};
+				
+				_markerName setMarkerPos (getPos (leader _group));
+				Sleep 10;
+			};
+		};
+		case STATE_EXIT:
+		{ 
+			_markerName setMarkerText "exit";
+			diag_log "STATE_EXIT";
+			_run = false; // Exit
+		};	
+		default 
+		{ 
+			[format["Invalid state for state-machine: _state=%1", _state]] call BIS_fnc_error;
+			_run = false; // Emergency exit
+		};
 	};
-
-	// Zustand "expanded"	
-	while { true } do
-	{
-		Sleep 5;
-diag_log format["RunGroup%1: ist erweitert units: %2",_zoneIndex, count (units _group)];
-		_markerName setMarkerPos (getPos (leader _group));
-		if (!(aizZoneActive select _zoneIndex) || (count (units _group) == 0)) exitWith {diag_log "inactive 3";};
-		if (count ((getPos (leader _group)) nearEntities ["SoldierWB", 600]) == 0) exitWith {diag_log "enemy near";};
-//diag_log format["RunGroup%1: ist erweitert",_zoneIndex];
-	};
-	
-	if (!(aizZoneActive select _zoneIndex) || (count (units _group) == 0)) exitWith {diag_log "inactive 4";};
-diag_log format["RunGroup%1: wird reduziert",_zoneIndex];
-
-	// reduce group
-	while { (count units _group > 1) } do
-	{
-		_unit = (units _group) select (count (units _group)-1);		
-		deleteVehicle _unit;		
-	};	
 };
 
 //================================================================================
-// Nachschub anfordern
-//================================================================================
-if (count (units _group) == 0) then
-{
-};
-
-//================================================================================
-// Gruppe auflösen
+// So gut aufräumen wie es geht
 //================================================================================
 { deleteVehicle _x; } foreach (units _group);
 { deleteWaypoint _x; } foreach (waypoints _group);
 deleteGroup _group;
-diag_log format["RunGroup%1: aufgeloest", _zoneIndex];
 deleteMarker _markerName;
+diag_log format["fnc_aiz_RunGroupCampField%1: Group deleted", _zoneIndex];
+
+
+
+
+
+
+
+
+
+
+

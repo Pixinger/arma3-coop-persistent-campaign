@@ -2,6 +2,15 @@ if (isServer) then
 {
 	fnc_aiz_IsInGeoInfo = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsInGeoInfo.sqf";
 	fnc_aiz_IsBlueNear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsBlueNear.sqf";
+	fnc_aiz_GetUnitDamageArray = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetUnitDamageArray.sqf";
+	fnc_aiz_SetUnitDamageArray = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SetUnitDamageArray.sqf";
+	fnc_aiz_GroupReduce = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupReduce.sqf";
+	fnc_aiz_GroupExpand = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupExpand.sqf";
+	fnc_aiz_GroupTaskDefend = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupTaskDefend.sqf";
+	fnc_aiz_GroupAliveCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupAliveCount.sqf";
+	fnc_aiz_FindCampTent = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTent.sqf";
+	fnc_aiz_FindCampLaptop = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampLaptop.sqf";
+	
 
 	fnc_aiz_GetRandomPosition = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPosition.sqf";
 	fnc_aiz_GetRandomPositionRoad = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPositionRoad.sqf";

@@ -6,6 +6,9 @@ if (hasInterface) then
 	[] spawn {
 		waitUntil { !isNull player };
 		waituntil {!(IsNull (findDisplay 46))};
+		
+		player allowDamage false;
+		player setCaptive true;
 
 		private["_tmp"];
 		// 20=T, 22=U, 86=<, 24=O, 21=Z, 220=rwin, 221=rapp, 37=K, 15=TAB, 57=SPACE 
