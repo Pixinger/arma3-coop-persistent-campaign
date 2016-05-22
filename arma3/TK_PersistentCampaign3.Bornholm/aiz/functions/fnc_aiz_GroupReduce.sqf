@@ -1,4 +1,4 @@
-diag_log format["fnc_aiz_GroupReduce: _this=%1", _this];
+//diag_log format["fnc_aiz_GroupReduce: _this=%1", _this];
 private _group = _this select 0;
 
 if ((count units _group) == 0) exitWith {};
@@ -18,5 +18,5 @@ private _unitInfos = [];
 	};
 } foreach _unitsWithoutLeader;
 
-diag_log format["fnc_aiz_GroupReduce: _unitInfos=%1", _unitInfos];
+//diag_log format["fnc_aiz_GroupReduce: _unitInfos=%1", _unitInfos];
 _unitInfos;

@@ -75,7 +75,6 @@ while { _run } do
 	{
 		case STATE_EXPANDED: 
 		{ 
-			diag_log "STATE_EXPANDED";
 			_markerName setMarkerText "exp";
 			while { true } do
 			{
@@ -99,7 +98,6 @@ while { _run } do
 		};
 		case STATE_REDUCED: 
 		{ 
-			diag_log "STATE_REDUCED";
 			_markerName setMarkerText "red";
 			while { true } do
 			{
@@ -121,18 +119,21 @@ while { _run } do
 		{ 
 			_markerName setMarkerText "flee";
 			// Da sich die Gruppe nun aufgelöst hat, suchen wir nach Verstärkung
-			private _laptop = [getPos (leader _group), 2000] call fnc_aiz_FindCampLaptop;
+			diag_log format["fnc_aiz_RunGroup: Group destroyed. zoneIndex=%1", _zoneIndex];
+			private _laptop = [getPos (leader _group), 1500] call fnc_aiz_FindCampLaptop;
 			if (!isNull _laptop) then
 			{
 				// .. Verstärkung aus der Stadt holen
+				diag_log format["fnc_aiz_RunGroup: Support from campTown at position=%1", getPos _laptop];
 				[_zoneIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
 			}
 			else
 			{
-				private _tent = [getPos (leader _group), 2000] call fnc_aiz_FindCampTent;
+				private _tent = [getPos (leader _group), 1500] call fnc_aiz_FindCampTent;
 				if (!isNull _tent) then
 				{
 					// .. Verstärkung aus dem Feld holen => Zelt löschen
+					diag_log format["fnc_aiz_RunGroup: Support from campField at position=%1", getPos _tent];
 					[_zoneIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
 					deleteVehicle _tent;
 				}
@@ -141,8 +142,9 @@ while { _run } do
 					// Keine Verstärkung gefunden. Den GruppenCount für diese Zone verringern.
 					private "_zoneData";
 					call compile format["_zoneData = aizZoneData%1;", _zoneIndex];
-					private _groupCount = _zoneData select 4;
-					_zoneData set [4, _groupCount - 1];					
+					private _groupCount = (_zoneData select 4) - 1;
+					_zoneData set [4, _groupCount];	
+					diag_log format["fnc_aiz_RunGroup: Group destroyed. No support available. GroupCount is now %1.", _groupCount];
 				};
 			};
 			
@@ -189,7 +191,7 @@ while { _run } do
 { deleteWaypoint _x; } foreach (waypoints _group);
 deleteGroup _group;
 deleteMarker _markerName;
-diag_log format["fnc_aiz_RunGroupCampField%1: Group deleted", _zoneIndex];
+diag_log format["fnc_aiz_RunGroup%1: Group deleted", _zoneIndex];
 
 
 

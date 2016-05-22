@@ -48,7 +48,7 @@ for "_i" from 1 to 20 do
 //==========================================================================================
 if (count _zoneDataSet != 4) then
 {
-	diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
+	//diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
 	//------------------------------------------------------------------------------------------
 	// Nach einer Position für CAMP-TOWN suchen
 	//------------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ if (count _zoneDataSet != 4) then
 } 
 else
 {
-	diag_log format["AIZ Init-Zone %1 (database)", _zoneIndex];
+	//diag_log format["AIZ Init-Zone %1 (database)", _zoneIndex];
 	
 	if (count _zoneDataSet >= 1) then
 	{

@@ -44,9 +44,9 @@ if (isServer) then
 	fnc_aiz_ZoneResume = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneResume.sqf";
 	fnc_aiz_ZonePause = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZonePause.sqf";
 
-	fnc_aiz_DatabaseSave = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseSave.sqf";
 	fnc_aiz_DatabaseLoad = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseLoad.sqf";
-	fnc_aiz_DatabaseClear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseClear.sqf";
+	fnc_aiz_DatabaseSaveServer = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseSaveServer.sqf";
+	fnc_aiz_DatabaseClearServer = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseClearServer.sqf";
 
 	fnc_aiz_OnTriggerActivated = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_OnTriggerActivated.sqf";
 	fnc_aiz_OnTriggerDeactivated = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_OnTriggerDeactivated.sqf";

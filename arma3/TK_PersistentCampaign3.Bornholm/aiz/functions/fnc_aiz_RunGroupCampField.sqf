@@ -31,7 +31,6 @@ while { _run } do
 	{
 		case STATE_EXPANDED: 
 		{ 
-			diag_log "STATE_EXPANDED";
 			while { true } do
 			{
 				if (!(aizZoneActive select _zoneIndex)) exitWith 
@@ -53,7 +52,6 @@ while { _run } do
 		};
 		case STATE_REDUCED: 
 		{ 
-			diag_log "STATE_REDUCED";
 			while { true } do
 			{
 				if (!(aizZoneActive select _zoneIndex)) exitWith 
@@ -95,7 +93,6 @@ while { _run } do
 		};
 		case STATE_EXIT:
 		{ 
-			diag_log "STATE_EXIT";
 			_run = false; // Exit
 		};	
 		default 

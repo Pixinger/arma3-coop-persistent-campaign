@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=195;
+		nextID=209;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1966.9502,62.533928,8795.0234};
-		dir[]={-0.0036342014,-0.43643755,0.89973456};
-		up[]={-0.0017626657,0.89973444,0.43643638};
-		aside[]={0.99999928,3.8133294e-008,0.0040394822};
+		pos[]={1997.1681,62.533928,8797.9336};
+		dir[]={-0.21183009,-0.49575964,0.84223908};
+		up[]={-0.12092242,0.86845982,0.48078927};
+		aside[]={0.96980625,-3.9581209e-008,0.24391477};
 	};
 };
 binarizationWanted=0;
@@ -67,7 +67,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress)";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.1";
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
 		startWind=0.1;
@@ -88,7 +88,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=66;
+		items=73;
 		class Item0
 		{
 			dataType="Group";
@@ -996,6 +996,224 @@ class Mission
 			b=1000;
 			id=192;
 			atlOffset=1.6736425;
+		};
+		class Item66
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1989.938,26.74609,8851.5273};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s2";
+						isPlayable=1;
+					};
+					id=196;
+					type="B_Soldier_F";
+					atlOffset=1.9073486e-006;
+				};
+			};
+			class Attributes
+			{
+			};
+			id=195;
+			atlOffset=1.9073486e-006;
+		};
+		class Item67
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1993.448,27.021461,8851.2578};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s3";
+						isPlayable=1;
+					};
+					id=198;
+					type="B_Soldier_F";
+					atlOffset=0.027000427;
+				};
+			};
+			class Attributes
+			{
+			};
+			id=197;
+			atlOffset=0.027000427;
+		};
+		class Item68
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1996.584,27.184395,8850.8486};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s4";
+						isPlayable=1;
+					};
+					id=200;
+					type="B_Soldier_F";
+					atlOffset=-0.010000229;
+				};
+			};
+			class Attributes
+			{
+			};
+			id=199;
+			atlOffset=-0.010000229;
+		};
+		class Item69
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1986.7581,26.770189,8847.2813};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s5";
+						isPlayable=1;
+					};
+					id=202;
+					type="B_Soldier_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=201;
+		};
+		class Item70
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1989.577,26.781622,8847.2988};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s6";
+						isPlayable=1;
+					};
+					id=204;
+					type="B_Soldier_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=203;
+		};
+		class Item71
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1993.087,26.982946,8847.0303};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s7";
+						isPlayable=1;
+					};
+					id=206;
+					type="B_Soldier_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=205;
+		};
+		class Item72
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1996.223,27.310017,8846.6201};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="s8";
+						isPlayable=1;
+					};
+					id=208;
+					type="B_Soldier_F";
+					atlOffset=-1.9073486e-006;
+				};
+			};
+			class Attributes
+			{
+			};
+			id=207;
+			atlOffset=-1.9073486e-006;
 		};
 	};
 };

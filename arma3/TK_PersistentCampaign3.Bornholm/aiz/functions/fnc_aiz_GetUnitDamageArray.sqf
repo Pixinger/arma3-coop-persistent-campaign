@@ -9,5 +9,5 @@ while { !isNil "_damage" } do
 	_i = _i + 1;
 	_damage = _unit getHitIndex _i;
 };
-diag_log format["fnc_aiz_GetUnitDamageArray: %1", _damageArray];
+//diag_log format["fnc_aiz_GetUnitDamageArray: %1", _damageArray];
 _damageArray;

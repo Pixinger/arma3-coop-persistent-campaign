@@ -31,7 +31,6 @@ while { _run } do
 	{
 		case STATE_EXPANDED: 
 		{ 
-			diag_log "STATE_EXPANDED";
 			while { true } do
 			{
 				if (!(aizZoneActive select _zoneIndex)) exitWith 
@@ -53,7 +52,6 @@ while { _run } do
 		};
 		case STATE_REDUCED: 
 		{ 
-			diag_log "STATE_REDUCED";
 			while { true } do
 			{
 				if (!(aizZoneActive select _zoneIndex)) exitWith 
@@ -73,6 +71,7 @@ while { _run } do
 		case STATE_FLEE:
 		{ 
 			// Checkpoint als Zerstört markieren
+			diag_log format["fnc_aiz_RunGroupCheckpoint: Checkpoint destroyed. zoneIndex=%1 position=%2", _zoneIndex, _checkpointPosition];
 			_checkpoint set [0, []];
 			
 			// Hier sollte der Flucht Code rein. 
