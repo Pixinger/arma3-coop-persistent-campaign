@@ -72,6 +72,9 @@ while { _run } do
 		};	
 		case STATE_FLEE:
 		{ 
+			// Checkpoint als Zerstört markieren
+			_checkpoint set [0, []];
+			
 			// Hier sollte der Flucht Code rein. 
 			// Da mir noch Zeit fehlt, begehen die Einheiten einfach Selbstmord.
 			{

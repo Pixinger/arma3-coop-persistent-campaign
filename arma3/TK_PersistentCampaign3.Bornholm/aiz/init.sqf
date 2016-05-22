@@ -2,14 +2,20 @@
 
 if (isServer) then
 {
-	aizZoneInitCompleted = false;
-	aizZoneActive = [];
-	for "_i" from 0 to 63 do 
+	// ------------------------------------------------------------------------------
+	// Datenbank laden
+	private _database = [] call fnc_aiz_DatabaseLoad;
+	
+	// ------------------------------------------------------------------------------
+	// Zonen initialisieren
+	for "_i" from 0 to aizZoneCount do 
 	{
 		aizZoneActive pushBack false;
-		[_i] call fnc_aiz_ZoneInit;
+		private _dataSet = if (count _database > _i) then { _database select _i } else { [] };
+		[_i, _dataSet] call fnc_aiz_ZoneInit;
 	};
-	diag_log "init.sqf: isLoaded";
 
+	// ------------------------------------------------------------------------------
+	// Beendigung signalisieren
 	aizZoneInitCompleted = true;
 };

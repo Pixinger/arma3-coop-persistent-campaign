@@ -1,4 +1,5 @@
 private _zoneIndex = _this select 0;
+private _zoneDataSet = _this select 1;
 
 //==========================================================================================
 // Marker auslesen
@@ -14,26 +15,47 @@ private _markerIsRectangle = if (markerShape _markerName == "rectangle") then { 
 //==========================================================================================
 // Variablen definieren
 //==========================================================================================
-private _campsTown = [];		// [[house, housePosIndex], respawns]
+private _campsTown = [];		// [house, housePosIndex]
 private _campsField = [];		// [position, respawns]
 private _checkpoints = [];		// [position, direction]
-private _waypointPool = [];		// [position]
 private _groupCount = 0;
 
 private _geoInfo = [_markerName, 0];
 
-//==========================================================================================
-// Waypoints generieren oder aus DB übernehmen
-//==========================================================================================
-if (true) then
+//------------------------------------------------------------------------------------------
+// WaypointPool erstellen
+//------------------------------------------------------------------------------------------
+private _waypointPool = [];		// [position]
+for "_i" from 1 to 20 do
 {
+	_randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition; // [position]
+	if (count _randomPosition > 0) then
+	{
+		_waypointPool pushBack _randomPosition;
+			
+		private["_markerNameWp"];
+		_markerNameWp = createMarker [format["markerWP%1_%2", _zoneIndex, floor(random 999999)], _randomPosition];
+		_markerNameWp setMarkerShape "ICON";
+		_markerNameWp setMarkerType "Waypoint";
+		_markerNameWp setMarkerSize [0.2, 0.2];
+		_markerNameWp setMarkerColor "ColorBlack"; 
+		_markerNameWp setMarkerAlpha 0.5;			
+	};
+};
+
+//==========================================================================================
+// Daten generieren oder aus DB übernehmen
+//==========================================================================================
+if (count _zoneDataSet != 4) then
+{
+	diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
 	//------------------------------------------------------------------------------------------
 	// Nach einer Position für CAMP-TOWN suchen
 	//------------------------------------------------------------------------------------------
 	private _randomPosition = [_geoInfo, [true, [20, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
 	if (count _randomPosition > 0) then
 	{		
-		_campsTown pushBack _randomPosition;
+		_campsTown pushBack _randomPosition;// [house, buildingPosIndex]
 	};
 	
 	
@@ -43,38 +65,16 @@ if (true) then
 	_randomPosition = [_geoInfo, [5]] call fnc_aiz_GetRandomPositionField; // [position]
 	if (count _randomPosition > 0) then
 	{			
-		_campsField pushBack [_randomPosition, 6 + (random 6)];
+		_campsField pushBack [_randomPosition, 6 + (random 6)]; // [position, respawnCount]
 	};
 	
 	//------------------------------------------------------------------------------------------
 	// Nach Checkpoints für diese Zone suchen
 	//------------------------------------------------------------------------------------------
-	_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position]
+	_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position, direction]
 	if (count _randomPosition > 0) then
 	{
-		_checkpoints pushBack _randomPosition;
-	};
-
-
-	//------------------------------------------------------------------------------------------
-	// Nach Wegpunkten für diese Zone suchen
-	//------------------------------------------------------------------------------------------
-	for "_i" from 1 to 20 do
-	{
-		_randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition; // [position]
-		if (count _randomPosition > 0) then
-		{
-			_waypointPool pushBack _randomPosition;
-				
-			private["_markerNameWp"];
-			_markerNameWp = createMarker [format["markerWP%1_%2", _zoneIndex, floor(random 999999)], _randomPosition];
-			_markerNameWp setMarkerShape "ICON";
-			_markerNameWp setMarkerType "Waypoint";
-			_markerNameWp setMarkerSize [0.2, 0.2];
-			_markerNameWp setMarkerColor "ColorBlack"; 
-			_markerNameWp setMarkerAlpha 0.5;
-				
-		};
+		_checkpoints pushBack _randomPosition; // [position, direction]
 	};
 	
 	//------------------------------------------------------------------------------------------
@@ -84,11 +84,27 @@ if (true) then
 } 
 else
 {
-	// _campsTown  = _zoneParameters select 0;
-	// _campsField = _zoneParameters select 1;
-	// _checkpoints = _zoneParameters select 2;	
-	// _waypointPool = _zoneParameters select 3;
-	// _groupCount = _zoneParameters select 4;	
+	diag_log format["AIZ Init-Zone %1 (database)", _zoneIndex];
+	
+	if (count _zoneDataSet >= 1) then
+	{
+		_campsTown  = (_zoneDataSet select 0); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+	};
+	
+	if (count _zoneDataSet >= 2) then
+	{
+		_campsField  = (_zoneDataSet select 1); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+	};
+	
+	if (count _zoneDataSet >= 3) then
+	{
+		_checkpoints  = (_zoneDataSet select 2); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+	};
+	
+	if (count _zoneDataSet >= 4) then
+	{
+		_groupCount  = (_zoneDataSet select 3); 		// [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+	};
 };
 
 //==========================================================================================
