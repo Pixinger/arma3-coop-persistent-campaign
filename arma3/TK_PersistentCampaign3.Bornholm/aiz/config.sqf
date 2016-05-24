@@ -8,6 +8,9 @@ aizCampFieldClassnames = ["Land_TentDome_F", "Land_TentA_F"];
 aizCampFieldMinRespawnDistance = 250;
 aizCampFieldRadius = 50;
 
+aizAISkillMin = 0.5;
+aizAISkillMax = 0.5;
+
 // ------------------------------------------------------------------------------
 // Runtime Variablen initialisieren (nicht verändern!)
 aizZonesSaving = false;

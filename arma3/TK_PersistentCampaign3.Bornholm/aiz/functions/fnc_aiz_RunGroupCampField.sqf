@@ -14,7 +14,7 @@ _camp params ["_campPosition", "_campRespawns"];
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
-private _group = [_campPosition, EAST, _unitClassnames] call BIS_fnc_spawnGroup;
+private _group = [_campPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
 _group setBehaviour "SAFE";
 [_group, _campPosition] call fnc_aiz_GroupTaskDefend;
 

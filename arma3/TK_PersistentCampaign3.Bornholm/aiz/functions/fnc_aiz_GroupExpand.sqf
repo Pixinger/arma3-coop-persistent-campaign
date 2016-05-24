@@ -12,8 +12,8 @@ private _leader = leader _group;
 	[_unit, _damageArray] call fnc_aiz_SetUnitDamageArray;
 } foreach _unitInfos;
 
-_group setBehaviour (behaviour (leader _group));
-_group setSpeedMode (speedMode (leader _group));
-_group setCombatMode (combatMode (leader _group));
+_group setBehaviour (behaviour _leader);
+_group setSpeedMode (speedMode _leader);
+_group setCombatMode (combatMode _leader);
 
 true;

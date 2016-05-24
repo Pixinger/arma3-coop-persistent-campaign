@@ -14,7 +14,7 @@ _checkpoint params ["_checkpointPosition", "_checkpointDirection"];
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
-private _group = [_checkpointPosition, EAST, _unitClassnames] call BIS_fnc_spawnGroup;
+private _group = [_checkpointPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
 _group setBehaviour "SAFE";
 [_group, _checkpointPosition] call fnc_aiz_GroupTaskDefend;
 

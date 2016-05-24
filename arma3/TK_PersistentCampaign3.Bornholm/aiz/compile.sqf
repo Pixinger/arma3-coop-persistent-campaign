@@ -16,6 +16,7 @@ if (isServer) then
 	fnc_aiz_FindCampFieldRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawn.sqf";
 	fnc_aiz_FindCampFieldRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawnCount.sqf";
 	fnc_aiz_ConfiscateItem = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ConfiscateItem.sqf";
+	fnc_aiz_SpawnGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SpawnGroup.sqf";
 	
 
 	fnc_aiz_GetRandomInfClassnames = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomInfClassnames.sqf";

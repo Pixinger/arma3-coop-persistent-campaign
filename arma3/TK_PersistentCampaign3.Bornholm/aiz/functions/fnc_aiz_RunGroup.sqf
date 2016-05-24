@@ -20,7 +20,7 @@ if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypoin
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
-private _group = [_startPosition, EAST, _unitClassnames] call BIS_fnc_spawnGroup;
+private _group = [_startPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
 _group setBehaviour "SAFE";
 _group setSpeedMode "LIMITED";
 _group setFormation "STAG COLUMN";
@@ -36,13 +36,8 @@ for "_i" from 1 to _waypointCount - 1 do
 	private _waypoint = _group addWaypoint [_waypointPool call fnc_aiz_RandomElement, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointCompletionRadius 20;
-
-	// Am ersten Wegpunkt Formation und Geschwindigkeit setzen.
-	if (_i == 1) then
-	{
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointFormation "STAG COLUMN";
-	};
+	_waypoint setWaypointSpeed "LIMITED";
+	_waypoint setWaypointFormation "STAG COLUMN";
 };
 
 // Zurück zum ersten Wegpunkt gehen

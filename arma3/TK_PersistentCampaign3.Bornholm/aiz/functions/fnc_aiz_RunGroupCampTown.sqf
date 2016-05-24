@@ -15,7 +15,7 @@ _camp params ["_house", "_housePosIndex"];
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
-private _group = [(getPos _house), EAST, _unitClassnames] call BIS_fnc_spawnGroup;
+private _group = [(getPos _house), EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
 _group setBehaviour "SAFE";
 [_group, (getPos _house)] call fnc_aiz_GroupTaskDefend;
 
