@@ -4,6 +4,12 @@ if (isServer) then
 	waitUntil { !aizZonesSaving };
 	aizZonesSaving = true;
 
+	// ------------------------------------------------------------------------------
+	// Bestätigung ausgeben
+	"AIZ-Database saving..." remoteExec ["hint"];	
+
+	// ------------------------------------------------------------------------------
+	// Durch alle Zonen interieren
 	private _database = [];
 	for "_i" from 0 to aizZoneCount do 
 	{
@@ -16,8 +22,8 @@ if (isServer) then
 
 			// ------------------------------------------------------------------------------
 			private _dataSetCampsTown = [];
-			{				
-				if (count (nearestObjects[((_x select 0) buildingPos (_x select 1)), aizCampTownClassnames, 5]) > 0) then 
+			{			
+				if (count ([(_x select 0) buildingPos (_x select 1), 5] call fnc_aiz_FindCampTownRespawnCount) > 0) then 
 				{ 
 					_dataSetCampsTown pushBack [getPos (_x select 0), (_x select 1)]; //=[_housePosition, buildingPosIndex]
 				};
@@ -26,7 +32,7 @@ if (isServer) then
 			// ------------------------------------------------------------------------------
 			private _dataSetCampsField = [];
 			{
-				private _tentCount = [_x select 0, aizCampFieldRadius] call fnc_aiz_FindCampTentCount;
+				private _tentCount = [_x select 0, aizCampFieldRadius] call fnc_aiz_FindCampFieldRespawnCount;
 				if (_tentCount > 0) then 
 				{ 
 					_dataSetCampsField pushBack [_x select 0, _tentCount]; 
@@ -73,7 +79,7 @@ if (isServer) then
 
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben
-	"AIZ-Database saved" remoteExec ["hint"];	
+	"AIZ-Database saving completed!" remoteExec ["hint"];	
 
 	// ------------------------------------------------------------------------------
 	// Nachbereiten

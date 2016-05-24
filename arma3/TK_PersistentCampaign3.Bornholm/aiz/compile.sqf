@@ -11,9 +11,11 @@ if (isServer) then
 	fnc_aiz_GroupExpand = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupExpand.sqf";
 	fnc_aiz_GroupTaskDefend = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupTaskDefend.sqf";
 	fnc_aiz_GroupAliveCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupAliveCount.sqf";
-	fnc_aiz_FindCampTent = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTent.sqf";
-	fnc_aiz_FindCampTentCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTentCount.sqf";
-	fnc_aiz_FindCampLaptop = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampLaptop.sqf";
+	fnc_aiz_FindCampTownRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTownRespawn.sqf";
+	fnc_aiz_FindCampTownRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTownRespawnCount.sqf";
+	fnc_aiz_FindCampFieldRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawn.sqf";
+	fnc_aiz_FindCampFieldRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawnCount.sqf";
+	fnc_aiz_ConfiscateItem = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ConfiscateItem.sqf";
 	
 
 	fnc_aiz_GetRandomInfClassnames = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomInfClassnames.sqf";

@@ -17,10 +17,13 @@ else
 	
 	if (_cursorTarget distance player < 10) then 
 	{
-		if (_cursorTargetType in logisticObjectsTransportables) then { _buttons pushBack ["Aufladen", true, true, fnc_Logistic_Object_Load];};
-		
+		// AIZ Menüs
+		if (_cursorTargetType in aizCampTownClassnames) then { _buttons pushBack ["Gerät beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
+		if (_cursorTargetType in aizCampFieldClassnames) then { _buttons pushBack ["Zelt beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
+
+		// Logistic Menüs
+		if (_cursorTargetType in logisticObjectsTransportables) then { _buttons pushBack ["Aufladen", true, true, fnc_Logistic_Object_Load];};	
 		if (_cursorTargetType in logisticTransporters) then { _buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_Unload];};
-		
 		if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
 	};
 };

@@ -131,7 +131,7 @@ while { _run } do
 			}
 			else
 			{
-				private _tent = [getPos (leader _group), 1500] call fnc_aiz_FindCampTent;
+				private _tent = [getPos (leader _group), 1500] call fnc_aiz_FindCampTownRespawn;
 				if (!isNull _tent) then
 				{
 					// .. Verstärkung aus dem Feld holen => Zelt löschen
