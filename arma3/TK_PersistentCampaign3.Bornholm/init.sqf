@@ -1,6 +1,6 @@
 setviewdistance 1500;
 setObjectViewDistance 1500;
-setTerrainGrid 50;
+setTerrainGrid 25;
 
 waituntil {!isnil "bis_fnc_init"};
 enableSaving [false, false];

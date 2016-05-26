@@ -1,5 +1,24 @@
-private _zoneIndex = _this select 0;
-private _zoneDataSet = _this select 1;
+//==========================================================================================
+// DEFINES
+//==========================================================================================
+#define WAYPOINT_COUNT_PER_ZONE			20
+
+#define MIN_CAMPSTOWN_PER_ZONE			0
+#define MAX_CAMPSTOWN_PER_ZONE			1
+#define CHANCE_CAMPSTOWN_PER_ZONE		1.5
+
+#define MIN_CAMPSFIELD_PER_ZONE			0
+#define MAX_CAMPSFIELD_PER_ZONE			1
+#define CHANCE_CAMPSFIELD_PER_ZONE		3
+
+#define MIN_CHECKPOINTS_PER_ZONE		0
+#define MAX_CHECKPOINTS_PER_ZONE		1
+#define CHANCE_CHECKPOINTS_PER_ZONE		1.5
+
+//==========================================================================================
+// THIS
+//==========================================================================================
+params["_zoneIndex", "_zoneDataSet"];
 
 //==========================================================================================
 // Marker auslesen
@@ -19,14 +38,13 @@ private _campsTown = [];		// [house, housePosIndex]
 private _campsField = [];		// [position, respawns]
 private _checkpoints = [];		// [position, direction]
 private _groupCount = 0;
-
 private _geoInfo = [_markerName, 0];
 
 //------------------------------------------------------------------------------------------
 // WaypointPool erstellen
 //------------------------------------------------------------------------------------------
 private _waypointPool = [];		// [position]
-for "_i" from 1 to 20 do
+for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 {
 	_randomPosition = [_geoInfo, [true, false, 50]] call fnc_aiz_GetRandomPosition; // [position]
 	if (count _randomPosition > 0) then
@@ -48,39 +66,64 @@ for "_i" from 1 to 20 do
 //==========================================================================================
 if (count _zoneDataSet != 4) then
 {
+	private _campsTownCountPerZone = MIN_CAMPSTOWN_PER_ZONE + ( floor(random(MAX_CAMPSTOWN_PER_ZONE - MIN_CAMPSTOWN_PER_ZONE + 1)) );
+	private _campsFieldCountPerZone = MIN_CAMPSFIELD_PER_ZONE + ( floor(random(MAX_CAMPSFIELD_PER_ZONE - MIN_CAMPSFIELD_PER_ZONE + 1)) );
+	private _checkpointsCountPerZone = MIN_CHECKPOINTS_PER_ZONE + ( floor(random(MAX_CHECKPOINTS_PER_ZONE - MIN_CHECKPOINTS_PER_ZONE + 1)) );
+
+
 	//diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
 	//------------------------------------------------------------------------------------------
 	// Nach einer Position für CAMP-TOWN suchen
 	//------------------------------------------------------------------------------------------
-	private _randomPosition = [_geoInfo, [true, [20, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
-	if (count _randomPosition > 0) then
-	{		
-		_campsTown pushBack _randomPosition;// [house, buildingPosIndex]
+	private _randomPosition = [0,0,0];
+	if (random CHANCE_CAMPSTOWN_PER_ZONE <= 1) then
+	{
+		for [{_x= 0},{_x < _campsTownCountPerZone},{_x = _x + 1}] do 
+		{
+			_randomPosition = [_geoInfo, [true, [20, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
+			if (count _randomPosition > 0) then
+			{		
+				_campsTown pushBack _randomPosition;// [house, buildingPosIndex]
+			};
+		};
 	};
-	
 	
 	//------------------------------------------------------------------------------------------
 	// Nach einer Position für CAMP-FIELD suchen
 	//------------------------------------------------------------------------------------------
-	_randomPosition = [_geoInfo, [5]] call fnc_aiz_GetRandomPositionField; // [position]
-	if (count _randomPosition > 0) then
-	{			
-		_campsField pushBack [_randomPosition, 6 + (random 6)]; // [position, respawnCount]
+	if (random CHANCE_CAMPSFIELD_PER_ZONE <= 1) then
+	{
+		for [{_x= 0},{_x < _campsFieldCountPerZone},{_x = _x + 1}] do 
+		{
+			_randomPosition = [_geoInfo, [5]] call fnc_aiz_GetRandomPositionField; // [position]
+			if (count _randomPosition > 0) then
+			{			
+				_campsField pushBack [_randomPosition, 6 + (random 6)]; // [position, respawnCount]
+			};
+		};
 	};
-	
+			
 	//------------------------------------------------------------------------------------------
 	// Nach Checkpoints für diese Zone suchen
 	//------------------------------------------------------------------------------------------
-	_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position, direction]
-	if (count _randomPosition > 0) then
+	if (random CHANCE_CHECKPOINTS_PER_ZONE <= 1) then
 	{
-		_checkpoints pushBack _randomPosition; // [position, direction]
+		for [{_x= 0},{_x < _checkpointsCountPerZone},{_x = _x + 1}] do 
+		{
+			_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position, direction]
+			if (count _randomPosition > 0) then
+			{
+				_checkpoints pushBack _randomPosition; // [position, direction]
+			};
+		};
 	};
-	
+		
 	//------------------------------------------------------------------------------------------
 	// Festlegen wieviele Gruppen es geben soll
 	//------------------------------------------------------------------------------------------
-	_groupCount = floor (count _waypointPool / 5);
+	_groupCount = floor (count _waypointPool / (4.5 + random 2.5));
+	if ((_groupCount < 1) && (count _waypointPool > 3)) then { _groupCount = 1; };
+	if (_groupCount < 0) then { _groupCount = 0; };	
 } 
 else
 {

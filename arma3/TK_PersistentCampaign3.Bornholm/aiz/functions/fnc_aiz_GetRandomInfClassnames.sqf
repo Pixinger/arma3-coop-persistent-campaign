@@ -1,4 +1,4 @@
-private _unitCount = if (count _this == 0) then { (2 + floor (random 9)) } else { (_this select 0) };
+private _unitCount = if (count _this == 0) then { (aizGroupSizeMin + floor (random (aizGroupSizeMax-aizGroupSizeMin)) } else { (_this select 0) };
 
 if (_unitCount == 1) exitWith
 {

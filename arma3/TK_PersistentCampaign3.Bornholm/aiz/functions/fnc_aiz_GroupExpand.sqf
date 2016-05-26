@@ -10,6 +10,9 @@ private _leader = leader _group;
 	// TODO: Set weapon loadout
 	_unit setUnitAbility _skill;
 	[_unit, _damageArray] call fnc_aiz_SetUnitDamageArray;
+	_unit setBehaviour (behaviour _leader);
+	_unit setSpeedMode (speedMode _leader);
+	_unit setCombatMode (combatMode _leader);
 } foreach _unitInfos;
 
 _group setBehaviour (behaviour _leader);
