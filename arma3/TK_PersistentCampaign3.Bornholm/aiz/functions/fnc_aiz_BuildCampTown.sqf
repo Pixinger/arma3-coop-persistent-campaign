@@ -7,7 +7,7 @@ _markerName setMarkerShape "ICON";
 _markerName setMarkerType "o_hq";
 _markerName setMarkerSize [0.5, 0.5];
 _markerName setMarkerText format["t %1", _positionIndex];
-_markerName setMarkerColor "ColorRed"; 
+_markerName setMarkerColor "ColorOrange"; 
 _markerName setMarkerAlpha 0.8;
 
 // Als erstes die Schranke erstellen, da sich alles um diese Schranke dreht. 

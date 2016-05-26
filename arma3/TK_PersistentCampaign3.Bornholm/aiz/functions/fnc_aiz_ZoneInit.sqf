@@ -3,16 +3,16 @@
 //==========================================================================================
 #define WAYPOINT_COUNT_PER_ZONE			20
 
-#define MIN_CAMPSTOWN_PER_ZONE			0
+#define MIN_CAMPSTOWN_PER_ZONE			1
 #define MAX_CAMPSTOWN_PER_ZONE			1
-#define CHANCE_CAMPSTOWN_PER_ZONE		1.5
+#define CHANCE_CAMPSTOWN_PER_ZONE		1
 
-#define MIN_CAMPSFIELD_PER_ZONE			0
-#define MAX_CAMPSFIELD_PER_ZONE			1
+#define MIN_CAMPSFIELD_PER_ZONE			1
+#define MAX_CAMPSFIELD_PER_ZONE			2
 #define CHANCE_CAMPSFIELD_PER_ZONE		3
 
-#define MIN_CHECKPOINTS_PER_ZONE		0
-#define MAX_CHECKPOINTS_PER_ZONE		1
+#define MIN_CHECKPOINTS_PER_ZONE		1
+#define MAX_CHECKPOINTS_PER_ZONE		3
 #define CHANCE_CHECKPOINTS_PER_ZONE		1.5
 
 //==========================================================================================
@@ -66,10 +66,10 @@ for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 //==========================================================================================
 if (count _zoneDataSet != 4) then
 {
-	private _campsTownCountPerZone = MIN_CAMPSTOWN_PER_ZONE + ( floor(random(MAX_CAMPSTOWN_PER_ZONE - MIN_CAMPSTOWN_PER_ZONE + 1)) );
-	private _campsFieldCountPerZone = MIN_CAMPSFIELD_PER_ZONE + ( floor(random(MAX_CAMPSFIELD_PER_ZONE - MIN_CAMPSFIELD_PER_ZONE + 1)) );
-	private _checkpointsCountPerZone = MIN_CHECKPOINTS_PER_ZONE + ( floor(random(MAX_CHECKPOINTS_PER_ZONE - MIN_CHECKPOINTS_PER_ZONE + 1)) );
-
+	private _campsTownCountPerZone = [MIN_CAMPSTOWN_PER_ZONE, MAX_CAMPSTOWN_PER_ZONE] call BIS_fnc_randomInt;
+	private _campsFieldCountPerZone = [MIN_CAMPSFIELD_PER_ZONE, MAX_CAMPSFIELD_PER_ZONE] call BIS_fnc_randomInt;
+	private _checkpointsCountPerZone = [MIN_CHECKPOINTS_PER_ZONE, MAX_CHECKPOINTS_PER_ZONE] call BIS_fnc_randomInt;
+	diag_log format["T%1, F%2, C%3", _campsTownCountPerZone, _campsFieldCountPerZone, _checkpointsCountPerZone];
 
 	//diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
 	//------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ if (count _zoneDataSet != 4) then
 	{
 		for [{_x= 0},{_x < _campsTownCountPerZone},{_x = _x + 1}] do 
 		{
-			_randomPosition = [_geoInfo, [true, [20, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
+			_randomPosition = [_geoInfo, [true, [10, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
 			if (count _randomPosition > 0) then
 			{		
 				_campsTown pushBack _randomPosition;// [house, buildingPosIndex]

@@ -5,6 +5,7 @@ if (isServer) then
 	fnc_aiz_IsInGeoInfo = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsInGeoInfo.sqf";
 	fnc_aiz_IsBlueNear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsBlueNear.sqf";
 	fnc_aiz_IsRedNear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsRedNear.sqf";
+	fnc_aiz_IsHouseReal = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsHouseReal.sqf";	
 	fnc_aiz_GetUnitDamageArray = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetUnitDamageArray.sqf";
 	fnc_aiz_SetUnitDamageArray = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SetUnitDamageArray.sqf";
 	fnc_aiz_GroupReduce = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupReduce.sqf";
@@ -19,6 +20,7 @@ if (isServer) then
 	fnc_aiz_SpawnGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SpawnGroup.sqf";
 	
 
+	fnc_aiz_GetHouseCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetHouseCount.sqf";
 	fnc_aiz_GetRandomInfClassnames = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomInfClassnames.sqf";
 	fnc_aiz_GetRandomPosition = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPosition.sqf";
 	fnc_aiz_GetRandomPositionRoad = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomPositionRoad.sqf";

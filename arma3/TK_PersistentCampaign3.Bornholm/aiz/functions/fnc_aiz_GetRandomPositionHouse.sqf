@@ -63,19 +63,18 @@ while { _loopLimit > 0 } do
 	private _position = [_geoInfo, [true, false, 100]] call fnc_aiz_GetRandomPosition;	
 	if (count _position > 0) then
 	{	
-		private _house = nearestObject [_position, "house"];
+		//private _house = nearestObject [_position, "Building"];
+		//private _house = nearestObject [_position, "House"];
+		private _house = nearestBuilding _position;
 		if (!isNull _house) then
 		{		
 			if ([_geoInfo, [true, false], getPos _house] call fnc_aiz_IsInGeoInfo) then
-			{
-				
-				//diag_log format["nearby %1", (nearestObjects [getPos _house, ["house"], (_housesNearby select 1)])];
-				if ( (isNil "_housesNearby") || {(count ((getPos _house) nearObjects ["House", (_housesNearby select 1)]) >= _housesNearby select 0)} ) then
+			{				
+				if (_house call fnc_aiz_IsHouseReal) then
 				{
-					private _maxIndex = 0;
-					while { str(_house buildingPos _maxIndex) != "[0,0,0]" } do { _maxIndex = _maxIndex + 1;};
-					if ((_maxIndex < 8) && (_maxIndex > 3)) then
+					if ((isNil "_housesNearby") || {(  [(getPos _house), (_housesNearby select 1)] call fnc_aiz_GetHouseCount >= (_housesNearby select 0)  ) }) then
 					{
+						private _maxIndex = _house call fnc_aiz_GetMaxBuildingPositions;
 						if (_randomPositionInHouse) then { _maxIndex = floor(random(_maxIndex)); };
 						_result = [_house, _maxIndex];
 						_loopLimit = 0;
@@ -86,4 +85,8 @@ while { _loopLimit > 0 } do
 	};
 };
 
+if (count _result > 0) then
+{
+	diag_log format["_result: %1 = %2", _result, nearestObjects [(getPos (_result select 0)), ["House","Building"], (_housesNearby select 1)]];
+};
 _result
