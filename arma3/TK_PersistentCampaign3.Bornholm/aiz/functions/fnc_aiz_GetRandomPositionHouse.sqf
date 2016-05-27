@@ -85,8 +85,8 @@ while { _loopLimit > 0 } do
 	};
 };
 
-if (count _result > 0) then
-{
-	diag_log format["_result: %1 = %2", _result, nearestObjects [(getPos (_result select 0)), ["House","Building"], (_housesNearby select 1)]];
-};
+//if (count _result > 0) then
+//{
+	//diag_log format["_result: %1 = %2", _result, nearestObjects [(getPos (_result select 0)), ["House","Building"], (_housesNearby select 1)]];
+//};
 _result

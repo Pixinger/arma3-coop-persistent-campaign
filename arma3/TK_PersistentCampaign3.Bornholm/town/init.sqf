@@ -1,23 +1,28 @@
-/*if (ExecuteHeadlessCode) then
+if (isServer) then
 {
-	townInitialized = false;
-	publicVariable "townInitialized";
-
-	private["_towns"];
-	_towns = entities pixTown_ConfigObjectClassname;
+	// ------------------------------------------------------------------------------
+	// Datenbank laden
+	private _database = [] call fnc_town_DatabaseLoad;
+	
+	// ------------------------------------------------------------------------------
+	// Towns initialisieren
+	for "_i" from 0 to townTownCount-1 do 
 	{
-		if (_foreachIndex < 10) then
-		{
-			[_x] execVM "town\run.sqf";
-		};
-	} foreach _towns;
+		townActive pushBack false;
+		private _dataSet = if (count _database > _i) then { _database select _i } else { [] };
+		[_i, _dataSet] call fnc_town_TownInit;
+	};
+	
+	// ------------------------------------------------------------------------------
+	// Perma-Loop starten (überwacht alle Städte zusammen).
+	[] call fnc_town_TownLoop;
 
-	townInitialized = true;
-	publicVariable "townInitialized";
+	// ------------------------------------------------------------------------------
+	// Beendigung signalisieren
+	townInitCompleted = true;
 };
 
 if (hasInterface) then
 {
-	waitUntil { !(isNil "townInitialized") };
+	//waitUntil { !(isNil "townInitCompleted") };
 };
-*/

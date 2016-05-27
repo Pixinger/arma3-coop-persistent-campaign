@@ -1,4 +1,4 @@
-diag_log format["fnc_aiz_ZoneOause: _this = %1", _this];
+diag_log format["fnc_aiz_ZonePause: _this = %1", _this];
 waitUntil { aizZoneInitCompleted };
 
 private["_zoneIndex"];

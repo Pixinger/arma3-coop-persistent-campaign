@@ -1,0 +1,1 @@
+remoteExec ["fnc_town_DatabaseSaveServer", 2]; // 2= only server

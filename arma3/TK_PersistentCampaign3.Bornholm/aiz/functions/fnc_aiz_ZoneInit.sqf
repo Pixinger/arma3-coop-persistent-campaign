@@ -69,7 +69,7 @@ if (count _zoneDataSet != 4) then
 	private _campsTownCountPerZone = [MIN_CAMPSTOWN_PER_ZONE, MAX_CAMPSTOWN_PER_ZONE] call BIS_fnc_randomInt;
 	private _campsFieldCountPerZone = [MIN_CAMPSFIELD_PER_ZONE, MAX_CAMPSFIELD_PER_ZONE] call BIS_fnc_randomInt;
 	private _checkpointsCountPerZone = [MIN_CHECKPOINTS_PER_ZONE, MAX_CHECKPOINTS_PER_ZONE] call BIS_fnc_randomInt;
-	diag_log format["T%1, F%2, C%3", _campsTownCountPerZone, _campsFieldCountPerZone, _checkpointsCountPerZone];
+	//diag_log format["T%1, F%2, C%3", _campsTownCountPerZone, _campsFieldCountPerZone, _checkpointsCountPerZone];
 
 	//diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
 	//------------------------------------------------------------------------------------------
