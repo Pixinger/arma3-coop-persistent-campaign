@@ -8,14 +8,8 @@ if ((count _this) < 4) exitWith { [format["Invalid parameter count. _this=%1", _
 //================================================================================
 // _THIS
 //================================================================================
-params ["_zoneIndex", "_waypointPool", "_waypointCount","_unitClassnames"];
+params ["_zoneIndex", "_aizZoneActiveCounter", "_waypointPool", "_waypointCount","_unitClassnames"];
 private _startPosition = if ((count _this) >= 5) then { _this select 4; } else { _waypointPool call PIX_fnc_RandomElement; };
-
-//================================================================================
-// aizZoneActiveCounter zwischenspeichern
-//================================================================================
-private _aizZoneActiveCounter = aizZoneActiveCounter;
-if (_aizZoneActiveCounter == 0) exitWith { [format["Zone ist schon wieder inaktiv. _zoneIndex=%1", _zoneIndex]] call BIS_fnc_error; false;};
 
 //================================================================================
 // Startbedingungen prüfen
@@ -128,7 +122,7 @@ while { _run } do
 			{
 				// .. Verstärkung aus der Stadt holen
 				diag_log format["fnc_aiz_RunGroup: Support from campTown at position=%1", getPos _laptop];
-				[_zoneIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
+				[_zoneIndex, _aizZoneActiveCounter, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
 			}
 			else
 			{
@@ -137,7 +131,7 @@ while { _run } do
 				{
 					// .. Verstärkung aus dem Feld holen => Zelt löschen
 					diag_log format["fnc_aiz_RunGroup: Support from campField at position=%1", getPos _tent];
-					[_zoneIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
+					[_zoneIndex, _aizZoneActiveCounter,  _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
 					deleteVehicle _tent;
 				}
 				else

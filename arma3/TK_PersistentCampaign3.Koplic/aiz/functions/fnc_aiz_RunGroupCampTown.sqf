@@ -9,14 +9,8 @@ diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
 //================================================================================
 // _THIS
 //================================================================================
-params ["_zoneIndex", "_camp", "_unitClassnames"];
+params ["_zoneIndex", "_aizZoneActiveCounter", "_camp", "_unitClassnames"];
 _camp params ["_house", "_housePosIndex"]; 
-
-//================================================================================
-// aizZoneActiveCounter zwischenspeichern
-//================================================================================
-private _aizZoneActiveCounter = aizZoneActiveCounter;
-if (_aizZoneActiveCounter == 0) exitWith { [format["Zone ist schon wieder inaktiv. _zoneIndex=%1", _zoneIndex]] call BIS_fnc_error; false;};
 
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)

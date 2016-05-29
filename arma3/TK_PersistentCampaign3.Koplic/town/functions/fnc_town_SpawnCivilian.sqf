@@ -2,12 +2,7 @@ diag_log format["fnc_town_SpawnCivilian: _this = %1", _this];
 //==========================================================================================
 // THIS
 //==========================================================================================
-params["_townIndex"];
-
-//==========================================================================================
-// townActiveCounter zwischenspeichern
-private _townActiveCounter = (townActive select _townIndex);
-if (_townActiveCounter == 0) exitWith { [format["Town wurde schon wieder deaktiviert: townIndex=%1", _townIndex]] call BIS_fnc_error; };
+params["_townIndex","_townActiveCounter"];
 
 //==========================================================================================
 // HÄUSLE suchen
@@ -32,7 +27,6 @@ _markerName setMarkerType "o_inf";
 _markerName setMarkerSize [0.4, 0.4];
 _markerName setMarkerColor "ColorBlue";
 _markerName setMarkerAlpha 1;
-diag_log format["3 _markerName %1", _markerName];
 
 #define STATE_THINKING			0
 #define STATE_RELAXING			1
@@ -60,7 +54,7 @@ while { _run } do
 	{
 		case STATE_THINKING: 
 		{ 
-diag_log "STATE_THINKING";
+//diag_log "STATE_THINKING";
 			// Early out
 			if (townActive select _townIndex != _townActiveCounter) exitWith { _state = STATE_EXIT; };
 
@@ -93,7 +87,7 @@ diag_log "STATE_THINKING";
 		};
 		case STATE_GOHOME:
 		{ 
-diag_log "STATE_GOHOME";
+//diag_log "STATE_GOHOME";
 			_target = _position;
 			_unit doMove _target;
 			_state = STATE_WALKING;			
@@ -101,7 +95,7 @@ diag_log "STATE_GOHOME";
 		};		
 		case STATE_GOSOMEWHERE:
 		{ 
-diag_log "STATE_GOSOMEWHERE";
+//diag_log "STATE_GOSOMEWHERE";
 			_target = (getPos _unit);
 			_target set [0, (_target select 0) - 1000 + random 500];
 			_target set [1, (_target select 1) - 1000 + random 500];
@@ -116,7 +110,7 @@ diag_log "STATE_GOSOMEWHERE";
 		};
 		case STATE_RELAXING:
 		{ 
-diag_log "STATE_RELAXING";
+//diag_log "STATE_RELAXING";
 			private _idleTime = random 60;
 			
 			if (_idleTime > 10) then
@@ -145,7 +139,7 @@ diag_log "STATE_RELAXING";
 		};
 		case STATE_WALKING:
 		{
-diag_log "STATE_WALKING";
+//diag_log "STATE_WALKING";
 			while {true} do
 			{
 				Sleep 2;
@@ -169,7 +163,7 @@ diag_log "STATE_WALKING";
 		};		
 		case STATE_WALKING_HOME: 
 		{
-diag_log "STATE_WALKING_HOME";
+//diag_log "STATE_WALKING_HOME";
 			while {true} do
 			{
 				Sleep 2;
@@ -193,7 +187,7 @@ diag_log "STATE_WALKING_HOME";
 		};		
 		case STATE_WALKING_SUPPLY: 
 		{
-diag_log "STATE_WALKING_SUPPLY";
+//diag_log "STATE_WALKING_SUPPLY";
 			while {true} do
 			{
 				Sleep 2;
@@ -231,13 +225,13 @@ diag_log "STATE_WALKING_SUPPLY";
 		};		
 		case STATE_EXIT: 
 		{ 
-diag_log "STATE_EXIT";
+//diag_log "STATE_EXIT";
 			diag_log "STATE_EXIT";
 			_run = false;
 		};
 		default 
 		{ 
-diag_log "STATE DEFAULT";
+//diag_log "STATE DEFAULT";
 			[format["Invalid state for state-machine: _state=%1", _state]] call BIS_fnc_error;
 			_run = false; // Emergency exit
 		};

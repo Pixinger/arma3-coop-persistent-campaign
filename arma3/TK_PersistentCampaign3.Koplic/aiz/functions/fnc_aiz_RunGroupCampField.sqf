@@ -8,14 +8,8 @@ if ((count _this) < 3) exitWith { [format["Invalid parameter count. _this=%1", _
 //================================================================================
 // _THIS
 //================================================================================
-params ["_zoneIndex", "_camp", "_unitClassnames"];
+params ["_zoneIndex", "_aizZoneActiveCounter", "_camp", "_unitClassnames"];
 _camp params ["_campPosition", "_campRespawns"];
-
-//================================================================================
-// aizZoneActiveCounter zwischenspeichern
-//================================================================================
-private _aizZoneActiveCounter = aizZoneActiveCounter;
-if (_aizZoneActiveCounter == 0) exitWith { [format["Zone ist schon wieder inaktiv. _zoneIndex=%1", _zoneIndex]] call BIS_fnc_error; false;};
 
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)

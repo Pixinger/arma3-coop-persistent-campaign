@@ -1,5 +1,5 @@
 townDbPrefix = "PC3TOWN";
-townTownCount = 1;
+townTownCount = 24;
 townSupplySearchRadius = 1000;
 townSupplyClassnames = [
 	"Land_Sacks_heap_F",
