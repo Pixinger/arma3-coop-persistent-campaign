@@ -70,7 +70,7 @@
 		}
 		else
 		{
-			Sleep 10;
+			Sleep 2;
 		};
 	};
 };

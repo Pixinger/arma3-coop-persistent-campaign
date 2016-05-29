@@ -2,19 +2,18 @@
 #define EXPAND_DISTANCE 	600
 
 waitUntil { aizZoneInitCompleted };
-diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
+//diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
 
-if ((count _this) < 4) exitWith { [format["Invalid parameter count. _this=%1", _this]] call BIS_fnc_error; false;};
 //================================================================================
 // _THIS
 //================================================================================
-params ["_zoneIndex", "_aizZoneActiveCounter", "_waypointPool", "_waypointCount","_unitClassnames"];
-private _startPosition = if ((count _this) >= 5) then { _this select 4; } else { _waypointPool call PIX_fnc_RandomElement; };
+params ["_zoneIndex", "_aizZoneActiveIndex", "_waypointPool", "_waypointCount","_unitClassnames"];
+private _startPosition = if ((count _this) >= 6) then { _this select 5; } else { _waypointPool call PIX_fnc_RandomElement; };
 
 //================================================================================
 // Startbedingungen prüfen
 //================================================================================
-if (count _waypointPool < 3) exitWith { [format["Not enough waypoints for zoneIndex %1 found.", _zoneIndex]] call BIS_fnc_error; false; };
+if (count _waypointPool < 3) exitWith { diag_log format["ERROR: fnc_aiz_RunGroup.sqf: Not enough waypoints for zoneIndex %1 found.", _zoneIndex]; false; };
 if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypointPool; };
 
 //================================================================================
@@ -75,7 +74,7 @@ while { _run } do
 			_markerName setMarkerText "exp";
 			while { true } do
 			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -98,7 +97,7 @@ while { _run } do
 			_markerName setMarkerText "red";
 			while { true } do
 			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -122,7 +121,7 @@ while { _run } do
 			{
 				// .. Verstärkung aus der Stadt holen
 				diag_log format["fnc_aiz_RunGroup: Support from campTown at position=%1", getPos _laptop];
-				[_zoneIndex, _aizZoneActiveCounter, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
+				[_zoneIndex, _aizZoneActiveIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
 			}
 			else
 			{
@@ -131,7 +130,7 @@ while { _run } do
 				{
 					// .. Verstärkung aus dem Feld holen => Zelt löschen
 					diag_log format["fnc_aiz_RunGroup: Support from campField at position=%1", getPos _tent];
-					[_zoneIndex, _aizZoneActiveCounter,  _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
+					[_zoneIndex, _aizZoneActiveIndex,  _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
 					deleteVehicle _tent;
 				}
 				else
@@ -154,7 +153,7 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -170,12 +169,12 @@ while { _run } do
 		case STATE_EXIT:
 		{ 
 			_markerName setMarkerText "exit";
-			diag_log "STATE_EXIT";
+			//diag_log "STATE_EXIT";
 			_run = false; // Exit
 		};	
 		default 
 		{ 
-			[format["Invalid state for state-machine: _state=%1", _state]] call BIS_fnc_error;
+			diag_log format["ERROR: fnc_aiz_RunGroup.sqf: Invalid state for state-machine: _state=%1", _state];
 			_run = false; // Emergency exit
 		};
 	};
@@ -188,7 +187,7 @@ while { _run } do
 { deleteWaypoint _x; } foreach (waypoints _group);
 deleteGroup _group;
 deleteMarker _markerName;
-diag_log format["fnc_aiz_RunGroup%1: Group deleted", _zoneIndex];
+diag_log format["fnc_aiz_RunGroup zoneIndex=%1: Group deleted", _zoneIndex];
 
 
 

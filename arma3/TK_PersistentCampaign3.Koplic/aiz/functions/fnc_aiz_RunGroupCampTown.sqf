@@ -4,12 +4,12 @@ waitUntil { aizZoneInitCompleted };
 #define EXPAND_DISTANCE 	800
 
 waitUntil { aizZoneInitCompleted };
-diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
+//diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
 
 //================================================================================
 // _THIS
 //================================================================================
-params ["_zoneIndex", "_aizZoneActiveCounter", "_camp", "_unitClassnames"];
+params ["_zoneIndex", "_aizZoneActiveIndex", "_camp", "_unitClassnames"];
 _camp params ["_house", "_housePosIndex"]; 
 
 //================================================================================
@@ -34,7 +34,7 @@ while { _run } do
 		{ 
 			while { true } do
 			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -55,7 +55,7 @@ while { _run } do
 		{ 
 			while { true } do
 			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -80,7 +80,7 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -98,7 +98,7 @@ while { _run } do
 		};	
 		default 
 		{ 
-			[format["Invalid state for state-machine: _state=%1", _state]] call BIS_fnc_error;
+			diag_log format["ERROR: fnc_aiz_RunGroupCampTown.sqf: Invalid state for state-machine: _state=%1", _state];
 			_run = false; // Emergency exit
 		};
 	};

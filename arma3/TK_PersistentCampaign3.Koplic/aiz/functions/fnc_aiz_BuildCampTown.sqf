@@ -11,6 +11,6 @@ _markerName setMarkerColor "ColorOrange";
 _markerName setMarkerAlpha 0.8;
 
 // Als erstes die Schranke erstellen, da sich alles um diese Schranke dreht. 
-private _laptop = createVehicle ["Land_Laptop_unfolded_F", (_house buildingPos _positionIndex), [], 0, "NONE"];
+private _laptop = createVehicle [aizCampTownClassnames call PIX_fnc_RandomElement, (_house buildingPos _positionIndex), [], 0, "NONE"];
 Sleep .2;
 _laptop setPos (_house buildingPos _positionIndex);

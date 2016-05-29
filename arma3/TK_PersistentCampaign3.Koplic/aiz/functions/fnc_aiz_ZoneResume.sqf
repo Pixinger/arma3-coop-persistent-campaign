@@ -1,8 +1,7 @@
 diag_log format["fnc_aiz_ZoneResume: _this = %1", _this];
 waitUntil { aizZoneInitCompleted };
-diag_log "ZoneResume: isLoaded";
 
-params["_zoneIndex","_aizZoneActiveCounter"];
+params["_zoneIndex","_aizZoneActiveIndex"];
 _zoneIndex = _this select 0;
 
 //==========================================================================================
@@ -24,21 +23,21 @@ if (_groupCount < 0) then { _groupCount = 0; };
 // _campsTown starten
 //==========================================================================================
 {
-	[_zoneIndex, _aizZoneActiveCounter, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampTown;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampTown;	
 } foreach _campsTown;
 
 //==========================================================================================
 // _campsField starten
 //==========================================================================================
 {
-	[_zoneIndex, _aizZoneActiveCounter, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField;	
 } foreach _campsField;
 
 //==========================================================================================
 // _checkpoints starten
 //==========================================================================================
 {
-	[_zoneIndex, _aizZoneActiveCounter, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint;	
 } foreach _checkpoints;
 
 //==========================================================================================
@@ -46,5 +45,5 @@ if (_groupCount < 0) then { _groupCount = 0; };
 //==========================================================================================
 for "_i" from 1 to _groupCount do
 {
-	[_zoneIndex, _aizZoneActiveCounter, _waypointPool, 6, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroup;	
+	[_zoneIndex, _aizZoneActiveIndex, _waypointPool, 6, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroup;	
 };
