@@ -123,7 +123,7 @@ while { _run } do
 			_markerName setMarkerText "flee";
 			// Da sich die Gruppe nun aufgelöst hat, suchen wir nach Verstärkung
 			diag_log format["fnc_aiz_RunGroup: Group destroyed. zoneIndex=%1", _zoneIndex];
-			private _laptop = [getPos (leader _group), 1500] call fnc_aiz_FindCampLaptop;
+			private _laptop = [getPos (leader _group), 1500] call fnc_aiz_FindCampTownRespawn;
 			if (!isNull _laptop) then
 			{
 				// .. Verstärkung aus der Stadt holen
