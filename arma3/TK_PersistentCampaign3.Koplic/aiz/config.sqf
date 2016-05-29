@@ -19,3 +19,4 @@ aizGroupSizeMax = 5;
 aizZonesSaving = false;
 aizZoneInitCompleted = false;
 aizZoneActive = [];
+aizZoneActiveCounter = 0;

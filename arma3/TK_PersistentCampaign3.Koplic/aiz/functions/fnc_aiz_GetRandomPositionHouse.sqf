@@ -74,7 +74,7 @@ while { _loopLimit > 0 } do
 				{
 					if ((isNil "_housesNearby") || {(  [(getPos _house), (_housesNearby select 1)] call fnc_aiz_GetHouseCount >= (_housesNearby select 0)  ) }) then
 					{
-						private _maxIndex = _house call fnc_aiz_GetMaxBuildingPositions;
+						private _maxIndex = _house call PIX_fnc_GetMaxBuildingPositions;
 						if (_randomPositionInHouse) then { _maxIndex = floor(random(_maxIndex)); };
 						_result = [_house, _maxIndex];
 						_loopLimit = 0;

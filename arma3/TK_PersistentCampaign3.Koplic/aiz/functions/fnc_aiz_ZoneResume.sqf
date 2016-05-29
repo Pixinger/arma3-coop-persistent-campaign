@@ -10,7 +10,8 @@ _zoneIndex = _this select 0;
 //==========================================================================================
 if (isNil format["aizZoneData%1", _zoneIndex]) exitWith	{ [format["No zoneData for zoneIndex %1 found.", _zoneIndex]] call BIS_fnc_error; false; };
 
-aizZoneActive set [_zoneIndex, true];
+aizZoneActiveCounter = aizZoneActiveCounter + 1;
+aizZoneActive set [_zoneIndex, aizZoneActiveCounter];
 private "_zoneData";
 call compile format["_zoneData = aizZoneData%1;", _zoneIndex];
 

@@ -13,6 +13,12 @@ params ["_zoneIndex", "_camp", "_unitClassnames"];
 _camp params ["_house", "_housePosIndex"]; 
 
 //================================================================================
+// aizZoneActiveCounter zwischenspeichern
+//================================================================================
+private _aizZoneActiveCounter = aizZoneActiveCounter;
+if (_aizZoneActiveCounter == 0) exitWith { [format["Zone ist schon wieder inaktiv. _zoneIndex=%1", _zoneIndex]] call BIS_fnc_error; false;};
+
+//================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
 private _group = [(getPos _house), EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
@@ -34,7 +40,7 @@ while { _run } do
 		{ 
 			while { true } do
 			{
-				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -55,7 +61,7 @@ while { _run } do
 		{ 
 			while { true } do
 			{
-				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -80,7 +86,7 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
-				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
 				{
 					_state = STATE_EXIT;
 				};

@@ -10,7 +10,7 @@ if (isServer) then
 	// Zonen initialisieren
 	for "_i" from 0 to aizZoneCount do 
 	{
-		aizZoneActive pushBack false;
+		aizZoneActive pushBack 0;
 		private _dataSet = if (count _database > _i) then { _database select _i } else { [] };
 		[_i, _dataSet] call fnc_aiz_ZoneInit;
 	};

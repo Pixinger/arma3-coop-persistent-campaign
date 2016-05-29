@@ -5,15 +5,21 @@ diag_log format["fnc_town_SpawnCivilian: _this = %1", _this];
 params["_townIndex"];
 
 //==========================================================================================
+// townActiveCounter zwischenspeichern
+private _townActiveCounter = (townActive select _townIndex);
+if (_townActiveCounter == 0) exitWith { [format["Town wurde schon wieder deaktiviert: townIndex=%1", _townIndex]] call BIS_fnc_error; };
+
+//==========================================================================================
 // HÄUSLE suchen
-private _position = [[format["markerTown%1",_townIndex],0], [true]] call fnc_aiz_GetRandomPositionHouse;
+private _position = [format["markerTown%1",_townIndex]] call fnc_town_GetRandomPositionHouse;
 if (count _position == 0) exitWith { [format["No Spawnposition for civilian found: townIndex=%1", _townIndex]] call BIS_fnc_error; };
-_position = (_position select 0) buildingPos (_position select 1);
+_position = (_position select 0) buildingPos (_position select 1); // [_house, _buildingPosition]
+diag_log format["3 _position %1", _position];
 
 //==========================================================================================
 // Unit erstellen
 private _group = createGroup civilian;
-private _unit = _group createUnit [townCivClassnames call fnc_aiz_RandomElement, _position, [], 0, "FORM"];
+private _unit = _group createUnit [townCivClassnames call PIX_fnc_RandomElement, _position, [], 0, "FORM"];
 _unit setPos _position;
 _unit setDir (random 360);
 _unit setUnitAbility 0;
@@ -26,34 +32,37 @@ _markerName setMarkerType "o_inf";
 _markerName setMarkerSize [0.4, 0.4];
 _markerName setMarkerColor "ColorBlue";
 _markerName setMarkerAlpha 1;
+diag_log format["3 _markerName %1", _markerName];
 
+#define STATE_THINKING			0
 #define STATE_RELAXING			1
-#define STATE_THINKING			2
-#define STATE_WALKING			3
-#define STATE_WALKING_HOME		4
-#define STATE_WALKING_SUPPLY	5
-#define STATE_EXIT				6
-#define STATE_SEARCH_SUPPLIES	7
-#define STATE_GOHOME 			8
-#define STATE_GOSOMEWHERE		9
+#define STATE_WALKING			2
+#define STATE_WALKING_HOME		3
+#define STATE_WALKING_SUPPLY	4
+#define STATE_EXIT				5
+#define STATE_SEARCH_SUPPLIES	6
+#define STATE_GOHOME 			7
+#define STATE_GOSOMEWHERE		8
 
 private _ttl = 0;
 private _target = [];
 private _supply = objNull;
 private _minDistance = [0,0] distanceSqr [10,0];
 
-private _state = 0;
-private _run = (townActive select _townIndex);
+private _state = STATE_THINKING;
+private _run = true;
 while { _run } do 
 {
 	_markerName setMarkerPos (getPos _unit);
+	player sidechat format["time %1", time];
 	
 	switch (_state) do 
 	{
 		case STATE_THINKING: 
 		{ 
+diag_log "STATE_THINKING";
 			// Early out
-			if (townActive select _townIndex) exitWith { _state = STATE_EXIT; };
+			if (townActive select _townIndex != _townActiveCounter) exitWith { _state = STATE_EXIT; };
 
 			// Supplies suchen ist immer das Wichtigste!
 			private _supplies = nearestObjects [_unit, townSupplyClassnames, townSupplySearchRadius];
@@ -84,6 +93,7 @@ while { _run } do
 		};
 		case STATE_GOHOME:
 		{ 
+diag_log "STATE_GOHOME";
 			_target = _position;
 			_unit doMove _target;
 			_state = STATE_WALKING;			
@@ -91,6 +101,7 @@ while { _run } do
 		};		
 		case STATE_GOSOMEWHERE:
 		{ 
+diag_log "STATE_GOSOMEWHERE";
 			_target = (getPos _unit);
 			_target set [0, (_target select 0) - 1000 + random 500];
 			_target set [1, (_target select 1) - 1000 + random 500];
@@ -105,6 +116,7 @@ while { _run } do
 		};
 		case STATE_RELAXING:
 		{ 
+diag_log "STATE_RELAXING";
 			private _idleTime = random 60;
 			
 			if (_idleTime > 10) then
@@ -122,8 +134,8 @@ while { _run } do
 				Sleep 2;
 				_idleTime = _idleTime - 2;
 				
-				// Town Inactive
-				if (townActive select _townIndex) exitWith { _state = STATE_EXIT; };
+				// Town inaktiv
+				if (townActive select _townIndex != _townActiveCounter) exitWith { _state = STATE_EXIT; };
 
 				// Alive
 				if (!alive _unit) exitWith { _state = STATE_EXIT; };
@@ -133,6 +145,7 @@ while { _run } do
 		};
 		case STATE_WALKING:
 		{
+diag_log "STATE_WALKING";
 			while {true} do
 			{
 				Sleep 2;
@@ -140,8 +153,8 @@ while { _run } do
 				_ttl = _ttl - 1;
 				if (_ttl == 0) exitWith { _state = STATE_THINKING; };
 				
-				// Town Inactive
-				if (townActive select _townIndex) exitWith { _state = STATE_EXIT; };
+				// Town inaktiv
+				if (townActive select _townIndex != _townActiveCounter) exitWith { _state = STATE_EXIT; };
 
 				// Alive
 				if (!alive _unit) exitWith { _state = STATE_EXIT; };
@@ -156,6 +169,7 @@ while { _run } do
 		};		
 		case STATE_WALKING_HOME: 
 		{
+diag_log "STATE_WALKING_HOME";
 			while {true} do
 			{
 				Sleep 2;
@@ -163,8 +177,8 @@ while { _run } do
 				_ttl = _ttl - 1;
 				if (_ttl == 0) exitWith { _state = STATE_EXIT; };
 				
-				// Town Inactive
-				if (townActive select _townIndex) exitWith { _state = STATE_EXIT; };
+				// Town inaktiv
+				if (townActive select _townIndex != _townActiveCounter) exitWith { _state = STATE_EXIT; };
 
 				// Alive
 				if (!alive _unit) exitWith { _state = STATE_EXIT; };
@@ -179,6 +193,7 @@ while { _run } do
 		};		
 		case STATE_WALKING_SUPPLY: 
 		{
+diag_log "STATE_WALKING_SUPPLY";
 			while {true} do
 			{
 				Sleep 2;
@@ -186,8 +201,8 @@ while { _run } do
 				_ttl = _ttl - 1;
 				if (_ttl == 0) exitWith { _state = STATE_THINKING; };
 
--				// Town Inactive
-				if (townActive select _townIndex) exitWith { _state = STATE_EXIT; };
+				// Town inaktiv
+				if (townActive select _townIndex != _townActiveCounter) exitWith { _state = STATE_EXIT; };
 				
 				// Alive
 				if (!alive _unit) exitWith { _state = STATE_EXIT; };
@@ -216,11 +231,13 @@ while { _run } do
 		};		
 		case STATE_EXIT: 
 		{ 
+diag_log "STATE_EXIT";
 			diag_log "STATE_EXIT";
 			_run = false;
 		};
 		default 
 		{ 
+diag_log "STATE DEFAULT";
 			[format["Invalid state for state-machine: _state=%1", _state]] call BIS_fnc_error;
 			_run = false; // Emergency exit
 		};
@@ -229,8 +246,8 @@ while { _run } do
 };
 
 //==========================================================================================
-// Nachschub spawnen
-if (townActive select _townIndex) then { [_townIndex] call fnc_town_SpawnCivilian; };
+// Nachschub spawnen, wenn Town noch aktiv
+if (townActive select _townIndex == _townActiveCounter) then { [_townIndex] call fnc_town_SpawnCivilian; };
 
 //==========================================================================================
 // Aufräumen

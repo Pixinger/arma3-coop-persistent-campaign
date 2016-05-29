@@ -13,6 +13,6 @@
 
 */
 
-if (_this call fnc_aiz_GetMaxBuildingPositions > 3) exitWith { true; };
+if (_this call PIX_fnc_GetMaxBuildingPositions > 3) exitWith { true; };
 
 false;

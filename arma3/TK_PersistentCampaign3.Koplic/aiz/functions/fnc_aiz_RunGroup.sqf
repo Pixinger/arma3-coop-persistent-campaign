@@ -9,7 +9,13 @@ if ((count _this) < 4) exitWith { [format["Invalid parameter count. _this=%1", _
 // _THIS
 //================================================================================
 params ["_zoneIndex", "_waypointPool", "_waypointCount","_unitClassnames"];
-private _startPosition = if ((count _this) >= 5) then { _this select 4; } else { _waypointPool call fnc_aiz_RandomElement; };
+private _startPosition = if ((count _this) >= 5) then { _this select 4; } else { _waypointPool call PIX_fnc_RandomElement; };
+
+//================================================================================
+// aizZoneActiveCounter zwischenspeichern
+//================================================================================
+private _aizZoneActiveCounter = aizZoneActiveCounter;
+if (_aizZoneActiveCounter == 0) exitWith { [format["Zone ist schon wieder inaktiv. _zoneIndex=%1", _zoneIndex]] call BIS_fnc_error; false;};
 
 //================================================================================
 // Startbedingungen prüfen
@@ -33,7 +39,7 @@ for "_i" from 1 to _waypointCount - 1 do
 {
 	private ["_wp", "_newPos"];
 
-	private _waypoint = _group addWaypoint [_waypointPool call fnc_aiz_RandomElement, 0];
+	private _waypoint = _group addWaypoint [_waypointPool call PIX_fnc_RandomElement, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointCompletionRadius 20;
 	_waypoint setWaypointSpeed "LIMITED";
@@ -41,7 +47,7 @@ for "_i" from 1 to _waypointCount - 1 do
 };
 
 // Zurück zum ersten Wegpunkt gehen
-private _waypoint = _group addWaypoint [_waypointPool call fnc_aiz_RandomElement, 0];
+private _waypoint = _group addWaypoint [_waypointPool call PIX_fnc_RandomElement, 0];
 _waypoint setWaypointType "CYCLE";
 _waypoint setWaypointCompletionRadius 20;
 
@@ -75,7 +81,7 @@ while { _run } do
 			_markerName setMarkerText "exp";
 			while { true } do
 			{
-				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -98,7 +104,7 @@ while { _run } do
 			_markerName setMarkerText "red";
 			while { true } do
 			{
-				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
 				{
 					_state = STATE_EXIT;
 				};
@@ -154,7 +160,7 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
-				if (!(aizZoneActive select _zoneIndex)) exitWith 
+				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveCounter) exitWith 
 				{
 					_state = STATE_EXIT;
 				};

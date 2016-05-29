@@ -22,7 +22,7 @@ private _fireClassnames = ["Land_Campfire_F","Campfire_burning_F"];
 private _staticClassnames = ["I_HMG_01_high_F","I_GMG_01_high_F"];
 private _tentClassnames = ["Land_TentDome_F", "Land_TentA_F"];
 
-private _className = (_fireClassnames call fnc_aiz_RandomElement);	
+private _className = (_fireClassnames call PIX_fnc_RandomElement);	
 private _firePosition = _position findEmptyPosition [0, aizCampFieldRadius, _className];
 if (count _firePosition > 0) then
 {
@@ -36,7 +36,7 @@ if (count _firePosition > 0) then
 	private _tents = [];
 	for "_i" from 1 to _respawns do
 	{
-		_className = (_tentClassnames call fnc_aiz_RandomElement);	
+		_className = (_tentClassnames call PIX_fnc_RandomElement);	
 		private _tentPosition = _firePosition findEmptyPosition [3, aizCampFieldRadius, _className];		
 		if (count _tentPosition > 0) then
 		{
@@ -53,7 +53,7 @@ if (count _firePosition > 0) then
 	private _statics = [];
 	for "_i" from 1 to (floor (_respawns / 4)) do
 	{
-		_className = (_staticClassnames call fnc_aiz_RandomElement);	
+		_className = (_staticClassnames call PIX_fnc_RandomElement);	
 		private _staticPosition = _firePosition findEmptyPosition [25, aizCampFieldRadius, _className];		
 		if (count _staticPosition > 0) then
 		{

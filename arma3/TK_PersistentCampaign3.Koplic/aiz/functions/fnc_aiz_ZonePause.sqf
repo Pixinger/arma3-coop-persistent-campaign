@@ -4,4 +4,4 @@ waitUntil { aizZoneInitCompleted };
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 
-aizZoneActive set [_zoneIndex, false];
+aizZoneActive set [_zoneIndex, 0];

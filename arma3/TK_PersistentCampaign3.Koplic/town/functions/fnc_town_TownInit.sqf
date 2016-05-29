@@ -20,25 +20,32 @@ private _markerDir = markerDir _markerName;
 private _markerIsRectangle = if (markerShape _markerName == "rectangle") then { true; } else { false; };
 
 //==========================================================================================
-// Variablen definieren
+// Wohnsituation analysieren
 //==========================================================================================
-private _supplies = 0;
+private _houseCount = count nearestObjects[_markerPos, ["House"], (_markerSize select 0) max (_markerSize select 1)];
 
 //==========================================================================================
-// Daten generieren oder aus DB übernehmen
+// Defaults definieren
+//==========================================================================================
+private _supplies = 0;
+private _civilianCount = _houseCount * 2;
+
+//==========================================================================================
+// Daten aus DB übernehmen (wenn vorhanden)
 //==========================================================================================
 if (count _dataSet > 0) then
 {
 	// Supplies aus der Datenbank übernehmen.
 	_supplies = _dataSet select 0;
+	_civilianCount = _dataSet select 1;
 };
 
 //==========================================================================================
 // Trigger erstellen
 //==========================================================================================
-call compile format["townData%1 = [_supplies];", _townIndex];
+call compile format["townData%1 = [_supplies,_civilianCount,_houseCount];", _townIndex];
 
-private _radiusExtension = if (pixDebug) then { 0 } else { 1000 };
+private _radiusExtension = if (pixDebug) then { 0 } else { 250 };
 private["_trigger"];
 _trigger = createTrigger ["EmptyDetector", _markerPos, true];				
 _trigger setTriggerType "NONE";

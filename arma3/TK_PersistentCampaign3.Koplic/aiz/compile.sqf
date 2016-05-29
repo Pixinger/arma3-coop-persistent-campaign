@@ -31,15 +31,9 @@ if (isServer) then
 	fnc_aiz_BuildCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCampTown.sqf";
 	fnc_aiz_BuildCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCheckpoint.sqf";
 
-	fnc_aiz_IsFlat = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsFlat.sqf";
 	fnc_aiz_CreateMineField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineField.sqf";
 	fnc_aiz_CreateMineFieldRandom = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineFieldRandom.sqf";
-	fnc_aiz_GetMaxBuildingPositions = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetMaxBuildingPositions.sqf";
-	fnc_aiz_GetMaxBuildingsPositions = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetMaxBuildingsPositions.sqf";
 	fnc_aiz_CreateGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateGroup.sqf";
-	fnc_aiz_IsAnyPlayerNear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsAnyPlayerNear.sqf";
-	fnc_aiz_NearestResidentialLocation = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_NearestResidentialLocation.sqf";
-	fnc_aiz_RandomElement = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RandomElement.sqf";
 
 	fnc_aiz_RunGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup.sqf";
 	fnc_aiz_RunGroupCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCheckpoint.sqf";

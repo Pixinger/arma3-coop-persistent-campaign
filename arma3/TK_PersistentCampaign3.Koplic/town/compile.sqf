@@ -8,6 +8,7 @@ if (isServer) then
 	fnc_town_TownLoop = compile preprocessFileLineNumbers "town\functions\fnc_town_TownLoop.sqf";
 	fnc_town_TownResume = compile preprocessFileLineNumbers "town\functions\fnc_town_TownResume.sqf";
 	fnc_town_TownPause = compile preprocessFileLineNumbers "town\functions\fnc_town_TownPause.sqf";
+	fnc_town_GetRandomPositionHouse = compile preprocessFileLineNumbers "town\functions\fnc_town_GetRandomPositionHouse.sqf";
 
 	fnc_town_DatabaseLoad = compile preprocessFileLineNumbers "town\functions\fnc_town_DatabaseLoad.sqf";
 	fnc_town_DatabaseSaveServer = compile preprocessFileLineNumbers "town\functions\fnc_town_DatabaseSaveServer.sqf";

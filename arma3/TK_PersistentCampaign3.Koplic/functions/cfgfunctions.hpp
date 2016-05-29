@@ -1,10 +1,14 @@
-class PC
+class PIX
 {
-	tag = "PC";
+	tag = "PIX";
 	
 	class Tools
 	{
 		file = "functions\Tools";
 		class HeadlessClientInit  { postInit = 1; };
+		class GetMaxBuildingPositions {};
+		class RandomElement {};
+		class RandomPosMarkerTrigger {};
+		class IsFlat {};
 	};
 };

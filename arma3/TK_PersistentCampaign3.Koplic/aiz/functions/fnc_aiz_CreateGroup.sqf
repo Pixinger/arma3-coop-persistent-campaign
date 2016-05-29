@@ -29,7 +29,7 @@ _units = [];
 for "_i" from 1 to _unitCount do
 {
 	private["_unit"];
-	_unit = _unitGroup createUnit [_unitClassnames select (floor(random(count _unitClassnames))), _unitPosition, [], 0, "FORM"];
+	_unit = _unitGroup createUnit [_unitClassnames call PIX_fnc_RandomElement, _unitPosition, [], 0, "FORM"];
 	Sleep 0.5;
 	_units pushBack _unit;
 };

@@ -70,7 +70,7 @@ while { _loopLimit > 0 } do
 			{
 				if (_maxElevation <= 100) then
 				{
-					if ([_position, 10, _maxElevation] call fnc_aiz_IsFlat) then
+					if ([_position, 10, _maxElevation] call PIX_fnc_IsFlat) then
 					{
 						_result = _position;
 						_loopLimit = 0; // Exit 

@@ -49,6 +49,7 @@ townCivClassnames = [
 // ------------------------------------------------------------------------------
 // Runtime Variablen initialisieren (nicht verändern!)
 townActive = [];
+townActiveCounter = 0;
 townInitCompleted = false;
 townDatabaseSaving = false;
 

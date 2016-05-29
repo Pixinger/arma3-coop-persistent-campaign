@@ -6,7 +6,7 @@ if (_unitCount == 1) exitWith
 		["O_recon_TL_F"], 
 		["O_spotter_F"], 
 		["O_recon_JTAC_F"]
-	] call fnc_aiz_RandomElement;
+	] call PIX_fnc_RandomElement;
 };
 
 if (_unitCount == 2) exitWith
@@ -15,7 +15,7 @@ if (_unitCount == 2) exitWith
 		["O_recon_TL_F","O_recon_M_F"], 
 		["O_spotter_F","O_sniper_F"], 
 		["O_recon_JTAC_F", "O_recon_F"]
-	] call fnc_aiz_RandomElement;
+	] call PIX_fnc_RandomElement;
 };
 
 if (_unitCount == 3) exitWith
@@ -24,7 +24,7 @@ if (_unitCount == 3) exitWith
 		["O_Soldier_TL_F", "O_Soldier_AR_F", "O_medic_F"], 
 		["O_Soldier_TL_F", "O_Soldier_AT_F", "O_medic_F"], 
 		["O_Soldier_TL_F", "O_soldier_M_F", "O_medic_F"]
-	] call fnc_aiz_RandomElement;
+	] call PIX_fnc_RandomElement;
 };
 
 if (_unitCount == 4) exitWith
@@ -33,7 +33,7 @@ if (_unitCount == 4) exitWith
 		["O_Soldier_TL_F", "O_Soldier_AR_F", "O_medic_F", "O_Soldier_GL_F"], 
 		["O_Soldier_TL_F", "O_Soldier_AT_F", "O_medic_F", "O_Soldier_GL_F"], 
 		["O_Soldier_TL_F", "O_soldier_M_F", "O_medic_F", "O_Soldier_GL_F"]
-	] call fnc_aiz_RandomElement;
+	] call PIX_fnc_RandomElement;
 };
 
 if (_unitCount == 5) exitWith
@@ -42,14 +42,14 @@ if (_unitCount == 5) exitWith
 		["O_Soldier_TL_F", "O_Soldier_AR_F", "O_medic_F", "O_Soldier_GL_F", "O_Soldier_AR_F"], 
 		["O_Soldier_TL_F", "O_Soldier_AT_F", "O_medic_F", "O_Soldier_GL_F", "O_Soldier_AR_F"], 
 		["O_Soldier_TL_F", "O_soldier_M_F", "O_medic_F", "O_Soldier_GL_F", "O_Soldier_AR_F"]
-	] call fnc_aiz_RandomElement;
+	] call PIX_fnc_RandomElement;
 };
 
 private _result = [
 		["O_officer_F", "O_Soldier_AR_F", "O_medic_F", "O_Soldier_GL_F", "O_Soldier_SL_F"], 
 		["O_officer_F", "O_Soldier_AT_F", "O_medic_F", "O_Soldier_GL_F", "O_Soldier_SL_F"], 
 		["O_officer_F", "O_soldier_M_F", "O_medic_F", "O_Soldier_GL_F", "O_Soldier_SL_F"]
-	] call fnc_aiz_RandomElement;
+	] call PIX_fnc_RandomElement;
 
 for "_i" from 6 to _unitCount do
 {
@@ -63,7 +63,7 @@ for "_i" from 6 to _unitCount do
 						"O_Soldier_AT_F",
 						"O_engineer_F",
 						"O_soldier_repair_F",
-						"O_soldier_UAV_F"] call fnc_aiz_RandomElement);
+						"O_soldier_UAV_F"] call PIX_fnc_RandomElement);
 };
 
 _result;
