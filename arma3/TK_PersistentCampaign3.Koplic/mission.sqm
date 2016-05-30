@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=332;
+		nextID=333;
 	};
 	class MarkerIDProvider
 	{
@@ -16,23 +16,51 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1280.6981,28.980392,441.15631};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={1288.5801,43.711754,435.80237};
+		dir[]={0.39581418,-0.38905939,0.83185565};
+		up[]={0.16716333,0.92121124,0.3513163};
+		aside[]={0.90299827,1.9453e-007,-0.42966536};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
-	"A3_Characters_F_BLUFOR",
-	"a3_characters_f"
+	"A3_Ui_F",
+	"A3_Characters_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=3;
+		class Item0
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted features";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+	};
 };
 randomSeed=2271399;
 class ScenarioData
 {
-	author="[TK]Pix";
+	author="Pixinger";
 	debriefing=0;
 	saving=0;
 };
@@ -67,7 +95,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v0.09";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.12";
+		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
 		startWind=0.1;
@@ -79,8 +108,8 @@ class Mission
 		forecastLightnings=0.1;
 		year=2014;
 		day=14;
-		hour=10;
-		minute=0;
+		hour=12;
+		minute=10;
 		startFogBase=1;
 		forecastFogBase=1;
 		startFogDecay=0.039999999;
@@ -635,7 +664,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1301.7543,3.9818313,497.68576};
+						position[]={1301.7699,3.9818313,497.45807};
 					};
 					side="West";
 					flags=7;

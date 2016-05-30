@@ -2,6 +2,11 @@ setviewdistance 1500;
 setObjectViewDistance 1500;
 setTerrainGrid 25;
 
+tf_no_auto_long_range_radio = true;
+TF_give_personal_radio_to_regular_soldier = true;
+TF_terrain_interception_coefficient = 0;
+TF_give_microdagr_to_soldier = false;
+
 waituntil {!isnil "bis_fnc_init"};
 enableSaving [false, false];
 enableTeamSwitch false;

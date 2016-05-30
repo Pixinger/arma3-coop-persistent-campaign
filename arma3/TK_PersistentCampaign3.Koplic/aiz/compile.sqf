@@ -16,7 +16,6 @@ if (isServer) then
 	fnc_aiz_FindCampTownRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTownRespawnCount.sqf";
 	fnc_aiz_FindCampFieldRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawn.sqf";
 	fnc_aiz_FindCampFieldRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawnCount.sqf";
-	fnc_aiz_ConfiscateItem = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ConfiscateItem.sqf";
 	fnc_aiz_SpawnGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SpawnGroup.sqf";
 	
 
@@ -53,3 +52,4 @@ if (isServer) then
 
 fnc_aiz_DatabaseSaveClient = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseSaveClient.sqf";
 fnc_aiz_DatabaseClearClient = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseClearClient.sqf";
+fnc_aiz_ConfiscateItem = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ConfiscateItem.sqf";
