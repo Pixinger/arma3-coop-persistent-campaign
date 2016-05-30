@@ -10,7 +10,7 @@ if (hasInterface) then
 		if (pixDebug) then
 		{
 			player allowDamage false;
-			player setCaptive true;
+			//player setCaptive true;
 		};
 
 		private["_tmp"];

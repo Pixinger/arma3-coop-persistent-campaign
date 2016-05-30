@@ -1,6 +1,7 @@
 townDbPrefix = "PC3TOWN";
 townTownCount = 24;
-townSupplySearchRadius = 1000;
+townSupplySearchRadius = 500;
+townWalkRadius = 75;
 townSupplyClassnames = [
 	"Land_Sacks_heap_F",
 	"Land_WaterTank_F"
@@ -49,6 +50,7 @@ townCivClassnames = [
 // ------------------------------------------------------------------------------
 // Runtime Variablen initialisieren (nicht verändern!)
 townActive = [];
+townInfos = [];
 townActiveCounter = 0;
 townInitCompleted = false;
 townDatabaseSaving = false;

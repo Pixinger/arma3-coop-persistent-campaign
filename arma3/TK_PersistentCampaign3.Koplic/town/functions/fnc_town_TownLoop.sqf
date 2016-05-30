@@ -11,9 +11,7 @@
 		private _markerName = format["markerTown%1", _townIndex];
 		if (markerType _markerName != "") then 
 		{ 		
-			private "_townData";
-			call compile format["_townData = townData%1;", _townIndex];
-			_townData params["_supplies"];
+			(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];	
 
 			//==========================================================================================
 			// Auch Zivilisten verbrauchen Nahrung
@@ -30,7 +28,7 @@
 			//==========================================================================================
 			// Aktuellen Stand speichern
 			if (_supplies < 0) then { _supplies = 0; }; 
-			_townData set [0, _supplies];
+			(townInfos select _townIndex) set [0, _supplies];
 
 			//==========================================================================================
 			// Marker Farbe aktualisieren
@@ -56,7 +54,7 @@
 					};
 				};
 			};
-			player sidechat format["supplies: %1", _supplies];
+			player sidechat format["town %1: supplies: %2", _townIndex, _supplies];
 			//_markerName setMarkerText format["%1", _supplies];
 		};
 	

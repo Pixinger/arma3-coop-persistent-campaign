@@ -41,10 +41,13 @@ if (count _dataSet > 0) then
 };
 
 //==========================================================================================
+// townInfos setze
+//==========================================================================================
+townInfos set [_townIndex, [_supplies,_civilianCount,_houseCount]]; 
+
+//==========================================================================================
 // Trigger erstellen
 //==========================================================================================
-call compile format["townData%1 = [_supplies,_civilianCount,_houseCount];", _townIndex];
-
 private _radiusExtension = if (pixDebug) then { 0 } else { 250 };
 private["_trigger"];
 _trigger = createTrigger ["EmptyDetector", _markerPos, true];				

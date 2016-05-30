@@ -11,15 +11,14 @@ if (isServer) then
 	// ------------------------------------------------------------------------------
 	// Durch alle Zonen interieren
 	private _database = [];
-	for "_i" from 0 to townTownCount do 
+	for "_i" from 0 to townTownCount-1 do 
 	{
-		if (!isNil format["townData%1", _i]) then
+		
+		if (count townInfos > 0) then
 		{
-			private "_townData";
-			call compile format["_townData = townData%1;", _i];			
-			_townData params ["_supplies"];
+			(townInfos select _i) params ["_supplies", "_civilianCount", "_houseCount"];
 
-			private _dataSet = [_supplies];
+			private _dataSet = [_supplies, _civilianCount];
 			_database pushBack _dataSet; // DataSet für Town "_i".
 		}
 		else
