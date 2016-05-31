@@ -64,7 +64,7 @@
 		if (_townIndex >= townTownCount) then 
 		{ 
 			_townIndex = 0; 
-			Sleep 60 * 10; // Wenn alle Städte durch sind, warten wir etwas länger.
+			Sleep (600); // Wenn alle Städte durch sind, warten wir etwas länger.
 		}
 		else
 		{
