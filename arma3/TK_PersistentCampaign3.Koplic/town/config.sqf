@@ -4,7 +4,7 @@ townSupplySearchRadius = 500;
 townWalkRadius = 75;
 townSupplyClassnames = [
 	"Land_Sacks_heap_F",
-	"Land_WaterTank_F"
+	"Land_WaterBarrel_F"
 	];
 
 townCivClassnames = [

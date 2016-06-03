@@ -17,15 +17,17 @@ logisticObjectsMoveableDefinitions = [
 	//["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
 
 	// Objekte
-	//["Land_PortableLight_double_F",	[[0, 3, 1]] ],
-	["Land_Sacks_heap_F",			[[0, 3, 1]] ],
-	["Land_WaterTank_F"	,			[[0, 3, 1]] ],
-	["Land_PaperBox_closed_F",		[[0, 3, 1]] ],
-	["Land_Bricks_V1_F",			[[0, 3, 1]] ],
-	["CargoNet_01_box_F",			[[0, 3, 1]] ],
+	//["Land_PortableLight_double_F",	[[0, 3, 1]] ],	
+	//["Land_PaperBox_closed_F",		[[0, 3, 1]] ],
+	//["CargoNet_01_box_F",			[[0, 3, 1]] ],
 	//["CargoNet_01_barrels_F",		[[0, 3, 1]] ],
-	//["Land_Pipes_large_F",			[[0, 3, 1]] ],
-	["Land_Pipes_small_F",			[[0, 3, 1]] ] 
+	//["Land_Pipes_small_F",			[[0, 3, 1]] ], 
+	//["Land_Pipes_large_F",			[[0, 3, 1]] ], 
+	["Land_Pallet_MilBoxes_F",		[[0, 3, 1]] ],
+	["Land_Sacks_heap_F",			[[0, 3, 1]] ],
+	["Land_WaterBarrel_F",			[[0, 3, 1]] ],
+	["Land_Bricks_V1_F",			[[0, 3, 1]] ],
+	["Land_Timbers_F",				[[0, 3, 1]] ]
 	
 	//["Land_Sacks_goods_F",			[[0, 3, 1]] ],
 	//["Land_Sacks_heap_F",			[[0, 3, 1]] ],
@@ -45,19 +47,20 @@ logisticObjectsMoveableDefinitions = nil; // Speicher freigeben
 // ["className", [grösse,[attach-offset],attach-rotation]]
 logisticObjectsTransportableDefinitions = [
 	// Ausrüstungskisten
-	["B_CargoNet_01_ammo_F",	[1,	[0,  0, .3],	0] ],
-
+	//["B_CargoNet_01_ammo_F",	[1,	[0,  0, .3],	0] ],
+	//["CargoNet_01_box_F",		[1,	[0,  0, .1],	0] ],
 	
 	// Objekte
+	//["Land_PaperBox_closed_F",	[1,	[0,  0,  0],	0] ],
+	//["Land_Pipes_large_F",		[3,	[0, -2,-.5],	90] ],
+	//["Land_Pipes_small_F",		[2,	[0,-.8,-.5],	90] ],	
+	//["CargoNet_01_barrels_F",	[1,	[0,  0, .1],	0] ],
+	//["Land_Sacks_goods_F",		[1,	[0,  0,  0],	0] ],
+	["Land_Pallet_MilBoxes_F",	[1,	[0,  0, .3],	0] ],
 	["Land_Sacks_heap_F",		[1,	[0,  0,  0],	0] ],
-	["Land_WaterTank_F"	,		[1,	[0,  0,  0],	0] ],
-	["Land_PaperBox_closed_F",	[1,	[0,  0,  0],	0] ],
+	["Land_WaterBarrel_F",		[1,	[0,  0,  0],	0] ],
 	["Land_Bricks_V1_F",		[1,	[0,  0,-.5],	0] ],
-	["Land_Pipes_large_F",		[3,	[0, -2,-.5],	90] ],
-	["Land_Pipes_small_F",		[2,	[0,-.8,-.5],	90] ],
-	["CargoNet_01_box_F",		[1,	[0,  0, .1],	0] ],
-	["CargoNet_01_barrels_F",	[1,	[0,  0, .1],	0] ]
-//	["Land_Sacks_goods_F",		[1,	[0,  0,  0],	0] ],
+	["Land_Timbers_F",			[3,	[0, -2,  0],	0] ]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticObjectsTransportables = [];
@@ -105,13 +108,13 @@ logisticBuildableDefinitions = [
 	//["Land_Cargo_House_V1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
 	//["Land_Cargo_HQ_V1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
 	//["Land_HBarrier_1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
-	["Land_HBarrier_3_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 75]] ]],
 	//["Land_HBarrier_5_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 125]] ]],
 	//["Land_HBarrier_Big_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 100]] ]],
 	//["Land_HBarrierTower_F",		[[0,3,1], 0, -2.0, 1, 	[["CraterLong_small", 200]] ]],
+	["Land_HBarrier_3_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 75]] ]],
 	["Land_BagFence_Long_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 5]] ]],	
-	["Land_BagBunker_Small_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 50], ["Land_Pipes_large_F", 10]], ["Land_Bricks_V1_F", 10] ]],
-	["Land_BagBunker_Large_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 200], ["Land_Pipes_large_F", 100], ["Land_Bricks_V1_F", 100]] ]]
+	["Land_BagBunker_Small_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 50], ["Land_Timbers_F", 10]], ["Land_Bricks_V1_F", 10] ]],
+	["Land_BagBunker_Large_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 200], ["Land_Timbers_F", 100], ["Land_Bricks_V1_F", 100]] ]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticBuildables = [];
