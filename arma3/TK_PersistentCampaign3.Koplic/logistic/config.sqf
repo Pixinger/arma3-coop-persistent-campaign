@@ -1,3 +1,4 @@
+call compile preprocessFileLineNumbers ("logistic\db\config.sqf");
 
 // ["className", [[attach-offset]]]
 logisticObjectsMoveableDefinitions = [
@@ -92,21 +93,25 @@ logisticTransporterDefinitions = nil; // Speicher freigeben
 
 // ["className", [attachpoint, attachrotation, detachheight, buildspeed, requiredResources] ]  ||  requiredResources = [[classname1, quantity1], [classname2, quantity2], ...];
 logisticBuildableDefinitions = [
-	//["Land_PortableLight_double_F",	[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
-	["Land_BagFence_Long_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 5]] ]],
-	//["Land_HBarrier_1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
-	["Land_HBarrier_3_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 75]] ]],
-	//["Land_HBarrier_5_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 125]] ]],
-	//["Land_HBarrier_Big_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 100]] ]],
-	["Land_HBarrierTower_F",		[[0,3,1], 0, -2.0, 1, 	[["CraterLong_small", 200]] ]],
-	["Land_CncBarrier_F",			[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]]
+	//["Land_PortableLight_double_F",	[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],	
+	//["Land_CncBarrier_F",			[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]],
 	//["Land_CncBarrier_stripes_F",	[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]],
 	//["Land_CncBarrierMedium_F",		[[0,3,1], 0, -1.6, 1, 	[["Land_Bricks_V1_F", 50]] ]],
 	//["Land_CncBarrierMedium4_F",	[[0,3,1], 0, -1.6, 1, 	[["Land_Bricks_V1_F", 50]] ]],
 	//["Land_Mil_WallBig_4m_F",		[[0,3,1], 0, -3.5, 1, 	[["Land_Bricks_V1_F", 150], 	["Land_Pipes_large_F", 10]] ]],
 	//["Land_Mil_WallBig_Corner_F",	[[0,3,1], 0, -3.5, 1, 	[["Land_Bricks_V1_F", 150], 	["Land_Pipes_large_F", 10]] ]],
 	//["Land_CncWall1_F",				[[0,3,2], 0, -3.5, 1, 	[["Land_Bricks_V1_F", 25], 		["Land_Pipes_large_F", 10]] ]],
-	//["Land_CncWall4_F",				[[0,3,2], 0, -3.5, 1, 	[["Land_Bricks_V1_F-", 100], 	["Land_Pipes_large_F", 40]] ]]
+	//["Land_CncWall4_F",				[[0,3,2], 0, -3.5, 1, 	[["Land_Bricks_V1_F-", 100], 	["Land_Pipes_large_F", 40]] ]],
+	//["Land_Cargo_House_V1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
+	//["Land_Cargo_HQ_V1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
+	//["Land_HBarrier_1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
+	["Land_HBarrier_3_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 75]] ]],
+	//["Land_HBarrier_5_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 125]] ]],
+	//["Land_HBarrier_Big_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 100]] ]],
+	//["Land_HBarrierTower_F",		[[0,3,1], 0, -2.0, 1, 	[["CraterLong_small", 200]] ]],
+	["Land_BagFence_Long_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 5]] ]],	
+	["Land_BagBunker_Small_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 50], ["Land_Pipes_large_F", 10]], ["Land_Bricks_V1_F", 10] ]],
+	["Land_BagBunker_Large_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 200], ["Land_Pipes_large_F", 100], ["Land_Bricks_V1_F", 100]] ]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticBuildables = [];

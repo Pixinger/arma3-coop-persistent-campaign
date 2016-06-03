@@ -1,3 +1,5 @@
+call compile preprocessFileLineNumbers ("logistic\db\init.sqf");
+
 if (hasInterface) then
 {
 	[] spawn {

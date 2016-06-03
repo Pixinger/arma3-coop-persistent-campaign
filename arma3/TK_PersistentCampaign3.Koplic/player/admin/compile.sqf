@@ -1,4 +1,4 @@
-diag_log "compile: player/admin";
+diag_log "INFO: compile: player/admin";
 
 fnc_Admin_IsPlayerAdmin = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_IsPlayerAdmin.sqf"; 
 fnc_Admin_OnKeyAdminMenu = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_OnKeyAdminMenu.sqf";

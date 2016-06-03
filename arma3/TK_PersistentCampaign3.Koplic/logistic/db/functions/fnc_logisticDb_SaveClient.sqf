@@ -1,0 +1,1 @@
+remoteExec ["fnc_logisticDb_SaveClient", 2]; // 2= only server

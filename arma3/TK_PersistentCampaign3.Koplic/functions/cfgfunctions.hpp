@@ -10,5 +10,6 @@ class PIX
 		class RandomElement {};
 		class RandomPosMarkerTrigger {};
 		class IsFlat {};
+		class WorldSize {};
 	};
 };

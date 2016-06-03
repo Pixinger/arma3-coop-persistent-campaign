@@ -1,6 +1,7 @@
+diag_log "INFO: compile: town";
+
 if (isServer) then
 {
-	diag_log "compile: town";
 
 	fnc_town_SpawnCivilian = compile preprocessFileLineNumbers "town\functions\fnc_town_SpawnCivilian.sqf";
 	

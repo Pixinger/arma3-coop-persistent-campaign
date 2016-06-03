@@ -1,6 +1,7 @@
+diag_log "INFO: compile: aiz";
+
 if (isServer) then
 {
-	diag_log "compile: aiz";
 
 	fnc_aiz_IsInGeoInfo = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsInGeoInfo.sqf";
 	fnc_aiz_IsBlueNear = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IsBlueNear.sqf";

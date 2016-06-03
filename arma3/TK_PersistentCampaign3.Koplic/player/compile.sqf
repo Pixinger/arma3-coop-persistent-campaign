@@ -1,4 +1,4 @@
-diag_log "compile: player";
+diag_log "INFO: compile: player";
 
 call compile preprocessFileLineNumbers "player\admin\compile.sqf";
 call compile preprocessFileLineNumbers "player\barracks\compile.sqf";
