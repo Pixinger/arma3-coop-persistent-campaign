@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1288.5801,43.711754,435.80237};
-		dir[]={0.39581418,-0.38905939,0.83185565};
-		up[]={0.16716333,0.92121124,0.3513163};
-		aside[]={0.90299827,1.9453e-007,-0.42966536};
+		pos[]={1424.1326,28.860626,349.77798};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -95,7 +95,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v0.15";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.16";
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
@@ -267,14 +267,14 @@ class Mission
 		class Item4
 		{
 			dataType="Marker";
-			position[]={7000,0,6680};
+			position[]={6800,0,6680};
 			name="markerAiz3";
 			markerType="RECTANGLE";
 			type="rectangle";
-			a=1000;
+			a=800;
 			b=1000;
 			id=130;
-			atlOffset=-3.4986899;
+			atlOffset=-3.4985118;
 		};
 		class Item5
 		{
@@ -315,14 +315,14 @@ class Mission
 		class Item8
 		{
 			dataType="Marker";
-			position[]={7000,0,4680};
+			position[]={6800,0,4680};
 			name="markerAiz7";
 			markerType="RECTANGLE";
 			type="rectangle";
-			a=1000;
+			a=800;
 			b=1000;
 			id=134;
-			atlOffset=-3.7617757;
+			atlOffset=-3.9803925;
 		};
 		class Item9
 		{
@@ -363,62 +363,62 @@ class Mission
 		class Item12
 		{
 			dataType="Marker";
-			position[]={7000,0,2680};
+			position[]={6800,0,2680};
 			name="markerAiz11";
 			markerType="RECTANGLE";
 			type="rectangle";
-			a=1000;
+			a=800;
 			b=1000;
 			id=138;
-			atlOffset=-2.6666708;
+			atlOffset=-3.4112799;
 		};
 		class Item13
 		{
 			dataType="Marker";
-			position[]={1000,0,680};
+			position[]={1000,0,1080};
 			name="markerAiz12";
 			markerType="RECTANGLE";
 			type="rectangle";
 			a=1000;
-			b=1000;
+			b=600;
 			id=140;
-			atlOffset=-3.7179914;
+			atlOffset=-3.8474939;
 		};
 		class Item14
 		{
 			dataType="Marker";
-			position[]={3000,0,680};
+			position[]={3000,0,880};
 			name="markerAiz13";
 			markerType="RECTANGLE";
 			type="rectangle";
 			a=1000;
-			b=1000;
+			b=800;
 			id=141;
-			atlOffset=-3.8490241;
+			atlOffset=-4.0681324;
 		};
 		class Item15
 		{
 			dataType="Marker";
-			position[]={5000,0,680};
+			position[]={5000,0,880};
 			name="markerAiz14";
 			markerType="RECTANGLE";
 			type="rectangle";
 			a=1000;
-			b=1000;
+			b=800;
 			id=142;
-			atlOffset=-3.2797391;
+			atlOffset=-11.602364;
 		};
 		class Item16
 		{
 			dataType="Marker";
-			position[]={7000,0,680};
+			position[]={6800,0,880};
 			name="markerAiz15";
 			markerType="RECTANGLE";
 			type="rectangle";
-			a=1000;
-			b=1000;
+			a=800;
+			b=800;
 			id=143;
-			atlOffset=-16.592138;
+			atlOffset=-9.5398054;
 		};
 		class Item17
 		{

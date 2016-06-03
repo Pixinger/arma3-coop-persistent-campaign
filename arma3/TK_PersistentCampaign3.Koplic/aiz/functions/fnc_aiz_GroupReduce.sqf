@@ -18,5 +18,20 @@ private _unitInfos = [];
 	};
 } foreach _unitsWithoutLeader;
 
+Sleep 1;
+
+// Alle übriggebliebenen auf langsam gehen setzn (das sollte eigentlich nur der Leader sein).
+{ 
+	_x setSpeedMode "LIMITED"; 
+	_x setBehaviour "CARELESS";
+} foreach (units _group);
+
+[_group] spawn {
+	Sleep 3;
+	{ 
+		_x setBehaviour "CARELESS";
+	} foreach (units (_this select 0));
+};	
+
 //diag_log format["fnc_aiz_GroupReduce: _unitInfos=%1", _unitInfos];
 _unitInfos;

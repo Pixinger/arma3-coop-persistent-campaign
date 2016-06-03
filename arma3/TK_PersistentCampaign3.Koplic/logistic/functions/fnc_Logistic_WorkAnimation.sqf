@@ -1,4 +1,4 @@
-private ["_primaryWeapon"];
+/*private ["_primaryWeapon"];
 _primaryWeapon = primaryWeapon player;
 private["_handGun"];
 _handGun = handgunWeapon player;
@@ -19,4 +19,4 @@ else
 	{
 		player playMoveNow "AmovPercMstpSnonWnonDnon_exercisekneeBendA"; // Nix
 	};
- };
+ };*/

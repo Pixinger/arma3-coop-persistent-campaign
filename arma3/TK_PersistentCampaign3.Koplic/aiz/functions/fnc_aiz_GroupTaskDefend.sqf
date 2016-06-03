@@ -28,6 +28,9 @@ _emptyStaticWeapons = [];
 	};
 } forEach _emptyStaticWeapons;
 
+// All alten Wegpunkte entfernen
+{ deleteWaypoint _x; } foreach (waypoints _group);
+
 // Der Rest soll an der Position Wache schieben
 private _waypointGuard = _group addWaypoint [_position, _guardRadius];
 _waypointGuard setWaypointType "GUARD";

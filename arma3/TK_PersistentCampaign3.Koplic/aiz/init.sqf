@@ -11,11 +11,8 @@ if (isServer) then
 	for "_i" from 0 to aizZoneCount-1 do 
 	{
 		aizZoneActive pushBack 0;
-		if (_i != 12) then 
-		{
-			private _dataSet = if (count _database > _i) then { _database select _i } else { [] };
-			[_i, _dataSet] call fnc_aiz_ZoneInit;
-		};
+		private _dataSet = if (count _database > _i) then { _database select _i } else { [] };
+		[_i, _dataSet] call fnc_aiz_ZoneInit;
 	};
 
 	// ------------------------------------------------------------------------------

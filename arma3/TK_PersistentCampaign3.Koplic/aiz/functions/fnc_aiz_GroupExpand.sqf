@@ -2,6 +2,8 @@
 params ["_group", "_unitInfos"];
 
 private _leader = leader _group;
+_leader setSpeedMode "LIMITED";
+
 {
 	_x params ["_classname", "_weapons", "_skill", "_damageArray"];
 	//diag_log format["fnc_aiz_GroupExpand: _x = %1  %2 %3 %4 %5", _this, _classname, _weapons, _skill, _damageArray];
@@ -15,8 +17,26 @@ private _leader = leader _group;
 	_unit setCombatMode (combatMode _leader);
 } foreach _unitInfos;
 
-_group setBehaviour (behaviour _leader);
-_group setSpeedMode (speedMode _leader);
-_group setCombatMode (combatMode _leader);
+
+{ 
+	_group reveal _x; 
+	_x setSpeedMode "LIMITED"; 
+	_x setCombatMode "WHITE"; // YELLOW / RED
+	_x setBehaviour "SAFE";	
+} foreach (units _group);
+_group setFormation "STAG COLUMN";
+
+[_group] spawn {
+	Sleep 3;
+
+	(_this select 0) setFormation "STAG COLUMN";
+	{ 
+		(_this select 0) reveal _x; 
+		_x setSpeedMode "LIMITED"; 
+		_x setCombatMode "WHITE"; // YELLOW / RED
+		_x setBehaviour "SAFE";
+	} foreach (units (_this select 0));
+	(_this select 0) setFormation "STAG COLUMN";	
+};	
 
 true;

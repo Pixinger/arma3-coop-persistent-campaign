@@ -20,3 +20,5 @@ aizZonesSaving = false;
 aizZoneInitCompleted = false;
 aizZoneActive = [];
 aizZoneActiveCounter = 0;
+
+aizGroupMarkerCounter = 0; //TODO: Remove later
