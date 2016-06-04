@@ -71,7 +71,7 @@ lbSetCurSel [LOGISTICGEAR_IDC_DIALOG_List, 0];
 // Füllstand der Kiste anzeigen
 private _dbVar = _cursorTarget getVariable["dbVar", []];
 private _contentCount = if (count _dbVar > 0) then { _dbVar select 0; } else { 10000 };
-hint format ["Füllstand der Kiste\n%1%2", floor ((100 % 10000) * _contentCount),"%"];
+hint format ["Füllstand der Kiste\n%1%2", floor ((100 / 10000) * _contentCount),"%"];
 
 //-----------------------------------------------------------------	
 /* Dialog anzeigen*/
