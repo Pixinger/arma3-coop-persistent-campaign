@@ -1,4 +1,5 @@
 call compile preprocessFileLineNumbers ("logistic\db\compile.sqf");
+call compile preprocessFileLineNumbers ("logistic\gear\compile.sqf");
 diag_log "INFO: compile: logistic";
 
 // Hauptfunktionen

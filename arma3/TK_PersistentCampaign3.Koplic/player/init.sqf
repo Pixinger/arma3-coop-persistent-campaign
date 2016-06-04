@@ -1,5 +1,4 @@
 call compile preprocessFileLineNumbers "player\admin\init.sqf";
-call compile preprocessFileLineNumbers "player\barracks\init.sqf";
 
 if (hasInterface) then
 {
@@ -16,9 +15,10 @@ if (hasInterface) then
 		player setVariable ["isPioneer", true];
 
 		private["_tmp"];
-		// 20=T, 22=U, 86=<, 24=O, 21=Z, 220=rwin, 221=rapp, 37=K, 15=TAB, 57=SPACE 
+		// 20=T, 22=U, P=25, 86=<, 24=O, 21=Z, 220=rwin, 221=rapp, 37=K, 15=TAB, 57=SPACE 
 		//_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "player globalChat format['key: %1',_this select 1];"];
-		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if (!dialog ) then { if ((_this select 1 == 86) || {(_this select 1 == 220)}) then { _tmp = [] spawn fnc_Player_OnKey;};};"];
+		//_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if (!dialog ) then { if ((_this select 1 == 86) || {(_this select 1 == 220)}) then { _tmp = [] spawn fnc_Player_OnKey;};};"];
+		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if (!dialog ) then { if (_this select 1 == 22) then { _tmp = [] spawn fnc_Player_OnKey;};};"];
 		
 		if (call fnc_admin_IsPlayerAdmin) then
 		{

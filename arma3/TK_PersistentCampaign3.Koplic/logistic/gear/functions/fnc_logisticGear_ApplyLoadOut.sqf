@@ -4,11 +4,9 @@ _unit = _this select 0;
 private["_loadout"];
 _loadout = _this select 1;
 
-pixLogisticLastLoadOut = _loadout;
-
 /* Loadout abfragen */
 private["_result"];
-_result = _unit call compile preprocessFileLineNumbers format["player\barracks\loadoutsNATO\%1", _loadout];
+_result = [] call compile preprocessFileLineNumbers format["logistic\gear\%1\%2", cfgLogisticGear_LoadoutFolder, _loadout];
 
 /* Result lesbar machen */
 private["_goggleClassname"];

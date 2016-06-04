@@ -30,7 +30,14 @@ if (isServer) then
 		if (!(_x getVariable ["dbIgnore", false])) then
 		{
 			diag_log format["db-save-vehicle: %1", _x];
-			_databaseVehicles pushBack [typeof(_x), (getPosATL _x), (getDir _x), ([_x] call fnc_logisticDb_GetVehicleDamageArray), ([_x] call fnc_logisticDb_GetVehicleCargoArray)];
+			_databaseVehicles pushBack [
+				typeof(_x), 
+				(getPosATL _x), 
+				(getDir _x), 
+				([_x] call fnc_logisticDb_GetVehicleDamageArray), 
+				([_x] call fnc_logisticDb_GetVehicleCargoArray),
+				(_x getVariable ["dbVar", []])
+			];
 		};
 	} foreach _vehicles; 
 
@@ -51,7 +58,14 @@ if (isServer) then
 		if (!(_x getVariable ["dbIgnore", false])) then
 		{
 			diag_log format["db-save-ammobox: %1", _x];
-			_databaseAmmoboxes pushBack [typeof(_x), (getPosATL _x), (getDir _x), (getDammage _x), ([_x] call fnc_logisticDb_GetVehicleCargoArray)];
+			_databaseAmmoboxes pushBack [
+				typeof(_x), 
+				(getPosATL _x), 
+				(getDir _x), 
+				(getDammage _x), 
+				([_x] call fnc_logisticDb_GetVehicleCargoArray),
+				(_x getVariable ["dbVar", []])
+			];
 		};
 	} foreach _ammoboxes; 
 
@@ -71,7 +85,13 @@ if (isServer) then
 		if (!(_x getVariable ["dbIgnore", false])) then
 		{
 			diag_log format["db-save-_objects: %1", _x];
-			_databaseObjects pushBack [typeof(_x), (getPosATL _x), (getDir _x), (getDammage _x)];
+			_databaseObjects pushBack [
+				typeof(_x), 
+				(getPosATL _x), 
+				(getDir _x), 
+				(getDammage _x),
+				(_x getVariable ["dbVar", []])
+			];
 		};
 	} foreach _objects; 
 

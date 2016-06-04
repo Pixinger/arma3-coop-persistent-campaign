@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1378.7599,182.32159,278.52765};
+		pos[]={1336.0269,38.842953,476.59198};
 		dir[]={-0.20393716,-0.57877636,0.78970808};
 		up[]={-0.14474171,0.81541806,0.56047648};
 		aside[]={0.96833223,3.9476436e-007,0.25006646};
@@ -200,9 +200,10 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={862.62164,5.9866257,823.50452};
-				angles[]={6.2306852,0,6.1268253};
+				position[]={862.62201,5.986599,823.505};
+				angles[]={6.2306857,0,6.126821};
 			};
+			name="StaticCuratorModule";
 			id=10;
 			type="ModuleCurator_F";
 			class CustomAttributes
@@ -741,7 +742,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1318.0797,3.9818313,517.72144};
+						position[]={1334.6581,3.9818313,532.04077};
 						angles[]={0,3.1336386,0};
 					};
 					side="West";
@@ -1147,6 +1148,7 @@ class Mission
 			};
 			id=338;
 			type="B_CargoNet_01_ammo_F";
+			atlOffset=2.3841858e-007;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1226,6 +1228,7 @@ class Mission
 			};
 			id=340;
 			type="Land_Sacks_heap_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item58
 		{
@@ -1551,6 +1554,7 @@ class Mission
 			};
 			id=377;
 			type="Land_WaterTank_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item77
 		{
@@ -1623,6 +1627,7 @@ class Mission
 			};
 			id=380;
 			type="Land_Pallet_MilBoxes_F";
+			atlOffset=2.3841858e-007;
 		};
 		class Item80
 		{
@@ -1639,6 +1644,7 @@ class Mission
 			};
 			id=381;
 			type="Land_WaterBarrel_F";
+			atlOffset=2.3841858e-007;
 		};
 		class Item81
 		{

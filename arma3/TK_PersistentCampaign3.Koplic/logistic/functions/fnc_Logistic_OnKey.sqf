@@ -13,10 +13,11 @@ if (typeOf(vehicle player) in logisticHaulers) then
 }
 else
 {
-	if (player getVariable ["isPioneer", false]) then { _buttons pushBack ["Pionier Menü", true, true, fnc_Logistic_BuildMenu];};
-	
 	if (_cursorTarget distance player < 10) then 
 	{
+		// Barracken Menü
+		if (_cursorTargetType in cfgLogisticGear_MenuObjectClassnames) then { _buttons pushBack ["Ausrüsten (Waffen)", true, true, fnc_logisticGear_ShowModal];};		
+		
 		// AIZ Menüs
 		if (_cursorTargetType in aizCampTownClassnames) then { _buttons pushBack ["Gerät beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
 		if (_cursorTargetType in aizCampFieldClassnames) then { _buttons pushBack ["Zelt beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
@@ -26,6 +27,8 @@ else
 		if (_cursorTargetType in logisticTransporters) then { _buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_Unload];};
 		if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
 	};
+
+	if (player getVariable ["isPioneer", false]) then { _buttons pushBack ["Pionier Menü", true, true, fnc_Logistic_BuildMenu];};
 };
 
 

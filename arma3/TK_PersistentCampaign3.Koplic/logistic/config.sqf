@@ -1,7 +1,8 @@
-call compile preprocessFileLineNumbers ("logistic\db\config.sqf");
+call compile preprocessFileLineNumbers "logistic\db\config.sqf";
+call compile preprocessFileLineNumbers "logistic\gear\config.sqf";
 
 // ["className", [[attach-offset]]]
-logisticObjectsMoveableDefinitions = [
+private _logisticObjectsMoveableDefinitions = [
 	// Statische Waffen
 	//["B_HMG_01_F",					[[0, 3, 1]] ],
 	//["B_HMG_01_high_F",				[[0, 3, 1]] ],
@@ -38,14 +39,13 @@ logisticObjectsMoveableConfigs = [];
 {
 	logisticObjectsMoveables pushBack (_x select 0);
 	logisticObjectsMoveableConfigs pushBack (_x select 1);
-} foreach logisticObjectsMoveableDefinitions;
-logisticObjectsMoveableDefinitions = nil; // Speicher freigeben
+} foreach _logisticObjectsMoveableDefinitions;
 //----------------------------------------------------------------------------------------------------
 
 
 
 // ["className", [grösse,[attach-offset],attach-rotation]]
-logisticObjectsTransportableDefinitions = [
+private _logisticObjectsTransportableDefinitions = [
 	// Ausrüstungskisten
 	//["B_CargoNet_01_ammo_F",	[1,	[0,  0, .3],	0] ],
 	//["CargoNet_01_box_F",		[1,	[0,  0, .1],	0] ],
@@ -68,13 +68,12 @@ logisticObjectsTransportablesConfig = [];
 {
 	logisticObjectsTransportables pushBack (_x select 0);
 	logisticObjectsTransportablesConfig pushBack (_x select 1);
-} foreach logisticObjectsTransportableDefinitions;
-logisticObjectsTransportableDefinitions = nil; // Speicher freigeben
+} foreach _logisticObjectsTransportableDefinitions;
 //----------------------------------------------------------------------------------------------------
 
 
 
-logisticTransporterDefinitions = [
+private _logisticTransporterDefinitions = [
 	["C_Van_01_box_F",			[[0,-1],[0,-2.5]] ],
 	["C_Van_01_transport_F",	[[0,-1],[0,-2.5]] ],
 	["B_Truck_01_box_F",		[[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4]] ],
@@ -87,15 +86,14 @@ logisticTransporterConfigs = [];
 {
 	logisticTransporters pushBack (_x select 0);
 	logisticTransporterConfigs pushBack (_x select 1);
-} foreach logisticTransporterDefinitions;
-logisticTransporterDefinitions = nil; // Speicher freigeben
+} foreach _logisticTransporterDefinitions;
 //----------------------------------------------------------------------------------------------------
 
 
 
 
 // ["className", [attachpoint, attachrotation, detachheight, buildspeed, requiredResources] ]  ||  requiredResources = [[classname1, quantity1], [classname2, quantity2], ...];
-logisticBuildableDefinitions = [
+private _logisticBuildableDefinitions = [
 	//["Land_PortableLight_double_F",	[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],	
 	//["Land_CncBarrier_F",			[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]],
 	//["Land_CncBarrier_stripes_F",	[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]],
@@ -122,13 +120,12 @@ logisticBuildableConfigs = [];
 {
 	logisticBuildables pushBack (_x select 0);
 	logisticBuildableConfigs pushBack (_x select 1);
-} foreach logisticBuildableDefinitions;
-logisticBuildableDefinitions = nil; // Speicher freigeben
+} foreach _logisticBuildableDefinitions;
 //----------------------------------------------------------------------------------------------------
 
 
 // [classname, [attachpoint ]]
-logisticHaulerDefinitions = [
+private _logisticHaulerDefinitions = [
 	["B_Truck_01_mover_F", [[0,0,0]]]
 ];
 //----------------------------------------------------------------------------------------------------
@@ -137,14 +134,13 @@ logisticHaulerConfigs = [];
 {
 	logisticHaulers pushBack (_x select 0);
 	logisticHaulerConfigs pushBack (_x select 1);
-} foreach logisticHaulerDefinitions;
-logisticHaulerDefinitions = nil; // Speicher freigeben
+} foreach _logisticHaulerDefinitions;
 //----------------------------------------------------------------------------------------------------
 
 
 
 // [classname, [attachpoint, attachrotation ]]
-logisticHaulableDefinitions = [
+private _logisticHaulableDefinitions = [
 	["B_Truck_01_box_F", [[0,0,0], 0]]
 ];
 //----------------------------------------------------------------------------------------------------
@@ -153,6 +149,5 @@ logisticHaulableConfigs = [];
 {
 	logisticHaulables pushBack (_x select 0);
 	logisticHaulableConfigs pushBack (_x select 1);
-} foreach logisticHaulableDefinitions;
-logisticHaulableDefinitions = nil; // Speicher freigeben
+} foreach _logisticHaulableDefinitions;
 //----------------------------------------------------------------------------------------------------
