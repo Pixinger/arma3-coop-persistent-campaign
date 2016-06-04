@@ -1,5 +1,6 @@
 if (!(surfaceIsWater position player) && (!isOnRoad player)) then 
 {
+	hint "Bauen gestartet. Bitte stehen bleiben!";
 	private["_i"];
 	_i = 2;
 	while { _i > 0 } do
@@ -7,8 +8,8 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 		call fnc_Logistic_WorkAnimation;
 		Sleep 7;
 		_i = _i - 1;
-		player sidechat "loop";
 	};
+	hint "";
 	
 	// Objekt erstellen
 	private["_object"];

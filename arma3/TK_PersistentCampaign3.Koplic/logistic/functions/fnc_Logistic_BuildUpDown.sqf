@@ -6,25 +6,21 @@
 
 if (!isNil "logisticBuild") exitWith { hint "Du schlimmer Schelm. Du denkst wohl so geht es schneller? hä?!"; logisticBuild = false;};
 // -------------------------------------------------------
-private["_object"];
-_object = _this select 0;
+private _object = _this select 0;
 
 // -------------------------------------------------------
-private["_direction"];
-_direction = _this select 1;
+private _direction = _this select 1;
 
 // -------------------------------------------------------
 // _config übernehmen / laden
-private["_config"];
-_config = [];
+private _config = [];
 if (count _this >= 3) then 
 {
 	_config = _this select 2;
 }
 else 
 {
-	private["_configIndex"];
-	_configIndex = logisticBuildables find (typeof(_object));
+	private _configIndex = logisticBuildables find (typeof(_object));
 	if (_configIndex != -1) exitWith {_config = logisticBuildableConfigs select _configIndex;};
 };
 if (count _config == 0) exitWith 
@@ -34,17 +30,14 @@ if (count _config == 0) exitWith
 // -------------------------------------------------------
 
 
-private["_position"];
-_position = getPosATL _object;
+private _position = getPosATL _object;
+private _buildSpeed = _config select BUILDSPEED_INDEX;
+private _downPosition = [((getPos _object) select 0), ((getPos _object) select 1), (_config select DETACHHEIGHT_INDEX)];
+private _classname = typeof _object;
 
-private["_buildSpeed"];
-_buildSpeed = _config select BUILDSPEED_INDEX;
-
-private["_actionMenu"];
-_actionMenu = player addAction [("<t color=""#dddd00"">Bauen abschliessen</t>"), { logisticBuild = false; }, nil, 5, true, true];
-
-private["_autoStop"];
-_autoStop = false;
+private _actionMenu = player addAction [("<t color=""#dddd00"">Bauen abschliessen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+		
+private _autoStop = false;
 if (_direction > 0) then
 {
 	if (_position select 2 < -0.5) then {_autoStop = true;};	
@@ -54,11 +47,22 @@ else
 	if (_position select 2 > 0.5) then {_autoStop = true;};	
 };
 
+// Globales Objekt nach unten setzen, damit es nicht mehr im Weg ist.
+_object setPosATL _downPosition;
+
+// Lokales Objekt erzeugen
+private _objectLocal = _classname createVehicleLocal _position;
+waitUntil {!isNil "_objectLocal"};
+_objectLocal setPosATL _position;
+_objectLocal setDir (getDir _object);
+
+// Lokales Objekt verändern (hoch oder runter)
+#define SLEEP_TIME	2
 logisticBuild = true;
-while {(logisticBuild) && (alive player) && (player distance2D _object < 5) } do
+while {(logisticBuild) && (alive player) && (player distance2D _objectLocal < 5) } do
 {
-	_position = getPosATL _object;
-	_position = [_position select 0, _position select 1, (_position select 2) + ((_buildSpeed / (60/7)) * _direction)];
+	_position = getPosATL _objectLocal;
+	_position = [_position select 0, _position select 1, (_position select 2) + ((_buildSpeed / (60/SLEEP_TIME)) * _direction)];
 	if (_autoStop) then
 	{
 		if (_direction > 0) then
@@ -79,12 +83,18 @@ while {(logisticBuild) && (alive player) && (player distance2D _object < 5) } do
 		};
 	};
 	player sidechat format["height: %1", _position select 2];
-	_object setPosATL _position;
+	_objectLocal setPosATL _position;
 
 	// Erst am Ende Warten, sonst wird bei Abbruch noch einmal zuviel ausgebaut.
 	call fnc_Logistic_WorkAnimation;
-	Sleep 7;
+	Sleep SLEEP_TIME;
 };
+
+// Lokales Objekt löschen
+deleteVehicle _objectLocal;
+
+// Globales Objekt auf richtige Position schieben
+_object setPosATL _position;
 
 player removeAction _actionMenu;
 logisticBuild = nil;
