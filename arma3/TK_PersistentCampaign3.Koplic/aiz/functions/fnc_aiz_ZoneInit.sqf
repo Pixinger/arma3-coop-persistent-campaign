@@ -84,7 +84,7 @@ if (count _zoneDataSet != 4) then
 			if (count _randomPosition > 0) then
 			{		
 				_campsTown pushBack _randomPosition;// [house, buildingPosIndex]
-				diag_log format["INFO: Location for CampTown found. ZoneIndex=%1", _zoneIndex];
+				//diag_log format["INFO: Location for CampTown found. ZoneIndex=%1", _zoneIndex];
 			}
 			else
 			{
@@ -94,7 +94,7 @@ if (count _zoneDataSet != 4) then
 	}
 	else
 	{
-		diag_log format["INFO: No CampTown for ZoneIndex=%1 required.", _zoneIndex];
+		//diag_log format["INFO: No CampTown for ZoneIndex=%1 required.", _zoneIndex];
 	};
 	
 	//------------------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ if (count _zoneDataSet != 4) then
 			if (count _randomPosition > 0) then
 			{			
 				_campsField pushBack [_randomPosition, 6 + (random 6)]; // [position, respawnCount]
-				diag_log format["INFO: Location for CampField found. ZoneIndex=%1", _zoneIndex];
+				//diag_log format["INFO: Location for CampField found. ZoneIndex=%1", _zoneIndex];
 			}
 			else
 			{
@@ -118,7 +118,7 @@ if (count _zoneDataSet != 4) then
 	}
 	else
 	{
-		diag_log format["INFO: No CampField for ZoneIndex=%1 required.", _zoneIndex];
+		//diag_log format["INFO: No CampField for ZoneIndex=%1 required.", _zoneIndex];
 	};
 			
 	//------------------------------------------------------------------------------------------
@@ -132,7 +132,7 @@ if (count _zoneDataSet != 4) then
 			if (count _randomPosition > 0) then
 			{
 				_checkpoints pushBack _randomPosition; // [position, direction]
-				diag_log format["INFO: Location for Checkpoint found. ZoneIndex=%1", _zoneIndex];
+				//diag_log format["INFO: Location for Checkpoint found. ZoneIndex=%1", _zoneIndex];
 			}
 			else
 			{
@@ -142,7 +142,7 @@ if (count _zoneDataSet != 4) then
 	}
 	else
 	{
-		diag_log format["INFO: No Checkpoints for ZoneIndex=%1 required.", _zoneIndex];
+		//diag_log format["INFO: No Checkpoints for ZoneIndex=%1 required.", _zoneIndex];
 	};
 		
 	//------------------------------------------------------------------------------------------

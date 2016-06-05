@@ -25,8 +25,7 @@ if (isServer) then
 		"B_Truck_01_mover_F"];
 	
 	// Die Munitionskisten die in der Datenbank gespeichert werden sollen.
-	logisticDbAmmoboxes = [
-		"ReammoBox_F"];
+	logisticDbAmmoboxes = ["Box_NATO_Ammo_F"];
 		
 	// Die Objekte die in der Datenbank gespeichert werden sollen.
 	logisticDbObjects = [
@@ -36,6 +35,7 @@ if (isServer) then
 		"Land_BagBunker_Small_F",
 		"Land_BagBunker_Large_F",
 		// Objekte
+		"Land_DataTerminal_01_F",
 		"Land_Pallet_MilBoxes_F",
 		"Land_Sacks_heap_F",
 		"Land_WaterBarrel_F",

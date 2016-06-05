@@ -1,6 +1,8 @@
 call compile preprocessFileLineNumbers "logistic\db\config.sqf";
 call compile preprocessFileLineNumbers "logistic\gear\config.sqf";
 
+logisticObjectHQClassname = "Land_DataTerminal_01_F";
+
 // ["className", [[attach-offset]]]
 private _logisticObjectsMoveableDefinitions = [
 	// Statische Waffen
@@ -24,6 +26,7 @@ private _logisticObjectsMoveableDefinitions = [
 	//["CargoNet_01_barrels_F",		[[0, 3, 1]] ],
 	//["Land_Pipes_small_F",			[[0, 3, 1]] ], 
 	//["Land_Pipes_large_F",			[[0, 3, 1]] ], 
+	["Land_DataTerminal_01_F",		[[0, 3, 1]] ],
 	["Land_Pallet_MilBoxes_F",		[[0, 3, 1]] ],
 	["Land_Sacks_heap_F",			[[0, 3, 1]] ],
 	["Land_WaterBarrel_F",			[[0, 3, 1]] ],
@@ -56,6 +59,7 @@ private _logisticObjectsTransportableDefinitions = [
 	//["Land_Pipes_small_F",		[2,	[0,-.8,-.5],	90] ],	
 	//["CargoNet_01_barrels_F",	[1,	[0,  0, .1],	0] ],
 	//["Land_Sacks_goods_F",		[1,	[0,  0,  0],	0] ],
+	["Land_DataTerminal_01_F",	[1,	[0,  0, .3],	0] ],
 	["Land_Pallet_MilBoxes_F",	[1,	[0,  0, .3],	0] ],
 	["Land_Sacks_heap_F",		[1,	[0,  0,  0],	0] ],
 	["Land_WaterBarrel_F",		[1,	[0,  0,  0],	0] ],

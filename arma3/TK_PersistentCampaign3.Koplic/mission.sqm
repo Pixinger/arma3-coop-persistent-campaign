@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=391;
+		nextID=392;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1336.0269,38.842953,476.59198};
-		dir[]={-0.20393716,-0.57877636,0.78970808};
-		up[]={-0.14474171,0.81541806,0.56047648};
-		aside[]={0.96833223,3.9476436e-007,0.25006646};
+		pos[]={1329.1924,38.842953,492.83447};
+		dir[]={-0.13511582,-0.76539904,0.62938684};
+		up[]={-0.16066407,0.64350498,0.74838287};
+		aside[]={0.97782189,3.5372796e-007,0.20991671};
 	};
 };
 binarizationWanted=0;
@@ -1286,8 +1286,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1295.0076,3.9725497,393.01663};
-				angles[]={0,4.4556894,0};
+				position[]={1295.0076,3.9725497,393.01636};
+				angles[]={0,4.4556861,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1561,13 +1561,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1298.2589,4.5091534,393.82187};
-				angles[]={0,4.4556894,0};
+				position[]={1298.259,4.5091534,393.82199};
+				angles[]={0,4.4556861,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				init="this setVariable[""dbIgnore"", true];";
 			};
 			id=378;
 			type="CargoNet_01_barrels_F";

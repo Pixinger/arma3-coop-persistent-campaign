@@ -16,6 +16,6 @@ _backpackArray = getBackpackCargo _vehicle;
 // ------------------------------------------------------------------------
 private["_cargoArray"];
 _cargoArray = [_weaponArray, _magazineArray, _itemArray, _backpackArray];
-diag_log format["GetCehicleCargoArray: %1", _cargoArray];
+//diag_log format["GetCehicleCargoArray: %1", _cargoArray];
 
 _cargoArray;

@@ -1,7 +1,7 @@
 aizDbPrefix = "PC3AIZ";
 aizZoneCount = 16;
 
-aizCampTownClassnames = ["Land_Laptop_unfolded_F","Land_DataTerminal_01_F","Land_SatellitePhone_F"];
+aizCampTownClassnames = ["Land_Laptop_unfolded_F","Land_SatellitePhone_F"];
 aizCampTownMinRespawnDistance = 150;
 
 aizCampFieldClassnames = ["Land_TentDome_F", "Land_TentA_F"];
