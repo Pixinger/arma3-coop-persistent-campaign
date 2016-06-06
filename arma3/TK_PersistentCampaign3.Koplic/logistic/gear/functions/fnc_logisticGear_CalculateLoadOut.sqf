@@ -158,5 +158,5 @@ if (_backpackClassname != "") then { _totalMass = _totalMass + ([(configfile >> 
 	if (_x != "") then { _totalMass = _totalMass + ([(configfile >> "CfgWeapons" >> _x >> "ItemInfo"),"mass",0] call BIS_fnc_returnConfigEntry);};	
 } foreach _backpackItems;
 
-if (pixDebug) then { diag_log format["_totalMass for _loadout '%1' = %2",_loadout, _totalMass];
+if (pixDebug) then { diag_log format["_totalMass for _loadout '%1' = %2",_loadout, _totalMass];};
 _totalMass;

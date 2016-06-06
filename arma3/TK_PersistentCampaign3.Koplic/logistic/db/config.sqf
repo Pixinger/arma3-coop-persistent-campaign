@@ -44,13 +44,14 @@ if (isServer) then
 	];
 	
 
-	private _worldSize = [] call PIX_fnc_WorldSize;	
-	diag_log format["INFO: WorldSize=%1", _worldSize];
-	logisticDbMapCenter = _worldSize select 1;
-	logisticDbMapRadiusSqr = sqrt(((logisticDbMapCenter select 0)*(logisticDbMapCenter select 0)) + ((logisticDbMapCenter select 0)*(logisticDbMapCenter select 0)));
-
 	// ------------------------------------------------------------------------------
 	// Runtime Variablen initialisieren (nicht verändern!)
 	logisticDbInitCompleted = false;
 	logisticDbSaving = false;
+	logisticInitialized = false; // Komplette Logistic ist fertig initialisiert (publicVariable)
 };
+
+private _worldSize = [] call PIX_fnc_WorldSize;	
+diag_log format["INFO: WorldSize=%1", _worldSize];
+logisticDbMapCenter = _worldSize select 1;
+logisticDbMapRadiusSqr = sqrt(((logisticDbMapCenter select 0)*(logisticDbMapCenter select 0)) + ((logisticDbMapCenter select 0)*(logisticDbMapCenter select 0)));

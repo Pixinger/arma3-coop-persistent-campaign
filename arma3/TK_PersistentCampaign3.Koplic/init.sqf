@@ -7,6 +7,11 @@ TF_give_personal_radio_to_regular_soldier = true;
 TF_terrain_interception_coefficient = 0;
 TF_give_microdagr_to_soldier = false;
 
+if (hasInterface) then
+{
+	cutText ["Initialization...", "BLACK FADED",1];
+};
+
 waituntil {!isnil "bis_fnc_init"};
 enableSaving [false, false];
 enableTeamSwitch false;

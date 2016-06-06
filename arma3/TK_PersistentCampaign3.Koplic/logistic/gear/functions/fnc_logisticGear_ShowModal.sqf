@@ -93,7 +93,6 @@ if (logisticGearDialog_ButtonResult == 1)  then
 
 	// Masse der Ausrüstung errechnen
 	private _mass = [_scriptFilename] call fnc_logisticGear_CalculateLoadOut;
-	
 	// LoadOut zuweisen 
 	private _result = [player, _scriptFilename] call fnc_logisticGear_ApplyLoadOut;
 

@@ -1,5 +1,4 @@
 diag_log format["fnc_aiz_ZoneResume: _this = %1", _this];
-waitUntil { aizZoneInitCompleted };
 
 params["_zoneIndex","_aizZoneActiveIndex"];
 _zoneIndex = _this select 0;

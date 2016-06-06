@@ -1,0 +1,1 @@
+nearestObjects [logisticDbMapCenter, [logisticObjectHQClassname], logisticDbMapRadiusSqr];
