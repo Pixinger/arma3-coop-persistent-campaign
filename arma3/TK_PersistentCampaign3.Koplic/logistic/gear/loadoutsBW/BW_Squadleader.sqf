@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetB_light_snakeskin",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
-	"Binocular",
+	"Rangefinder",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"MMG_02_black_F", //TODO
+		"hlc_rifle_G36MLIC_equipped",
 		/* Primary weapon Magazine */
-		"130Rnd_338_Mag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["optic_Hamr","bipod_01_F_blk","acc_pointer_IR","muzzle_snds_338_black"]
+		["acc_pointer_IR","optic_MRCO"]
 	],
 
 	/* Secondary Weapon */
@@ -44,12 +44,12 @@ _result = [
 		/* Handgun Weapon Magazine */
 		"11Rnd_45ACP_Mag",
 		/* Handgun Weapon Items */
-		["optic_MRD","muzzle_snds_acp"]
+		["optic_MRD"]
 	],
 
 	/* Uniform */
 	[
-		"U_B_CTRG_3",
+		"BWA3_Uniform3_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
@@ -62,34 +62,36 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrierL_CTRG",
+		"BWA3_Vest_Leader_Fleck",
 		/* Vest-Weapons */
 		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellGreen","SmokeShellRed","SmokeShellRed",
+			"MiniGrenade","MiniGrenade"
 		],
 		/* Vest-Magazines */
 		[
-			"130Rnd_338_Mag","130Rnd_338_Mag",
-			"11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
 		],
 		/* Vest-Items */
 		[
+			"optic_Nightstalker"
 		]
 	],
 
 	/* Backpack */
 	[
-		"B_AssaultPack_rgr",
+		"tf_rt1523g_bwmod",
 		/* Backpack-Weapons */
-		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellGreen","SmokeShellRed"
-		],
+		[],
 		/* Backpack-Magazines */
-		[
-			"130Rnd_338_Mag","130Rnd_338_Mag"
-		],
+		[],
 		/* Backpack-Items */
-		[]
+		[
+			"ACE_muzzle_mzls_H","muzzle_snds_H","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
+		]
 	],
 
 	/* Code */

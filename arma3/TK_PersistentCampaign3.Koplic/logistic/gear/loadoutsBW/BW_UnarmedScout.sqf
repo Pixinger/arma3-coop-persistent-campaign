@@ -1,13 +1,13 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"", //G_Tactical_Clear
+	"",
 
 	/* Headgear */
-	"H_HelmetB_light_black",
+	"H_Cap_usblack",
 
 	/* Binoculars */
-	"Binoculars",
+	"LaserDesignator",
 
 	/* Nightvision */
 	"",
@@ -16,17 +16,17 @@ _result = [
 	[
 		"ItemMap",
 		"ItemWatch",
-		"",
-		""
+		"ItemCompass",
+		"ItemGps"
 	],
 
 	/* Primary Weapon */
 	[
-		"arifle_TRG20_F",
+		"",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"",
 		/* Primary Weapon Items */
-		["muzzle_snds_M","acc_pointer_IR","optic_Hamr"]
+		[""]
 	],
 
 	/* Secondary Weapon */
@@ -40,11 +40,11 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_F",
+		"",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"",
 		/* Handgun Weapon Items */
-		["optic_MRD"]
+		[]
 	],
 
 	/* Uniform */
@@ -56,40 +56,43 @@ _result = [
 		[],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit"
 		]
 	],
 
 	/* Vest */
 	[
-		"V_PlateCarrier1_blk",
+		"V_Chestrig_blk",
 		/* Vest-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellRed","SmokeShellRed",
-			"SmokeShellGreen","SmokeShellGreen"
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
 		],
 		/* Vest-Items */
 		[
-			"NVGoggles","H_Cap_usblack"
 		]
 	],
 
 	/* Backpack */
 	[
-		"",
+		"B_AssaultPack_blk",
 		/* Backpack-Weapons */
-		[],
+		[
+			"SmokeShell", "SmokeShell", "SmokeShell", "SmokeShell", "SmokeShell",
+			"SmokeShellGreen", "SmokeShellGreen", "SmokeShellGreen", "SmokeShellGreen", "SmokeShellGreen",
+			"SmokeShellYellow", "SmokeShellYellow", "SmokeShellYellow", "SmokeShellYellow", "SmokeShellYellow",
+			"SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange",
+			"SmokeShellBlue", "SmokeShellBlue", "SmokeShellBlue", "SmokeShellBlue", "SmokeShellBlue",
+			"SmokeShellPurple", "SmokeShellPurple", "SmokeShellPurple", "SmokeShellPurple", "SmokeShellPurple"
+		],
 		/* Backpack-Magazines */
-		[],
+		[
+		],
 		/* Backpack-Items */
-		[]
+		[
+			"NVGoggles"
+		]
 	],
 
 	/* Code */

@@ -1,16 +1,16 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Lowprofile",
+	"",
 
 	/* Headgear */
-	"H_HelmetB_light_snakeskin",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
-	"Rangefinder",
+	"",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,34 +22,34 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_TRG20_F",
+		"hlc_rifle_G36KMLIC_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["muzzle_snds_M","acc_pointer_IR","optic_Hamr"]
+		["",""]
 	],
 
 	/* Secondary Weapon */
 	[
-		"launch_I_Titan_short_F",
+		"launch_I_Titan_F",
 		/* Secondary weapon Magazine */
-		"Titan_AT",
+		"Titan_AA",
 		/* Secondary Weapon Items */
 		[]
 	],
 
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["optic_MRD","muzzle_snds_acp"]
+		[]
 	],
 
 	/* Uniform */
 	[
-		"U_B_CTRG_3",
+		"BWA3_Uniform_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
@@ -62,7 +62,7 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrierL_CTRG",
+		"BWA3_Vest_Rifleman1_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
@@ -70,21 +70,25 @@ _result = [
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
 		[
+			"ACE_muzzle_mzls_H","muzzle_snds_H","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],
 
 	/* Backpack */
 	[
-		"B_Parachute",
+		"BWA3_Kitbag_Fleck",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
-		[],
+		[
+			"Titan_AA"
+		],
 		/* Backpack-Items */
 		[
 		]

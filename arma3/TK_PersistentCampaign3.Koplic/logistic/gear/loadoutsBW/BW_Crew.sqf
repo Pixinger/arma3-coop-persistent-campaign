@@ -1,32 +1,32 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Lowprofile",
+	"",
 
 	/* Headgear */
-	"H_HelmetB_light_snakeskin",
+	"H_HelmetCrew_I",
 
 	/* Binoculars */
-	"Rangefinder",
+	"Binocular",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"B_UavTerminal"
+		"ItemGps"
 	],
 
 	/* Primary Weapon */
 	[
-		"arifle_TRG20_F",
+		"C1987_MP7_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"C1987_40Rnd_46x30_mp7",
 		/* Primary Weapon Items */
-		["muzzle_snds_M","acc_pointer_IR","optic_Hamr","muzzle_snds_338_black"]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -40,29 +40,30 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["optic_MRD","muzzle_snds_acp"]
+		[]
 	],
 
 	/* Uniform */
 	[
-		"U_B_CTRG_3",
+		"BWA3_Uniform_Crew_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		[],
+		[
+		],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit"
 		]
 	],
 
 	/* Vest */
 	[
-		"V_PlateCarrierL_CTRG",
+		"BWA3_Vest_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
@@ -70,10 +71,7 @@ _result = [
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"Handgrenade","Handgrenade"
+			"C1987_40Rnd_46x30_mp7","C1987_40Rnd_46x30_mp7","C1987_40Rnd_46x30_mp7"
 		],
 		/* Vest-Items */
 		[
@@ -82,11 +80,13 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_UAV_01_backpack_F",
+		"",
 		/* Backpack-Weapons */
-		[],
+		[
+		],
 		/* Backpack-Magazines */
-		[],
+		[
+		],
 		/* Backpack-Items */
 		[
 		]

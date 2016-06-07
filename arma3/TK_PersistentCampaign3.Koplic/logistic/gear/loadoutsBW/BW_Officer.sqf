@@ -4,13 +4,13 @@ _result = [
 	"", //G_Tactical_Clear
 
 	/* Headgear */
-	"H_HelmetB_light",
+	"BWA3_Beret_Jaeger",
 
 	/* Binoculars */
 	"Rangefinder",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"srifle_DMR_06_olive_F",
+		"hlc_rifle_G36KMLIC_equipped",
 		/* Primary weapon Magazine */
-		"20Rnd_762x51_Mag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["optic_DMS","bipod_02_F_blk"]
+		["",""]
 	],
 
 	/* Secondary Weapon */
@@ -40,58 +40,56 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["optic_MRD"]
+		[]
 	],
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_vest",
+		"BWA3_Uniform_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
 		[],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
 		]
 	],
 
 	/* Vest */
 	[
-		"V_PlateCarrier1_rgr",
+		"BWA3_Vest_Leader_Fleck",
 		/* Vest-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellRed","SmokeShellRed",
-			"SmokeShellGreen","SmokeShellGreen"
+			"SmokeShell","SmokeShell","SmokeShell","SmokeShell",
+			"SmokeShellPurple","SmokeShellPurple","SmokeShellPurple","SmokeShellPurple",
+			"SmokeShellGreen","SmokeShellRed"
 		],
 		/* Vest-Magazines */
 		[
-			"20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag",
-			"11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","","",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
 		[
+			"ACE_muzzle_mzls_H","muzzle_snds_H"
 		]
 	],
 
 	/* Backpack */
 	[
-		"B_AssaultPack_mcamo",
+		"",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[],
 		/* Backpack-Items */
-		[
-			"SmokeShell","SmokeShell",
-			"20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag",
-			"muzzle_snds_B","H_Booniehat_mcamo"
-		]
+		[]
 	],
 
 	/* Code */

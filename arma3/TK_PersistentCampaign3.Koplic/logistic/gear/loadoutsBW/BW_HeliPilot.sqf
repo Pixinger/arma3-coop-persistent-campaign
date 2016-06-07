@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetCrew_B",
+	"H_CrewHelmetHeli_B",
 
 	/* Binoculars */
-	"Binocular",
+	"",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_SDAR_F",
+		"C1987_MP7_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"C1987_40Rnd_46x30_mp7",
 		/* Primary Weapon Items */
-		[]
+		[""]
 	],
 
 	/* Secondary Weapon */
@@ -40,38 +40,38 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_P07_F",
+		"",
 		/* Handgun Weapon Magazine */
-		"16Rnd_9x21_Mag",
+		"",
 		/* Handgun Weapon Items */
 		[]
 	],
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_vest",
+		"BWA3_Uniform_Helipilot",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		[
-		],
+		["C1987_40Rnd_46x30_mp7","SmokeShellOrange","SmokeShellYellow"],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit"
 		]
 	],
 
 	/* Vest */
 	[
-		"V_Rangemaster_belt",
+		"",
 		/* Vest-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellGreen","SmokeShellRed"
+			"","",
+			"",""
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+			"","",""
+			,"",""
 		],
 		/* Vest-Items */
 		[
@@ -82,8 +82,7 @@ _result = [
 	[
 		"",
 		/* Backpack-Weapons */
-		[
-		],
+		[],
 		/* Backpack-Magazines */
 		[
 		],

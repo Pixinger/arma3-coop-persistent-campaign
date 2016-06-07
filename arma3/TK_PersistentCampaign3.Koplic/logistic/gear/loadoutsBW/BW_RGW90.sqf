@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetB_light",
+	"BWA3_MICH_Fleck",
 
-	/* Binoculars */
-	"",
+	/* Binoculars (Binocular,AGM_Vector,AGM_Vector)*/
+	"ACE_Vector",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,18 +22,18 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_Mk20C_plain_F",
+		"hlc_rifle_G36KMLIC_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR","optic_MRCO"]
+		["",""]
 	],
 
 	/* Secondary Weapon */
 	[
-		"launch_B_Titan_short_F",
+		"BWA3_RGW90",
 		/* Secondary weapon Magazine */
-		"Titan_AT",
+		"BWA3_RGW90_HH",
 		/* Secondary Weapon Items */
 		[]
 	],
@@ -49,20 +49,21 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_tshirt",
+		"BWA3_Uniform_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
 		[],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie",
+			"BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],
 
 	/* Vest */
 	[
-		"V_PlateCarrier1_rgr",
+		"BWA3_Vest_Rifleman1_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
@@ -70,24 +71,25 @@ _result = [
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag",
-			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag",
+			"Handgrenade","Handgrenade"
 		],
 		/* Vest-Items */
 		[
-			"muzzle_snds_M"
+			"ACE_muzzle_mzls_H","muzzle_snds_H"
 		]
 	],
 
 	/* Backpack */
 	[
-		"B_AssaultPack_rgr",
+		"",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[
-			"Titan_AT"
+			""
 		],
 		/* Backpack-Items */
 		[

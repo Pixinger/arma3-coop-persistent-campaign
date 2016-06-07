@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetB",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
 	"Rangefinder",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_Mk20_GL_plain_F",
+		"hlc_rifle_G36MLIAG36_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR","optic_MRCO"]
+		["",""]
 	],
 
 	/* Secondary Weapon */
@@ -49,7 +49,7 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam",
+		"BWA3_Uniform3_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
@@ -62,7 +62,7 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrier2_rgr",
+		"BWA3_Vest_Leader_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
@@ -71,9 +71,9 @@ _result = [
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
 			"11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
 		],
 		/* Vest-Items */
@@ -84,7 +84,7 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_AssaultPack_rgr",
+		"BWA3_Kitbag_Fleck",
 		/* Backpack-Weapons */
 		[
 			"Handgrenade","Handgrenade"
@@ -99,7 +99,7 @@ _result = [
 		],
 		/* Backpack-Items */
 		[
-			"muzzle_snds_M"
+			"ACE_muzzle_mzls_H","muzzle_snds_H","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],
 

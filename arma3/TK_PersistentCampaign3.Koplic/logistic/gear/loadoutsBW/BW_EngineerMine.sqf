@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetB_light",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
-	"",
+	"Binocular",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,18 +22,18 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_Mk20C_plain_F",
+		"hlc_rifle_G36CMLIC_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR","optic_MRCO"]
+		["acc_pointer_IR"]
 	],
 
 	/* Secondary Weapon */
 	[
-		"launch_B_Titan_F",
+		"",
 		/* Secondary weapon Magazine */
-		"Titan_AA",
+		"",
 		/* Secondary Weapon Items */
 		[]
 	],
@@ -49,11 +49,12 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_tshirt",
+		"BWA3_Uniform2_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		[],
+		[
+		],
 		/* Uniform-Items */
 		[
 			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
@@ -62,40 +63,44 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrier1_rgr",
+		"BWA3_Vest_Rifleman1_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
+			"SmokeShellPurple","SmokeShellPurple",
 			"SmokeShellGreen","SmokeShellRed"
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer",
 			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
 		[
-			"muzzle_snds_M"
 		]
 	],
 
 	/* Backpack */
 	[
-		"B_AssaultPack_rgr",
+		"BWA3_Kitbag_Fleck",
 		/* Backpack-Weapons */
-		[],
+		[
+		],
 		/* Backpack-Magazines */
 		[
-			"Titan_AA"
+		"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
 		[
+			"ACE_DeadManSwitch","ACE_DefusalKit","ACE_Clacker","MineDetector","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","BWA3_G_Combat_Clear","BWA3_Beret_PzGren",
+			"ACE_muzzle_mzls_H","muzzle_snds_H"
 		]
 	],
 
 	/* Code */
-	""
+	"player setVariable [""ACE_isEOD"", true, true];player setVariable [""ACE_IsEngineer"", false, true];player setVariable [""ace_medical_medicclass"",0, true];"
 ];
 
 _result;

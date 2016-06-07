@@ -1,16 +1,16 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"",//G_Tactical_Clear
+	"",
 
 	/* Headgear */
-	"H_HelmetB",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
 	"Binocular",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,9 +22,9 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_Mk20_MRCO_plain_F",
+		"hlc_rifle_G36CMLIC_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
 		["acc_pointer_IR"]
 	],
@@ -49,7 +49,7 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_vest",
+		"BWA3_Uniform2_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
@@ -63,7 +63,7 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrier2_rgr",
+		"BWA3_Vest_Rifleman1_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
@@ -72,10 +72,10 @@ _result = [
 		],
 		/* Vest-Magazines */
 		[
-			"MiniGrenade","MiniGrenade",
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			,"30Rnd_65x39_caseless_mag_Tracer",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
 		[
@@ -84,17 +84,18 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_Kitbag_rgr",
+		"BWA3_Kitbag_Fleck",
 		/* Backpack-Weapons */
 		[
 		],
 		/* Backpack-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+		"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"ToolKit","MineDetector","muzzle_snds_M"
+			"ToolKit","MineDetector","BWA3_G_Combat_Clear","BWA3_Beret_PzGren",
+			"ACE_muzzle_mzls_H","muzzle_snds_H"
 		]
 	],
 

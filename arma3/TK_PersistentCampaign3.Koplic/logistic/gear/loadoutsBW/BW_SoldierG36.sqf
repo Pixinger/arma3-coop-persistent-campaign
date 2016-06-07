@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetB",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
 	"Binocular",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"MMG_01_tan_F", //TODO
+		"hlc_rifle_G36MLIC_equipped",
 		/* Primary weapon Magazine */
-		"150Rnd_93x64_Mag",
+		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["optic_MRCO","acc_pointer_IR","bipod_01_F_blk"]
+		[""]
 	],
 
 	/* Secondary Weapon */
@@ -49,7 +49,7 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_tshirt",
+		"BWA3_Uniform_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
@@ -62,13 +62,17 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrier2_rgr",
+		"BWA3_Vest_Rifleman1_Fleck",
 		/* Vest-Weapons */
 		[
+			"SmokeShell","SmokeShell","SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellGreen",
+			"SmokeShellRed","SmokeShellRed",
+			"Handgrenade","Handgrenade","Handgrenade","Handgrenade"
 		],
 		/* Vest-Magazines */
 		[
-			"150Rnd_93x64_Mag","150Rnd_93x64_Mag",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
 			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
@@ -78,19 +82,20 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_AssaultPack_rgr",
+		"BWA3_AssaultPack_Fleck",
 		/* Backpack-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellGreen","SmokeShellRed"
 		],
 		/* Backpack-Magazines */
 		[
-			"150Rnd_93x64_Mag","150Rnd_93x64_Mag"
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
+			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","","",
+			"",""
 		],
 		/* Backpack-Items */
 		[
-			"muzzle_snds_93mmg"
+			"ACE_muzzle_mzls_H","muzzle_snds_H","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],
 

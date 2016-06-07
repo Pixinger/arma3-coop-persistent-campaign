@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_HelmetB",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
 	"Binocular",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_Mk20_MRCO_plain_F",
+		"MG_3", //TODO
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"MG3_120Rnd_762x51_Box_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR"]
+		["","",""]
 	],
 
 	/* Secondary Weapon */
@@ -49,12 +49,11 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_CombatUniform_mcam_vest",
+		"BWA3_Uniform2_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		[
-		],
+		[],
 		/* Uniform-Items */
 		[
 			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
@@ -63,18 +62,13 @@ _result = [
 
 	/* Vest */
 	[
-		"V_PlateCarrier2_rgr",
+		"BWA3_Vest_Autorifleman_Fleck",
 		/* Vest-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellPurple","SmokeShellPurple",
-			"SmokeShellGreen","SmokeShellRed"
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
-			,"30Rnd_556x45_Stanag",
+			"MG3_120Rnd_762x51_Box_Tracer","MG3_120Rnd_762x51_Box_Tracer",
 			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 		],
 		/* Vest-Items */
@@ -84,26 +78,24 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_Kitbag_rgr",
+		"BWA3_Kitbag_Fleck",
 		/* Backpack-Weapons */
 		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellRed"
 		],
 		/* Backpack-Magazines */
 		[
-		"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"
+			"MG3_120Rnd_762x51_Box_Tracer","MG3_120Rnd_762x51_Box_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"ToolKit","MineDetector","muzzle_snds_M"
+			"BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],
 
 	/* Code */
-	"player setVariable [""ACE_isEOD"", true, true];player setVariable [""ACE_IsEngineer"", false, true];player setVariable [""ace_medical_medicclass"",0, true];"
+	""
 ];
 
 _result;
-
-//ACE_IsEngineer
-//unit getVariable [QGVAR(medicClass)			=> 		_unit getVariable ["ace_medical_medicClass", false]
-//_vehicle getVariable [QGVAR(medicClass)		=> 		_vehicle getVariable ["ace_medical_medicClass", false]

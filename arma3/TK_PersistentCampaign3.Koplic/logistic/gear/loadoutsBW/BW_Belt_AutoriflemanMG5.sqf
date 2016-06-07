@@ -1,16 +1,16 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"G_Balaclava_oli", //G_Tactical_Clear
+	"",
 
 	/* Headgear */
-	"",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
-	"Rangefinder",
+	"Binocular",
 
 	/* Nightvision */
-	"",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"srifle_DMR_05_tan_f",
+		"BWA3_MG5_equipped", //TODO
 		/* Primary weapon Magazine */
-		"10Rnd_93x64_DMR_05_Mag",
+		"MG5_120Rnd_762x51_Box_Tracer",
 		/* Primary Weapon Items */
-		["optic_KHS_tan","bipod_02_F_tan","muzzle_snds_93mmg_tan","acc_pointer_IR"]
+		["","",""]
 	],
 
 	/* Secondary Weapon */
@@ -40,16 +40,16 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_Pistol_heavy_01_F",
+		"hgun_P07_F",
 		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
+		"16Rnd_9x21_Mag",
 		/* Handgun Weapon Items */
-		["optic_MRD","muzzle_snds_acp"]
+		[]
 	],
 
 	/* Uniform */
 	[
-		"U_B_FullGhillie_sard",
+		"BWA3_Uniform2_idz_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
@@ -62,11 +62,15 @@ _result = [
 
 	/* Vest */
 	[
-		"",
+		"BWA3_Vest_Autorifleman_Fleck",
 		/* Vest-Weapons */
-		[],
+		[
+		],
 		/* Vest-Magazines */
-		[],
+		[
+			"MG5_120Rnd_762x51_Box_Tracer","MG5_120Rnd_762x51_Box_Tracer",
+			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
+		],
 		/* Vest-Items */
 		[
 		]
@@ -74,21 +78,19 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_Kitbag_rgr",
+		"BWA3_Kitbag_Fleck",
 		/* Backpack-Weapons */
-		[],
+		[
+			"SmokeShell","SmokeShell",
+			"SmokeShellGreen","SmokeShellRed"
+		],
 		/* Backpack-Magazines */
 		[
-			"10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag"
-			,"10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag","10Rnd_93x64_DMR_05_Mag"
-			,"11Rnd_45ACP_Mag","11Rnd_45ACP_Mag","11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
+			"MG5_120Rnd_762x51_Box_Tracer","MG5_120Rnd_762x51_Box_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellRed","SmokeShellRed",
-			"SmokeShellGreen","SmokeShellGreen",
-			"NVGoggles"
+			"ACE_muzzle_mzls_B","muzzle_snds_B","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],
 

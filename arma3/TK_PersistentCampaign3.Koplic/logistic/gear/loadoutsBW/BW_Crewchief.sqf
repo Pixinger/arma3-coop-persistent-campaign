@@ -4,13 +4,13 @@ _result = [
 	"",
 
 	/* Headgear */
-	"H_CrewHelmetHeli_B",
+	"BWA3_Beret_Pz",
 
 	/* Binoculars */
 	"Rangefinder",
 
 	/* Nightvision */
-	"NVGoggles",
+	"NVGoggles_OPFOR",
 
 	/* Linked Items */
 	[
@@ -22,11 +22,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"SMG_01_F",
+		"C1987_MP7_equipped",
 		/* Primary weapon Magazine */
-		"30Rnd_45ACP_Mag_SMG_01_Tracer_Red",
+		"C1987_40Rnd_46x30_mp7",
 		/* Primary Weapon Items */
-		["optic_Aco_smg"]
+		[""]
 	],
 
 	/* Secondary Weapon */
@@ -49,20 +49,20 @@ _result = [
 
 	/* Uniform */
 	[
-		"U_B_HeliPilotCoveralls",
+		"BWA3_Uniform_Crew_Fleck",
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
 		[],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit"
 		]
 	],
 
 	/* Vest */
 	[
-		"V_TacVest_blk",
+		"BWA3_Vest_Fleck",
 		/* Vest-Weapons */
 		[
 			"SmokeShell","SmokeShell",
@@ -70,8 +70,8 @@ _result = [
 		],
 		/* Vest-Magazines */
 		[
-			"30Rnd_45ACP_Mag_SMG_01_Tracer_Red","30Rnd_45ACP_Mag_SMG_01_Tracer_Red","30Rnd_45ACP_Mag_SMG_01_Tracer_Red"
-			,"30Rnd_45ACP_Mag_SMG_01_Tracer_Red","30Rnd_45ACP_Mag_SMG_01_Tracer_Red"
+			"C1987_40Rnd_46x30_mp7","C1987_40Rnd_46x30_mp7","C1987_40Rnd_46x30_mp7"
+			,"C1987_40Rnd_46x30_mp7","C1987_40Rnd_46x30_mp7"
 		],
 		/* Vest-Items */
 		[
@@ -80,7 +80,7 @@ _result = [
 
 	/* Backpack */
 	[
-		"tf_rt1523g_black",
+		"",
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
