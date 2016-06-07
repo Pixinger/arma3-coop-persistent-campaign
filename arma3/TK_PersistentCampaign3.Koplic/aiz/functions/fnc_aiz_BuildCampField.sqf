@@ -1,3 +1,4 @@
+#include "..\defines.hpp"
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
 private["_camp"];
@@ -9,6 +10,7 @@ private["_respawns"];
 _respawns = _camp select 1;
 
 
+#ifndef NO_MARKERS
 private["_markerName"];
 _markerName = createMarker [format["markerCamp%1", floor(random 999999)], _position];
 _markerName setMarkerShape "ICON";
@@ -17,6 +19,7 @@ _markerName setMarkerSize [0.5, 0.5];
 _markerName setMarkerText format["f %1", _respawns];
 _markerName setMarkerColor "ColorBlue"; 
 _markerName setMarkerAlpha 0.8;
+#endif
 
 private _fireClassnames = ["Land_Campfire_F","Campfire_burning_F"];
 private _staticClassnames = ["I_HMG_01_high_F","I_GMG_01_high_F"];

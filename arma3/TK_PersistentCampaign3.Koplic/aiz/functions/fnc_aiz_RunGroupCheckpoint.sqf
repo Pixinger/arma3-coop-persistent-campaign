@@ -1,9 +1,11 @@
+#include "..\defines.hpp"
 #define REDUCE_DISTANCE 	1000
 #define EXPAND_DISTANCE 	800
 
 waitUntil { aizZoneInitCompleted };
 //diag_log format["fnc_aiz_RunGroupCheckpoint: _this = %1", _this];
 
+Sleep (random RANDOM_START_DELAY);
 //================================================================================
 // _THIS
 //================================================================================
@@ -17,6 +19,7 @@ private _group = [_checkpointPosition, EAST, _unitClassnames] call fnc_aiz_Spawn
 _group setBehaviour "SAFE";
 [_group, _checkpointPosition] call fnc_aiz_GroupTaskDefend;
 
+#ifndef NO_MARKERS
 //================================================================================
 // Marker erstellen
 //================================================================================
@@ -34,7 +37,7 @@ _markerNames = [];
 	_x setMarkerColor "ColorRed"; 
 	_x setMarkerAlpha 1;
 } foreach _markerNames;
-
+#endif
 
 #define STATE_REDUCED	1
 #define STATE_EXPANDED	2
@@ -58,11 +61,13 @@ while { _run } do
 				};
 				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
 				{ 
+					#ifndef NO_MARKERS
 					{
 						private _mn = _markerNames select _foreachindex;
-						_mn setMarkerText format["C||%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
+						_mn setMarkerText format["C|%1", _markerCounter];
 						_mn setMarkerPos (getPos _x);
 					} foreach units _group;
+					#endif
 					_unitInfos = [_group] call fnc_aiz_GroupReduce;
 					[_group, _checkpointPosition] call fnc_aiz_GroupTaskDefend;
 					_state = STATE_REDUCED;
@@ -72,11 +77,13 @@ while { _run } do
 					_state = STATE_FLEE;
 				};
 				
+				#ifndef NO_MARKERS
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["C|EX|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
 					_mn setMarkerPos (getPos _x);
 				} foreach units _group;
+				#endif
 				Sleep 10;				
 			};
 		};
@@ -84,11 +91,13 @@ while { _run } do
 		{ 
 			while { true } do
 			{
+				#ifndef NO_MARKERS
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["C|RD|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
 					_mn setMarkerPos (getPos _x);
 				} foreach units _group;
+				#endif
 
 				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
@@ -119,11 +128,13 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
+				#ifndef NO_MARKERS
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["C|FL|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
 					_mn setMarkerPos (getPos _x);
 				} foreach units _group;
+				#endif
 
 				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
 				{
@@ -139,6 +150,13 @@ while { _run } do
 		};
 		case STATE_EXIT:
 		{ 
+			#ifndef NO_MARKERS
+			{
+				private _mn = _markerNames select _foreachindex;
+				_mn setMarkerText format["C|EXIT-|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
+				_mn setMarkerPos (getPos _x);
+			} foreach units _group;
+			#endif
 			diag_log "STATE_EXIT";
 			_run = false; // Exit
 		};	
@@ -153,7 +171,9 @@ while { _run } do
 //================================================================================
 // So gut aufräumen wie es geht
 //================================================================================
+#ifndef NO_MARKERS
 { deleteMarker _x; } foreach  _markerNames;
+#endif
 { deleteVehicle _x; } foreach (units _group);
 { deleteWaypoint _x; } foreach (waypoints _group);
 deleteGroup _group;

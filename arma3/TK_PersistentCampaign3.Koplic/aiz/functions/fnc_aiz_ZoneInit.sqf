@@ -1,3 +1,4 @@
+#include "..\defines.hpp"
 //==========================================================================================
 // DEFINES
 //==========================================================================================
@@ -51,6 +52,7 @@ for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 	{
 		_waypointPool pushBack _randomPosition;
 			
+#ifndef NO_MARKERS
 		private["_markerNameWp"];
 		_markerNameWp = createMarker [format["markerWP%1_%2", _zoneIndex, floor(random 999999)], _randomPosition];
 		_markerNameWp setMarkerShape "ICON";
@@ -58,6 +60,7 @@ for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 		_markerNameWp setMarkerSize [0.2, 0.2];
 		_markerNameWp setMarkerColor "ColorBlack"; 
 		_markerNameWp setMarkerAlpha 0.5;			
+#endif
 	};
 };
 
@@ -150,6 +153,7 @@ if (count _zoneDataSet != 4) then
 	//------------------------------------------------------------------------------------------
 	_groupCount = floor (count _waypointPool / (4.5 + random 2.5));
 	if ((_groupCount < 1) && (count _waypointPool > 3)) then { _groupCount = 1; };
+	if (_zoneIndex == 12) then { _groupCount = 1; };
 	if (_groupCount < 0) then { _groupCount = 0; };	
 } 
 else

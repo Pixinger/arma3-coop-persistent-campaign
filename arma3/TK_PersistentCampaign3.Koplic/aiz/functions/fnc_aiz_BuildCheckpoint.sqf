@@ -1,9 +1,11 @@
+#include "..\defines.hpp"
 private _zoneIndex = _this select 0;
 private _checkpoint = _this select 1;
 
 _checkpoint params ["_position", "_direction"];
 
 
+#ifndef NO_MARKERS
 private _markerName = createMarkerLocal [format["markercheckpoint%1", floor(random 999999)], _position];
 _markerName setMarkerShape "ICON";
 _markerName setMarkerType "hd_ambush";
@@ -12,7 +14,7 @@ _markerName setMarkerSize [0.5, 0.5];
 _markerName setMarkerText "c";
 _markerName setMarkerColor "ColorGreen"; 
 _markerName setMarkerAlpha 0.8;
-
+#endif
 
 // Als erstes die Schranke erstellen, da sich alles um diese Schranke dreht. 
 private _bargate1 = createVehicle ["Land_CncBarrier_F", _position, [], 0, "NONE"];
