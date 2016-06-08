@@ -56,6 +56,9 @@ waitUntil {!isNil "_objectLocal"};
 _objectLocal setPosATL _position;
 _objectLocal setDir (getDir _object);
 
+// Animation starten
+call fnc_Logistic_WorkAnimationStart;
+
 // Lokales Objekt verändern (hoch oder runter)
 #define SLEEP_TIME	2
 logisticBuild = true;
@@ -86,9 +89,9 @@ while {(logisticBuild) && (alive player) && (player distance2D _objectLocal < 5)
 	_objectLocal setPosATL _position;
 
 	// Erst am Ende Warten, sonst wird bei Abbruch noch einmal zuviel ausgebaut.
-	call fnc_Logistic_WorkAnimation;
 	Sleep SLEEP_TIME;
 };
+call fnc_Logistic_WorkAnimationEnd;
 
 // Lokales Objekt löschen
 deleteVehicle _objectLocal;

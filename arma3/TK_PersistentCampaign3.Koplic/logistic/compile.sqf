@@ -7,7 +7,8 @@ fnc_Logistic_OnKey = compile preprocessFileLineNumbers "logistic\functions\fnc_L
 fnc_Logistic_Object_Load = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Object_Load.sqf";
 fnc_Logistic_Object_Unload = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Object_Unload.sqf";
 fnc_Logistic_Object_Move = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Object_Move.sqf";
-fnc_Logistic_WorkAnimation = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_WorkAnimation.sqf";
+fnc_Logistic_WorkAnimationStart = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_WorkAnimationStart.sqf";
+fnc_Logistic_WorkAnimationEnd = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_WorkAnimationEnd.sqf";
 
 fnc_Logistic_HQClose = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_HQClose.sqf";
 fnc_Logistic_HQOpen = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_HQOpen.sqf";

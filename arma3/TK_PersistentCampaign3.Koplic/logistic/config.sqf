@@ -155,3 +155,5 @@ logisticHaulableConfigs = [];
 	logisticHaulableConfigs pushBack (_x select 1);
 } foreach _logisticHaulableDefinitions;
 //----------------------------------------------------------------------------------------------------
+
+logisticWorkAnimExit = true;
