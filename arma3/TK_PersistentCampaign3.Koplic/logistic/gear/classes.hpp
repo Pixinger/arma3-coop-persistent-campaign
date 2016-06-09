@@ -31,7 +31,7 @@ class LOGISTICGEAR_DIALOG
 	};	
 	class LOGISTICGEAR_DIALOG_Title : RscTitle
 	{
-		idc = -1;
+		idc = LOGISTICGEAR_IDC_DIALOG_Title;
 		x = GRID_ABS_X;
 		y = GRID_ABS_Y - GRID_TITLE_H;
 		w = GRID_ABS_W;

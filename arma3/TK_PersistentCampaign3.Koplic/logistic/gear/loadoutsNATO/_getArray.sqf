@@ -1,4 +1,4 @@
-_loadouts = [
+[
 	["Freizeit (Unbewaffnet)", "Default.sqf"],
 	["Soldat","Soldier.sqf"],
 	["Grenadier","Grenade.sqf"],

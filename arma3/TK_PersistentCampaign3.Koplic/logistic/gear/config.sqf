@@ -1,6 +1,6 @@
 // Der Verzeichnissname in dem die Loadouts gespeichert sind. // Parameter (0): Ausrüstung
 cfgLogisticGear_LoadoutFolder = (paramsArray select 0); //{"loadoutsBW", "loadoutsNATO", "loadoutsAAF"};
-if (pixDebug) then { cfgLogisticGear_LoadoutFolder = "loadoutsBW";};
+if (pixDebug) then { cfgLogisticGear_LoadoutFolder = "loadoutsNATO";};
 diag_log format["INFO: cfgLogisticGear_LoadoutFolder: %1", cfgLogisticGear_LoadoutFolder];
 
 

@@ -22,7 +22,9 @@ lbSetCurSel [LOGISTICGEAR_IDC_DIALOG_List, 0];
 // Füllstand der Kiste anzeigen
 private _dbVar = _cursorTarget getVariable["dbVar", []];
 private _contentCount = if (count _dbVar > 0) then { _dbVar select 0; } else { 10000 };
-hint format ["Füllstand der Kiste\n%1%2", floor ((100 / 10000) * _contentCount),"%"];
+ctrlSetText [LOGISTICGEAR_IDC_DIALOG_Title, format["Ausrüstung (Füllstand: %1%2)", floor ((100 / 10000) * _contentCount), "%"]];
+
+
 
 //-----------------------------------------------------------------	
 /* Dialog anzeigen*/
@@ -43,13 +45,15 @@ if (logisticGearDialog_ButtonResult == 1)  then
 	_contentCount = if (count _dbVar > 0) then { _dbVar select 0; } else { 10000 };
 
 	// Masse der Ausrüstung errechnen
-	private _mass = [_scriptFilename] call fnc_logisticGear_CalculateLoadOut;
+	private _massPlayerBefore = [player] call fnc_logisticGear_GetCfgMassPlayer;
 	// LoadOut zuweisen 
 	private _result = [player, _scriptFilename] call fnc_logisticGear_ApplyLoadOut;
+	// Masse der Ausrüstung errechnen
+	private _massPlayerAfter = [player] call fnc_logisticGear_GetCfgMassPlayer;
 
 	//-----------------------------------------------------------------	
 	// Füllstand der Kiste zurückschreiben
-	_contentCount = _contentCount - _mass;
+	_contentCount = _contentCount + _massPlayerBefore - _massPlayerAfter;
 	if (_contentCount <= 0) then 
 	{
 		deleteVehicle _cursorTarget;
