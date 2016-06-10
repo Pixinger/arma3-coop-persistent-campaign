@@ -4,10 +4,10 @@ if (isServer) then
 	
 	// Die Fahrzeuge die in der Datenbank gespeichert werden sollen.
 	logisticDbVehicles = [
-		"BW_Dingo_GL_Wdl",
-		"BW_Dingo_GL_Des",
-		"BW_Dingo_Wdl",
-		"BW_Dingo_Des",
+		//"BW_Dingo_GL_Wdl",
+		//"BW_Dingo_GL_Des",
+		//"BW_Dingo_Wdl",
+		//"BW_Dingo_Des",
 		"BWA3_Puma_Fleck",
 		"BWA3_Puma_Tropen",
 		// Boote

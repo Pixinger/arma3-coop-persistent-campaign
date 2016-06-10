@@ -62,7 +62,7 @@ call fnc_Logistic_WorkAnimationStart;
 // Lokales Objekt verändern (hoch oder runter)
 #define SLEEP_TIME	2
 logisticBuild = true;
-while {(logisticBuild) && (alive player) && (player distance2D _objectLocal < 5) } do
+while {(logisticBuild) && (alive player) } do
 {
 	_position = getPosATL _objectLocal;
 	_position = [_position select 0, _position select 1, (_position select 2) + ((_buildSpeed / (60/SLEEP_TIME)) * _direction)];

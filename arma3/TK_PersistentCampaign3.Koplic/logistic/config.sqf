@@ -113,10 +113,11 @@ private _logisticBuildableDefinitions = [
 	//["Land_HBarrier_5_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 125]] ]],
 	//["Land_HBarrier_Big_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 100]] ]],
 	//["Land_HBarrierTower_F",		[[0,3,1], 0, -2.0, 1, 	[["CraterLong_small", 200]] ]],
-	["Land_HBarrier_3_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 75]] ]],
+	["Land_HBarrier_3_F",			[[0,5,1], 0, -1.4, 1.2,	[["CraterLong_small", 75]] ]],
+	["Land_HBarrier_5_F",			[[0,7,1], 0, -1.4, 1,	[["CraterLong_small", 100]] ]],
 	["Land_BagFence_Long_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 5]] ]],	
-	["Land_BagBunker_Small_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 50], ["Land_Timbers_F", 10]], ["Land_Bricks_V1_F", 10] ]],
-	["Land_BagBunker_Large_F",		[[0,3,1], 0, -.9, 1, 	[["CraterLong_small", 200], ["Land_Timbers_F", 100], ["Land_Bricks_V1_F", 100]] ]]
+	["Land_BagBunker_Small_F",		[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 50], ["Land_Timbers_F", 10]], ["Land_Bricks_V1_F", 10] ]],
+	["Land_BagBunker_Large_F",		[[0,3,1], 0, -2.4, 1.5,	[["CraterLong_small", 200], ["Land_Timbers_F", 100], ["Land_Bricks_V1_F", 100]] ]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticBuildables = [];

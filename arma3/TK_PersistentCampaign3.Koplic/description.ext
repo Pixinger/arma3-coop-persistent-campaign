@@ -44,7 +44,7 @@ class Params
 	class Loadouts /* paramsArray[0]*/
 	{		
 	    title = "Ausrüstung";
-	    values[] = {"loadoutsBW", "loadoutsNATO"};
+	    values[] = {0, 1};
 	    texts[] = {"Bundeswehr","NATO"};
 	    default = 0;
 	};
