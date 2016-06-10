@@ -87,6 +87,9 @@ _backpackItems = _backpack select 3;
 private["_code"];
 if (count _result > 11) then { _code = _result select 11; } else { _code = ""; };
 
+private["_unitTypes"];
+if (count _result > 12) then { _unitTypes = _result select 12; } else { _unitTypes = []; };
+
 
 /* Switch Unit durführen */
 //disableUserInput true;
@@ -208,3 +211,10 @@ if (_code != "") then
 {
 	call compile _code;
 };
+
+if (count _unitTypes > 0) then { player setVariable ["ACE_isEOD", (_unitTypes select 0), true]; };
+if (count _unitTypes > 1) then { player setVariable ["ACE_IsEngineer", (_unitTypes select 1), true]; };
+if (count _unitTypes > 2) then { player setVariable ["ace_medical_medicclass", (_unitTypes select 2), true]; };
+if (count _unitTypes > 3) then { player setVariable ["isPioneer", (_unitTypes select 3), true]; };
+
+

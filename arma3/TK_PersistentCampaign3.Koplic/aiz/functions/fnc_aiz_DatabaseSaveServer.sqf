@@ -11,7 +11,7 @@ if (isServer) then
 	// ------------------------------------------------------------------------------
 	// Durch alle Zonen interieren
 	private _database = [];
-	for "_i" from 0 to aizZoneCount do 
+	for "_i" from 0 to cfgAizZoneCount do 
 	{
 		if (!isNil format["aizZoneData%1", _i]) then
 		{
@@ -32,7 +32,7 @@ if (isServer) then
 			// ------------------------------------------------------------------------------
 			private _dataSetCampsField = [];
 			{
-				private _tentCount = [_x select 0, aizCampFieldRadius] call fnc_aiz_FindCampFieldRespawnCount;
+				private _tentCount = [_x select 0, cfgAizCampFieldRadius] call fnc_aiz_FindCampFieldRespawnCount;
 				if (_tentCount > 0) then 
 				{ 
 					_dataSetCampsField pushBack [_x select 0, _tentCount]; 
@@ -74,7 +74,7 @@ if (isServer) then
 	
 	// ------------------------------------------------------------------------------
 	// Datenbank speichern
-	profileNameSpace setVariable [aizDbPrefix + "_database", _database];
+	profileNameSpace setVariable [cfgAizDbPrefix + "_database", _database];
 	diag_log format["AIZ-Database saved: %1", _database];	
 
 	// ------------------------------------------------------------------------------

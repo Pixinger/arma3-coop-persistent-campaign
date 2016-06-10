@@ -1,4 +1,5 @@
 #include "CFG_BUILDABLES_INDICES.hpp"
+diag_log format["BUILD_DPWONDKLSAND=%1", _this];
 
 if (!isNil "logisticBuild") exitWith { hint "Du schlimmer Schelm. Du denkst wohl so geht es schneller? hä?!"; logisticBuild = false;};
 // -------------------------------------------------------
@@ -9,10 +10,7 @@ private _moveGlobalObjectDown = if (count _this > 2) then { _this select 2; } el
 // -------------------------------------------------------
 // _config übernehmen / laden
 private _config = [];
-if (count _this >= 3) then 
-{
-	_config = _this select 2;
-}
+if (count _this >  3) then { _config = _this select 3; }
 else 
 {
 	private _configIndex = logisticBuildables find (typeof(_objectGlobal));
@@ -43,22 +41,21 @@ else
 // Globales Objekt nach unten setzen, damit es nicht mehr im Weg ist.
 if (_moveGlobalObjectDown) then
 {
-	// Genau, das ist die Position des Lokalen Objektes. Diese wird aber noch korrigiert, bevor wir das Globale-Objekt erstellen.
-	// Da die Objekte manchmal Unterschiede zwischen ATTACH-Punkt und Pivot-Punkt haben, gleichen wir das hiermit bei Bedarf aus. Der Z-Parameter gibt ausserdem an wie weit im Boden das Objekt verschwinden soll.
 	private _detachOffset = (_config select DETACHOFFSET_INDEX); 
-	// Wenn man in der Nähe des Bodens ist, dann "snappen" wird genau auf 0. Dazu bestimmen wir einen "Height" Parameter.
 	private _heightATL = (getPosATL player) select 2;
 	if ((_heightATL < 1) && (_heightATL > -1)) then { _heightATL = 0; }; 
+
+	private _positionGlobalLowered = _objectGlobal modelToWorld _detachOffset;
+	_positionGlobalLowered set [2, (_heightATL + (_detachOffset select 2))];
 	
-	private _positionGlobalDown = [(_positionGlobal select 0) + (_detachOffset + select 0), (_positionGlobal select 1) + (_detachOffset + select 1), _heightATL + (_detachOffset + select 2) -];
-	_objectGlobal setPosATL _positionGlobalDown;
+	_objectGlobal setPosATL _positionGlobalLowered;
 };
 
 // Lokales Objekt erzeugen
 private _objectLocal = _classname createVehicleLocal _positionGlobal;
 waitUntil {!isNil "_objectLocal"};
-_objectLocal setDir (getDir _objectGlobal);
 _objectLocal setPosATL _positionGlobal;
+_objectLocal setDir (getDir _objectGlobal);
 
 // Animation starten
 call fnc_Logistic_WorkAnimationStart;
@@ -66,9 +63,10 @@ call fnc_Logistic_WorkAnimationStart;
 // Lokales Objekt verändern (hoch oder runter)
 #define SLEEP_TIME 2
 logisticBuild = true;
+private _positionLocal = getPosATL _objectLocal;
 while {(logisticBuild) && (alive player) } do
 {
-	private _positionLocal = getPosATL _objectLocal;
+	_positionLocal = getPosATL _objectLocal;
 	_positionLocal = [_positionLocal select 0, _positionLocal select 1, (_positionLocal select 2) + ((_buildSpeed / (60/SLEEP_TIME)) * _directionUpDown)];
 	if (_autoStop) then
 	{

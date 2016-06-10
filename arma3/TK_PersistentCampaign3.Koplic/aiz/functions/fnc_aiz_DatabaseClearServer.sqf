@@ -8,7 +8,7 @@ if (isServer) then
 
 	// ------------------------------------------------------------------------------
 	// Datenbank speichern
-	profileNameSpace setVariable [aizDbPrefix + "_database", nil];
+	profileNameSpace setVariable [cfgAizDbPrefix + "_database", nil];
 	diag_log "AIZ-Database cleared";	
 
 	// ------------------------------------------------------------------------------

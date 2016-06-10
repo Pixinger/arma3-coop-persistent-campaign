@@ -26,7 +26,7 @@ private _staticClassnames = ["I_HMG_01_high_F","I_GMG_01_high_F"];
 private _tentClassnames = ["Land_TentDome_F", "Land_TentA_F"];
 
 private _className = (_fireClassnames call PIX_fnc_RandomElement);	
-private _firePosition = _position findEmptyPosition [0, aizCampFieldRadius, _className];
+private _firePosition = _position findEmptyPosition [0, cfgAizCampFieldRadius, _className];
 if (count _firePosition > 0) then
 {
 	// Feuerstelle erstellen
@@ -40,7 +40,7 @@ if (count _firePosition > 0) then
 	for "_i" from 1 to _respawns do
 	{
 		_className = (_tentClassnames call PIX_fnc_RandomElement);	
-		private _tentPosition = _firePosition findEmptyPosition [3, aizCampFieldRadius, _className];		
+		private _tentPosition = _firePosition findEmptyPosition [3, cfgAizCampFieldRadius, _className];		
 		if (count _tentPosition > 0) then
 		{
 			private _tent = createVehicle [_className, _tentPosition, [], 0, "NONE"];
@@ -57,7 +57,7 @@ if (count _firePosition > 0) then
 	for "_i" from 1 to (floor (_respawns / 4)) do
 	{
 		_className = (_staticClassnames call PIX_fnc_RandomElement);	
-		private _staticPosition = _firePosition findEmptyPosition [25, aizCampFieldRadius, _className];		
+		private _staticPosition = _firePosition findEmptyPosition [25, cfgAizCampFieldRadius, _className];		
 		if (count _staticPosition > 0) then
 		{
 			private _static = createVehicle [_className, _staticPosition, [], 0, "CAN_COLLIDE"];

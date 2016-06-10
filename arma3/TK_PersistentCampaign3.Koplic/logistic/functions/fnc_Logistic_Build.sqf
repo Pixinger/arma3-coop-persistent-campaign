@@ -34,29 +34,23 @@ if (count _config > 0) then
 		//---------------------------------
 		// Das Object soll gebaut werden		
 		//---------------------------------
-		// Klar, das ist die Richtung.
 		private _directionLocal = getDir _objectLocal; 
-		// Genau, das ist die Position des Lokalen Objektes. Diese wird aber noch korrigiert, bevor wir das Globale-Objekt erstellen.
 		private _positionLocal = getPos _objectLocal;
-		// Da wir das Objekt etwas höher ATTACHEN, müssen wir es beim Absetzen auch wieder um diesen Faktor absenken.
-		// DAS HEBT SICH AUF!! Kann gelöscht werden wenn es GEHT: private _heightAttach = (_config select ATTACHPOINT_INDEX) select 2;
-		// Da die Objekte manchmal Unterschiede zwischen ATTACH-Punkt und Pivot-Punkt haben, gleichen wir das hiermit bei Bedarf aus. Der Z-Parameter gibt ausserdem an wie weit im Boden das Objekt verschwinden soll.
 		private _detachOffset = (_config select DETACHOFFSET_INDEX); 
-		// Wenn man in der Nähe des Bodens ist, dann "snappen" wird genau auf 0. Dazu bestimmen wir einen "Height" Parameter.
 		private _heightATL = (getPosATL player) select 2;
-		if ((_heightATL < 1) && (_heightATL > -1)) then { _heightATL = 0; }; 
-		
-		private _positionGlobal = [(_positionLocal select 0) + (_detachOffset + select 0), (_positionLocal select 1) + (_detachOffset + select 1), _heightATL + (_detachOffset + select 2) -];
-		// DAS HEBT SICH AUF!! Kann gelöscht werden wenn es GEHT: private _positionGlobal = [(_positionLocal select 0) + (_detachOffset + select 0), (_positionLocal select 1) + (_detachOffset + select 1), _heightATL - _heightAttach + (_positionLocal select 2) + (_detachOffset + select 2) -];
+		if ((_heightATL < 1) && (_heightATL > -1)) then { _heightATL = 0; }; 		
+				
+		private _positionGlobal = _objectLocal modelToWorld _detachOffset;
+		_positionGlobal set [2, (_heightATL + (_detachOffset select 2))];
 		deleteVehicle _objectLocal;
 		
 		//---------------------------------
 		// Globales-Objekt erstellen
 		//---------------------------------
 		private["_objectGlobal"];
-		_objectGlobal = createVehicle [_classname, _positionGlobal, [], 0, "CAN_COLLIDE"]; //_objectGlobal = _classname createVehicle _positionGlobal;
+		_objectGlobal = createVehicle [_classname, [0,0,0], [], 0, "CAN_COLLIDE"]; //_objectGlobal = _classname createVehicle _positionGlobal;
 		waitUntil {!isNil "_objectGlobal"};
-		//_objectGlobal setPosATL _positionGlobal;
+		_objectGlobal setPosATL _positionGlobal;
 		_objectGlobal setDir _directionLocal;
 	
 		//---------------------------------

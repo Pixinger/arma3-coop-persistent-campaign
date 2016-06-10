@@ -99,7 +99,10 @@ _result = [
 	],
 
 	/* Code */
-	"player setVariable [""ACE_isEOD"", false, true];player setVariable [""ACE_IsEngineer"", true, true];player setVariable [""ace_medical_medicclass"",0, true];"
+	"",
+	
+	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
+	[false, true, 0, true]	
 ];
 
 _result;

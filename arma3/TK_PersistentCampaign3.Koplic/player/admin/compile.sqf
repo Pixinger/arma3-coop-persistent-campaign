@@ -6,4 +6,4 @@ fnc_Admin_GpsToggle = compile preprocessFileLineNumbers "player\admin\functions\
 fnc_Admin_TeleportAdmin = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_TeleportAdmin.sqf";
 fnc_Admin_TeleportCursorTarget = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_TeleportCursorTarget.sqf";
 fnc_Admin_TeleportToggle = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_TeleportToggle.sqf";
-fnc_Admin_ZeusFix = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_ZeusFix.sqf";
+fnc_Admin_ZeusObjectRefresh = compile preprocessFileLineNumbers "player\admin\functions\fnc_Admin_ZeusObjectRefresh.sqf";

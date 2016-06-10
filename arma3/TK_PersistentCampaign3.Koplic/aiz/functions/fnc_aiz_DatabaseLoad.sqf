@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------
 // Aus der Datenbank laden
 private "_database";
-_database = profileNameSpace getVariable [(aizDbPrefix + "_database"), []];
+_database = profileNameSpace getVariable [(cfgAizDbPrefix + "_database"), []];
 diag_log format["AIZ-Database loaded: %1", _database];	
 //private _database = [];	
 

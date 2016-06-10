@@ -33,7 +33,7 @@ if (_configIndex != -1) then
 		private["_requiredQuantity"];
 		_requiredQuantity = _x select 1;
 		private["_objects"];
-		_objects = (position player) nearObjects [_requiredClassname, 5];			
+		_objects = (position player) nearObjects [_requiredClassname, 10];			
 		{
 			private["_availabvelQuantity"];
 			_availabvelQuantity = _x getVariable ["quantity", 100];
@@ -61,7 +61,7 @@ if (_configIndex != -1) then
 			private["_requiredQuantity"];
 			_requiredQuantity = _x select 1;
 			private["_objects"];
-			_objects = (position player) nearObjects [_requiredClassname, 5];			
+			_objects = (position player) nearObjects [_requiredClassname, 10];			
 			{
 				private["_availabvelQuantity"];
 				_availabvelQuantity = _x getVariable ["quantity", 100];

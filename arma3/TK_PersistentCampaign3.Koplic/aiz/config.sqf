@@ -1,18 +1,24 @@
-aizDbPrefix = "PC3AIZ";
-aizZoneCount = 16;
+cfgAizDbPrefix = "PC3AIZ";
+cfgAizZoneCount = 16;
 
-aizCampTownClassnames = ["Land_Laptop_unfolded_F","Land_SatellitePhone_F"];
-aizCampTownMinRespawnDistance = 150;
+cfgAizCampTownClassnames = ["Land_Laptop_unfolded_F","Land_SatellitePhone_F"];
+cfgAizCampTownMinRespawnDistance = 150;
 
-aizCampFieldClassnames = ["Land_TentDome_F", "Land_TentA_F"];
-aizCampFieldMinRespawnDistance = 250;
-aizCampFieldRadius = 50;
+cfgAizCampFieldClassnames = ["Land_TentDome_F", "Land_TentA_F"];
+cfgAizCampFieldMinRespawnDistance = 250;
+cfgAizCampFieldRadius = 50;
 
-aizAISkillMin = 0.5;
-aizAISkillMax = 0.5;
+cfgAizGroupSizeMin = paramsArray select 1;
+if (pixDebug) then { cfgAizGroupSizeMin = 2;};
+diag_log format["INFO: cfgAizGroupSizeMin: %1", cfgAizGroupSizeMin];
 
-aizGroupSizeMin = 2;
-aizGroupSizeMax = 5;
+cfgAizGroupSizeMax = paramsArray select 1;
+if (pixDebug) then { cfgAizGroupSizeMax = 2;};
+diag_log format["INFO: cfgAizGroupSizeMax: %1", cfgAizGroupSizeMax];
+
+cfgAizAISkillMin = 0.5;
+cfgAizAISkillMax = 0.5;
+
 
 // ------------------------------------------------------------------------------
 // Runtime Variablen initialisieren (nicht verändern!)

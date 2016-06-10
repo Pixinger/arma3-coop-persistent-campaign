@@ -6,7 +6,7 @@ if (call fnc_Admin_IsPlayerAdmin) then {
 		["Teleport (admin)", true, true, fnc_Admin_TeleportAdmin],
 		["Teleport (cursor target)", true, true, fnc_Admin_TeleportCursorTarget],
 		["Teleport (toggle player)", true, true, fnc_Admin_TeleportToggle],
-		["Zeus Fix", true, true, fnc_Admin_ZeusFix],
+		["Zeus Object Refresh", true, true, fnc_Admin_ZeusObjectRefresh],
 		["AIZ Database Save", true, true, fnc_aiz_DatabaseSaveClient],
 		["AIZ Database Clear", true, true, fnc_aiz_DatabaseClearClient],
 		["LOG Database Save", true, true, fnc_logisticDb_SaveClient],

@@ -104,7 +104,10 @@ _result = [
 	],
 
 	/* Code */
-	"_unit setVariable ['AGM_IsEOD', false];_unit setVariable ['AGM_IsMedic', false];"
+	"",
+	
+	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
+	[false, false, 0, false]	
 ];
 
 _result;

@@ -97,7 +97,10 @@ _result = [
 	],
 
 	/* Code */
-	""
+	"",
+	
+	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
+	[false, true, 0, true]	
 ];
 
 _result;

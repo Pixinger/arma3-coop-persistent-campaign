@@ -2,7 +2,7 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 {
 	hint "Bauen gestartet. Bitte stehen bleiben!";
 	call fnc_Logistic_WorkAnimationStart;
-	Sleep 20;
+	if (pixDebug) then { Sleep 2; } else { Sleep 20; };
 	call fnc_Logistic_WorkAnimationEnd;
 	
 	// Objekt erstellen
