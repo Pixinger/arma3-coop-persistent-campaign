@@ -36,11 +36,15 @@ if (isServer) then
 	// Die Objekte die in der Datenbank gespeichert werden sollen.
 	logisticDbObjects = [
 		// Buildables
+		"Land_BarGate_F",
+		"Land_HBarrier_1_F",
 		"Land_HBarrier_3_F",
+		"Land_HBarrier_5_F",
 		"Land_BagFence_Long_F",
 		"Land_BagBunker_Small_F",
 		"Land_BagBunker_Large_F",
 		// Objekte
+		"Land_Pipes_small_F",
 		"Land_DataTerminal_01_F",
 		"Land_Pallet_MilBoxes_F",
 		"Land_Sacks_heap_F",

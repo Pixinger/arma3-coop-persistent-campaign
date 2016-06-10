@@ -1,8 +1,4 @@
-#define ATTACHPOINT_INDEX			0
-#define ATTACHROTATION_INDEX		1
-#define DETACHHEIGHT_INDEX 			2
-#define BUILDSPEED_INDEX			3
-#define REQUIREDRESOURCES_INDEX		4
+#include "CFG_BUILDABLES_INDICES.hpp"
 
 private["_classname"];
 _classname = _this select 0;
