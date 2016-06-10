@@ -37,8 +37,8 @@ else
 			if (_cursorTargetType in cfgLogisticGear_MenuObjectClassnames) then { _buttons pushBack ["Ausrüsten (Waffen)", true, true, fnc_logisticGear_ShowModal];};		
 			
 			// AIZ Menüs
-			if (_cursorTargetType in aizCampTownClassnames) then { _buttons pushBack ["Gerät beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
-			if (_cursorTargetType in aizCampFieldClassnames) then { _buttons pushBack ["Zelt beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
+			if (_cursorTargetType in cfgAizCampTownClassnames) then { _buttons pushBack ["Gerät beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
+			if (_cursorTargetType in cfgAizCampFieldClassnames) then { _buttons pushBack ["Zelt beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};
 
 			// Logistic Menüs
 			if (_cursorTargetType in logisticObjectsTransportables) then { _buttons pushBack ["Aufladen", true, true, fnc_Logistic_Object_Load];};	
