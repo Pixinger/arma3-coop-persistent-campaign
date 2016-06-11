@@ -151,9 +151,19 @@ logisticHaulerConfigs = [];
 
 
 //!! Achtung! Auch in der DP config eintragen!
-// [classname, [attachpoint, attachrotation ]]
+// [classname, [attachpoint, attachrotation, towing ]]
 private _logisticHaulableDefinitions = [
-	["B_Truck_01_box_F", [[0,0,0], 0]]
+	["O_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
+	["O_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
+	["O_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],
+	["O_MBT_02_cannon_F",			[[0,  -8, 0.85], 0, true]],
+	["O_APC_Tracked_02_cannon_F",	[[0,  -8, 0.85], 0, true]],
+	["O_APC_Wheeled_02_rcws_F",		[[0,  -8, 0.85], 0, true]],
+	["C_Van_01_box_F", 				[[0,  -8, 0.0], 0, true]],
+	["C_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],
+	["B_Truck_01_box_F", 			[[0, -12, 0.5], 0, true]],
+	["B_Truck_01_covered_F", 		[[0, -12, 0.5], 0, true]],
+	["B_Truck_01_transport_F", 		[[0, -12, 0.5], 0, true]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticHaulables = [];
@@ -162,6 +172,52 @@ logisticHaulableConfigs = [];
 	logisticHaulables pushBack (_x select 0);
 	logisticHaulableConfigs pushBack (_x select 1);
 } foreach _logisticHaulableDefinitions;
+//----------------------------------------------------------------------------------------------------
+
+//!! Achtung! Auch in der DP config eintragen!
+// [classname, [storeClassnames, paymentClassname]]]
+private _logisticSellablesDefinitions = [
+	["O_MRAP_02_F", 				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_MRAP_02_gmg_F",				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_MRAP_02_hmg_F",				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_MBT_02_cannon_F",			[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_APC_Tracked_02_cannon_F",	[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_APC_Wheeled_02_rcws_F",		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["C_Van_01_box_F", 				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["C_Van_01_transport_F", 		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["B_Truck_01_box_F", 			[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["B_Truck_01_covered_F", 		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["B_Truck_01_transport_F", 		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]]
+];
+//----------------------------------------------------------------------------------------------------
+logisticSellables = [];
+logisticSellablesConfigs = [];
+{
+	logisticSellables pushBack (_x select 0);
+	logisticSellablesConfigs pushBack (_x select 1);
+} foreach _logisticSellablesDefinitions;
+//----------------------------------------------------------------------------------------------------
+
+//!! Achtung! Auch in der DP config eintragen!
+// [classname, [time, newClassname]]]
+private _logisticRepairablesDefinitions = [
+	["O_HMG_01_F", 			[30, "B_HMG_01_F"]],
+	["O_HMG_01_high_F", 	[30, "B_HMG_01_high_F"]],
+	["O_HMG_01_A_F", 		[30, "B_HMG_01_A_F"]],
+	["O_GMG_01_F", 			[30, "B_GMG_01_F"]],
+	["O_GMG_01_high_F", 	[30, "B_GMG_01_high_F"]],
+	["O_GMG_01_A_F", 		[30, "B_GMG_01_A_F"]],
+	["O_Mortar_01_F", 		[30, "B_Mortar_01_F"]],
+	["O_static_AA_F", 		[30, "B_static_AA_F"]],
+	["O_static_AT_F", 		[30, "B_static_AT_F"]]
+];
+//----------------------------------------------------------------------------------------------------
+logisticRepairables = [];
+logisticRepairablesConfigs = [];
+{
+	logisticRepairables pushBack (_x select 0);
+	logisticRepairablesConfigs pushBack (_x select 1);
+} foreach _logisticRepairablesDefinitions;
 //----------------------------------------------------------------------------------------------------
 
 logisticWorkAnimExit = true;

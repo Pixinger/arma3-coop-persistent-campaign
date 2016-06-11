@@ -16,7 +16,7 @@ if (isServer) then
 	//StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Ammo"), false];	
 */
 	
-	StaticCuratorModule addCuratorEditableObjects [nearestObjects [player, ["Man","Air","Static"], 1000], false];
+	StaticCuratorModule addCuratorEditableObjects [nearestObjects [player, ["Man","Air","Static", "Land"], 1000], false];
 }
 else
 {

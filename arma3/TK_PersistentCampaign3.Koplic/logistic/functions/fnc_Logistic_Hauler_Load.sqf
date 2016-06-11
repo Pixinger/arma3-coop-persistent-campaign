@@ -47,6 +47,8 @@ if (_haulerIndex >= 0) then
 					{
 						[_cargo, [[1,0,0],[0,0,1]]]  remoteExec ["setVectorDirAndUp", _cargo];
 					};
+					
+					hint "Erfolgreich aufgeladen!";
 				};
 			}
 			else

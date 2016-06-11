@@ -17,6 +17,11 @@ fnc_Logistic_HQFind = compile preprocessFileLineNumbers "logistic\functions\fnc_
 
 fnc_Logistic_Hauler_Load = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Hauler_Load.sqf";
 fnc_Logistic_Hauler_Unload = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_Hauler_Unload.sqf";
+fnc_Logistic_SellVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_SellVehicle.sqf";
+fnc_Logistic_CanSellVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanSellVehicle.sqf";
+fnc_Logistic_RepairVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_RepairVehicle.sqf";
+fnc_Logistic_CanRepairVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanRepairVehicle.sqf";
+
 
 // Build
 fnc_Logistic_CanBuild = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanBuild.sqf";

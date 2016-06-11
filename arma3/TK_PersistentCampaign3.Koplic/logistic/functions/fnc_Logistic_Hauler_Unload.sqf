@@ -9,25 +9,48 @@ if (_haulerIndex >= 0) then
 	{	
 		if (count attachedObjects _hauler > 0) then 
 		{
-			private["_cargo"];
-			_cargo = (attachedObjects _hauler) select 0;			
+			private _cargo = (attachedObjects _hauler) select 0;			
 
-			// Freien Platz suchen
-			private["_behind"];
-			_behind = _hauler modelToWorld [0,-8,0]; 
-			private["_distance"];
-			_distance = 5;
-			private["_position"];
-			_position = _behind findEmptyPosition [0, _distance, typeof _cargo];
-			while { count _position == 0 } do
+			private["_cargoIndex"];
+			_cargoIndex = logisticHaulables find (typeOf _cargo);
+			if (_cargoIndex >= 0) then 
 			{
-				_distance = _distance + 5;
-				_position = _behind findEmptyPosition [0, _distance, typeof _cargo];
+				// Cargo Daten
+				private _cargoConfig = logisticHaulableConfigs select _cargoIndex;
+				private _cargoAttachOffset = _cargoConfig select 0;
+				private _cargoAttachRotation = _cargoConfig select 1;			
+				private _cargoTowing = _cargoConfig select 2;				
+				
+				private["_position"];
+				if (!_cargoTowing) then
+				{
+					// Freien Platz suchen
+					private _behind = _hauler modelToWorld [0,-8,0]; 
+					private _distance = 5;				
+					_position = _behind findEmptyPosition [0, _distance, typeof _cargo];
+					while { count _position == 0 } do
+					{
+						_distance = _distance + 5;
+						_position = _behind findEmptyPosition [0, _distance, typeof _cargo];
+					};			
+				}
+				else
+				{
+					_position = getPosATL _cargo;
+					_position set [2,0];
+				};
+
+				
+				/* Entkoppeln */
+				detach _cargo;
+				_cargo setPosATL _position;	
+				hint "Erfolgreich abgeladen!";
+			}
+			else
+			{
+				detach _cargo;
+				hint "Ladungsart konnte nicht bestimmt werden.";
 			};
-			
-			/* Entkoppeln */
-			detach _cargo;
-			_cargo setPosATL _distance;	
 		}
 		else
 		{

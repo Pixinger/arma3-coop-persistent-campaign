@@ -10,7 +10,14 @@ hint format["%1", _cursorTargetType];
 if (typeOf(vehicle player) in logisticHaulers) then 
 {
 	// ...wenn man im Schlepper sitzt kann man nur Schlepper-Aktionen durchführen...
-	_buttons pushBack ["Anhängen", true, true, fnc_Logistic_AttachToHauler];
+	if (count (attachedObjects (vehicle player)) > 0) then
+	{
+		_buttons pushBack ["Abhängen", true, true, fnc_Logistic_Hauler_Unload];
+	}
+	else
+	{
+		_buttons pushBack ["Anhängen", true, true, fnc_Logistic_Hauler_Load];
+	};
 }
 else
 {
@@ -44,6 +51,8 @@ else
 			if (_cursorTargetType in logisticObjectsTransportables) then { _buttons pushBack ["Aufladen", true, true, fnc_Logistic_Object_Load];};	
 			if (_cursorTargetType in logisticTransporters) then { _buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_Unload];};
 			if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
+			if (call fnc_Logistic_CanSellVehicle) then { _buttons pushBack ["Verkaufen", true, true, fnc_Logistic_SellVehicle];};
+			if (call fnc_Logistic_CanRepairVehicle) then { _buttons pushBack ["Reparieren", true, true, fnc_Logistic_RepairVehicle];};
 		};
 	};
 
