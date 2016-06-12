@@ -10,12 +10,35 @@ if (count _config > 0) then
 	waitUntil {!isNil "_objectLocal"};
 	_objectLocal attachTo [player, _config select ATTACHPOINT_INDEX];
 
-	private _actionMenu = player addAction [("<t color=""#dddd00"">Bauen starten</t>"), { logisticDecision = 0; logisticMoveObject = objNull; }, nil, 5, true, true];
-	private _actionMenu2 = player addAction [("<t color=""#dddd00"">Bauen abbrechen</t>"), { logisticDecision = 1; logisticMoveObject = objNull; }, nil, 5, true, true];
-
 	// Verschiedene Überwachungen
+	logisticDistanceObject = 0;
+	logisticRotateObject = 0;
 	logisticMoveObject = _objectLocal;
 	logisticDecision = 1;
+
+	private _actionMenu = player addAction [("<t color=""#dddd00"">Bauen STARTEN</t>"), { 
+		logisticDecision = 0; 
+		logisticMoveObject = objNull; 
+	}, nil, 5, true, true];
+	private _actionMenu2 = player addAction [("<t color=""#dddd00"">Bauen (Abbrechen)</t>"), { 
+		logisticDecision = 1; 
+		logisticMoveObject = objNull; 
+	}, nil, 5, true, true];
+	private _actionMenu3 = player addAction [("<t color=""#dddd00"">Bauen (Drehen)</t>"), { 
+		logisticRotateObject = logisticRotateObject + 45; 
+		(_this select 3) setDir logisticRotateObject; 
+	}, _objectLocal, 5, true, true];
+	private _actionMenu4 = player addAction [("<t color=""#dddd00"">Bauen (Entfernung +)</t>"), { 
+		logisticDistanceObject = logisticDistanceObject + 1;
+		private _position = (_this select 3) select 1;
+		((_this select 3) select 0) attachTo [player, [_position select 0, (_position select 1) + logisticDistanceObject, _position select 2]];
+	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 5, true, true];
+	private _actionMenu5 = player addAction [("<t color=""#dddd00"">Bauen (Entfernung -)</t>"), { 
+		logisticDistanceObject = logisticDistanceObject - 1;
+		private _position = (_this select 3) select 1;
+		((_this select 3) select 0) attachTo [player, [_position select 0, (_position select 1) + logisticDistanceObject, _position select 2]];
+	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 5, true, true];
+
 	while {!(isNull logisticMoveObject) && (alive player)} do
 	{
 		if (vehicle player != player) then
@@ -29,6 +52,9 @@ if (count _config > 0) then
 
 	player removeAction _actionMenu;
 	player removeAction _actionMenu2;
+	player removeAction _actionMenu3;
+	player removeAction _actionMenu4;
+	player removeAction _actionMenu5;
 	if (logisticDecision == 0) then
 	{
 		//---------------------------------
@@ -63,6 +89,8 @@ if (count _config > 0) then
 		// Das Object soll nicht gebaut werden		
 		deleteVehicle _objectLocal;		
 	};
+	logisticDistanceObject = nil;
+	logisticRotateObject = nil;
 	logisticMoveObject = nil;
 	logisticDecision = nil; 
 };

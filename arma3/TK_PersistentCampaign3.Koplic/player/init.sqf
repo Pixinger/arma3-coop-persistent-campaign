@@ -15,6 +15,10 @@ if (hasInterface) then
 		{
 			player allowDamage false;
 			//player setCaptive true;
+			player setVariable ["isPioneer", true, true];
+			player setVariable ["ACE_isEOD", true, true];
+			player setVariable ["ACE_IsEngineer", true, true];
+			player setVariable ["ace_medical_medicclass", 2, true];
 		};
 		
 		private["_tmp"];
