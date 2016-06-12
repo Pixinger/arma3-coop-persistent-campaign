@@ -11,7 +11,7 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 		_object = createVehicle ["CraterLong_small", [(position player) select 0, (position player) select 1, 0], [], 0, "CAN_COLLIDE"]; //_object = "CraterLong_small" createVehicle (position player); //CraterLong_small
 		waitUntil {!isNil "_object"};	
 		_object setDir (floor random (360));
-		//_object setPosATL [(position player) select 0, (position player) select 1, 0];
+		_object setPosATL [(position player) select 0, (position player) select 1, 0];
 		
 		// Autodelete
 		_object spawn {

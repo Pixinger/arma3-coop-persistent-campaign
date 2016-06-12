@@ -11,7 +11,7 @@ if (isServer) then
 	// ------------------------------------------------------------------------------
 	// Durch alle Zonen interieren
 	private _database = [];
-	for "_i" from 0 to cfgAizZoneCount do 
+	for "_i" from 0 to cfgAizZoneCount-1 do 
 	{
 		if (!isNil format["aizZoneData%1", _i]) then
 		{
@@ -23,7 +23,8 @@ if (isServer) then
 			// ------------------------------------------------------------------------------
 			private _dataSetCampsTown = [];
 			{			
-				if (count ([(_x select 0) buildingPos (_x select 1), 5] call fnc_aiz_FindCampTownRespawnCount) > 0) then 
+				private _campCount = [(_x select 0) buildingPos (_x select 1), 5] call fnc_aiz_FindCampTownRespawnCount;
+				if (_campCount > 0) then 
 				{ 
 					_dataSetCampsTown pushBack [getPos (_x select 0), (_x select 1)]; //=[_housePosition, buildingPosIndex]
 				};

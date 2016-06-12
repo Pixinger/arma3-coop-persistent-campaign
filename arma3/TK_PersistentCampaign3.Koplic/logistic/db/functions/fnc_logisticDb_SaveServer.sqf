@@ -16,7 +16,6 @@ if (isServer) then
 	//------------------------------------
 	// Fahrzeuge
 	//------------------------------------
-	// Datenbank-Array erstellen
 	private["_databaseVehicles"];
 	_databaseVehicles = [];
 	if (count logisticDbVehicles > 0) then
@@ -75,7 +74,6 @@ if (isServer) then
 	//------------------------------------
 	// Objekte
 	//------------------------------------
-	// Datenbank-Array erstellen
 	private["_databaseObjects"];
 	_databaseObjects = [];
 	if (count logisticDbObjects > 0) then
@@ -101,11 +99,16 @@ if (isServer) then
 	};
 
 	//------------------------------------
+	// TIME
+	//------------------------------------
+	private _databaseTime = date; // [year, month, day, hour, minute]	
+
+	//------------------------------------
 	// Datenbank erstellen
 	//------------------------------------
 	private["_database"];
-	_database = [_databaseVehicles, _databaseAmmoboxes, _databaseObjects];
-	diag_log format["Final database: %1", _database];
+	_database = [_databaseVehicles, _databaseAmmoboxes, _databaseObjects, _databaseTime];
+	if (pixDebug) then { diag_log format["Final database: %1", _database]; };
 	profileNameSpace setVariable [logisticDbPrefix + "_database", _database];
 	
 	// ------------------------------------------------------------------------------

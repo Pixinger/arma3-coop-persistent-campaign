@@ -85,6 +85,18 @@ if (isServer) then
 		} foreach _objects; 
 	};
 
+	//------------------------------------
+	// TIME/DATE aus der Datenbank laden 
+	//------------------------------------
+	private _dateTime = [2016, 06, 11, 15, 00]; // [year, month, day, hour, minute] 
+	if (count _database > TIME_INDEX) then
+	{
+		private _dateTime = _database select TIME_INDEX;
+	};
+	diag_log format["loaded %1 date/time", _dateTime];
+	format["%1", _dateTime] remoteExec ["fnc_logisticDb_SetDateTime"]; // Überall ausführen
+	setTimeMultiplier 2;
+	
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben
 	"LOGISTIC-Database loading complete" remoteExec ["hint"];

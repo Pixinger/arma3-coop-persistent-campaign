@@ -1,4 +1,4 @@
-author = "[TK]Pix";  						/* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben"," so erscheint Unknown Author. */
+author = "[TK]Pix, [TK]OneTwo(BW-gear)";		/* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben"," so erscheint Unknown Author. */
 onLoadName = "[TK]Persistent Campaign 3"; 	/* Mission Name*/
 onLoadMission = "Beta"; 						/* Beschreibung*/
 OnLoadIntro = "by [TK]Pix";
