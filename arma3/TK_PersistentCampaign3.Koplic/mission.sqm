@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=664;
+		nextID=668;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1374.5829,27.833286,339.09515};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={1334.2815,27.833286,498.42679};
+		dir[]={-0.20121713,-0.60031986,0.77410442};
+		up[]={-0.15102939,0.79974973,0.5810287};
+		aside[]={0.96788728,1.6554259e-007,0.25158629};
 	};
 };
 binarizationWanted=0;
@@ -35,13 +35,14 @@ addons[]=
 	"ace_hearing",
 	"ace_interaction",
 	"ace_map_gestures",
-	"ace_zeus"
+	"ace_zeus",
+	"A3_Structures_F_Mil_Helipads"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=11;
+		items=12;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -102,6 +103,13 @@ class AddonsMetaData
 		{
 			className="ace_zeus";
 			name="ace_zeus";
+		};
+		class Item11
+		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
 		};
 	};
 };
@@ -211,7 +219,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v0.20.7";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.20.8";
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
@@ -233,7 +241,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=73;
+		items=74;
 		class Item0
 		{
 			dataType="Logic";
@@ -2619,6 +2627,22 @@ class Mission
 			name="respawn_west";
 			type="mil_join";
 			id=663;
+		};
+		class Item73
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1251.0892,3.9803925,505.16077};
+				angles[]={0,1.5985855,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=667;
+			type="Land_HelipadCivil_F";
 		};
 	};
 };

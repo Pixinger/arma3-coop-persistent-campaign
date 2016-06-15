@@ -1,6 +1,6 @@
 if (isServer) then
 {
-/*	StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Man"), false];
+	StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Man"), false];
 	Sleep 1;
 	{ StaticCuratorModule addCuratorEditableObjects [[_x], true]; } forEach allUnits;					
 	Sleep 1;
@@ -14,8 +14,6 @@ if (isServer) then
 	//StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Thing"), false];
 	//Sleep 1;
 	//StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Ammo"), false];	
-	*/
-	StaticCuratorModule addCuratorEditableObjects [nearestObjects [player, ["Man","Air","Static","Land","Ammo","Thing"], 1000], false];
 }
 else
 {

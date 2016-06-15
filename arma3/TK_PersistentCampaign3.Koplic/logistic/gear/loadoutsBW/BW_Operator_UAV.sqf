@@ -4,20 +4,20 @@ _result = [
 	"",
 
 	/* Headgear */
-	"BWA3_MICH_Fleck",
+	"BWA3_G_Combat_Clear",
 
 	/* Binoculars */
-	"Binocular",
+	"Rangefinder",
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	"NVGoggles",
 
 	/* Linked Items */
 	[
 		"ItemMap",
 		"ItemWatch",
 		"ItemCompass",
-		"ItemGps"
+		"B_UavTerminal"
 	],
 
 	/* Primary Weapon */
@@ -53,8 +53,7 @@ _result = [
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
-		[
-		],
+		[],
 		/* Uniform-Items */
 		[
 			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
@@ -84,26 +83,20 @@ _result = [
 
 	/* Backpack */
 	[
-		"BWA3_Kitbag_Fleck",
+		"B_UAV_01_backpack_F",
 		/* Backpack-Weapons */
-		[
-		],
+		[],
 		/* Backpack-Magazines */
-		[
-		"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
-		],
+		[],
 		/* Backpack-Items */
-		[
-			"ACE_DeadManSwitch","ACE_DefusalKit","ACE_Clacker","MineDetector","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","BWA3_G_Combat_Clear","BWA3_Beret_PzGren",
-			"ACE_muzzle_mzls_H","muzzle_snds_H"
-		]
+		[]
 	],
 
 	/* Code */
 	"",
 	
 	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
-	[true, false, 0, true]	
+	[false, false, 0, false]	
 ];
 
 _result;

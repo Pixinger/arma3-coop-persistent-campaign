@@ -17,8 +17,9 @@
 	["BW RGW90","BW_RGW90.sqf"],
 	["BW Titan (AT)","BW_TitanAT.sqf"],
 	["BW Titan (AA)","BW_TitanAA.sqf"],
-	["BW Feuerwerker (EOD)","BW_EngineerMine.sqf"],
-	["BW Pionier","BW_EngineerRepair.sqf"],
+	["BW Pionier (EOD)","BW_EngineerMine.sqf"],
+	["BW Pionier (REP)","BW_EngineerRepair.sqf"],
+	["BW Operator (UAV)","BW_Operator_UAV.sqf"],	
 	["BW Crew","BW_Crew.sqf"],
 	["BW Crew (Officer)", "BW_Crewchief.sqf"],
 	["BW Helipilot", "BW_HeliPilot.sqf"]
