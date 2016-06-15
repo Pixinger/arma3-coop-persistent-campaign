@@ -90,35 +90,11 @@ if (count _result > 11) then { _code = _result select 11; } else { _code = ""; }
 private["_unitTypes"];
 if (count _result > 12) then { _unitTypes = _result select 12; } else { _unitTypes = []; };
 
-
-/* Switch Unit durführen */
-//disableUserInput true;
-//titleText ["", "BLACK FADED"];
-//private["_rank"];
-//_rank = rank _unit;
-//private["_dir"];
-//_dir = (getdir _unit);
-//private["_pos"];
-//_pos = (getpos _unit);
-//private["_newunit"];
-//_newunit = (group _unit) createUnit [_unitClassname, getPos _unit, [], 0, "None"];
-//Sleep 1;
-//_newunit setUnitRank _rank;
-//addSwitchableUnit _newunit;
-//selectPlayer _newunit;
-//[_unit] join grpNull;
-//deletevehicle _unit;
-//_unit = _newunit;
-//_unit setpos _pos;
-//_unit setdir _dir;
-//_unit setUnitRank _rank;
-//if (rankId _unit == 6) then
-//{
-//	(group _unit) selectLeader _unit;
-//};
-//titleText ["", "BLACK IN", 1];
-//disableUserInput false;
-
+/* Funkgerät retten */
+private _rescuedRadio = "";
+{
+	if (_x isKindOf ["ItemRadio", configFile >> "CfgWeapons"]) exitWith { _rescuedRadio = _x; };
+} foreach (assignedItems player);
 
 /* Aktuelle Ausrüstung löschen */
 removeAllAssignedItems _unit;
@@ -142,7 +118,6 @@ if (_secondaryWeaponClassname != "") then
 	_unit addWeapon _secondaryWeaponClassname;
 	{_unit addSecondaryWeaponItem _x;} foreach _secondaryWeaponItems;
 	removeBackpack _unit;
-
 };
 
 /* Nun den echten Rucksack/Fallschrim */
@@ -154,7 +129,16 @@ if (_uniformClassname != "") then
 {
 	{ _unit addItemToUniform _x; } foreach _uniformWeapons;
 	{ _unit addItemToUniform _x; } foreach _uniformMagazines;
-	{ _unit addItemToUniform _x; } foreach _uniformItems;
+	{ 
+		if (_x == "ItemRadio") then
+		{
+			if (_rescuedRadio != "") then {	_unit linkItem _rescuedRadio; } else { _unit addItemToUniform _x; };
+		}
+		else
+		{
+			_unit addItemToUniform _x; 
+		};
+	} foreach _uniformItems;
 };
 if (_vestClassname != "") then
 {
