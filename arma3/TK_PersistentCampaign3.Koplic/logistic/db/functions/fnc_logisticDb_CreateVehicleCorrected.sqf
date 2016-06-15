@@ -8,9 +8,9 @@ _direction = _this select 2;
 
 // Fahrzeug erstellen
 private["_object"];
-_object = createVehicle [_classname, [_position select 0, _position select 1, 0], [], 0, "CAN_COLLIDE"]; //_object = _classname createVehicle _position;
+_object = createVehicle [_classname, [_position select 0, _position select 1, _position select 2], [], 0, "CAN_COLLIDE"]; //_object = _classname createVehicle _position;
 waitUntil {!isNil "_object"};
-_object setPosATL [_position select 0, _position select 1, 0];
+_object setPosATL [_position select 0, _position select 1, _position select 2];
 _object setDir _direction;
 
 // Bei einem UAV/UGV autmatisch die Crew erstellen

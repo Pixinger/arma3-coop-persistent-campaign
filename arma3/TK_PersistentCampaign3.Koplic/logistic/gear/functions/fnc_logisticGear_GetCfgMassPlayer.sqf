@@ -32,5 +32,5 @@ _totalMass = _totalMass  + ((vest player) call fnc_logisticGear_GetCfgMass);
 _totalMass = _totalMass  + ((backpack player) call fnc_logisticGear_GetCfgMass);
 { _totalMass = _totalMass + ((_x) call fnc_logisticGear_GetCfgMass); } foreach (backpackItems player);
 
-if (pixDebug) then { diag_log format["fnc_logisticGear_CalculateLoadoutPlayer.sqf: TotalMass = %1", _totalMass];};
+if (pixDebug) then { diag_log format["fnc_logisticGear_GetCfgMassPlayer.sqf: TotalMass = %1", _totalMass];};
 _totalMass;

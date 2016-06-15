@@ -24,17 +24,22 @@ if (isServer) then
 		diag_log format["loaded %1 _vehicles", count _vehicles];
 
 		{	
-			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then 
+			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
 			{
 				// _x = [_classname, _position, _direction, _damageArray, _cargoArray, dbVar(optional)];	
 				// Fahrzeug erstellen
-				private _vehicle = [(_x select 0), (_x select 1), (_x select 2)] call fnc_logisticDb_CreateVehicleCorrected;
+				//private _vehicle = [(_x select 0), (_x select 1), (_x select 2)] call fnc_logisticDb_CreateVehicleCorrected;
+				private _vehicle = [(_x select 0), (_x select 1), 0] call fnc_logisticDb_CreateVehicleCorrected;
 				// Schaden hinzufügen
 				[_vehicle, (_x select 3)] call  fnc_logisticDb_SetVehicleDamageArray;
 				// Ladung hinzufügen
 				[_vehicle, (_x select 4)] call  fnc_logisticDb_SetVehicleCargoArray;
 				// dbVar
-				if (count _x > 5) then { _vehicle setVariable["dbVar", (_x select 5), true]; };		
+				if (count _x > 5) then 
+				{
+					//if (pixDebug) then {diag_log format["dbVar: %1=%2",(_x select 0), (_x select 5)];};
+					_vehicle setVariable["dbVar", (_x select 5), true]; 
+				};
 			};
 		} foreach _vehicles; 
 	};
@@ -48,7 +53,7 @@ if (isServer) then
 		diag_log format["loaded %1 _ammoboxes", count _ammoboxes];
 
 		{	
-			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then 
+			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
 			{
 				// _x = [_classname, _position, _direction, _damageArray, _cargoArray, dbVar(optional)];	
 				// Fahrzeug erstellen
@@ -58,7 +63,11 @@ if (isServer) then
 				// Ladung hinzufügen
 				[_vehicle, (_x select 4)] call  fnc_logisticDb_SetVehicleCargoArray;
 				// dbVar
-				if (count _x > 5) then { _vehicle setVariable["dbVar", (_x select 5), true]; };
+				if (count _x > 5) then 
+				{
+					//if (pixDebug) then {diag_log format["dbVar: %1=%2",(_x select 0), (_x select 5)];};
+					_vehicle setVariable["dbVar", (_x select 5), true]; 
+				};
 			};
 		} foreach _ammoboxes; 
 	};
@@ -72,15 +81,19 @@ if (isServer) then
 		diag_log format["loaded %1 _objects", count _objects];
 
 		{	
-			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then 
+			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
 			{
-				// _x = [_classname, _position, _direction, _damageArray, _cargoArray, dbVar(optional)];	
+				// _x = [_classname, _position, _direction, _damageArray, dbVar(optional)];	//ACHTUNG! Kein CargoArray wie bei 'ammoboxes' und 'vehicles'
 				// Fahrzeug erstellen
 				private _vehicle = [(_x select 0), (_x select 1), (_x select 2)] call fnc_logisticDb_CreateVehicleCorrected;
 				// Schaden hinzufügen
 				_vehicle setDamage (_x select 3);
 				// dbVar
-				if (count _x > 5) then { _vehicle setVariable["dbVar", (_x select 5), true]; };
+				if (count _x > 4) then 
+				{
+					//if (pixDebug) then {diag_log format["dbVar: %1=%2",(_x select 0), (_x select 4)];};
+					_vehicle setVariable["dbVar", (_x select 4), true]; 
+				};
 			};
 		} foreach _objects; 
 	};

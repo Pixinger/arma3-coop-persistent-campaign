@@ -1,11 +1,9 @@
-private["_buttons"];	
-_buttons = [];
+private _buttons = [];
 
-private["_cursorTarget"];
-_cursorTarget = cursorTarget;
-private["_cursorTargetType"];
-_cursorTargetType = typeof _cursorTarget;
-hint format["%1", _cursorTargetType];
+private _cursorTarget = cursorTarget;
+private _cursorTargetType = typeof _cursorTarget;
+
+if (pixDebug) then { hint format["%1", _cursorTargetType];};
 
 if (typeOf(vehicle player) in logisticHaulers) then 
 {
@@ -49,7 +47,10 @@ else
 
 			// Logistic Menüs
 			if (_cursorTargetType in logisticObjectsTransportables) then { _buttons pushBack ["Aufladen", true, true, fnc_Logistic_Object_Load];};	
-			if (_cursorTargetType in logisticTransporters) then { _buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_Unload];};
+			if (_cursorTargetType in logisticTransporters) then { 
+				_buttons pushBack ["Abladen", true, true, fnc_Logistic_Object_Unload];
+				_buttons pushBack ["Abladen (alles)", true, true, fnc_Logistic_Object_UnloadAll];
+				};
 			if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
 			if (call fnc_Logistic_CanSellVehicle) then { _buttons pushBack ["Verkaufen", true, true, fnc_Logistic_SellVehicle];};
 			if (call fnc_Logistic_CanRepairVehicle) then { _buttons pushBack ["Reparieren", true, true, fnc_Logistic_RepairVehicle];};

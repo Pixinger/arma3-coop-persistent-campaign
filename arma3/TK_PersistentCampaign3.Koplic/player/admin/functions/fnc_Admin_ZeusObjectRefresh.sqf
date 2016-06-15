@@ -14,11 +14,10 @@ if (isServer) then
 	//StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Thing"), false];
 	//Sleep 1;
 	//StaticCuratorModule addCuratorEditableObjects [(allMissionObjects "Ammo"), false];	
-*/
-	
-	StaticCuratorModule addCuratorEditableObjects [nearestObjects [player, ["Man","Air","Static", "Land"], 1000], false];
+	*/
+	StaticCuratorModule addCuratorEditableObjects [nearestObjects [player, ["Man","Air","Static","Land","Ammo","Thing"], 1000], false];
 }
 else
 {
-	remoteExec ["fnc_Admin_ZeusFix", 2]; // 2= only server
+	remoteExec ["fnc_Admin_ZeusObjectRefresh", 2]; // 2= only server
 };

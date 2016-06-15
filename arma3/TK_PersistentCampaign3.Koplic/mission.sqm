@@ -8,18 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=662;
+		nextID=664;
 	};
 	class MarkerIDProvider
 	{
-		nextID=14;
+		nextID=16;
 	};
 	class Camera
 	{
-		pos[]={1328.7861,19.676207,495.57944};
-		dir[]={-0.27727857,-0.58537298,0.762003};
-		up[]={-0.20017657,0.81073779,0.55011344};
-		aside[]={0.93980134,-5.1478855e-007,0.34197518};
+		pos[]={1374.5829,27.833286,339.09515};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -111,10 +111,78 @@ class ScenarioData
 	author="Pixinger";
 	debriefing=0;
 	saving=0;
+	disabledAI=1;
+	class Header
+	{
+		gameType="Coop";
+		minPlayers=2;
+		maxPlayers=20;
+	};
 };
 class CustomAttributes
 {
 	class Category0
+	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="RespawnButton";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+				};
+			};
+		};
+		class Attribute2
+		{
+			property="SharedObjectives";
+			expression="if (isMultiplayer) then {[_value] spawn bis_fnc_sharedObjectives;};";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		nAttributes=3;
+	};
+	class Category1
 	{
 		name="Scenario";
 		class Attribute0
@@ -143,7 +211,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v0.20.2";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.20.7";
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
@@ -165,7 +233,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=72;
+		items=73;
 		class Item0
 		{
 			dataType="Logic";
@@ -2543,6 +2611,14 @@ class Mission
 				};
 				nAttributes=5;
 			};
+		};
+		class Item72
+		{
+			dataType="Marker";
+			position[]={1307.545,3.9803925,516.98413};
+			name="respawn_west";
+			type="mil_join";
+			id=663;
 		};
 	};
 };

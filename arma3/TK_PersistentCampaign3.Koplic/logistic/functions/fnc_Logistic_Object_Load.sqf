@@ -56,6 +56,7 @@ if (_objectIndex >= 0) then
 	
 			_load = _load + _objectSize;
 			_vehicle setVariable ["pixLoad", _load, true];
+			hint "Ein Objekt erfolgreich aufgeladen";
 		}
 		else
 		{

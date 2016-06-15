@@ -60,8 +60,10 @@ _objectLocal setDir (getDir _objectGlobal);
 // Animation starten
 call fnc_Logistic_WorkAnimationStart;
 
-// Lokales Objekt verändern (hoch oder runter)
+// Geschwindigkeitsmodifizierer berechnen
 #define SLEEP_TIME 2
+private _sleepTime = [] call fnc_Logistic_GetBuildSleepTime; // _sleepTime = 1 bis 3. 2 entspricht ca 500 Mass-Einheiten
+
 logisticBuild = true;
 private _positionLocal = getPosATL _objectLocal;
 while {(logisticBuild) && (alive player) } do
@@ -87,11 +89,11 @@ while {(logisticBuild) && (alive player) } do
 			};	
 		};
 	};
-	player sidechat format["height: %1", _positionLocal select 2];
+	if (pixDebug) then { player sidechat format["height: %1", _positionLocal select 2];};
 	_objectLocal setPosATL _positionLocal;
 
 	// Erst am Ende Warten, sonst wird bei Abbruch noch einmal zuviel ausgebaut.
-	if (pixDebug) then { Sleep 0.5; } else { Sleep SLEEP_TIME; };
+	if (pixDebug) then { Sleep 0.5; } else { Sleep _sleepTime; };
 };
 call fnc_Logistic_WorkAnimationEnd;
 

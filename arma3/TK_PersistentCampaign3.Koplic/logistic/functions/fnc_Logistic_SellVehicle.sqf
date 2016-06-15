@@ -15,17 +15,17 @@ if (_sellableIndex >= 0) then
 	{
 		private _store = _stores select 0;
 		
-		// Fahrzeug löschen
+		// Fahrzeug lÃ¶schen
 		deleteVehicle _cursorTarget;
 		
 		{
 			// Freien Platz suchen
 			private _distance = 5;				
-			_position = (getPos player) findEmptyPosition [0, _distance, typeof _x];
+			private _position = (getPos player) findEmptyPosition [0, _distance, _x];
 			while { count _position == 0 } do
 			{
 				_distance = _distance + 5;
-				_position = _behind findEmptyPosition [0, _distance, typeof _x];
+				_position = (getPos player) findEmptyPosition [0, _distance, _x];
 			};			
 			
 			// Bezahlung erstellen
@@ -34,7 +34,7 @@ if (_sellableIndex >= 0) then
 	}
 	else
 	{
-		hint "Kein Abnehmer in der Nähe!";
+		hint "Kein Abnehmer in der NÃ¤he!";
 	};
 };
 	

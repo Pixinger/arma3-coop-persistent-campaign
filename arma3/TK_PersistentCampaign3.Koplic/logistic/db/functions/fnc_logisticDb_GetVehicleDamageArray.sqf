@@ -4,6 +4,8 @@ _vehicle = _this select 0;
 private["_damageArray"];
 _damageArray = [];
 
+_damageArray pushBack (getDammage _vehicle); // Das erste Element ist der TotalSchaden
+
 private["_i"];
 _i = 0;
 

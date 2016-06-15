@@ -61,7 +61,8 @@ while { _run } do
 				_target = (getPos (_supplies select 0));
 				_unit doMove _target;
 				_state = STATE_WALKING_SUPPLY;			
-				_ttl = 100;
+				_ttl = 50;
+				Sleep 3;
 			}
 			else
 			{
@@ -88,6 +89,7 @@ while { _run } do
 			_unit doMove _homePosition;
 			_state = STATE_WALKING_HOME;			
 			_ttl = 50;
+			Sleep 3;
 		};		
 		case STATE_GOSOMEWHERE:
 		{ 
@@ -102,6 +104,7 @@ while { _run } do
 				_unit doMove _target;
 				_state = STATE_WALKING;
 				_ttl = 30; // Max 2 Minuten
+				Sleep 3;
 			};						
 		};
 		case STATE_RELAXING:
@@ -139,6 +142,7 @@ while { _run } do
 		case STATE_WALKING:
 		{
 			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_WALKING", _townIndex]; };
+			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
 				_markerName setMarkerPos (getPos _unit);
@@ -161,12 +165,17 @@ while { _run } do
 					
 					_state = STATE_THINKING;
 				};
+
+				// Wenn er sich nicht bewegt, dann einfach diese Einheit beenden.
+				if (_lastPosition distance2D (getPos _unit) < 0.3) exitWith { _state = STATE_EXIT; };
+				_lastPosition = (getPos _unit);				
 			};			
 		};		
 		case STATE_WALKING_HOME: 
 		{
 			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_WALKING_HOME", _townIndex]; };
 			_markerName setMarkerText "Home";
+			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
 				Sleep 2;
@@ -189,11 +198,16 @@ while { _run } do
 					if (random 1 < 0.33) then {_state = STATE_EXIT;}
 					else {_state = STATE_RELAXING;};
 				};
+
+				// Wenn er sich nicht bewegt, dann einfach diese Einheit beenden.
+				if (_lastPosition distance2D (getPos _unit) < 0.3) exitWith { _state = STATE_EXIT; };
+				_lastPosition = (getPos _unit);				
 			};			
 		};		
 		case STATE_WALKING_SUPPLY: 
 		{
 			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_WALKING_SUPPLY", _townIndex]; };
+			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
 				Sleep 2;
@@ -217,8 +231,8 @@ while { _run } do
 					if (count _supplies > 0) then
 					{
 						private _supply = _supplies select 0;
-						_supply setDamage ((damage _supply) - 0.1);
-						if (damage _supply <= 0) then { deleteVehicle _supply; };
+						_supply setDamage ((damage _supply) + 0.1);
+						if (damage _supply >= 1) then { deleteVehicle _supply; };
 
 						(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];
 						_supplies = _supplies + 10;
@@ -227,6 +241,10 @@ while { _run } do
 
 					_state = STATE_GOHOME;				
 				};
+
+				// Wenn er sich nicht bewegt, dann einfach diese Einheit beenden.
+				if (_lastPosition distance2D (getPos _unit) < 0.3) exitWith { _state = STATE_EXIT; };
+				_lastPosition = (getPos _unit);
 			};			
 		};		
 		case STATE_EXIT: 

@@ -10,7 +10,8 @@ if (count _config > 0) then
 	waitUntil {!isNil "_objectLocal"};
 	_objectLocal attachTo [player, _config select ATTACHPOINT_INDEX];
 
-	// Verschiedene �berwachungen
+	// Verschiedene Überwachungen
+	logisticHeightObject = 0;
 	logisticDistanceObject = 0;
 	logisticRotateObject = 0;
 	logisticMoveObject = _objectLocal;
@@ -19,25 +20,35 @@ if (count _config > 0) then
 	private _actionMenu = player addAction [("<t color=""#dddd00"">Bauen STARTEN</t>"), { 
 		logisticDecision = 0; 
 		logisticMoveObject = objNull; 
-	}, nil, 5, true, true];
+	}, nil, 20, true, true];
 	private _actionMenu2 = player addAction [("<t color=""#dddd00"">Bauen (Abbrechen)</t>"), { 
 		logisticDecision = 1; 
 		logisticMoveObject = objNull; 
-	}, nil, 5, true, true];
-	private _actionMenu3 = player addAction [("<t color=""#dddd00"">Bauen (Drehen)</t>"), { 
+	}, nil, 19, true, true];
+	private _actionMenu3 = player addAction [("<t color=""#dddd00"">Bauen (Drehen 45°)</t>"), { 
 		logisticRotateObject = logisticRotateObject + 45; 
 		(_this select 3) setDir logisticRotateObject; 
-	}, _objectLocal, 5, true, true];
+	}, _objectLocal, 18, true, true];
 	private _actionMenu4 = player addAction [("<t color=""#dddd00"">Bauen (Entfernung +)</t>"), { 
 		logisticDistanceObject = logisticDistanceObject + 1;
 		private _position = (_this select 3) select 1;
 		((_this select 3) select 0) attachTo [player, [_position select 0, (_position select 1) + logisticDistanceObject, _position select 2]];
-	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 5, true, true];
+	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 17, true, true];
 	private _actionMenu5 = player addAction [("<t color=""#dddd00"">Bauen (Entfernung -)</t>"), { 
 		logisticDistanceObject = logisticDistanceObject - 1;
 		private _position = (_this select 3) select 1;
 		((_this select 3) select 0) attachTo [player, [_position select 0, (_position select 1) + logisticDistanceObject, _position select 2]];
-	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 5, true, true];
+	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 16, true, true];
+	private _actionMenu5 = player addAction [("<t color=""#dddd00"">Bauen (Höhe +)</t>"), { 
+		logisticHeightObject = logisticHeightObject + 0.5;
+		private _position = (_this select 3) select 1;
+		((_this select 3) select 0) attachTo [player, [_position select 0, _position select 1, (_position select 2) + logisticHeightObject]];
+	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 15, true, true];
+	private _actionMenu5 = player addAction [("<t color=""#dddd00"">Bauen (Höhe -)</t>"), { 
+		logisticHeightObject = logisticHeightObject - 0.5;
+		private _position = (_this select 3) select 1;
+		((_this select 3) select 0) attachTo [player, [_position select 0, _position select 1, (_position select 2) + logisticHeightObject]];
+	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 14, true, true];
 
 	while {!(isNull logisticMoveObject) && (alive player)} do
 	{
@@ -89,6 +100,7 @@ if (count _config > 0) then
 		// Das Object soll nicht gebaut werden		
 		deleteVehicle _objectLocal;		
 	};
+	logisticHeightObject = nil;
 	logisticDistanceObject = nil;
 	logisticRotateObject = nil;
 	logisticMoveObject = nil;

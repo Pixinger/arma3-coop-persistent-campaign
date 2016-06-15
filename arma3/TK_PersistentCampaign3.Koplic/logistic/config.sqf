@@ -7,15 +7,15 @@ logisticObjectHQClassname = "Land_DataTerminal_01_F";
 // ["className", [[attach-offset]]]
 private _logisticObjectsMoveableDefinitions = [
 	// Statische Waffen
-	//["B_HMG_01_F",					[[0, 3, 1]] ],
-	//["B_HMG_01_high_F",				[[0, 3, 1]] ],
-	//["B_HMG_01_A_F",				[[0, 3, 1]] ],
-	//["B_GMG_01_F",					[[0, 3, 1]] ],
-	//["B_GMG_01_high_F",				[[0, 3, 1]] ],
-	//["B_GMG_01_A_F",				[[0, 3, 1]] ],
-	//["B_Mortar_01_F",				[[0, 3, 1]] ],
-	//["B_static_AA_F",				[[0, 3, 1]] ],
-	//["B_static_AT_F",				[[0, 3, 1]] ],
+	["B_HMG_01_F",					[[0, 3, 1]] ],
+	["B_HMG_01_high_F",				[[0, 3, 1]] ],
+	["B_HMG_01_A_F",				[[0, 3, 1]] ],
+	["B_GMG_01_F",					[[0, 3, 1]] ],
+	["B_GMG_01_high_F",				[[0, 3, 1]] ],
+	["B_GMG_01_A_F",				[[0, 3, 1]] ],
+	["B_Mortar_01_F",				[[0, 3, 1]] ],
+	["B_static_AA_F",				[[0, 3, 1]] ],
+	["B_static_AT_F",				[[0, 3, 1]] ],
 	
 	// Ausrüstungskisten
 	//["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
@@ -153,6 +153,12 @@ logisticHaulerConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [attachpoint, attachrotation, towing ]]
 private _logisticHaulableDefinitions = [
+	["B_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
+	["B_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
+	["B_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],
+	["BWA3_Leopard2A6M_Fleck",		[[0,  -8, 0.85], 0, true]],
+	["B_APC_Tracked_01_rcws_F",		[[0,  -8, 0.85], 0, true]],
+	["B_APC_Wheeled_01_cannon_F",	[[0,  -8, 0.85], 0, true]],
 	["O_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
 	["O_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
 	["O_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],
@@ -177,17 +183,17 @@ logisticHaulableConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [storeClassnames, paymentClassname]]]
 private _logisticSellablesDefinitions = [
-	["O_MRAP_02_F", 				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_MRAP_02_gmg_F",				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_MRAP_02_hmg_F",				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_MBT_02_cannon_F",			[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_APC_Tracked_02_cannon_F",	[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_APC_Wheeled_02_rcws_F",		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["C_Van_01_box_F", 				[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["C_Van_01_transport_F", 		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["B_Truck_01_box_F", 			[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["B_Truck_01_covered_F", 		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["B_Truck_01_transport_F", 		[["SoldierWB","SoldierEB"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]]
+	["O_MRAP_02_F", 				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_MRAP_02_gmg_F",				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_MRAP_02_hmg_F",				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_MBT_02_cannon_F",			[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_APC_Tracked_02_cannon_F",	[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["O_APC_Wheeled_02_rcws_F",		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["C_Van_01_box_F", 				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["C_Van_01_transport_F", 		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["B_Truck_01_box_F", 			[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["B_Truck_01_covered_F", 		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["B_Truck_01_transport_F", 		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticSellables = [];
