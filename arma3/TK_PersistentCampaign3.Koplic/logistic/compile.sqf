@@ -23,6 +23,10 @@ fnc_Logistic_CanSellVehicle = compile preprocessFileLineNumbers "logistic\functi
 fnc_Logistic_RepairVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_RepairVehicle.sqf";
 fnc_Logistic_CanRepairVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanRepairVehicle.sqf";
 
+fnc_Logistic_BuryCorpse = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_BuryCorpse.sqf";
+fnc_Logistic_CanBuryCorpse = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanBuryCorpse.sqf";
+fnc_Logistic_TakePrison = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_TakePrison.sqf";
+fnc_Logistic_CanTakePrison = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanTakePrison.sqf";
 
 // Build
 fnc_Logistic_CanBuild = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanBuild.sqf";

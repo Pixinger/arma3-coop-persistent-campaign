@@ -54,16 +54,18 @@ else
 			if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
 			if (call fnc_Logistic_CanSellVehicle) then { _buttons pushBack ["Verkaufen", true, true, fnc_Logistic_SellVehicle];};
 			if (call fnc_Logistic_CanRepairVehicle) then { _buttons pushBack ["Reparieren", true, true, fnc_Logistic_RepairVehicle];};
+			if (call fnc_Logistic_CanTakePrison) then { _buttons pushBack ["Verhören", true, true, fnc_Logistic_TakePrison];};
 		};
 	};
 
+	if (call fnc_Logistic_CanBuryCorpse) then { _buttons pushBack ["Begraben", true, true, fnc_Logistic_BuryCorpse];};
 	if (player getVariable ["isPioneer", false]) then { _buttons pushBack ["Pionier Menü", true, true, fnc_Logistic_BuildMenu];};
 };
 
 
 // Zusammengestellte Buttons anzeigen oder DIREKT ausführen wenn es nur einer ist.
-if (count _buttons == 1) then {
-	call ((_buttons select 0) select 3);
-} else {
+//if (count _buttons == 1) then {
+//	call ((_buttons select 0) select 3);
+//} else {
 	[_buttons, "Logistik Menü"] execVM "maindialog_showtemplate.sqf";
-};
+//};

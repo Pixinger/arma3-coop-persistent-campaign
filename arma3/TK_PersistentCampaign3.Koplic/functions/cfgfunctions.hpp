@@ -11,5 +11,6 @@ class PIX
 		class RandomPosMarkerTrigger {};
 		class IsFlat {};
 		class WorldSize {};
+		class FindEmptyPositionClosest {};
 	};
 };

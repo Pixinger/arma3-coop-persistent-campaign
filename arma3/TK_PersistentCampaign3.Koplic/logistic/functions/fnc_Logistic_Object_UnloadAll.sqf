@@ -19,13 +19,7 @@ if (_cursorTargetType in logisticTransporters) then
 			detach _object;
 			
 			// Freien Platz suchen
-			private _distance = 5;
-			private _position = (position player) findEmptyPosition [0, _distance, typeof _object];
-			while { count _position == 0 } do
-			{
-				_distance = _distance + 5;
-				_position = (position player) findEmptyPosition [0, _distance, typeof _object];
-			};
+			private _position = [(position player), typeof _object] call PIX_fnc_FindEmptyPositionClosest;
 			
 			// Auf freien Platz setzen
 			_object setPos _position;

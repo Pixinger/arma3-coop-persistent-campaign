@@ -1,0 +1,1 @@
+(count ((position player) nearEntities ["ACE_bodyBagObject", 3]) > 0);

@@ -46,3 +46,5 @@ Land_CncBarrierMedium4_F
 Land_CncWall4_F
 Land_Mil_WallBig_4m_F
 Land_Mil_WallBig_Corner_F
+
+ACE_SpareBarrel

@@ -90,7 +90,7 @@ _result = [
 		],
 		/* Backpack-Items */
 		[
-			"ACE_muzzle_mzls_B","muzzle_snds_B","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
+			"ACE_muzzle_mzls_B","muzzle_snds_B","BWA3_Beret_PzGren","BWA3_G_Combat_Clear", "ACE_SpareBarrel"
 		]
 	],
 

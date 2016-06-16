@@ -25,14 +25,7 @@ if (_haulerIndex >= 0) then
 				if (!_cargoTowing) then
 				{
 					// Freien Platz suchen
-					private _behind = _hauler modelToWorld [0,-8,0]; 
-					private _distance = 5;				
-					_position = _behind findEmptyPosition [0, _distance, typeof _cargo];
-					while { count _position == 0 } do
-					{
-						_distance = _distance + 5;
-						_position = _behind findEmptyPosition [0, _distance, typeof _cargo];
-					};			
+					_position = [(_hauler modelToWorld [0,-8,0]), typeof _cargo] call PIX_fnc_FindEmptyPositionClosest;
 				}
 				else
 				{

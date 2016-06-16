@@ -39,12 +39,12 @@ if (count _config > 0) then
 		private _position = (_this select 3) select 1;
 		((_this select 3) select 0) attachTo [player, [_position select 0, (_position select 1) + logisticDistanceObject, _position select 2]];
 	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 16, true, true];
-	private _actionMenu5 = player addAction [("<t color=""#dddd00"">Bauen (Höhe +)</t>"), { 
+	private _actionMenu6 = player addAction [("<t color=""#dddd00"">Bauen (Höhe +)</t>"), { 
 		logisticHeightObject = logisticHeightObject + 0.5;
 		private _position = (_this select 3) select 1;
 		((_this select 3) select 0) attachTo [player, [_position select 0, _position select 1, (_position select 2) + logisticHeightObject]];
 	}, [_objectLocal, _config select ATTACHPOINT_INDEX], 15, true, true];
-	private _actionMenu5 = player addAction [("<t color=""#dddd00"">Bauen (Höhe -)</t>"), { 
+	private _actionMenu7 = player addAction [("<t color=""#dddd00"">Bauen (Höhe -)</t>"), { 
 		logisticHeightObject = logisticHeightObject - 0.5;
 		private _position = (_this select 3) select 1;
 		((_this select 3) select 0) attachTo [player, [_position select 0, _position select 1, (_position select 2) + logisticHeightObject]];
@@ -61,11 +61,13 @@ if (count _config > 0) then
 		sleep 0.25;
 	};
 
-	player removeAction _actionMenu;
-	player removeAction _actionMenu2;
-	player removeAction _actionMenu3;
-	player removeAction _actionMenu4;
+	player removeAction _actionMenu7;
+	player removeAction _actionMenu6;
 	player removeAction _actionMenu5;
+	player removeAction _actionMenu4;
+	player removeAction _actionMenu3;
+	player removeAction _actionMenu2;
+	player removeAction _actionMenu;
 	if (logisticDecision == 0) then
 	{
 		//---------------------------------

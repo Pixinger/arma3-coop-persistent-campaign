@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=668;
+		nextID=669;
 	};
 	class MarkerIDProvider
 	{
@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={1334.2815,27.833286,498.42679};
-		dir[]={-0.20121713,-0.60031986,0.77410442};
-		up[]={-0.15102939,0.79974973,0.5810287};
-		aside[]={0.96788728,1.6554259e-007,0.25158629};
+		dir[]={0.13937372,-0.53621912,0.83255869};
+		up[]={0.088537656,0.84406626,0.5288825};
+		aside[]={0.98632532,4.6158675e-008,-0.16511682};
 	};
 };
 binarizationWanted=0;
@@ -219,7 +219,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v0.20.9";
+		briefingName="[TK]Persistent Campaign III (work in progress) v0.21.1";
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;

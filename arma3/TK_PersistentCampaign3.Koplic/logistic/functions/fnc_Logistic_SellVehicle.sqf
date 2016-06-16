@@ -20,13 +20,7 @@ if (_sellableIndex >= 0) then
 		
 		{
 			// Freien Platz suchen
-			private _distance = 5;				
-			private _position = (getPos player) findEmptyPosition [0, _distance, _x];
-			while { count _position == 0 } do
-			{
-				_distance = _distance + 5;
-				_position = (getPos player) findEmptyPosition [0, _distance, _x];
-			};			
+			private _position = [(getPos player), _x] call PIX_fnc_FindEmptyPositionClosest;
 			
 			// Bezahlung erstellen
 			[_x, _position, random 360] call fnc_logisticDb_CreateVehicleCorrected;		

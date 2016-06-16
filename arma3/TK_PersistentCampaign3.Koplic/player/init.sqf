@@ -37,7 +37,7 @@ if (hasInterface) then
 		private _hqs = call fnc_Logistic_HQFind;
 		if (count _hqs > 0) then
 		{
-			private _position = (getPos (_hqs select 0)) findEmptyPosition [3,10, "SoldierWB"];		
+			private _position = [(getPos (_hqs select 0)), "SoldierWB"] call PIX_fnc_FindEmptyPositionClosest;
 			player setPos _position;
 			hint "HQ gefunden.";
 		}

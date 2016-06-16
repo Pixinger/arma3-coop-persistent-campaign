@@ -1,10 +1,10 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"",
+	"BWA3_G_Combat_Clear",
 
 	/* Headgear */
-	"BWA3_G_Combat_Clear",
+	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
 	"Rangefinder",
