@@ -1,5 +1,4 @@
 #include "CFG_BUILDABLES_INDICES.hpp"
-diag_log format["BUILD_DPWONDKLSAND=%1", _this];
 
 if (!isNil "logisticBuild") exitWith { hint "Du schlimmer Schelm. Du denkst wohl so geht es schneller? hä?!"; logisticBuild = false;};
 // -------------------------------------------------------

@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 #include "..\defines.hpp"
 //==========================================================================================
 // DEFINES
@@ -39,6 +43,7 @@ private _campsTown = [];		// [house, housePosIndex]
 private _campsField = [];		// [position, respawns]
 private _checkpoints = [];		// [position, direction]
 private _groupCount = 0;
+private _intelCount = 0;
 private _geoInfo = [_markerName, 0];
 
 //------------------------------------------------------------------------------------------
@@ -67,20 +72,28 @@ for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 //==========================================================================================
 // Daten generieren oder aus DB übernehmen
 //==========================================================================================
-if (count _zoneDataSet != 4) then
-{
-	private _campsTownCountPerZone = [MIN_CAMPSTOWN_PER_ZONE, MAX_CAMPSTOWN_PER_ZONE] call BIS_fnc_randomInt;
-	private _campsFieldCountPerZone = [MIN_CAMPSFIELD_PER_ZONE, MAX_CAMPSFIELD_PER_ZONE] call BIS_fnc_randomInt;
-	private _checkpointsCountPerZone = [MIN_CHECKPOINTS_PER_ZONE, MAX_CHECKPOINTS_PER_ZONE] call BIS_fnc_randomInt;
-	//diag_log format["T%1, F%2, C%3", _campsTownCountPerZone, _campsFieldCountPerZone, _checkpointsCountPerZone];
+//diag_log format["AIZ Init-Zone %1", _zoneIndex];
 
-	//diag_log format["AIZ Init-Zone %1 (code)", _zoneIndex];
-	//------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
+// CAMP-TOWN laden
+//------------------------------------------------------------------------------------------
+if (count _zoneDataSet > 0) then
+{		 
+	{
+		private _house = nearestObject [_x select 0, "House"];
+		if (!isNull _house) then
+		{
+			_campsTown pushBack [_house, _x select 1]; // [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
+		};		
+	} forEach (_zoneDataSet select 0); // [[housePosition, buildingPosIndex], ..., [housePosition, buildingPosIndex]];		
+}
+else
+{	
 	// Nach einer Position für CAMP-TOWN suchen
-	//------------------------------------------------------------------------------------------
-	private _randomPosition = [0,0,0];
 	if (random CHANCE_CAMPSTOWN_PER_ZONE <= 1) then
 	{
+		private _randomPosition = [0,0,0];
+		private _campsTownCountPerZone = [MIN_CAMPSTOWN_PER_ZONE, MAX_CAMPSTOWN_PER_ZONE] call BIS_fnc_randomInt;
 		for [{_x= 0},{_x < _campsTownCountPerZone},{_x = _x + 1}] do 
 		{
 			_randomPosition = [_geoInfo, [true, [10, 100]]] call fnc_aiz_GetRandomPositionHouse; // [house, buildingPosIndex]
@@ -91,7 +104,7 @@ if (count _zoneDataSet != 4) then
 			}
 			else
 			{
-				diag_log format["WARN: No location for CampTown found. ZoneIndex=%1", _zoneIndex];
+				DEBUG_LOG_VAREX_WARN("No location for CampTown found. ZoneIndex=", _zoneIndex);
 			};
 		};
 	}
@@ -99,12 +112,22 @@ if (count _zoneDataSet != 4) then
 	{
 		//diag_log format["INFO: No CampTown for ZoneIndex=%1 required.", _zoneIndex];
 	};
-	
-	//------------------------------------------------------------------------------------------
+};
+
+//------------------------------------------------------------------------------------------
+// CAMP-FIELD laden
+//------------------------------------------------------------------------------------------
+if (count _zoneDataSet > 1) then
+{
+	_campsField  = (_zoneDataSet select 1); 		// [[position, respawns], ..., [position, respawns]];
+}
+else
+{
 	// Nach einer Position für CAMP-FIELD suchen
-	//------------------------------------------------------------------------------------------
 	if (random CHANCE_CAMPSFIELD_PER_ZONE <= 1) then
 	{
+		private _randomPosition = [0,0,0];
+		private _campsFieldCountPerZone = [MIN_CAMPSFIELD_PER_ZONE, MAX_CAMPSFIELD_PER_ZONE] call BIS_fnc_randomInt;
 		for [{_x= 0},{_x < _campsFieldCountPerZone},{_x = _x + 1}] do 
 		{
 			_randomPosition = [_geoInfo, [5]] call fnc_aiz_GetRandomPositionField; // [position]
@@ -115,7 +138,7 @@ if (count _zoneDataSet != 4) then
 			}
 			else
 			{
-				diag_log format["WARN: No location for CampField found. ZoneIndex=%1", _zoneIndex];
+				DEBUG_LOG_VAREX_WARN("No location for CampField found. ZoneIndex=", _zoneIndex);
 			};
 		};
 	}
@@ -123,12 +146,22 @@ if (count _zoneDataSet != 4) then
 	{
 		//diag_log format["INFO: No CampField for ZoneIndex=%1 required.", _zoneIndex];
 	};
-			
-	//------------------------------------------------------------------------------------------
+};
+
+//------------------------------------------------------------------------------------------
+// Checkpoints laden
+//------------------------------------------------------------------------------------------
+if (count _zoneDataSet > 2) then
+{
+	_checkpoints  = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
+}
+else
+{
 	// Nach Checkpoints für diese Zone suchen
-	//------------------------------------------------------------------------------------------
 	if (random CHANCE_CHECKPOINTS_PER_ZONE <= 1) then
 	{
+		private _randomPosition = [0,0,0];
+		private _checkpointsCountPerZone = [MIN_CHECKPOINTS_PER_ZONE, MAX_CHECKPOINTS_PER_ZONE] call BIS_fnc_randomInt;
 		for [{_x= 0},{_x < _checkpointsCountPerZone},{_x = _x + 1}] do 
 		{
 			_randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position, direction]
@@ -139,100 +172,105 @@ if (count _zoneDataSet != 4) then
 			}
 			else
 			{
-				diag_log format["WARN: No location for Checkpoint found. ZoneIndex=%1", _zoneIndex];
+				DEBUG_LOG_VAREX_WARN("No location for Checkpoint found. ZoneIndex=", _zoneIndex);
 			};
 		};
 	}
 	else
 	{
 		//diag_log format["INFO: No Checkpoints for ZoneIndex=%1 required.", _zoneIndex];
-	};
-		
-	//------------------------------------------------------------------------------------------
-	// Festlegen wieviele Gruppen es geben soll
-	//------------------------------------------------------------------------------------------
-	_groupCount = floor (count _waypointPool / (4.5 + random 2.5));
-	if ((_groupCount < 1) && (count _waypointPool > 3)) then { _groupCount = 1; };
-	if (_zoneIndex == 12) then { _groupCount = 1; };
-	if (_groupCount < 0) then { _groupCount = 0; };	
-} 
+	};	
+};
+
+//------------------------------------------------------------------------------------------
+// GroupCount laden
+//------------------------------------------------------------------------------------------
+if (count _zoneDataSet > 3) then
+{
+	_groupCount  = (_zoneDataSet select 3); 		
+}
 else
 {
-	//diag_log format["AIZ Init-Zone %1 (database)", _zoneIndex];
-	
-	if (count _zoneDataSet >= 1) then
-	{		 
-		{
-			private _house = nearestObject [_x select 0, "House"];
-			if (!isNull _house) then
-			{
-				_campsTown pushBack [_house, _x select 1]; // [[house, buildingPosIndex], ..., [house, buildingPosIndex]];
-			};		
-		} forEach (_zoneDataSet select 0); // [[housePosition, buildingPosIndex], ..., [housePosition, buildingPosIndex]];		
-	};
-	
-	if (count _zoneDataSet >= 2) then
-	{
-		_campsField  = (_zoneDataSet select 1); 		// [[position, respawns], ..., [position, respawns]];
-	};
-	
-	if (count _zoneDataSet >= 3) then
-	{
-		_checkpoints  = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
-	};
-	
-	if (count _zoneDataSet >= 4) then
-	{
-		_groupCount  = (_zoneDataSet select 3); 		
-	};
+	// Festlegen wieviele Gruppen es geben soll
+	_groupCount = floor (count _waypointPool / (4.5 + random 2.5));
 };
+if ((_groupCount < 1) && (count _waypointPool > 3)) then { _groupCount = 1; };
+if (_zoneIndex == 12) then { _groupCount = 1; };
+if (_groupCount < 0) then { _groupCount = 0; };	
+
+//------------------------------------------------------------------------------------------
+// IntelCount laden
+//------------------------------------------------------------------------------------------
+if (count _zoneDataSet > 4) then
+{
+	_intelCount	= (_zoneDataSet select 4); 
+}
+else
+{
+	_intelCount = 0;
+};
+if (_intelCount < 0) then { _intelCount = 0; };
+if (_intelCount > 3) then { _intelCount = 3; };
 
 //==========================================================================================
 // Zone überprüfen, ob mit diesen Daten gestartet werden kann - oder nicht.
 //==========================================================================================
 private _triggerRequired = false;
 
-if  (_zoneIndex != 29) then
+//==========================================================================================
+// Camps-Town initialisieren
+//==========================================================================================
 {
-	//==========================================================================================
-	// Camps-Town initialisieren
-	//==========================================================================================
-	{
-		_triggerRequired = true;	
-		[_zoneIndex, _x] spawn fnc_aiz_BuildCampTown;
-	} foreach _campsTown;
+	_triggerRequired = true;	
+	[_zoneIndex, _x] spawn fnc_aiz_BuildCampTown;
+} foreach _campsTown;
 
-	//==========================================================================================
-	// Camps-Field initialisieren
-	//==========================================================================================
-	{
-		_triggerRequired = true;
-		[_zoneIndex, _x] spawn fnc_aiz_BuildCampField;
-	} foreach _campsField;
+//==========================================================================================
+// Camps-Field initialisieren
+//==========================================================================================
+{
+	_triggerRequired = true;
+	[_zoneIndex, _x] spawn fnc_aiz_BuildCampField;
+} foreach _campsField;
 
-	//==========================================================================================
-	// Checkpoints initialisieren
-	//==========================================================================================
-	{
-		_triggerRequired = true;
-		[_zoneIndex, _x] spawn fnc_aiz_BuildCheckpoint;
-	} foreach _checkpoints;
+//==========================================================================================
+// Checkpoints initialisieren
+//==========================================================================================
+{
+	_triggerRequired = true;
+	[_zoneIndex, _x] spawn fnc_aiz_BuildCheckpoint;
+} foreach _checkpoints;
 
-	//==========================================================================================
-	// Gruppen initialisieren
-	//==========================================================================================
-	if (_groupCount > 0) then
-	{
-		_triggerRequired = true;
-	};
+//==========================================================================================
+// Gruppen initialisieren
+//==========================================================================================
+if (_groupCount > 0) then
+{
+	_triggerRequired = true;
 };
+
+//==========================================================================================
+// IntelCount initialisieren (Achtung! Erst wenn "aizZoneData%1" oberhalb gesetzt wurde.
+//==========================================================================================
+if ((_triggerRequired) && (_intelCount > 0)) then
+{
+	DEBUG_LOG_VAREX_INFO("Intels for this zone: ", _intelCount);
+
+	for "_i" from 1 to _intelCount do
+	{
+		[_zoneIndex] call fnc_aiz_IntelReveal;
+	};
+	
+};
+// Nach dem nun alle Geheimnisse verraten wurden, wird der IntelCount wieder auf null gesetzt.
+_intelCount = 0;
 
 //==========================================================================================
 // Trigger erstellen
 //==========================================================================================
 if (_triggerRequired) then
 {	
-	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount];", _zoneIndex];
+	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount, _intelCount];", _zoneIndex];
 
 	private _radiusExtension = if (pixDebug) then { 0 } else { 1000 };
 	private["_trigger"];
@@ -243,10 +281,13 @@ if (_triggerRequired) then
 	_trigger setTriggerStatements ["this", format["[%1] call fnc_aiz_OnTriggerActivated;", _zoneIndex], format["[%1] call fnc_aiz_OnTriggerDeactivated;", _zoneIndex]];
 
 	_markerName setMarkerAlpha 0;
-	_markerName SetMarkerColor "ColorRed";
+	_markerName SetMarkerColor "ColorRed";	
+	
+	DEBUG_LOG_VAREX_INFO("Zone is ONLINE. zoneIndex=", _zoneIndex);
 }
 else
 {
 	_markerName setMarkerAlpha 0.2;
 	_markerName SetMarkerColor "ColorGreen";
+	DEBUG_LOG_VAREX_INFO("Zone is OFFLINE/COMPLETED. zoneIndex=", _zoneIndex);
 };

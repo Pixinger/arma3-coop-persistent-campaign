@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 if (isServer) then
 {	
 	waitUntil { aizZoneInitCompleted };
@@ -11,14 +15,15 @@ if (isServer) then
 	// ------------------------------------------------------------------------------
 	// Durch alle Zonen interieren
 	private _database = [];
-	for "_i" from 0 to cfgAizZoneCount-1 do 
+	for "_i" from 0 to (cfgAizZoneCount-1) do
 	{
 		if (!isNil format["aizZoneData%1", _i]) then
 		{
 			private "_zoneData";
 			call compile format["_zoneData = aizZoneData%1;", _i];			
-			_zoneData params ["_campsTown", "_campsField", "_checkpoints", "_waypointPool", "_groupCount"];			
+			_zoneData params ["_campsTown", "_campsField", "_checkpoints", "_waypointPool", "_groupCount","_intelCount"];			
 			if (_groupCount < 0) then { _groupCount = 0; };
+			if (_intelCount < 0) then { _intelCount = 0; };
 
 			// ------------------------------------------------------------------------------
 			private _dataSetCampsTown = [];
@@ -50,13 +55,8 @@ if (isServer) then
 			} foreach _checkpoints; //_x=[position, direction];
 
 			// ------------------------------------------------------------------------------
-			private _dataSet = [
-				_dataSetCampsTown,
-				_dataSetCampsField,
-				_dataSetCheckpoints,
-				_groupCount
-				];
-			_database pushBack _dataSet; // DataSet für Zone "_i".
+			// DataSet für Zone "_i".
+			_database pushBack [_dataSetCampsTown, _dataSetCampsField, _dataSetCheckpoints, _groupCount, _intelCount]; 
 		}
 		else
 		{ 
@@ -67,16 +67,16 @@ if (isServer) then
 	
 	// ------------------------------------------------------------------------------
 	// Debug Ausgabe
-	diag_log "aizDatabase: ----------------------";
+	DEBUG_LOG("AIZ-Database: ------------------------ (begin)");
+	DEBUG_LOG("AIZ-Database: saving");
 	{
-		diag_log format["aizDatabase-Save: Zone %1 = %2", _foreachIndex, _x];
+		diag_log format["zoneIndex=%1 dataset=%2", _foreachIndex, _x];
 	} foreach _database;
-	diag_log "aizDatabase: ----------------------";
+	DEBUG_LOG("AIZ-Database: ------------------------ (end)");
 	
 	// ------------------------------------------------------------------------------
 	// Datenbank speichern
 	profileNameSpace setVariable [cfgAizDbPrefix + "_database", _database];
-	diag_log format["AIZ-Database saved: %1", _database];	
 
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben

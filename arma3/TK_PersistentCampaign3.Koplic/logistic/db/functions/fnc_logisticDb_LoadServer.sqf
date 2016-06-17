@@ -1,3 +1,7 @@
+#include "..\..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 #include "_databaseIndexes.hpp"
 
 if (isServer) then
@@ -7,13 +11,12 @@ if (isServer) then
 	waitUntil { !logisticDbSaving };
 	logisticDbSaving = true;
 	"LOGISTIC-Database loading" remoteExec ["hint"];
-	diag_log "LOGISTIC-Database: ------------------------";
-	diag_log "LOGISTIC-Database: loading";
+	DEBUG_LOG("LOGISTIC-Database: ------------------------ (begin)");
+	DEBUG_LOG("LOGISTIC-Database: loading");
 	
 	// Datenbank aus dem VAR-Bereich lesen
 	//private _database = [];
 	private _database = profileNameSpace getVariable [(logisticDbPrefix + "_database"), []];
-	diag_log format["LOGISTIC-Database loaded: %1", _database];
 
 	//------------------------------------
 	// Fahrzeuge aus der Datenbank laden und erstellen
@@ -21,7 +24,7 @@ if (isServer) then
 	if (count _database > VEHICLE_INDEX) then
 	{
 		private _vehicles = _database select VEHICLE_INDEX;
-		diag_log format["loaded %1 _vehicles", count _vehicles];
+		DEBUG_LOG_VAREX_INFO("loaded vehicles: ", (count _vehicles));
 
 		{	
 			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
@@ -37,7 +40,6 @@ if (isServer) then
 				// dbVar
 				if (count _x > 5) then 
 				{
-					//if (pixDebug) then {diag_log format["dbVar: %1=%2",(_x select 0), (_x select 5)];};
 					_vehicle setVariable["dbVar", (_x select 5), true]; 
 				};
 			};
@@ -50,7 +52,7 @@ if (isServer) then
 	if (count _database > AMMOBOX_INDEX) then
 	{
 		private _ammoboxes = _database select AMMOBOX_INDEX;
-		diag_log format["loaded %1 _ammoboxes", count _ammoboxes];
+		DEBUG_LOG_VAREX_INFO("loaded ammoboxes: ", (count _ammoboxes));
 
 		{	
 			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
@@ -65,7 +67,6 @@ if (isServer) then
 				// dbVar
 				if (count _x > 5) then 
 				{
-					//if (pixDebug) then {diag_log format["dbVar: %1=%2",(_x select 0), (_x select 5)];};
 					_vehicle setVariable["dbVar", (_x select 5), true]; 
 				};
 			};
@@ -78,7 +79,7 @@ if (isServer) then
 	if (count _database > OBJECT_INDEX) then
 	{
 		private _objects = _database select OBJECT_INDEX;
-		diag_log format["loaded %1 _objects", count _objects];
+		DEBUG_LOG_VAREX_INFO("loaded objects: ", (count _objects));
 
 		{	
 			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
@@ -91,7 +92,6 @@ if (isServer) then
 				// dbVar
 				if (count _x > 4) then 
 				{
-					//if (pixDebug) then {diag_log format["dbVar: %1=%2",(_x select 0), (_x select 4)];};
 					_vehicle setVariable["dbVar", (_x select 4), true]; 
 				};
 			};
@@ -104,12 +104,13 @@ if (isServer) then
 	private _dateTime = [2016, 06, 11, 15, 00]; // [year, month, day, hour, minute] 
 	if (count _database > TIME_INDEX) then
 	{
-		private _dateTime = _database select TIME_INDEX;
+		_dateTime = _database select TIME_INDEX;
 	};
-	diag_log format["loaded %1 date/time", _dateTime];
+	DEBUG_LOG_VAREX_INFO("loaded date: ", _dateTime);
+	DEBUG_LOG("LOGISTIC-Database: ------------------------ (end)");
 	format["%1", _dateTime] remoteExec ["fnc_logisticDb_SetDateTime"]; // Überall ausführen
-	setTimeMultiplier 2;
-	
+	setTimeMultiplier 2;	
+
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben
 	"LOGISTIC-Database loading complete" remoteExec ["hint"];

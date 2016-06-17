@@ -13,7 +13,6 @@ for "_i" from 1 to _count - 1 do
 	_vehicle setHitIndex [_i-1, _damageArray select _i];
 };
 
-diag_log format["_totalDammage=%1", _totalDammage];
 if (_totalDammage > 0.9) then
 {
 	_vehicle setDamage 1;_vehicle setDamage 0;_vehicle setDamage 1;

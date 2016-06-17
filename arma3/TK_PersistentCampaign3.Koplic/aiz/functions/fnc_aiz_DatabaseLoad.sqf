@@ -1,17 +1,16 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 // ------------------------------------------------------------------------------
 // Aus der Datenbank laden
 private "_database";
 _database = profileNameSpace getVariable [(cfgAizDbPrefix + "_database"), []];
-diag_log format["AIZ-Database loaded: %1", _database];	
-//private _database = [];	
 
-// ------------------------------------------------------------------------------
-// Debug Ausgabe
-//diag_log "aizDatabase: ----------------------";
-//{
-	//diag_log format["aizDatabase-Load: Zone %1 = %2", _foreachIndex, _x];
-//} foreach _database;
-//diag_log "aizDatabase: ----------------------";
+DEBUG_LOG("AIZ-Database: ------------------------ (begin)");
+DEBUG_LOG("AIZ-Database: loading");
+DEBUG_LOG_VAR(_database);
+DEBUG_LOG("AIZ-Database: ------------------------ (end)");
 
 // ------------------------------------------------------------------------------
 // Result

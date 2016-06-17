@@ -1,3 +1,7 @@
+#include "..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 call compile preprocessFileLineNumbers "logistic\db\init.sqf";
 call compile preprocessFileLineNumbers "logistic\gear\init.sqf";
 
@@ -5,6 +9,7 @@ if (isServer) then
 {
 	logisticInitialized = true;
 	publicVariable "logisticInitialized";
+	DEBUG_LOG_INFO("LOGISTIC init is now completed");
 };
 
 if (hasInterface) then

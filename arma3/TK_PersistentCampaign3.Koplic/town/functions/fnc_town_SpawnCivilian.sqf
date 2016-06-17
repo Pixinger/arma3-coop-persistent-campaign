@@ -1,4 +1,7 @@
-diag_log format["fnc_town_SpawnCivilian: _this = %1", _this];
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 //==========================================================================================
 // THIS
 //==========================================================================================
@@ -13,7 +16,7 @@ while { _position select 0 == 0 } do
 	if (count _position > 0) then
 	{ 
 		_position = (_position select 0) buildingPos (_position select 1); // [_house, _buildingPosition]
-	}
+	};
 	Sleep 0.5;
 };
 private _homePosition = [_position select 0, _position select 1, _position select 2];
@@ -30,7 +33,7 @@ _unit setBehaviour "CARELESS";
 private["_markerName"];
 if (pixDebug) then
 {
-	diag_log format["_homePosition=%1", _homePosition];
+	DEBUG_LOG_VAR(_homePosition);
 	_markerName = createMarker [format["markerCiv%1_%2", _townIndex, floor(random 999999)], (getPos _unit)];
 	_markerName setMarkerShape "ICON";
 	_markerName setMarkerType "o_inf";
@@ -61,7 +64,8 @@ while { _run } do
 	{
 		case STATE_THINKING: 
 		{ 
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_THINKING", _townIndex]; };
+			DEBUG_LOG_VAREX("STATE_THINKING townIndex=", _townIndex);
+
 			// Early out
 			if (townActive select _townIndex != _townActiveIndex) exitWith { _state = STATE_EXIT; };
 
@@ -77,11 +81,12 @@ while { _run } do
 			}
 			else
 			{
-				switch (floor(random 3)) do 
+				switch ([1, 3] call BIS_fnc_randomInt) do 
 				{
 					case 1: 
 					{
-						_state = STATE_GOHOME;
+						// GOHOME (aber nur wenn er nicht schon zu Hause ist).
+						_state = if (_homePosition distance2D (getPos _unit) < 5) then { STATE_GOSOMEWHERE } else { STATE_GOHOME };						
 					};
 					case 2:
 					{
@@ -96,7 +101,8 @@ while { _run } do
 		};
 		case STATE_GOHOME:
 		{ 
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_GOHOME", _townIndex]; };
+			DEBUG_LOG_VAREX("STATE_GOHOME townIndex=", _townIndex);
+
 			_unit doMove _homePosition;
 			_state = STATE_WALKING_HOME;			
 			_ttl = 50;
@@ -104,7 +110,8 @@ while { _run } do
 		};		
 		case STATE_GOSOMEWHERE:
 		{ 
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_GOSOMEWHERE", _townIndex]; };
+			DEBUG_LOG_VAREX("STATE_GOSOMEWHERE townIndex=", _townIndex);
+
 			_target set [0, (_homePosition select 0) - townWalkRadius + random (townWalkRadius*2)];
 			_target set [1, (_homePosition select 1) - townWalkRadius + random (townWalkRadius*2)];
 			_target set [2, 0];
@@ -120,7 +127,8 @@ while { _run } do
 		};
 		case STATE_RELAXING:
 		{ 
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_RELAXING", _townIndex]; };
+			DEBUG_LOG_VAREX("STATE_RELAXING townIndex=", _townIndex);
+
 			private _idleTime = 5 + floor(random 60);
 			if (pixDebug) then { _idleTime = 5; };
 			
@@ -152,7 +160,8 @@ while { _run } do
 		};
 		case STATE_WALKING:
 		{
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_WALKING", _townIndex]; };
+			DEBUG_LOG_VAREX("STATE_WALKING townIndex=", _townIndex);
+
 			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
@@ -187,11 +196,9 @@ while { _run } do
 		};		
 		case STATE_WALKING_HOME: 
 		{
-			if (pixDebug) then 
-			{
-				diag_log format["townIndex: %1 = STATE_WALKING_HOME", _townIndex]; 
-				_markerName setMarkerText "Home";
-			};
+			DEBUG_LOG_VAREX("STATE_WALKING_HOME townIndex=", _townIndex);
+
+			if (pixDebug) then { _markerName setMarkerText "Home"; };
 			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
@@ -206,9 +213,9 @@ while { _run } do
 
 				// Alive
 				if (!alive _unit) exitWith { _state = STATE_EXIT; };
-
+-
 				// Ziel erreicht
-				diag_log format["Home: %1", _homePosition distance2D (getPos _unit)];
+				DEBUG_LOG_VAREX("Distance to home: ", (_homePosition distance2D (getPos _unit)));
 				if (_homePosition distance2D (getPos _unit) < 5) exitWith
 				{
 					Sleep 2; // Noch mal kurz warten
@@ -223,7 +230,8 @@ while { _run } do
 		};		
 		case STATE_WALKING_SUPPLY: 
 		{
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_WALKING_SUPPLY", _townIndex]; };
+			DEBUG_LOG_VAREX("STATE_WALKING_SUPPLY townIndex=", _townIndex);
+
 			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
@@ -269,13 +277,12 @@ while { _run } do
 		};		
 		case STATE_EXIT: 
 		{ 
-			if (pixDebug) then { diag_log format["townIndex: %1 = STATE_EXIT", _townIndex]; };
-			diag_log "STATE_EXIT";
+			DEBUG_LOG_VAREX("STATE_EXIT townIndex=", _townIndex);
 			_run = false;
 		};
 		default 
 		{ 
-			diag_log format["ERROR: fnc_town_SpawnCivilian.sqf: Invalid state for state-machine: _state=%1", _state];
+			DEBUG_LOG_VAREX_ERROR("fnc_town_SpawnCivilian.sqf: Invalid state for state-machine: _state=", _state);
 			_run = false; // Emergency exit
 		};
 	};

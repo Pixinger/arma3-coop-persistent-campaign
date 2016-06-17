@@ -16,7 +16,6 @@ if (player getVariable ["isPioneer", false]) then
 		_buttons pushBack ["Objekt löschen", true, true, fnc_Logistic_BuildDelete];
 	};
 	
-	diag_log str(surfaceType (position player));
 	if (!(surfaceIsWater position player) && (!isOnRoad player)) then {
 		_buttons pushBack ["Sandhaufen erstellen", true, true, fnc_Logistic_BuildSandPit, [], false];
 	};

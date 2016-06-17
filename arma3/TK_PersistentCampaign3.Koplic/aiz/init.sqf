@@ -1,3 +1,7 @@
+#include "..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 //[5] call fnc_aiz_ZoneInit;
 
 if (isServer) then
@@ -18,4 +22,5 @@ if (isServer) then
 	// ------------------------------------------------------------------------------
 	// Beendigung signalisieren
 	aizZoneInitCompleted = true;
+	DEBUG_LOG_INFO("AIZ init is now completed");
 };

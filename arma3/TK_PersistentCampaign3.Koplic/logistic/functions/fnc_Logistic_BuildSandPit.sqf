@@ -30,7 +30,6 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 		// Autodelete
 		_object spawn {
 			Sleep (4*60);
-			diag_log format["autoDelete: %1", _this];
 			deleteVehicle _this;
 		};
 	};

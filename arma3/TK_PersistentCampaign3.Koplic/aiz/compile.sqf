@@ -45,6 +45,7 @@ if (isServer) then
 	fnc_aiz_DatabaseLoad = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseLoad.sqf";
 	fnc_aiz_DatabaseSaveServer = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseSaveServer.sqf";
 	fnc_aiz_DatabaseClearServer = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseClearServer.sqf";
+	fnc_aiz_IntelReveal = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IntelReveal.sqf";
 
 	fnc_aiz_OnTriggerActivated = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_OnTriggerActivated.sqf";
 	fnc_aiz_OnTriggerDeactivated = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_OnTriggerDeactivated.sqf";
@@ -53,3 +54,4 @@ if (isServer) then
 fnc_aiz_DatabaseSaveClient = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseSaveClient.sqf";
 fnc_aiz_DatabaseClearClient = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseClearClient.sqf";
 fnc_aiz_ConfiscateItem = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ConfiscateItem.sqf";
+fnc_aiz_IntelIncrement = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IntelIncrement.sqf";

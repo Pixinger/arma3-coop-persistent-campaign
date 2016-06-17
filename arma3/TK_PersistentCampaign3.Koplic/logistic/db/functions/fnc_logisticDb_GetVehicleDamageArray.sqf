@@ -17,6 +17,5 @@ while { !isNil "_damage" } do
 	_i = _i + 1;
 	_damage = _vehicle getHitIndex _i;
 };
-//diag_log format["GetVehicleDamageArray: %1", _damageArray];
 
 _damageArray;

@@ -2,7 +2,6 @@ private["_vehicle"];
 _vehicle = _this select 0;
 private["_cargoArray"];
 _cargoArray = _this select 1;
-//diag_log format["_cargoArray: %1", _cargoArray];
 
 clearWeaponCargoGlobal _vehicle;
 clearMagazineCargoGlobal _vehicle;

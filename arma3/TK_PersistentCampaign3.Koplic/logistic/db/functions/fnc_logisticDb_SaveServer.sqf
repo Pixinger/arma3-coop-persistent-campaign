@@ -1,6 +1,11 @@
+#include "..\..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 if (isServer) then
 {
-	diag_log "LOGISTIC-Database saving";
+	DEBUG_LOG("LOGISTIC-Database: ------------------------ (begin)");
+	DEBUG_LOG("LOGISTIC-Database: saving");
 
 	// ------------------------------------------------------------------------------
 	// Vorbereiten
@@ -23,8 +28,6 @@ if (isServer) then
 		// ...auf der Map finden
 		private["_vehicles"];
 		_vehicles = nearestObjects [logisticDbMapCenter, logisticDbVehicles, logisticDbMapRadiusSqr];
-		diag_log format["saving %1 vehicles", count _vehicles];
-		//_vehicles = nearestObjects [getpos player, logisticDbVehicles, 1000];
 		{	
 			// Nur wenn wir das Fahrzeug nicht ignorieren sollen
 			if (!(_x getVariable ["dbIgnore", false])) then
@@ -39,6 +42,7 @@ if (isServer) then
 				];
 			};
 		} foreach _vehicles; 
+		DEBUG_LOG_VAREX_INFO("saved vehicles: ", (count _vehicles));
 	};
 
 
@@ -51,10 +55,7 @@ if (isServer) then
 	{
 		// Objekte suchen
 		private["_ammoboxes"];
-		//_ammoboxes = nearestObjects [getpos player, logisticDbAmmoboxes, 1000];
 		_ammoboxes = nearestObjects [logisticDbMapCenter, logisticDbAmmoboxes, logisticDbMapRadiusSqr];
-		diag_log format["saving %1 ammoboxes", count _ammoboxes];
-
 		{	
 			// Nur wenn wir die Ammobox nicht ignorieren sollen
 			if (!(_x getVariable ["dbIgnore", false])) then
@@ -69,6 +70,7 @@ if (isServer) then
 				];
 			};
 		} foreach _ammoboxes; 
+		DEBUG_LOG_VAREX_INFO("saved ammoboxes: ", (count _ammoboxes));
 	};
 
 	//------------------------------------
@@ -80,9 +82,6 @@ if (isServer) then
 	{
 		private["_objects"];
 		_objects = nearestObjects [logisticDbMapCenter, logisticDbObjects, logisticDbMapRadiusSqr];
-		//_objects = nearestObjects [getpos player, logisticDbObjects, 1000];
-		diag_log format["saving %1 objects", count _objects];
-
 		{	
 			// Nur wenn wir die Ammobox nicht ignorieren sollen
 			if (!(_x getVariable ["dbIgnore", false])) then
@@ -96,6 +95,7 @@ if (isServer) then
 				];
 			};
 		} foreach _objects; 
+		DEBUG_LOG_VAREX_INFO("saved objects: ", (count _objects));
 	};
 
 	//------------------------------------
@@ -108,8 +108,9 @@ if (isServer) then
 	//------------------------------------
 	private["_database"];
 	_database = [_databaseVehicles, _databaseAmmoboxes, _databaseObjects, _databaseTime];
-	if (pixDebug) then { diag_log format["Final database: %1", _database]; };
 	profileNameSpace setVariable [logisticDbPrefix + "_database", _database];
+	//DEBUG_LOG_VAR_INFO(_database);
+	DEBUG_LOG("LOGISTIC-Database: ------------------------ (end)");
 	
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben
