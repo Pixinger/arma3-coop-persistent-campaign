@@ -19,6 +19,13 @@ if (call fnc_Logistic_CanBuryCorpse) then
 		player removeAction _actionMenu;
 		logisticBuild = nil;
 
-		if (alive player) then { deleteVehicle (_corpses select 0); }
+		if (alive player) then 
+		{	
+			deleteVehicle (_corpses select 0); 
+			if ([1, 15] call BIS_fnc_randomInt <= 1) then
+			{	
+				[[1, cfgAizZoneCount] call BIS_fnc_randomInt] call fnc_aiz_IntelIncrement;
+			};
+		};
 	};
 };

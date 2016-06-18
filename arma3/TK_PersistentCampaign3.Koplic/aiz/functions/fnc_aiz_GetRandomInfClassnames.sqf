@@ -1,4 +1,4 @@
-private _unitCount = if (count _this == 0) then {  ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) } else { (_this select 0) };
+private _unitCount = if (count _this > 0) then { (_this select 0) } else { ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) };
 
 if (_unitCount == 1) exitWith
 {
