@@ -1,23 +1,20 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"",
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
-	"BWA3_MICH_Fleck",
+	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	"",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
 	],
 
 	/* Primary Weapon */
@@ -26,7 +23,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["",""]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -40,24 +37,22 @@ _result = [
 
 	/* Handgun Weapon */
 	[
-		"hgun_P07_F",
+		DEFAULT_HANDGUNWEAPON,
 		/* Handgun Weapon Magazine */
-		"16Rnd_9x21_Mag",
+		DEFAULT_HANDGUNMAGAZINE,
 		/* Handgun Weapon Items */
-		[]
+		[DEFAULT_HANDGUNITEMS]
 	],
 
 	/* Uniform */
 	[
-		"BWA3_Uniform_idz_Fleck",
+		DEFAULT_UNIFORM,
 		/* Uniform-Weapons */
 		[],
 		/* Uniform-Magazines */
 		[],
 		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
-		]
+		[DEFAULT_UNIFORMITEMS]
 	],
 
 	/* Vest */

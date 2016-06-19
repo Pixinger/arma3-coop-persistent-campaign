@@ -7,7 +7,7 @@ _result = [
 	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
-	"Binocular",
+	"Rangefinder",
 
 	/* Nightvision */
 	"NVGoggles_OPFOR",

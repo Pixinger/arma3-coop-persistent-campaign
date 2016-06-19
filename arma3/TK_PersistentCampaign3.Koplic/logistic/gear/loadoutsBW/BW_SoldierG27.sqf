@@ -7,7 +7,7 @@ _result = [
 	"BWA3_MICH_Fleck",
 
 	/* Binoculars */
-	"Binocular",
+	"Rangefinder",
 
 	/* Nightvision */
 	"NVGoggles_OPFOR",
@@ -26,7 +26,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"20Rnd_762x51_Mag_Tracer",
 		/* Primary Weapon Items */
-		[""]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -56,7 +56,7 @@ _result = [
 		[],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
+			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_ATragMX","ACE_IR_Strobe_Item"
 		]
 	],
 

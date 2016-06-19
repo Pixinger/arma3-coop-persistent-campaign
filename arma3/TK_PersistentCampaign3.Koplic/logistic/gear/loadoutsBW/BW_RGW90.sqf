@@ -7,7 +7,7 @@ _result = [
 	"BWA3_MICH_Fleck",
 
 	/* Binoculars (Binocular,AGM_Vector,AGM_Vector)*/
-	"ACE_Vector",
+	"Rangefinder",
 
 	/* Nightvision */
 	"NVGoggles_OPFOR",
@@ -56,7 +56,7 @@ _result = [
 		[],
 		/* Uniform-Items */
 		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie",
+			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_ATragMX","ACE_IR_Strobe_Item",
 			"BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
 		]
 	],

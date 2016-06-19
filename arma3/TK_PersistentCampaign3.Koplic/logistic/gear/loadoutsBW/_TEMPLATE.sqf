@@ -1,94 +1,80 @@
 private["_result"];
 _result = [
 	/* Goggles */
-	"",
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
-	"H_CrewHelmetHeli_B",
+	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	"",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
 	],
 
 	/* Primary Weapon */
 	[
-		"C1987_MP7_equipped",
+		DEFAULT_PRIMARYWEAPON,
 		/* Primary weapon Magazine */
-		"C1987_40Rnd_46x30_mp7",
+		DEFAULT_PRIMARYMAGAZINE,
 		/* Primary Weapon Items */
-		[""]
+		[DEFAULT_PRIMARYITEMS]
 	],
 
 	/* Secondary Weapon */
 	[
-		"",
+		DEFAULT_SECONDARYWEAPON,
 		/* Secondary weapon Magazine */
-		"",
+		DEFAULT_SECONDARYMAGAZINE-,
 		/* Secondary Weapon Items */
 		[]
 	],
 
 	/* Handgun Weapon */
 	[
-		"",
+		DEFAULT_HANDGUNWEAPON,
 		/* Handgun Weapon Magazine */
-		"",
+		DEFAULT_HANDGUNMAGAZINE,
 		/* Handgun Weapon Items */
-		[]
+		[DEFAULT_HANDGUNITEMS]
 	],
 
 	/* Uniform */
 	[
-		"BWA3_Uniform_Helipilot",
+		DEFAULT_UNIFORM,
 		/* Uniform-Weapons */
-		[],
+		[DEFAULT_UNIFORMWEAPONS],
 		/* Uniform-Magazines */
-		["C1987_40Rnd_46x30_mp7","SmokeShellOrange","SmokeShellYellow"],
+		[DEFAULT_UNIFORMMAGAZINES],
 		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","ACE_CableTie","ACE_ATragMX","ACE_IR_Strobe_Item"
-		]
+		[DEFAULT_UNIFORMITEMS]
 	],
 
 	/* Vest */
 	[
-		"",
+		DEFAULT_VEST,
 		/* Vest-Weapons */
-		[
-			"","",
-			"",""
-		],
+		[DEFAULT_VESTWEAPONS],
 		/* Vest-Magazines */
-		[
-			"","",""
-			,"",""
-		],
+		[DEFAULT_VESTMAGAZINES],
 		/* Vest-Items */
-		[
-		]
+		[DEFAULT_VESTITEMS]
 	],
 
 	/* Backpack */
 	[
-		"",
+		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
-		[],
+		[DEFAULT_BACKPACKWEAPONS],
 		/* Backpack-Magazines */
-		[
-		],
+		[DEFAULT_BACKPACKMAGAZINES],
 		/* Backpack-Items */
-		[
-		]
+		[DEFAULT_BACKPACKITEMS]
 	],
 
 	/* Code */
