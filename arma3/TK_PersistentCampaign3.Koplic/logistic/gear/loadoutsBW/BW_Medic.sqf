@@ -1,23 +1,62 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
-	"", //G_Tactical_Clear
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
-	"BWA3_MICH_Fleck",
+	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	"Rangefinder",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
+	],
+
+	/* Uniform */
+	[
+		DEFAULT_UNIFORM,
+		/* Uniform-Weapons */
+		[DEFAULT_UNIFORMWEAPONS],
+		/* Uniform-Magazines */
+		[DEFAULT_UNIFORMMAGAZINES],
+		/* Uniform-Items */
+		[DEFAULT_UNIFORMITEMS]
+	],
+
+	/* Vest */
+	[
+		DEFAULT_VESTMEDIC,
+		/* Vest-Weapons */
+		[DEFAULT_VESTWEAPONS],
+		/* Vest-Magazines */
+		[
+			DEFAULT_VESTMAGAZINES, 
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
+		],
+		/* Vest-Items */
+		[
+			DEFAULT_VESTITEMS, 
+			"SmokeShellOrange", "SmokeShellOrange",
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing"
+			//"ACE_muzzle_mzls_H", "muzzle_snds_H"
+		]
+	],
+	
+	/* Handgun Weapon */
+	[
+		DEFAULT_HANDGUNWEAPON,
+		/* Handgun Weapon Magazine */
+		DEFAULT_HANDGUNMAGAZINE,
+		/* Handgun Weapon Items */
+		[DEFAULT_HANDGUNITEMS]
 	],
 
 	/* Primary Weapon */
@@ -26,7 +65,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		[""]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -38,60 +77,30 @@ _result = [
 		[]
 	],
 
-	/* Handgun Weapon */
-	[
-		"hgun_P07_F",
-		/* Handgun Weapon Magazine */
-		"16Rnd_9x21_Mag",
-		/* Handgun Weapon Items */
-		[]
-	],
-
-	/* Uniform */
-	[
-		"BWA3_Uniform_idz_Fleck",
-		/* Uniform-Weapons */
-		[],
-		/* Uniform-Magazines */
-		[],
-		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_ATragMX","ACE_IR_Strobe_Item"
-		]
-	],
-
-	/* Vest */
-	[
-		"BWA3_Vest_Medic_Fleck",
-		/* Vest-Weapons */
-		[
-			"SmokeShell","SmokeShell","SmokeShell","SmokeShell",
-			"SmokeShellPurple","SmokeShellPurple","SmokeShellPurple","SmokeShellPurple","SmokeShellPurple","SmokeShellPurple",
-			"SmokeShellGreen","SmokeShellRed"
-		],
-		/* Vest-Magazines */
-		[
-			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
-			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer",
-			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
-		],
-		/* Vest-Items */
-		[
-		]
-	],
-
 	/* Backpack */
 	[
-		"BWA3_AssaultPack_Fleck",
+		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"Medikit","FirstAidKit","FirstAidKit","ACE_muzzle_mzls_H","muzzle_snds_H","BWA3_Beret_PzGren","BWA3_G_Combat_Clear"
+			"SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange",
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
+			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
+			"ACE_morphine", "ACE_morphine", "ACE_morphine", "ACE_morphine", "ACE_morphine",
+			"ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine",
+			"ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine",
+			"ACE_bloodIV_250", "ACE_bloodIV_250", "ACE_bloodIV_250", 
+			"ACE_bloodIV_500", "ACE_bloodIV_500", "ACE_bloodIV_500", 
+			"ACE_bloodIV", "ACE_bloodIV", 
+			"ACE_tourniquet", "ACE_tourniquet"
 		]
 	],
 

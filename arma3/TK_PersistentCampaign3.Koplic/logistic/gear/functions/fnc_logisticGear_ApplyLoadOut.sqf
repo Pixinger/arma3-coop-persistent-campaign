@@ -24,35 +24,8 @@ _nightVisionClassname = _result select 3;
 private["_linkedItems"];
 _linkedItems = _result select 4;
 
-private["_primaryWeapon"];
-_primaryWeapon = _result select 5;
-private["_primaryWeaponClassname"];
-_primaryWeaponClassname = _primaryWeapon select 0;
-private["_primaryWeaponMagazine"];
-_primaryWeaponMagazine = _primaryWeapon select 1;
-private["_primaryWeaponItems"];
-_primaryWeaponItems = _primaryWeapon select 2;
-
-private["_secondaryWeapon"];
-_secondaryWeapon = _result select 6;
-private["_secondaryWeaponClassname"];
-_secondaryWeaponClassname = _secondaryWeapon select 0;
-private["_secondaryWeaponMagazine"];
-_secondaryWeaponMagazine = _secondaryWeapon select 1;
-private["_secondaryWeaponItems"];
-_secondaryWeaponItems = _secondaryWeapon select 2;
-
-private["_handgun"];
- _handgun = _result select 7;
-private["_handgunClassname"];
-_handgunClassname = _handgun select 0;
-private["_handgunMagazine"];
-_handgunMagazine = _handgun select 1;
-private["_handgunItems"];
-_handgunItems = _handgun select 2;
-
 private["_uniform"];
-_uniform = _result select 8;
+_uniform = _result select 5;
 private["_uniformClassname"];
 _uniformClassname = _uniform select 0;
 private["_uniformWeapons"];
@@ -63,7 +36,7 @@ private["_uniformItems"];
 _uniformItems = _uniform select 3;
 
 private["_vest"];
-_vest = _result select 9;
+_vest = _result select 6;
 private["_vestClassname"];
 _vestClassname = _vest select 0;
 private["_vestWeapons"];
@@ -72,6 +45,33 @@ private["_vestMagazines"];
 _vestMagazines = _vest select 2;
 private["_vestItems"];
 _vestItems = _vest select 3;
+
+private["_handgun"];
+ _handgun = _result select 7;
+private["_handgunClassname"];
+_handgunClassname = _handgun select 0;
+private["_handgunMagazine"];
+_handgunMagazine = _handgun select 1;
+private["_handgunItems"];
+_handgunItems = _handgun select 2;
+
+private["_primaryWeapon"];
+_primaryWeapon = _result select 8;
+private["_primaryWeaponClassname"];
+_primaryWeaponClassname = _primaryWeapon select 0;
+private["_primaryWeaponMagazine"];
+_primaryWeaponMagazine = _primaryWeapon select 1;
+private["_primaryWeaponItems"];
+_primaryWeaponItems = _primaryWeapon select 2;
+
+private["_secondaryWeapon"];
+_secondaryWeapon = _result select 9;
+private["_secondaryWeaponClassname"];
+_secondaryWeaponClassname = _secondaryWeapon select 0;
+private["_secondaryWeaponMagazine"];
+_secondaryWeaponMagazine = _secondaryWeapon select 1;
+private["_secondaryWeaponItems"];
+_secondaryWeaponItems = _secondaryWeapon select 2;
 
 private["_backpack"];
 _backpack = _result select 10;

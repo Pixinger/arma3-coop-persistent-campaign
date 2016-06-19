@@ -1,3 +1,5 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
@@ -15,33 +17,6 @@ _result = [
 	/* Linked Items */
 	[
 		DEFAULT_LINKEDITEMS		
-	],
-
-	/* Primary Weapon */
-	[
-		DEFAULT_PRIMARYWEAPON,
-		/* Primary weapon Magazine */
-		DEFAULT_PRIMARYMAGAZINE,
-		/* Primary Weapon Items */
-		[DEFAULT_PRIMARYITEMS]
-	],
-
-	/* Secondary Weapon */
-	[
-		DEFAULT_SECONDARYWEAPON,
-		/* Secondary weapon Magazine */
-		DEFAULT_SECONDARYMAGAZINE-,
-		/* Secondary Weapon Items */
-		[]
-	],
-
-	/* Handgun Weapon */
-	[
-		DEFAULT_HANDGUNWEAPON,
-		/* Handgun Weapon Magazine */
-		DEFAULT_HANDGUNMAGAZINE,
-		/* Handgun Weapon Items */
-		[DEFAULT_HANDGUNITEMS]
 	],
 
 	/* Uniform */
@@ -64,6 +39,33 @@ _result = [
 		[DEFAULT_VESTMAGAZINES],
 		/* Vest-Items */
 		[DEFAULT_VESTITEMS]
+	],
+
+	/* Handgun Weapon */
+	[
+		DEFAULT_HANDGUNWEAPON,
+		/* Handgun Weapon Magazine */
+		DEFAULT_HANDGUNMAGAZINE,
+		/* Handgun Weapon Items */
+		[DEFAULT_HANDGUNITEMS]
+	],
+
+	/* Primary Weapon */
+	[
+		"",
+		/* Primary weapon Magazine */
+		"",
+		/* Primary Weapon Items */
+		[]
+	],
+
+	/* Secondary Weapon */
+	[
+		"",
+		/* Secondary weapon Magazine */
+		"",
+		/* Secondary Weapon Items */
+		[]
 	],
 
 	/* Backpack */

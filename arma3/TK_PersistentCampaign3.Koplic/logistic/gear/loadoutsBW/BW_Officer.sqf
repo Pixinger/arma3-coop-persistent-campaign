@@ -1,32 +1,62 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
-	"", //G_Tactical_Clear
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
 	"BWA3_Beret_Jaeger",
 
 	/* Binoculars */
-	"Rangefinder",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	"",
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
+	],
+
+	/* Uniform */
+	[
+		DEFAULT_UNIFORM,
+		/* Uniform-Weapons */
+		[DEFAULT_UNIFORMWEAPONS],
+		/* Uniform-Magazines */
+		[DEFAULT_UNIFORMMAGAZINES],
+		/* Uniform-Items */
+		[DEFAULT_UNIFORMITEMS]
+	],
+
+	/* Vest */
+	[
+		"BWA3_Vest_Leader_Fleck",
+		/* Vest-Weapons */
+		[DEFAULT_VESTWEAPONS],
+		/* Vest-Magazines */
+		[DEFAULT_VESTMAGAZINES],
+		/* Vest-Items */
+		[DEFAULT_VESTITEMS]
+	],
+
+	/* Handgun Weapon */
+	[
+		"",
+		/* Handgun Weapon Magazine */
+		"",
+		/* Handgun Weapon Items */
+		[]
 	],
 
 	/* Primary Weapon */
 	[
-		"hlc_rifle_G36KMLIC_equipped",
+		"",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag_Tracer",
+		"",
 		/* Primary Weapon Items */
-		["",""]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -36,49 +66,6 @@ _result = [
 		"",
 		/* Secondary Weapon Items */
 		[]
-	],
-
-	/* Handgun Weapon */
-	[
-		"hgun_P07_F",
-		/* Handgun Weapon Magazine */
-		"16Rnd_9x21_Mag",
-		/* Handgun Weapon Items */
-		[]
-	],
-
-	/* Uniform */
-	[
-		"BWA3_Uniform_idz_Fleck",
-		/* Uniform-Weapons */
-		[],
-		/* Uniform-Magazines */
-		[],
-		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_ATragMX","ACE_IR_Strobe_Item"
-		]
-	],
-
-	/* Vest */
-	[
-		"BWA3_Vest_Leader_Fleck",
-		/* Vest-Weapons */
-		[
-			"SmokeShell","SmokeShell","SmokeShell","SmokeShell",
-			"SmokeShellPurple","SmokeShellPurple","SmokeShellPurple","SmokeShellPurple",
-			"SmokeShellGreen","SmokeShellRed"
-		],
-		/* Vest-Magazines */
-		[
-			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
-			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","","",
-			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
-		],
-		/* Vest-Items */
-		[
-			"ACE_muzzle_mzls_H","muzzle_snds_H"
-		]
 	],
 
 	/* Backpack */

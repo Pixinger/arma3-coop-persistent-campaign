@@ -45,7 +45,7 @@ class Params
 	{		
 	    title = "Ausrüstung";
 	    values[] = {0, 1};
-	    texts[] = {"Bundeswehr","NATO"};
+	    texts[] = {"Bundeswehr"};
 	    default = 0;
 	};
 	class AIZ_EnemyPerGroupMin /* paramsArray[1]*/

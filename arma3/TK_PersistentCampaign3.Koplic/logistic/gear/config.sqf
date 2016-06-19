@@ -1,5 +1,5 @@
 // Der Verzeichnissname in dem die Loadouts gespeichert sind. // Parameter (0): Ausrüstung
-private _folders = ["loadoutsBW", "loadoutsNATO"];
+private _folders = ["loadoutsBW"];
 cfgLogisticGear_LoadoutFolder = _folders select (paramsArray select 0);
 //if (pixDebug) then { cfgLogisticGear_LoadoutFolder = "loadoutsNATO";};
 if (pixDebug) then { cfgLogisticGear_LoadoutFolder = "loadoutsBW";};

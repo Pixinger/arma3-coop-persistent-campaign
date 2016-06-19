@@ -1,7 +1,9 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
-	"",
+	"G_Aviator",
 
 	/* Headgear */
 	"BWA3_Beret_PzGren",
@@ -14,10 +16,38 @@ _result = [
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"G_Aviator"
+		DEFAULT_LINKEDITEMS		
+	],
+
+	/* Uniform */
+	[
+		"BWA3_Uniform2_idz_Fleck",
+		/* Uniform-Weapons */
+		[DEFAULT_UNIFORMWEAPONS],
+		/* Uniform-Magazines */
+		[DEFAULT_UNIFORMMAGAZINES],
+		/* Uniform-Items */
+		[DEFAULT_UNIFORMITEMS]
+	],
+
+	/* Vest */
+	[
+		"",
+		/* Vest-Weapons */
+		[],
+		/* Vest-Magazines */
+		[],
+		/* Vest-Items */
+		[]
+	],
+
+	/* Handgun Weapon */
+	[
+		"",
+		/* Handgun Weapon Magazine */
+		"",
+		/* Handgun Weapon Items */
+		[]
 	],
 
 	/* Primary Weapon */
@@ -35,39 +65,6 @@ _result = [
 		/* Secondary weapon Magazine */
 		"",
 		/* Secondary Weapon Items */
-		[]
-	],
-
-	/* Handgun Weapon */
-	[
-		"",
-		/* Handgun Weapon Magazine */
-		"",
-		/* Handgun Weapon Items */
-		[]
-	],
-
-	/* Uniform */
-	[
-		"BWA3_Uniform2_idz_Fleck",
-		/* Uniform-Weapons */
-		[],
-		/* Uniform-Magazines */
-		[],
-		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit"
-		]
-	],
-
-	/* Vest */
-	[
-		"",
-		/* Vest-Weapons */
-		[],
-		/* Vest-Magazines */
-		[],
-		/* Vest-Items */
 		[]
 	],
 

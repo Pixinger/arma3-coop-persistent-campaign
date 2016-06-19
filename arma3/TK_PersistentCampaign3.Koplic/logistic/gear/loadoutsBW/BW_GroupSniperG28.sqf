@@ -1,32 +1,65 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
-	"", //G_Tactical_Clear
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
-	"BWA3_MICH_Fleck",
+	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	"Rangefinder",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
 	],
 
+	/* Uniform */
+	[
+		DEFAULT_UNIFORM,
+		/* Uniform-Weapons */
+		[DEFAULT_UNIFORMWEAPONS],
+		/* Uniform-Magazines */
+		[DEFAULT_UNIFORMMAGAZINES],
+		/* Uniform-Items */
+		[DEFAULT_UNIFORMITEMS]
+	],
+
+	/* Vest */
+	[
+		DEFAULT_VEST, 
+		/* Vest-Weapons */
+		[DEFAULT_VESTWEAPONS],
+		/* Vest-Magazines */
+		[
+			DEFAULT_VESTMAGAZINES,
+			"10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer"
+		],
+		/* Vest-Items */
+		["ACE_muzzle_mzls_B", "muzzle_snds_B", DEFAULT_VESTITEMS]
+	],
+	
+	/* Handgun Weapon */
+	[
+		DEFAULT_HANDGUNWEAPON,
+		/* Handgun Weapon Magazine */
+		DEFAULT_HANDGUNMAGAZINE,
+		/* Handgun Weapon Items */
+		[DEFAULT_HANDGUNITEMS]
+	],	
+	
 	/* Primary Weapon */
 	[
 		"BWA3_G28_Standard_equipped",
 		/* Primary weapon Magazine */
 		"10Rnd_762x51_Box_Tracer",
 		/* Primary Weapon Items */
-		["","",""]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -38,61 +71,19 @@ _result = [
 		[]
 	],
 
-	/* Handgun Weapon */
-	[
-		"hgun_Pistol_heavy_01_F",
-		/* Handgun Weapon Magazine */
-		"11Rnd_45ACP_Mag",
-		/* Handgun Weapon Items */
-		["optic_MRD"]
-	],
-
-	/* Uniform */
-	[
-		"BWA3_Uniform_idz_Fleck",
-		/* Uniform-Weapons */
-		[],
-		/* Uniform-Magazines */
-		[],
-		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_ATragMX","ACE_IR_Strobe_Item"
-		]
-	],
-
-	/* Vest */
-	[
-		"BWA3_Vest_Marksman_Fleck",
-		/* Vest-Weapons */
-		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellRed","SmokeShellRed",
-			"SmokeShellGreen","SmokeShellGreen"
-		],
-		/* Vest-Magazines */
-		[
-			"10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer",
-			"10Rnd_762x51_Box_Tracer","11Rnd_45ACP_Mag","11Rnd_45ACP_Mag"
-		],
-		/* Vest-Items */
-		[
-		]
-	],
-
 	/* Backpack */
 	[
-		"BWA3_AssaultPack_Fleck",
+		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
-		[],
-		/* Backpack-Items */
 		[
 			"SmokeShell","SmokeShell",
-			"10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer",
-			"10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer","10Rnd_762x51_Box_Tracer",
-			"ACE_muzzle_mzls_B","muzzle_snds_B","BWA3_Beret_PzGren","ACE_ATragMX","ACE_Kestrel4500","BWA3_G_Combat_Clear"
-		]
+			"10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer",
+			"10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer", "10Rnd_762x51_Box_Tracer"
+		],
+		/* Backpack-Items */
+		["ACE_Kestrel4500", "ACE_ATragMX", DEFAULT_BACKPACKITEMS]
 	],
 
 	/* Code */
