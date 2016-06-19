@@ -26,12 +26,12 @@ else
 			// ...wenn man auf das HQ schaut, kann man nur das HQ bedienen...
 			if (_cursorTarget call fnc_Logistic_HQIsOpen) then
 			{			
-				_buttons pushBack ["HQ öffnen", true, true, fnc_Logistic_HQOpen];
-				_buttons pushBack ["HQ bewegen", true, true, fnc_Logistic_Object_Move];
+				_buttons pushBack ["HQ schließen", true, true, fnc_Logistic_HQClose];
 			}
 			else
 			{
-				_buttons pushBack ["HQ schließen", true, true, fnc_Logistic_HQClose];
+				_buttons pushBack ["HQ öffnen", true, true, fnc_Logistic_HQOpen];
+				_buttons pushBack ["HQ bewegen", true, true, fnc_Logistic_Object_Move];
 			};
 		}
 		else
@@ -53,7 +53,7 @@ else
 				};
 			if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
 			if (call fnc_Logistic_CanSellVehicle) then { _buttons pushBack ["Verkaufen", true, true, fnc_Logistic_SellVehicle];};
-			if (call fnc_Logistic_CanRepairVehicle) then { _buttons pushBack ["Reparieren", true, true, fnc_Logistic_RepairVehicle];};
+			if (call fnc_Logistic_CanRepairVehicle) then { _buttons pushBack ["Reparieren/Hacken", true, true, fnc_Logistic_RepairVehicle];};
 			if (call fnc_Logistic_CanTakePrison) then { _buttons pushBack ["Verhören", true, true, fnc_Logistic_TakePrison];};
 		};
 	};

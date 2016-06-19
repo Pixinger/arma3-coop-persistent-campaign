@@ -94,6 +94,11 @@ if (isServer) then
 				{
 					_vehicle setVariable["dbVar", (_x select 4), true]; 
 				};
+				
+				if (_x select 0 == "B_Slingload_01_Repair_F") then 
+				{
+					_vehicle setVariable ["ACE_isRepairFacility", 1, true];
+				};
 			};
 		} foreach _objects; 
 	};

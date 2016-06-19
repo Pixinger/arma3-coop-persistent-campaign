@@ -16,7 +16,7 @@ _result = [
 
 	/* Linked Items */
 	[
-		DEFAULT_LINKEDITEMS_UAV		
+		DEFAULT_LINKEDITEMS		
 	],
 
 	/* Uniform */
@@ -34,17 +34,16 @@ _result = [
 	[
 		DEFAULT_VEST,
 		/* Vest-Weapons */
-		[DEFAULT_VESTWEAPONS_LIGHT],
+		[DEFAULT_VESTWEAPONS_LIGHT, "ACE_wirecutter"],
 		/* Vest-Magazines */
 		[
 			DEFAULT_VESTMAGAZINES_LIGHT, 
-			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer",
-			"ACE_UAVBattery"
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		[DEFAULT_VESTITEMS] //"ACE_muzzle_mzls_H", "muzzle_snds_H", 
+		[DEFAULT_VESTITEMS, "muzzle_snds_H"]
 	],
-	
+
 	/* Handgun Weapon */
 	[
 		DEFAULT_HANDGUNWEAPON,
@@ -74,7 +73,7 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_UAV_01_backpack_F",
+		"ACE_TacticalLadder_Pack",
 		/* Backpack-Weapons */
 		[
 		],
@@ -90,7 +89,7 @@ _result = [
 	"",
 	
 	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
-	[false, 0, 0, false]	
+	[false, 2, 0, true]	
 ];
 
 _result;

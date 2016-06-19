@@ -16,7 +16,7 @@ _result = [
 
 	/* Linked Items */
 	[
-		DEFAULT_LINKEDITEMS_UAV		
+		DEFAULT_LINKEDITEMS		
 	],
 
 	/* Uniform */
@@ -32,17 +32,16 @@ _result = [
 
 	/* Vest */
 	[
-		DEFAULT_VEST,
+		DEFAULT_VESTLEADER,
 		/* Vest-Weapons */
-		[DEFAULT_VESTWEAPONS_LIGHT],
+		[DEFAULT_VESTWEAPONS],
 		/* Vest-Magazines */
 		[
-			DEFAULT_VESTMAGAZINES_LIGHT, 
-			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer",
-			"ACE_UAVBattery"
+			DEFAULT_VESTMAGAZINES, 
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		[DEFAULT_VESTITEMS] //"ACE_muzzle_mzls_H", "muzzle_snds_H", 
+		[DEFAULT_VESTITEMS, "ACE_muzzle_mzls_H", "muzzle_snds_H", "optic_Nightstalker"]
 	],
 	
 	/* Handgun Weapon */
@@ -56,11 +55,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"hlc_rifle_G36CMLIC_equipped",
+		"hlc_rifle_G36MLIAG36_equipped",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR"]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -74,16 +73,21 @@ _result = [
 
 	/* Backpack */
 	[
-		"B_UAV_01_backpack_F",
+		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
 		[
+			"ACE_HuntIR_monitor"
 		],
 		/* Backpack-Magazines */
 		[
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer",
+			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
+			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
+			"ACE_HuntIR_M203", "ACE_HuntIR_M203", "ACE_HuntIR_M203", "ACE_HuntIR_M203", "ACE_HuntIR_M203",
+			"1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell"
 		],
 		/* Backpack-Items */
-		[
-		]
+		[DEFAULT_BACKPACKITEMS]
 	],
 
 	/* Code */

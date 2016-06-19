@@ -9,14 +9,14 @@ _result = [
 	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	DEFAULT_BINOCULARS,
+	"Binocular",
 
 	/* Nightvision */
 	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		DEFAULT_LINKEDITEMS_UAV		
+		DEFAULT_LINKEDITEMS		
 	],
 
 	/* Uniform */
@@ -34,17 +34,16 @@ _result = [
 	[
 		DEFAULT_VEST,
 		/* Vest-Weapons */
-		[DEFAULT_VESTWEAPONS_LIGHT],
+		[DEFAULT_VESTWEAPONS],
 		/* Vest-Magazines */
 		[
-			DEFAULT_VESTMAGAZINES_LIGHT, 
-			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer",
-			"ACE_UAVBattery"
+			DEFAULT_VESTMAGAZINES, 
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		[DEFAULT_VESTITEMS] //"ACE_muzzle_mzls_H", "muzzle_snds_H", 
+		[DEFAULT_VESTITEMS]
 	],
-	
+
 	/* Handgun Weapon */
 	[
 		DEFAULT_HANDGUNWEAPON,
@@ -56,34 +55,34 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"hlc_rifle_G36CMLIC_equipped",
+		"hlc_rifle_G36KMLIC_equipped",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR"]
+		[]
 	],
 
 	/* Secondary Weapon */
 	[
-		"",
+		"launch_I_Titan_F",
 		/* Secondary weapon Magazine */
-		"",
+		"Titan_AA",
 		/* Secondary Weapon Items */
 		[]
 	],
 
 	/* Backpack */
 	[
-		"B_UAV_01_backpack_F",
+		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
 		[
 		],
 		/* Backpack-Magazines */
 		[
+			"Titan_AA"
 		],
 		/* Backpack-Items */
-		[
-		]
+		[DEFAULT_BACKPACKITEMS]
 	],
 
 	/* Code */

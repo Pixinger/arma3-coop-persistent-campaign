@@ -83,7 +83,7 @@ _result = [
 	"",
 	
 	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
-	[false, false, 0, false]	
+	[false, 0, 0, false]	
 ];
 
 _result;

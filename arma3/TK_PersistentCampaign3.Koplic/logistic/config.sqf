@@ -19,7 +19,7 @@ private _logisticObjectsMoveableDefinitions = [
 	["B_static_AT_F",				[[0, 3, 1]] ],
 	
 	// Ausrüstungskisten
-	//["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
+	["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
 
 	// Objekte
 	//["Land_PortableLight_double_F",	[[0, 3, 1]] ],	
@@ -53,12 +53,12 @@ logisticObjectsMoveableConfigs = [];
 // ["className", [grösse,[attach-offset],attach-rotation]]
 private _logisticObjectsTransportableDefinitions = [
 	// Ausrüstungskisten
-	//["B_CargoNet_01_ammo_F",	[1,	[0,  0, .3],	0] ],
 	//["CargoNet_01_box_F",		[1,	[0,  0, .1],	0] ],
 	
 	// Objekte
 	//["CargoNet_01_barrels_F",	[1,	[0,  0, .1],	0] ],
 	//["Land_Sacks_goods_F",		[1,	[0,  0,  0],	0] ],
+	["B_CargoNet_01_ammo_F",		[1,	[0,  0, .3],	0] ],
 	["Land_PaperBox_open_full_F",	[1,	[0,  0,  0],	0] ],
 	["Land_PaperBox_closed_F",		[1,	[0,  0,  0],	0] ],
 	["Land_Pipes_small_F",			[2,	[0,-.8,-.5],	90] ],	
@@ -154,6 +154,7 @@ logisticHaulerConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [attachpoint, attachrotation, towing ]]
 private _logisticHaulableDefinitions = [
+	["B_Slingload_01_Repair_F", 	[[0,  -2.7, 1], 0, false]],
 	["B_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
 	["B_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
 	["B_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],

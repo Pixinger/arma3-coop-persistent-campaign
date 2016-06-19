@@ -79,27 +79,23 @@ _result = [
 
 	/* Backpack */
 	[
-		DEFAULT_BACKPACK,
+		DEFAULT_BACKPACKRADIO,
 		/* Backpack-Weapons */
 		[],
 		/* Backpack-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange",
 			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
 			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
 			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
 			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
 			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
-			"ACE_morphine", "ACE_morphine", "ACE_morphine", "ACE_morphine", "ACE_morphine",
+			"ACE_morphine", "ACE_morphine", 
 			"ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine",
 			"ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine",
-			"ACE_bloodIV_250", "ACE_bloodIV_250", "ACE_bloodIV_250", 
-			"ACE_bloodIV_500", "ACE_bloodIV_500", "ACE_bloodIV_500", 
-			"ACE_bloodIV", "ACE_bloodIV", 
+			"ACE_bloodIV_250", "ACE_bloodIV_250", "ACE_bloodIV_250", "ACE_bloodIV_250", 
 			"ACE_tourniquet", "ACE_tourniquet"
 		]
 	],

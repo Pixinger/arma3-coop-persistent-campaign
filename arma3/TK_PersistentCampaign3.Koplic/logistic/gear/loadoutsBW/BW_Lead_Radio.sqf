@@ -32,7 +32,7 @@ _result = [
 
 	/* Vest */
 	[
-		DEFAULT_VEST,
+		DEFAULT_VESTLEADER,
 		/* Vest-Weapons */
 		[DEFAULT_VESTWEAPONS],
 		/* Vest-Magazines */
@@ -41,9 +41,9 @@ _result = [
 			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		[DEFAULT_VESTITEMS, "ACE_muzzle_mzls_H", "muzzle_snds_H"]
+		[DEFAULT_VESTITEMS, "ACE_muzzle_mzls_H", "muzzle_snds_H", "optic_Nightstalker"]
 	],
-
+	
 	/* Handgun Weapon */
 	[
 		DEFAULT_HANDGUNWEAPON,
@@ -55,11 +55,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"hlc_rifle_G36CMLIC_equipped",
+		"hlc_rifle_G36MLIC_equipped",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
-		["acc_pointer_IR"]
+		["acc_pointer_IR","optic_MRCO"]
 	],
 
 	/* Secondary Weapon */
@@ -73,30 +73,27 @@ _result = [
 
 	/* Backpack */
 	[
-		DEFAULT_BACKPACK,
+		DEFAULT_BACKPACKRADIO,
 		/* Backpack-Weapons */
 		[
-			DEFAULT_BACKPACKWEAPONS
 		],
 		/* Backpack-Magazines */
 		[
-			DEFAULT_BACKPACKMAGAZINES,
-			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
+//			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer",
+//			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
+//			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
+//			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
+//			"1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell"
 		],
 		/* Backpack-Items */
-		[
-			DEFAULT_BACKPACKITEMS,
-			"MineDetector",
-			"ACE_DeadManSwitch", "ACE_DefusalKit", "ACE_Clacker", 
-			"DemoCharge_Remote_Mag", "DemoCharge_Remote_Mag", "DemoCharge_Remote_Mag", "DemoCharge_Remote_Mag"
-		]
+		[DEFAULT_BACKPACKITEMS]
 	],
 
 	/* Code */
 	"",
 	
 	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
-	[true, 0, 0, true]	
+	[false, 0, 0, false]	
 ];
 
 _result;

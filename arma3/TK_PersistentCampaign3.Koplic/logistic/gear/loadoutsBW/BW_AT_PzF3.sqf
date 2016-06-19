@@ -9,7 +9,7 @@ _result = [
 	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	DEFAULT_BINOCULARS,
+	"Binocular",
 
 	/* Nightvision */
 	DEFAULT_NIGHTVISION,
@@ -32,7 +32,7 @@ _result = [
 
 	/* Vest */
 	[
-		DEFAULT_VESTMEDIC,
+		DEFAULT_VEST,
 		/* Vest-Weapons */
 		[DEFAULT_VESTWEAPONS],
 		/* Vest-Magazines */
@@ -41,15 +41,9 @@ _result = [
 			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Vest-Items */
-		[
-			DEFAULT_VESTITEMS, 
-			"SmokeShellOrange", "SmokeShellOrange",
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing"
-			//"ACE_muzzle_mzls_H", "muzzle_snds_H"
-		]
+		[DEFAULT_VESTITEMS]
 	],
-	
+
 	/* Handgun Weapon */
 	[
 		DEFAULT_HANDGUNWEAPON,
@@ -61,7 +55,7 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"hlc_rifle_G36CMLIC_equipped",
+		"hlc_rifle_G36KMLIC_equipped",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag_Tracer",
 		/* Primary Weapon Items */
@@ -70,9 +64,9 @@ _result = [
 
 	/* Secondary Weapon */
 	[
-		"",
+		"BWA3_Pzf3",
 		/* Secondary weapon Magazine */
-		"",
+		"BWA3_Pzf3_IT",
 		/* Secondary Weapon Items */
 		[]
 	],
@@ -81,34 +75,22 @@ _result = [
 	[
 		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
-		[],
+		[
+		],
 		/* Backpack-Magazines */
 		[
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer",
 			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
-		[
-			"SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange", "SmokeShellOrange",
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
-			"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", 
-			"ACE_morphine", "ACE_morphine", "ACE_morphine", "ACE_morphine", "ACE_morphine",
-			"ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine",
-			"ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine", "ACE_epinephrine",
-			"ACE_bloodIV_250", "ACE_bloodIV_250", "ACE_bloodIV_250", 
-			"ACE_bloodIV_500", "ACE_bloodIV_500", "ACE_bloodIV_500", 
-			"ACE_bloodIV", "ACE_bloodIV", 
-			"ACE_tourniquet", "ACE_tourniquet"
-		]
+		[DEFAULT_BACKPACKITEMS]
 	],
 
 	/* Code */
 	"",
 	
 	/* Unit Type Array: [ACE_isEOD, ACE_IsEngineer, ace_medical_medicclass, isPioneer] */
-	[false, 0, 2, false]	
+	[false, 0, 0, false]	
 ];
 
 _result;
