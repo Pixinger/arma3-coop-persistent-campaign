@@ -1,32 +1,67 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
-	"",
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
-	"BWA3_MICH_Fleck",
+	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	"Rangefinder",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
+	],
+
+	/* Uniform */
+	[
+		DEFAULT_UNIFORM,
+		/* Uniform-Weapons */
+		[DEFAULT_UNIFORMWEAPONS],
+		/* Uniform-Magazines */
+		[DEFAULT_UNIFORMMAGAZINES],
+		/* Uniform-Items */
+		[DEFAULT_UNIFORMITEMS]
+	],
+
+	/* Vest */
+	[
+		DEFAULT_VESTAUTORIFLEMAN,
+		/* Vest-Weapons */
+		[DEFAULT_VESTWEAPONS],
+		/* Vest-Magazines */
+		[
+			DEFAULT_VESTMAGAZINES
+		],
+		/* Vest-Items */
+		[
+			DEFAULT_VESTITEMS,
+			"ACE_muzzle_mzls_B","muzzle_snds_B"
+		]
+	],
+
+	/* Handgun Weapon */
+	[
+		DEFAULT_HANDGUNWEAPON,
+		/* Handgun Weapon Magazine */
+		DEFAULT_HANDGUNMAGAZINE,
+		/* Handgun Weapon Items */
+		[DEFAULT_HANDGUNITEMS]
 	],
 
 	/* Primary Weapon */
 	[
-		"BWA3_MG5_equipped", //TODO
+		"BWA3_MG5_equipped",
 		/* Primary weapon Magazine */
 		"MG5_120Rnd_762x51_Box_Tracer",
 		/* Primary Weapon Items */
-		["","",""]
+		[]
 	],
 
 	/* Secondary Weapon */
@@ -38,59 +73,22 @@ _result = [
 		[]
 	],
 
-	/* Handgun Weapon */
-	[
-		"hgun_P07_F",
-		/* Handgun Weapon Magazine */
-		"16Rnd_9x21_Mag",
-		/* Handgun Weapon Items */
-		[]
-	],
-
-	/* Uniform */
-	[
-		"BWA3_Uniform2_idz_Fleck",
-		/* Uniform-Weapons */
-		[],
-		/* Uniform-Magazines */
-		[],
-		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
-		]
-	],
-
-	/* Vest */
-	[
-		"BWA3_Vest_Autorifleman_Fleck",
-		/* Vest-Weapons */
-		[
-		],
-		/* Vest-Magazines */
-		[
-			"MG5_120Rnd_762x51_Box_Tracer","MG5_120Rnd_762x51_Box_Tracer",
-			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
-		],
-		/* Vest-Items */
-		[
-		]
-	],
-
 	/* Backpack */
 	[
-		"BWA3_Kitbag_Fleck",
+		DEFAULT_BACKPACKLARGE,
 		/* Backpack-Weapons */
 		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellGreen","SmokeShellRed"
+			DEFAULT_BACKPACKWEAPONS
 		],
 		/* Backpack-Magazines */
 		[
-			"MG5_120Rnd_762x51_Box_Tracer","MG5_120Rnd_762x51_Box_Tracer"
+			DEFAULT_BACKPACKMAGAZINES,
+			"MG5_120Rnd_762x51_Box_Tracer", "MG5_120Rnd_762x51_Box_Tracer", "MG5_120Rnd_762x51_Box_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"ACE_muzzle_mzls_B","muzzle_snds_B","BWA3_Beret_PzGren","BWA3_G_Combat_Clear", "ACE_SpareBarrel"
+			DEFAULT_BACKPACKITEMS,
+			"ACE_SpareBarrel"
 		]
 	],
 

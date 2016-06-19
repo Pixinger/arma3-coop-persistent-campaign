@@ -38,7 +38,9 @@ _result = [
 		/* Vest-Magazines */
 		[DEFAULT_VESTMAGAZINES],
 		/* Vest-Items */
-		[DEFAULT_VESTITEMS]
+		[
+			DEFAULT_VESTITEMS
+		]
 	],
 
 	/* Handgun Weapon */
@@ -72,11 +74,17 @@ _result = [
 	[
 		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
-		[DEFAULT_BACKPACKWEAPONS],
+		[
+			DEFAULT_BACKPACKWEAPONS
+		],
 		/* Backpack-Magazines */
-		[DEFAULT_BACKPACKMAGAZINES],
+		[
+			DEFAULT_BACKPACKMAGAZINES
+		],
 		/* Backpack-Items */
-		[DEFAULT_BACKPACKITEMS]
+		[
+			DEFAULT_BACKPACKITEMS
+		]
 	],
 
 	/* Code */

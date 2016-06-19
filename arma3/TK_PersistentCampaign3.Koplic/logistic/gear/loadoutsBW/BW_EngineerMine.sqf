@@ -1,23 +1,56 @@
+#include "_defines.hpp"
+
 private["_result"];
 _result = [
 	/* Goggles */
-	"",
+	DEFAULT_GOOGLES,
 
 	/* Headgear */
-	"BWA3_MICH_Fleck",
+	DEFAULT_HEADGEAR,
 
 	/* Binoculars */
-	"Rangefinder",
+	DEFAULT_BINOCULARS,
 
 	/* Nightvision */
-	"NVGoggles_OPFOR",
+	DEFAULT_NIGHTVISION,
 
 	/* Linked Items */
 	[
-		"ItemMap",
-		"ItemWatch",
-		"ItemCompass",
-		"ItemGps"
+		DEFAULT_LINKEDITEMS		
+	],
+
+	/* Uniform */
+	[
+		DEFAULT_UNIFORM,
+		/* Uniform-Weapons */
+		[DEFAULT_UNIFORMWEAPONS],
+		/* Uniform-Magazines */
+		[DEFAULT_UNIFORMMAGAZINES],
+		/* Uniform-Items */
+		[DEFAULT_UNIFORMITEMS]
+	],
+
+	/* Vest */
+	[
+		DEFAULT_VEST,
+		/* Vest-Weapons */
+		[DEFAULT_VESTWEAPONS],
+		/* Vest-Magazines */
+		[
+			DEFAULT_VESTMAGAZINES, 
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
+		],
+		/* Vest-Items */
+		[DEFAULT_VESTITEMS, "ACE_muzzle_mzls_H", "muzzle_snds_H"]
+	],
+
+	/* Handgun Weapon */
+	[
+		DEFAULT_HANDGUNWEAPON,
+		/* Handgun Weapon Magazine */
+		DEFAULT_HANDGUNMAGAZINE,
+		/* Handgun Weapon Items */
+		[DEFAULT_HANDGUNITEMS]
 	],
 
 	/* Primary Weapon */
@@ -38,64 +71,24 @@ _result = [
 		[]
 	],
 
-	/* Handgun Weapon */
-	[
-		"hgun_P07_F",
-		/* Handgun Weapon Magazine */
-		"16Rnd_9x21_Mag",
-		/* Handgun Weapon Items */
-		[]
-	],
-
-	/* Uniform */
-	[
-		"BWA3_Uniform2_idz_Fleck",
-		/* Uniform-Weapons */
-		[],
-		/* Uniform-Magazines */
-		[
-		],
-		/* Uniform-Items */
-		[
-			"ItemRadio","FirstAidKit","FirstAidKit","FirstAidKit","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_CableTie"
-		]
-	],
-
-	/* Vest */
-	[
-		"BWA3_Vest_Rifleman1_Fleck",
-		/* Vest-Weapons */
-		[
-			"SmokeShell","SmokeShell",
-			"SmokeShellPurple","SmokeShellPurple",
-			"SmokeShellGreen","SmokeShellRed"
-		],
-		/* Vest-Magazines */
-		[
-			"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
-			,"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
-			,"30Rnd_65x39_caseless_mag_Tracer",
-			"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
-		],
-		/* Vest-Items */
-		[
-		]
-	],
-
 	/* Backpack */
 	[
-		"BWA3_Kitbag_Fleck",
+		DEFAULT_BACKPACK,
 		/* Backpack-Weapons */
 		[
+			DEFAULT_BACKPACKWEAPONS
 		],
 		/* Backpack-Magazines */
 		[
-		"30Rnd_65x39_caseless_mag_Tracer","30Rnd_65x39_caseless_mag_Tracer"
+			DEFAULT_BACKPACKMAGAZINES,
+			"30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_mag_Tracer"
 		],
 		/* Backpack-Items */
 		[
-			"ACE_DeadManSwitch","ACE_DefusalKit","ACE_Clacker","MineDetector","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","DemoCharge_Remote_Mag","BWA3_G_Combat_Clear","BWA3_Beret_PzGren",
-			"ACE_muzzle_mzls_H","muzzle_snds_H"
+			DEFAULT_BACKPACKITEMS,
+			"MineDetector",
+			"ACE_DeadManSwitch", "ACE_DefusalKit", "ACE_Clacker", 
+			"DemoCharge_Remote_Mag", "DemoCharge_Remote_Mag", "DemoCharge_Remote_Mag", "DemoCharge_Remote_Mag"
 		]
 	],
 
