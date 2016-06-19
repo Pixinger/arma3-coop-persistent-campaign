@@ -29,7 +29,8 @@ if (_groupCount < 0) then { _groupCount = 0; };
 // _campsField starten
 //==========================================================================================
 {
-	[_zoneIndex, _aizZoneActiveIndex, _x, ( ([([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) * 2) ] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField;	
+	private _c = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) * 2;
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([_c] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField;	
 } foreach _campsField;
 
 //==========================================================================================

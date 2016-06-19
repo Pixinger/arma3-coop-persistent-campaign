@@ -28,7 +28,7 @@ if (hasInterface) then
 		_tmp = (findDisplay 46) displayaddEventHandler ["KeyDown", "if (!dialog ) then { if (_this select 1 == 22) then { _tmp = [] spawn fnc_Player_OnKey;};};"];
 		cutText ["Initialization...4", "BLACK FADED",1];
 		
-		if (call fnc_admin_IsPlayerAdmin) then
+		if (pixDebug) then // if (call fnc_admin_IsPlayerAdmin) then		
 		{
 			onMapSingleClick "player setPos _pos; true;";
 		};

@@ -1,1 +1,1 @@
-((_this animationSourcePhase "Lock_source") == 0)
+((_this animationSourcePhase "Lock_source") != 0)
