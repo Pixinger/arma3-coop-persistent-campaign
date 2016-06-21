@@ -38,6 +38,9 @@
 		sonst die Position in 0m ATL [[x,y,0], direction].
 	
 */
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
 
 #define LOOP_LIMIT	100
 

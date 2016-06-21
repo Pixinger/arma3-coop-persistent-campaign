@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 /* 
 	Erzeugt ein Minenfeld.
 	
@@ -57,18 +61,17 @@ if (ExecuteHeadlessCode) then
 			pixTown_ConfigSideCiv revealMine _mine;
 			pixTown_ConfigSideRed revealMine _mine;
 			
-			if (pixDebug) then
-			{
-				_markername = [] call fnc_TownSM_GetUniqueMarkerName;
-				createMarkerLocal [_markerName,  getPos _mine];
-				_markerName setMarkerDirLocal (getDir _mine);
-				_markerName setMarkerShapeLocal "ICON";
-				_markerName setMarkerTypeLocal "mil_dot";
-				_markerName setMarkerSizeLocal [.5, .5];
-				_markerName setMarkerAlphaLocal 1;
-				_markerName setMarkerColorLocal "ColorRed";
-				_markerName setMarkerTextLocal "";
-			};
+			#ifdef MARKER_ENABLED
+			_markername = [] call fnc_TownSM_GetUniqueMarkerName;
+			createMarkerLocal [_markerName,  getPos _mine];
+			_markerName setMarkerDirLocal (getDir _mine);
+			_markerName setMarkerShapeLocal "ICON";
+			_markerName setMarkerTypeLocal "mil_dot";
+			_markerName setMarkerSizeLocal [.5, .5];
+			_markerName setMarkerAlphaLocal 1;
+			_markerName setMarkerColorLocal "ColorRed";
+			_markerName setMarkerTextLocal "";
+			#endif
 		};
 	};
 

@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 #include "..\defines.hpp"
 #define REDUCE_DISTANCE 	1000
 #define EXPAND_DISTANCE 	800
@@ -19,7 +23,7 @@ private _group = [_checkpointPosition, EAST, _unitClassnames] call fnc_aiz_Spawn
 _group setBehaviour "SAFE";
 [_group, _checkpointPosition] call fnc_aiz_GroupTaskDefend;
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 //================================================================================
 // Marker erstellen
 //================================================================================
@@ -61,7 +65,7 @@ while { _run } do
 				};
 				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
 				{ 
-					#ifndef NO_MARKERS
+					#ifdef MARKER_ENABLED
 					{
 						private _mn = _markerNames select _foreachindex;
 						_mn setMarkerText format["C|%1", _markerCounter];
@@ -77,7 +81,7 @@ while { _run } do
 					_state = STATE_FLEE;
 				};
 				
-				#ifndef NO_MARKERS
+				#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["C|EX|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -91,7 +95,7 @@ while { _run } do
 		{ 
 			while { true } do
 			{
-				#ifndef NO_MARKERS
+				#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["C|RD|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -128,7 +132,7 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
-				#ifndef NO_MARKERS
+				#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["C|FL|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -150,7 +154,7 @@ while { _run } do
 		};
 		case STATE_EXIT:
 		{ 
-			#ifndef NO_MARKERS
+			#ifdef MARKER_ENABLED
 			{
 				private _mn = _markerNames select _foreachindex;
 				_mn setMarkerText format["C|EXIT-|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -171,7 +175,7 @@ while { _run } do
 //================================================================================
 // So gut aufräumen wie es geht
 //================================================================================
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 { deleteMarker _x; } foreach  _markerNames;
 #endif
 { deleteVehicle _x; } foreach (units _group);

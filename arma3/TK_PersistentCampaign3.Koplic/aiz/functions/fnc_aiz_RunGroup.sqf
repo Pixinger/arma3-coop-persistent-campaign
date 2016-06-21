@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 #include "..\defines.hpp"
 #define REDUCE_DISTANCE 	650
 #define EXPAND_DISTANCE 	600
@@ -55,7 +59,7 @@ _waypoint setWaypointCompletionRadius 20;
 _waypoint setWaypointSpeed "LIMITED";
 _waypoint setWaypointFormation "STAG COLUMN";
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 //================================================================================
 // Marker erstellen
 //================================================================================
@@ -99,7 +103,7 @@ while { _run } do
 				};
 				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
 				{ 				
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 					{
 						private _mn = _markerNames select _foreachindex;
 						_mn setMarkerText format["G|%1", _markerCounter];
@@ -114,7 +118,7 @@ while { _run } do
 					_state = STATE_FLEE;
 				};
 				
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["G|EX|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -138,7 +142,7 @@ while { _run } do
 					_state = STATE_EXPANDED;
 				};
 				
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["G|RD|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -189,7 +193,7 @@ while { _run } do
 			// Warten und prüfen
 			while { true } do
 			{
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["G|FL|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -210,7 +214,7 @@ while { _run } do
 		};
 		case STATE_EXIT:
 		{ 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 				{
 					private _mn = _markerNames select _foreachindex;
 					_mn setMarkerText format["G|EXIT|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
@@ -231,7 +235,7 @@ while { _run } do
 //================================================================================
 // So gut aufräumen wie es geht
 //================================================================================
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 { deleteMarker _x; } foreach  _markerNames;
 #endif
 { deleteVehicle _x; } foreach (units _group);

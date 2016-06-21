@@ -43,6 +43,9 @@
 		[_house, _housPosition]
 	
 */
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
 
 #define LOOP_LIMIT	100
 

@@ -32,7 +32,7 @@ _group setFormation "STAG COLUMN";
 	_x setBehaviour "SAFE";
 } foreach (units _group);
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 //================================================================================
 // Marker erstellen
 //================================================================================
@@ -77,7 +77,7 @@ while { _state != STATE_EXIT } do
 	
 	_currentPosition = getPos (leader _group);
 	
-	#ifndef NO_MARKERS
+	#ifdef MARKER_ENABLED
 	{
 		private _mn = _markerNames select _foreachindex;
 		_mn setMarkerText format["G|%1", _markerCounter];

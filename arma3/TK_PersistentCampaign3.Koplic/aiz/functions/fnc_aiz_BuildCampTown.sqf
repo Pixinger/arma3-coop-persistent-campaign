@@ -1,8 +1,12 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 #include "..\defines.hpp"
 params ["_zoneIndex", "_camp"];
 _camp params ["_house","_positionIndex"];
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 private["_markerName"];
 _markerName = createMarker [format["markerTown%1", floor(random 999999)], getPos _house];
 _markerName setMarkerShape "ICON";

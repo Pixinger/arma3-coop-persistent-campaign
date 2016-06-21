@@ -19,7 +19,7 @@ _camp params ["_campPosition", "_campRespawns"];
 private _group = [_campPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
 [_group, _campPosition, (cfgAizCampFieldRadius*2)] call fnc_aiz_GroupTaskDefend2;
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 //================================================================================
 // Marker erstellen
 //================================================================================
@@ -71,7 +71,7 @@ while { _state != STATE_EXIT } do
 	//================================================================================
 	if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith { _state = STATE_EXIT; };		
 	
-	#ifndef NO_MARKERS
+	#ifdef MARKER_ENABLED
 	//================================================================================
 	{
 		private _mn = _markerNames select _foreachindex;
@@ -85,7 +85,7 @@ while { _state != STATE_EXIT } do
 //================================================================================
 // So gut aufräumen wie es geht
 //================================================================================
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 { deleteMarker _x; } foreach  _markerNames;
 #endif
 { deleteVehicle _x; } foreach (units _group);

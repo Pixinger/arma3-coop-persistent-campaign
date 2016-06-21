@@ -65,8 +65,6 @@ _this spawn {
 		};
 	};
 	
-	diag_log format["REVEAL: %1", _position];
-	
 	if ((_position select 0) != 0) then
 	{
 		// -------------------------------------------------------------------------

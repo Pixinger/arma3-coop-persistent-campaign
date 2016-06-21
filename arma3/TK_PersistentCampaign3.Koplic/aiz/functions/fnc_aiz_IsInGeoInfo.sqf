@@ -42,6 +42,9 @@
 		true oder false
 	
 */
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
 
 //------------------------------------------------------------------
 private _geoInfo = _this select 0;

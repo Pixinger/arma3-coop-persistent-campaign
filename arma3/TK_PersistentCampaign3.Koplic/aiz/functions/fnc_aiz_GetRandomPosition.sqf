@@ -40,6 +40,10 @@
 	
 */
 
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 //------------------------------------------------------------------
 private _geoInfo = _this select 0;
 private _parameter = _this select 1;
@@ -57,7 +61,6 @@ private _result = [];
 //------------------------------------------------------------------
 if (count _geoInfo == 5) exitWith
 {
-diag_log "rect";
 	private _centerX = _geoInfo select 0;
 	private _centerY = _geoInfo select 1;
 	private _width = _geoInfo select 2;
@@ -79,7 +82,6 @@ diag_log "rect";
 		if (_allowWater && (surfaceIsWater _position)) then { _result = _position; _loopLimit = 0; };
 	};
 	
-diag_log format["rect _result = %1", _result];
 	_result;
 };
 
@@ -90,7 +92,6 @@ diag_log format["rect _result = %1", _result];
 //------------------------------------------------------------------
 if (count _geoInfo == 4) exitWith
 {
-diag_log "cric";
 	private _centerX = _geoInfo select 0;
 	private _centerY = _geoInfo select 1;
 	private _radius = _geoInfo select 2;
@@ -112,7 +113,6 @@ diag_log "cric";
 		if (_allowWater && (surfaceIsWater _position)) then { _result = _position; _loopLimit = 0; };
 	};
 	
-diag_log format["circle _result = %1", _result];
 	_result;
 };
 
@@ -169,5 +169,5 @@ if (count _geoInfo == 2) exitWith
 	_result;
 };
 
-diag_log "ERROR: fnc_aiz_GetRandomPosition: Invalid Parameter count";
+ERROR_LOG("Invalid Parameter count");
 [0,0,0]

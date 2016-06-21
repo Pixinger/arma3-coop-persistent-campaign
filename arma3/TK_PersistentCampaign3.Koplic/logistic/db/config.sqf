@@ -38,7 +38,6 @@ if (isServer) then
 	
 	// Die Munitionskisten die in der Datenbank gespeichert werden sollen.
 	logisticDbAmmoboxes = [
-		"Box_NATO_Ammo_F",
 		"B_CargoNet_01_ammo_F"
 	];
 		

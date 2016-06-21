@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 #include "..\defines.hpp"
 private["_zoneIndex"];
 _zoneIndex = _this select 0;
@@ -10,7 +14,7 @@ private["_respawns"];
 _respawns = _camp select 1;
 
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 private["_markerName"];
 _markerName = createMarker [format["markerCamp%1", floor(random 999999)], _position];
 _markerName setMarkerShape "ICON";

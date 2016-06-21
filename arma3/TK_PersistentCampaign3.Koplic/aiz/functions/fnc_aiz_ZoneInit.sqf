@@ -57,7 +57,7 @@ for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 	{
 		_waypointPool pushBack _randomPosition;
 			
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 		private["_markerNameWp"];
 		_markerNameWp = createMarker [format["markerWP%1_%2", _zoneIndex, floor(random 999999)], _randomPosition];
 		_markerNameWp setMarkerShape "ICON";

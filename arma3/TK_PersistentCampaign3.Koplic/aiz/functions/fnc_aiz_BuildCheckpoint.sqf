@@ -6,7 +6,7 @@
 params ["_zoneIndex", "_checkpoint"];
 _checkpoint params ["_position", "_direction"];
 
-#ifndef NO_MARKERS
+#ifdef MARKER_ENABLED
 private _markerName = createMarkerLocal [format["markercheckpoint%1", floor(random 999999)], _position];
 _markerName setMarkerShape "ICON";
 _markerName setMarkerType "hd_ambush";

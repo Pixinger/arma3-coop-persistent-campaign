@@ -30,17 +30,16 @@ _unit setDir (random 360);
 _unit setUnitAbility 0;
 _unit setBehaviour "CARELESS";
 
+#ifdef MARKER_ENABLED
 private["_markerName"];
-if (pixDebug) then
-{
-	DEBUG_LOG_VAR(_homePosition);
-	_markerName = createMarker [format["markerCiv%1_%2", _townIndex, floor(random 999999)], (getPos _unit)];
-	_markerName setMarkerShape "ICON";
-	_markerName setMarkerType "o_inf";
-	_markerName setMarkerSize [0.4, 0.4];
-	_markerName setMarkerColor "ColorBlue";
-	_markerName setMarkerAlpha 1;
-};
+DEBUG_LOG_VAR(_homePosition);
+_markerName = createMarker [format["markerCiv%1_%2", _townIndex, floor(random 999999)], (getPos _unit)];
+_markerName setMarkerShape "ICON";
+_markerName setMarkerType "o_inf";
+_markerName setMarkerSize [0.4, 0.4];
+_markerName setMarkerColor "ColorBlue";
+_markerName setMarkerAlpha 1;
+#endif
 
 #define STATE_THINKING			0
 #define STATE_RELAXING			1
@@ -142,10 +141,14 @@ while { _run } do
 				};
 			};
 			
-			if (pixDebug) then {_markerName setMarkerPos (getPos _unit);};
+			#ifdef MARKER_ENABLED
+			_markerName setMarkerPos (getPos _unit);
+			#endif
 			while { _idleTime > 0 } do
 			{
-				if (pixDebug) then { _markerName setMarkerText format["Relax: %1", _idleTime];};
+				#ifdef MARKER_ENABLED
+				_markerName setMarkerText format["Relax: %1", _idleTime];
+				#endif
 				Sleep 2;
 				_idleTime = _idleTime - 2;
 				
@@ -165,11 +168,10 @@ while { _run } do
 			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
-				if (pixDebug) then
-				{
-					_markerName setMarkerPos (getPos _unit);
-					_markerName setMarkerText "Walk";
-				};
+				#ifdef MARKER_ENABLED
+				_markerName setMarkerPos (getPos _unit);
+				_markerName setMarkerText "Walk";
+				#endif
 
 				Sleep 2;
 				
@@ -198,12 +200,16 @@ while { _run } do
 		{
 			DEBUG_LOG_VAREX("STATE_WALKING_HOME townIndex=", _townIndex);
 
-			if (pixDebug) then { _markerName setMarkerText "Home"; };
+			#ifdef MARKER_ENABLED
+			_markerName setMarkerText "Home";
+			#endif
 			private _lastPosition = (getPos _unit);
 			while {true} do
 			{
 				Sleep 2;
-				if (pixDebug) then { _markerName setMarkerPos (getPos _unit); };
+				#ifdef MARKER_ENABLED
+				_markerName setMarkerPos (getPos _unit); 
+				#endif
 			
 				_ttl = _ttl - 1;
 				if (_ttl == 0) exitWith { _state = STATE_EXIT; };
@@ -213,9 +219,9 @@ while { _run } do
 
 				// Alive
 				if (!alive _unit) exitWith { _state = STATE_EXIT; };
--
+
 				// Ziel erreicht
-				DEBUG_LOG_VAREX("Distance to home: ", (_homePosition distance2D (getPos _unit)));
+				//DEBUG_LOG_VAREX("Distance to home: ", (_homePosition distance2D (getPos _unit)));
 				if (_homePosition distance2D (getPos _unit) < 5) exitWith
 				{
 					Sleep 2; // Noch mal kurz warten
@@ -236,11 +242,10 @@ while { _run } do
 			while {true} do
 			{
 				Sleep 2;
-				if (pixDebug) then
-				{	
-					_markerName setMarkerPos (getPos _unit);
-					_markerName setMarkerText "Supply";
-				};
+				#ifdef MARKER_ENABLED
+				_markerName setMarkerPos (getPos _unit);
+				_markerName setMarkerText "Supply";
+				#endif
 				
 				_ttl = _ttl - 1;
 				if (_ttl == 0) exitWith { _state = STATE_THINKING; };
@@ -308,4 +313,7 @@ else
 	(townInfos select _townIndex) set [0, _supplies];
 };
 deleteGroup _group;
-if (pixDebug) then { deleteMarker _markerName; };
+
+#ifdef MARKER_ENABLED
+deleteMarker _markerName;
+#endif
