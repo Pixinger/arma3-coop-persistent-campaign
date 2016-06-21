@@ -104,7 +104,7 @@ else
 			}
 			else
 			{
-				DEBUG_LOG_VAREX_WARN("No location for CampTown found. ZoneIndex=", _zoneIndex);
+				WARN_LOG_VAREX("No location for CampTown found. ZoneIndex=", _zoneIndex);
 			};
 		};
 	}
@@ -138,7 +138,7 @@ else
 			}
 			else
 			{
-				DEBUG_LOG_VAREX_WARN("No location for CampField found. ZoneIndex=", _zoneIndex);
+				WARN_LOG_VAREX("No location for CampField found. ZoneIndex=", _zoneIndex);
 			};
 		};
 	}
@@ -153,7 +153,9 @@ else
 //------------------------------------------------------------------------------------------
 if (count _zoneDataSet > 2) then
 {
-	_checkpoints  = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
+	private _tmpCheckpoints = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
+	// Inaktive Checkpoints NICHT aus der Liste übernehmen.
+	{ if (count (_x select 0) != 0) then { _checkpoints pushBack _x; };	} foreach _tmpCheckpoints;
 }
 else
 {
@@ -172,7 +174,7 @@ else
 			}
 			else
 			{
-				DEBUG_LOG_VAREX_WARN("No location for Checkpoint found. ZoneIndex=", _zoneIndex);
+				WARN_LOG_VAREX("No location for Checkpoint found. ZoneIndex=", _zoneIndex);
 			};
 		};
 	}
@@ -254,7 +256,7 @@ if (_groupCount > 0) then
 //==========================================================================================
 if ((_triggerRequired) && (_intelCount > 0)) then
 {
-	DEBUG_LOG_VAREX_INFO("Intels for this zone: ", _intelCount);
+	INFO_LOG_VAREX("Intels for this zone: ", _intelCount);
 
 	for "_i" from 1 to _intelCount do
 	{
@@ -283,11 +285,11 @@ if (_triggerRequired) then
 	_markerName setMarkerAlpha 0;
 	_markerName SetMarkerColor "ColorRed";	
 	
-	DEBUG_LOG_VAREX_INFO("Zone is ONLINE. zoneIndex=", _zoneIndex);
+	INFO_LOG_VAREX("Zone is ONLINE. zoneIndex=", _zoneIndex);
 }
 else
 {
 	_markerName setMarkerAlpha 0.2;
 	_markerName SetMarkerColor "ColorGreen";
-	DEBUG_LOG_VAREX_INFO("Zone is OFFLINE/COMPLETED. zoneIndex=", _zoneIndex);
+	INFO_LOG_VAREX("Zone is OFFLINE/COMPLETED. zoneIndex=", _zoneIndex);
 };

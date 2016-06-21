@@ -24,7 +24,7 @@ if (isServer) then
 	if (count _database > VEHICLE_INDEX) then
 	{
 		private _vehicles = _database select VEHICLE_INDEX;
-		DEBUG_LOG_VAREX_INFO("loaded vehicles: ", (count _vehicles));
+		INFO_LOG_VAREX("loaded vehicles: ", (count _vehicles));
 
 		{	
 			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
@@ -52,7 +52,7 @@ if (isServer) then
 	if (count _database > AMMOBOX_INDEX) then
 	{
 		private _ammoboxes = _database select AMMOBOX_INDEX;
-		DEBUG_LOG_VAREX_INFO("loaded ammoboxes: ", (count _ammoboxes));
+		INFO_LOG_VAREX("loaded ammoboxes: ", (count _ammoboxes));
 
 		{	
 			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
@@ -79,7 +79,7 @@ if (isServer) then
 	if (count _database > OBJECT_INDEX) then
 	{
 		private _objects = _database select OBJECT_INDEX;
-		DEBUG_LOG_VAREX_INFO("loaded objects: ", (count _objects));
+		INFO_LOG_VAREX("loaded objects: ", (count _objects));
 
 		{	
 			if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "vehicleClass") != "") then // Prüfen ob der Classname im Addon enthalten ist
@@ -111,7 +111,7 @@ if (isServer) then
 	{
 		_dateTime = _database select TIME_INDEX;
 	};
-	DEBUG_LOG_VAREX_INFO("loaded date: ", _dateTime);
+	INFO_LOG_VAREX("loaded date: ", _dateTime);
 	DEBUG_LOG("LOGISTIC-Database: ------------------------ (end)");
 	format["%1", _dateTime] remoteExec ["fnc_logisticDb_SetDateTime"]; // Überall ausführen
 	setTimeMultiplier 2;	

@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 if (isServer) then
 {	
 	waitUntil { townInitCompleted };
@@ -24,22 +28,24 @@ if (isServer) then
 		else
 		{ 
 			_database pushBack [];
-			[format["No townData for townIndex %1 found.", _i]] call BIS_fnc_error; 
+			ERROR_LOG_VAREX("No townData for townIndex ", _i);
 		};
 	};	
 	
 	// ------------------------------------------------------------------------------
 	// Debug Ausgabe
-	diag_log "TOWN-Database: ----------------------";
+	INFO_LOG "TOWN-Database: ----------------------";
 	{
-		diag_log format["TOWN-Database-Save: Town %1 = %2", _foreachIndex, _x];
+		INFO_LOG("TOWN:");
+		INFO_LOG_VAR(_foreachIndex);
+		INFO_LOG_VAR(_x);
 	} foreach _database;
-	diag_log "TOWN-Database: ----------------------";
+	INFO_LOG "TOWN-Database: ----------------------";
 	
 	// ------------------------------------------------------------------------------
 	// Datenbank speichern
 	profileNameSpace setVariable [townDbPrefix + "_database", _database];
-	diag_log format["TOWN-Database saved: %1", _database];	
+	DEBUG_LOG_VAREX("TOWN-Database saved: ", _database);
 
 	// ------------------------------------------------------------------------------
 	// Bestätigung ausgeben

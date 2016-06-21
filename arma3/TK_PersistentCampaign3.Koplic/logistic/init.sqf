@@ -9,7 +9,7 @@ if (isServer) then
 {
 	logisticInitialized = true;
 	publicVariable "logisticInitialized";
-	DEBUG_LOG_INFO("LOGISTIC init is now completed");
+	INFO_LOG("LOGISTIC init is now completed");
 };
 
 if (hasInterface) then

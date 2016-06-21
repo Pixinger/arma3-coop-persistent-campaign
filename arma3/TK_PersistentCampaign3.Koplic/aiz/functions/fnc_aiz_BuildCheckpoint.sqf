@@ -3,11 +3,8 @@
 //DEBUG_LOG_THIS
 
 #include "..\defines.hpp"
-private _zoneIndex = _this select 0;
-private _checkpoint = _this select 1;
-
+params ["_zoneIndex", "_checkpoint"];
 _checkpoint params ["_position", "_direction"];
-
 
 #ifndef NO_MARKERS
 private _markerName = createMarkerLocal [format["markercheckpoint%1", floor(random 999999)], _position];

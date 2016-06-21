@@ -30,6 +30,11 @@ if (_cursorTargetType in logisticObjectsMoveables) then
 			player action ["eject", vehicle player];
 			sleep 1;
 		};
+		
+		if ([0,0,0] distance (velocity player) > 2.8) then
+		{
+			player playMove "AmovPpneMstpSnonWnonDnon";
+		};		
 
 		sleep 0.25;
 	};

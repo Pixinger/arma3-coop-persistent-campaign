@@ -22,5 +22,5 @@ if (isServer) then
 	// ------------------------------------------------------------------------------
 	// Beendigung signalisieren
 	aizZoneInitCompleted = true;
-	DEBUG_LOG_INFO("AIZ init is now completed");
+	INFO_LOG("AIZ init is now completed");
 };

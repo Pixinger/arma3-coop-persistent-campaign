@@ -264,7 +264,8 @@ while { _run } do
 
 						(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];
 						_supplies = _supplies + 10;
-						(townInfos select _townIndex) set [0, _supplies];
+						(townInfos select _townIndex) set [0, _supplies];						
+						// debug console command: (severside) "(townInfos select _townIndex) set [0,100];"
 					};
 
 					_state = STATE_GOHOME;				
@@ -282,7 +283,7 @@ while { _run } do
 		};
 		default 
 		{ 
-			DEBUG_LOG_VAREX_ERROR("fnc_town_SpawnCivilian.sqf: Invalid state for state-machine: _state=", _state);
+			ERROR_LOG_VAREX("fnc_town_SpawnCivilian.sqf: Invalid state for state-machine: _state=", _state);
 			_run = false; // Emergency exit
 		};
 	};

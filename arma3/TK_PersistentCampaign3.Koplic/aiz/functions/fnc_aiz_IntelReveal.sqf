@@ -17,7 +17,7 @@ _this spawn {
 
 	// -------------------------------------------------------------------------
 	// aizZoneData%1 auslesen
-	if (isNil format["aizZoneData%1", _zoneIndex]) exitWith	{ DEBUG_LOG_VAREX_ERROR("fnc_aiz_IntelReveal: Unable to read aizZoneData", _zoneIndex); false; };
+	if (isNil format["aizZoneData%1", _zoneIndex]) exitWith	{ ERROR_LOG_VAREX("fnc_aiz_IntelReveal: Unable to read aizZoneData", _zoneIndex); false; };
 
 	private "_zoneData";
 	call compile format["_zoneData = aizZoneData%1;", _zoneIndex];

@@ -22,7 +22,7 @@ if (_groupCount < 0) then { _groupCount = 0; };
 // _campsTown starten
 //==========================================================================================
 {
-	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampTown;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampTown2;	
 } foreach _campsTown;
 
 //==========================================================================================
@@ -30,14 +30,14 @@ if (_groupCount < 0) then { _groupCount = 0; };
 //==========================================================================================
 {
 	private _c = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) * 2;
-	[_zoneIndex, _aizZoneActiveIndex, _x, ([_c] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([_c] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField2;	
 } foreach _campsField;
 
 //==========================================================================================
 // _checkpoints starten
 //==========================================================================================
 {
-	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint2;	
 } foreach _checkpoints;
 
 //==========================================================================================
@@ -45,5 +45,5 @@ if (_groupCount < 0) then { _groupCount = 0; };
 //==========================================================================================
 for "_i" from 1 to _groupCount do
 {
-	[_zoneIndex, _aizZoneActiveIndex, _waypointPool, 6, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroup;	
+	[_zoneIndex, _aizZoneActiveIndex, _waypointPool, 6, ([] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroup2;
 };

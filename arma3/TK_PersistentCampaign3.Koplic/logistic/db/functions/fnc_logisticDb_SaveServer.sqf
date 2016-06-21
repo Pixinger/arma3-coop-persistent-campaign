@@ -42,7 +42,7 @@ if (isServer) then
 				];
 			};
 		} foreach _vehicles; 
-		DEBUG_LOG_VAREX_INFO("saved vehicles: ", (count _vehicles));
+		INFO_LOG_VAREX("saved vehicles: ", (count _vehicles));
 	};
 
 
@@ -70,7 +70,7 @@ if (isServer) then
 				];
 			};
 		} foreach _ammoboxes; 
-		DEBUG_LOG_VAREX_INFO("saved ammoboxes: ", (count _ammoboxes));
+		INFO_LOG_VAREX("saved ammoboxes: ", (count _ammoboxes));
 	};
 
 	//------------------------------------
@@ -95,7 +95,7 @@ if (isServer) then
 				];
 			};
 		} foreach _objects; 
-		DEBUG_LOG_VAREX_INFO("saved objects: ", (count _objects));
+		INFO_LOG_VAREX("saved objects: ", (count _objects));
 	};
 
 	//------------------------------------
@@ -109,7 +109,7 @@ if (isServer) then
 	private["_database"];
 	_database = [_databaseVehicles, _databaseAmmoboxes, _databaseObjects, _databaseTime];
 	profileNameSpace setVariable [logisticDbPrefix + "_database", _database];
-	//DEBUG_LOG_VAR_INFO(_database);
+	//INFO_LOG_VAR(_database);
 	DEBUG_LOG("LOGISTIC-Database: ------------------------ (end)");
 	
 	// ------------------------------------------------------------------------------

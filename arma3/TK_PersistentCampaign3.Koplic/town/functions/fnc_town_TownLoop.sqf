@@ -15,15 +15,22 @@
 
 			//==========================================================================================
 			// Auch Zivilisten verbrauchen Nahrung
-			_supplies = _supplies - 1;
+			//diag_log format["town %1 supplpies reduced by civilians: %2", _townIndex, ceil(_houseCount / 10)];
+			_supplies = _supplies - ceil(_houseCount / 10);
 
 			//==========================================================================================
 			// RED in der Nähe, dann Supplies klauen
-			private _redsNear = count ((markerPos _markerName) nearEntities ["SoldierEB", 1500]); 
-			if (_redsNear > 0) then 
+			private _redsNear = false;
+			private _redUnits = ((markerPos _markerName) nearEntities ["SoldierEB", 600]);
+			{
+				if ((alive _x) && { (captiveNum _x == 0) && { (damage _x < 0.1) }}) exitWith { _redsNear = true; };
+			} foreach _redUnits;
+			if (_redsNear) then 
 			{
 				_supplies = _supplies - 10;
+				//diag_log format["REDS NEAR in town %1", _townIndex];
 			};
+			//diag_log format["town %1 supplpies are now: %2", _townIndex, _supplies];
 			
 			//==========================================================================================
 			// Aktuellen Stand speichern
@@ -54,7 +61,7 @@
 					};
 				};
 			};
-			player sidechat format["town %1: supplies: %2", _townIndex, _supplies];
+			//player sidechat format["town %1: supplies: %2", _townIndex, _supplies];
 			//_markerName setMarkerText format["%1", _supplies];
 		};
 	
@@ -64,7 +71,7 @@
 		if (_townIndex >= townTownCount) then 
 		{ 
 			_townIndex = 0; 
-			Sleep (600); // Wenn alle Städte durch sind, warten wir etwas länger.
+			Sleep (60* 30); // Wenn alle Städte durch sind, warten wir etwas länger.
 		}
 		else
 		{
