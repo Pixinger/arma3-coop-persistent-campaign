@@ -19,4 +19,9 @@ if ((_object isKindOf "UAV") || (_object isKindOf "UAV_01_base_F") || (_object i
 	createVehicleCrew _object; 
 };
 
+clearItemCargoGlobal _object;
+clearWeaponCargoGlobal _object;
+clearMagazineCargoGlobal _object;
+clearBackpackCargoGlobal _object;
+
 _object;

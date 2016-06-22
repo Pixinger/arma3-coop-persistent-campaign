@@ -15,3 +15,4 @@ fnc_logisticDb_CreateVehicleCorrected = compile preprocessFileLineNumbers "logis
 fnc_logisticDb_SaveClient = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_SaveClient.sqf";
 fnc_logisticDb_ClearClient = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_ClearClient.sqf";
 fnc_logisticDb_SetDateTime = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_SetDateTime.sqf";
+fnc_logisticDb_SupplyDrop = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_SupplyDrop.sqf";
