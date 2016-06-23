@@ -23,7 +23,7 @@ if (_groupCount < 0) then { _groupCount = 0; };
 //==========================================================================================
 {
 	private _count = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) * 2;
-	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampTown2;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampTown;	
 } foreach _campsTown;
 
 //==========================================================================================
@@ -31,7 +31,7 @@ if (_groupCount < 0) then { _groupCount = 0; };
 //==========================================================================================
 {
 	private _count = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt) * 2;
-	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField2;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCampField;	
 } foreach _campsField;
 
 //==========================================================================================
@@ -39,7 +39,7 @@ if (_groupCount < 0) then { _groupCount = 0; };
 //==========================================================================================
 {
 	private _count = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt);
-	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint2;	
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint;	
 } foreach _checkpoints;
 
 //==========================================================================================
@@ -48,5 +48,5 @@ if (_groupCount < 0) then { _groupCount = 0; };
 for "_i" from 1 to _groupCount do
 {
 	private _count = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt);
-	[_zoneIndex, _aizZoneActiveIndex, _waypointPool, 6, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroup2;
+	[_zoneIndex, _aizZoneActiveIndex, _waypointPool, 6, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroup;
 };

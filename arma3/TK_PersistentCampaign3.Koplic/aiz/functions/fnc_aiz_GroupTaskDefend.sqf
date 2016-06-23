@@ -1,16 +1,37 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 /*
 	Zum Größtenteil basiert dieses Skript auf Code aus der Funktion: "BIS_fnc_taskDefend";	
 	Das Verhalten ist sehr ähnlich, aber für unsere Zwecke angepasst.
 */
-_this params ["_group", "_position"];
-private _guardRadius = if (count _this < 3) then { 30 } else { _this select 2 };
-private _staticWeapons = _position nearObjects ["StaticWeapon", _guardRadius + 70];
-private _units = (units _group) - [leader _group]; //The Gruppenführer sollte keine Waffen besetzen
+// ----------------------------------
+// THIS
+// ----------------------------------
+params ["_group", "_position",["_guardRadius", 30]];
+if (_guardRadius < 10) then { _guardRadius = 10; };
+
+// ----------------------------------
+// Die Gruppe komplett auf SAFE setzen
+_group setBehaviour "SAFE";
+// ----------------------------------
+// All alten Wegpunkte entfernen
+{ deleteWaypoint _x; } foreach (waypoints _group);
+
+// ----------------------------------
+// Der Gruppenführer soll stehen bleiben
+private _units = (units _group);// - [leader _group]; 
+
+// ----------------------------------
+// Statische Waffen suchen
+private _staticWeapons = _position nearObjects ["StaticWeapon", _guardRadius];
 _emptyStaticWeapons = [];
 {
 	if ((_x emptyPositions "gunner") > 0) then { _emptyStaticWeapons pushBack _x; };
 } forEach _staticWeapons;
 
+// ----------------------------------
 // Statische Waffe besetzen
 {
 	// Noch Einheiten verfügbar um Waffen zu besetzen?
@@ -21,32 +42,21 @@ _emptyStaticWeapons = [];
 			private _unit = (_units select ((count _units) - 1));
 			
 			_unit assignAsGunner _x;			
-			_unit moveInGunner _x;	//[_unit] orderGetIn true;
+			_unit moveInGunner _x;
 			
 			_units resize ((count _units) - 1);
 		};
 	};
 } forEach _emptyStaticWeapons;
 
-// All alten Wegpunkte entfernen
-{ deleteWaypoint _x; } foreach (waypoints _group);
-
-// Der Rest soll an der Position Wache schieben
-private _waypointGuard = _group addWaypoint [_position, _guardRadius];
-_waypointGuard setWaypointType "GUARD";
-
-// Einige Einheiten hinsetzen lassen
-private _handle = _units spawn 
+// ----------------------------------
+// Der Rest soll hier in der Gegend wache halten
 {
-	sleep 5;
-
-	{
-		sleep random 5;
-		if ((random 1) > 0.4) then 
-		{
-			doStop _x;			
-			sleep 0.5;			
-			_x action ["SitDown", _x];	
-		};	
-	} forEach _this;
-};
+	private _randomPosition = [([_position, _guardRadius] call CBA_fnc_randPos), "SoldierWB"] call PIX_fnc_FindEmptyPositionClosest;	
+	//[_x, _randomPosition, true] spawn fnc_aiz_DoMoveEx;
+	doStop _x;
+	_x setPosATL (_randomPosition);
+	_x setDir (random 360);
+	_x setBehaviour "SAFE";
+	_x setSpeedMode "NORMAL";
+} foreach _units;

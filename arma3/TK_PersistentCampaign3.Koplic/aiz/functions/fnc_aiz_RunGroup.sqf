@@ -3,11 +3,8 @@
 //DEBUG_LOG_THIS
 
 #include "..\defines.hpp"
-#define REDUCE_DISTANCE 	650
-#define EXPAND_DISTANCE 	600
 
 waitUntil { aizZoneInitCompleted };
-//diag_log format["fnc_aiz_RunGroup: _this = %1", _this];
 
 Sleep (random RANDOM_START_DELAY);
 //================================================================================
@@ -19,7 +16,7 @@ private _startPosition = if ((count _this) >= 6) then { _this select 5; } else {
 //================================================================================
 // Startbedingungen prüfen
 //================================================================================
-if (count _waypointPool < 3) exitWith { diag_log format["ERROR: fnc_aiz_RunGroup.sqf: Not enough waypoints for zoneIndex %1 found.", _zoneIndex]; false; };
+if (count _waypointPool < 3) exitWith { ERROR_LOG_VAREX("Not enough waypoints for zoneIndex: ", _zoneIndex) false; };
 if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypointPool; };
 
 //================================================================================
@@ -35,40 +32,15 @@ _group setFormation "STAG COLUMN";
 	_x setBehaviour "SAFE";
 } foreach (units _group);
 
-//_group setUnitAbility (random 1);	//[_unit,6] call bis_fnc_setRank; //["PRIVATE","CORPORAL","SERGEANT","LIEUTENANT","CAPTAIN","MAJOR","COLONEL"];
-
-//================================================================================
-// Wegunkte erstellen
-//================================================================================
-for "_i" from 1 to _waypointCount - 1 do
-{
-	private ["_wp", "_newPos"];
-
-	private _waypoint = _group addWaypoint [_waypointPool call PIX_fnc_RandomElement, 0];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointCompletionRadius 20;
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointFormation "STAG COLUMN";
-};
-
-// Zurück zum ersten Wegpunkt gehen
-private _waypoint = _group addWaypoint [_waypointPool call PIX_fnc_RandomElement, 0];
-_waypoint setWaypointType "CYCLE";
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 20;
-_waypoint setWaypointSpeed "LIMITED";
-_waypoint setWaypointFormation "STAG COLUMN";
-
 #ifdef MARKER_ENABLED
 //================================================================================
 // Marker erstellen
 //================================================================================
 aizGroupMarkerCounter  = aizGroupMarkerCounter + 1;
 private _markerCounter = aizGroupMarkerCounter;
-private _markerName = format["markerUGroup%1_%2", _zoneIndex, floor(random 999999)];
 private["_markerNames"];
 _markerNames = [];
-{ _markerNames pushBack format["%1_%2", _markerName, _foreachindex]; } foreach (units _group);
+{ _markerNames pushBack format["%1_%2", format["markerUGroup%1_%2", _zoneIndex, floor(random 999999)], _foreachindex]; } foreach (units _group);
 {
 	createMarker [_x, [0,0]];
 	_x setMarkerShape "ICON";
@@ -77,160 +49,208 @@ _markerNames = [];
 	_x setMarkerColor "ColorRed"; 
 	_x setMarkerAlpha 1;
 } foreach _markerNames;
-#endif 
+#endif
 
 //================================================================================
 // State Machine starten
 //================================================================================
-#define STATE_REDUCED	1
-#define STATE_EXPANDED	2
-#define STATE_FLEE		3
-#define STATE_EXIT		4
-private _state = STATE_EXPANDED;
-private _unitInfos = [];
-private _run = true;
-while { _run } do 
+#define STATE_EXIT				1
+#define STATE_THINKING			2
+#define STATE_PREPEARE_WALK 	3
+#define STATE_WALKING			4
+#define STATE_PREPEARE_GUARD 	5
+#define STATE_GUARDING			6
+#define STATE_PREPEARE_FIGHT	7
+#define STATE_FIGHTING			8
+
+private _validateTimeout = 0;
+private _fightTimeout = 0;
+private _guardTimeout = 0;
+private _walkTimeout = 0;
+private _target = [0,0,0];
+private _currentPosition = [0,0,0];
+
+private _state = STATE_THINKING;
+while { _state != STATE_EXIT } do 
 {
+	Sleep 2;
+	
+	_currentPosition = getPos (leader _group);
+	
+	#ifdef MARKER_ENABLED
+	{
+		private _mn = _markerNames select _foreachindex;
+		_mn setMarkerText format["G|%1", _markerCounter];
+		_mn setMarkerPos (getPos _x);
+	} foreach units _group;
+	#endif
+
+	
+	if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith { _state = STATE_EXIT; };
+	
 	switch (_state) do 
 	{
-		case STATE_EXPANDED: 
-		{ 
-			while { true } do
-			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
-				{
-					_state = STATE_EXIT;
-				};
-				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
-				{ 				
-#ifdef MARKER_ENABLED
-					{
-						private _mn = _markerNames select _foreachindex;
-						_mn setMarkerText format["G|%1", _markerCounter];
-						_mn setMarkerPos (getPos _x);
-					} foreach units _group;
-#endif				
-					_unitInfos = [_group] call fnc_aiz_GroupReduce;
-					_state = STATE_REDUCED;
-				};
-				if ([_group] call fnc_aiz_GroupAliveCount < 2) exitWith
-				{
-					_state = STATE_FLEE;
-				};
-				
-#ifdef MARKER_ENABLED
-				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["G|EX|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-#endif
-				Sleep 10;				
-			};
-		};
-		case STATE_REDUCED: 
-		{ 
-			while { true } do
-			{
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
-				{
-					_state = STATE_EXIT;
-				};
-				if ([getPos (leader _group), EXPAND_DISTANCE] call fnc_aiz_IsBlueNear) exitWith 
-				{ 
-					[_group, _unitInfos] call fnc_aiz_GroupExpand;
-					_state = STATE_EXPANDED;
-				};
-				
-#ifdef MARKER_ENABLED
-				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["G|RD|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-#endif
-				Sleep 5;
-			};
-		};	
-		case STATE_FLEE:
-		{ 
-			// Da sich die Gruppe nun aufgelöst hat, suchen wir nach Verstärkung
-			diag_log format["fnc_aiz_RunGroup: Group destroyed. zoneIndex=%1", _zoneIndex];
-			private _laptop = [getPos (leader _group), 1500] call fnc_aiz_FindCampTownRespawn;
-			if (!isNull _laptop) then
-			{
-				// .. Verstärkung aus der Stadt holen
-				diag_log format["fnc_aiz_RunGroup: Support from campTown at position=%1", getPos _laptop];
-				[_zoneIndex, _aizZoneActiveIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _laptop] spawn fnc_aiz_RunGroup;
-			}
-			else
-			{
-				private _tent = [getPos (leader _group), 1500] call fnc_aiz_FindCampTownRespawn;
-				if (!isNull _tent) then
-				{
-					// .. Verstärkung aus dem Feld holen => Zelt löschen
-					diag_log format["fnc_aiz_RunGroup: Support from campField at position=%1", getPos _tent];
-					[_zoneIndex, _aizZoneActiveIndex,  _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _tent] spawn fnc_aiz_RunGroup;
-					deleteVehicle _tent;
-				}
-				else
-				{
-					// Keine Verstärkung gefunden. Den GruppenCount für diese Zone verringern.
-					private "_zoneData";
-					call compile format["_zoneData = aizZoneData%1;", _zoneIndex];
-					private _groupCount = (_zoneData select 4) - 1;
-					_zoneData set [4, _groupCount];	
-					diag_log format["fnc_aiz_RunGroup: Group destroyed. No support available. GroupCount is now %1.", _groupCount];
-				};
-			};
+		//###############################################################################################################
+		case STATE_THINKING:
+		{
+			//DEBUG_LOG("STATE_THINKING");
 			
-			// Hier sollte der Flucht Code rein. 
-			// Da mir noch Zeit fehlt, begehen die Einheiten einfach Selbstmord.
-			{
-				_x setDamage 1;
-			} foreach units _group;
+			_group setBehaviour "SAFE";
+			_group setSpeedMode "LIMITED";
+			_group setFormation "COLUMN";
 
-			// Warten und prüfen
-			while { true } do
+			private _decision = [1, 2] call BIS_fnc_randomInt;
+			switch (_decision) do
 			{
-#ifdef MARKER_ENABLED
-				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["G|FL|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-#endif
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
-				{
-					_state = STATE_EXIT;
-				};
-				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
-				{ 
-					_state = STATE_EXIT;
-				};
-				
-				Sleep 10;
+				case 1: { _state = STATE_PREPEARE_WALK; };
+				case 2: { _state = STATE_PREPEARE_GUARD; };
 			};
 		};
-		case STATE_EXIT:
-		{ 
-#ifdef MARKER_ENABLED
+		
+		//###############################################################################################################
+		case STATE_PREPEARE_FIGHT: 
+		{
+			//DEBUG_LOG("STATE_PREPEARE_FIGHT");
+			if (pixDebug) then { _fightTimeout = time + 10; }
+			else { _fightTimeout = time + ([60, 360] call BIS_fnc_randomInt); };
+			_state = STATE_FIGHTING;
+		};		
+		//###############################################################################################################
+		case STATE_FIGHTING: 
+		{
+			//DEBUG_LOG("STATE_FIGHTING");
+			if (time > _fightTimeout) exitWith { _state = STATE_THINKING; };
+		};
+		
+		
+		//###############################################################################################################
+		case STATE_PREPEARE_WALK:
+		{
+			//DEBUG_LOG("STATE_PREPEARE_WALK");
+			// Ziel suchen
+			if (pixDebug) then {_target = getPos (leader _group);_target set [0, (_target select 0) + 50];}
+			else {_target = _waypointPool call PIX_fnc_RandomElement;};
+	
+			// Alle alten Wegpunkte löschen
+			{ deleteWaypoint _x; } foreach waypoints _group;
+			// Zurück zum ersten Wegpunkt gehen
+			private _waypoint = _group addWaypoint [_target, 0];
+			_waypoint setWaypointBehaviour "SAFE";
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointCompletionRadius 1;
+			_waypoint setWaypointSpeed "FULL";
+			_waypoint setWaypointFormation "COLUMN";
+			
+			if (pixDebug) then { _walkTimeout = time + 30;} else { _walkTimeout = time + (5*60);};
+
+			_state = STATE_WALKING;
+		};		
+		//###############################################################################################################
+		case STATE_WALKING:
+		{
+			//DEBUG_LOG("STATE_WALKING");
+			if (behaviour (leader _group) == "COMBAT") exitWith { _state = STATE_PREPEARE_FIGHT; };
+			if (((leader _group) distance2D _target) < 20) exitWith { _state = STATE_THINKING; };
+			if (time > _walkTimeout) exitWith { _state = STATE_THINKING; };			
+		};
+
+
+		//###############################################################################################################
+		case STATE_PREPEARE_GUARD:
+		{
+			//DEBUG_LOG("STATE_PREPEARE_GUARD");
+			if (pixDebug) then { _guardTimeout = time + 10; }
+			else { _guardTimeout = time + ([10, 120] call BIS_fnc_randomInt); };
+			
+			{
+				doStop _x;			
+				Sleep 0.2;
+				_x action ["SitDown", _x];	
+			} forEach (units _group);
+			
+			_state = STATE_GUARDING;
+		};		
+		//###############################################################################################################
+		case STATE_GUARDING:
+		{
+			//DEBUG_LOG("STATE_GUARDING");
+			if (behaviour (leader _group) == "COMBAT") exitWith { _state = STATE_PREPEARE_FIGHT; };
+			if (time > _guardTimeout) exitWith 
+			{ 
+				_state = STATE_THINKING; 	
 				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["G|EXIT|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-#endif
-			//diag_log "STATE_EXIT";
-			_run = false; // Exit
-		};	
+					_x doMove (getPos _x);
+					Sleep 0.2;
+				} forEach (units _group);
+			};
+		};
+
+		
+		//###############################################################################################################
 		default 
-		{ 
-			diag_log format["ERROR: fnc_aiz_RunGroup.sqf: Invalid state for state-machine: _state=%1", _state];
-			_run = false; // Emergency exit
+		{
+			ERROR_LOG_VAREX("Invalid state for state-machine: _state: ", _state);
+			_state = STATE_EXIT;
+		};		
+	};
+	
+	//###############################################################################################################
+	// Gruppe validieren
+	if (time > _validateTimeout) then
+	{
+		//DEBUG_LOG("Validating group");
+		_validateTimeout = time + 10;
+		
+		// Gefangene und tote Einheiten entfernen
+		{
+			if ((!alive _x) || {(_x getVariable ["ACE_Captives_isHandcuffed", false])}) then 
+			{ 	
+				[_x] join grpNull; 
+				//DEBUG_LOG_VAREX("Unit joined grpNull: ", _x);
+			};
+		} foreach (units _group);
+
+		// Wenn die Gruppe leer ist, dann beenden
+		if (count (units _group) == 0) exitWith { _state = STATE_EXIT; };
+	};	
+};
+DEBUG_LOG("STATE_EXIT");
+
+//================================================================================
+// Wenn die Zone noch aktiv UND alle Einheiten tot/gefangen sind, dann holen wir evtl. Unterstüzung.
+//================================================================================
+if (count (units _group) == 0) then
+{
+	DEBUG_LOG_VAREX("Group destroyed: Requesting support: ", _currentPosition);
+	private _support = [_currentPosition, 1500] call fnc_aiz_FindCampTownRespawn;
+	DEBUG_LOG_VAR(_support);
+	if (!isNull _support) then
+	{
+		DEBUG_LOG_VAREX("Support found at CT: ", _support);
+		[_zoneIndex, _aizZoneActiveIndex, _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _support] spawn fnc_aiz_RunGroup;
+	}
+	else
+	{
+		private _support = [_currentPosition, 1500] call fnc_aiz_FindCampFieldRespawn;
+		DEBUG_LOG_VAR(_support);
+		if (!isNull _support) then
+		{
+			DEBUG_LOG_VAREX("Support found at CF: ", _support);
+			[_zoneIndex, _aizZoneActiveIndex,  _waypointPool, _waypointCount, ([] call fnc_aiz_GetRandomInfClassnames), getPos _support] spawn fnc_aiz_RunGroup;
+			deleteVehicle _support;
+		}
+		else
+		{
+			// Keine Verstärkung gefunden. Den GruppenCount für diese Zone verringern.
+			private "_zoneData";
+			call compile format["_zoneData = aizZoneData%1;", _zoneIndex];
+			private _groupCount = (_zoneData select 4) - 1;
+			_zoneData set [4, _groupCount];	
+			DEBUG_LOG_VAREX("No Support found. GroupCount decreased to: ", _groupCount);
 		};
 	};
 };
+
 
 //================================================================================
 // So gut aufräumen wie es geht
@@ -240,15 +260,4 @@ while { _run } do
 #endif
 { deleteVehicle _x; } foreach (units _group);
 deleteGroup _group;
-diag_log format["fnc_aiz_RunGroup zoneIndex=%-1: Group deleted", _zoneIndex];
-
-
-
-
-
-
-
-
-
-
-
+//DEBUG_LOG_VAREX("Group deleted. zoneIndex: ", _zoneIndex);

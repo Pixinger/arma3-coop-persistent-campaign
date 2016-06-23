@@ -48,3 +48,9 @@ Land_Mil_WallBig_4m_F
 Land_Mil_WallBig_Corner_F
 
 ACE_SpareBarrel
+
+tmp = cursorTarget getVariable ["ACE_isUnconscious", false]
+tmp = cursorTarget getVariable ["ACE_Captives_isHandcuffed", false]
+
+
+cursorTarget getVariable "ACE_isSurrendering"

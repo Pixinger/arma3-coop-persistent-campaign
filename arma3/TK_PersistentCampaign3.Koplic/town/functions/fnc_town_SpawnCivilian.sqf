@@ -260,20 +260,23 @@ while { _run } do
 				if (_target distance2D (getPos _unit) < 5) exitWith
 				{
 					Sleep 2; // Noch mal kurz warten
-					private _supplies = nearestObjects [getPos _unit, townSupplyClassnames, 10];
-					if (count _supplies > 0) then
+					private _supplyObjects = nearestObjects [getPos _unit, townSupplyClassnames, 10];					
 					{
-						private _supply = _supplies select 0;
-						_supply setDamage ((damage _supply) + 0.1);
-						if (damage _supply >= 1) then { deleteVehicle _supply; };
+						if (!isNull (attachedTo _x)) exitWith
+						{
+							_x setDamage ((damage _x) + 0.1);
+							if (damage _x >= 1) then { deleteVehicle _x; };
 
-						(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];
-						_supplies = _supplies + 10;
-						(townInfos select _townIndex) set [0, _supplies];						
-						// debug console command: (severside) "(townInfos select _townIndex) set [0,100];"
-					};
-
-					_state = STATE_GOHOME;				
+							(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];
+							_supplies = _supplies + 10;
+							(townInfos select _townIndex) set [0, _supplies];						
+							// debug console command: (severside) "(townInfos select _townIndex) set [0,100];"
+							_state = STATE_GOHOME; // Supplies gefunden, ab nach Hause
+						};
+					} foreach _supplyObjects;
+					
+					// Wenn es hier keien Supplies mehr gibt, dann NACHDENKEN Alter...
+					if (_state != STATE_GOHOME) then { _state = STATE_THINKING };
 				};
 
 				// Wenn er sich nicht bewegt, dann einfach diese Einheit beenden.

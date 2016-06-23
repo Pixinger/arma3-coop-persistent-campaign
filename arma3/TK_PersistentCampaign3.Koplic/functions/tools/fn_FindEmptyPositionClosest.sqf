@@ -10,4 +10,5 @@ while { count _position == 0 } do
 	_distance = _distance + _steps;
 	_position = _centerPosition findEmptyPosition [0, _distance, _classname];
 };
+//diag_log format["_distance: %1", _distance];
 _position;

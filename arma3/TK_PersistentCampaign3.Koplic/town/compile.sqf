@@ -22,3 +22,4 @@ if (isServer) then
 
 fnc_town_DatabaseSaveClient = compile preprocessFileLineNumbers "town\functions\fnc_town_DatabaseSaveClient.sqf";
 fnc_town_DatabaseClearClient = compile preprocessFileLineNumbers "town\functions\fnc_town_DatabaseClearClient.sqf";
+fnc_town_DrawMarkerNumbers = compile preprocessFileLineNumbers "town\functions\fnc_town_DrawMarkerNumbers.sqf";

@@ -3,11 +3,8 @@
 //DEBUG_LOG_THIS
 
 #include "..\defines.hpp"
-#define REDUCE_DISTANCE 	1000
-#define EXPAND_DISTANCE 	800
 
 waitUntil { aizZoneInitCompleted };
-//diag_log format["fnc_aiz_RunGroupCampTown: _this = %1", _this];
 
 Sleep (random RANDOM_START_DELAY);
 //================================================================================
@@ -17,11 +14,10 @@ params ["_zoneIndex", "_aizZoneActiveIndex", "_camp", "_unitClassnames"];
 _camp params ["_house", "_housePosIndex"]; 
 
 //================================================================================
-// Einheiten erstellen. (Alle! Danach wird dann reduziert)
+// Einheiten erstellen
 //================================================================================
 private _group = [(getPos _house), EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
-_group setBehaviour "SAFE";
-[_group, (getPos _house)] call fnc_aiz_GroupTaskDefend;
+[_group, (getPos _house), 50] call fnc_aiz_GroupTaskDefend;
 
 #ifdef MARKER_ENABLED
 //================================================================================
@@ -29,10 +25,9 @@ _group setBehaviour "SAFE";
 //================================================================================
 aizGroupMarkerCounter  = aizGroupMarkerCounter + 1;
 private _markerCounter = aizGroupMarkerCounter;
-private _markerName = format["markerUTown%1_%2", _zoneIndex, floor(random 999999)];
 private["_markerNames"];
 _markerNames = [];
-{ _markerNames pushBack format["%1_%2", _markerName, _foreachindex]; } foreach (units _group);
+{ _markerNames pushBack format["%1_%2", format["markerUTown%1_%2", _zoneIndex, floor(random 999999)], _foreachindex]; } foreach (units _group);
 {
 	createMarker [_x, [0,0]];
 	_x setMarkerShape "ICON";
@@ -43,131 +38,68 @@ _markerNames = [];
 } foreach _markerNames;
 #endif
 
+#define STATE_EXIT			0
+#define STATE_ACTIVE		1
 
-#define STATE_REDUCED	1
-#define STATE_EXPANDED	2
-#define STATE_FLEE		3
-#define STATE_EXIT		4
-private _state = STATE_EXPANDED;
-private _unitInfos = [];
-private _run = true;
-while { _run } do 
+private _autoEngange = if ([1, 3] call BIS_fnc_randomInt == 1) then { true } else { false };
+private _validateTimeout = 0;
+
+private _state = STATE_ACTIVE;
+while { _state != STATE_EXIT } do 
 {
-	switch (_state) do 
+	Sleep 2;
+	
+	//================================================================================
+	// Gruppe validieren
+	if (time > _validateTimeout) then
 	{
-		case STATE_EXPANDED: 
-		{ 
-			while { true } do
-			{
-
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
-				{
-					_state = STATE_EXIT;
-				};
-				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
-				{ 
-					#ifdef MARKER_ENABLED
-					{
-						private _mn = _markerNames select _foreachindex;
-						_mn setMarkerText format["T|%1", _markerCounter];
-						_mn setMarkerPos (getPos _x);
-					} foreach units _group;
-					#endif
-					
-					_unitInfos = [_group] call fnc_aiz_GroupReduce;
-					[_group, (getPos _house)] call fnc_aiz_GroupTaskDefend;
-					_state = STATE_REDUCED;
-				};
-				if ([_group] call fnc_aiz_GroupAliveCount < 2) exitWith
-				{
-					_state = STATE_FLEE;
-				};
-				
-				#ifdef MARKER_ENABLED
-				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["T|EX|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-				#endif
-				
-				Sleep 10;				
+		//DEBUG_LOG("Validating group");
+		_validateTimeout = time + 10;
+		
+		// Gefangene und tote Einheiten entfernen
+		{
+			if ((!alive _x) || {(_x getVariable ["ACE_Captives_isHandcuffed", false])}) then 
+			{ 	
+				[_x] join grpNull; 
+				//DEBUG_LOG_VAREX("Unit joined grpNull: ", _x);
 			};
-		};
-		case STATE_REDUCED: 
-		{ 
-			while { true } do
-			{
-				#ifdef MARKER_ENABLED
-				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["T|RD|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-				#endif
+		} foreach (units _group);
 
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
-				{
-					_state = STATE_EXIT;
-				};
-				if ([getPos (leader _group), EXPAND_DISTANCE] call fnc_aiz_IsBlueNear) exitWith 
-				{ 
-					[_group, _unitInfos] call fnc_aiz_GroupExpand;
-					[_group, (getPos _house)] call fnc_aiz_GroupTaskDefend;
-					_state = STATE_EXPANDED;
-				};
+		// Wenn die Gruppe leer ist, dann beenden
+		if (count (units _group) == 0) exitWith { _state = STATE_EXIT; };
+
+		//================================================================================
+		// Auto Engage
+		if (_autoEngange) then
+		{
+			//private _countEnemy = player countEnemy (allPlayers);
+			//if (_countEnemy > 0) then
+			private _enemy = (leader _group) findNearestEnemy (leader _group);
+			if (!isNull _enemy) then
+			{
+				INFO_LOG("Auto engage executed!");
+				_autoEngange = false;
 				
-				Sleep 5;
-			};
+				_group setBehaviour "COMBAT";
+				_group setCombatMode "RED";
+				[units _group] commandTarget _enemy;
+				{ if ([1, 3] call BIS_fnc_randomInt == 1) then { _x commandFire _enemy }; } foreach (units _group);			
+			};		
 		};	
-		case STATE_FLEE:
-		{ 
-			// Hier sollte der Flucht Code rein. 
-			// Da mir noch Zeit fehlt, begehen die Einheiten einfach Selbstmord.
-			{
-				_x setDamage 1;
-			} foreach units _group;
-
-			// Warten und prüfen
-			while { true } do
-			{
-				#ifdef MARKER_ENABLED
-				{
-					private _mn = _markerNames select _foreachindex;
-					_mn setMarkerText format["T|FL|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-					_mn setMarkerPos (getPos _x);
-				} foreach units _group;
-				#endif
-
-				if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith 
-				{
-					_state = STATE_EXIT;
-				};
-				if (!([(getPos (leader _group)), REDUCE_DISTANCE] call fnc_aiz_IsBlueNear)) exitWith 
-				{ 
-					_state = STATE_EXIT;
-				};
-				
-				Sleep 10;
-			};
-		};
-		case STATE_EXIT:
-		{ 
-			#ifdef MARKER_ENABLED
-			{
-				private _mn = _markerNames select _foreachindex;
-				_mn setMarkerText format["T|EXIT|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
-				_mn setMarkerPos (getPos _x);
-			} foreach units _group;
-			#endif
-			_run = false; // Exit
-		};	
-		default 
-		{ 
-			diag_log format["ERROR: fnc_aiz_RunGroupCampTown.sqf: Invalid state for state-machine: _state=%1", _state];
-			_run = false; // Emergency exit
-		};
-	};
+	};		
+	
+	//================================================================================
+	if ((aizZoneActive select _zoneIndex) != _aizZoneActiveIndex) exitWith { _state = STATE_EXIT; };		
+	
+	#ifdef MARKER_ENABLED
+	//================================================================================
+	{
+		private _mn = _markerNames select _foreachindex;
+		_mn setMarkerText format["T|%1|%2|%3", _markerCounter, _foreachindex, _zoneIndex];
+		_mn setMarkerPos (getPos _x);
+	} foreach units _group;
+	//================================================================================
+	#endif		
 };
 
 //================================================================================
@@ -179,4 +111,4 @@ while { _run } do
 { deleteVehicle _x; } foreach (units _group);
 { deleteWaypoint _x; } foreach (waypoints _group);
 deleteGroup _group;
-diag_log format["fnc_aiz_RunGroupCampTown%1: Group deleted", _zoneIndex];
+//DEBUG_LOG("Group deleted");

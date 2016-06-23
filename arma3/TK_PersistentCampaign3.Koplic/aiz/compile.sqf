@@ -12,7 +12,6 @@ if (isServer) then
 	fnc_aiz_GroupReduce = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupReduce.sqf";
 	fnc_aiz_GroupExpand = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupExpand.sqf";
 	fnc_aiz_GroupTaskDefend = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupTaskDefend.sqf";
-	fnc_aiz_GroupTaskDefend2 = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupTaskDefend2.sqf";
 	fnc_aiz_GroupAliveCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GroupAliveCount.sqf";
 	fnc_aiz_FindCampTownRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTownRespawn.sqf";
 	fnc_aiz_FindCampTownRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTownRespawnCount.sqf";
@@ -37,13 +36,9 @@ if (isServer) then
 	fnc_aiz_CreateGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateGroup.sqf";
 
 	fnc_aiz_RunGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup.sqf";
-	fnc_aiz_RunGroup2 = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup2.sqf";
 	fnc_aiz_RunGroupCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCheckpoint.sqf";
-	fnc_aiz_RunGroupCheckpoint2 = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCheckpoint2.sqf";
 	fnc_aiz_RunGroupCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampTown.sqf";
-	fnc_aiz_RunGroupCampTown2 = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampTown2.sqf";
 	fnc_aiz_RunGroupCampField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampField.sqf";
-	fnc_aiz_RunGroupCampField2 = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampField2.sqf";
 	fnc_aiz_ZoneInit = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneInit.sqf";
 	fnc_aiz_ZoneResume = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneResume.sqf";
 	fnc_aiz_ZonePause = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZonePause.sqf";

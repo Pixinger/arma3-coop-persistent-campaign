@@ -1,3 +1,8 @@
+#define DEBUG_LOG_ENABLED
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 //==========================================================================================
 // Permanent Loop starten
 //==========================================================================================
@@ -12,11 +17,13 @@
 		if (markerType _markerName != "") then 
 		{ 		
 			(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];	
+			diag_log format["DEBUG: TOWN: BEFORE: _townIndex=%1, _supplies=%2, (townInfos select _townIndex)=%3 _civilianCount=%4, _houseCount=%5", _townIndex, _supplies, (townInfos select _townIndex), _civilianCount, _houseCount];
 
 			//==========================================================================================
 			// Auch Zivilisten verbrauchen Nahrung
 			//diag_log format["town %1 supplpies reduced by civilians: %2", _townIndex, ceil(_houseCount / 10)];
 			_supplies = _supplies - ceil(_houseCount / 10);
+			DEBUG_LOG_VAR(_supplies);
 
 			//==========================================================================================
 			// RED in der Nähe, dann Supplies klauen
@@ -25,17 +32,19 @@
 			{
 				if ((alive _x) && { (captiveNum _x == 0) && { (damage _x < 0.1) }}) exitWith { _redsNear = true; };
 			} foreach _redUnits;
+			DEBUG_LOG_VAR(_redsNear);
 			if (_redsNear) then 
 			{
 				_supplies = _supplies - 10;
-				//diag_log format["REDS NEAR in town %1", _townIndex];
 			};
-			//diag_log format["town %1 supplpies are now: %2", _townIndex, _supplies];
+			DEBUG_LOG_VAR(_supplies);
 			
 			//==========================================================================================
 			// Aktuellen Stand speichern
 			if (_supplies < 0) then { _supplies = 0; }; 
 			(townInfos select _townIndex) set [0, _supplies];
+			diag_log format["DEBUG: TOWN: AFTER: _townIndex=%1, _supplies=%2, (townInfos select _townIndex)=%3 _civilianCount=%4, _houseCount=%5", _townIndex, _supplies, (townInfos select _townIndex), _civilianCount, _houseCount];
+
 
 			//==========================================================================================
 			// Marker Farbe aktualisieren
@@ -71,7 +80,9 @@
 		if (_townIndex >= townTownCount) then 
 		{ 
 			_townIndex = 0; 
+			DEBUG_LOG_VAREX("TOWN: Time before Sleep 30*60: ", time);
 			Sleep (60* 30); // Wenn alle Städte durch sind, warten wir etwas länger.
+			DEBUG_LOG_VAREX("TOWN: Time after Sleep 30*60: ", time);
 		}
 		else
 		{

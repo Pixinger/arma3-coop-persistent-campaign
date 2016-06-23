@@ -43,26 +43,35 @@ if (logisticGearDialog_ButtonResult == 1)  then
 	// Füllstand der Kiste aktualisieren
 	_dbVar = _cursorTarget getVariable["dbVar", []];
 	_contentCount = if (count _dbVar > 0) then { _dbVar select 0; } else { 10000 };
-
-	// Masse der Ausrüstung errechnen
-	private _massPlayerBefore = [player] call fnc_logisticGear_GetCfgMassPlayer;
-	// LoadOut zuweisen 
-	private _result = [player, _scriptFilename] call fnc_logisticGear_ApplyLoadOut;
-	// Masse der Ausrüstung errechnen
-	private _massPlayerAfter = [player] call fnc_logisticGear_GetCfgMassPlayer;
-
-	//-----------------------------------------------------------------	
-	// Füllstand der Kiste zurückschreiben
-	_contentCount = _contentCount + _massPlayerBefore - _massPlayerAfter;
-	if (_contentCount <= 0) then 
+	
+	if (_contentCount > 0) then
 	{
-		deleteVehicle _cursorTarget;
+		// Masse der Ausrüstung errechnen
+		private _massPlayerBefore = [player] call fnc_logisticGear_GetCfgMassPlayer;
+		// LoadOut zuweisen 
+		private _result = [player, _scriptFilename] call fnc_logisticGear_ApplyLoadOut;
+		// Masse der Ausrüstung errechnen
+		private _massPlayerAfter = [player] call fnc_logisticGear_GetCfgMassPlayer;
+
+		//-----------------------------------------------------------------	
+		// Füllstand der Kiste zurückschreiben
+		_contentCount = _contentCount + _massPlayerBefore - _massPlayerAfter;
+		if (_contentCount <= 0) then 
+		{
+			_dbVar set [0, 0];
+			_cursorTarget setVariable["dbVar", _dbVar, true];
+			///deleteVehicle _cursorTarget;
+		}
+		else
+		{
+			_dbVar set [0, _contentCount];
+			_cursorTarget setVariable["dbVar", _dbVar, true];
+		};	
 	}
 	else
 	{
-		_dbVar set [0, _contentCount];
-		_cursorTarget setVariable["dbVar", _dbVar, true];
-	};	
+		hint "Die Kiste ist leer!";
+	};
 };
 
 //-----------------------------------------------------------------	
