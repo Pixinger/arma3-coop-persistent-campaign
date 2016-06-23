@@ -161,6 +161,8 @@ private _logisticHaulableDefinitions = [
 	["BWA3_Leopard2A6M_Fleck",		[[0,  -8, 0.85], 0, true]],
 	["B_APC_Tracked_01_rcws_F",		[[0,  -8, 0.85], 0, true]],
 	["B_APC_Wheeled_01_cannon_F",	[[0,  -8, 0.85], 0, true]],
+	["BWA3_Puma_Fleck",				[[0,  -8, 0.85], 0, true]],
+	["BWA3_Puma_Tropen",			[[0,  -8, 0.85], 0, true]],	
 	["O_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
 	["O_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
 	["O_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],

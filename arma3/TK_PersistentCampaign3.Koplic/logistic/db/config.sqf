@@ -52,6 +52,8 @@ if (isServer) then
 		"Land_BagBunker_Small_F",
 		"Land_BagBunker_Large_F",
 		// Objekte
+		"ACE_Wheel",
+		"ACE_Track",
 		"B_Slingload_01_Repair_F",
 		"Land_PaperBox_closed_F",
 		"Land_PaperBox_open_full_F",
