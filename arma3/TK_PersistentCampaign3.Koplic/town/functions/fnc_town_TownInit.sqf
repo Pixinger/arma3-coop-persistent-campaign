@@ -1,3 +1,7 @@
+#include "..\..\debug.hpp"
+//DEBUG_LOG_FILE
+//DEBUG_LOG_THIS
+
 //==========================================================================================
 // DEFINES
 //==========================================================================================
@@ -44,6 +48,7 @@ if (count _dataSet > 0) then
 // townInfos setze
 //==========================================================================================
 townInfos set [_townIndex, [_supplies,_civilianCount,_houseCount]]; 
+INFO_LOG_VAREX("TOWN created: [townIndex, civilianCount, houseCount]=", townInfos);
 
 //==========================================================================================
 // Trigger erstellen

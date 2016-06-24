@@ -5,5 +5,5 @@ if (isServer) then
 	private _townActiveIndex = townActiveCounter;
 	townActive set [_townIndex, _townActiveIndex];
 	[_townIndex, _townActiveIndex] call fnc_town_TownResume;
-	diag_log format["fnc_town_OnTriggerActivated: _this = %1 / %2", _this, _townActiveIndex];
+	//diag_log format["fnc_town_OnTriggerActivated: _this = %1 / %2", _this, _townActiveIndex];
 };

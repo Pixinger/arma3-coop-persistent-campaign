@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={506.84457,33.656685,158.9592};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,0};
+		pos[]={1370.1011,128.36566,432.33978};
+		dir[]={-0.10661689,-0.82592767,0.55363286};
+		up[]={-0.15618528,0.56377178,0.81102949};
+		aside[]={0.9819746,6.7020301e-007,0.18910567};
 	};
 };
 binarizationWanted=0;
@@ -225,7 +225,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v3.11";
+		briefingName="[TK]Persistent Campaign III (work in progress) v3.12";
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;

@@ -23,8 +23,15 @@ private _homePosition = [_position select 0, _position select 1, _position selec
 
 //==========================================================================================
 // Unit erstellen
+private _unit = objNull;
 private _group = createGroup civilian;
-private _unit = _group createUnit [townCivClassnames call PIX_fnc_RandomElement, _homePosition, [], 0, "FORM"];
+// Solange Einheiten erstellen bis sie nicht mehr null ist. Manchmal klappt das nicht.
+while { true } do 
+{ 
+	_unit = _group createUnit [townCivClassnames call PIX_fnc_RandomElement, _homePosition, [], 0, "FORM"];
+	if (!isNull _unit) exitWith{};
+	Sleep 1;
+}; 
 _unit setPos _homePosition;
 _unit setDir (random 360);
 _unit setUnitAbility 0;
@@ -262,7 +269,7 @@ while { _run } do
 					Sleep 2; // Noch mal kurz warten
 					private _supplyObjects = nearestObjects [getPos _unit, townSupplyClassnames, 10];					
 					{
-						if (!isNull (attachedTo _x)) exitWith
+						if (isNull (attachedTo _x)) exitWith
 						{
 							_x setDamage ((damage _x) + 0.1);
 							if (damage _x >= 1) then { deleteVehicle _x; };
@@ -270,13 +277,13 @@ while { _run } do
 							(townInfos select _townIndex) params["_supplies", "_civilianCount", "_houseCount"];
 							_supplies = _supplies + 10;
 							(townInfos select _townIndex) set [0, _supplies];						
-							// debug console command: (severside) "(townInfos select _townIndex) set [0,100];"
+							// debug console command: (severside) "(townInfos select >>_townIndex<<) set [0,100];"
 							_state = STATE_GOHOME; // Supplies gefunden, ab nach Hause
 						};
 					} foreach _supplyObjects;
 					
 					// Wenn es hier keien Supplies mehr gibt, dann NACHDENKEN Alter...
-					if (_state != STATE_GOHOME) then { _state = STATE_THINKING };
+					if (_state != STATE_GOHOME) then { _state = STATE_THINKING; };
 				};
 
 				// Wenn er sich nicht bewegt, dann einfach diese Einheit beenden.
@@ -314,6 +321,7 @@ else
 	_supplies = _supplies - 10;
 	if (_supplies < 0) then { _supplies = 0; }; 
 	(townInfos select _townIndex) set [0, _supplies];
+	INFO_LOG_VAREX2("TOWN: Civilian unit dead: Supply-Penalty! unit/townindex", _unit, _townIndex);
 };
 deleteGroup _group;
 
