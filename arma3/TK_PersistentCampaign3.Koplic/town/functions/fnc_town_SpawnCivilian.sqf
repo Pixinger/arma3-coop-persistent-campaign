@@ -39,7 +39,6 @@ _unit setBehaviour "CARELESS";
 
 #ifdef MARKER_ENABLED
 private["_markerName"];
-DEBUG_LOG_VAR(_homePosition);
 _markerName = createMarker [format["markerCiv%1_%2", _townIndex, floor(random 999999)], (getPos _unit)];
 _markerName setMarkerShape "ICON";
 _markerName setMarkerType "o_inf";

@@ -2,11 +2,9 @@
 //DEBUG_LOG_FILE
 //DEBUG_LOG_THIS
 
-#include "..\defines.hpp"
-
 waitUntil { aizZoneInitCompleted };
 
-Sleep (random RANDOM_START_DELAY);
+Sleep (random 3);
 //================================================================================
 // _THIS
 //================================================================================

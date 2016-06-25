@@ -1,1 +1,0 @@
-#define RANDOM_START_DELAY	3

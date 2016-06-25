@@ -1,4 +1,3 @@
-#define DEBUG_LOG_ENABLED
 #include "..\..\debug.hpp"
 //DEBUG_LOG_FILE
 //DEBUG_LOG_THIS
@@ -32,14 +31,14 @@
 			if (_redsNear) then 
 			{
 				_supplies = _supplies - 10;
-				DEBUG_LOG_VAREX("TOWN: ENEMY NEAR. _townIndex=", _townIndex);
+				INFO_LOG_VAREX("TOWN: ENEMY NEAR. _townIndex=", _townIndex);
 			};
 			
 			//==========================================================================================
 			// Aktuellen Stand speichern
 			if (_supplies < 0) then { _supplies = 0; }; 
 			(townInfos select _townIndex) set [0, _supplies];
-			DEBUG_LOG_VAREX2("TOWN: _townIndex/_supplies", _townIndex, _supplies);
+			INFO_LOG_VAREX2("TOWN: _townIndex/_supplies", _townIndex, _supplies);
 
 			//==========================================================================================
 			// Marker Farbe aktualisieren
