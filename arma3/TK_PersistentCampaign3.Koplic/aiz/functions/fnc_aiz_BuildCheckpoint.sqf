@@ -2,7 +2,6 @@
 //DEBUG_LOG_FILE
 //DEBUG_LOG_THIS
 
-#include "..\defines.hpp"
 params ["_zoneIndex", "_checkpoint"];
 _checkpoint params ["_position", "_direction"];
 

@@ -1,0 +1,6 @@
+16:45:27 Error in expression <g = logisticObjectsTransportablesConfig select _objectIndex;
+private _objectSize>
+16:45:27   Error position: <select _objectIndex;
+private _objectSize>
+16:45:27   Error Nullteiler
+16:45:27 File mpmissions\__CUR_MP.Koplic\logistic\functions\fnc_Logistic_Object_Unload.sqf, line 23
