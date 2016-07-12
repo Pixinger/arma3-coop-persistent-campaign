@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1370.1011,128.36566,432.33978};
-		dir[]={-0.10661689,-0.82592767,0.55363286};
-		up[]={-0.15618528,0.56377178,0.81102949};
-		aside[]={0.9819746,6.7020301e-007,0.18910567};
+		pos[]={1342.5387,81.949486,458.79071};
+		dir[]={-0.40712556,-0.77525848,0.48297751};
+		up[]={-0.49967003,0.63163364,0.59276509};
+		aside[]={0.76460779,6.8394002e-007,0.64452827};
 	};
 };
 binarizationWanted=0;
@@ -47,7 +47,7 @@ class AddonsMetaData
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
-			name="Arma 3 Zeus Update - Scripted features";
+			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -68,42 +68,58 @@ class AddonsMetaData
 		class Item3
 		{
 			className="ace_medical";
-			name="ace_medical";
+			name="ACE3 - Medical";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item4
 		{
 			className="ace_medical_menu";
-			name="ace_medical_menu";
+			name="ACE3 - Medical Menu";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item5
 		{
 			className="ace_map";
-			name="ace_map";
+			name="ACE3 - Map";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item6
 		{
 			className="ace_captives";
-			name="ace_captives";
+			name="ACE3 - Captives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item7
 		{
 			className="ace_hearing";
-			name="ace_hearing";
+			name="ACE3 - Hearing";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item8
 		{
 			className="ace_interaction";
-			name="ace_interaction";
+			name="ACE3 - Interaction";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item9
 		{
 			className="ace_map_gestures";
-			name="ace_map_gestures";
+			name="ACE3 - Map Gestures";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item10
 		{
 			className="ace_zeus";
-			name="ace_zeus";
+			name="ACE3 - Zeus";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item11
 		{
@@ -115,7 +131,9 @@ class AddonsMetaData
 		class Item12
 		{
 			className="ace_repair";
-			name="ace_repair";
+			name="ACE3 - Repair";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 	};
 };
@@ -135,7 +153,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -196,7 +214,7 @@ class CustomAttributes
 		};
 		nAttributes=3;
 	};
-	class Category1
+	class Category2
 	{
 		name="Scenario";
 		class Attribute0
@@ -225,7 +243,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (work in progress) v3.15";
+		briefingName="[TK]Persistent Campaign III (work in progress) v3.16";
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
@@ -1472,7 +1490,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1281.6556,3.9803925,521.08521};
+				position[]={1281.656,3.9803925,521.08502};
 			};
 			id=412;
 			type="ACE_moduleAdvancedMedicalSettings";
@@ -1733,7 +1751,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1281.5822,3.9803925,517.45282};
+				position[]={1281.582,3.9803925,517.453};
 			};
 			id=413;
 			type="ACE_moduleMedicalSettings";
@@ -2013,7 +2031,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1281.5822,3.9803925,513.99078};
+				position[]={1281.582,3.9803925,513.99103};
 			};
 			id=414;
 			type="ACE_moduleMedicalMenuSettings";
@@ -2046,7 +2064,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1281.5822,3.9803925,510.45319};
+				position[]={1281.582,3.9803925,510.453};
 			};
 			id=415;
 			type="ACE_moduleBasicMedicalSettings";
@@ -2098,7 +2116,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1281.5824,3.9803925,506.84};
+				position[]={1281.582,3.9803925,506.84};
 			};
 			id=416;
 			type="ACE_moduleReviveSettings";
@@ -2663,7 +2681,26 @@ class Mission
 						};
 					};
 				};
-				nAttributes=5;
+				class Attribute5
+				{
+					property="ace_zeus_moduleSettings_autoAddObjects";
+					expression="_this setVariable ['autoAddObjects',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=6;
 			};
 		};
 		class Item72
@@ -2695,7 +2732,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1282.1754,3.9803925,503.87302};
+				position[]={1282.175,3.9803925,503.87299};
 			};
 			id=673;
 			type="ACE_moduleRepairSettings";
