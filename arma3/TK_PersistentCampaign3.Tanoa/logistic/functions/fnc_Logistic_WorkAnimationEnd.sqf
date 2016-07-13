@@ -1,0 +1,2 @@
+logisticWorkAnimExit = true;
+player switchMove "";

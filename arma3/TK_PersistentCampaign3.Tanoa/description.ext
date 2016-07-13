@@ -1,0 +1,80 @@
+author = "[TK]Pix";		/* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben"," so erscheint Unknown Author. */
+onLoadName = "[TK]Persistent Campaign 3"; 	/* Mission Name*/
+onLoadMission = "Beta"; 						/* Beschreibung*/
+OnLoadIntro = "by [TK]Pix";
+onLoadMissionTime = false; 					/* ...ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll. */
+onLoadIntroTime = false;   					/* ...ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll. */
+briefing = 0; 								/* ...ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
+debriefing = 0;   							/* ...ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/
+disabledAI = true;
+showCompass = 1;
+showGPS = 1;
+showMap = 1;
+showNotepad = 0;
+showRadio = 1;
+showWatch = 1;
+enableDebugConsole = 1;
+enableTeamSwitch = 0;
+respawn = "BASE";
+respawnDelay = 10;
+respawnDialog = 0; 							/* legt fest ob während des Respawns die Multiplayer-Statistik sowie ein Respawn-Countdown angezeigt werden soll.*/
+enableItemsDropping = 0; 					/* Mit diesem Eintrag kann eingestellt werden, ob eine Einheit beim schwimmen nach einer Weile ihre Ausrüstung verliert oder nicht. Mögliche Werte sind 0 (= Einheit verliert keine Ausrüstung) und 1 (= Einheit verliert ihre Ausrüstung).*/
+joinUnassigned = 0; 						/* Hier kann festgelegt werden, ob ein Spieler welcher ein MP Spiel betritt automatisch einen Spielerslot zugewiesen bekommt.Mögliche Werte sind 0 (=wird kein Slot zugewiesen) und 1 (=wird ein Slot zugewiesen).*/
+allowFunctionsRecompile = 1;
+allowFunctionsLog = 1;
+forceRotorLibSimulation = 1;				/* Default value: 0-options based; 1-force enable; 2-force disable */
+disableChannels[] = {2, 5, 6};				/* 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System, */
+
+
+class CfgFunctions
+{
+	#include "functions\cfgfunctions.hpp"
+};
+
+class Header
+{
+  gameType = Coop;            
+  minPlayers = 4;             
+  maxPlayers = 80;            
+  playerCountMultipleOf = 1;  
+};
+
+class Params
+{
+	class Loadouts /* paramsArray[0]*/
+	{		
+	    title = "Ausrüstung";
+	    values[] = {0, 1};
+	    texts[] = {"Bundeswehr"};
+	    default = 0;
+	};
+	class AIZ_EnemyPerGroupMin /* paramsArray[1]*/
+	{		
+	    title = "AIZ - Einheiten pro Gruppe (mindestens)";
+	    values[] = {2, 3, 4, 5, 6, 7, 8};
+	    texts[] = {"2","3","4","5","6","7","8"};
+	    default = 4;
+	};
+	class AIZ_EnemyPerGroupMax /* paramsArray[2]*/
+	{		
+	    title = "AIZ - Einheiten pro Gruppe (maximal)";
+	    values[] = {2, 3, 4, 5, 6, 7, 8};
+	    texts[] = {"2","3","4","5","6","7","8"};
+	    default = 6;
+	};
+};
+
+class CfgRemoteExec
+{        
+	class Commands
+    {
+		  /*your commands here*/
+		  class hint { allowedTargets=0; jip=0; }
+	};
+};
+
+#include "dialogDefines.hpp"
+#include "maindialog_classes.hpp"
+
+#include "player\classes.hpp"
+#include "logistic\classes.hpp"

@@ -1,0 +1,1 @@
+remoteExec ["fnc_logisticDb_ClearServer", 2]; // 2= only server
