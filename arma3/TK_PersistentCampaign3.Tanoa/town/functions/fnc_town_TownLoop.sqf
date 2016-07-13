@@ -24,7 +24,7 @@
 			//==========================================================================================
 			// RED in der Nähe, dann Supplies klauen
 			private _redsNear = false;
-			private _redUnits = ((markerPos _markerName) nearEntities ["SoldierEB", 600]);
+			private _redUnits = ((markerPos _markerName) nearEntities ["SoldierGB", 600]);
 			{
 				if ((alive _x) && { (captiveNum _x == 0) && { (damage _x < 0.1) }}) exitWith { _redsNear = true; };
 			} foreach _redUnits;

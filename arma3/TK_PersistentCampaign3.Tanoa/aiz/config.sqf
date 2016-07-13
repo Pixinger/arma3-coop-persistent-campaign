@@ -1,5 +1,5 @@
 cfgAizDbPrefix = "PC3AIZTANOA";
-cfgAizZoneCount = 16;
+cfgAizZoneCount = 26;
 
 cfgAizCampTownClassnames = ["Land_Laptop_unfolded_F","Land_SatellitePhone_F"];
 cfgAizCampTownMinRespawnDistance = 150;

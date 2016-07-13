@@ -20,7 +20,7 @@ if (count _waypointPool < _waypointCount) then { _waypointCount = count _waypoin
 //================================================================================
 // Einheiten erstellen. (Alle! Danach wird dann reduziert)
 //================================================================================
-private _group = [_startPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
+private _group = [_startPosition, resistance, _unitClassnames] call fnc_aiz_SpawnGroup;
 _group setBehaviour "SAFE";
 _group setSpeedMode "LIMITED";
 _group setFormation "STAG COLUMN";

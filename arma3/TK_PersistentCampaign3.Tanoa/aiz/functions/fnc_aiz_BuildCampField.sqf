@@ -26,7 +26,6 @@ _markerName setMarkerAlpha 0.8;
 
 private _fireClassnames = ["Land_Campfire_F","Campfire_burning_F"];
 private _staticClassnames = ["I_HMG_01_high_F","I_GMG_01_high_F"];
-private _tentClassnames = ["Land_TentDome_F", "Land_TentA_F"];
 
 private _className = (_fireClassnames call PIX_fnc_RandomElement);	
 private _firePosition = _position findEmptyPosition [0, cfgAizCampFieldRadius, _className];
@@ -42,7 +41,7 @@ if (count _firePosition > 0) then
 	private _tents = [];
 	for "_i" from 1 to _respawns do
 	{
-		_className = (_tentClassnames call PIX_fnc_RandomElement);	
+		_className = (cfgAizCampFieldClassnames call PIX_fnc_RandomElement);	
 		private _tentPosition = _firePosition findEmptyPosition [3, cfgAizCampFieldRadius, _className];		
 		if (count _tentPosition > 0) then
 		{

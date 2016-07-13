@@ -14,7 +14,7 @@ _camp params ["_house", "_housePosIndex"];
 //================================================================================
 // Einheiten erstellen
 //================================================================================
-private _group = [(getPos _house), EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
+private _group = [(getPos _house), resistance, _unitClassnames] call fnc_aiz_SpawnGroup;
 [_group, (getPos _house), 50] call fnc_aiz_GroupTaskDefend;
 
 #ifdef MARKER_ENABLED

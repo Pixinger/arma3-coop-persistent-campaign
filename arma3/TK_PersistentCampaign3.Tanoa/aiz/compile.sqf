@@ -33,7 +33,6 @@ if (isServer) then
 
 	fnc_aiz_CreateMineField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineField.sqf";
 	fnc_aiz_CreateMineFieldRandom = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineFieldRandom.sqf";
-	fnc_aiz_CreateGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateGroup.sqf";
 
 	fnc_aiz_RunGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup.sqf";
 	fnc_aiz_RunGroupCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCheckpoint.sqf";

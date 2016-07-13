@@ -37,7 +37,7 @@ if (hasInterface) then
 					};
 					_markerName setMarkerPosLocal (getPos _unit);
 					_markerName setMarkerColorLocal "ColorBlack";
-					if (_unit isKindOf "SoldierEB") then { _markerName setMarkerColorLocal "ColorRed"; };
+					if (_unit isKindOf "SoldierGB") then { _markerName setMarkerColorLocal "ColorRed"; };
 					if (_unit isKindOf "Civilian_F") then { _markerName setMarkerColorLocal "ColorGreen"; };
 					if (alive _unit) then { _markerName setMarkerAlphaLocal 0.8; } else { _markerName setMarkerAlphaLocal 0.4; };			
 				};

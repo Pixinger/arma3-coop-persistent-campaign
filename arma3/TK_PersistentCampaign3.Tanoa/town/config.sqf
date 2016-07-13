@@ -1,6 +1,6 @@
 townDbPrefix = "PC3TOWNTANOA";
-townTownCount = 24;
-townSupplySearchRadius = 400;
+townTownCount = 14;
+townSupplySearchRadius = 200;
 townWalkRadius = 75;
 townSupplyClassnames = [
 	"Land_Sacks_heap_F",
@@ -8,6 +8,10 @@ townSupplyClassnames = [
 	];
 
 townCivClassnames = [
+	"C_man_1_F",	// APEX
+	"C_man_casual_1_F",	// APEX
+	"C_man_casual_2_F",	// APEX
+	"C_man_casual_3_F",	// APEX
 	"C_man_p_fugitive_F",
 	"C_man_p_beggar_F",
 	"C_man_w_worker_F",

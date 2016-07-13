@@ -14,7 +14,7 @@ _checkpoint params ["_checkpointPosition", "_checkpointDirection"];
 //================================================================================
 // Einheiten erstellen
 //================================================================================
-private _group = [_checkpointPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
+private _group = [_checkpointPosition, resistance, _unitClassnames] call fnc_aiz_SpawnGroup;
 [_group, _checkpointPosition, 50] call fnc_aiz_GroupTaskDefend;
 
 #ifdef MARKER_ENABLED

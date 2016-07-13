@@ -14,7 +14,7 @@ _camp params ["_campPosition", "_campRespawns"];
 //================================================================================
 // Einheiten erstellen
 //================================================================================
-private _group = [_campPosition, EAST, _unitClassnames] call fnc_aiz_SpawnGroup;
+private _group = [_campPosition, resistance, _unitClassnames] call fnc_aiz_SpawnGroup;
 [_group, _campPosition, (cfgAizCampFieldRadius*2)] call fnc_aiz_GroupTaskDefend;
 
 #ifdef MARKER_ENABLED
