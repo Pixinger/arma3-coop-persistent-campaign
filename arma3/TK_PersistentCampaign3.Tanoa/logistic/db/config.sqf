@@ -1,6 +1,6 @@
 if (isServer) then  
 {
-	logisticDbPrefix = "PC3LOG";	
+	logisticDbPrefix = "PC3LOGTANOA";	
 	
 	// Die Fahrzeuge die in der Datenbank gespeichert werden sollen.
 	logisticDbVehicles = [

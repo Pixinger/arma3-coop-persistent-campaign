@@ -1,4 +1,4 @@
-townDbPrefix = "PC3TOWN";
+townDbPrefix = "PC3TOWNTANOA";
 townTownCount = 24;
 townSupplySearchRadius = 400;
 townWalkRadius = 75;

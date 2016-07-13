@@ -1,4 +1,4 @@
-cfgAizDbPrefix = "PC3AIZ";
+cfgAizDbPrefix = "PC3AIZTANOA";
 cfgAizZoneCount = 16;
 
 cfgAizCampTownClassnames = ["Land_Laptop_unfolded_F","Land_SatellitePhone_F"];
