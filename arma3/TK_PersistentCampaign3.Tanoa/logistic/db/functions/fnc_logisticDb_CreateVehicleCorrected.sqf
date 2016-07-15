@@ -24,4 +24,9 @@ clearWeaponCargoGlobal _object;
 clearMagazineCargoGlobal _object;
 clearBackpackCargoGlobal _object;
 
+[_object, _direction] spawn {
+	Sleep 1;
+	(_this select 0) setDir (_this select 1);
+};
+
 _object;
