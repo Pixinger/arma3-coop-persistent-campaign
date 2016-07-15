@@ -1,5 +1,5 @@
 //#define DEBUG_LOG_ENABLED
-#define MARKER_ENABLED
+//#define MARKER_ENABLED
 
 #ifdef DEBUG_LOG_ENABLED
 	#define DEBUG_LOG_FILE						diag_log 'DEBUG: __FILE__';

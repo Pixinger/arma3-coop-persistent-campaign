@@ -55,7 +55,7 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_SPAR_01_GL_blk_F",
+		"arifle_MX_GL_khk_F",
 		/* Primary weapon Magazine */
 		"30Rnd_65x39_caseless_mag",
 		/* Primary Weapon Items */
