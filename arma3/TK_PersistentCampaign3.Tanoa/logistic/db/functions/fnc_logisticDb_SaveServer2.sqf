@@ -25,16 +25,7 @@ if (isServer) then
 	_databaseVehicles = [];
 	if (count logisticDbVehicles > 0) then
 	{
-		//
-		// ...auf der Map finden
-		private _vehicles = [];
-		{
-			private _missionObjects = allMissionObjects _x;
-			{
-				_vehicles pushBack _x;
-			} foreach _missionObjects;
-		} foreach logisticDbVehicles;
-		// Auslesen
+		private _vehicles = nearestObjects [logisticDbMapCenter, logisticDbVehicles, logisticDbMapRadiusSqr];
 		{	
 			// Nur wenn wir das Fahrzeug nicht ignorieren sollen
 			if (!(_x getVariable ["dbIgnore", false])) then
@@ -60,16 +51,8 @@ if (isServer) then
 	_databaseAmmoboxes = [];
 	if (count logisticDbAmmoboxes > 0) then
 	{
-		//
-		// ...auf der Map finden
-		private _ammoboxes = [];
-		{
-			private _missionObjects = allMissionObjects _x;
-			{
-				_ammoboxes pushBack _x;
-			} foreach _missionObjects;
-		} foreach logisticDbAmmoboxes;
-		// Auslesen
+		private["_ammoboxes"];
+		_ammoboxes = nearestObjects [logisticDbMapCenter, logisticDbAmmoboxes, logisticDbMapRadiusSqr];
 		{	
 			// Nur wenn wir die Ammobox nicht ignorieren sollen
 			if (!(_x getVariable ["dbIgnore", false])) then
@@ -94,16 +77,8 @@ if (isServer) then
 	_databaseObjects = [];
 	if (count logisticDbObjects > 0) then
 	{
-		//
-		// ...auf der Map finden
-		private _objects = [];
-		{
-			private _missionObjects = allMissionObjects _x;
-			{
-				_objects pushBack _x;
-			} foreach _missionObjects;
-		} foreach logisticDbObjects;
-		// Auslesen
+		private["_objects"];
+		_objects = nearestObjects [logisticDbMapCenter, logisticDbObjects, logisticDbMapRadiusSqr];
 		{	
 			// Nur wenn wir die Ammobox nicht ignorieren sollen
 			if (!(_x getVariable ["dbIgnore", false])) then

@@ -4,20 +4,15 @@ if (isServer) then
 	
 	// Die Fahrzeuge die in der Datenbank gespeichert werden sollen.
 	logisticDbVehicles = [
-		"B_HMG_01_F",
+		"B_HMG_01_F", 		//="B_T_HMG_01_F",
 		"B_HMG_01_high_F",
 		"B_HMG_01_A_F",
-		"B_GMG_01_F",
+		"B_GMG_01_F", 		//="B_T_GMG_01_F",
 		"B_GMG_01_high_F",
 		"B_GMG_01_A_F",
-		"B_Mortar_01_F",
-		"B_static_AA_F",
-		"B_static_AT_F",
-		"B_T_HMG_01_F",
-		"B_T_GMG_01_F",
-		"B_T_Mortar_01_F",
-		"B_T_static_AA_F",
-		"B_T_static_AT_F",
+		"B_Mortar_01_F",	//"B_T_Mortar_01_F",
+		"B_Static_AA_F",	//="B_T_static_AA_F",
+		"B_static_AT_F",	//="B_T_static_AT_F",		
 		// Boote
 		"B_T_Boat_Transport_01_F",
 		"B_T_Boat_Armed_01_minigun_F",

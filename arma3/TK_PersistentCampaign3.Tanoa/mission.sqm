@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=853;
+		nextID=865;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2329.0535,19.999172,13174.124};
-		dir[]={0.46309865,-0.45846555,0.75859559};
-		up[]={0.2389027,0.88869399,0.39134207};
-		aside[]={0.85356963,5.4389238e-007,-0.52107495};
+		pos[]={2317.9436,20.621807,13175.493};
+		dir[]={0.31718895,-0.18357635,0.93052298};
+		up[]={0.059260514,0.98299062,0.1738472};
+		aside[]={0.94659686,6.754417e-007,-0.32266709};
 	};
 };
 binarizationWanted=0;
@@ -31,13 +31,14 @@ addons[]=
 	"task_force_radio_items",
 	"cba_main",
 	"A3_Structures_F_Mil_Helipads",
-	"A3_Structures_F_EPA_Mil_Scrapyard"
+	"A3_Structures_F_EPA_Mil_Scrapyard",
+	"A3_Structures_F_Kart_Civ_SportsGrounds"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -82,6 +83,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item7
+		{
+			className="A3_Structures_F_Kart";
+			name="Arma 3 Karts - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -216,7 +224,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=80;
+		items=83;
 		class Item0
 		{
 			dataType="Logic";
@@ -2338,60 +2346,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2344.1658,11.848311,13195.089};
-						angles[]={0,4.0911598,0};
-					};
-					side="West";
-					flags=7;
-					class Attributes
-					{
-						isPlayable=1;
-					};
-					id=787;
-					type="B_T_Soldier_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.04;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-			};
-			class Attributes
-			{
-			};
-			id=786;
-		};
-		class Item73
-		{
-			dataType="Group";
-			side="West";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2343.2058,11.848538,13196.431};
+						position[]={2344.1687,11.848287,13195.08};
 						angles[]={0,4.0911598,0};
 					};
 					side="West";
@@ -2402,7 +2357,6 @@ class Mission
 					};
 					id=789;
 					type="B_T_Soldier_F";
-					atlOffset=9.5367432e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2432,9 +2386,8 @@ class Mission
 			{
 			};
 			id=788;
-			atlOffset=9.5367432e-007;
 		};
-		class Item74
+		class Item73
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -2582,7 +2535,7 @@ class Mission
 				nAttributes=7;
 			};
 		};
-		class Item75
+		class Item74
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -2593,7 +2546,7 @@ class Mission
 			id=798;
 			type="CBA_main_require";
 		};
-		class Item76
+		class Item75
 		{
 			dataType="Marker";
 			position[]={2379.116,2.2491041e+023,13430.692};
@@ -2603,7 +2556,7 @@ class Mission
 			id=800;
 			atlOffset=2.2491041e+023;
 		};
-		class Item77
+		class Item76
 		{
 			dataType="Marker";
 			position[]={1833.736,1,12994.73};
@@ -2613,7 +2566,7 @@ class Mission
 			id=801;
 			atlOffset=-12.45;
 		};
-		class Item78
+		class Item77
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2628,21 +2581,147 @@ class Mission
 			id=802;
 			type="Land_HelipadSquare_F";
 		};
+		class Item78
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2339.469,12.223738,13181.514};
+				angles[]={6.2805324,0,0.013334315};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="this setVariable [""dbIgnore"", true];";
+			};
+			id=807;
+			type="Land_Pallet_MilBoxes_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_isMedicalFacility";
+					expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
 		class Item79
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2336.249,12.185829,13183.398};
-				angles[]={6.2805333,0,0.010664274};
+				position[]={2348.6252,12.283107,13190.976};
+				angles[]={6.2778587,0.99914712,0.010664274};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 			};
-			id=807;
-			type="Land_Pallet_MilBoxes_F";
+			id=853;
+			type="Land_PlasticBarrier_03_F";
+		};
+		class Item80
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2346.5044,12.278637,13194.276};
+				angles[]={6.2805333,0.99914712,0.0053265258};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=855;
+			type="Land_PlasticBarrier_03_F";
+		};
+		class Item81
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2344.3667,12.275998,13197.563};
+				angles[]={6.2805333,0.99914712,0.0053265258};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=857;
+			type="Land_PlasticBarrier_03_F";
+			atlOffset=-2.8610229e-006;
+		};
+		class Item82
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2343.2271,11.848651,13196.392};
+						angles[]={0,4.0911598,0};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=864;
+					type="B_T_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=863;
 		};
 	};
 };

@@ -2,6 +2,7 @@ if (call fnc_Admin_IsPlayerAdmin) then {
 	// [Text, Enabled, Visible, SQF-Datei, call(true/spawn(false)]
 	private["_buttons"];	
 	_buttons = [		
+		["Delete CursorTarget", true, true, fnc_Admin_DeleteCursorTarget],
 		["GPS (toggle)", true, true, fnc_Admin_GpsToggle],
 		["Teleport (admin)", true, true, fnc_Admin_TeleportAdmin],
 		["Teleport (cursor target)", true, true, fnc_Admin_TeleportCursorTarget],

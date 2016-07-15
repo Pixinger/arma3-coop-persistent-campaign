@@ -18,11 +18,11 @@ private _logisticObjectsMoveableDefinitions = [
 	["B_Mortar_01_F",				[[0, 3, 1]] ],
 	["B_static_AA_F",				[[0, 3, 1]] ],
 	["B_static_AT_F",				[[0, 3, 1]] ],
-	["B_T_HMG_01_F",				[[0, 3, 1]] ],
-	["B_T_GMG_01_F",				[[0, 3, 1]] ],
+	["B_T_HMG_01_F",				[[0, 3, 2]] ],
+	["B_T_GMG_01_F",				[[0, 3, 2]] ],
 	["B_T_Mortar_01_F",				[[0, 3, 1]] ],
-	["B_T_static_AA_F",				[[0, 3, 1]] ],
-	["B_T_static_AT_F",				[[0, 3, 1]] ],
+	["B_T_Static_AA_F",				[[0, 3, 1]] ],
+	["B_T_Static_AT_F",				[[0, 3, 1]] ],
 	
 	// Ausrüstungskisten
 	["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
@@ -224,8 +224,8 @@ private _logisticRepairablesDefinitions = [
 	["I_GMG_01_high_F", 	[30, "B_GMG_01_high_F"]],
 	["I_GMG_01_A_F", 		[30, "B_GMG_01_A_F"]],
 	["I_Mortar_01_F", 		[30, "B_T_Mortar_01_F"]],
-	["I_static_AA_F", 		[30, "B_T_static_AA_F"]],
-	["I_static_AT_F", 		[30, "B_T_static_AT_F"]]
+	["I_static_AA_F", 		[30, "B_T_Static_AA_F"]],
+	["I_static_AT_F", 		[30, "B_T_Static_AT_F"]]	
 ];
 //----------------------------------------------------------------------------------------------------
 logisticRepairables = [];
@@ -234,6 +234,22 @@ logisticRepairablesConfigs = [];
 	logisticRepairables pushBack (_x select 0);
 	logisticRepairablesConfigs pushBack (_x select 1);
 } foreach _logisticRepairablesDefinitions;
+/* Automatisch alle Movables reperaturfähig machen
+{
+	if (!(_x in logisticRepairables)) then
+	{
+		logisticRepairables pushBack _x;
+		logisticRepairablesConfigs pushBack [60, _x];		
+	};
+} foreach logisticObjectsMoveables;
+// Automatisch alle Haulables reperaturfähig machen
+{
+	if (!(_x in logisticRepairables)) then
+	{
+		logisticRepairables pushBack _x;
+		logisticRepairablesConfigs pushBack [120, _x];		
+	};
+} foreach logisticHaulables;*/
 //----------------------------------------------------------------------------------------------------
 
 logisticWorkAnimExit = true;

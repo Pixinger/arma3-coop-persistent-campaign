@@ -4,6 +4,7 @@ if (isServer) then
 {
 	fnc_logisticDb_ClearServer = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_ClearServer.sqf";
 	fnc_logisticDb_SaveServer = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_SaveServer.sqf";
+	fnc_logisticDb_SaveServer2 = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_SaveServer2.sqf";
 	fnc_logisticDb_LoadServer = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_LoadServer.sqf";
 	fnc_logisticDb_SetVehicleDamageArray = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_SetVehicleDamageArray.sqf";
 	fnc_logisticDb_GetVehicleDamageArray = compile preprocessFileLineNumbers "logistic\db\functions\fnc_logisticDb_GetVehicleDamageArray.sqf";

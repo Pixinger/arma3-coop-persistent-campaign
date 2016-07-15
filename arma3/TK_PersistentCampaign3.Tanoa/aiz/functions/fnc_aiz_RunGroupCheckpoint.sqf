@@ -1,6 +1,6 @@
 #include "..\..\debug.hpp"
-//DEBUG_LOG_FILE
-//DEBUG_LOG_THIS
+DEBUG_LOG_FILE
+DEBUG_LOG_THIS
 
 waitUntil { aizZoneInitCompleted };
 
