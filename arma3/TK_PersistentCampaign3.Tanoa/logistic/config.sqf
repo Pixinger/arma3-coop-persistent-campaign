@@ -2,6 +2,7 @@ call compile preprocessFileLineNumbers "logistic\db\config.sqf";
 call compile preprocessFileLineNumbers "logistic\gear\config.sqf";
 
 logisticObjectHQClassname = "Land_DataTerminal_01_F";
+cfgLogisticRepairObjectClassname = "B_Slingload_01_Repair_F";
 cfgLogisticTakePrisonClassname = "SoldierGB";
 cfgLogisticTakePrisonOfficerClassname = "I_C_Soldier_Camo_F";
 
@@ -234,22 +235,16 @@ logisticRepairablesConfigs = [];
 	logisticRepairables pushBack (_x select 0);
 	logisticRepairablesConfigs pushBack (_x select 1);
 } foreach _logisticRepairablesDefinitions;
-/* Automatisch alle Movables reperaturfähig machen
-{
-	if (!(_x in logisticRepairables)) then
-	{
-		logisticRepairables pushBack _x;
-		logisticRepairablesConfigs pushBack [60, _x];		
-	};
-} foreach logisticObjectsMoveables;
+
 // Automatisch alle Haulables reperaturfähig machen
 {
 	if (!(_x in logisticRepairables)) then
 	{
 		logisticRepairables pushBack _x;
 		logisticRepairablesConfigs pushBack [120, _x];		
+		diag_log format["Extending %1", _x];
 	};
-} foreach logisticHaulables;*/
+} foreach logisticHaulables;
 //----------------------------------------------------------------------------------------------------
 
 logisticWorkAnimExit = true;

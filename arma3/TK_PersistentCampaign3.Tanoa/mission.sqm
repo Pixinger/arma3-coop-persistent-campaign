@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={2317.9436,20.621807,13175.493};
-		dir[]={0.31718895,-0.18357635,0.93052298};
-		up[]={0.059260514,0.98299062,0.1738472};
-		aside[]={0.94659686,6.754417e-007,-0.32266709};
+		dir[]={0.81370503,-0.2334999,0.53248811};
+		up[]={0.19545685,0.97233874,0.12790582};
+		aside[]={0.54761809,6.0943421e-007,-0.83682382};
 	};
 };
 binarizationWanted=0;
@@ -31,14 +31,13 @@ addons[]=
 	"task_force_radio_items",
 	"cba_main",
 	"A3_Structures_F_Mil_Helipads",
-	"A3_Structures_F_EPA_Mil_Scrapyard",
 	"A3_Structures_F_Kart_Civ_SportsGrounds"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=8;
+		items=7;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -80,13 +79,6 @@ class AddonsMetaData
 			url="http://www.arma3.com";
 		};
 		class Item6
-		{
-			className="A3_Structures_F_EPA";
-			name="Arma 3 Survive Episode - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="http://www.arma3.com";
-		};
-		class Item7
 		{
 			className="A3_Structures_F_Kart";
 			name="Arma 3 Karts - Buildings and Structures";
@@ -201,7 +193,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.01";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.02";
 		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
@@ -224,7 +216,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=83;
+		items=82;
 		class Item0
 		{
 			dataType="Logic";
@@ -2586,46 +2578,6 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2339.469,12.223738,13181.514};
-				angles[]={6.2805324,0,0.013334315};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				init="this setVariable [""dbIgnore"", true];";
-			};
-			id=807;
-			type="Land_Pallet_MilBoxes_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ace_isMedicalFacility";
-					expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item79
-		{
-			dataType="Object";
-			class PositionInfo
-			{
 				position[]={2348.6252,12.283107,13190.976};
 				angles[]={6.2778587,0.99914712,0.010664274};
 			};
@@ -2637,7 +2589,7 @@ class Mission
 			id=853;
 			type="Land_PlasticBarrier_03_F";
 		};
-		class Item80
+		class Item79
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2653,7 +2605,7 @@ class Mission
 			id=855;
 			type="Land_PlasticBarrier_03_F";
 		};
-		class Item81
+		class Item80
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2670,7 +2622,7 @@ class Mission
 			type="Land_PlasticBarrier_03_F";
 			atlOffset=-2.8610229e-006;
 		};
-		class Item82
+		class Item81
 		{
 			dataType="Group";
 			side="West";
