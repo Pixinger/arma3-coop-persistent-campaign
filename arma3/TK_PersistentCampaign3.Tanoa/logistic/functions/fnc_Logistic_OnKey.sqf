@@ -39,7 +39,11 @@ else
 			//... ansonsten kann man alles andere machen...
 			
 			// Barracken Menü
-			if (_cursorTargetType in cfgLogisticGear_MenuObjectClassnames) then { _buttons pushBack ["Ausrüsten (Waffen)", true, true, fnc_logisticGear_ShowModal];};		
+			if (_cursorTargetType in cfgLogisticGear_MenuObjectClassnames) then 
+			{ 
+				_buttons pushBack ["Ausrüstung (NATO)", true, true, fnc_logisticGear_ShowModal, ["loadoutsNATO"]];
+				_buttons pushBack ["Ausrüstung (CTRG)", true, true, fnc_logisticGear_ShowModal, ["loadoutsCTRG"]];
+			};
 			
 			// AIZ Menüs
 			if (_cursorTargetType in cfgAizCampTownClassnames) then { _buttons pushBack ["Gerät beschlagnahmen", true, true, fnc_aiz_ConfiscateItem];};

@@ -41,21 +41,14 @@ class Header
 
 class Params
 {
-	class Loadouts /* paramsArray[0]*/
-	{		
-	    title = "Ausrüstung";
-	    values[] = {0, 1};
-	    texts[] = {"Bundeswehr"};
-	    default = 0;
-	};
-	class AIZ_EnemyPerGroupMin /* paramsArray[1]*/
+	class AIZ_EnemyPerGroupMin /* paramsArray[0]*/
 	{		
 	    title = "AIZ - Einheiten pro Gruppe (mindestens)";
 	    values[] = {2, 3, 4, 5, 6, 7, 8};
 	    texts[] = {"2","3","4","5","6","7","8"};
 	    default = 4;
 	};
-	class AIZ_EnemyPerGroupMax /* paramsArray[2]*/
+	class AIZ_EnemyPerGroupMax /* paramsArray[1]*/
 	{		
 	    title = "AIZ - Einheiten pro Gruppe (maximal)";
 	    values[] = {2, 3, 4, 5, 6, 7, 8};

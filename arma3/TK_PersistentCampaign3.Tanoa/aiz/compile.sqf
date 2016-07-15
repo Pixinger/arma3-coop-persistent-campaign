@@ -18,7 +18,6 @@ if (isServer) then
 	fnc_aiz_FindCampFieldRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawn.sqf";
 	fnc_aiz_FindCampFieldRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawnCount.sqf";
 	fnc_aiz_SpawnGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SpawnGroup.sqf";
-	
 
 	fnc_aiz_GetHouseCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetHouseCount.sqf";
 	fnc_aiz_GetRandomInfClassnames = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetRandomInfClassnames.sqf";
@@ -55,3 +54,8 @@ fnc_aiz_DatabaseSaveClient = compile preprocessFileLineNumbers "aiz\functions\fn
 fnc_aiz_DatabaseClearClient = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_DatabaseClearClient.sqf";
 fnc_aiz_ConfiscateItem = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ConfiscateItem.sqf";
 fnc_aiz_IntelIncrement = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_IntelIncrement.sqf";
+
+if (hasInterface) then 
+{
+	fnc_aiz_MarkCamps = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_MarkCamps.sqf";	
+};

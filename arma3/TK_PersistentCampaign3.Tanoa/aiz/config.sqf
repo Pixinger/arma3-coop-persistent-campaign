@@ -8,7 +8,7 @@ cfgAizCampFieldClassnames = ["Land_TentDome_F", "Land_TentA_F"];
 cfgAizCampFieldMinRespawnDistance = 250;
 cfgAizCampFieldRadius = 50;
 
-cfgAizGroupSizeMin = paramsArray select 1;
+cfgAizGroupSizeMin = paramsArray select 0;
 if (pixDebug) then { cfgAizGroupSizeMin = 2;};
 diag_log format["INFO: cfgAizGroupSizeMin: %1", cfgAizGroupSizeMin];
 

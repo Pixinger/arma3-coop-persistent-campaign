@@ -1,12 +1,13 @@
 /* _this parameter abfragen */
-private["_unit"];
-_unit = _this select 0;
-private["_loadout"];
-_loadout = _this select 1;
+private _unit = _this select 0;
+private _loadout = _this select 1;
+private _directory = _this select 2;
+
+diag_log format["Directory: %1", _directory];
 
 /* Loadout abfragen */
 private["_result"];
-_result = [] call compile preprocessFileLineNumbers format["logistic\gear\%1\%2", cfgLogisticGear_LoadoutFolder, _loadout];
+_result = [] call compile preprocessFileLineNumbers format["logistic\gear\%1\%2", _directory, _loadout];
 
 /* Result lesbar machen */
 private["_goggleClassname"];

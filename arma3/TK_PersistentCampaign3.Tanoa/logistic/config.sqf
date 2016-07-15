@@ -3,6 +3,7 @@ call compile preprocessFileLineNumbers "logistic\gear\config.sqf";
 
 logisticObjectHQClassname = "Land_DataTerminal_01_F";
 cfgLogisticTakePrisonClassname = "SoldierGB";
+cfgLogisticTakePrisonOfficerClassname = "I_C_Soldier_Camo_F";
 
 //!! Achtung! Auch in der DP config eintragen!
 // ["className", [[attach-offset]]]
@@ -17,6 +18,11 @@ private _logisticObjectsMoveableDefinitions = [
 	["B_Mortar_01_F",				[[0, 3, 1]] ],
 	["B_static_AA_F",				[[0, 3, 1]] ],
 	["B_static_AT_F",				[[0, 3, 1]] ],
+	["B_T_HMG_01_F",				[[0, 3, 1]] ],
+	["B_T_GMG_01_F",				[[0, 3, 1]] ],
+	["B_T_Mortar_01_F",				[[0, 3, 1]] ],
+	["B_T_static_AA_F",				[[0, 3, 1]] ],
+	["B_T_static_AT_F",				[[0, 3, 1]] ],
 	
 	// Ausrüstungskisten
 	["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
@@ -82,11 +88,11 @@ logisticObjectsTransportablesConfig = [];
 
 //!! Achtung! Auch in der DP config eintragen!
 private _logisticTransporterDefinitions = [
-	["C_Van_01_box_F",			[[0,-1],[0,-2.5]] ],
-	["C_Van_01_transport_F",	[[0,-1],[0,-2.5]] ],
-	["B_Truck_01_box_F",		[[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4]] ],
-	["B_Truck_01_transport_F",	[[0,0],[0,-1.5],[0,-3]] ],
-	["B_Truck_01_covered_F",	[[0,0],[0,-1.5],[0,-3]] ]
+	["C_Van_01_box_F",				[[0,-1],[0,-2.5]] ],
+	["C_Van_01_transport_F",		[[0,-1],[0,-2.5]] ],
+	["B_T_Truck_01_box_F",			[[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4],[0,-.4]] ],
+	["B_T_Truck_01_transport_F",	[[0,0],[0,-1.5],[0,-3]] ],
+	["B_T_Truck_01_covered_F",		[[0,0],[0,-1.5],[0,-3]] ]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticTransporters = [];
@@ -138,7 +144,7 @@ logisticBuildableConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [attachpoint ]]
 private _logisticHaulerDefinitions = [
-	["B_Truck_01_mover_F", [[0,0,0]]]
+	["B_T_Truck_01_mover_F", [[0,0,0]]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticHaulers = [];
@@ -154,26 +160,33 @@ logisticHaulerConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [attachpoint, attachrotation, towing ]]
 private _logisticHaulableDefinitions = [
+	["B_T_UAV_03_F", 				[[0,  -8, 0.0], 0, true]],
+	["B_UAV_02_F", 					[[0,  -8, 0.0], 0, true]],
+	["B_UAV_02_CAS_F", 				[[0,  -8, 0.0], 0, true]],
+
 	["B_Slingload_01_Repair_F", 	[[0,  -2.7, 1], 0, false]],
-	["B_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
-	["B_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
-	["B_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],
-	["BWA3_Leopard2A6M_Fleck",		[[0,  -8, 0.85], 0, true]],
-	["B_APC_Tracked_01_rcws_F",		[[0,  -8, 0.85], 0, true]],
-	["B_APC_Wheeled_01_cannon_F",	[[0,  -8, 0.85], 0, true]],
-	["BWA3_Puma_Fleck",				[[0,  -8, 0.85], 0, true]],
-	["BWA3_Puma_Tropen",			[[0,  -6, 0.85], 0, true]],	
-	["O_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
-	["O_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
-	["O_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],
-	["O_MBT_02_cannon_F",			[[0,  -8, 0.85], 0, true]],
-	["O_APC_Tracked_02_cannon_F",	[[0,  -8, 0.85], 0, true]],
-	["O_APC_Wheeled_02_rcws_F",		[[0,  -8, 0.85], 0, true]],
+
+	["B_T_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
+	["B_T_MRAP_02_gmg_F",			[[0,  -8, 0.85], 0, true]],
+	["B_T_MRAP_02_hmg_F",			[[0,  -8, 0.85], 0, true]],
+	["B_T_LSV_01_unarmed_F",		[[0,  -8, 0.85], 0, true]],
+	["B_T_LSV_01_armed_F",			[[0,  -8, 0.85], 0, true]],
+	["B_CTRG_LSV_01_light_F",		[[0,  -8, 0.85], 0, true]],	
+
+	["B_T_APC_Tracked_01_CRV_F",	[[0,  -8, 0.85], 0, true]],
+	["B_T_APC_Tracked_01_rcws_F",	[[0,  -8, 0.85], 0, true]],
+	["B_T_APC_Wheeled_01_cannon_F",	[[0,  -8, 0.85], 0, true]],
+
+	["I_C_Offroad_02_unarmed_F",	[[0,  -8, 0.85], 0, true]],
+	["I_G_Offroad_01_F",			[[0,  -8, 0.85], 0, true]],
+	["I_G_Offroad_01_armed_F",		[[0,  -8, 0.85], 0, true]],
+
 	["C_Van_01_box_F", 				[[0,  -8, 0.0], 0, true]],
 	["C_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],
-	["B_Truck_01_box_F", 			[[0, -12, 0.5], 0, true]],
-	["B_Truck_01_covered_F", 		[[0, -12, 0.5], 0, true]],
-	["B_Truck_01_transport_F", 		[[0, -12, 0.5], 0, true]]
+	["I_G_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],	
+	["B_T_Truck_01_box_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_covered_F", 		[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_transport_F", 	[[0, -12, 0.5], 0, true]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticHaulables = [];
@@ -187,17 +200,10 @@ logisticHaulableConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [storeClassnames, paymentClassname]]]
 private _logisticSellablesDefinitions = [
-	["O_MRAP_02_F", 				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_MRAP_02_gmg_F",				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_MRAP_02_hmg_F",				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_MBT_02_cannon_F",			[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_APC_Tracked_02_cannon_F",	[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["O_APC_Wheeled_02_rcws_F",		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["C_Van_01_box_F", 				[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["C_Van_01_transport_F", 		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["B_Truck_01_box_F", 			[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["B_Truck_01_covered_F", 		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
-	["B_Truck_01_transport_F", 		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]]
+	["I_C_Offroad_02_unarmed_F", 	[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["I_G_Offroad_01_F",			[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["I_G_Offroad_01_armed_F",		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]],
+	["I_G_Van_01_transport_F",		[["Civilian"], ["Land_PaperBox_open_full_F","Land_PaperBox_open_full_F"]]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticSellables = [];
@@ -211,15 +217,15 @@ logisticSellablesConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [time, newClassname]]]
 private _logisticRepairablesDefinitions = [
-	["O_HMG_01_F", 			[30, "B_HMG_01_F"]],
-	["O_HMG_01_high_F", 	[30, "B_HMG_01_high_F"]],
-	["O_HMG_01_A_F", 		[30, "B_HMG_01_A_F"]],
-	["O_GMG_01_F", 			[30, "B_GMG_01_F"]],
-	["O_GMG_01_high_F", 	[30, "B_GMG_01_high_F"]],
-	["O_GMG_01_A_F", 		[30, "B_GMG_01_A_F"]],
-	["O_Mortar_01_F", 		[30, "B_Mortar_01_F"]],
-	["O_static_AA_F", 		[30, "B_static_AA_F"]],
-	["O_static_AT_F", 		[30, "B_static_AT_F"]]
+	["I_HMG_01_F", 			[30, "B_T_HMG_01_F"]],
+	["I_HMG_01_high_F", 	[30, "B_HMG_01_high_F"]],
+	["I_HMG_01_A_F", 		[30, "B_HMG_01_A_F"]],
+	["I_GMG_01_F", 			[30, "B_T_GMG_01_F"]],
+	["I_GMG_01_high_F", 	[30, "B_GMG_01_high_F"]],
+	["I_GMG_01_A_F", 		[30, "B_GMG_01_A_F"]],
+	["I_Mortar_01_F", 		[30, "B_T_Mortar_01_F"]],
+	["I_static_AA_F", 		[30, "B_T_static_AA_F"]],
+	["I_static_AT_F", 		[30, "B_T_static_AT_F"]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticRepairables = [];

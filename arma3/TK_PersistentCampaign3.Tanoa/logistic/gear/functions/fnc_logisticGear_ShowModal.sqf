@@ -1,15 +1,15 @@
-private["_cursorTarget"];
-_cursorTarget = cursorTarget;
-private["_cursorTargetType"];
-_cursorTargetType = typeof _cursorTarget;
+private _directory = _this select 0;
+private _cursorTarget = cursorTarget;
+private _cursorTargetType = typeof _cursorTarget;
 
 //-----------------------------------------------------------------	
 /* Dialog erstellen*/
 #include "..\defines.hpp";
 createDialog "LOGISTICGEAR_DIALOG";
 
+
 private["_loadouts"];
-_loadouts = [] call compile preprocessFileLineNumbers format["logistic\gear\%1\_getArray.sqf", cfgLogisticGear_LoadoutFolder];
+_loadouts = [] call compile preprocessFileLineNumbers format["logistic\gear\%1\_getArray.sqf", _directory];
 
 //-----------------------------------------------------------------	
 /* Listbox füllen*/
@@ -49,7 +49,7 @@ if (logisticGearDialog_ButtonResult == 1)  then
 		// Masse der Ausrüstung errechnen
 		private _massPlayerBefore = [player] call fnc_logisticGear_GetCfgMassPlayer;
 		// LoadOut zuweisen 
-		private _result = [player, _scriptFilename] call fnc_logisticGear_ApplyLoadOut;
+		private _result = [player, _scriptFilename, _directory] call fnc_logisticGear_ApplyLoadOut;
 		// Masse der Ausrüstung errechnen
 		private _massPlayerAfter = [player] call fnc_logisticGear_GetCfgMassPlayer;
 

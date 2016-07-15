@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=803;
+		nextID=851;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2323.5757,17.817612,13167.686};
-		dir[]={-0.491963,-0.25026283,0.83391964};
-		up[]={-0.12718369,0.96816587,0.21558771};
-		aside[]={0.86132175,8.0582686e-007,0.50813001};
+		pos[]={2337.0706,17.817612,13175.235};
+		dir[]={-0.84491718,-0.44962379,-0.28993669};
+		up[]={-0.42531389,0.89320016,-0.14594777};
+		aside[]={-0.32459226,4.483154e-007,0.94590151};
 	};
 };
 binarizationWanted=0;
@@ -30,13 +30,14 @@ addons[]=
 	"A3_Characters_F_Exp",
 	"task_force_radio_items",
 	"cba_main",
-	"A3_Structures_F_Mil_Helipads"
+	"A3_Structures_F_Mil_Helipads",
+	"A3_Structures_F_EPA_Mil_Scrapyard"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=7;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -74,6 +75,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item6
+		{
+			className="A3_Structures_F_EPA";
+			name="Arma 3 Survive Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -186,6 +194,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[TK]Persistent Campaign III (Tanoa) v4.00";
+		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.44999999;
@@ -207,7 +216,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=79;
+		items=81;
 		class Item0
 		{
 			dataType="Logic";
@@ -821,19 +830,14 @@ class Mission
 		class Item43
 		{
 			dataType="Marker";
-			position[]=
-			{
-				11400,
-				1.#QNAN,
-				2000
-			};
+			position[]={11400,1,2000};
 			name="markerAiz26";
 			markerType="RECTANGLE";
 			type="rectangle";
 			a=2000;
 			b=1000;
 			id=721;
-			atlOffset=1.#QNAN;
+			atlOffset=4.9331541;
 		};
 		class Item44
 		{
@@ -2602,17 +2606,12 @@ class Mission
 		class Item77
 		{
 			dataType="Marker";
-			position[]=
-			{
-				1833.736,
-				1.#QNAN,
-				12994.73
-			};
+			position[]={1833.736,1,12994.73};
 			name="marker_17";
 			text="05";
 			type="mil_triangle";
 			id=801;
-			atlOffset=1.#QNAN;
+			atlOffset=-12.45;
 		};
 		class Item78
 		{
@@ -2628,6 +2627,32 @@ class Mission
 			};
 			id=802;
 			type="Land_HelipadSquare_F";
+		};
+		class Item79
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2336.249,12.185829,13183.398};
+				angles[]={6.2805333,0,0.010664274};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=807;
+			type="Land_Pallet_MilBoxes_F";
+		};
+		class Item80
+		{
+			dataType="Group";
+			side="West";
+			class Attributes
+			{
+			};
+			id=840;
+			atlOffset=-2.7656555e-005;
 		};
 	};
 };

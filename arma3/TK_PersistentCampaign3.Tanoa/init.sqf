@@ -21,11 +21,6 @@ enableTeamSwitch false;
 pixDebug = false;
 if (isServer && !isDedicated) then { pixDebug = true; };
 
-//-----------------------------------------------
-// Parameter (0): TFR-Muted while dead 
-//pixParamTFARMutedOnDeath = (paramsArray select 0); //0=aus 1=an 
-//diag_log format["INFO: pixParamTFARMutedOnDeath: %1", pixParamTFARMutedOnDeath];
-
 // Wenn "HeadlessClientAvailable" nil ist, dann gibt es keinen. Sonst ist "HeadlessClientAvailable" automatisch TRUE. Dafür sorgt die Funktion: fn_HeadlessClientInit.sqf
 if (isNil "HeadlessClientAvailable") then 
 {	
