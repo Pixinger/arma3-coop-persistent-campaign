@@ -39,14 +39,14 @@ _bargate3 setPos _tmpPos;
 // MG1 erstellen
 _tmpPos = _bargate1 modelToWorld [0,6,0];
 _tmpPos set [2, 0];
-private _mg1 = createVehicle ["I_HMG_01_high_F", _tmpPos, [], 0, "CAN_COLLIDE"];
+private _mg1 = createVehicle ["O_HMG_01_high_F", _tmpPos, [], 0, "CAN_COLLIDE"];
 Sleep .2;
 _mg1 setDir (_direction-180);
 
 // MG2 erstellen
 _tmpPos = _bargate1 modelToWorld [0,-6,0],;
 _tmpPos set [2, 0];
-private _mg2 = createVehicle ["I_HMG_01_high_F", _tmpPos, [], 0, "CAN_COLLIDE"];
+private _mg2 = createVehicle ["O_HMG_01_high_F", _tmpPos, [], 0, "CAN_COLLIDE"];
 Sleep .2;
 _mg2 setDir (_direction-180);
 

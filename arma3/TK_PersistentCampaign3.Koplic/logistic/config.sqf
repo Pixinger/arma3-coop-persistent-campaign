@@ -3,6 +3,7 @@ call compile preprocessFileLineNumbers "logistic\gear\config.sqf";
 
 logisticObjectHQClassname = "Land_DataTerminal_01_F";
 cfgLogisticTakePrisonClassname = "SoldierEB";
+cfgLogisticTakePrisonOfficerClassname = "O_officer_F";
 
 //!! Achtung! Auch in der DP config eintragen!
 // ["className", [[attach-offset]]]
