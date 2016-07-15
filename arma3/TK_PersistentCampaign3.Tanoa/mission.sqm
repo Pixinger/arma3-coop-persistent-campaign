@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=851;
+		nextID=853;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2337.0706,17.817612,13175.235};
-		dir[]={-0.84491718,-0.44962379,-0.28993669};
-		up[]={-0.42531389,0.89320016,-0.14594777};
-		aside[]={-0.32459226,4.483154e-007,0.94590151};
+		pos[]={2329.0535,19.999172,13174.124};
+		dir[]={0.46309865,-0.45846555,0.75859559};
+		up[]={0.2389027,0.88869399,0.39134207};
+		aside[]={0.85356963,5.4389238e-007,-0.52107495};
 	};
 };
 binarizationWanted=0;
@@ -216,7 +216,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=81;
+		items=80;
 		class Item0
 		{
 			dataType="Logic";
@@ -2643,16 +2643,6 @@ class Mission
 			};
 			id=807;
 			type="Land_Pallet_MilBoxes_F";
-		};
-		class Item80
-		{
-			dataType="Group";
-			side="West";
-			class Attributes
-			{
-			};
-			id=840;
-			atlOffset=-2.7656555e-005;
 		};
 	};
 };
