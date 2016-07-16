@@ -3,11 +3,10 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 	call fnc_Logistic_WorkAnimationStart;
 
 	private _sleepTime = [] call fnc_Logistic_GetBuildSleepTime; // _sleepTime = 1 bis 3. 2 entspricht ca 500 Mass-Einheiten
-	
-	private _actionMenu = player addAction [("<t color=""#dddd00"">Graben abbrechen</t>"), { logisticBuild = false; }, nil, 5, true, true];
 
-	private _loopcount = 10;
 	logisticBuild = true;
+	private _actionMenu = player addAction [("<t color=""#dddd00"">Graben abbrechen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+	private _loopcount = 10;
 	while { (logisticBuild) && (alive player) && (_loopcount > 0) } do
 	{
 		if (pixDebug) then { Sleep 0.2; } else { Sleep _sleepTime; };
@@ -16,9 +15,8 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 	call fnc_Logistic_WorkAnimationEnd;
 
 	player removeAction _actionMenu;
-	logisticBuild = nil;
 
-	if (alive player) then
+	if ((logisticBuild) && (alive player)) then
 	{
 		// Objekt erstellen
 		private["_object"];
@@ -29,8 +27,10 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 		
 		// Autodelete
 		_object spawn {
-			Sleep (4*60);
+			Sleep (5*60);
 			deleteVehicle _this;
 		};
 	};
+
+	logisticBuild = nil;
 };

@@ -23,6 +23,9 @@ if (_cursorTargetType in logisticTransporters) then
 			
 			// Auf freien Platz setzen
 			_object setPos _position;
+			
+			hint "Objekt wird entladen...";
+			Sleep 1;
 		} foreach _attachedObjects;
 		
 		hint format["Der gesamte Laderaum wurde erfolgreich abgeladen. Insgesamt %1 Objekte waren geladen.", _count];

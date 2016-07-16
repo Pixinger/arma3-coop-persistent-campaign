@@ -18,6 +18,10 @@ if ((_object isKindOf "UAV") || (_object isKindOf "UAV_01_base_F") || (_object i
 {
 	createVehicleCrew _object; 
 };
+if (_object isKindOf "Land_BarGate_F") then 
+{
+	_object allowDamage false;
+};
 
 clearItemCargoGlobal _object;
 clearWeaponCargoGlobal _object;

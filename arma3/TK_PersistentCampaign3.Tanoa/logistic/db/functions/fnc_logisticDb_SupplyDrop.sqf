@@ -27,22 +27,21 @@ if (isServer) then
 		_smoke = "SmokeShellYellow" createVehicle position _supply;
 		_smoke attachto [_supply,[0,0,0]];
 
-		// Warten bis die Lieferung gelandet ist
-		waituntil {((getPos _supply) select 2) < 5};	
+		// Warten bis die Lieferung sich nicht mehr bewegt
+		private _height = 9999;
+		while { _height != ((getPos _supply) select 2) } do { Sleep 1; _height = ((getPos _supply) select 2); };
 		
 		// Detachen
 		detach _supply;
 		Sleep 5;
 		deleteVehicle _parachute;
-
+		
 		// Nochmal ordentlich smoken !!!
 		_smoke = "SmokeShellYellow" createVehicle position _supply;
 		_smoke attachto [_supply,[0,0,0]];
 		Sleep 10;
 		_smoke setDamage 1;
-		deleteVehicle _smoke;
-		_smoke = "SmokeShellYellow" createVehicle position _supply;
-		_smoke attachto [_supply,[0,0,0]];
+		deleteVehicle _smoke;		
 	};
 }
 else
