@@ -1,5 +1,5 @@
 townDbPrefix = "PC3TOWNTANOA";
-townTownCount = 14;
+townTownCount = 15;
 townSupplySearchRadius = 200;
 townWalkRadius = 75;
 townSupplyClassnames = [

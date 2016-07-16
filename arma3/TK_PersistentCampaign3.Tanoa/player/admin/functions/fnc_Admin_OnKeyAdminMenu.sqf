@@ -8,7 +8,8 @@ if (call fnc_Admin_IsPlayerAdmin) then {
 		["Teleport (toggle player)", true, true, fnc_Admin_TeleportToggle],
 		["Zeus Object Remove", true, true, fnc_Admin_ZeusObjectRemove],
 		["Zeus Object Refresh", true, true, fnc_Admin_ZeusObjectRefresh],
-		["Delete CursorTarget", true, true, fnc_Admin_DeleteCursorTarget]
+		["CursorTarget DELETE", true, true, fnc_Admin_DeleteCursorTarget],
+		["CursorTarget CLEAR-CARGO", true, true, fnc_Admin_ClearCargoCursorTarget]
 	];
 
 	[_buttons, "Administrator Menü"] execVM "maindialog_showtemplate.sqf";

@@ -69,6 +69,7 @@ if (isServer) then
 	// Die Objekte die in der Datenbank gespeichert werden sollen.
 	logisticDbObjects = [
 		// Buildables
+		"Land_PortableLight_double_F",
 		"Land_BarGate_F",
 		"Land_HBarrier_1_F",
 		"Land_HBarrier_3_F",
@@ -76,6 +77,14 @@ if (isServer) then
 		"Land_BagFence_Long_F",
 		"Land_BagBunker_Small_F",
 		"Land_BagBunker_Large_F",
+		"Land_Mil_WallBig_4m_F",
+		"Land_BagFence_01_long_green_F",
+		"Land_HBarrier_01_line_1_green_F",
+		"Land_HBarrier_01_line_3_green_F",
+		"Land_HBarrier_01_line_5_green_F",
+		"Land_BagBunker_01_small_green_F",
+		"Land_BagBunker_01_large_green_F",
+
 		// Objekte
 		"ACE_Wheel",
 		"ACE_Track",

@@ -6,6 +6,7 @@ params["_townIndex","_townActiveIndex"];
 private _totalCivilianCount = (townInfos select _townIndex) select 1;
 private _count = floor (_totalCivilianCount / 10);
 if (_count <= 0) then { _count = 1; };
+if (_count > 10) then { _count = 15; };
 //if (pixDebug) then { _count = 1; };
 
 for "_i" from 1 to _count do

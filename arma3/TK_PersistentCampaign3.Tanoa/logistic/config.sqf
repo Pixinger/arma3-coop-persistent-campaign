@@ -29,7 +29,7 @@ private _logisticObjectsMoveableDefinitions = [
 	["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
 
 	// Objekte
-	//["Land_PortableLight_double_F",	[[0, 3, 1]] ],	
+	["Land_PortableLight_double_F",	[[0, 3, 1.75]] ],	
 	//["CargoNet_01_box_F",			[[0, 3, 1]] ],
 	//["CargoNet_01_barrels_F",		[[0, 3, 1]] ],
 	["Land_PaperBox_open_full_F",	[[0, 3, 1]] ],
@@ -110,12 +110,10 @@ logisticTransporterConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // ["className", [attachpoint(array), attachrotation, detachOffset(array), buildspeed, requiredResources(array)] ]  ||  requiredResources = [[classname1, quantity1], [classname2, quantity2], ...];
 private _logisticBuildableDefinitions = [
-	//["Land_PortableLight_double_F",	[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],	
 	//["Land_CncBarrier_F",			[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]],
 	//["Land_CncBarrier_stripes_F",	[[0,3,1], 0, -.6, 1, 	[["Land_Bricks_V1_F", 25]] ]],
 	//["Land_CncBarrierMedium_F",		[[0,3,1], 0, -1.6, 1, 	[["Land_Bricks_V1_F", 50]] ]],
 	//["Land_CncBarrierMedium4_F",	[[0,3,1], 0, -1.6, 1, 	[["Land_Bricks_V1_F", 50]] ]],
-	//["Land_Mil_WallBig_4m_F",		[[0,3,1], 0, -3.5, 1, 	[["Land_Bricks_V1_F", 150], 	["Land_Pipes_large_F", 10]] ]],
 	//["Land_Mil_WallBig_Corner_F",	[[0,3,1], 0, -3.5, 1, 	[["Land_Bricks_V1_F", 150], 	["Land_Pipes_large_F", 10]] ]],
 	//["Land_CncWall1_F",				[[0,3,2], 0, -3.5, 1, 	[["Land_Bricks_V1_F", 25], 		["Land_Pipes_large_F", 10]] ]],
 	//["Land_CncWall4_F",				[[0,3,2], 0, -3.5, 1, 	[["Land_Bricks_V1_F-", 100], 	["Land_Pipes_large_F", 40]] ]],
@@ -124,13 +122,28 @@ private _logisticBuildableDefinitions = [
 	//["Land_HBarrier_1_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 25]] ]],
 	//["Land_HBarrier_Big_F",			[[0,3,1], 0, -1.4, 1, 	[["CraterLong_small", 100]] ]],
 	//["Land_HBarrierTower_F",		[[0,3,1], 0, -2.0, 1, 	[["CraterLong_small", 200]] ]],	
-	["Land_BarGate_F",				[[0,   5, 4.0], 0, [0, 0, -0.9], 0.7,	[["Land_Pipes_small_F", 5],		["Land_Timbers_F", 10]]			]],
-	["Land_HBarrier_1_F",			[[0, 2.5, 0.8], 0, [0, 0, -1.2], 1.8,	[["CraterLong_small", 20],		["Land_PaperBox_closed_F", 1]]	]],
-	["Land_HBarrier_3_F",			[[0,   4, 0.8], 0, [0, 0, -1.2], 1.5,	[["CraterLong_small", 60],		["Land_PaperBox_closed_F", 3]]	]],
-	["Land_HBarrier_5_F",			[[0,   6, 0.8], 0, [0, 0, -1.2], 1.2,	[["CraterLong_small", 100],		["Land_PaperBox_closed_F", 5]]	]],
-	["Land_BagFence_Long_F",		[[0,   3, 0.7], 0, [0, 0, -0.8], 1.5,	[["CraterLong_small", 5]] 		]],	
-	["Land_BagBunker_Small_F",		[[0,   6, 1.0], 0, [0, 0, -1.6], 1.2, 	[["CraterLong_small", 50], 		["Land_Timbers_F", 10], 	["Land_Bricks_V1_F", 10]] 		]],
-	["Land_BagBunker_Large_F",		[[0,  12, 1.0], 0, [0, 0, -2.1], 1.2,	[["CraterLong_small", 200], 	["Land_Timbers_F", 100], 	["Land_Bricks_V1_F", 100]] 	]]
+
+	//Land_HBarrier_01_wall_6_green_F
+	//Land_HBarrier_01_wall_corner_green_F
+	//Land_HBarrier_01_wall_4_green_F	
+
+	//["Land_BagFence_Long_F",			[[0,   3, 0.7], 0, [0, 0, -0.8], 1.5,	[["CraterLong_small", 5]] 		]],	
+	//["Land_HBarrier_1_F",				[[0, 2.5, 0.8], 0, [0, 0, -1.2], 1.8,	[["CraterLong_small", 20],		["Land_PaperBox_closed_F", 1]]	]],
+	//["Land_HBarrier_3_F",				[[0,   4, 0.8], 0, [0, 0, -1.2], 1.5,	[["CraterLong_small", 60],		["Land_PaperBox_closed_F", 3]]	]],
+	//["Land_HBarrier_5_F",				[[0,   6, 0.8], 0, [0, 0, -1.2], 1.2,	[["CraterLong_small", 100],		["Land_PaperBox_closed_F", 5]]	]],
+	//["Land_BagBunker_Small_F",		[[0,   6, 1.0], 0, [0, 0, -1.6], 1.2, 	[["CraterLong_small", 50], 		["Land_Timbers_F", 10], 	["Land_Bricks_V1_F", 10]] 	]],
+	//["Land_BagBunker_Large_F",		[[0,  12, 1.0], 0, [0, 0, -2.1], 1.2,	[["CraterLong_small", 200], 	["Land_Timbers_F", 100], 	["Land_Bricks_V1_F", 100]] 	]]
+
+	["Land_PortableLight_double_F",		[[0,   3, 1.0], 0, [0, 0, -1.4], 1.0, 	[["Land_Pipes_small_F", 5],		["Land_PaperBox_closed_F", 25]] ]],	
+	["Land_BarGate_F",					[[0,   5, 4.0], 0, [0, 0, -0.9], 0.7,	[["Land_Pipes_small_F", 5],		["Land_Timbers_F", 10]]			]],
+	
+	["Land_Mil_WallBig_4m_F",			[[0,   3, 1.0], 0, [0, 0, -3.5], 1.0, 	[["Land_Bricks_V1_F", 150], 	["Land_Pipes_large_F", 10]]     ]],
+	["Land_BagFence_01_long_green_F",	[[0,   3, 0.7], 0, [0, 0, -0.8], 1.5,	[["CraterLong_small", 5]] 		]],	
+	["Land_HBarrier_01_line_1_green_F",	[[0, 2.5, 0.8], 0, [0, 0, -1.2], 1.8,	[["CraterLong_small", 20],		["Land_PaperBox_closed_F", 1]]	]],
+	["Land_HBarrier_01_line_3_green_F",	[[0,   4, 0.8], 0, [0, 0, -1.2], 1.5,	[["CraterLong_small", 60],		["Land_PaperBox_closed_F", 3]]	]],
+	["Land_HBarrier_01_line_5_green_F",	[[0,   6, 0.8], 0, [0, 0, -1.2], 1.2,	[["CraterLong_small", 100],		["Land_PaperBox_closed_F", 5]]	]],
+	["Land_BagBunker_01_small_green_F",	[[0,   6, 1.0], 0, [0, 0, -1.6], 1.2, 	[["CraterLong_small", 50], 		["Land_Timbers_F", 10], 	["Land_Bricks_V1_F", 10]] 	]],
+	["Land_BagBunker_01_large_green_F",	[[0,  12, 1.0], 0, [0, 0, -2.1], 1.2,	[["CraterLong_small", 200], 	["Land_Timbers_F", 100], 	["Land_Bricks_V1_F", 100]] 	]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticBuildables = [];

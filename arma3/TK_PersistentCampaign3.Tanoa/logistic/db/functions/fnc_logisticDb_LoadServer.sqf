@@ -31,8 +31,8 @@ if (isServer) then
 			{
 				// _x = [_classname, _position, _direction, _damageArray, _cargoArray, dbVar(optional)];	
 				// Fahrzeug erstellen
-				//private _vehicle = [(_x select 0), (_x select 1), (_x select 2)] call fnc_logisticDb_CreateVehicleCorrected;
-				private _vehicle = [(_x select 0), (_x select 1), 0] call fnc_logisticDb_CreateVehicleCorrected;
+				//                 [ classname   ,  position    ,  direction   ]
+				private _vehicle = [(_x select 0), (_x select 1), (_x select 2)] call fnc_logisticDb_CreateVehicleCorrected;
 				// Schaden hinzufügen
 				[_vehicle, (_x select 3)] call  fnc_logisticDb_SetVehicleDamageArray;
 				// Ladung hinzufügen
