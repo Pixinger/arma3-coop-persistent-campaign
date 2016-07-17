@@ -124,6 +124,20 @@ if (_secondaryWeaponClassname != "") then
 /* Nun den echten Rucksack/Fallschrim */
 if (_backpackClassname != "") then { _unit addBackpack _backpackClassname;};
 
+/* Dann die Waffen hinzufügen, damit diese die Magazine gleich aufnehmen können
+   das Inventar sollte danach wieder leer sein. */
+if (_primaryWeaponClassname != "") then
+{
+	if (_primaryWeaponMagazine != "") then { _unit addMagazine _primaryWeaponMagazine; };
+	_unit addWeapon _primaryWeaponClassname;
+	{_unit addPrimaryWeaponItem _x;} foreach _primaryWeaponItems;
+};
+if (_handgunClassname != "") then
+{
+	if (_handgunMagazine != "") then {_unit addMagazine  _handgunMagazine; };
+	_unit addWeapon _handgunClassname;
+	{_unit addHandgunItem _x;} foreach _handgunItems;
+};
 
 /* Munition hinzufügen, sonst ist diese nacher nicht verfügbar */
 if (_uniformClassname != "") then
@@ -154,21 +168,6 @@ if (_backpackClassname != "") then
 	{ _unit addItemToBackpack _x; } foreach _backpackItems;
 };
 
-/* Dann die Waffen hinzufügen, damit diese die Magazine gleich aufnehmen können
-   das Inventar sollte danach wieder leer sein. */
-if (_primaryWeaponClassname != "") then
-{
-	if (_primaryWeaponMagazine != "") then { _unit addMagazine _primaryWeaponMagazine; };
-	_unit addWeapon _primaryWeaponClassname;
-	{_unit addPrimaryWeaponItem _x;} foreach _primaryWeaponItems;
-};
-
-if (_handgunClassname != "") then
-{
-	if (_handgunMagazine != "") then {_unit addMagazine  _handgunMagazine; };
-	_unit addWeapon _handgunClassname;
-	{_unit addHandgunItem _x;} foreach _handgunItems;
-};
 
 /* Ausrüstung hinzufügen */
 {

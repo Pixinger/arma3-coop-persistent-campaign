@@ -220,7 +220,7 @@ DEBUG_LOG("STATE_EXIT");
 if (count (units _group) == 0) then
 {
 	DEBUG_LOG_VAREX("Group destroyed: Requesting support: ", _currentPosition);
-	private _support = [_currentPosition, 1500] call fnc_aiz_FindCampTownRespawn;
+	private _support = [_currentPosition, cfgAizSupportForceCampSearchRadius] call fnc_aiz_FindCampTownRespawn;
 	DEBUG_LOG_VAR(_support);
 	if (!isNull _support) then
 	{
@@ -229,7 +229,7 @@ if (count (units _group) == 0) then
 	}
 	else
 	{
-		private _support = [_currentPosition, 1500] call fnc_aiz_FindCampFieldRespawn;
+		private _support = [_currentPosition, cfgAizSupportForceCampSearchRadius] call fnc_aiz_FindCampFieldRespawn;
 		DEBUG_LOG_VAR(_support);
 		if (!isNull _support) then
 		{

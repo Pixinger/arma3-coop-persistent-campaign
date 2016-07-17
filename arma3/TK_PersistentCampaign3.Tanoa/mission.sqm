@@ -265,7 +265,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.04";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.05";
 		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=1800.0002;
