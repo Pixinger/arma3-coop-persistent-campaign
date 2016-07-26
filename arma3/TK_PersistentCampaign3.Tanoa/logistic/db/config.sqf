@@ -89,6 +89,7 @@ if (isServer) then
 		"ACE_Wheel",
 		"ACE_Track",
 		"B_Slingload_01_Repair_F",
+		"B_Slingload_01_Cargo_F",
 		"Land_PaperBox_closed_F",
 		"Land_PaperBox_open_full_F",
 		"Land_Pipes_small_F",

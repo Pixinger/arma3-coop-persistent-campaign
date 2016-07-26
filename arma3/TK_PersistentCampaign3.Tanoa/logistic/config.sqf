@@ -179,6 +179,7 @@ private _logisticHaulableDefinitions = [
 	["B_UAV_02_CAS_F", 				[[0,  -8, 0.0], 0, true]],
 
 	["B_Slingload_01_Repair_F", 	[[0,  -2.7, 1], 0, false]],
+	["B_Slingload_01_Cargo_F", 		[[0,  -2.7, 1], 0, false]],
 
 	["B_T_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
 	["B_T_MRAP_02_gmg_F",			[[0,  -8, 0.85], 0, true]],
@@ -260,4 +261,22 @@ logisticRepairablesConfigs = [];
 } foreach logisticHaulables;
 //----------------------------------------------------------------------------------------------------
 
+//!! Achtung! Auch in der DP config eintragen!
+// [classname, [containerCount, duration]]]
+private _logisticStripDownDefinitions = [
+	["B_T_Truck_01_box_F",			[3, 60]],
+	["B_T_Truck_01_covered_F",		[2, 60]],
+	["B_T_Truck_01_transport_F",	[2, 60]],
+	["B_T_Truck_01_mover_F",		[1, 60]]
+];
+
+//----------------------------------------------------------------------------------------------------
+logisticStripDownContainers = ["B_Slingload_01_Cargo_F"];
+logisticStripDownables = [];
+logisticStripDownablesConfigs = [];
+{
+	logisticStripDownables pushBack (_x select 0);
+	logisticStripDownablesConfigs pushBack (_x select 1);
+} foreach _logisticStripDownDefinitions;
+//----------------------------------------------------------------------------------------------------
 logisticWorkAnimExit = true;

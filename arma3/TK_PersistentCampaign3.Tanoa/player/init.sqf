@@ -17,7 +17,7 @@ if (hasInterface) then
 			//player setCaptive true;
 			player setVariable ["isPioneer", true, true];
 			player setVariable ["ACE_isEOD", true, true];
-			player setVariable ["ACE_IsEngineer", true, true];
+			player setVariable ["ACE_IsEngineer", 2, true];
 			player setVariable ["ace_medical_medicclass", 2, true];
 		};
 		

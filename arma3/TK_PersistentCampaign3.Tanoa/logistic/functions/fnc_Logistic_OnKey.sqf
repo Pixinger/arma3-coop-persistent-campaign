@@ -57,7 +57,12 @@ else
 				};
 			if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack ["Bewegen", true, true, fnc_Logistic_Object_Move];};
 			if (call fnc_Logistic_CanSellVehicle) then { _buttons pushBack ["Verkaufen", true, true, fnc_Logistic_SellVehicle];};
-			if (call fnc_Logistic_CanRepairVehicle) then { _buttons pushBack ["Reparieren/Hacken", true, true, fnc_Logistic_RepairVehicle];};
+			if (call fnc_Logistic_CanRepairVehicle) then 
+			{ 
+				_buttons pushBack ["Reparieren/Hacken", true, true, fnc_Logistic_RepairVehicle];
+				if (_cursorTargetType in logisticStripDownables) then { _buttons pushBack ["Zerlegen", true, true, fnc_Logistic_StripDownVehicle];};
+				if (_cursorTargetType in logisticStripDownContainers) then { _buttons pushBack ["Zusammenbauen", true, true, fnc_Logistic_StripUpVehicle];};
+			};
 			if (call fnc_Logistic_CanTakePrison) then { _buttons pushBack ["Verhören", true, true, fnc_Logistic_TakePrison];};
 		};
 	};
