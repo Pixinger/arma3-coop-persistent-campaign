@@ -20,6 +20,10 @@ diag_log format["INFO: cfgAizGroupSizeMax: %1", cfgAizGroupSizeMax];
 cfgAizAISkillMin = 0.5;
 cfgAizAISkillMax = 0.5;
 
+cfgAizForceCheckpointRecreation = paramsArray select 2;
+cfgAizForceCheckpointRecreation = if (cfgAizForceCheckpointRecreation == 1) then { true } else { false };
+if (pixDebug) then { cfgAizForceCheckpointRecreation = true;};
+diag_log format["INFO: cfgAizForceCheckpointRecreation: %1", cfgAizForceCheckpointRecreation];
 
 // ------------------------------------------------------------------------------
 // Runtime Variablen initialisieren (nicht verändern!)

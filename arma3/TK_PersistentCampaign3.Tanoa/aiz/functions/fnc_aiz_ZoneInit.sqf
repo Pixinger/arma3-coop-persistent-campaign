@@ -154,10 +154,27 @@ if (count _zoneDataSet > 2) then
 {
 	private _tmpCheckpoints = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
 	// Inaktive Checkpoints NICHT aus der Liste übernehmen.
-	{ if (count (_x select 0) != 0) then { _checkpoints pushBack _x; };	} foreach _tmpCheckpoints;
+	{ 
+		if (count (_x select 0) != 0) then 
+		{
+			if (cfgAizForceCheckpointRecreation) then
+			{
+				private _randomPosition = [_geoInfo] call fnc_aiz_GetRandomPositionRoad; // [position, direction]
+				if (count _randomPosition > 0) then
+				{
+					_checkpoints pushBack _randomPosition; // [position, direction]
+				};
+			}
+			else
+			{
+				_checkpoints pushBack _x;
+			};
+		};
+	} foreach _tmpCheckpoints;
 }
 else
 {
+diag_log "_checkpoints: fromNEW";
 	// Nach Checkpoints für diese Zone suchen
 	if (random CHANCE_CHECKPOINTS_PER_ZONE <= 1) then
 	{
@@ -182,6 +199,7 @@ else
 		//diag_log format["INFO: No Checkpoints for ZoneIndex=%1 required.", _zoneIndex];
 	};	
 };
+diag_log format["_checkpoints: %1", _checkpoints];
 
 //------------------------------------------------------------------------------------------
 // GroupCount laden

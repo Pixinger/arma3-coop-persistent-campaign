@@ -55,6 +55,13 @@ class Params
 	    texts[] = {"2","3","4","5","6","7","8","9","10"};
 	    default = 8;
 	};
+	class AIZ_ForceCheckpointRecreation /* paramsArray[2]*/
+	{		
+	    title = "AIZ - Checkpoints versetzen";
+	    values[] = {0, 1};
+	    texts[] = {"Nein","Ja"};
+	    default = 0;
+	};
 };
 
 class CfgRemoteExec
