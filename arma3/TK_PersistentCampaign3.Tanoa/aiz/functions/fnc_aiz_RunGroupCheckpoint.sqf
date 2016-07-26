@@ -9,7 +9,8 @@ Sleep (random 3);
 // _THIS
 //================================================================================
 params ["_zoneIndex", "_aizZoneActiveIndex", "_checkpoint", "_unitClassnames"];
-_checkpoint params ["_checkpointPosition", "_checkpointDirection"];
+_checkpoint params ["_checkpointPositionCopy", "_checkpointDirection"];
+_checkpointPosition = [_checkpointPositionCopy select 0, _checkpointPositionCopy select 1, _checkpointPositionCopy select 2];
 
 //================================================================================
 // Einheiten erstellen
