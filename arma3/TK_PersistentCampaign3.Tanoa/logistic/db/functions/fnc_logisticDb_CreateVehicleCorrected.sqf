@@ -10,14 +10,6 @@ _position = _this select 1;
 private["_direction"];
 _direction = _this select 2;
 
-// Classname Translation
-if (_classname == "Land_HBarrier_1_F") then { _classname = "Land_HBarrier_01_line_1_green_F"; };
-if (_classname == "Land_HBarrier_3_F") then { _classname = "Land_HBarrier_01_line_3_green_F"; };
-if (_classname == "Land_HBarrier_5_F") then { _classname = "Land_HBarrier_01_line_5_green_F"; };
-if (_classname == "Land_BagFence_Long_F") then { _classname = "Land_BagFence_01_long_green_F"; };
-if (_classname == "Land_BagBunker_Small_F") then { _classname = "Land_BagBunker_01_small_green_F"; };
-if (_classname == "Land_BagBunker_Large_F") then { _classname = "Land_BagBunker_01_large_green_F"; };
-
 // Fahrzeug erstellen
 private["_object"];
 _object = createVehicle [_classname, [_position select 0, _position select 1, _position select 2], [], 0, "CAN_COLLIDE"]; //_object = _classname createVehicle _position;
