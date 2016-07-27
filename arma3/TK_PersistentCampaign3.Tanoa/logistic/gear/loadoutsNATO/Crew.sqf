@@ -56,11 +56,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_MXC_khk_F",
+		"SMG_01_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_45ACP_Mag_SMG_01",
 		/* Primary Weapon Items */
-		["optic_Aco_smg","acc_pointer_IR"]
+		["optic_Holosight_smg","acc_pointer_IR"]
 	],
 
 	/* Secondary Weapon */
@@ -79,7 +79,7 @@ _result = [
 		[],
 		/* Backpack-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag"
+			"30Rnd_45ACP_Mag_SMG_01", "30Rnd_45ACP_Mag_SMG_01", "30Rnd_45ACP_Mag_SMG_01", "30Rnd_45ACP_Mag_SMG_01", "30Rnd_45ACP_Mag_SMG_01"
 		],
 		/* Backpack-Items */
 		[

@@ -30,7 +30,7 @@ if (_objectIndex >= 0) then
 		// Aktuelle Ladung auslesen
 		private["_load"];
 		_load = _vehicle getVariable ["pixLoad", 0];
-		player globalChat format["count _attachPoints = %1 / _load=%2 / _objectSize=%3", count _attachPoints, _load, _objectSize];
+		player globalChat format["count _attachPoints = %1 / _load=%2 / _objectSize=%3 / %4", count _attachPoints, _load, _objectSize, _attachPoints];
 
 		// Auf dem entsprechenden AttachPoint attachen, wenn genug Platz vorhanden ist.
 		if (_load + _objectSize <= count _attachPoints) then
@@ -44,7 +44,7 @@ if (_objectIndex >= 0) then
 			_objectAttachRotation = _objectConfig select 2;			
 
 			private["_finalAttachPoint"];
-			_finalAttachPoint = [(_attachPoint select 0) + (_objectAttachOffset select 0), (_attachPoint select 1) + (_objectAttachOffset select 1), (_objectAttachOffset select 2)];
+			_finalAttachPoint = [(_attachPoint select 0) + (_objectAttachOffset select 0), (_attachPoint select 1) + (_objectAttachOffset select 1), (_attachPoint select 2) + (_objectAttachOffset select 2)];
 
 			_cursorTarget attachTo [_vehicle, _finalAttachPoint];		
 			

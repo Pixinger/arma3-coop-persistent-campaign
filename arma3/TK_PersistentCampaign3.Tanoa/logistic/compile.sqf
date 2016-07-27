@@ -24,6 +24,8 @@ fnc_Logistic_RepairVehicle = compile preprocessFileLineNumbers "logistic\functio
 fnc_Logistic_CanRepairVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanRepairVehicle.sqf";
 fnc_Logistic_StripUpVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_StripUpVehicle.sqf";
 fnc_Logistic_StripDownVehicle = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_StripDownVehicle.sqf";
+fnc_Logistic_VTOLChange = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_VTOLChange.sqf";
+fnc_Logistic_HALOJump = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_HALOJump.sqf";
 
 fnc_Logistic_BuryCorpse = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_BuryCorpse.sqf";
 fnc_Logistic_CanBuryCorpse = compile preprocessFileLineNumbers "logistic\functions\fnc_Logistic_CanBuryCorpse.sqf";

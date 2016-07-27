@@ -37,7 +37,7 @@ _result = [
 		[DEFAULT_VESTWEAPONS],
 		/* Vest-Magazines */
 		[
-			DEFAULT_VESTMAGAZINES, "100Rnd_65x39_caseless_mag", "100Rnd_65x39_caseless_mag_Tracer"
+			DEFAULT_VESTMAGAZINES, "150Rnd_556x45_Drum_Mag_F", "150Rnd_556x45_Drum_Mag_F"
 		],
 		/* Vest-Items */
 		[
@@ -56,11 +56,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_MX_SW_khk_F",
+		"arifle_SPAR_02_blk_F",
 		/* Primary weapon Magazine */
-		"100Rnd_65x39_caseless_mag",
+		"150Rnd_556x45_Drum_Mag_F",
 		/* Primary Weapon Items */
-		["optic_Hamr", "acc_pointer_IR", "muzzle_snds_H", "bipod_01_F_blk"]
+		["optic_ERCO_blk_F", "acc_pointer_IR", "muzzle_snds_M"]
 	],
 
 	/* Secondary Weapon */
@@ -82,7 +82,7 @@ _result = [
 		/* Backpack-Magazines */
 		[
 			DEFAULT_BACKPACKMAGAZINES,
-			"100Rnd_65x39_caseless_mag_Tracer", "100Rnd_65x39_caseless_mag_Tracer"
+			"150Rnd_556x45_Drum_Mag_F", "150Rnd_556x45_Drum_Mag_F"
 		],
 		/* Backpack-Items */
 		[

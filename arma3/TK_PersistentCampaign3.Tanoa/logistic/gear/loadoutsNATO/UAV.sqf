@@ -38,7 +38,7 @@ _result = [
 		/* Vest-Magazines */
 		[
 			DEFAULT_VESTMAGAZINES_LIGHT, 
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag",
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag",
 			"ACE_UAVBattery"
 		],
 		/* Vest-Items */
@@ -56,11 +56,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_MX_khk_F",
+		"arifle_SPAR_01_blk_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_556x45_Stanag",
 		/* Primary Weapon Items */
-		["optic_Hamr","acc_pointer_IR","muzzle_snds_H"]
+		["optic_ERCO_blk_F","acc_pointer_IR","muzzle_snds_H"]
 	],
 
 	/* Secondary Weapon */

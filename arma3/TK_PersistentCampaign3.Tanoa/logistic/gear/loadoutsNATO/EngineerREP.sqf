@@ -39,7 +39,7 @@ _result = [
 		[
 			DEFAULT_VESTMAGAZINES, 
 			"SmokeShellOrange", "SmokeShellOrange",
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag"
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
 		],
 		/* Vest-Items */
 		[DEFAULT_VESTITEMS]
@@ -56,11 +56,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_MXC_khk_F",
+		"arifle_SPAR_01_blk_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_556x45_Stanag",
 		/* Primary Weapon Items */
-		["optic_Hamr","acc_pointer_IR","muzzle_snds_H"]
+		["optic_ERCO_blk_F","acc_pointer_IR","muzzle_snds_H"]
 	],
 
 	/* Secondary Weapon */
@@ -82,8 +82,8 @@ _result = [
 		/* Backpack-Magazines */
 		[
 			DEFAULT_BACKPACKMAGAZINES,
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag",
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag"
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag",
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
 		],
 		/* Backpack-Items */
 		[

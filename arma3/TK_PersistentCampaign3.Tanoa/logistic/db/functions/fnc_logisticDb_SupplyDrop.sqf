@@ -46,5 +46,13 @@ if (isServer) then
 }
 else
 {
-	_this remoteExec ["fnc_logisticDb_SupplyDrop", 2]; // 2= only server
+	if (count _this == 1) then
+	{
+		openMap [true, true];
+		onMapSingleClick format["[_pos, '%1'] remoteExec ['fnc_logisticDb_SupplyDrop', 2]; onMapSingleClick ''; openMap [true, false]; openMap [false, false]; true;", _this select 0];
+	}
+	else
+	{
+		_this remoteExec ["fnc_logisticDb_SupplyDrop", 2]; // 2= only server
+	};
 };

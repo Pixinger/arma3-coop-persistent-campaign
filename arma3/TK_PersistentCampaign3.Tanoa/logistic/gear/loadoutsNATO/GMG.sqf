@@ -38,7 +38,7 @@ _result = [
 		/* Vest-Magazines */
 		[
 			DEFAULT_VESTMAGAZINES, 
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag"
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
 		],
 		/* Vest-Items */
 		[DEFAULT_VESTITEMS]
@@ -55,11 +55,11 @@ _result = [
 
 	/* Primary Weapon */
 	[
-		"arifle_MX_GL_khk_F",
+		"arifle_SPAR_01_GL_blk_F",
 		/* Primary weapon Magazine */
-		"30Rnd_65x39_caseless_mag",
+		"30Rnd_556x45_Stanag",
 		/* Primary Weapon Items */
-		["optic_Hamr","acc_pointer_IR","muzzle_snds_H"]
+		["optic_ERCO_blk_F","acc_pointer_IR","muzzle_snds_H"]
 	],
 
 	/* Secondary Weapon */
@@ -79,7 +79,7 @@ _result = [
 		],
 		/* Backpack-Magazines */
 		[
-			"30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag",
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag",
 			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
 			"1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell",
 			"1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell"
