@@ -34,8 +34,8 @@ class CfgFunctions
 class Header
 {
   gameType = Coop;            
-  minPlayers = 4;             
-  maxPlayers = 80;            
+  minPlayers = 1;             
+  maxPlayers = 30;            
   playerCountMultipleOf = 1;  
 };
 
@@ -71,6 +71,12 @@ class CfgRemoteExec
 		  /*your commands here*/
 		  class hint { allowedTargets=0; jip=0; }
 	};
+};
+
+class CfgCommands {
+   allowedHTMLLoadURIs[] += {
+      "http://teamkommando.net/arma_dialogs/welcome_to_tk.htm"
+   };
 };
 
 #include "dialogDefines.hpp"

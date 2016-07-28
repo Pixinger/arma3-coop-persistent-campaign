@@ -3,6 +3,7 @@ if (call fnc_Admin_IsPlayerAdmin) then {
 	private["_buttons"];	
 	_buttons = [		
 		["GPS (toggle)", true, true, fnc_Admin_GpsToggle],
+		["Mark Camps", true, true, fnc_aiz_MarkCamps],
 		["Teleport (admin)", true, true, fnc_Admin_TeleportAdmin],
 		["Teleport (cursor target)", true, true, fnc_Admin_TeleportCursorTarget],
 		["Teleport (toggle player)", true, true, fnc_Admin_TeleportToggle],

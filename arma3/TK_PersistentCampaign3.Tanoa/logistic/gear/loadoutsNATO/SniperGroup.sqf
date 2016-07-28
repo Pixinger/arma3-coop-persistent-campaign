@@ -38,7 +38,7 @@ _result = [
 		/* Vest-Magazines */
 		[
 			DEFAULT_VESTMAGAZINES,
-			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
+			"20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag"
 		],
 		/* Vest-Items */
 		[DEFAULT_VESTITEMS]
@@ -55,11 +55,11 @@ _result = [
 	
 	/* Primary Weapon */
 	[
-		"arifle_MXM_khk_F",
+		"arifle_SPAR_03_blk_F",
 		/* Primary weapon Magazine */
-		"30Rnd_556x45_Stanag",
+		"20Rnd_762x51_Mag",
 		/* Primary Weapon Items */
-		["acc_pointer_IR", "optic_SOS", "bipod_01_F_mtp", "muzzle_snds_H"]
+		["acc_pointer_IR", "optic_SOS", "bipod_01_F_blk", "muzzle_snds_B"]
 	],
 
 	/* Secondary Weapon */
@@ -79,8 +79,8 @@ _result = [
 		/* Backpack-Magazines */
 		[
 			"SmokeShell","SmokeShell",
-			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag",
-			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
+			"20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag",
+			"20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag", "20Rnd_762x51_Mag"
 		],
 		/* Backpack-Items */
 		["ACE_Kestrel4500", "ACE_ATragMX", DEFAULT_BACKPACKITEMS]

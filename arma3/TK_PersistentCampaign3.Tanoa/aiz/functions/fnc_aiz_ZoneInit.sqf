@@ -78,6 +78,7 @@ for "_i" from 1 to WAYPOINT_COUNT_PER_ZONE do
 //------------------------------------------------------------------------------------------
 if (count _zoneDataSet > 0) then
 {		 
+	// Aus der Datenbank laden
 	{
 		private _house = nearestObject [_x select 0, "House"];
 		if (!isNull _house) then
@@ -88,7 +89,7 @@ if (count _zoneDataSet > 0) then
 }
 else
 {	
-	// Nach einer Position für CAMP-TOWN suchen
+	// Neu generieren
 	if (random CHANCE_CAMPSTOWN_PER_ZONE <= 1) then
 	{
 		private _randomPosition = [0,0,0];
@@ -112,17 +113,19 @@ else
 		//diag_log format["INFO: No CampTown for ZoneIndex=%1 required.", _zoneIndex];
 	};
 };
+diag_log format["ZoneInit %2: _campsTown: %1", _campsTown, _zoneIndex];
 
 //------------------------------------------------------------------------------------------
 // CAMP-FIELD laden
 //------------------------------------------------------------------------------------------
 if (count _zoneDataSet > 1) then
 {
+	// Aus der Datenbank laden
 	_campsField  = (_zoneDataSet select 1); 		// [[position, respawns], ..., [position, respawns]];
 }
 else
 {
-	// Nach einer Position für CAMP-FIELD suchen
+	// Neu generieren
 	if (random CHANCE_CAMPSFIELD_PER_ZONE <= 1) then
 	{
 		private _randomPosition = [0,0,0];
@@ -146,16 +149,18 @@ else
 		//diag_log format["INFO: No CampField for ZoneIndex=%1 required.", _zoneIndex];
 	};
 };
+diag_log format["ZoneInit %2: _campsField: %1", _campsField, _zoneIndex];
 
 //------------------------------------------------------------------------------------------
 // Checkpoints laden
 //------------------------------------------------------------------------------------------
 if (count _zoneDataSet > 2) then
 {
+	// Aus der Datenbank laden
 	private _tmpCheckpoints = (_zoneDataSet select 2); 		// [[position, direction], ..., [position, direction]];
-	// Inaktive Checkpoints NICHT aus der Liste übernehmen.
+	
 	{ 
-		if (count (_x select 0) != 0) then 
+		if (count (_x select 0) != 0) then // Inaktive Checkpoints NICHT aus der Liste übernehmen wenn inaktiv.
 		{
 			if (cfgAizForceCheckpointRecreation) then
 			{
@@ -174,8 +179,7 @@ if (count _zoneDataSet > 2) then
 }
 else
 {
-diag_log "_checkpoints: fromNEW";
-	// Nach Checkpoints für diese Zone suchen
+	// Neu generieren
 	if (random CHANCE_CHECKPOINTS_PER_ZONE <= 1) then
 	{
 		private _randomPosition = [0,0,0];
@@ -199,7 +203,7 @@ diag_log "_checkpoints: fromNEW";
 		//diag_log format["INFO: No Checkpoints for ZoneIndex=%1 required.", _zoneIndex];
 	};	
 };
-diag_log format["_checkpoints: %1", _checkpoints];
+diag_log format["ZoneInit %2: _checkpoints: %1", _checkpoints, _zoneIndex];
 
 //------------------------------------------------------------------------------------------
 // GroupCount laden
@@ -207,15 +211,16 @@ diag_log format["_checkpoints: %1", _checkpoints];
 if (count _zoneDataSet > 3) then
 {
 	_groupCount  = (_zoneDataSet select 3); 		
+	diag_log format["_groupCount from DB %1", _groupCount];
 }
 else
 {
 	// Festlegen wieviele Gruppen es geben soll
 	_groupCount = floor (count _waypointPool / (4.5 + random 2.5));
+	if ((_groupCount < 1) && (count _waypointPool > 3)) then { _groupCount = 1; };
 };
-if ((_groupCount < 1) && (count _waypointPool > 3)) then { _groupCount = 1; };
-if (_zoneIndex == 12) then { _groupCount = 1; };
 if (_groupCount < 0) then { _groupCount = 0; };	
+diag_log format["ZoneInit %2: _groupCount: %1", _groupCount, _zoneIndex];
 
 //------------------------------------------------------------------------------------------
 // IntelCount laden
@@ -223,6 +228,7 @@ if (_groupCount < 0) then { _groupCount = 0; };
 if (count _zoneDataSet > 4) then
 {
 	_intelCount	= (_zoneDataSet select 4); 
+	diag_log format["_intelCount from DB %1", _intelCount];
 }
 else
 {
@@ -230,6 +236,7 @@ else
 };
 if (_intelCount < 0) then { _intelCount = 0; };
 if (_intelCount > 3) then { _intelCount = 3; };
+diag_log format["ZoneInit %2: _intelCount: %1", _intelCount, _zoneIndex];
 
 //==========================================================================================
 // Zone überprüfen, ob mit diesen Daten gestartet werden kann - oder nicht.

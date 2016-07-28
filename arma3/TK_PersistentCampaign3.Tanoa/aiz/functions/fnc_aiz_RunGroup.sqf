@@ -1,4 +1,4 @@
-#include "..\..\debug.hpp"
+#include "..\..\debugOn.hpp"
 //DEBUG_LOG_FILE
 //DEBUG_LOG_THIS
 
@@ -97,12 +97,13 @@ while { _state != STATE_EXIT } do
 			_group setSpeedMode "LIMITED";
 			_group setFormation "COLUMN";
 
-			private _decision = [1, 2] call BIS_fnc_randomInt;
+			/*private _decision = [1, 2] call BIS_fnc_randomInt;
 			switch (_decision) do
 			{
 				case 1: { _state = STATE_PREPEARE_WALK; };
 				case 2: { _state = STATE_PREPEARE_GUARD; };
-			};
+			};*/
+			_state = STATE_PREPEARE_WALK;
 		};
 		
 		//###############################################################################################################
@@ -199,12 +200,34 @@ while { _state != STATE_EXIT } do
 		//DEBUG_LOG("Validating group");
 		_validateTimeout = time + 10;
 		
-		// Gefangene und tote Einheiten entfernen
+		// Gefangene, verwundete und tote Einheiten entfernen
 		{
-			if ((!alive _x) || {(_x getVariable ["ACE_Captives_isHandcuffed", false])}) then 
+			//if ((!alive _x) || {(_x getVariable ["ACE_Captives_isHandcuffed", false])} || {(_x getVariable ["ACE_isUnconscious", false])}) then 
+			//{ 	
+			//	[_x] join grpNull; 
+			//	DEBUG_LOG_VAREX("Unit joined grpNull: ", _x);
+			//};
+
+			if (!alive _x) then 
 			{ 	
+				DEBUG_LOG_VAREX("Unit joined grpNull (not alive): ", _x);
 				[_x] join grpNull; 
-				//DEBUG_LOG_VAREX("Unit joined grpNull: ", _x);
+			}
+			else
+			{
+				if (_x getVariable ["ACE_isUnconscious", false]) then 
+				{ 	
+					[_x] join grpNull; 
+					DEBUG_LOG_VAREX("Unit joined grpNull (is unconscious): ", _x);
+				}
+				else
+				{
+					if (_x getVariable ["ACE_Captives_isHandcuffed", false]) then 
+					{ 	
+						[_x] join grpNull; 
+						DEBUG_LOG_VAREX("Unit joined grpNull (is handcuffed): ", _x);
+					}
+				};
 			};
 		} foreach (units _group);
 
@@ -219,9 +242,8 @@ DEBUG_LOG("STATE_EXIT");
 //================================================================================
 if (count (units _group) == 0) then
 {
-	DEBUG_LOG_VAREX("Group destroyed: Requesting support: ", _currentPosition);
+	DEBUG_LOG_VAREX2("Group destroyed: Requesting support(pos/zoneIndex): ", _currentPosition, _zoneIndex);
 	private _support = [_currentPosition, cfgAizSupportForceCampSearchRadius] call fnc_aiz_FindCampTownRespawn;
-	DEBUG_LOG_VAR(_support);
 	if (!isNull _support) then
 	{
 		DEBUG_LOG_VAREX("Support found at CT: ", _support);
@@ -230,7 +252,6 @@ if (count (units _group) == 0) then
 	else
 	{
 		private _support = [_currentPosition, cfgAizSupportForceCampSearchRadius] call fnc_aiz_FindCampFieldRespawn;
-		DEBUG_LOG_VAR(_support);
 		if (!isNull _support) then
 		{
 			DEBUG_LOG_VAREX("Support found at CF: ", _support);
@@ -244,7 +265,8 @@ if (count (units _group) == 0) then
 			call compile format["_zoneData = aizZoneData%1;", _zoneIndex];
 			private _groupCount = (_zoneData select 4) - 1;
 			_zoneData set [4, _groupCount];	
-			DEBUG_LOG_VAREX("No Support found. GroupCount decreased to: ", _groupCount);
+			DEBUG_LOG_VAR(_zoneData);
+			DEBUG_LOG_VAREX2("No Support found. GroupCount decreased to(groupCount/zoneIndex): ", _groupCount, _zoneIndex);
 		};
 	};
 };

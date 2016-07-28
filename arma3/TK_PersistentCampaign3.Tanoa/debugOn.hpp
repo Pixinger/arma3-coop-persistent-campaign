@@ -1,7 +1,6 @@
-#define DEBUG_LOG_ENABLED
-//#define MARKER_ENABLED
+#define DEBUGON_LOG_ENABLED
 
-#ifdef DEBUG_LOG_ENABLED
+#ifdef DEBUGON_LOG_ENABLED
 	#define DEBUG_LOG_FILE						diag_log 'DEBUG: __FILE__';
 	#define DEBUG_LOG_THIS						diag_log format['DEBUG: _this = %1', _this];
 	#define DEBUG_LOG_VAR(__yy)					diag_log format['DEBUG: __yy = %1', __yy];

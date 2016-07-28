@@ -46,5 +46,7 @@ if (hasInterface) then
 			hint "Kein HQ gefunden.";
 		};
 		cutText ["", "BLACK IN",1];
+		
+		private _tmp = [] execVM "player\welcomeDialog\showModal.sqf";
 	};
 }; 
