@@ -71,11 +71,11 @@ if (isServer) then
 	diag_log "AIZ-Database: saving";
 	{
 		diag_log format["zoneIndex=%1 dataset=%2", _foreachIndex, _x];
-		diag_log format["zoneIndex=%1 _dataSetCampsTown=%2", _foreachIndex, _x select 0];
-		diag_log format["zoneIndex=%1 _dataSetCampsField=%2", _foreachIndex, _x select 1];
-		diag_log format["zoneIndex=%1 _dataSetCheckpoints=%2", _foreachIndex, _x select 2];
-		diag_log format["zoneIndex=%1 _groupCount=%2", _foreachIndex, _x select 3];
-		diag_log format["zoneIndex=%1 _intelCount=%2", _foreachIndex, _x select 4];
+		if (count _x > 0) then { diag_log format["zoneIndex=%1 _dataSetCampsTown=%2", _foreachIndex, _x select 0];};
+		if (count _x > 1) then { diag_log format["zoneIndex=%1 _dataSetCampsField=%2", _foreachIndex, _x select 1];};
+		if (count _x > 2) then { diag_log format["zoneIndex=%1 _dataSetCheckpoints=%2", _foreachIndex, _x select 2];};
+		if (count _x > 3) then { diag_log format["zoneIndex=%1 _groupCount=%2", _foreachIndex, _x select 3];};
+		if (count _x > 4) then { diag_log format["zoneIndex=%1 _intelCount=%2", _foreachIndex, _x select 4];};
 	} foreach _database;
 	diag_log "AIZ-Database: ------------------------ (end)";
 	

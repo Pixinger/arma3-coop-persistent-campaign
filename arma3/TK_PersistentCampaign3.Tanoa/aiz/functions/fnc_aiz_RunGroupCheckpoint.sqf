@@ -56,15 +56,46 @@ while { _state != STATE_EXIT } do
 		
 		// Gefangene und tote Einheiten entfernen
 		{
-			if ((!alive _x) || {(_x getVariable ["ACE_Captives_isHandcuffed", false])}) then 
+			/*if ((!alive _x) || {(_x getVariable ["ACE_Captives_isHandcuffed", false])}) then 
 			{ 	
 				[_x] join grpNull; 
 				//DEBUG_LOG_VAREX("Unit joined grpNull: ", _x);
+			};*/			
+			
+			if (!alive _x) then 
+			{ 	
+				DEBUG_LOG_VAREX("Unit joined grpNull (not alive): ", _x);
+				[_x] join grpNull; 
+			}
+			else
+			{
+				if (_x getVariable ["ACE_isUnconscious", false]) then 
+				{ 	
+					[_x] join grpNull; 
+					DEBUG_LOG_VAREX("Unit joined grpNull (is unconscious): ", _x);
+				}
+				else
+				{
+					if (_x getVariable ["ACE_Captives_isHandcuffed", false]) then 
+					{ 	
+						[_x] join grpNull; 
+						DEBUG_LOG_VAREX("Unit joined grpNull (is handcuffed): ", _x);
+					}
+				};
 			};
+			
 		} foreach (units _group);
 
 		// Wenn die Gruppe leer ist, dann beenden
-		if (count (units _group) == 0) exitWith { _state = STATE_EXIT; };
+		//if (count (units _group) == 0) exitWith { _state = STATE_EXIT; };
+		if (count (units _group) < 2) exitWith 
+		{ 
+			{ 
+				_x spawn fnc_aiz_TrackFleeUnit; // Einheit im Hintergrund weiter verfolgen und wenn keiner mehr in der Nähe ist, löschen.
+				[_x] join grpNull; 
+			} foreach (units _group); // Die Restlichen Einheiten auch noch aus der Gruppe entfernen.
+			_state = STATE_EXIT; 
+		};
 	};		
 	
 	//================================================================================

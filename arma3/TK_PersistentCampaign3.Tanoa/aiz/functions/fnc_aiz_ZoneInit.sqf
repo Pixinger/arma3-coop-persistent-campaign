@@ -313,6 +313,7 @@ if (_triggerRequired) then
 }
 else
 {
+	call compile format["aizZoneData%1 = [[], [], [], [], 0, 0];", _zoneIndex];
 	_markerName setMarkerAlpha 0.2;
 	_markerName SetMarkerColor "ColorGreen";
 	INFO_LOG_VAREX("Zone is OFFLINE/COMPLETED. zoneIndex=", _zoneIndex);

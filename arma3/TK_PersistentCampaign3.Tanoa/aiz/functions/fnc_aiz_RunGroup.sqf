@@ -232,7 +232,14 @@ while { _state != STATE_EXIT } do
 		} foreach (units _group);
 
 		// Wenn die Gruppe leer ist, dann beenden
-		if (count (units _group) == 0) exitWith { _state = STATE_EXIT; };
+		if (count (units _group) < 2) exitWith 
+		{ 
+			{ 
+				_x spawn fnc_aiz_TrackFleeUnit; // Einheit im Hintergrund weiter verfolgen und wenn keiner mehr in der Nähe ist, löschen.
+				[_x] join grpNull; 
+			} foreach (units _group); // Die Restlichen Einheiten auch noch aus der Gruppe entfernen.
+			_state = STATE_EXIT; 
+		};
 	};	
 };
 DEBUG_LOG("STATE_EXIT");
