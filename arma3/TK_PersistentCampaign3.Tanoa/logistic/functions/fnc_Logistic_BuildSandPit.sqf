@@ -1,11 +1,11 @@
 if (!(surfaceIsWater position player) && (!isOnRoad player)) then 
 {
-	call fnc_Logistic_WorkAnimationStart;
 
 	private _sleepTime = [] call fnc_Logistic_GetBuildSleepTime; // _sleepTime = 1 bis 3. 2 entspricht ca 500 Mass-Einheiten
 
+	call fnc_Logistic_WorkAnimationStart;
 	logisticBuild = true;
-	private _actionMenu = player addAction [("<t color=""#dddd00"">Graben abbrechen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+	private _actionMenu = player addAction [(localize "str_pc3_AbortDigging"), { logisticBuild = false; }, nil, 5, true, true];
 	private _loopcount = 10;
 	while { (logisticBuild) && (alive player) && (_loopcount > 0) } do
 	{

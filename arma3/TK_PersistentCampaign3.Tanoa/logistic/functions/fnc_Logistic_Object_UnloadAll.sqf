@@ -24,14 +24,14 @@ if (_cursorTargetType in logisticTransporters) then
 			// Auf freien Platz setzen
 			_object setPos _position;
 			
-			hint "Objekt wird entladen...";
+			hint localize "str_pc3_ObjectWillBeUnloaded";
 			Sleep 1;
 		} foreach _attachedObjects;
 		
-		hint format["Der gesamte Laderaum wurde erfolgreich abgeladen. Insgesamt %1 Objekte waren geladen.", _count];
+		hint format[localize "str_pc3_TheWholeCargoWasSuccessfullyUnloaded_ARG1_ObjectsTotal", _count];
 	}
 	else
 	{
-		hint "Der Laderaum war bereits leer. Zur Sicherheit haben wir ihn noch einmal entladen...";
+		hint localize "str_pc3_TheCargoWasAlreadyEmpty_ToBeSureWeUnloadedAgain";
 	};
 };

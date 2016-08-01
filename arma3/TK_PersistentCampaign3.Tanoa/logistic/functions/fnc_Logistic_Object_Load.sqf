@@ -56,12 +56,12 @@ if (_objectIndex >= 0) then
 	
 			_load = _load + _objectSize;
 			_vehicle setVariable ["pixLoad", _load, true];
-			hint "Ein Objekt erfolgreich aufgeladen";
+			hint localize "str_pc3_OneObjectSuccessfullyLoaded";
 		}
 		else
 		{
-			player globalChat format["count _attachPoints: %1 / %2", count _attachPoints, _objectSize];
-			hint "Kein Platz mehr auf dem Fahrzeug!";
+			//player globalChat format["count _attachPoints: %1 / %2", count _attachPoints, _objectSize];
+			hint localize "str_pc3_NoMoreSpaceOnTheVehicle";
 		};		
 	};
 };

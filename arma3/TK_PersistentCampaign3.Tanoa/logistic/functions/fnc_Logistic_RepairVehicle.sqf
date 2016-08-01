@@ -11,8 +11,9 @@ if (_sellableIndex >= 0) then
 	_repairableConfig params ["_duration", "_replacementClass"];
 	if (pixDebug) then { _duration = 2; };
 	
+	call fnc_Logistic_WorkAnimationStart;
 	logisticBuild = true;
-	private _actionMenu = player addAction [("<t color=""#dddd00"">Reparieren abbrechen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+	private _actionMenu = player addAction [(localize "str_pc3_AbortRepairing"), { logisticBuild = false; }, nil, 5, true, true];
 	private _exitTime = time + _duration;
 	while { (logisticBuild) && (alive player) && (time < _exitTime) } do { Sleep 1; };
 	call fnc_Logistic_WorkAnimationEnd;

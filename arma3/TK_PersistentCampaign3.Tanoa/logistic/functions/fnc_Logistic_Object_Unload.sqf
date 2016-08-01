@@ -28,6 +28,6 @@ if (_cursorTargetType in logisticTransporters) then
 		_load = _load - _objectSize;
 		if (_load < 0) then {_load = 0;};	
 		_cursorTarget setVariable ["pixLoad", _load, true];	
-		hint "Ein Objekt erfolgreich abgeladen";
+		hint localize "str_pc3_OneObjectSuccessfullyUnloaded";
 	};
 };

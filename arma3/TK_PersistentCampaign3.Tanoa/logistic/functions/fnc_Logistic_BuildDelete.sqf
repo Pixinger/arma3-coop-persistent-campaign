@@ -11,5 +11,5 @@ if (_configIndex != -1) then
 }
 else
 {
-	hint "Dieses Objekt kann nicht gelöscht werden.";
+	hint localize "str_pc3_ThisObjectCanNotBeDeleted";
 };

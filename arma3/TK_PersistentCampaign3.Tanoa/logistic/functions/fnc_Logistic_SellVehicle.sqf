@@ -28,7 +28,7 @@ if (_sellableIndex >= 0) then
 	}
 	else
 	{
-		hint "Kein Abnehmer in der Nähe!";
+		hint localize "str_pc3_NoConsumerNearBy";
 	};
 };
 	

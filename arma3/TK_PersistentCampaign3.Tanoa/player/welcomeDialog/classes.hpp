@@ -3,7 +3,7 @@
 class WelcomdeDialog
 {
 	idd = WELCOME_IDD_DIALOG;
-	movingEnable = 1;
+	movingEnable = 0;
 
 	controlsBackground[] = 
 	{
@@ -109,7 +109,7 @@ class WelcomdeDialog
 		y = 9.1 * GRID_H; 
 		w = 9.8 * GRID_W;
 		h = 0.8 * GRID_H;
-		text = ">> Verstanden";
+		text = ">> CHECKED";
 		action = "closeDialog 0;";
 	};
 };

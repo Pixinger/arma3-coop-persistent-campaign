@@ -6,5 +6,5 @@ if (adminPlayerTeleport) then
 }
 else
 {
-	hintC "Das Teleportieren ist nicht freigegeben";
+	hintC localize "str_pc3_TeleportingIsLocked";
 };

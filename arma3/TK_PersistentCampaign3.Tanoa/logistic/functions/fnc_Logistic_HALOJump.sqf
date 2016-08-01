@@ -30,7 +30,7 @@
 			}
 			else
 			{
-				hint "Unter MINALT m kann nicht abgesprungen werden.";
+				hint localize "str_pc3_BelowARG1MeterYouCanNotJump";
 			};
 		}
 		else

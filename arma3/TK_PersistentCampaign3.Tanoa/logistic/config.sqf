@@ -203,8 +203,12 @@ private _logisticHaulableDefinitions = [
 
 	["C_Van_01_box_F", 				[[0,  -8, 0.0], 0, true]],
 	["C_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],
-	["I_G_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],	
+	["I_G_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],
 	["B_T_Truck_01_box_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_ammo_F", 		[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_fuel_F", 		[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_medical_F", 		[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_Repair_F", 		[[0, -12, 0.5], 0, true]],
 	["B_T_Truck_01_covered_F", 		[[0, -12, 0.5], 0, true]],
 	["B_T_Truck_01_transport_F", 	[[0, -12, 0.5], 0, true]]
 ];
@@ -237,15 +241,16 @@ logisticSellablesConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [time, newClassname]]]
 private _logisticRepairablesDefinitions = [
-	["I_HMG_01_F", 			[30, "B_T_HMG_01_F"]],
-	["I_HMG_01_high_F", 	[30, "B_HMG_01_high_F"]],
-	["I_HMG_01_A_F", 		[30, "B_HMG_01_A_F"]],
-	["I_GMG_01_F", 			[30, "B_T_GMG_01_F"]],
-	["I_GMG_01_high_F", 	[30, "B_GMG_01_high_F"]],
-	["I_GMG_01_A_F", 		[30, "B_GMG_01_A_F"]],
-	["I_Mortar_01_F", 		[30, "B_T_Mortar_01_F"]],
-	["I_static_AA_F", 		[30, "B_T_Static_AA_F"]],
-	["I_static_AT_F", 		[30, "B_T_Static_AT_F"]]	
+	["I_HMG_01_F", 				[30, "B_T_HMG_01_F"]],
+	["I_HMG_01_high_F", 		[30, "B_HMG_01_high_F"]],
+	["I_HMG_01_A_F", 			[30, "B_HMG_01_A_F"]],
+	["I_GMG_01_F", 				[30, "B_T_GMG_01_F"]],
+	["I_GMG_01_high_F", 		[30, "B_GMG_01_high_F"]],
+	["I_GMG_01_A_F", 			[30, "B_GMG_01_A_F"]],
+	["I_Mortar_01_F", 			[30, "B_T_Mortar_01_F"]],
+	["I_static_AA_F", 			[30, "B_T_Static_AA_F"]],
+	["I_static_AT_F", 			[30, "B_T_Static_AT_F"]],
+	["B_T_Truck_01_mover_F", 	[120, "B_T_Truck_01_mover_F"]] // Der muss gesondert eingetragen werden, da er nicht HAULABLE ist.
 ];
 //----------------------------------------------------------------------------------------------------
 logisticRepairables = [];
@@ -269,6 +274,10 @@ logisticRepairablesConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [containerCount, duration]]]
 private _logisticStripDownDefinitions = [
+	["B_T_Truck_01_ammo_F",			[3, 60]],
+	["B_T_Truck_01_fuel_F",			[3, 60]],
+	["B_T_Truck_01_medical_F",		[3, 60]],
+	["B_T_Truck_01_Repair_F",		[3, 60]],
 	["B_T_Truck_01_box_F",			[3, 60]],
 	["B_T_Truck_01_covered_F",		[2, 60]],
 	["B_T_Truck_01_transport_F",	[2, 60]],

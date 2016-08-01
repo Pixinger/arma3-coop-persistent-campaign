@@ -17,4 +17,4 @@ hint format["%1", _cursorTargetType];
 	
 } foreach logisticBuildables;
 
-[_buttons, "Baumenü"] execVM "maindialog_showtemplate.sqf";
+[_buttons, localize "str_pc3_BuildingMenu"] execVM "maindialog_showtemplate.sqf";

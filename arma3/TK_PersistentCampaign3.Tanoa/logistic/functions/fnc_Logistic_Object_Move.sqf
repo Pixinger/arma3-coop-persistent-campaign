@@ -18,7 +18,7 @@ if (_cursorTargetType in logisticObjectsMoveables) then
 	_cursorTarget attachTo [player, _objectAttachPoint];
 
 	private["_actionMenu"];
-	_actionMenu = player addAction [("<t color=""#dddd00"">Ablegen</t>"), { logisticMoveObject = objNull; }, nil, 5, true, true];
+	_actionMenu = player addAction [(localize "str_pc3_Deposit"), { logisticMoveObject = objNull; }, nil, 5, true, true];
 
 	/*--------------------------------------------------------------------*/
 	/* Verschiedene Überwachungen*/

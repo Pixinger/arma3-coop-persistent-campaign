@@ -4,8 +4,9 @@ private["_cursorTargetType"];
 _cursorTargetType = typeof _cursorTarget;
 
 // Animation starten
+call fnc_Logistic_WorkAnimationStart;
 logisticBuild = true;
-private _actionMenu = player addAction [("<t color=""#dddd00"">Umbauen abbrechen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+private _actionMenu = player addAction [(localize "str_pc3_ModificationAbort"), { logisticBuild = false; }, nil, 5, true, true];
 private _exitTime = time + 120;
 while { (logisticBuild) && (alive player) && (time < _exitTime) } do { Sleep 1; };
 call fnc_Logistic_WorkAnimationEnd;
@@ -30,5 +31,5 @@ if ((logisticBuild) && (alive player)) then
 		_vehicle setVariable ["dbVar", _dbVar, true];
 	};
 	
-	hint "VTOL erfolgreich umgerüstet!"
+	hint localize "str_pc3_ModificationComplete";
 };			

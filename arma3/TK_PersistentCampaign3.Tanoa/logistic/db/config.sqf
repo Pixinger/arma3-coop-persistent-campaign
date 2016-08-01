@@ -32,12 +32,9 @@ if (isServer) then
 		"B_Heli_Light_01_armed_F",
 		"B_Heli_Light_01_stripped_F",
 		"B_Heli_Attack_01_F",
-		"B_Heli_Transport_01_F",
-		"B_Heli_Transport_01_camo_F",
-		"B_Heli_Transport_03_F",
-		"B_Heli_Transport_03_unarmed_F",
-		"B_Heli_Transport_03_black_F",
-		"B_Heli_Transport_03_unarmed_green_F",
+		"B_Heli_Transport_01_F", // Subclass: "B_Heli_Transport_01_camo_F",		
+		"B_Heli_Transport_03_F", // Subclass: "B_Heli_Transport_03_black_F",
+		"B_Heli_Transport_03_unarmed_F",// Subclass: "B_Heli_Transport_03_unarmed_green_F",
 		"B_Plane_CAS_01_F",
 		"B_UAV_02_F",
 		"B_UAV_02_CAS_F",
@@ -55,11 +52,12 @@ if (isServer) then
 		"C_Van_01_box_F",
 		"C_Van_01_transport_F",
 		"I_G_Van_01_transport_F",
-		"B_T_Truck_01_box_F",
-		"B_T_Truck_01_transport_F",
-		"B_T_Truck_01_covered_F",
+		//"B_T_Truck_01_box_F",
+		//"B_T_Truck_01_transport_F",
+		//"B_T_Truck_01_covered_F",
 		// Schlepper
-		"B_T_Truck_01_mover_F"];
+		//"B_T_Truck_01_mover_F",
+		"B_Truck_01_transport_F"];// Parentclasse von allen Trucks... HEMT
 	
 	// Die Munitionskisten die in der Datenbank gespeichert werden sollen.
 	logisticDbAmmoboxes = [

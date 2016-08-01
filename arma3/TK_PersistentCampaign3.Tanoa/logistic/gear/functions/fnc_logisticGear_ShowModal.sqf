@@ -22,7 +22,7 @@ lbSetCurSel [LOGISTICGEAR_IDC_DIALOG_List, 0];
 // Füllstand der Kiste anzeigen
 private _dbVar = _cursorTarget getVariable["dbVar", []];
 private _contentCount = if (count _dbVar > 0) then { _dbVar select 0; } else { 10000 };
-ctrlSetText [LOGISTICGEAR_IDC_DIALOG_Title, format["Ausrüstung (Füllstand: %1%2)", floor ((100 / 10000) * _contentCount), "%"]];
+ctrlSetText [LOGISTICGEAR_IDC_DIALOG_Title, format[localize "str_pc3_EquipmentLevel", floor ((100 / 10000) * _contentCount), "%"]];
 
 
 
@@ -70,7 +70,7 @@ if (logisticGearDialog_ButtonResult == 1)  then
 	}
 	else
 	{
-		hint "Die Kiste ist leer!";
+		hint localize "str_pc3_TheBoxIsEmpty";
 	};
 };
 

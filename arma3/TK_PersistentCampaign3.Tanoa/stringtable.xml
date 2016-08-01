@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="Persistent Campaign III">
+	<Package name="Pixinger">
+		<Container name="template">
+			<Key ID="str_pc3_">
+				<Original></Original>
+				<German></German>
+			</Key>
+		</Container>
+		<Container name="common">
+			<Key ID="str_pc3_OK">
+				<Original>OK</Original>
+				<German>OK</German>
+			</Key>
+			<Key ID="str_pc3_Cancel">
+				<Original>Cancel</Original>
+				<German>Abbrechen</German>
+			</Key>
+		</Container>
+		<Container name="logistic">
+			<Key ID="str_pc3_EquipmentLevel">
+				<Original>Equipment level (%1%2)</Original>
+				<German>Ausrüstung Füllstand(%1%2)</German>
+			</Key>
+			<Key ID="str_pc3_TheBoxIsEmpty">
+				<Original>The box is empty!</Original>
+				<German>Die kiste ist leer!</German>
+			</Key>
+			<Key ID="str_pc3_Detach">
+				<Original>Detach</Original>
+				<German>Abhängen</German>
+			</Key>
+			<Key ID="str_pc3_Attach">
+				<Original>Attach</Original>
+				<German>Anhängen</German>
+			</Key>
+			<Key ID="str_pc3_HALOJump">
+				<Original>HALO Jump</Original>
+				<German>HALO Sprung</German>
+			</Key>
+			<Key ID="str_pc3_HQClose">
+				<Original>HQ close</Original>
+				<German>HQ schließen</German>
+			</Key>
+			<Key ID="str_pc3_HQOpen">
+				<Original>HQ open</Original>
+				<German>HQ öffnen</German>
+			</Key>
+			<Key ID="str_pc3_HQMove">
+				<Original>HQ move</Original>
+				<German>HQ bewegen</German>
+			</Key>
+			<Key ID="str_pc3_GearNATO">
+				<Original>Gear (NATO)</Original>
+				<German>Ausrüstung (NATO)</German>
+			</Key>
+			<Key ID="str_pc3_GearCTRG">
+				<Original>Gear (CTRG)</Original>
+				<German>Ausrüstung (CTRG)</German>
+			</Key>
+			<Key ID="str_pc3_ConfiscateDevice">
+				<Original>Confiscate device</Original>
+				<German>Gerät beschlagnahmen</German>
+			</Key>
+			<Key ID="str_pc3_ConfiscateTent">
+				<Original>Confiscate tent</Original>
+				<German>Zelt beschlagnahmen</German>
+			</Key>
+			<Key ID="str_pc3_Load">
+				<Original>Load</Original>
+				<German>Aufladen</German>
+			</Key>
+			<Key ID="str_pc3_Unload">
+				<Original>Unload</Original>
+				<German>Abladen</German>
+			</Key>
+			<Key ID="str_pc3_UnloadAll">
+				<Original>Unload (all)</Original>
+				<German>Abladen (alles)</German>
+			</Key>
+			<Key ID="str_pc3_Move">
+				<Original>Move</Original>
+				<German>Bewegen</German>
+			</Key>
+			<Key ID="str_pc3_Sell">
+				<Original>Sell</Original>
+				<German>Verkaufen</German>
+			</Key>
+			<Key ID="str_pc3_RepairHack">
+				<Original>Repair/Hack</Original>
+				<German>Reparieren/Hacken</German>
+			</Key>
+			<Key ID="str_pc3_Disassemble">
+				<Original>Disassemble</Original>
+				<German>Zerlegen</German>
+			</Key>
+			<Key ID="str_pc3_Assemble">
+				<Original>Assemble</Original>
+				<German>Zusammenbauen</German>
+			</Key>
+			<Key ID="str_pc3_Modify">
+				<Original>Modify</Original>
+				<German>Umbauen</German>
+			</Key>
+			<Key ID="str_pc3_Interrogate">
+				<Original>Interrogate</Original>
+				<German>Verhören</German>
+			</Key>
+			<Key ID="str_pc3_Bury">
+				<Original>Bury</Original>
+				<German>Vergraben</German>
+			</Key>
+			<Key ID="str_pc3_PioneerMenu">
+				<Original>Pioneer Menu</Original>
+				<German>Pionier Menü</German>
+			</Key>
+			<Key ID="str_pc3_LogisticMenu">
+				<Original>Logistic Menu</Original>
+				<German>Logistik Menü</German>
+			</Key>
+			<Key ID="str_pc3_ModificationAbort">
+				<Original>&lt;t color=""#dddd00""&gt;Abort modification</Original>
+				<German>&lt;t color=""#dddd00""&gt;Umbauen abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_ModificationComplete">
+				<Original>Modification complete</Original>
+				<German>Umbau abgeschlossen</German>
+			</Key>
+			<Key ID="str_pc3_UnitTakenToInterrogation">
+				<Original>Unit taken to interrogation.</Original>
+				<German>Einheit zum Verhör gebracht.</German>
+			</Key>
+			<Key ID="str_pc3_UnitAlreadyDied">
+				<Original>Unit already died.</Original>
+				<German>Die Einheit ist bereits verstorben.</German>
+			</Key>
+			<Key ID="str_pc3_AbortAssmbling">
+				<Original>&lt;t color=""#dddd00""&gt;Abort assembling&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Zusammenbauen abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_AbortDisassmbling">
+				<Original>&lt;t color=""#dddd00""&gt;Abort disassembling&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Auseinanderbauen abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_ThisVehicleSeemsToBeNotEmpty_ItCanNotBeDisassembledInThisState">
+				<Original>This vehicle seems to be not empty. It can not be disassembled in this state</Original>
+				<German>Dieses Fahrzeug scheint beladen zu sein. Es kann so nicht auseinander gebaut werden.</German>
+			</Key>
+			<Key ID="str_pc3_NoConsumerNearBy">
+				<Original>NoConsumerNearBy</Original>
+				<German>Kein Abnehmer in der Nähe!</German>
+			</Key>
+			<Key ID="str_pc3_AbortAssmbling">
+				<Original>&lt;t color=""#dddd00""&gt;Abort assembling&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Zusammenbauen abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_AbortRepairing">
+				<Original>&lt;t color=""#dddd00""&gt;Abort repairing&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Reparatur abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_ObjectWillBeUnloaded">
+				<Original>Object will be unloaded...</Original>
+				<German>Objekt wird entladen...</German>
+			</Key>
+			<Key ID="str_pc3_TheWholeCargoWasSuccessfullyUnloaded_ARG1_ObjectsTotal">
+				<Original>The whole cargo was successfully unloaded (%1 objects total).</Original>
+				<German>Der gesamte Laderaum wurde erfolgreich abgeladen. Insgesamt %1 Objekte waren geladen.</German>
+			</Key>
+			<Key ID="str_pc3_TheCargoWasAlreadyEmpty_ToBeSureWeUnloadedAgain">
+				<Original>The cargo was already empty. To be sure we unloaded again...</Original>
+				<German>Der Laderaum war bereits leer. Zur Sicherheit haben wir ihn noch einmal entladen...</German>
+			</Key>
+			<Key ID="str_pc3_OneObjectSuccessfullyUnloaded">
+				<Original>One object successfully unloaded.</Original>
+				<German>Ein Objekt erfolgreich abgeladen.</German>
+			</Key>
+			<Key ID="str_pc3_Deposit">
+				<Original>&lt;t color=""#dddd00""&gt;Deposit&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Ablegen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_OneObjectSuccessfullyLoaded">
+				<Original>One object successfully loaded</Original>
+				<German>Ein Objekt erfolgreich aufgeladen</German>
+			</Key>
+			<Key ID="str_pc3_NoMoreSpaceOnTheVehicle">
+				<Original>No more space on the vehicle</Original>
+				<German>Kein Platz mehr auf dem Fahrzeug!</German>
+			</Key>
+			<Key ID="str_pc3_NothingNearby">
+				<Original>Nothing nearby</Original>
+				<German>Nichts in der Nähe</German>
+			</Key>
+			<Key ID="str_pc3_CargoIsFull">
+				<Original>Cargo is full</Original>
+				<German>Die Ladefläche ist voll</German>
+			</Key>
+			<Key ID="str_pc3_BelowARG1MeterYouCanNotJump">
+				<Original>Below %1m you can not jump.</Original>
+				<German>"Unter %1m kann nicht abgesprungen werden."</German>
+			</Key>
+			<Key ID="str_pc3_AbortBury">
+				<Original>&lt;t color=""#dddd00""&gt;Abort bury&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Begraben abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_FinishBuilding">
+				<Original>&lt;t color=""#dddd00""&gt;Finish building&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Bauen abschließen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_AbortDigging">
+				<Original>&lt;t color=""#dddd00""&gt;Abort digging&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Graben abbrechen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_BuildingMenu">
+				<Original>Building menu</Original>
+				<German>Baumenü</German>
+			</Key>
+			<Key ID="str_pc3_CreateObject">
+				<Original>Create object</Original>
+				<German>Objekt erstellen</German>
+			</Key>
+			<Key ID="str_pc3_BuildHigher">
+				<Original>Build higher</Original>
+				<German>Höher bauen</German>
+			</Key>
+			<Key ID="str_pc3_BuildLower">
+				<Original>Build lower</Original>
+				<German>Tiefer bauen</German>
+			</Key>
+			<Key ID="str_pc3_DeleteObject">
+				<Original>Delete object</Original>
+				<German>Objekt löschen</German>
+			</Key>
+			<Key ID="str_pc3_CreateSandpit">
+				<Original>Create Sandpit</Original>
+				<German>Sandhaufen erstellen</German>
+			</Key>
+			<Key ID="str_pc3_ThisObjectCanNotBeDeleted">
+				<Original>This object can not be deleted.</Original>
+				<German>Dieses Objekt kann nicht gelöscht werden.</German>
+			</Key>
+			<Key ID="str_pc3_StartBuilding">
+				<Original>&lt;t color=""#dddd00""&gt;Build (START)&lt;/t&gt;</Original>
+				<German>&lt;t color=""#dddd00""&gt;Bauen (STARTEN)&lt;/t&gt;</German>
+			</Key>
+			<Key ID="str_pc3_AbortBuilding">
+				<Original>Build (abort)</Original>
+				<German>Bauen (abbrechen)</German>
+			</Key>
+			<Key ID="str_pc3_RotateBuilding">
+				<Original>Build (rotate 45°)</Original>
+				<German>Bauen (drehen 45°)</German>
+			</Key>
+			<Key ID="str_pc3_DistanceBuildingP">
+				<Original>Build (distance +)</Original>
+				<German>Bauen (Entfernung +)</German>
+			</Key>
+			<Key ID="str_pc3_DistanceBuildingN">
+				<Original>Build (distance -)</Original>
+				<German>Bauen (Entfernung -)</German>
+			</Key>
+			<Key ID="str_pc3_HeightBuildingP">
+				<Original>Build (height +)</Original>
+				<German>Bauen (Höhe +)</German>
+			</Key>
+			<Key ID="str_pc3_HeightBuildingN">
+				<Original>Build (height -)</Original>
+				<German>Bauen (Höhe -)</German>
+			</Key>
+		</Container>
+		<Container name="logisticGear">
+			<Key ID="str_pc3Gear_FreeTime">
+				<Original>Free time</Original>
+				<German>Freizeit</German>
+			</Key>
+			<Key ID="str_pc3Gear_FreeTimeBackpack">
+				<Original>Free time (backpack)</Original>
+				<German>Freizeit (Rucksack)</German>
+			</Key>
+			<Key ID="str_pc3Gear_Soldier">
+				<Original>Sodlier</Original>
+				<German>Schütze</German>
+			</Key>
+			<Key ID="str_pc3Gear_Grenadier">
+				<Original>Grenadier</Original>
+				<German>Grenadier</German>
+			</Key>
+			<Key ID="str_pc3Gear_Medic">
+				<Original>Medic</Original>
+				<German>Sanitäter</German>
+			</Key>
+			<Key ID="str_pc3Gear_MedicRadio">
+				<Original>Medic (Radio)</Original>
+				<German>Sanitäter (Funk)</German>
+			</Key>
+			<Key ID="str_pc3Gear_PionierREP">
+				<Original>Pionier (repair)</Original>
+				<German>Pionier (Reparatur)</German>
+			</Key>
+			<Key ID="str_pc3Gear_PionierEXP">
+				<Original>Pionier (explosive)</Original>
+				<German>Pionier (Sprengstoff)</German>
+			</Key>
+			<Key ID="str_pc3Gear_AA_Titan">
+				<Original>Antiair (Titan)</Original>
+				<German>Luftabwehr (Titan)</German>
+			</Key>
+			<Key ID="str_pc3Gear_AT_Titan">
+				<Original>Antitank (Titan)</Original>
+				<German>Panzerabwehr (Titan)</German>
+			</Key>
+			<Key ID="str_pc3Gear_AT_NLAW">
+				<Original>Antitank (NLAW)</Original>
+				<German>Panzerabwehr (NLAW)</German>
+			</Key>
+			<Key ID="str_pc3Gear_LMG">
+				<Original>LMG</Original>
+				<German>LMG</German>
+			</Key>
+			<Key ID="str_pc3Gear_SniperGroup">
+				<Original>Groupsniper</Original>
+				<German>Gr.Scharfschütze</German>
+			</Key>
+			<Key ID="str_pc3Gear_SniperGroupHK">
+				<Original>Group sniper (HK417A2 20")</Original>
+				<German>Gr.Scharfschütze (HK417A2 20")</German>
+			</Key>
+			<Key ID="str_pc3Gear_UAV">
+				<Original>UAV Operator</Original>
+				<German>UAV Operator</German>
+			</Key>
+			<Key ID="str_pc3Gear_TF">
+				<Original>Squad leader (HuntIR)</Original>
+				<German>Truppführer (HuntIR)</German>
+			</Key>
+			<Key ID="str_pc3Gear_GFRadio">
+				<Original>Group leader (Radio)</Original>
+				<German>Gruppenführer (Funk)</German>
+			</Key>
+			<Key ID="str_pc3Gear_Crew">
+				<Original>Crew</Original>
+				<German>Fahrzeugbesatzung</German>
+			</Key>
+			<Key ID="str_pc3Gear_PilotJet">
+				<Original>Pilot (Jet)</Original>
+				<German>Pilot (Jet)</German>
+			</Key>
+			<Key ID="str_pc3Gear_PilotHeli">
+				<Original>Pilot (Heli)</Original>
+				<German>Pilot (Heli)</German>
+			</Key>
+			<Key ID="str_pc3Gear_Officer">
+				<Original>Officer</Original>
+				<German>Offizier</German>
+			</Key>
+			<Key ID="str_pc3Gear_JTAC">
+				<Original>JTAC</Original>
+				<German>JTAC</German>
+			</Key>
+			<Key ID="str_pc3Gear_Scout">
+				<Original>Scout</Original>
+				<German>Späher</German>
+			</Key>
+		</Container>		
+		<Container name="player">
+			<Key ID="str_pc3_WelcomeDialogFilename">
+				<Original>player\welcomeDialog\welcome_default.htm</Original>
+				<German>player\welcomeDialog\welcome_german.htm</German>
+			</Key>
+			<Key ID="str_pc3_PlayerMenu">
+				<Original>Player menue</Original>
+				<German>Spieler Menü</German>
+			</Key>
+			<Key ID="str_pc3_Teleport">
+				<Original>Teleport</Original>
+				<German>Teleport</German>
+			</Key>
+			<Key ID="str_pc3_Administrator">
+				<Original>Administrator</Original>
+				<German>Administrator</German>
+			</Key>
+			<Key ID="str_pc3_AdministratorDB">
+				<Original>Administrator DB</Original>
+				<German>Administrator DB</German>
+			</Key>
+			<Key ID="str_pc3_Teleport">
+				<Original>Teleport</Original>
+				<German>Teleport</German>
+			</Key>
+			<Key ID="str_pc3_TeleportingIsLocked">
+				<Original>Teleporting is locked</Original>
+				<German>Das Teleportieren ist gesperrt</German>
+			</Key>
+		</Container>
+	</Package>
+</Project>

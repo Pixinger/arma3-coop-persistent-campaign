@@ -14,8 +14,9 @@ if (_index >= 0) then
 		_config params ["_containerCount", "_duration"];
 		if (pixDebug) then { _duration = 2; };
 		
+		call fnc_Logistic_WorkAnimationStart;
 		logisticBuild = true;
-		private _actionMenu = player addAction [("<t color=""#dddd00"">Zerlegen abbrechen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+		private _actionMenu = player addAction [(localize "str_pc3_AbortDisassmbling"), { logisticBuild = false; }, nil, 5, true, true];
 		private _exitTime = time + _duration;
 		while { (logisticBuild) && (alive player) && (time < _exitTime) } do { Sleep 1; };
 		call fnc_Logistic_WorkAnimationEnd;
@@ -38,6 +39,6 @@ if (_index >= 0) then
 	}
 	else
 	{
-		hint "Dieses Fahrzeug scheint beladen zu sein. Es kann so nicht auseinander gebaut werden."
+		hint localize "str_pc3_ThisVehicleSeemsToBeNotEmpty_ItCanNotBeDisassembledInThisState";
 	};
 };

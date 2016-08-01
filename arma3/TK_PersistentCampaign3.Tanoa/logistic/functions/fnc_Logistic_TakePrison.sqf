@@ -2,7 +2,7 @@ if (call fnc_Logistic_CanTakePrison) then
 {
 	if (alive cursorTarget) then
 	{
-		hint "Einheit zum Verhör gebracht.";
+		hint localize "str_pc3_UnitTakenToInterrogation";
 		
 		private _classname = typeof cursorTarget;
 
@@ -35,6 +35,6 @@ if (call fnc_Logistic_CanTakePrison) then
 	}
 	else
 	{
-		hint "Die Person ist bereits verstorben.";
+		hint localize "str_pc3_UnitAlreadyDied";
 	};	
 };

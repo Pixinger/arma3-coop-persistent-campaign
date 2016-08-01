@@ -25,6 +25,11 @@ cfgAizForceCheckpointRecreation = if (cfgAizForceCheckpointRecreation == 1) then
 if (pixDebug) then { cfgAizForceCheckpointRecreation = true;};
 diag_log format["INFO: cfgAizForceCheckpointRecreation: %1", cfgAizForceCheckpointRecreation];
 
+cfgAizShowFinishedZones = paramsArray select 3;
+cfgAizShowFinishedZones = if (cfgAizShowFinishedZones == 1) then { true } else { false };
+if (pixDebug) then { cfgAizShowFinishedZones = true;};
+diag_log format["INFO: cfgAizShowFinishedZones: %1", cfgAizShowFinishedZones];
+
 // ------------------------------------------------------------------------------
 // Runtime Variablen initialisieren (nicht verändern!)
 aizZonesSaving = false;

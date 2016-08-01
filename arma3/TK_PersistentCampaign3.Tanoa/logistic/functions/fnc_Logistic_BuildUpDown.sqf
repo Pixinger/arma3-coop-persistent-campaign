@@ -25,7 +25,7 @@ private _positionGlobal = getPosATL _objectGlobal;
 private _buildSpeed = _config select BUILDSPEED_INDEX;
 private _classname = typeof _objectGlobal;
 
-private _actionMenu = player addAction [("<t color=""#dddd00"">Bauen abschliessen</t>"), { logisticBuild = false; }, nil, 5, true, true];
+private _actionMenu = player addAction [(localize "str_pc3_FinishBuilding"), { logisticBuild = false; }, nil, 5, true, true];
 		
 private _autoStop = false;
 if (_directionUpDown > 0) then

@@ -48,17 +48,17 @@ if (_haulerIndex >= 0) then
 						[_cargo, [[1,0,0],[0,0,1]]]  remoteExec ["setVectorDirAndUp", _cargo];
 					};
 					
-					hint "Erfolgreich aufgeladen!";
+					hint localize "str_pc3_OneObjectSuccessfullyLoaded";
 				};
 			}
 			else
 			{
-				hint "Nichts zum aufladen in der Nähe..."
+				hint localize "str_pc3_NothingNearby";
 			};
 		}
 		else
 		{
-			hint "Du hast schon Ladung auf dem LKW. Mehr is nich...";
+			hint localize "str_pc3_CargoIsFull";
 		};
 	}
 	else

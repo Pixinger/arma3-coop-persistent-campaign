@@ -37,7 +37,7 @@ if (_haulerIndex >= 0) then
 				/* Entkoppeln */
 				detach _cargo;
 				_cargo setPosATL _position;	
-				hint "Erfolgreich abgeladen!";
+				hint localize "str_pc3_OneObjectSuccessfullyUnloaded";
 			}
 			else
 			{

@@ -62,6 +62,13 @@ class Params
 	    texts[] = {"Nein","Ja"};
 	    default = 0;
 	};
+	class AIZ_ShowFinishedZones /* paramsArray[3]*/
+	{		
+	    title = "AIZ - Beendete Zonen anzeigen";
+	    values[] = {0, 1};
+	    texts[] = {"Nein","Ja"};
+	    default = 0;
+	};
 };
 
 class CfgRemoteExec

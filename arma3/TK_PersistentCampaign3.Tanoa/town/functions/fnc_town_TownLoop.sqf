@@ -26,7 +26,9 @@
 			private _redsNear = false;
 			private _redUnits = ((markerPos _markerName) nearEntities ["SoldierGB", 600]);
 			{
-				if ((alive _x) && { (captiveNum _x == 0) && { (damage _x < 0.1) }}) exitWith { _redsNear = true; };
+				if (alive _x) exitWith { _redsNear = true; };
+				if (!(_x getVariable ["ACE_isUnconscious", false])) exitWith { _redsNear = true; };
+				if (!(_x getVariable ["ACE_Captives_isHandcuffed", false])) exitWith { _redsNear = true; };		
 			} foreach _redUnits;
 			if (_redsNear) then 
 			{

@@ -75,10 +75,14 @@ while { _run } do
 			if (townActive select _townIndex != _townActiveIndex) exitWith { _state = STATE_EXIT; };
 
 			// Supplies suchen ist immer das Wichtigste!
-			private _supplies = nearestObjects [_unit, townSupplyClassnames, townSupplySearchRadius];
-			if (count _supplies > 0) then
+			private _supplyObject = objNull;
+			private _supplyObjects = nearestObjects [getPos _unit, townSupplyClassnames, townSupplySearchRadius];					
 			{
-				_target = (getPos (_supplies select 0));
+				if (isNull (attachedTo _x)) exitWith { _supplyObject = _x; };
+			} foreach _supplyObjects;
+			if (!isNull _supplyObject) then
+			{
+				_target = (getPos _supplyObject);
 				_unit doMove _target;
 				_state = STATE_WALKING_SUPPLY;			
 				_ttl = 50;
