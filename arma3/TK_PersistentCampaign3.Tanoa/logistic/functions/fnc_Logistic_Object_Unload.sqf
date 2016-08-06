@@ -34,6 +34,7 @@ if (_cursorTargetType in logisticTransporters) then
 		hint localize "str_pc3_OneObjectSuccessfullyUnloaded";
 		
 		_object allowDamage true;
+		_object setDamage 0;
 		_cursorTarget allowDamage true;
 	};
 };

@@ -89,15 +89,19 @@ logisticObjectsTransportablesConfig = [];
 
 //!! Achtung! Auch in der DP config eintragen!
 private _logisticTransporterDefinitions = [
-	["B_T_Boat_Transport_01_F",		[[0,0.5,-0.8]] ],
-	["B_T_Boat_Armed_01_minigun_F",	[[0,2.6,-2]] ],
-	["B_T_VTOL_01_vehicle_F",		[[0,4.5,-5],[0,3,-5],[0,1.5,-5],[0,0,-5],[0,-1.5,-5]] ],
-	["B_T_VTOL_01_infantry_F",		[[0,4.5,-5],[0,3,-5],[0,1.5,-5],[0,0,-5],[0,-1.5,-5]] ],
-	["C_Van_01_box_F",				[[0,-1,0],[0,-2.5,0]] ],
-	["C_Van_01_transport_F",		[[0,-1,0],[0,-2.5,0]] ],
-	["B_T_Truck_01_box_F",			[[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0]] ],
-	["B_T_Truck_01_transport_F",	[[0,0,0],[0,-1.5,0],[0,-3,0]] ],
-	["B_T_Truck_01_covered_F",		[[0,0,0],[0,-1.5,0],[0,-3,0]] ]
+	["B_Heli_Transport_03_unarmed_F",	[[0,2,-1.65],[0,0,-1.65],[0,-2,-1.65]] ],
+	["B_Heli_Transport_03_F",			[[0,2,-1.65],[0,0,-1.65],[0,-2,-1.65]] ],
+	["B_Heli_Transport_01_F",			[[0,1.7,-1.1]] ],
+	["B_Heli_Transport_01_camo_F",		[[0,1.7,-1.1]] ],	
+	["B_T_Boat_Transport_01_F",			[[0,0.5,-0.8]] ],
+	["B_T_Boat_Armed_01_minigun_F",		[[0,2.6,-2]] ],
+	["B_T_VTOL_01_vehicle_F",			[[0,4.5,-5],[0,3,-5],[0,1.5,-5],[0,0,-5],[0,-1.5,-5]] ],
+	["B_T_VTOL_01_infantry_F",			[[0,4.5,-5],[0,3,-5],[0,1.5,-5],[0,0,-5],[0,-1.5,-5]] ],
+	["C_Van_01_box_F",					[[0,-1,0],[0,-2.5,0]] ],
+	["C_Van_01_transport_F",			[[0,-1,0],[0,-2.5,0]] ],
+	["B_T_Truck_01_box_F",				[[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0],[0,-.4,0]] ],
+	["B_T_Truck_01_transport_F",		[[0,0,0],[0,-1.5,0],[0,-3,0]] ],
+	["B_T_Truck_01_covered_F",			[[0,0,0],[0,-1.5,0],[0,-3,0]] ]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticTransporters = [];
@@ -162,6 +166,7 @@ logisticBuildableConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [attachpoint ]]
 private _logisticHaulerDefinitions = [
+	["C_Boat_Civil_01_rescue_F", [[0,-5,0]]],
 	["B_T_Truck_01_mover_F", [[0,0,0]]]
 ];
 //----------------------------------------------------------------------------------------------------
@@ -178,41 +183,55 @@ logisticHaulerConfigs = [];
 //!! Achtung! Auch in der DP config eintragen!
 // [classname, [attachpoint, attachrotation, towing ]]
 private _logisticHaulableDefinitions = [
-	["B_T_UAV_03_F", 				[[0,  -8, 0.0], 0, true]],
-	["B_UAV_02_F", 					[[0,  -8, 0.0], 0, true]],
-	["B_UAV_02_CAS_F", 				[[0,  -8, 0.0], 0, true]],
+	["B_T_UAV_03_F", 					[[0,  -8, 0.0], 0, true]],
+	["B_UAV_02_F", 						[[0,  -8, 0.0], 0, true]],
+	["B_UAV_02_CAS_F", 					[[0,  -8, 0.0], 0, true]],
 
-	["B_Slingload_01_Repair_F", 	[[0,  -2.7, 1], 0, false]],
-	["B_Slingload_01_Cargo_F", 		[[0,  -2.7, 1], 0, false]],
-	["B_Slingload_01_Fuel_F", 		[[0,  -2.7, 1], 0, false]],
-	["B_Slingload_01_Ammo_F", 		[[0,  -2.7, 1], 0, false]],
-	["B_Slingload_01_Medevac_F",	[[0,  -2.7, 1], 0, false]],
+	["B_Heli_light_01_F", 				[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Light_01_armed_F", 		[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Light_01_stripped_F", 		[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Attack_01_F", 				[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Transport_01_F", 			[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Transport_03_F", 			[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Transport_03_unarmed_F", 	[[0,  -12, 0.5], 0, true]],
+	["B_T_VTOL_01_vehicle_F", 			[[0,  -12, 0.5], 0, true]],
+	["B_T_VTOL_01_infantry_F", 			[[0,  -12, 0.5], 0, true]],
 
-	["B_T_MRAP_02_F", 				[[0,  -8, 0.85], 0, true]],
-	["B_T_MRAP_02_gmg_F",			[[0,  -8, 0.85], 0, true]],
-	["B_T_MRAP_02_hmg_F",			[[0,  -8, 0.85], 0, true]],
-	["B_T_LSV_01_unarmed_F",		[[0,  -8, 0.85], 0, true]],
-	["B_T_LSV_01_armed_F",			[[0,  -8, 0.85], 0, true]],
-	["B_CTRG_LSV_01_light_F",		[[0,  -8, 0.85], 0, true]],	
+	["B_Boat_Transport_01_F", 			[[0,  -12, 0.5], 0, true]],
+	["B_Boat_Armed_01_minigun_F", 		[[0,  -12, 0.5], 0, true]],
+	["I_G_Boat_Transport_01_F", 		[[0,  -12, 0.5], 0, true]],
+	
+	["B_Slingload_01_Repair_F", 		[[0,  -2.7, 1], 0, false]],
+	["B_Slingload_01_Cargo_F", 			[[0,  -2.7, 1], 0, false]],
+	["B_Slingload_01_Fuel_F", 			[[0,  -2.7, 1], 0, false]],
+	["B_Slingload_01_Ammo_F", 			[[0,  -2.7, 1], 0, false]],
+	["B_Slingload_01_Medevac_F",		[[0,  -2.7, 1], 0, false]],
 
-	["B_T_APC_Tracked_01_CRV_F",	[[0,  -8, 0.85], 0, true]],
-	["B_T_APC_Tracked_01_rcws_F",	[[0,  -8, 0.85], 0, true]],
-	["B_T_APC_Wheeled_01_cannon_F",	[[0,  -8, 0.85], 0, true]],
+	["B_T_MRAP_02_F", 					[[0,  -8, 0.85], 0, true]],
+	["B_T_MRAP_02_gmg_F",				[[0,  -8, 0.85], 0, true]],
+	["B_T_MRAP_02_hmg_F",				[[0,  -8, 0.85], 0, true]],
+	["B_T_LSV_01_unarmed_F",			[[0,  -8, 0.85], 0, true]],
+	["B_T_LSV_01_armed_F",				[[0,  -8, 0.85], 0, true]],
+	["B_CTRG_LSV_01_light_F",			[[0,  -8, 0.85], 0, true]],	
 
-	["I_C_Offroad_02_unarmed_F",	[[0,  -8, 0.85], 0, true]],
-	["I_G_Offroad_01_F",			[[0,  -8, 0.85], 0, true]],
-	["I_G_Offroad_01_armed_F",		[[0,  -8, 0.85], 0, true]],
+	["B_T_APC_Tracked_01_CRV_F",		[[0,  -8, 0.85], 0, true]],
+	["B_T_APC_Tracked_01_rcws_F",		[[0,  -8, 0.85], 0, true]],
+	["B_T_APC_Wheeled_01_cannon_F",		[[0,  -8, 0.85], 0, true]],
 
-	["C_Van_01_box_F", 				[[0,  -8, 0.0], 0, true]],
-	["C_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],
-	["I_G_Van_01_transport_F", 		[[0,  -8, 0.0], 0, true]],
-	["B_T_Truck_01_box_F", 			[[0, -12, 0.5], 0, true]],
-	["B_T_Truck_01_ammo_F", 		[[0, -12, 0.5], 0, true]],
-	["B_T_Truck_01_fuel_F", 		[[0, -12, 0.5], 0, true]],
-	["B_T_Truck_01_medical_F", 		[[0, -12, 0.5], 0, true]],
-	["B_T_Truck_01_Repair_F", 		[[0, -12, 0.5], 0, true]],
-	["B_T_Truck_01_covered_F", 		[[0, -12, 0.5], 0, true]],
-	["B_T_Truck_01_transport_F", 	[[0, -12, 0.5], 0, true]]
+	["I_C_Offroad_02_unarmed_F",		[[0,  -8, 0.85], 0, true]],
+	["I_G_Offroad_01_F",				[[0,  -8, 0.85], 0, true]],
+	["I_G_Offroad_01_armed_F",			[[0,  -8, 0.85], 0, true]],
+
+	["C_Van_01_box_F", 					[[0,  -8, 0.0], 0, true]],
+	["C_Van_01_transport_F", 			[[0,  -8, 0.0], 0, true]],
+	["I_G_Van_01_transport_F", 			[[0,  -8, 0.0], 0, true]],
+	["B_T_Truck_01_box_F", 				[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_ammo_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_fuel_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_medical_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_Repair_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_covered_F", 			[[0, -12, 0.5], 0, true]],
+	["B_T_Truck_01_transport_F", 		[[0, -12, 0.5], 0, true]]
 ];
 //----------------------------------------------------------------------------------------------------
 logisticHaulables = [];

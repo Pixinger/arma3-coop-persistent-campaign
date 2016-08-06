@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=902;
+		nextID=903;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2511.9839,145.85182,13456.586};
-		dir[]={-0.63566375,-0.50650865,-0.58266515};
-		up[]={-0.37341172,0.86220956,-0.34227812};
-		aside[]={-0.67574263,3.2153912e-007,0.73720354};
+		pos[]={2364.8376,67.25325,13256.759};
+		dir[]={-0.38668266,-0.46282145,-0.79777461};
+		up[]={-0.20189229,0.8864255,-0.41652563};
+		aside[]={-0.89993227,1.4102552e-006,0.43619502};
 	};
 };
 binarizationWanted=0;
@@ -188,6 +188,8 @@ class AddonsMetaData
 		{
 			className="task_force_radio_items";
 			name="task_force_radio_items";
+			author="[TF]Nkey";
+			url="https://github.com/michail-nikolaev/task-force-arma-3-radio";
 		};
 	};
 };
@@ -468,7 +470,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.10.2";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.11.1";
 		overviewText="Public sind willkommen!  Bitte im Chat melden!";
 		resistanceWest=0;
 		resistanceEast=1;

@@ -276,6 +276,50 @@ if (count (units _group) == 0) then
 			DEBUG_LOG_VAREX2("No Support found. GroupCount decreased to(groupCount/zoneIndex): ", _groupCount, _zoneIndex);
 		};
 	};
+	
+	// Artillery Beschuss nach ausgeschalteter Gruppe
+	if ((pixDebug) || ([1, 3] call BIS_fnc_randomInt == 1)) then
+	{
+		[_currentPosition] spawn {
+			
+			private _currentPosition = _this select 0;
+
+			// Initial Delay
+			if (pixDebug) then { Sleep 2; } else { Sleep ([30, 90] call BIS_fnc_randomInt); };
+			
+			// Warnschuss
+			private _radius = 75;
+			private _randomPosition = [
+				(((_currentPosition select 0) - _radius) + random (_radius*2)),
+				(((_currentPosition select 1) - _radius) + random (_radius*2)),
+				0];
+			// Mortar erzeugen
+			createVehicle ["M_Mo_82mm_AT_LG", _randomPosition, [], 0, "NONE"];
+			
+			// Bombardement
+			for "_i" from 0 to ([1, 4] call BIS_fnc_randomInt) do
+			{
+				// Bombardment Delay
+				if (pixDebug) then { Sleep 2; } else { Sleep ([30, 90] call BIS_fnc_randomInt); };
+				
+				// Rounds
+				for "_o" from 0 to ([1, 8] call BIS_fnc_randomInt) do
+				{
+					// Zufällige Position berechnen
+					_randomPosition = [
+						(((_currentPosition select 0) - _radius) + random (_radius*2)),
+						(((_currentPosition select 1) - _radius) + random (_radius*2)),
+						0];
+					
+					// Mortar erzeugen
+					createVehicle ["M_Mo_82mm_AT_LG", _randomPosition, [], 0, "NONE"];
+					
+					// Warten
+					if (pixDebug) then { Sleep 1; } else { Sleep ([1, 5] call BIS_fnc_randomInt); };
+				};
+			};			
+		};
+	};
 };
 
 
