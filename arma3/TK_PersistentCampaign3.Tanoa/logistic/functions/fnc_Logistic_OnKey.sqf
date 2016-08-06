@@ -22,6 +22,7 @@ else
 	if ((vehicle player) isKindOf "Air") then
 	{
 		if ((getPos (vehicle player)) select 2 > 50) then { _buttons pushBack [localize "str_pc3_HALOJump", true, true, fnc_Logistic_HALOJump]; };
+		if (call fnc_Logistic_CanObject_UnloadAll_Plane) then { _buttons pushBack [localize "str_pc3_DropCargo", true, true, fnc_Logistic_Object_UnloadAll_Plane]; };
 	}
 	else
 	{
@@ -32,12 +33,12 @@ else
 				// ...wenn man auf das HQ schaut, kann man nur das HQ bedienen...
 				if (_cursorTarget call fnc_Logistic_HQIsOpen) then
 				{			
-					_buttons pushBack [localize "HQClose", true, true, fnc_Logistic_HQClose];
+					_buttons pushBack [localize "str_pc3_HQClose", true, true, fnc_Logistic_HQClose];
 				}
 				else
 				{
-					_buttons pushBack [localize "HQOpen", true, true, fnc_Logistic_HQOpen];
-					_buttons pushBack [localize "HQmove", true, true, fnc_Logistic_Object_Move];
+					_buttons pushBack [localize "str_pc3_HQOpen", true, true, fnc_Logistic_HQOpen];
+					_buttons pushBack [localize "str_pc3_HQmove", true, true, fnc_Logistic_Object_Move];
 				};
 			}
 			else

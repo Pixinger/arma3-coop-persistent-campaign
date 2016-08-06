@@ -4,7 +4,7 @@ if (call fnc_Logistic_CanBuryCorpse) then
 	if (count _corpses > 0) then
 	{
 		call fnc_Logistic_WorkAnimationStart;		
-		private _actionMenu = player addAction [(localize "str_pc3_AbortBury"), { logisticBuild = false; }, nil, 5, true, true];
+		private _actionMenu = player addAction [format["<t color=""#dddd00"">%1</t>", localize "str_pc3_Abort"], { logisticBuild = false; }, nil, 5, true, true];
 
 		private _loopcount = 10;
 		private _sleepTime = 1;

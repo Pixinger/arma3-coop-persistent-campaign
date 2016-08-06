@@ -17,11 +17,11 @@ if (count _config > 0) then
 	logisticMoveObject = _objectLocal;
 	logisticDecision = 1;
 
-	private _actionMenu = player addAction [(localize "str_pc3_StartBuilding"), { 
+	private _actionMenu = player addAction [format["<t color=""#dddd00"">%1</t>", localize "str_pc3_StartBuilding"], { 
 		logisticDecision = 0; 
 		logisticMoveObject = objNull; 
 	}, nil, 20, true, true];
-	private _actionMenu2 = player addAction [(localize "str_pc3_AbortBuilding"), { 
+	private _actionMenu2 = player addAction [(localize "str_pc3_StartBuilding"), { 
 		logisticDecision = 1; 
 		logisticMoveObject = objNull; 
 	}, nil, 19, true, true];

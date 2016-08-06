@@ -18,7 +18,7 @@
 				player addBackPack "B_parachute";
 				unassignvehicle player;
 				moveout player;
-				player setDir ((getDir vehicle player) + 180);
+				player setDir ((getDir vehicle player) + 0);
 				Sleep 1;
 
 				waitUntil { (isTouchingGround player) || (((position player) select 2) < 1) };

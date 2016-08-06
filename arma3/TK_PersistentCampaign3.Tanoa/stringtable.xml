@@ -74,6 +74,10 @@
 				<Original>Unload</Original>
 				<German>Abladen</German>
 			</Key>
+			<Key ID="str_pc3_DropCargo">
+				<Original>Drop cargo</Original>
+				<German>Ladung abwerfen</German>
+			</Key>
 			<Key ID="str_pc3_UnloadAll">
 				<Original>Unload (all)</Original>
 				<German>Abladen (alles)</German>
@@ -118,10 +122,6 @@
 				<Original>Logistic Menu</Original>
 				<German>Logistik Menü</German>
 			</Key>
-			<Key ID="str_pc3_ModificationAbort">
-				<Original>&lt;t color=""#dddd00""&gt;Abort modification</Original>
-				<German>&lt;t color=""#dddd00""&gt;Umbauen abbrechen&lt;/t&gt;</German>
-			</Key>
 			<Key ID="str_pc3_ModificationComplete">
 				<Original>Modification complete</Original>
 				<German>Umbau abgeschlossen</German>
@@ -134,14 +134,6 @@
 				<Original>Unit already died.</Original>
 				<German>Die Einheit ist bereits verstorben.</German>
 			</Key>
-			<Key ID="str_pc3_AbortAssmbling">
-				<Original>&lt;t color=""#dddd00""&gt;Abort assembling&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Zusammenbauen abbrechen&lt;/t&gt;</German>
-			</Key>
-			<Key ID="str_pc3_AbortDisassmbling">
-				<Original>&lt;t color=""#dddd00""&gt;Abort disassembling&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Auseinanderbauen abbrechen&lt;/t&gt;</German>
-			</Key>
 			<Key ID="str_pc3_ThisVehicleSeemsToBeNotEmpty_ItCanNotBeDisassembledInThisState">
 				<Original>This vehicle seems to be not empty. It can not be disassembled in this state</Original>
 				<German>Dieses Fahrzeug scheint beladen zu sein. Es kann so nicht auseinander gebaut werden.</German>
@@ -149,14 +141,6 @@
 			<Key ID="str_pc3_NoConsumerNearBy">
 				<Original>NoConsumerNearBy</Original>
 				<German>Kein Abnehmer in der Nähe!</German>
-			</Key>
-			<Key ID="str_pc3_AbortAssmbling">
-				<Original>&lt;t color=""#dddd00""&gt;Abort assembling&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Zusammenbauen abbrechen&lt;/t&gt;</German>
-			</Key>
-			<Key ID="str_pc3_AbortRepairing">
-				<Original>&lt;t color=""#dddd00""&gt;Abort repairing&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Reparatur abbrechen&lt;/t&gt;</German>
 			</Key>
 			<Key ID="str_pc3_ObjectWillBeUnloaded">
 				<Original>Object will be unloaded...</Original>
@@ -174,9 +158,9 @@
 				<Original>One object successfully unloaded.</Original>
 				<German>Ein Objekt erfolgreich abgeladen.</German>
 			</Key>
-			<Key ID="str_pc3_Deposit">
-				<Original>&lt;t color=""#dddd00""&gt;Deposit&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Ablegen&lt;/t&gt;</German>
+			<Key ID="str_pc3_Drop">
+				<Original>Drop</Original>
+				<German>Ablegen</German>
 			</Key>
 			<Key ID="str_pc3_OneObjectSuccessfullyLoaded">
 				<Original>One object successfully loaded</Original>
@@ -198,17 +182,13 @@
 				<Original>Below %1m you can not jump.</Original>
 				<German>"Unter %1m kann nicht abgesprungen werden."</German>
 			</Key>
-			<Key ID="str_pc3_AbortBury">
-				<Original>&lt;t color=""#dddd00""&gt;Abort bury&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Begraben abbrechen&lt;/t&gt;</German>
+			<Key ID="str_pc3_Abort">
+				<Original>Abort</Original>
+				<German>Abbrechen</German>
 			</Key>
 			<Key ID="str_pc3_FinishBuilding">
-				<Original>&lt;t color=""#dddd00""&gt;Finish building&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Bauen abschließen&lt;/t&gt;</German>
-			</Key>
-			<Key ID="str_pc3_AbortDigging">
-				<Original>&lt;t color=""#dddd00""&gt;Abort digging&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Graben abbrechen&lt;/t&gt;</German>
+				<Original>Finish building</Original>
+				<German>Bauen abschließen</German>
 			</Key>
 			<Key ID="str_pc3_BuildingMenu">
 				<Original>Building menu</Original>
@@ -239,12 +219,8 @@
 				<German>Dieses Objekt kann nicht gelöscht werden.</German>
 			</Key>
 			<Key ID="str_pc3_StartBuilding">
-				<Original>&lt;t color=""#dddd00""&gt;Build (START)&lt;/t&gt;</Original>
-				<German>&lt;t color=""#dddd00""&gt;Bauen (STARTEN)&lt;/t&gt;</German>
-			</Key>
-			<Key ID="str_pc3_AbortBuilding">
-				<Original>Build (abort)</Original>
-				<German>Bauen (abbrechen)</German>
+				<Original>Build (START)</Original>
+				<German>Bauen (STARTEN)</German>
 			</Key>
 			<Key ID="str_pc3_RotateBuilding">
 				<Original>Build (rotate 45°)</Original>

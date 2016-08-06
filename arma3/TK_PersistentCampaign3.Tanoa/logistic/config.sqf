@@ -89,6 +89,8 @@ logisticObjectsTransportablesConfig = [];
 
 //!! Achtung! Auch in der DP config eintragen!
 private _logisticTransporterDefinitions = [
+	["B_T_Boat_Transport_01_F",		[[0,0.5,-0.8]] ],
+	["B_T_Boat_Armed_01_minigun_F",	[[0,2.6,-2]] ],
 	["B_T_VTOL_01_vehicle_F",		[[0,4.5,-5],[0,3,-5],[0,1.5,-5],[0,0,-5],[0,-1.5,-5]] ],
 	["B_T_VTOL_01_infantry_F",		[[0,4.5,-5],[0,3,-5],[0,1.5,-5],[0,0,-5],[0,-1.5,-5]] ],
 	["C_Van_01_box_F",				[[0,-1,0],[0,-2.5,0]] ],

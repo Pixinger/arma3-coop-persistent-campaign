@@ -14,13 +14,13 @@ if (isServer) then
 		"B_Static_AA_F",	//="B_T_static_AA_F",
 		"B_static_AT_F",	//="B_T_static_AT_F",		
 		// Boote
-		"B_T_Boat_Transport_01_F",
-		"B_T_Boat_Armed_01_minigun_F",
+		"B_Boat_Transport_01_F", //"B_T_Boat_Transport_01_F",
+		"B_Boat_Armed_01_minigun_F", //"B_T_Boat_Armed_01_minigun_F",
 		"I_G_Boat_Transport_01_F",
 		// Truppentransporter
-		"B_T_APC_Tracked_01_CRV_F",
-		"B_T_APC_Tracked_01_rcws_F",
-		"B_T_APC_Wheeled_01_cannon_F",
+		"B_APC_Tracked_01_CRV_F", //"B_T_APC_Tracked_01_CRV_F"
+		"B_APC_Tracked_01_rcws_F", //"B_T_APC_Tracked_01_rcws_F"
+		"B_APC_Wheeled_01_cannon_F", //"B_T_APC_Wheeled_01_cannon_F"
 		// Flugzeuge
 		"B_T_VTOL_01_armed_F",
 		"B_T_VTOL_01_vehicle_F",
@@ -39,9 +39,9 @@ if (isServer) then
 		"B_UAV_02_F",
 		"B_UAV_02_CAS_F",
 		// Fahrzeuge
-		"B_T_MRAP_01_F",
-		"B_T_MRAP_01_gmg_F",
-		"B_T_MRAP_01_hmg_F",
+		"B_MRAP_01_F", //"B_T_MRAP_01_F"
+		"B_MRAP_01_gmg_F", //"B_T_MRAP_01_gmg_F"
+		"B_MRAP_01_hmg_F", //"B_T_MRAP_01_hmg_F"
 		"B_T_LSV_01_armed_F",
 		"B_T_LSV_01_unarmed_F",
 		"B_CTRG_LSV_01_light_F",

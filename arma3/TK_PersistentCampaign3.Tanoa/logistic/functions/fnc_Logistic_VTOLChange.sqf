@@ -6,7 +6,7 @@ _cursorTargetType = typeof _cursorTarget;
 // Animation starten
 call fnc_Logistic_WorkAnimationStart;
 logisticBuild = true;
-private _actionMenu = player addAction [(localize "str_pc3_ModificationAbort"), { logisticBuild = false; }, nil, 5, true, true];
+private _actionMenu = player addAction [format["<t color=""#dddd00"">%1</t>", localize "str_pc3_Abort"], { logisticBuild = false; }, nil, 5, true, true];
 private _exitTime = time + 120;
 while { (logisticBuild) && (alive player) && (time < _exitTime) } do { Sleep 1; };
 call fnc_Logistic_WorkAnimationEnd;

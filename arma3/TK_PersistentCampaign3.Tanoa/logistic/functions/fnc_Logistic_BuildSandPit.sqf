@@ -5,7 +5,7 @@ if (!(surfaceIsWater position player) && (!isOnRoad player)) then
 
 	call fnc_Logistic_WorkAnimationStart;
 	logisticBuild = true;
-	private _actionMenu = player addAction [(localize "str_pc3_AbortDigging"), { logisticBuild = false; }, nil, 5, true, true];
+	private _actionMenu = player addAction [format["<t color=""#dddd00"">%1</t>", localize "str_pc3_Abort"], { logisticBuild = false; }, nil, 5, true, true];
 	private _loopcount = 10;
 	while { (logisticBuild) && (alive player) && (_loopcount > 0) } do
 	{

@@ -12,8 +12,11 @@ if (_cursorTargetType in logisticTransporters) then
 	
 	if (_count > 0) then
 	{
+		_cursorTarget allowDamage false;
+
 		{
 			private _object = _x;
+			_object allowDamage false;
 
 			// Objekt entladen
 			detach _object;
@@ -26,9 +29,12 @@ if (_cursorTargetType in logisticTransporters) then
 			
 			hint localize "str_pc3_ObjectWillBeUnloaded";
 			Sleep 1;
+			_object allowDamage true;
 		} foreach _attachedObjects;
 		
 		hint format[localize "str_pc3_TheWholeCargoWasSuccessfullyUnloaded_ARG1_ObjectsTotal", _count];
+
+		_cursorTarget allowDamage true;
 	}
 	else
 	{
