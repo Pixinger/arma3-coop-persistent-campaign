@@ -8,7 +8,7 @@ townSupplyClassnames = [
 	];
 
 townCivClassnames = [
-	"C_man_1_F",	// APEX
+	//"C_man_1_F",	// APEX
 	"C_man_casual_1_F",	// APEX
 	"C_man_casual_2_F",	// APEX
 	"C_man_casual_3_F",	// APEX

@@ -19,7 +19,7 @@
 
 			//==========================================================================================
 			// Auch Zivilisten verbrauchen Nahrung
-			_supplies = _supplies - ceil(_houseCount / 20);
+			_supplies = _supplies - ceil(_houseCount / 230); // => 230 in etwa: 300Güter in 24Std(5Spiele) bei 590 Häusern in der Stadt
 
 			//==========================================================================================
 			// RED in der Nähe, dann Supplies klauen

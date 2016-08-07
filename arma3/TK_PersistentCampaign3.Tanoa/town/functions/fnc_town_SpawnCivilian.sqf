@@ -324,6 +324,7 @@ else
 	_supplies = _supplies - 10;
 	if (_supplies < 0) then { _supplies = 0; }; 
 	(townInfos select _townIndex) set [0, _supplies];
+	diag_log format["TOWN: Civilian unit dead: Supply-Penalty! unit/townindex: %1/%2", _unit, _townIndex];
 	INFO_LOG_VAREX2("TOWN: Civilian unit dead: Supply-Penalty! unit/townindex", _unit, _townIndex);
 };
 deleteGroup _group;
