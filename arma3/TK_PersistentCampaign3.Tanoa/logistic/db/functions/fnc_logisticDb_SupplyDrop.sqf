@@ -3,7 +3,7 @@ if (isServer) then
 	_this spawn {
 		params["_position", "_classnameSupply"];
 
-		private _airPosition = [_position select 0, _position select 1, 175];
+		private _airPosition = [_position select 0, _position select 1, 50];
 
 		// Supply erstellen
 		private _supply =  [_classnameSupply, [0,0,0], 0] call fnc_logisticDb_CreateVehicleCorrected;
@@ -12,36 +12,17 @@ if (isServer) then
 		//Fallschirm erstellen
 		private _parachute = "B_Parachute_02_F" createVehicle [0,0,0];
 		_parachute setPosATL _airPosition;
-		_supply attachTo [_parachute,[0, 0, -1.2]];
+		_parachute allowDamage false;
 
-		// Rauchgranate
-		_smoke = "SmokeShellYellow" createVehicle position _supply;
-		_smoke attachto [_supply,[0,0,0]];
+		_supply attachTo [_parachute,[0, 0, -2]];
 
-		// Nach 10 Sekunden den Rau löschen und neuen erstellen
-		Sleep 10;
-		_smoke setDamage 1;
-		deleteVehicle _smoke;
-
-		// Rauchgranate
-		_smoke = "SmokeShellYellow" createVehicle position _supply;
-		_smoke attachto [_supply,[0,0,0]];
-
-		// Warten bis die Lieferung sich nicht mehr bewegt
-		private _height = 9999;
-		while { _height != ((getPos _supply) select 2) } do { Sleep 1; _height = ((getPos _supply) select 2); };
+		waitUntil {(getPos _supply) select 2 < 2};
 		
-		// Detachen
 		detach _supply;
-		Sleep 5;
-		deleteVehicle _parachute;
-		
-		// Nochmal ordentlich smoken !!!
-		_smoke = "SmokeShellYellow" createVehicle position _supply;
-		_smoke attachto [_supply,[0,0,0]];
-		Sleep 10;
-		_smoke setDamage 1;
-		deleteVehicle _smoke;		
+		private _position = getpos _supply;
+		_position set [2,0];
+		_supply setPos _position;
+		deleteVehicle _parachute;	
 	};
 }
 else

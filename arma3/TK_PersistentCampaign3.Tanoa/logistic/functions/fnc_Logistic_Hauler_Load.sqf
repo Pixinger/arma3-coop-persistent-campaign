@@ -1,19 +1,17 @@
-private["_hauler"];
-_hauler = vehicle player;
-
-private["_haulerIndex"];
-_haulerIndex = logisticHaulers find (typeOf _hauler);
+private _hauler = vehicle player;
+private _haulerIndex = logisticHaulers find (typeOf _hauler);
 if (_haulerIndex >= 0) then 
 {
 	if (driver _hauler == player) then
 	{	
 		if (count attachedObjects _hauler == 0) then 
 		{
-			private["_behind"];
-			_behind = _hauler modelToWorld [0,-8,0]; 
-
-			private["_cargos"];
-			_cargos = nearestObjects [_behind, logisticHaulables, 5];
+			// Hauler Daten
+			private _haulerConfig = logisticHaulerConfigs select _haulerIndex;
+			private _haulerAttachPoint = _haulerConfig select 0;
+			private _behind = _hauler modelToWorld [0 + (_haulerAttachPoint select 0), -8 + (_haulerAttachPoint select 1), 0 + (_haulerAttachPoint select 2)]; 
+		
+			private _cargos = nearestObjects [_behind, logisticHaulables, 10];
 			if (count _cargos > 0) then
 			{
 				private["_cargo"];
@@ -23,12 +21,6 @@ if (_haulerIndex >= 0) then
 				_cargoIndex = logisticHaulables find (typeOf _cargo);
 				if (_cargoIndex >= 0) then 
 				{
-					// Hauler Daten
-					private["_haulerConfig"];
-					_haulerConfig = logisticHaulerConfigs select _haulerIndex;
-					private["_haulerAttachPoint"];
-					_haulerAttachPoint = _haulerConfig select 0;
-
 					// Cargo Daten
 					private["_cargoConfig"];
 					_cargoConfig = logisticHaulableConfigs select _cargoIndex;

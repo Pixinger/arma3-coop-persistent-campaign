@@ -187,18 +187,19 @@ private _logisticHaulableDefinitions = [
 	["B_UAV_02_F", 						[[0,  -8, 0.0], 0, true]],
 	["B_UAV_02_CAS_F", 					[[0,  -8, 0.0], 0, true]],
 
-	["B_Heli_light_01_F", 				[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Light_01_F", 				[[0,  -12, 0.5], 0, true]],
 	["B_Heli_Light_01_armed_F", 		[[0,  -12, 0.5], 0, true]],
 	["B_Heli_Light_01_stripped_F", 		[[0,  -12, 0.5], 0, true]],
 	["B_Heli_Attack_01_F", 				[[0,  -12, 0.5], 0, true]],
 	["B_Heli_Transport_01_F", 			[[0,  -12, 0.5], 0, true]],
+	["B_Heli_Transport_01_camo_F", 		[[0,  -12, 0.5], 0, true]],
 	["B_Heli_Transport_03_F", 			[[0,  -12, 0.5], 0, true]],
 	["B_Heli_Transport_03_unarmed_F", 	[[0,  -12, 0.5], 0, true]],
 	["B_T_VTOL_01_vehicle_F", 			[[0,  -12, 0.5], 0, true]],
 	["B_T_VTOL_01_infantry_F", 			[[0,  -12, 0.5], 0, true]],
 
-	["B_Boat_Transport_01_F", 			[[0,  -12, 0.5], 0, true]],
-	["B_Boat_Armed_01_minigun_F", 		[[0,  -12, 0.5], 0, true]],
+	["B_T_Boat_Transport_01_F", 		[[0,  -12, 0.5], 0, true]],
+	["B_T_Boat_Armed_01_minigun_F", 	[[0,  -12, 0.5], 0, true]],
 	["I_G_Boat_Transport_01_F", 		[[0,  -12, 0.5], 0, true]],
 	
 	["B_Slingload_01_Repair_F", 		[[0,  -2.7, 1], 0, false]],

@@ -30,6 +30,10 @@
 				<Original>Detach</Original>
 				<German>Abhängen</German>
 			</Key>
+			<Key ID="str_pc3_ShowAttachPoint">
+				<Original>Show attach point</Original>
+				<German>Anhängepunkt anzeigen</German>
+			</Key>
 			<Key ID="str_pc3_Attach">
 				<Original>Attach</Original>
 				<German>Anhängen</German>

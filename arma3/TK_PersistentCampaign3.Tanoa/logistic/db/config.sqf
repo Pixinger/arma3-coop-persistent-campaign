@@ -17,6 +17,7 @@ if (isServer) then
 		"B_Boat_Transport_01_F", //"B_T_Boat_Transport_01_F",
 		"B_Boat_Armed_01_minigun_F", //"B_T_Boat_Armed_01_minigun_F",
 		"I_G_Boat_Transport_01_F",
+		"C_Boat_Civil_01_rescue_F",
 		// Truppentransporter
 		"B_APC_Tracked_01_CRV_F", //"B_T_APC_Tracked_01_CRV_F"
 		"B_APC_Tracked_01_rcws_F", //"B_T_APC_Tracked_01_rcws_F"

@@ -16,6 +16,8 @@ if (typeOf(vehicle player) in logisticHaulers) then
 	{
 		_buttons pushBack [localize "str_pc3_Attach", true, true, fnc_Logistic_Hauler_Load];
 	};
+
+	_buttons pushBack [localize "str_pc3_ShowAttachPoint", true, true, fnc_Logistic_Hauler_ShowAttachpoint];	
 }
 else
 {

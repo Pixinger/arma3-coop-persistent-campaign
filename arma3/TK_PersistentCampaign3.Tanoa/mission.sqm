@@ -470,7 +470,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.11.2";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.11.3";
 		overviewText="Public sind willkommen!  Bitte im Chat melden!";
 		resistanceWest=0;
 		resistanceEast=1;

@@ -1,5 +1,6 @@
 if (call fnc_Logistic_CanObject_UnloadAll_Plane) then
 {	
+	private _aircraft = (vehicle player);
 	_aircraft spawn 
 	{
 		// Luftfahrzeug speichern
@@ -29,40 +30,22 @@ if (call fnc_Logistic_CanObject_UnloadAll_Plane) then
 				params["_object"];
 				
 				private _position = getPos _object;
-
+				
 				//Fallschirm erstellen
 				private _parachute = "B_Parachute_02_F" createVehicle [0,0,0];
 				_parachute setPosATL _position;
-				_object attachTo [_parachute,[0, 0, -1.2]];
+				_parachute allowDamage false;
+				_object attachTo [_parachute,[0, 0, -2]];
 
-				// Rauchgranate
-				_smoke = "SmokeShellYellow" createVehicle position _object;
-				_smoke attachto [_object,[0,0,0]];
+				// Warten bis am Boden
+				waitUntil {(getPos _object) select 2 < 2};
 
-				// Nach 10 Sekunden den Rauch löschen und neuen erstellen
-				Sleep 10;
-				_smoke setDamage 1;
-				deleteVehicle _smoke;
-
-				// Rauchgranate
-				_smoke = "SmokeShellYellow" createVehicle position _object;
-				_smoke attachto [_object,[0,0,0]];
-
-				// Warten bis die Lieferung sich nicht mehr bewegt
-				private _height = 9999;
-				while { _height != ((getPos _object) select 2) } do { Sleep 1; _height = ((getPos _object) select 2); };
-				
-				// Detachen
 				detach _object;
-				Sleep 5;
-				deleteVehicle _parachute;
-				
-				// Nochmal ordentlich smoken !!!
-				_smoke = "SmokeShellYellow" createVehicle position _object;
-				_smoke attachto [_object,[0,0,0]];
-				Sleep 10;
-				_smoke setDamage 1;
-				deleteVehicle _smoke;
+				private _position = getpos _object;
+				_position set [2,0];
+				_object setPos _position;
+				deleteVehicle _parachute;				
+
 				_object allowDamage true;				
 			};					
 			
