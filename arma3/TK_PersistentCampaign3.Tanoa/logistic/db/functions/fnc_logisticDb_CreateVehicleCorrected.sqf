@@ -26,7 +26,10 @@ if (_object isKindOf "Land_BarGate_F") then
 {
 	_object allowDamage false;
 };
-
+if (_object isKindOf "Slingload_01_Base_F") then 
+{
+	_object setMass [5000, 0];
+};
 clearItemCargoGlobal _object;
 clearWeaponCargoGlobal _object;
 clearMagazineCargoGlobal _object;

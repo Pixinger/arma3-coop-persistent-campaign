@@ -3,7 +3,7 @@ if (isServer) then
 	_this spawn {
 		params["_position", "_classnameSupply"];
 
-		private _airPosition = [_position select 0, _position select 1, 50];
+		private _airPosition = [_position select 0, _position select 1, 150];
 
 		// Supply erstellen
 		private _supply =  [_classnameSupply, [0,0,0], 0] call fnc_logisticDb_CreateVehicleCorrected;
