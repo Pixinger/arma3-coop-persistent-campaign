@@ -41,6 +41,7 @@ else
 				{
 					_buttons pushBack [localize "str_pc3_HQOpen", true, true, fnc_Logistic_HQOpen];
 					_buttons pushBack [localize "str_pc3_HQmove", true, true, fnc_Logistic_Object_Move];
+					_buttons pushBack [localize "str_pc3_Load", true, true, fnc_Logistic_Object_Load];
 				};
 			}
 			else
