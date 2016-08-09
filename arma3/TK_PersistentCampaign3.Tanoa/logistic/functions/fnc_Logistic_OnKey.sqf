@@ -7,17 +7,20 @@ if (pixDebug) then { hint format["%1", _cursorTargetType];};
 
 if (typeOf(vehicle player) in logisticHaulers) then 
 {
-	// ...wenn man im Schlepper sitzt kann man nur Schlepper-Aktionen durchführen...
-	if (count (attachedObjects (vehicle player)) > 0) then
+	if (!logisticHaulerPointShowed) then // Nur wenn der Attachpoint nicht angezeigt wird!
 	{
-		_buttons pushBack [localize "str_pc3_Detach", true, true, fnc_Logistic_Hauler_Unload];
-	}
-	else
-	{
-		_buttons pushBack [localize "str_pc3_Attach", true, true, fnc_Logistic_Hauler_Load];
-	};
+		// ...wenn man im Schlepper sitzt kann man nur Schlepper-Aktionen durchführen...
+		if (count (attachedObjects (vehicle player)) > 0) then
+		{
+			_buttons pushBack [localize "str_pc3_Detach", true, true, fnc_Logistic_Hauler_Unload];
+		}
+		else
+		{
+			_buttons pushBack [localize "str_pc3_Attach", true, true, fnc_Logistic_Hauler_Load];
+		};
 
-	_buttons pushBack [localize "str_pc3_ShowAttachPoint", true, true, fnc_Logistic_Hauler_ShowAttachpoint];	
+		_buttons pushBack [localize "str_pc3_ShowAttachPoint", true, true, fnc_Logistic_Hauler_ShowAttachpoint];	
+	};
 }
 else
 {
