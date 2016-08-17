@@ -21,7 +21,7 @@ if (isServer) then
 		{
 			private "_zoneData";
 			call compile format["_zoneData = aizZoneData%1;", _i];			
-			_zoneData params ["_campsTown", "_campsField", "_checkpoints", "_waypointPool", "_groupCount","_intelCount"];			
+			_zoneData params ["_campsTown", "_campsField", "_checkpoints", "_waypointPool", "_groupCount","_intelCount","_mortarSites"];			
 			if (_groupCount < 0) then { _groupCount = 0; };
 			if (_intelCount < 0) then { _intelCount = 0; };
 
@@ -55,8 +55,17 @@ if (isServer) then
 			} foreach _checkpoints; //_x=[position, direction];
 
 			// ------------------------------------------------------------------------------
+			private _dataSetMortarSites = [];
+			{
+				if ((count (_x select 0)) == 3) then // Wenn eine MortarSite zerstört wird, dann ist die position=[] anstatt z.B. position=[10,20,0];
+				{ 
+					_dataSetMortarSites pushBack _x;
+				};
+			} foreach _mortarSites; //_x=[position, direction];
+
+			// ------------------------------------------------------------------------------
 			// DataSet für Zone "_i".
-			_database pushBack [_dataSetCampsTown, _dataSetCampsField, _dataSetCheckpoints, _groupCount, _intelCount]; 
+			_database pushBack [_dataSetCampsTown, _dataSetCampsField, _dataSetCheckpoints, _groupCount, _intelCount, _dataSetMortarSites]; 
 		}
 		else
 		{ 
@@ -76,6 +85,7 @@ if (isServer) then
 		if (count _x > 2) then { diag_log format["zoneIndex=%1 _dataSetCheckpoints=%2", _foreachIndex, _x select 2];};
 		if (count _x > 3) then { diag_log format["zoneIndex=%1 _groupCount=%2", _foreachIndex, _x select 3];};
 		if (count _x > 4) then { diag_log format["zoneIndex=%1 _intelCount=%2", _foreachIndex, _x select 4];};
+		if (count _x > 5) then { diag_log format["zoneIndex=%1 _mortarSites=%2", _foreachIndex, _x select 5];};
 	} foreach _database;
 	diag_log "AIZ-Database: ------------------------ (end)";
 	

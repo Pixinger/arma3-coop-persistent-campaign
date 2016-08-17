@@ -19,6 +19,10 @@
 #define MAX_CHECKPOINTS_PER_ZONE		3
 #define CHANCE_CHECKPOINTS_PER_ZONE		1.5
 
+#define MIN_MORTARSITES_PER_ZONE		1
+#define MAX_MORTARSITES_PER_ZONE		3
+#define CHANCE_MORTARSITES_PER_ZONE		1.5
+
 //==========================================================================================
 // THIS
 //==========================================================================================
@@ -43,6 +47,7 @@ private _campsField = [];		// [position, respawns]
 private _checkpoints = [];		// [position, direction]
 private _groupCount = 0;
 private _intelCount = 0;
+private _mortarSites = [];
 private _geoInfo = [_markerName, 0];
 
 //------------------------------------------------------------------------------------------
@@ -238,6 +243,45 @@ if (_intelCount < 0) then { _intelCount = 0; };
 if (_intelCount > 3) then { _intelCount = 3; };
 diag_log format["ZoneInit %2: _intelCount: %1", _intelCount, _zoneIndex];
 
+//------------------------------------------------------------------------------------------
+// Mortar laden
+//------------------------------------------------------------------------------------------
+_mortarSites = [];
+if (count _zoneDataSet > 5) then
+{
+	// Aus der Datenbank laden
+	private _tmpMortarSites = (_zoneDataSet select 5); 		// [[position, direction], ..., [position, direction]];
+	
+	{ 
+		if (count (_x select 0) != 0) then // Inaktive MortarSites NICHT aus der Liste übernehmen.
+		{
+			_mortarSites pushBack _x;
+		};
+	} foreach _tmpMortarSites;
+}
+else
+{
+	// Neu generieren
+	if (random CHANCE_MORTARSITES_PER_ZONE <= 1) then
+	{
+		private _randomPosition = [0,0,0];
+		private _mortarSitesCountPerZone = [MIN_MORTARSITES_PER_ZONE, MAX_MORTARSITES_PER_ZONE] call BIS_fnc_randomInt;
+		for [{_x= 0},{_x < _mortarSitesCountPerZone},{_x = _x + 1}] do 
+		{
+			_randomPosition = [_geoInfo, [2]] call fnc_aiz_GetRandomPositionField; // [position, [elevation]]
+			if (count _randomPosition > 0) then
+			{
+				_mortarSites pushBack [_randomPosition, random 360]; // [position, direction]
+			}
+			else
+			{
+				WARN_LOG_VAREX("No location for MortarSite found. ZoneIndex=", _zoneIndex);
+			};
+		};
+	};		
+};
+diag_log format["ZoneInit %2: _mortarSites: %1", _mortarSites, _zoneIndex];
+
 //==========================================================================================
 // Zone überprüfen, ob mit diesen Daten gestartet werden kann - oder nicht.
 //==========================================================================================
@@ -276,6 +320,14 @@ if (_groupCount > 0) then
 };
 
 //==========================================================================================
+// MortarSittes initialisieren
+//==========================================================================================
+{
+	_triggerRequired = true;
+	[_zoneIndex, _x] spawn fnc_aiz_BuildMortar;
+} foreach _mortarSites;
+
+//==========================================================================================
 // IntelCount initialisieren (Achtung! Erst wenn "aizZoneData%1" oberhalb gesetzt wurde.
 //==========================================================================================
 if ((_triggerRequired) && (_intelCount > 0)) then
@@ -296,7 +348,7 @@ _intelCount = 0;
 //==========================================================================================
 if (_triggerRequired) then
 {	
-	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount, _intelCount];", _zoneIndex];
+	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount, _intelCount, _mortarSites];", _zoneIndex];
 
 	private _radiusExtension = if (pixDebug) then { 0 } else { 1000 };
 	private["_trigger"];
@@ -313,7 +365,7 @@ if (_triggerRequired) then
 }
 else
 {
-	call compile format["aizZoneData%1 = [[], [], [], [], 0, 0];", _zoneIndex];
+	call compile format["aizZoneData%1 = [[], [], [], [], 0, 0, []];", _zoneIndex];
 	if (cfgAizShowFinishedZones) then 
 	{
 		_markerName setMarkerAlpha 0.2;

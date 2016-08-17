@@ -17,6 +17,7 @@ if (isServer) then
 	fnc_aiz_FindCampTownRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampTownRespawnCount.sqf";
 	fnc_aiz_FindCampFieldRespawn = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawn.sqf";
 	fnc_aiz_FindCampFieldRespawnCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindCampFieldRespawnCount.sqf";
+	fnc_aiz_FindActiveMortarSite = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_FindActiveMortarSite.sqf";
 	fnc_aiz_SpawnGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_SpawnGroup.sqf";
 
 	fnc_aiz_GetHouseCount = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_GetHouseCount.sqf";
@@ -29,6 +30,7 @@ if (isServer) then
 	fnc_aiz_BuildCampField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCampField.sqf";
 	fnc_aiz_BuildCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCampTown.sqf";
 	fnc_aiz_BuildCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCheckpoint.sqf";
+	fnc_aiz_BuildMortar = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildMortar.sqf";
 
 	fnc_aiz_CreateMineField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineField.sqf";
 	fnc_aiz_CreateMineFieldRandom = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineFieldRandom.sqf";
@@ -36,6 +38,7 @@ if (isServer) then
 	fnc_aiz_TrackFleeUnit = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_TrackFleeUnit.sqf";
 	fnc_aiz_RunGroup = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroup.sqf";
 	fnc_aiz_RunGroupCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCheckpoint.sqf";
+	fnc_aiz_RunGroupMortar = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupMortar.sqf";
 	fnc_aiz_RunGroupCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampTown.sqf";
 	fnc_aiz_RunGroupCampField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampField.sqf";
 	fnc_aiz_ZoneInit = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneInit.sqf";

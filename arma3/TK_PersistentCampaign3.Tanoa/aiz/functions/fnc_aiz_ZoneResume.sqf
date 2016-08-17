@@ -17,6 +17,7 @@ private _checkpoints = _zoneData select 2;		// [position, direction]
 private _waypointPool = _zoneData select 3;		// [position]
 private _groupCount = _zoneData select 4;
 if (_groupCount < 0) then { _groupCount = 0; };
+private _mortarSites = _zoneData select 6;		// [position, direction]
 
 //==========================================================================================
 // _campsTown starten
@@ -41,6 +42,14 @@ if (_groupCount < 0) then { _groupCount = 0; };
 	private _count = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt);
 	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupCheckpoint;	
 } foreach _checkpoints;
+
+//==========================================================================================
+// _mortarSites starten
+//==========================================================================================
+{
+	private _count = ([2, cfgAizGroupSizeMax / 2] call BIS_fnc_randomInt);
+	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupMortar;	
+} foreach _mortarSites;
 
 //==========================================================================================
 // _waypointPool starten

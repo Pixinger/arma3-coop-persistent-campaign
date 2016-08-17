@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=903;
+		nextID=906;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2364.6033,67.180679,13256.676};
-		dir[]={0.14252926,-0.45060715,-0.88138837};
-		up[]={0.071942344,0.89269501,-0.44488937};
-		aside[]={-0.98726046,1.7173588e-006,-0.15965258};
+		pos[]={2289.334,18.127832,13219.943};
+		dir[]={0.54461056,-0.32465357,-0.77343941};
+		up[]={0.18695968,0.94580865,-0.26551595};
+		aside[]={-0.81770623,2.060784e-006,-0.5757851};
 	};
 };
 binarizationWanted=0;
@@ -470,7 +470,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.12.5";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.14.2";
 		overviewText="Public sind willkommen!  Bitte im Chat melden!";
 		resistanceWest=0;
 		resistanceEast=1;

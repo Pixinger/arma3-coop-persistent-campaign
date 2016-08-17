@@ -9,7 +9,7 @@
 // ----------------------------------
 // THIS
 // ----------------------------------
-params ["_group", "_position",["_guardRadius", 30]];
+params ["_group", "_position",["_guardRadius", 30], ["_forceMountStaticWeapons", true]];
 if (_guardRadius < 10) then { _guardRadius = 10; };
 
 // ----------------------------------
@@ -20,7 +20,7 @@ _group setBehaviour "SAFE";
 { deleteWaypoint _x; } foreach (waypoints _group);
 
 // ----------------------------------
-// Der Gruppenführer soll stehen bleiben
+// (deaktiviert) Der Gruppenführer soll stehen bleiben
 private _units = (units _group);// - [leader _group]; 
 
 // ----------------------------------
@@ -37,7 +37,7 @@ _emptyStaticWeapons = [];
 	// Noch Einheiten verfügbar um Waffen zu besetzen?
 	if ((count _units) > 0) then 
 	{
-		if ((random 1) > 0.2) then 
+		if ((_forceMountStaticWeapons) || ((random 1) > 0.2)) then 
 		{
 			private _unit = (_units select ((count _units) - 1));
 			
