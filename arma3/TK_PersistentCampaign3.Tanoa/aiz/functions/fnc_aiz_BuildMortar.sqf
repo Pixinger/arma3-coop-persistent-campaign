@@ -44,3 +44,12 @@ _tmpPos set [2, 0];
 private _barrier4 = createVehicle ["Land_BagFence_01_round_green_F", _tmpPos, [], 0, "CAN_COLLIDE"];
 _barrier4 setDir (_direction);
 _barrier4 setPos _tmpPos;
+
+// AA erstellen
+private _aaPosition = _position findEmptyPosition [5, 60, "I_static_AA_F"];
+if (count _aaPosition != 0) then
+{
+	private _aa = createVehicle ["I_static_AA_F", _aaPosition, [], 0, "CAN_COLLIDE"];
+	_aa setDir (random 360);
+};
+

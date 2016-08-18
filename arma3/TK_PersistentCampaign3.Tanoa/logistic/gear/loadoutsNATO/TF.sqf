@@ -59,7 +59,7 @@ _result = [
 		/* Primary weapon Magazine */
 		"30Rnd_556x45_Stanag",
 		/* Primary Weapon Items */
-		["optic_ERCO_blk_F","acc_pointer_IR","muzzle_snds_H"]
+		["optic_ERCO_blk_F","acc_pointer_IR","muzzle_snds_M"]
 	],
 
 	/* Secondary Weapon */

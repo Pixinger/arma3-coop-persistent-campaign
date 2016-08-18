@@ -10,11 +10,11 @@ cfgAizCampFieldMinRespawnDistance = 250;
 cfgAizCampFieldRadius = 50;
 
 cfgAizGroupSizeMin = paramsArray select 0;
-if (pixDebug) then { cfgAizGroupSizeMin = 2;};
+if (pixDebug) then { cfgAizGroupSizeMin = 3;};
 diag_log format["INFO: cfgAizGroupSizeMin: %1", cfgAizGroupSizeMin];
 
 cfgAizGroupSizeMax = paramsArray select 1;
-if (pixDebug) then { cfgAizGroupSizeMax = 2;};
+if (pixDebug) then { cfgAizGroupSizeMax = 3;};
 diag_log format["INFO: cfgAizGroupSizeMax: %1", cfgAizGroupSizeMax];
 
 cfgAizAISkillMin = 0.5;

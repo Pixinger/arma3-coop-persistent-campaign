@@ -1,7 +1,7 @@
-author = "[TK]Pix";		/* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben"," so erscheint Unknown Author. */
-onLoadName = "[TK]Persistent Campaign 3"; 	/* Mission Name*/
-onLoadMission = "Beta"; 						/* Beschreibung*/
-OnLoadIntro = "by [TK]Pix";
+author = "Pixinger";		/* Hier kann der Names des Missionserstellers eingetragen werden. Dieser erscheint dann beim Laden unterhalb des Missionsnamens. Wird kein Text angegeben"," so erscheint Unknown Author. */
+onLoadName = "[TK]Persistent Campaign 3"; 	
+onLoadMission = "Public sind willkommen! Bitte im Chat melden!"; 						
+OnLoadIntro = "by Pixinger";
 onLoadMissionTime = false; 					/* ...ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll. */
 onLoadIntroTime = false;   					/* ...ob Datum und Uhrzeit beim laden der Mission oder des Intros eingeblendet werden soll. */
 briefing = 0; 								/* ...ob zu Beginn der Mission ein Briefing und nach der Mission ein Debriefing angezeigt werden soll. Mögliche Werte sind 0 (= wird nicht angezeigt) und 1 (= wird angezeigt).*/

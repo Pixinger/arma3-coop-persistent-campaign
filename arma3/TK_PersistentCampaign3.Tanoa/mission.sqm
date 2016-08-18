@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=906;
+		nextID=907;
 	};
 	class MarkerIDProvider
 	{
@@ -470,7 +470,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.14.2";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.14.4";
 		overviewText="Public sind willkommen!  Bitte im Chat melden!";
 		resistanceWest=0;
 		resistanceEast=1;

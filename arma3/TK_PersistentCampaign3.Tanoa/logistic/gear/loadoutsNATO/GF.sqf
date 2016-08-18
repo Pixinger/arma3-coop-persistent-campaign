@@ -76,11 +76,11 @@ _result = [
 		DEFAULT_BACKPACKRADIO,
 		/* Backpack-Weapons */
 		[
-			//"ACE_HuntIR_monitor"
+			"ACE_HuntIR_monitor"
 		],
 		/* Backpack-Magazines */
 		[
-			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
+			"30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag"
 		],
 		/* Backpack-Items */
 		[DEFAULT_BACKPACKITEMS]

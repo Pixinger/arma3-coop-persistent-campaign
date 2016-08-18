@@ -47,7 +47,7 @@ private _mortarSites = _zoneData select 6;		// [position, direction]
 // _mortarSites starten
 //==========================================================================================
 {
-	private _count = ([2, cfgAizGroupSizeMax / 2] call BIS_fnc_randomInt);
+	private _count = ([cfgAizGroupSizeMin, cfgAizGroupSizeMax] call BIS_fnc_randomInt);
 	[_zoneIndex, _aizZoneActiveIndex, _x, ([_count] call fnc_aiz_GetRandomInfClassnames)] spawn fnc_aiz_RunGroupMortar;	
 } foreach _mortarSites;
 

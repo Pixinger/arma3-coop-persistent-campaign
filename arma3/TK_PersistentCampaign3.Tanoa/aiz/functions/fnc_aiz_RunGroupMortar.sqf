@@ -16,7 +16,7 @@ _mortarSitePosition = [_mortarSitePositionCopy select 0, _mortarSitePositionCopy
 // Einheiten erstellen
 //================================================================================
 private _group = [_mortarSitePosition, resistance, _unitClassnames] call fnc_aiz_SpawnGroup;
-[_group, _mortarSitePosition, 50, true] call fnc_aiz_GroupTaskDefend;
+[_group, _mortarSitePosition, 25, true] call fnc_aiz_GroupTaskDefend;
 
 #ifdef MARKER_ENABLED
 //================================================================================

@@ -4,7 +4,9 @@
 #define DEFAULT_HEADGEAR_HELI		"H_PilotHelmetHeli_B"
 #define DEFAULT_HEADGEAR_JET		"H_PilotHelmetHeli_B"
 
-#define DEFAULT_GOOGLES				"G_Combat"
+#define DEFAULT_GOOGLES				"G_Bandanna_shades"
+//#define DEFAULT_GOOGLES				"G_Shades_Black"
+//#define DEFAULT_GOOGLES				"G_Combat"
 #define DEFAULT_BINOCULARS			"Rangefinder"
 #define DEFAULT_LASERDESIGNATOR		"Laserdesignator"
 #define DEFAULT_NIGHTVISION			"NVGoggles_tna_F"
@@ -24,7 +26,7 @@
 
 #define DEFAULT_UNIFORMWEAPONS		""
 #define DEFAULT_UNIFORMMAGAZINES	""
-#define DEFAULT_UNIFORMITEMS		"ItemRadio", "ACE_EarPlugs", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_Flashlight_MX991", "ACE_IR_Strobe_Item", "ACE_tourniquet", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_morphine", "ACE_morphine", "ACE_morphine"
+#define DEFAULT_UNIFORMITEMS		"ItemRadio", "ACE_EarPlugs", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_Flashlight_MX991", "ACE_IR_Strobe_Item", "ACE_IR_Strobe_Item", "ACE_tourniquet", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_morphine", "ACE_morphine", "ACE_morphine"
 
 #define DEFAULT_VEST				"V_TacVest_blk"
 #define DEFAULT_VEST_GMG			"V_PlateCarrierGL_tna_F"
@@ -44,7 +46,7 @@
 #define DEFAULT_VEST_JET			"V_TacVest_blk"
 #define DEFAULT_VEST_UAV			"V_PlateCarrierSpec_tna_F"
 
-#define DEFAULT_VESTWEAPONS			"SmokeShell", "SmokeShell", "SmokeShell", "SmokeShellGreen", "SmokeShellRed", "Handgrenade", "Handgrenade"
+#define DEFAULT_VESTWEAPONS			"SmokeShell", "SmokeShell", "SmokeShell", "SmokeShellGreen", "SmokeShellRed", "Handgrenade", "Handgrenade", "Handgrenade", "Handgrenade"
 #define DEFAULT_VESTWEAPONS_LIGHT	"SmokeShell", "SmokeShell", "SmokeShellGreen", "SmokeShellRed"
 #define DEFAULT_VESTMAGAZINES		"16Rnd_9x21_Mag","16Rnd_9x21_Mag"
 #define DEFAULT_VESTMAGAZINES_LIGHT	""
