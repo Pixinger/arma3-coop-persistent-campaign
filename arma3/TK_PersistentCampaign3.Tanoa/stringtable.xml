@@ -86,6 +86,10 @@
 				<Original>Unload (all)</Original>
 				<German>Abladen (alles)</German>
 			</Key>
+			<Key ID="str_pc3_PleaseTurnOffEngineToUnload">
+				<Original>Please turn off engine to unload.</Original>
+				<German>Bitte den Motor abstellen um abzuladen.</German>
+			</Key>
 			<Key ID="str_pc3_Move">
 				<Original>Move</Original>
 				<German>Bewegen</German>
@@ -149,6 +153,14 @@
 			<Key ID="str_pc3_ObjectWillBeUnloaded">
 				<Original>Object will be unloaded...</Original>
 				<German>Objekt wird entladen...</German>
+			</Key>
+			<Key ID="str_pc3_ObjectUnloaded">
+				<Original>Object unloaded...</Original>
+				<German>Objekt entladen...</German>
+			</Key>
+			<Key ID="str_pc3_ERRORNoFreeLocationFound">
+				<Original>Error: No free location found.</Original>
+				<German>Error: Keine freie Position gefunden.</German>
 			</Key>
 			<Key ID="str_pc3_TheWholeCargoWasSuccessfullyUnloaded_ARG1_ObjectsTotal">
 				<Original>The whole cargo was successfully unloaded (%1 objects total).</Original>

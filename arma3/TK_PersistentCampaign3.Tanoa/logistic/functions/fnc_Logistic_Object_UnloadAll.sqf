@@ -22,13 +22,20 @@ if (_cursorTargetType in logisticTransporters) then
 			detach _object;
 			
 			// Freien Platz suchen
-			private _position = [(position player), typeof _object] call PIX_fnc_FindEmptyPositionClosest;
-			
-			// Auf freien Platz setzen
-			_object setPos _position;
-			
-			hint localize "str_pc3_ObjectWillBeUnloaded";
-			Sleep 1;
+			//private _position = [(position player), sizeOf (typeof _object), 20] call PIX_fnc_FindEmptyPositionClosest;
+			private _position = [position player, 1, _distance, sizeOf (typeof _object), 0, 5, 0] call BIS_fnc_findSafePos;
+			if (count _position > 0) then
+			{		
+				_position set [2,0];
+				_object setPosATL _position;
+				hint localize "str_pc3_ObjectUnloaded";
+			}
+			else
+			{
+				hint localize "str_pc3_ERRORNoFreeLocationFound";
+				player globalChat localize "str_pc3_ERRORNoFreeLocationFound";
+			};
+			Sleep 3;
 			_object allowDamage true;
 		} foreach _attachedObjects;
 		

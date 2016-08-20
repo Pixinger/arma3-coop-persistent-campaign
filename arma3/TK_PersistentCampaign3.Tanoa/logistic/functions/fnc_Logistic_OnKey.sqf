@@ -66,7 +66,7 @@ else
 				if (_cursorTargetType in logisticObjectsTransportables) then { _buttons pushBack [localize "str_pc3_Load", true, true, fnc_Logistic_Object_Load];};	
 				if (_cursorTargetType in logisticTransporters) then { 
 					_buttons pushBack [localize "str_pc3_Unload", true, true, fnc_Logistic_Object_Unload];
-					_buttons pushBack [localize "str_pc3_UnloadAll", true, true, fnc_Logistic_Object_UnloadAll];
+					//_buttons pushBack [localize "str_pc3_UnloadAll", true, true, fnc_Logistic_Object_UnloadAll];
 					};
 				if (_cursorTargetType in logisticObjectsMoveables) then { _buttons pushBack [localize "str_pc3_Move", true, true, fnc_Logistic_Object_Move];};
 				if (call fnc_Logistic_CanSellVehicle) then { _buttons pushBack [localize "str_pc3_Sell", true, true, fnc_Logistic_SellVehicle];};

@@ -12,5 +12,6 @@ class PIX
 		class IsFlat {};
 		class WorldSize {};
 		class FindEmptyPositionClosest {};
+		class FindEmptyPositionClosestMeter {};
 	};
 };
