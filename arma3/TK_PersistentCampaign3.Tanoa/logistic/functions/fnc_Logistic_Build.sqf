@@ -21,7 +21,7 @@ if (count _config > 0) then
 		logisticDecision = 0; 
 		logisticMoveObject = objNull; 
 	}, nil, 20, true, true];
-	private _actionMenu2 = player addAction [(localize "str_pc3_StartBuilding"), { 
+	private _actionMenu2 = player addAction [(localize "str_pc3_Abort"), { 
 		logisticDecision = 1; 
 		logisticMoveObject = objNull; 
 	}, nil, 19, true, true];

@@ -22,8 +22,39 @@ if (_cursorTargetType in logisticTransporters) then
 			detach _object;
 			
 			// Freien Platz suchen
-			//private _position = [(position player), sizeOf (typeof _object), 20] call PIX_fnc_FindEmptyPositionClosest;
-			private _position = [position player, 1, _distance, sizeOf (typeof _object), 0, 5, 0] call BIS_fnc_findSafePos;
+			private _unloadCenter = _cursorTarget modelToWorld [0,-10,0];
+				
+			/* -----------------------------*/
+			/* Entladen Alte Version */
+			/* -----------------------------*/
+			// private _position = [(position player), sizeOf (typeof _object), 20] call PIX_fnc_FindEmptyPositionClosest;
+
+			/* -----------------------------*/
+			/* Entladen hinter dem Fahrzeug */
+			/* -----------------------------*/
+			// private _position = _unloadCenter isFlatEmpty [
+				// sizeOf (typeof _object),// 1: minDistance (Optional): Number - Objects within 50m cannot be closer than minDistance. -1 to ignore proximity check. Default: -1
+				// -1,						// 2: mode (Optional): Number - Position check mode (ALWAYS USE DEFAULT VALUE!). Default: -1
+				// -1, 					// 3: maxGradient (Optional): Number - Maximum terrain steepness allowed. -1 to ignore. Default: -1
+				// 1, 						// 4: maxGradientRadius (Optional): Number - How far to extend gradient check. Default: 1
+				// 0, 						// 5: overLandOrWater (Optional): Number - 0: position cannot be over water; 2: position cannot be over land. -1 to ignore. Default: 0
+				// false, 					// 6: shoreLine (Optional): Boolean - true: position is over shoreline (< ~25 m from water). false to ignore. Default: false
+				// objNull					// 7: ignoreObject (Optional): Object - Object to ignore in proximity checks. objNull to ignore. Default: objNull
+				// ];
+			/* -------------------------------------------*/
+			/* Entladen hinter dem Fahrzeug (Zufallradius)*/
+			/* -------------------------------------------*/
+			private _position = [
+				_unloadCenter, 			// _this select 0: center position (Array). Note: passing [] (empty Array), the world's safePositionAnchor entry will be used.
+				1, 						// _this select 1: minimum distance from the center position (Number)
+				8,  					// _this select 2: maximum distance from the center position (Number). Note: passing -1, the world's safePositionRadius entry will be used.
+				sizeOf (typeof _object),// _this select 3: minimum distance from the nearest object (Number)
+				0, 						// _this select 4: water mode (Number).	0=cannot be in water. 1=can either be in water or not. 2=must be in water
+				5, 						// _this select 5: maximum terrain gradient (average altitude difference in meters - Number)
+				0						// _this select 6: shore mode (Number):	0=does not have to be at a shore.	1=must be at a shore
+				] call BIS_fnc_findSafePos;
+				
+				
 			if (count _position > 0) then
 			{		
 				_position set [2,0];

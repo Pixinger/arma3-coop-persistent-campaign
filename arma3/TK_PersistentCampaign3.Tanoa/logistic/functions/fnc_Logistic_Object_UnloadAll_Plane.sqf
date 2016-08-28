@@ -14,12 +14,11 @@ if (call fnc_Logistic_CanObject_UnloadAll_Plane) then
 		private _attachedObjects = (attachedObjects _aircraft);
 
 		{
-			private _position = _aircraft modelToWorld [0,-15,-15];
-			//private _position = getPosATL _aircraft;
-			//_position set [2, (_position select 2) - 15];
+			private _position = _aircraft modelToWorld [0,-25,-5];
 
 			private _object = _x;
 			_object allowDamage false;
+			_object disableCollisionWith _aircraft;
 
 			// Objekt entladen
 			detach _object;
@@ -29,19 +28,21 @@ if (call fnc_Logistic_CanObject_UnloadAll_Plane) then
 			player globalChat localize "str_pc3_ObjectUnloaded";
 			Sleep 1;
 
-			[_object] spawn {
-				params["_object"];
+			[_object, _aircraft] spawn {
+				params["_object", "_aircraft"];
 				
 				private _position = getPosATL _object;
 				
 				//Fallschirm erstellen
 				private _parachute = "B_Parachute_02_F" createVehicle [0,0,0];
-				_parachute setPosATL _position;
+				_parachute disableCollisionWith _aircraft;
 				_parachute allowDamage false;
+				_parachute setPosATL _position;
 				_object attachTo [_parachute,[0, 0, -2]];
 
 				// Warten bis am Boden
-				waitUntil {(getPos _object) select 2 < 2};
+				waitUntil { (isTouchingGround _object) };
+				_object enableCollisionWith _aircraft;
 
 				detach _object;
 				private _position = getposATL _object;

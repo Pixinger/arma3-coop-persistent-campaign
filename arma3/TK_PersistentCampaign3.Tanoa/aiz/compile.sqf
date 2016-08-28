@@ -31,6 +31,8 @@ if (isServer) then
 	fnc_aiz_BuildCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCampTown.sqf";
 	fnc_aiz_BuildCheckpoint = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildCheckpoint.sqf";
 	fnc_aiz_BuildMortar = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildMortar.sqf";
+	fnc_aiz_BuildIED = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildIED.sqf";
+	fnc_aiz_BuildMineField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_BuildMineField.sqf";
 
 	fnc_aiz_CreateMineField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineField.sqf";
 	fnc_aiz_CreateMineFieldRandom = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_CreateMineFieldRandom.sqf";
@@ -41,6 +43,7 @@ if (isServer) then
 	fnc_aiz_RunGroupMortar = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupMortar.sqf";
 	fnc_aiz_RunGroupCampTown = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampTown.sqf";
 	fnc_aiz_RunGroupCampField = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunGroupCampField.sqf";
+	fnc_aiz_RunIED = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_RunIED.sqf";	
 	fnc_aiz_ZoneInit = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneInit.sqf";
 	fnc_aiz_ZoneResume = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZoneResume.sqf";
 	fnc_aiz_ZonePause = compile preprocessFileLineNumbers "aiz\functions\fnc_aiz_ZonePause.sqf";

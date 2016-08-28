@@ -9,6 +9,9 @@ cfgAizCampFieldClassnames = ["Land_TentDome_F", "Land_TentA_F"];
 cfgAizCampFieldMinRespawnDistance = 250;
 cfgAizCampFieldRadius = 50;
 
+cfgAizIEDClassnames = ["IEDLandBig_Remote_Ammo", "IEDLandSmall_Remote_Ammo", "IEDUrbanBig_Remote_Ammo", "IEDUrbanSmall_Remote_Ammo", "DemoCharge_Remote_Ammo"];
+cfgAizMineFieldClassnames = ["SLAMDirectionalMine_Wire_Ammo", "APERSTripMine_Wire_Ammo", "ClaymoreDirectionalMine_Remote_Ammo", "SatchelCharge_Remote_Ammo", "DemoCharge_Remote_Ammo","APERSBoundingMine_Range_Ammo","APERSMine_Range_Ammo","ATMine_Range_Ammo"];
+
 cfgAizGroupSizeMin = paramsArray select 0;
 if (pixDebug) then { cfgAizGroupSizeMin = 3;};
 diag_log format["INFO: cfgAizGroupSizeMin: %1", cfgAizGroupSizeMin];
