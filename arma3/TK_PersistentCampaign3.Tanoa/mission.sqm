@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={2289.334,18.127832,13219.943};
-		dir[]={0.54461056,-0.32465357,-0.77343941};
-		up[]={0.18695968,0.94580865,-0.26551595};
-		aside[]={-0.81770623,2.060784e-006,-0.5757851};
+		dir[]={0.72029114,-0.19637793,-0.6654523};
+		up[]={0.1443141,0.98051155,-0.13332815};
+		aside[]={-0.67864889,2.4819747e-006,-0.73458004};
 	};
 };
 binarizationWanted=0;
@@ -470,7 +470,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.16.0";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.17.3";
 		overviewText="Public sind willkommen!  Bitte im Chat melden!";
 		resistanceWest=0;
 		resistanceEast=1;

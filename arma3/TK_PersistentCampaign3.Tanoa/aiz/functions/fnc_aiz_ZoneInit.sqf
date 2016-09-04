@@ -230,18 +230,18 @@ diag_log format["ZoneInit %2: _groupCount: %1", _groupCount, _zoneIndex];
 //------------------------------------------------------------------------------------------
 // IntelCount laden
 //------------------------------------------------------------------------------------------
-if (count _zoneDataSet > 4) then
-{
-	_intelCount	= (_zoneDataSet select 4); 
-	diag_log format["_intelCount from DB %1", _intelCount];
-}
-else
-{
-	_intelCount = 0;
-};
-if (_intelCount < 0) then { _intelCount = 0; };
-if (_intelCount > 3) then { _intelCount = 3; };
-diag_log format["ZoneInit %2: _intelCount: %1", _intelCount, _zoneIndex];
+//if (count _zoneDataSet > 4) then
+//{
+//	_intelCount	= (_zoneDataSet select 4); 
+//	diag_log format["_intelCount from DB %1", _intelCount];
+//}
+//else
+//{
+//	_intelCount = 0;
+//};
+//if (_intelCount < 0) then { _intelCount = 0; };
+//if (_intelCount > 3) then { _intelCount = 3; };
+//diag_log format["ZoneInit %2: _intelCount: %1", _intelCount, _zoneIndex];
 
 //------------------------------------------------------------------------------------------
 // Mortar laden
@@ -330,24 +330,25 @@ if (_groupCount > 0) then
 //==========================================================================================
 // IntelCount initialisieren (Achtung! Erst wenn "aizZoneData%1" oberhalb gesetzt wurde.
 //==========================================================================================
-if ((_triggerRequired) && (_intelCount > 0)) then
-{
-	INFO_LOG_VAREX("Intels for this zone: ", _intelCount);
-
-	for "_i" from 1 to _intelCount do
-	{
-		[_zoneIndex] call fnc_aiz_IntelReveal;
-	};
-	
-};
+//_intelCount = 1;
+//if ((_triggerRequired) && (_intelCount > 0)) then
+//{
+//	INFO_LOG_VAREX("Intels for this zone: ", _intelCount);
+//
+//	for "_i" from 1 to _intelCount do
+//	{
+//		[_zoneIndex] call fnc_aiz_IntelReveal;
+//	};
+//};
 // Nach dem nun alle Geheimnisse verraten wurden, wird der IntelCount wieder auf null gesetzt.
-_intelCount = 0;
+//_intelCount = 0;
 
 //==========================================================================================
 // Trigger erstellen
 //==========================================================================================
 if (_triggerRequired) then
 {	
+	call compile format["aizZoneOffline%1 = false;", _zoneIndex];
 	call compile format["aizZoneData%1 = [_campsTown, _campsField, _checkpoints, _waypointPool, _groupCount, _intelCount, _mortarSites];", _zoneIndex];
 
 	private _radiusExtension = if (pixDebug) then { 0 } else { 1000 };
@@ -365,6 +366,7 @@ if (_triggerRequired) then
 }
 else
 {
+	call compile format["aizZoneOffline%1 = true;", _zoneIndex];
 	call compile format["aizZoneData%1 = [[], [], [], [], 0, 0, []];", _zoneIndex];
 	if (cfgAizShowFinishedZones) then 
 	{

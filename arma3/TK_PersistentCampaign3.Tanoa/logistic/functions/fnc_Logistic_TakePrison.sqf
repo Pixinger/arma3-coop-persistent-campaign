@@ -26,12 +26,8 @@ if (call fnc_Logistic_CanTakePrison) then
 		deleteVehicle cursorTarget;
 		
 		//-----------------------------------------------------------------	
-		// Intel aktualisieren
-		private _chance = if (_classname isKindOf cfgLogisticTakePrisonOfficerClassname) then { 2 } else { 5 };		
-		if ([1, _chance] call BIS_fnc_randomInt <= 1) then
-		{	
-			[[1, cfgAizZoneCount] call BIS_fnc_randomInt] call fnc_aiz_IntelIncrement;
-		};
+		// Intel veröffentlichen (vielleicht)
+		[] call fnc_aiz_IntelReveal;
 	}
 	else
 	{
