@@ -16,6 +16,10 @@ if (hasInterface) then
 {	
 	
 	[] spawn {
+		{
+			private _objectLocal = _x createVehicleLocal [0,0,-100];
+		} foreach logisticBuildables;	
+	
 		waitUntil { !isNull player };
 		waituntil {!(IsNull (findDisplay 46))};
 		waitUntil { logisticInitialized }; // Warten bis die Logistic auch auf dem Server fertig ist.		

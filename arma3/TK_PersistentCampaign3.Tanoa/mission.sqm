@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=907;
+		nextID=911;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2289.334,18.127832,13219.943};
-		dir[]={0.72029114,-0.19637793,-0.6654523};
-		up[]={0.1443141,0.98051155,-0.13332815};
-		aside[]={-0.67864889,2.4819747e-006,-0.73458004};
+		pos[]={2320.8047,36.797321,13147.6};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -470,7 +470,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[TK]Persistent Campaign III (Tanoa) v4.17.3";
+		briefingName="[TK]Persistent Campaign III (Tanoa) v4.17.5";
 		overviewText="Public sind willkommen!  Bitte im Chat melden!";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -3649,7 +3649,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={2156.7227,13.45,13181.413};
+				position[]={2156.7229,13.45,13181.413};
 			};
 			id=872;
 			type="ACE_ModuleHearing";
@@ -3689,7 +3689,7 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=1;
+							value=0;
 						};
 					};
 				};
@@ -3727,7 +3727,7 @@ class Mission
 									"SCALAR"
 								};
 							};
-							value=1;
+							value=-1;
 						};
 					};
 				};

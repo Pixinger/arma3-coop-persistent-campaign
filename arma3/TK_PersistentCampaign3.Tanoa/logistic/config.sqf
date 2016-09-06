@@ -10,38 +10,40 @@ cfgLogisticTakePrisonOfficerClassname = "I_C_Soldier_Camo_F";
 // ["className", [[attach-offset]]]
 private _logisticObjectsMoveableDefinitions = [
 	// Statische Waffen
-	["B_HMG_01_F",					[[0, 3, 1.75]] ],
-	["B_HMG_01_high_F",				[[0, 3, 1.75]] ],
-	["B_HMG_01_A_F",				[[0, 3, 1.75]] ],
-	["B_GMG_01_F",					[[0, 3, 1.75]] ],
-	["B_GMG_01_high_F",				[[0, 3, 1.75]] ],
-	["B_GMG_01_A_F",				[[0, 3, 1.75]] ],
-	["B_Mortar_01_F",				[[0, 3, 1.75]] ],
-	["B_static_AA_F",				[[0, 3, 1.75]] ],
-	["B_static_AT_F",				[[0, 3, 1.75]] ],
-	["B_T_HMG_01_F",				[[0, 3, 1.75]] ],
-	["B_T_GMG_01_F",				[[0, 3, 1.75]] ],
-	["B_T_Mortar_01_F",				[[0, 3, 1.75]] ],
-	["B_T_Static_AA_F",				[[0, 3, 1.75]] ],
-	["B_T_Static_AT_F",				[[0, 3, 1.75]] ],
+	["B_HMG_01_F",							[[0, 3, 1.75]] ],
+	["B_HMG_01_high_F",						[[0, 3, 1.75]] ],
+	["B_HMG_01_A_F",						[[0, 3, 1.75]] ],
+	["B_GMG_01_F",							[[0, 3, 1.75]] ],
+	["B_GMG_01_high_F",						[[0, 3, 1.75]] ],
+	["B_GMG_01_A_F",						[[0, 3, 1.75]] ],
+	["B_Mortar_01_F",						[[0, 3, 1.75]] ],
+	["B_static_AA_F",						[[0, 3, 1.75]] ],
+	["B_static_AT_F",						[[0, 3, 1.75]] ],
+	["B_T_HMG_01_F",						[[0, 3, 1.75]] ],
+	["B_T_GMG_01_F",						[[0, 3, 1.75]] ],
+	["B_T_Mortar_01_F",						[[0, 3, 1.75]] ],
+	["B_T_Static_AA_F",						[[0, 3, 1.75]] ],
+	["B_T_Static_AT_F",						[[0, 3, 1.75]] ],
 	
 	// Ausrüstungskisten
-	["B_CargoNet_01_ammo_F",		[[0, 3, 1]] ],
+	["B_CargoNet_01_ammo_F",				[[0, 3, 1]] ],
 
-	// Objekte
-	["Land_PortableLight_double_F",	[[0, 3, 1.75]] ],	
-	//["CargoNet_01_box_F",			[[0, 3, 1]] ],
-	//["CargoNet_01_barrels_F",		[[0, 3, 1]] ],
-	["Land_PaperBox_open_full_F",	[[0, 3, 1]] ],
-	["Land_PaperBox_closed_F",		[[0, 3, 1]] ],
-	["Land_Pipes_small_F",			[[0, 3, 1]] ], 
-	["Land_Pipes_large_F",			[[0, 3, 1]] ], 
-	["Land_DataTerminal_01_F",		[[0, 3, 1]] ],
-	["Land_Pallet_MilBoxes_F",		[[0, 3, 1]] ],
-	["Land_Sacks_heap_F",			[[0, 3, 1]] ],
-	["Land_WaterBarrel_F",			[[0, 3, 1]] ],
-	["Land_Bricks_V1_F",			[[0, 3, 1]] ],
-	["Land_Timbers_F",				[[0, 3, 1]] ]
+	// Objekte	
+	["Land_PlasticBarrier_01_line_x2_F",	[[0, 2, .4]] ],
+	["Land_PlasticBarrier_01_line_x6_F",	[[-.3, 4, .4]] ],
+	["Land_PortableLight_double_F",			[[0, 3, 1.75]] ],	
+	//["CargoNet_01_box_F",					[[0,  3, 1]] ],
+	//["CargoNet_01_barrels_F",				[[0,  3, 1]] ],
+	["Land_PaperBox_open_full_F",			[[0,  3, 1]] ],
+	["Land_PaperBox_closed_F",				[[0,  3, 1]] ],
+	["Land_Pipes_small_F",					[[0,  3, 1]] ], 
+	["Land_Pipes_large_F",					[[0,  3, 1]] ], 
+	["Land_DataTerminal_01_F",				[[0,  3, 1]] ],
+	["Land_Pallet_MilBoxes_F",				[[0,  3, 1]] ],
+	["Land_Sacks_heap_F",					[[0,  3, 1]] ],
+	["Land_WaterBarrel_F",					[[0,  3, 1]] ],
+	["Land_Bricks_V1_F",					[[0,  3, 1]] ],
+	["Land_Timbers_F",						[[0,  3, 1]] ]
 	
 	//["Land_Sacks_goods_F",			[[0, 3, 1]] ],
 	//["Land_Sacks_heap_F",			[[0, 3, 1]] ],
@@ -143,6 +145,9 @@ private _logisticBuildableDefinitions = [
 	//["Land_HBarrier_5_F",				[[0,   6, 0.8], 0, [0, 0, -1.2], 1.2,	[["CraterLong_small", 100],		["Land_PaperBox_closed_F", 5]]	]],
 	//["Land_BagBunker_Small_F",		[[0,   6, 1.0], 0, [0, 0, -1.6], 1.2, 	[["CraterLong_small", 50], 		["Land_Timbers_F", 10], 	["Land_Bricks_V1_F", 10]] 	]],
 	//["Land_BagBunker_Large_F",		[[0,  12, 1.0], 0, [0, 0, -2.1], 1.2,	[["CraterLong_small", 200], 	["Land_Timbers_F", 100], 	["Land_Bricks_V1_F", 100]] 	]]
+	
+	["Land_PlasticBarrier_01_line_x2_F",[[0,   2,  .3], 0, [0, 0, -0.4], 1.0, 	[["Land_PaperBox_closed_F", 0]] ]],
+	["Land_PlasticBarrier_01_line_x6_F",[[0,   4,  .3], 0, [0, 0, -0.4], 1.0, 	[["Land_PaperBox_closed_F", 0]] ]],
 
 	["Land_PortableLight_double_F",		[[0,   3, 1.0], 0, [0, 0, -1.4], 1.0, 	[["Land_Pipes_small_F", 5],		["Land_PaperBox_closed_F", 25]] ]],	
 	["Land_BarGate_F",					[[0,   5, 4.0], 0, [0, 0, -0.9], 0.7,	[["Land_Pipes_small_F", 5],		["Land_Timbers_F", 10]]			]],

@@ -30,11 +30,11 @@ private _actionMenu = player addAction [format["<t color=""#dddd00"">%1</t>", lo
 private _autoStop = false;
 if (_directionUpDown > 0) then
 {
-	if (_positionGlobal select 2 < -0.5) then {_autoStop = true;};	
+	if (_positionGlobal select 2 < -0.4) then {_autoStop = true;};	
 }
 else
 {
-	if (_positionGlobal select 2 > 0.5) then {_autoStop = true;};	
+	if (_positionGlobal select 2 > 0.4) then {_autoStop = true;};	
 };
 
 // Globales Objekt nach unten setzen, damit es nicht mehr im Weg ist.

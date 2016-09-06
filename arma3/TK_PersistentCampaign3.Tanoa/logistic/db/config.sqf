@@ -77,6 +77,7 @@ if (isServer) then
 		"Land_HBarrier_01_line_5_green_F",
 		"Land_BagBunker_01_small_green_F",
 		"Land_BagBunker_01_large_green_F",
+		"Land_PlasticBarrier_01_F", // Basis Klasse aller Plastikbarrieren
 
 		// Objekte
 		"ACE_Wheel",

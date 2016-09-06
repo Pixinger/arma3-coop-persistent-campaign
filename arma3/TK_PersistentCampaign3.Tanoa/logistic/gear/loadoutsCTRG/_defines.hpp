@@ -1,6 +1,6 @@
 #define DEFAULT_GOOGLES				"G_Balaclava_TI_G_tna_F"
 #define DEFAULT_HEADGEAR			"H_HelmetB_TI_tna_F"
-#define DEFAULT_BINOCULARS			"Rangefinder"
+#define DEFAULT_BINOCULARS			"ACE_Vector" //"Rangefinder"
 #define DEFAULT_LASERDESIGNATOR		"Laserdesignator"
 #define DEFAULT_NIGHTVISION			"NVGogglesB_grn_F"
 #define DEFAULT_LINKEDITEMS			"ItemMap","ItemWatch","ItemCompass","ItemGps"
@@ -15,7 +15,7 @@
 #define DEFAULT_UNIFORM_FREETIME	"U_B_T_Soldier_F"
 #define DEFAULT_UNIFORMWEAPONS		""
 #define DEFAULT_UNIFORMMAGAZINES	""
-#define DEFAULT_UNIFORMITEMS		"ItemRadio", "ACE_EarPlugs", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_Flashlight_MX991", "ACE_IR_Strobe_Item", "ACE_tourniquet", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_morphine", "ACE_morphine", "ACE_morphine"
+#define DEFAULT_UNIFORMITEMS		"ItemRadio", "ACE_microDAGR", "ACE_EarPlugs", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_CableTie", "ACE_Flashlight_MX991", "ACE_IR_Strobe_Item", "ACE_tourniquet", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_morphine", "ACE_morphine", "ACE_morphine"
 
 #define DEFAULT_VEST				"V_TacVest_oli"
 #define DEFAULT_VEST_GMG			"V_TacVest_oli"
